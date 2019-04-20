@@ -1,0 +1,347 @@
+{{-- buttons.box_post --}}
+
+@if ($root=="catalog")
+	<a class="btn_edit_post" 
+			data-id="{{ $post->id }}">
+		<img src="/img/edit.png" width="24" />
+	</a>				
+
+	<a class="btn_delete_post_from_catalog" 
+			data-id="{{ $post->id }}" 
+			data-catalog="{{ $catalog->id }}">
+		<img src="/img/delete.png" width="24" />
+	</a>
+
+	<a class="btn_copy_post"
+	    data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/mail.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif
+@elseif ($root=="created_catalogs")
+	<a class="btn_edit_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/edit.png" width="24" />
+	</a>				
+
+	<a class="btn_delete_post_from_catalog" 
+			data-id="{{ $post->id }}"
+			data-catalog="{{ $catalog->id }}">
+		<img src="/img/delete.png" width="24" />
+	</a>
+
+	<a class="btn_copy_post"
+	    data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/mail.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif
+@elseif ($root=="page_category")
+	<a class="btn_edit_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/edit.png" width="24" />
+	</a>				
+
+	<a class="btn_delete_post_from_created_pages" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/delete.png" width="24" />
+	</a>
+
+	<a class="btn_copy_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/mail.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif
+@elseif ($root=="created_pages")
+	<a class="btn_edit_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/edit.png" width="24" />
+	</a>				
+
+	<a class="btn_delete_post_from_created_pages" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/delete.png" width="24" />
+	</a>
+
+	<a class="btn_copy_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+
+	<a class="btn_add_subscription"
+			data-id="{{ $post->id }}">
+		<img src="/img/subscribe.png" width="24" />
+	</a>
+	
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/mail.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif
+@elseif ($root=="created_apps")
+	<a class="btn_edit_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/edit.png" width="24" />
+	</a>				
+
+	<a class="btn_delete_post_from_created_apps" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/delete.png" width="24" />
+	</a>
+
+	<a class="btn_copy_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+
+	<a class="btn_add_subscription"
+			data-id="{{ $post->id }}">
+		<img src="/img/subscribe.png" width="24" />
+	</a>
+
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/mail.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif	
+@elseif ($root=="subscriptions")
+	<a class="btn_delete_post_from_subscription" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/delete.png" width="24" />
+	</a>	
+
+	<a class="btn_copy_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/mail.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif
+@elseif ($root=="app_subs")
+	<a class="btn_edit_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/edit.png" width="24" />
+	</a>				
+
+	<a class="btn_copy_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+	
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/mail.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif	
+@elseif ($root=="app_pages")
+	<a class="btn_edit_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/edit.png" width="24" />
+	</a>				
+	
+	<a class="btn_copy_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+
+	<a class="btn_add_subscription"
+			data-id="{{ $post->id }}">
+		<img src="/img/subscribe.png" width="24" />
+	</a>
+	
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/mail.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif	
+@elseif ($root=="contacts")
+	<a class="btn_delete_post_from_contacts" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/delete.png" width="24" />
+	</a>	
+
+	<a class="btn_copy_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/mail.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif
+@elseif ($root=="contacts_group")
+	<a class="btn_delete_post_from_contacts_group" 
+			data-id="{{ $post->id }}"
+			data-group="{{ $group_id }}"> 
+		<img src="/img/delete.png" width="24" />
+	</a>	
+
+	<a class="btn_copy_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/mail.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif
+@elseif ($root=="received_posts")
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+
+	<a class="btn_discard_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/delete.png" width="24" />
+	</a>		
+@elseif ($root=="saved_posts")		
+	<a class="btn_edit_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/edit.png" width="24" />
+	</a>				
+
+	<a class="btn_discard_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/delete.png" width="24" />
+	</a>
+
+	<a class="btn_copy_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+@elseif ($root=="discarded_posts")		
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+@elseif ($root=="created_posts")
+	<a class="btn_edit_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/edit.png" width="24" />
+	</a>				
+
+	<a class="btn_delete_post_from_created_posts" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/delete.png" width="24" />
+	</a>
+
+	<a class="btn_copy_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/mail.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif
+@elseif ($root=="edit_post")
+  &nbsp;
+@else
+	buttons_box_post: {{ $root }}
+@endif
+
+@if ($post->user_likes == 0)
+<a class="btn_update_likes" 
+		data-id="{{ $post->id }}"
+		data-mode="up"> 
+	<img src="/img/likes_white.png" width="24" />
+</a>
+@else
+<a class="btn_update_likes" 
+		data-id="{{ $post->id }}"
+		data-mode="down"> 
+	<img src="/img/likes_red.png" width="24" />
+</a>
+@endif
+
+<?php 
+	$likes = format_num($post->rating_points);
+?>
+
+<span id="likes">{{ $likes }}</span>

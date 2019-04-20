@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jQuery Popr Plugin Demos</title>
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400|Merriweather:300,300italic" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<link rel="stylesheet" href="inc/normalize.css">
+<link rel="stylesheet" href="inc/standard.css">
+
+<link rel="stylesheet" type="text/css" href="popr/popr.css">
+<script type="text/javascript" src="popr/popr.js"></script>
+
+</head><body>
+<div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="http://www.jqueryscript.net/menu/Lightweight-Popup-Menu-Plugin-For-jQuery-Popr.html">Download This Plugin</a></li>
+<li><a href="http://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+
+<div class="center"><div class="inner" style="padding-top: 150px;"><h2>jQuery Popr Plugin Demos</h2>
+</div></div>
+<div class="center"><div class="inner ital" style="padding-top: 17px;">Click on something below.</div></div>
+
+<div class="center"><div class="inner norm" style="padding-top: 17px;"><div class="popr" data-id="1">Click Me</div></div></div>
+<div class="center"><div class="inner" style="padding-top: 15px;"><div class="popr" data-id="2"><img src="img/popr_options.png"></div></div></div>
+<div class="center"><div class="inner norm" style="padding-top: 13px;"><div class="popr" data-id="3" data-mode="top">Click Me</div></div></div>
+
+<div class="popr-box" data-box-id="1">
+<a href="$loc"><div class="popr-item">Menu Item 1</div></a>
+<a href="$loc"><div class="popr-item">Menu Item 2</div></a>
+<a href="$loc"><div class="popr-item">Menu Item 3</div></a>
+</div>
+
+<div class="popr-box" data-box-id="2">
+<a href="$loc"><div class="popr-item">Menu Item 1</div></a>
+<div class="popr-item" id="feugait">Menu Item 2</div>
+<a href="$loc"><div class="popr-item">Menu Item 3</div></a>
+</div>
+
+<div class="popr-box" data-box-id="3">
+<a href="$loc"><div class="popr-item">Menu Item 1</div></a>
+<a href="$loc"><div class="popr-item">Menu Item 2</div></a>
+<a href="$loc"><div class="popr-item">Menu Item 3</div></a>
+</div>
+
+<div class="center ital" style="padding: 39px 0 30px 0;">&copy; 2015, <a href="http://www.tipue.com">Tipue</a>. Made in London.</div>
+
+<script>
+$(document).ready(function() {
+     $('.popr').popr();
+});
+
+$(document).on('click', '#feugait', function () {                
+     alert('Feugait');
+});
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

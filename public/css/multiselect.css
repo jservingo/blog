@@ -1,0 +1,16 @@
+button { padding:20px 50px; border:0;  color:#fff; background:#1ABC9C; text-decoration:none; border-bottom:5px solid #16A085; border-radius:5px; cursor: pointer}
+.multiselect {
+    width:29em;
+    height:15em;
+    border:solid 1px #c0c0c0;
+    overflow-y: auto;
+    text-align: left;
+}
+.multiselect label {
+    display:block;
+    margin-top:5px;
+}
+.multiselect-on {
+    color:#ffffff;
+    background-color:#000099;
+}  

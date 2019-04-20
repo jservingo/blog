@@ -1,0 +1,100 @@
+{{-- home.menu_items --}}
+
+<ul>
+  <li>My Stuff
+  <ul>
+  <li>
+    <a class="vlink" href="{{ route('apps.show_created') }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Apps
+    </a>
+  </li>  
+  <li>
+    <a class="vlink" href="{{ route('pages.show_created') }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Pages
+    </a>
+  </li>    
+  <li>
+    <a class="vlink" href="{{ route('catalogs.show_created') }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Catalogs
+    </a>
+  </li>  
+  <li>
+    <a class="vlink" href="{{ route('posts.show_created') }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Posts
+    </a>
+  </li> 
+  <li>
+    <a class="vlink" href="{{ route('pages.show_subscriptions') }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Subscriptions
+    </a>
+  </li>
+  </ul>
+  </li>
+  <li>Discover
+  <ul>
+  <li>
+    <a class="vlink" href="{{ route('apps.show_created') }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Apps
+    </a>
+  </li>  
+  <li>
+    <a class="vlink" href="{{ route('pages.show_created') }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Pages
+    </a>
+  </li>    
+  <li>
+    <a class="vlink" href="{{ route('catalogs.show_created') }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Catalogs
+    </a>
+  </li> 
+  </ul>
+  </li> 
+  <li>Directory
+  <ul>    
+  <li>
+    <a class="vlink" href="{{ route('contacts.show_contacts') }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Contacts
+    </a>
+  </li>   
+	<li>
+		<a class="vlink" href="{{ route('posts.show_received',0) }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Received posts
+    </a>
+  </li>
+    <li>
+    <a class="vlink" href="{{ route('posts.show_sent',2) }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Sent posts
+    </a>
+  </li>  
+  <li>
+    <a class="vlink" href="{{ route('posts.show_received',2) }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Saved posts
+    </a>
+  </li>
+  <li>
+    <a class="vlink" href="{{ route('posts.show_received',1) }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Discarded posts
+    </a>
+  </li>
+  </ul>
+  </li>
+  <li>
+    <a class="vlink" href="{{ route('posts.show_recent') }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        Recently viewed
+    </a>
+  </li>  
+</ul>

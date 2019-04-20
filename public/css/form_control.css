@@ -1,0 +1,106 @@
+.form-control input[type="text"],
+.form-control input[type="email"],
+.form-control input[type="tel"],
+.form-control input[type="url"],
+.form-control textarea,
+.form-control button[type="submit"] {
+	font:400 16px/16px Helvetica, Arial, sans-serif;
+}
+.form-control .mensaje {
+	font:100 12px/12px Helvetica, Arial, sans-serif;
+}
+.form-control {
+	text-shadow:0 1px 0 #FFF;
+	border-radius:4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	padding-top:20px;
+	padding-right:50px;
+}
+.form-control h3 {
+	color:#991D57;
+	display:block;
+	font-size:28px;
+}
+.form-control h4 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:13px;
+}
+.form-control label span {
+	cursor:pointer;
+	color:#7a7a7a;
+	display:block;
+	margin:5px 0;
+	font-weight:900;
+}
+.form-control input[type="text"],
+.form-control input[type="email"],
+.form-control input[type="tel"],
+.form-control input[type="url"],
+.form-control textarea {
+	width:100%;
+	box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-webkit-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-moz-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+}
+.form-control input[type="text"]:hover,
+.form-control input[type="email"]:hover,
+.form-control input[type="tel"]:hover,
+.form-control input[type="url"]:hover,
+.form-control textarea:hover {
+	-webkit-transition:border-color 0.3s ease-in-out;
+	-moz-transition:border-color 0.3s ease-in-out;
+	transition:border-color 0.3s ease-in-out;
+	border:1px solid #CD5C5C;
+}
+.form-control textarea {
+	height:100px;
+	max-width:100%;
+}
+.form-control button[type="submit"] {
+	cursor:pointer;
+	width:100%;
+	border:none;
+	background:#991D57;
+	background-image:linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+	background-image:-moz-linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+	background-image:-webkit-linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+	color:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+}
+.form-control button[type="submit"]:hover {
+	background-image:linear-gradient(bottom, #9C215A 0%, #A82767 52%);
+	background-image:-moz-linear-gradient(bottom, #9C215A 0%, #A82767 52%);
+	background-image:-webkit-linear-gradient(bottom, #9C215A 0%, #A82767 52%);
+	-webkit-transition:background 0.3s ease-in-out;
+	-moz-transition:background 0.3s ease-in-out;
+	transition:background-color 0.3s ease-in-out;
+}
+.form-control button[type="submit"]:active {
+	box-shadow:inset 0 1px 3px rgba(0,0,0,0.5);
+}
+.form-control input:focus,
+.form-control textarea:focus {
+	outline:0;
+	border:1px solid #999;
+}
+::-webkit-input-placeholder {
+    color:#888;
+}
+:-moz-placeholder {
+    color:#888;
+}
+::-moz-placeholder {
+    color:#888;
+}
+:-ms-input-placeholder {
+    color:#888;
+}

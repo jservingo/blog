@@ -1,0 +1,38 @@
+/*
+.posts {
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.post {
+  display: flex;
+}
+*/
+
+/* Mobile Styles */
+@media only screen and (max-width: 768px) {
+  body {
+    background-color: #F09A9D; /* Red */
+  }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+  body {
+    background-color: #EF7F1A; /* Orange */
+  }
+}
+
+/* Tablet Styles Large */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  body {
+    background-color: #F5CF8E; /* Yellow */
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 1200px) {
+  body {
+    /* background-color: #B2D6FF; Blue */
+  }
+}
