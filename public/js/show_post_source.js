@@ -1,5 +1,5 @@
 // Find all posts
-var $allVideos = $("iframe[src^='https://www.youtube.com']");
+var $allPost = $("iframe[src^='https://www.youtube.com']");
 
 // The element that is fluid width
 //$fluidEl = $(".content-post");

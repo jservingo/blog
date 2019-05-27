@@ -14,11 +14,9 @@
   --}}
 
   <div style="overflow: hidden;">
-    @include('home.menu')
-
     <div class="loader" style="float:left;"></div>
 
-    <div id="main_panel" style="float:right;visibility:hidden;">
+    <div id="main_panel" style="visibility:hidden;">
       @include('posts.title')
       @include('pages.subtitle')
 
@@ -33,8 +31,6 @@
       {{ $posts->render("pagination::default") }}
       {{-- $posts->links() --}}
     </div>
-
-    <div style="clear: both"></div>
   </div> 
 
   <div>

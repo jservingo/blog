@@ -15,6 +15,35 @@ use App\Tag;
 
 class CatalogsController extends Controller
 {
+  public function discover()
+  {
+    if(get_view('catalogs')=="ribbon")
+    {
+      $catalogs = Catalog
+        ::where("user_id","<>",auth()->id())
+        ->latest('created_at')
+        ->paginate(6);      
+
+      return view('catalogs.show',compact('catalogs'));
+    }
+    else
+    {
+      $posts = Post        
+      ::where("posts.user_id","<>",auth()->id())
+      ->where("type_id","=",21)
+      ->latest('posts.created_at')
+      ->paginate(12);
+
+      $title = "Discover catalogs";   
+      $root = "discover_catalogs_posts";
+      $buttons = "posts.buttons.discover_catalogs"; 
+      $subtitle = "";
+
+      return view(get_view('catalogs'),compact(
+        'posts','title','root','buttons','subtitle')); 
+    }
+  }
+
   public function show_created()
   {
     if(get_view('catalogs')=="ribbon")

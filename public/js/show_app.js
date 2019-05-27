@@ -125,8 +125,8 @@ var template = '<div class="post pfull">'+
         .replace(':img alt:', post.name + " Logo")
         .replace(':app_id:', app_id)
         .replace(':app_id:', app_id)
-        .replace(':custom_type:', 'Show')
-        .replace(':custom_type:', 'Show')
+        .replace(':custom_type:', 'TV-Show')
+        .replace(':custom_type:', 'TV-Show')
 
       var $post = $(post)
       $appPostsContainer.append($post.fadeIn(1500));

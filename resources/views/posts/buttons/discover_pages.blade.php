@@ -1,0 +1,1 @@
+discover_pages.blade.php

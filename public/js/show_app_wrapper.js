@@ -254,7 +254,7 @@ function get_posts_from_tvmaze(url, callback)
   			img: row.image ? row.image.medium : '',
   			url: row.url,
   			href: row._links.self.href,
-  			custom_type: 'Show'
+  			custom_type: 'TV Show'
   		};
   		posts.push(post);
   	});    

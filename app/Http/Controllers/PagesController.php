@@ -19,6 +19,40 @@ class PagesController extends Controller
     return view('home.home_show');
   }
 
+  public function discover()
+  {
+    $posts = Post        
+      ::where("posts.user_id","<>",auth()->id())
+      ->where("type_id","=",22)
+      ->whereNotIn('ref_id', function($query)
+        {
+          $query->select('page_id')
+                ->from('page_user')
+                ->where('user_id','=',auth()->id());
+        })
+      ->latest('posts.created_at')
+      ->paginate(12);
+
+    $title = "Discover pages";   
+    $root = "discover_pages";
+    $buttons = "posts.buttons.discover_pages"; 
+    $subtitle = "";
+
+    return view(get_view(),compact(
+      'posts','title','root','buttons','subtitle'));
+
+    /*
+    $pages = Page
+        ::where("user_id","=",auth()->id())
+        ->orderBy('featured', 'DESC')
+        ->orderBy('position', 'ASC')
+        ->latest('created_at')
+        ->paginate();           
+
+    return view('pages.pages_show',compact('pages'));
+    */
+  }
+
   public function show_created()
   {
     $posts = Post        

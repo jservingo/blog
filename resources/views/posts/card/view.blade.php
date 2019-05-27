@@ -8,6 +8,12 @@
   	<div style="float:left;">
       @if ($post->iframe)
         @include('posts.card.iframe')
+      @elseif ($post->isPhotoGallery())
+        @if ($post->photos->count() >= 1)
+          @include('posts.card.photo')
+        @else
+          @include('posts.card.photo_empty')
+        @endif
       @elseif ($post->photos->count() >= 1)
         @include('posts.card.photo')
       @endif

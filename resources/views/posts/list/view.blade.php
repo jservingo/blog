@@ -9,6 +9,12 @@
       <div class="media" style="float:left;">
         @if ($post->iframe)
           @include('posts.list.iframe')
+        @elseif ($post->isPhotoGallery())
+          @if ($post->photos->count() >= 1)
+            @include('posts.list.photo')
+          @else
+            @include('posts.list.photo_empty')     
+          @endif
         @elseif ($post->photos->count() >= 1)
           @if ($post->isApp() || $post->isUser())
             @include('posts.list.photo_card')

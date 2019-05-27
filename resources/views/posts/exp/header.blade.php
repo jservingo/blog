@@ -6,6 +6,11 @@
     $width = 215;
     $height = 120; 
   }
+  elseif ($post->isPhotoGallery())
+  {
+    $width = 215;
+    $height = 120;
+  }
   elseif ($post->photos->count() >= 1)
   {
     if ($post->isApp() || $post->isUser())

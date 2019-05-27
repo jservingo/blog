@@ -14,6 +14,29 @@ class ContactsController extends Controller
   //Aqui hay que colocar el método que muestra y
 	//hay que modificar la vista de los posts
 
+  public function discover()
+  {
+    $posts = Post        
+      ::where("posts.user_id","<>",auth()->id())
+      ->where("type_id","=",24)
+      ->whereNotIn('ref_id', function($query)
+        {
+          $query->select('user_ref')
+                ->from('contacts')
+                ->where('user_id','=',auth()->id());
+        })
+      ->latest('posts.created_at')
+      ->paginate(12);
+
+    $title = "Discover users";   
+    $root = "discover_users";
+    $buttons = "posts.buttons.discover_users"; 
+    $subtitle = "";
+
+    return view(get_view(),compact(
+      'posts','title','root','buttons','subtitle'));
+  }
+
 	public function show_contacts()
   {
   	$posts = Post

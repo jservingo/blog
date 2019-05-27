@@ -9,6 +9,18 @@
       @include('posts.box.empty')
       @include('posts.box.date')
       @include('posts.box.footer')
+    @elseif ($post->isPhotoGallery())
+      @if ($post->photos->count() >= 1)
+        @include('posts.box.photo')
+        @include('posts.box.empty')
+        @include('posts.box.date')
+        @include('posts.box.footer')
+      @else
+        @include('posts.box.photo_empty')
+        @include('posts.box.empty')
+        @include('posts.box.date')
+        @include('posts.box.footer')     
+      @endif
     @elseif ($post->photos->count() >= 1)
       @if ($post->isApp() || $post->isUser())
         <div>

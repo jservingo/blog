@@ -27,11 +27,13 @@ Route::post('message','HomeController@set_message');
 Route::post('view','HomeController@set_view');
 
 //Apps
+Route::get('apps/discover','AppsController@discover')->name('apps.discover');
 Route::get('apps','AppsController@show_created')->name('apps.show_created');
 Route::get('apps/{app}','AppsController@show_app')->name('app.show_app');
 Route::post('apps/post','AppsController@save_app_post');
 
 //Pages
+Route::get('pages/discover','PagesController@discover')->name('pages.discover');
 Route::get('pages/visited','PagesController@show_visited')->name('pages.show_visited');
 Route::get('pages/{page}/{category}','PagesController@show_page_category')->name('page.show_page_category');
 Route::get('pages','PagesController@show_created')->name('pages.show_created');
@@ -44,6 +46,7 @@ Route::post('subscriptions/add','SubscriptionsController@add_subscription');
 Route::delete('subscriptions/{post}','SubscriptionsController@destroy');
 
 //Contacts
+Route::get('contacts/discover','ContactsController@discover')->name('contacts.discover');
 Route::get('contacts/tree','ContactsController@get_contacts_tree');
 Route::get('contacts/{group}','ContactsController@show_group')->name('contacts.show_group');
 Route::get('contacts','ContactsController@show_contacts')->name('contacts.show_contacts');
@@ -62,6 +65,7 @@ Route::post('categories/rename','CategoriesController@rename_node');
 Route::post('categories/delete','CategoriesController@delete_node');
 
 //Catalogs
+Route::get('catalogs/discover','CatalogsController@discover')->name('catalogs.discover');
 Route::get('catalogs/{catalog}','CatalogsController@show_catalog')->name('catalog.show_catalog');
 Route::get('catalogs','CatalogsController@show_created')->name('catalogs.show_created');
 Route::get('catalog/{catalog}','CatalogsController@edit')->name('catalog.edit');
@@ -76,6 +80,7 @@ Route::get('posts/created/{type?}','PostsController@show_created')->name('posts.
 Route::get('posts/{post}','PostsController@show_post')->name('post.show_post');
 Route::get('post/{post}','PostsController@edit')->name('post.edit');
 Route::get('blog/{post}','PostsController@show_post')->name('post.show');
+Route::post('post','PostsController@store')->name('post.create');
 Route::post('posts/save','PostsController@save_post');
 Route::post('posts/discard','PostsController@discard_post');
 Route::post('posts/likes/{post}/{mode}','PostsController@update_likes');

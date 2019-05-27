@@ -13,11 +13,9 @@
 
 @section('content')
   <div style="overflow: hidden;">
-    @include('home.menu_standard')
-
     <div class="loader" style="float:left;"></div>
 
-    <div id="main_panel" style="float:right;visibility:hidden;">  
+    <div id="main_panel" style="visibility:hidden;">  
       <div class="container" style="margin:0;">          
         @include('posts.single.header') 
         @include('posts.single.content')
@@ -45,8 +43,6 @@
         --}}        
       </div>      
     </div>
-
-    <div style="clear: both"></div>
   </div> 
 @endsection
 

@@ -225,7 +225,7 @@ function btn_create_post()
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
       });
-      var ref_id = $(this).data("id");
+      //var ref_id = $(this).data("id");  OJO QUITAR ESTO
       var data = {type_id:type_id, title:title};
       $.ajax({
         type: 'post',

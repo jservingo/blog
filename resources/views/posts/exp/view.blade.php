@@ -10,6 +10,24 @@
         @include('posts.box.iframe')
       </div>
       <div style="clear:both;"></div>
+    @elseif ($post->isPhotoGallery())
+      @if ($post->photos->count() >= 1)
+        <div style="float:right;">
+          @include('posts.exp.header')  
+        </div>
+        <div style="float:left;">
+          @include('posts.box.photo')
+        </div>
+        <div style="clear:both;"></div>
+      @else
+        <div style="float:right;">
+          @include('posts.exp.header')  
+        </div>
+        <div style="float:left;">
+          @include('posts.box.photo_empty')
+        </div>
+        <div style="clear:both;"></div>
+      @endif
     @elseif ($post->photos->count() >= 1)
       @if ($post->isApp() || $post->isUser())
         <div style="float:right">

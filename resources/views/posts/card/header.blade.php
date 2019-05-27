@@ -6,6 +6,11 @@
     $width = 215;
     $height = 51; 
   }
+  elseif ($post->isPhotoGallery())
+  {
+    $width = 226;
+    $height = 51;
+  }
   elseif ($post->photos->count() >= 1)
   {
     $width = 226;

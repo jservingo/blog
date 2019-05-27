@@ -10,6 +10,32 @@ use App\App;
 
 class AppsController extends Controller
 {
+  public function discover()
+  {
+    $posts = Post 
+      ::join('apps', 'ref_id', '=', 'apps.id')       
+      ->where("apps.user_id","<>",auth()->id())
+      ->where("type_id","=",23)
+      ->where("apps.parent_id","=",null)
+      ->whereNotIn('apps.id', function($query)
+        {
+          $query->select('app_id')
+                ->from('app_user')
+                ->where('user_id','=',auth()->id());
+        })
+      ->select('posts.*')
+      ->latest('posts.created_at')
+      ->paginate(12);
+
+    $title = "Discover apps";   
+    $root = "discover_apps";
+    $buttons = "posts.buttons.discover_apps"; 
+    $subtitle = "";
+
+    return view(get_view(),compact(
+      'posts','title','root','buttons','subtitle'));
+  }
+
   public function show_created()
   {
   	$posts = Post 
