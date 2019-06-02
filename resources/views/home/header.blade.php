@@ -43,3 +43,4 @@
     @include('home.menu_view_posts')
     @include('home.menu_view_catalogs')
 </header>
+

@@ -3,17 +3,8 @@
 @extends('layout')
 
 @section('content')
-  {{-- 
-    Vistas:
-      box_view:  4 cuadros (box)
-      exp_view:  2 cuadros (tile)
-      card_view: 3 cuadros (card)
-      wf_view:   watter fall (shuffle)
-      list_view: 1 cuadro (list)
-      full_view: 1 cuadro con toda la data (panel)  
-  --}}
-
-  <div style="overflow: hidden;">
+  <div style="overflow: hidden; width:100%">
+    
     <div class="loader" style="float:left;"></div>
 
     <div id="main_panel" style="visibility:hidden;">
@@ -68,6 +59,12 @@
   <script type="text/javascript" src="/js/multiselect.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/truncate.js"></script>
+  <script type="text/javascript" src="/js/menu_header.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.menu').jqsimplemenu();
+    });
+  </script>
   <script>
     $(document).ready(function() {
      $('.popr').popr();
@@ -108,10 +105,10 @@
   @endif  
   @include('home.message')
   <script>
-    var width_container = $(window).width() - 380; 
+    var width_container = $(window).width() *0.90; //-380
     $(".container").width(width_container);
     $(".post").each(function() {
-      var width_post = width_container - 60;
+      var width_post = width_container; //-60 
       var width_header = $(this).find(".header").width();
       var width_media = $(this).find(".media").width();
       var width_content = width_post - width_media - 60;
@@ -124,10 +121,10 @@
     });
     
     $(window).resize(function () {
-      var width_container = $(window).width() - 380; 
+      var width_container = $(window).width() * 0-90; //-380
       $(".container").width(width_container);      
       $(".post").each(function() {
-        var width_post = width_container - 60;
+        var width_post = width_container; //-60
         var width_media = $(this).find(".media").width();
         var width_content = width_post - width_media - 60;
         var width_scontent = width_post - width_media - 33;

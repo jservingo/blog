@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Post;
+use App\Kpost;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -63,10 +66,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        //Crear el post del usuario
+        $post = Post::create([
+          'title' => $data['name'],
+          'type_id' => 24,
+          'ref_id' => $user->id,
+          'user_id' => $user->id,
+          'published_at' => Carbon::now()
+        ]);
+
+        $kpost = Kpost::create([
+          'post_id' => $post->id,
+          'user_id' => $user->id,
+          'sent_by' => $user->id,
+          'sent_at' => Carbon::now() 
+        ]);
+
+        return $user;
     }
 }

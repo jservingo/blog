@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/css/search.css">
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/popr.css">
+    <link rel="stylesheet" href="/css/menu_header.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -29,11 +30,9 @@
 <body>
     <!--<div class="preload"></div>-->
     @include('home.header')
-
+    @include('home.menu_standard')
     @yield('content')
-
     @include('home.footer')
-
     @stack('scripts')      
 </body>
 </html>    

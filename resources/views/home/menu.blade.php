@@ -4,6 +4,4 @@
   @include('contacts.menu')   
 @elseif ($root=="page_catalogs_posts")
   @include('pages.menu')
-@else
-  @include('home.menu_standard')
 @endif

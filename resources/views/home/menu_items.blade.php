@@ -1,7 +1,9 @@
 {{-- home.menu_items --}}
 
-<ul>
-  <li>My Stuff
+<ul class="menu" style="position:absolute; z-index:999999;">
+  <li><a href="http://www.kodelia.com">Home</a></li>
+
+  <li><a href="#">My Stuff</a>
   <ul>
   <li>
     <a class="vlink" href="{{ route('apps.show_created') }}" 
@@ -26,16 +28,18 @@
       class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
         Posts
     </a>
-  </li> 
+  </li>   
+  </ul>
+  </li>
+
   <li>
     <a class="vlink" href="{{ route('pages.show_subscriptions') }}" 
       class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
         Subscriptions
     </a>
   </li>
-  </ul>
-  </li>
-  <li>Discover
+
+  <li><a href="#">Discover</a>
   <ul>
   <li>
     <a class="vlink" href="{{ route('apps.discover') }}" 
@@ -63,40 +67,43 @@
   </li> 
   </ul>
   </li> 
-  <li>Directory
-  <ul>    
+
   <li>
     <a class="vlink" href="{{ route('contacts.show_contacts') }}" 
       class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
         Contacts
     </a>
-  </li>   
+  </li> 
+
+  <li><a href="#">Messages</a>
+  <ul>       
 	<li>
 		<a class="vlink" href="{{ route('posts.show_received',0) }}" 
       class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
-        Received posts
+        Received 
     </a>
   </li>
     <li>
     <a class="vlink" href="{{ route('posts.show_sent',2) }}" 
       class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
-        Sent posts
+        Sent 
     </a>
   </li>  
   <li>
     <a class="vlink" href="{{ route('posts.show_received',2) }}" 
       class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
-        Saved posts
+        Saved 
     </a>
   </li>
   <li>
     <a class="vlink" href="{{ route('posts.show_received',1) }}" 
       class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
-        Discarded posts
+        Discarded 
     </a>
   </li>
   </ul>
   </li>
+  
   <li>
     <a class="vlink" href="{{ route('posts.show_recent') }}" 
       class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\Post;
+use App\Kpost;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Events\UserWasCreated;
 use Illuminate\Validation\Rule;
@@ -75,6 +78,22 @@ class UsersController extends Controller
         $user = User::create($data);
         $user->assignRole($request->roles);
         $user->givePermissionTo($request->permissions);
+
+        //Crear el post del usuario
+        $post = Post::create([
+          'title' => $request->get('name'),
+          'type_id' => 24,
+          'ref_id' => $user->id,
+          'user_id' => $user->id,
+          'published_at' => Carbon::now()
+        ]);
+
+        $kpost = Kpost::create([
+          'post_id' => $post->id,
+          'user_id' => $user->id,
+          'sent_by' => $user->id,
+          'sent_at' => Carbon::now() 
+        ]);
         
         //Enviar el email
         UserWasCreated::dispatch($user, $password);
