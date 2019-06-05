@@ -121,7 +121,7 @@
     });
     
     $(window).resize(function () {
-      var width_container = $(window).width() * 0-90; //-380
+      var width_container = $(window).width() * 0.90; //-380
       $(".container").width(width_container);      
       $(".post").each(function() {
         var width_post = width_container; //-60

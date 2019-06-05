@@ -13,8 +13,8 @@ class HomeController extends Controller
 		// Verificamos que el usuario no esta autenticado
 		if (Auth::check())
 		{
-		    // Si esta autenticado lo mandamos a que vea los posts recibidos.
-		    return Redirect::route('posts.show_received',0);
+		    // Si esta autenticado lo mandamos al home.
+		    return view('home.main');
 		}	
     $mode = $request->has('register') ? 'register' : 'login';
 	  return view('home.show',compact('mode'));
@@ -25,8 +25,8 @@ class HomeController extends Controller
     // Verificamos que el usuario no esta autenticado
     if (Auth::check())
     {
-        // Si esta autenticado lo mandamos a que vea los posts recibidos.
-        return Redirect::route('posts.show_received',0);
+        // Si esta autenticado lo mandamos al home.
+        return view('home.main');
     } 
     $mode = 'login';
     return view('home.show',compact('mode'));
@@ -37,8 +37,8 @@ class HomeController extends Controller
     // Verificamos que el usuario no esta autenticado
     if (Auth::check())
     {
-        // Si esta autenticado lo mandamos a que vea los posts recibidos.
-        return Redirect::route('posts.show_received',0);
+        // Si esta autenticado lo mandamos al home.
+        return view('home.main');
     } 
     $mode = 'register';
     return view('home.show',compact('mode'));

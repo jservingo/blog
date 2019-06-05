@@ -1,6 +1,7 @@
 body{
 	background: #EEEEEE; 
 	font-family: 'lato', sans-serif;
+	min-width: 670px;
 }
 .preload{
 	border:1.2px solid #74ABC9;

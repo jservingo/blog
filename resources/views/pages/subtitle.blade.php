@@ -1,7 +1,7 @@
 {{-- pages.subtitle --}}
 
 @if ($subtitle != "")
-<div class=="container">
+<div class="container">
 	<div class="title">
 		<h2>
 			{{ $subtitle }}

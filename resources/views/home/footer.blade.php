@@ -2,8 +2,7 @@
 
 <section class="footer">
     <footer>
-        <div class="container">
-            <figure class="logo"><img src="/img/logo.png" alt=""></figure>
+        <div class="container" style="display:block">
             <nav>
                 <ul class="container-flex space-center list-unstyled">
                     <li><a href="index.html" class="text-uppercase c-white">home</a></li>

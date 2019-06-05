@@ -10,11 +10,9 @@
   @endphp
 
   <div>
-    @include('home.menu')
-
     <div class="loader" style="float:left;"></div>
 
-    <div id="main_panel" style="float:right;visibility:hidden;">
+    <div id="main_panel" style="visibility:hidden;">
 		  @include('catalogs.title')
 			@include('catalogs.ribbon_view')
 			{{ $catalogs->render("pagination::default") }}
@@ -55,6 +53,12 @@
   <script type="text/javascript" src="/js/multiselect.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/truncate.js"></script>
+  <script type="text/javascript" src="/js/menu_header.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.menu').jqsimplemenu();
+    });
+  </script>
   <script>
     $(document).ready(function() {
      $('.popr').popr();

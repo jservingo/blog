@@ -5,7 +5,7 @@
 @section('content')
   <div style="overflow: hidden; width:100%">
     
-    <div class="loader" style="float:left;"></div>
+    <div class="loader"></div>
 
     <div id="main_panel" style="visibility:hidden;">
       @include('posts.title')

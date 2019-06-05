@@ -8,7 +8,7 @@
             </figure>
             <span id="logoFont" style="padding-left:5px;">Kodelia</span>
         </div>
-        <div>
+        <div class="container-flex">
             <div class="searchWrap">
                 <div class="search">
                     <input type="text" class="searchTerm" placeholder="What are you looking for?">

@@ -13,7 +13,7 @@
     margin-right: auto;
     margin-left: auto;
 }
-@media (max-width: 670px) {
+@media (min-width: 670px) {
   /*
   .no-mobile{
   	display: none !important;
@@ -45,22 +45,6 @@
 @media (min-width: 1200px) {
   .container {
     width: 1100px; 
-    display: flex;
-		flex-wrap: wrap;
-  }
-  .post {
-  	width: 460px;	
-  	display: flex;
-  	margin-right: 30px;
-  }
-  .no-desktop{
-  	display: none !important; 
-  }
-}
-@media (min-width: 1420px) {
-  .container {
-  	/* background-color: #EF7F1A; Orange */
-    width: 1320px; 
     display: flex;
 		flex-wrap: wrap;
   }
