@@ -10,7 +10,7 @@ class InfoController extends Controller
     public function home()
     {
     	$posts = Post::published()->paginate();
-    	return view('home.home_show', compact('posts'));
+    	return view('info.show', compact('posts'));
     }
 
     public function about()

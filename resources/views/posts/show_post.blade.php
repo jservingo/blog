@@ -13,7 +13,7 @@
 
 @section('content')
   <div style="overflow: hidden;">
-    <div class="loader" style="float:left;"></div>
+    <div class="loader"></div>
 
     <div id="main_panel" style="visibility:hidden;">  
       <div class="container" style="margin:0;">          

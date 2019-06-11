@@ -1,7 +1,7 @@
-{{-- buttons.discover_catalogs (OK) --}}
+{{-- buttons.page_subscribers (OK) --}}
 
 <div style="float:left">
-	<a class="btn_sort_discover_catalogs">
+	<a class="btn_sort_page_subscribers">
 		<img src="/img/order.png" width="28" />
 	</a>
 </div>

@@ -1,4 +1,4 @@
-{{-- box_popup_menu.blade.php --}}
+{{-- buttons.box_popup_menu --}}
 
 <div class="popr-box" data-box-id="{{ $post->id }}">
 @if ($root=="catalog")
@@ -23,28 +23,6 @@
 	<div class="popr-item" data-btn="btn_save_post"
 		data-id="{{ $post->id }}">
 		Save
-	</div>
-	@endif
-@elseif ($root=="created_catalogs")
-	<div class="popr-item" data-btn="btn_edit_post"
-	  data-id="{{ $post->id }}">
-	  Edit
-	</div>
-	<div class="popr-item" data-btn="btn_delete_post_from_catalog"
-		data-id="{{ $post->id }}" data-catalog="{{ $catalog->id }}">
-		Delete
-	</div>
-	<div class="popr-item" data-btn="btn_copy_post"
-		data-id="{{ $post->id }}">Copy
-	</div>
-	@if ($post->kpost)
-	<div class="popr-item" data-btn="btn_send_post"
-		data-id="{{ $post->id }}">
-		Forward
-	</div>
-	@else
-	<div class="popr-item" data-btn="btn_save_post"
-		data-id="{{ $post->id }}">Save
 	</div>
 	@endif
 @elseif ($root=="page_category")
@@ -86,6 +64,30 @@
 	<div class="popr-item" data-btn="btn_add_subscription"
 		data-id="{{ $post->id }}">
 		Subscribe
+	</div>
+	@if ($post->kpost)
+	<div class="popr-item" data-btn="btn_send_post" 
+		data-id="{{ $post->id }}">
+		Forward
+	</div>
+	@else
+	<div class="popr-item" data-btn="btn_save_post" 
+		data-id="{{ $post->id }}">
+		Save
+	</div>
+	@endif
+@elseif ($root=="created_catalogs")
+	<div class="popr-item" data-btn="btn_edit_post"
+		data-id="{{ $post->id }}">
+		Edit
+	</div>
+	<div class="popr-item" data-btn="btn_delete_catalog_from_created_catalogs" 
+		data-id="{{ $post->id }}">
+		Delete
+	</div>
+	<div class="popr-item" data-btn="btn_copy_post"
+		data-id="{{ $post->id }}">
+		Copy
 	</div>
 	@if ($post->kpost)
 	<div class="popr-item" data-btn="btn_send_post" 
@@ -151,46 +153,41 @@
 		data-id="{{ $post->id }}">
 		Edit
 	</div>
-
-	<div class="popr-item" class="btn_copy_post"
+	<div class="popr-item" data-btn="btn_copy_post"
 			data-id="{{ $post->id }}">
 		Copy
 	</div>
-	
 	@if ($post->kpost)
-	<div class="popr-item" class="btn_send_post" 
+	<div class="popr-item" data-btn="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		Sent
+		Forward
 	</div>
 	@else
-	<div class="popr-item" class="btn_save_post" 
+	<div class="popr-item" data-btn="btn_save_post" 
 			data-id="{{ $post->id }}"> 
 		Save
 	</div>
 	@endif	
 @elseif ($root=="app_pages")
-	<div class="popr-item" class="btn_edit_post"
+	<div class="popr-item" data-btn="btn_edit_post"
 			data-id="{{ $post->id }}">
 		Edit
-	</div>				
-	
-	<div class="popr-item" class="btn_copy_post"
+	</div>					
+	<div class="popr-item" data-btn="btn_copy_post"
 			data-id="{{ $post->id }}">
 		Copy
 	</div>
-
-	<div class="popr-item" class="btn_add_subscription"
+	<div class="popr-item" data-btn="btn_add_subscription"
 			data-id="{{ $post->id }}">
-		Subscribe
-	</a>
-	
+		Subscribe 
+	</div>
 	@if ($post->kpost)
-	<div class="popr-item" class="btn_send_post" 
+	<div class="popr-item" data-btn="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		Sent
-	</a>
+		Forward
+	</div>
 	@else
-	<div class="popr-item" class="btn_save_post" 
+	<div class="popr-item" data-btn="btn_save_post" 
 			data-id="{{ $post->id }}"> 
 		Save
 	</div>
@@ -242,7 +239,16 @@
 	</div>
 	<div class="popr-item" data-btn="btn_discard_post"
 		data-id="{{ $post->id }}">
-		Delete
+		Discard
+	</div>
+@elseif ($root=="sent_posts")
+	<div class="popr-item" data-btn="btn_copy_post"
+		data-id="{{ $post->id }}">
+		Copy
+	</div>
+	<div class="popr-item" data-btn="btn_send_post" 
+		data-id="{{ $post->id }}">
+		Forward
 	</div>
 @elseif ($root=="saved_posts")		
 	<div class="popr-item" data-btn="btn_edit_post"
@@ -251,7 +257,7 @@
 	</div>
 	<div class="popr-item" data-btn="btn_discard_post" 
 		data-id="{{ $post->id }}">
-		Delete
+		Discard
 	</div>
 	<div class="popr-item" data-btn="btn_copy_post"
 		data-id="{{ $post->id }}">
@@ -290,9 +296,81 @@
 		Save
 	</div>
 	@endif
+@elseif ($root=="discover_apps")
+	<div class="popr-item" data-btn="btn_copy_post"
+		data-id="{{ $post->id }}">
+		Copy
+	</div>
+	<div class="popr-item" data-btn="btn_add_subscription"
+		data-id="{{ $post->id }}">
+		Subscribe
+	</div>
+	@if ($post->kpost)
+	<div class="popr-item" data-btn="btn_send_post" 
+		data-id="{{ $post->id }}">
+		Forward
+	</div>
+	@else
+	<div class="popr-item" data-btn="btn_save_post" 
+		data-id="{{ $post->id }}">
+		Save
+	</div>
+	@endif
+@elseif ($root=="discover_pages")
+	<div class="popr-item" data-btn="btn_copy_post"
+		data-id="{{ $post->id }}">
+		Copy
+	</div>
+	<div class="popr-item" data-btn="btn_add_subscription"
+		data-id="{{ $post->id }}">
+		Subscribe
+	</div>
+	@if ($post->kpost)
+	<div class="popr-item" data-btn="btn_send_post" 
+		data-id="{{ $post->id }}">
+		Forward
+	</div>
+	@else
+	<div class="popr-item" data-btn="btn_save_post" 
+		data-id="{{ $post->id }}">
+		Save
+	</div>
+	@endif
+@elseif ($root=="discover_catalogs")
+	<div class="popr-item" data-btn="btn_copy_post"
+		data-id="{{ $post->id }}">
+		Copy
+	</div>
+	@if ($post->kpost)
+	<div class="popr-item" data-btn="btn_send_post" 
+		data-id="{{ $post->id }}">
+		Forward
+	</div>
+	@else
+	<div class="popr-item" data-btn="btn_save_post" 
+		data-id="{{ $post->id }}">
+		Save
+	</div>
+	@endif
+@elseif ($root=="discover_users")
+	<div class="popr-item" data-btn="btn_copy_post"
+		data-id="{{ $post->id }}">
+		Copy
+	</div>
+	@if ($post->kpost)
+	<div class="popr-item" data-btn="btn_send_post" 
+		data-id="{{ $post->id }}">
+		Forward
+	</div>
+	@else
+	<div class="popr-item" data-btn="btn_save_post" 
+		data-id="{{ $post->id }}">
+		Save
+	</div>
+	@endif
 @elseif ($root=="edit_post")
   &nbsp;
 @else
-	buttons_box_post: {{ $root }}
+	{{ $root }}
 @endif
 </div>

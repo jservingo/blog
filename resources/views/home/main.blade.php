@@ -45,7 +45,7 @@
   <script type="text/javascript" src="/js/buttons_header.js"></script>
   <!--<script type="text/javascript" src="/js/jquery.multiselect.js"></script>-->
   <script type="text/javascript" src="/js/popr.js"></script>
-  <script type="text/javascript" src="/js/menu_header.js"></script>
+  <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
       $('.menu').jqsimplemenu();

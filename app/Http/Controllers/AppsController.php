@@ -75,7 +75,6 @@ class AppsController extends Controller
     {
 			$posts = Post 
   	  ::join('apps', 'ref_id', '=', 'apps.id')       
-      ->where("apps.user_id","=",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",$app->id)
       ->select('posts.*')
@@ -88,7 +87,7 @@ class AppsController extends Controller
       $subtitle = "";
 
 	    return view(get_view(),compact(
-	      'posts','title','root','buttons','subtitle'));
+	      'posts','title','root','buttons','subtitle','app'));
 	  }
 	  else
 	  {
@@ -106,8 +105,26 @@ class AppsController extends Controller
       $subtitle = "";
 
 	    return view(get_view(),compact(
-	      'posts','title','root','buttons','subtitle'));
+	      'posts','title','root','buttons','subtitle','app'));
 	  }     	
+  }
+
+  public function show_subscribers(App $app)
+  {
+    $posts = Post
+      ::join('app_user', 'posts.user_id', '=', 'app_user.user_id')
+      ->where("app_user.app_id","=",$app->id)
+      ->where("type_id","=",24)
+      ->select('posts.*')
+      ->latest('app_user.created_at')
+      ->paginate(12);  
+
+    $title = "$app->name subscribers";
+    $root = "app_subscribers";
+    $buttons = "posts.buttons.app_subscribers";
+    $subtitle = "";     
+
+    return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
   public function save_app_post(Request $request)

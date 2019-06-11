@@ -196,6 +196,7 @@ var template = '<div class="post pfull">'+
   		$appPostsContainer.find('.app-loader').remove();
   		renderPosts(visible_posts);
   		renderPagination(num);
+      $(window).trigger('resize');
   	});
   }
   else {
@@ -205,6 +206,7 @@ var template = '<div class="post pfull">'+
     $appPostsContainer.find('.app-loader').remove();
     renderPosts(visible_posts);
     renderPagination(num);
+    $(window).trigger('resize');
   }
 })
 

@@ -30,6 +30,7 @@ Route::post('view','HomeController@set_view');
 Route::get('apps/discover','AppsController@discover')->name('apps.discover');
 Route::get('apps','AppsController@show_created')->name('apps.show_created');
 Route::get('apps/{app}','AppsController@show_app')->name('app.show_app');
+Route::get('app/subscribers/{app}','AppsController@show_subscribers')->name('app.show_subscribers');
 Route::post('apps/post','AppsController@save_app_post');
 
 //Pages
@@ -37,6 +38,7 @@ Route::get('pages/discover','PagesController@discover')->name('pages.discover');
 Route::get('pages/visited','PagesController@show_visited')->name('pages.show_visited');
 Route::get('pages/{page}/{category}','PagesController@show_page_category')->name('page.show_page_category');
 Route::get('pages','PagesController@show_created')->name('pages.show_created');
+Route::get('page/subscribers/{page}','PagesController@show_subscribers')->name('page.show_subscribers');
 Route::get('page/{page}','PagesController@edit')->name('page.edit');
 Route::delete('pages/{post}','PagesController@destroy');
 

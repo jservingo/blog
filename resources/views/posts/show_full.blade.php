@@ -5,7 +5,7 @@
 @section('content')
   <div style="overflow: hidden; width:100%">
     
-    <div class="loader" style="float:left;"></div>
+    <div class="loader"></div>
 
     <div id="main_panel" style="visibility:hidden;">
       @include('posts.title')
@@ -59,7 +59,7 @@
   <script type="text/javascript" src="/js/multiselect.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/truncate.js"></script>
-  <script type="text/javascript" src="/js/menu_header.js"></script>
+  <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
       $('.menu').jqsimplemenu();
@@ -105,7 +105,7 @@
   @endif  
   @include('home.message')
   <script>
-    var width_container = $(window).width() *0.90; //-380
+    var width_container = $(window).width() * 0.90; //-380
     $(".container").width(width_container);
     $(".post").each(function() {
       var width_post = width_container; //-60 

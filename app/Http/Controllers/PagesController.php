@@ -16,7 +16,7 @@ class PagesController extends Controller
 {
   public function home()
   {
-    return view('home.home_show');
+    return view('home.show');
   }
 
   public function discover()
@@ -84,7 +84,7 @@ class PagesController extends Controller
   public function show_page(Page $page)
   {
     return view('pages.page_show',compact('page'));
-  }
+  }  
 
   public function show_page_category(Page $page, $category_id)
   {
@@ -126,6 +126,24 @@ class PagesController extends Controller
       return view(get_view('catalogs'),compact(
         'posts','title','root','buttons','subtitle','page','category','reset_categories_tree'));       
     }  
+  }
+
+  public function show_subscribers(Page $page)
+  {
+    $posts = Post
+      ::join('page_user', 'posts.user_id', '=', 'page_user.user_id')
+      ->where("page_user.page_id","=",$page->id)
+      ->where("type_id","=",24)
+      ->select('posts.*')
+      ->latest('page_user.created_at')
+      ->paginate(12);  
+
+    $title = "$page->name subscribers";
+    $root = "page_subscribers";
+    $buttons = "posts.buttons.page_subscribers";
+    $subtitle = "";     
+
+    return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
   public function store(Request $request)

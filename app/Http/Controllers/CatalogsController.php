@@ -35,7 +35,7 @@ class CatalogsController extends Controller
       ->paginate(12);
 
       $title = "Discover catalogs";   
-      $root = "discover_catalogs_posts";
+      $root = "discover_catalogs";
       $buttons = "posts.buttons.discover_catalogs"; 
       $subtitle = "";
 
@@ -64,7 +64,7 @@ class CatalogsController extends Controller
       ->paginate(12);
 
       $title = "Created catalogs";   
-      $root = "created_catalogs_posts";
+      $root = "created_catalogs";
       $buttons = "posts.buttons.created_catalogs"; 
       $subtitle = "";
 

@@ -45,6 +45,16 @@ $('.btn_show_post').bind('click', function(e){
   //location = "/post/"+post_id;
 });
 
+$('.btn_show_page_subscribers').bind('click', function(e){
+  var page_id = $(this).data("id");
+  location = "/page/subscribers/"+page_id;
+});
+
+$('.btn_show_app_subscribers').bind('click', function(e){
+  var app_id = $(this).data("id");
+  location = "/app/subscribers/"+app_id;
+});
+
 // FUNCTIONS
 
 function btn_create_catalog_from_category(category_id)

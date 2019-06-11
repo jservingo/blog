@@ -4,11 +4,10 @@
 
 @section('content')
   <div style="overflow: hidden;">
-    @include('home.menu')
 
-    <div class="loader" style="float:left;"></div>
+    <div class="loader"></div>
 
-    <div id="main_panel" style="float:right;visibility:hidden;">
+    <div id="main_panel" style="visibility:hidden;">
       @include('apps.title')
       {{-- @include('apps.show_app_rows') --}}
       <div id="posts_container" class="posts container">
@@ -22,8 +21,6 @@
       {{-- $posts->render("pagination::default") --}}
       {{-- $posts->links() --}}
     </div>
-
-    <div style="clear: both"></div>
   </div> 
 
   {{-- 
@@ -66,6 +63,12 @@
   <script type="text/javascript" src="/js/multiselect.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/truncate.js"></script>
+  <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.menu').jqsimplemenu();
+    });
+  </script>
   <script>
     $(document).ready(function() {
      $('.popr').popr();
@@ -77,10 +80,10 @@
   <script type="text/javascript" src="/js/resize_iframe.js"></script>
   @include('home.message')
   <script>
-    var width_container = $(window).width() - 380; 
+    var width_container = $(window).width() * 0.90; 
     $(".container").width(width_container);
     $(".post").each(function() {
-      var width_post = width_container - 60;
+      var width_post = width_container;
       var width_header = $(this).find(".header").width();
       var width_media = $(this).find(".media").width();
       var width_content = width_post - width_media - 60;
@@ -93,10 +96,10 @@
     });
     
     $(window).resize(function () {
-      var width_container = $(window).width() - 380; 
+      var width_container = $(window).width() * 0.90; 
       $(".container").width(width_container);      
       $(".post").each(function() {
-        var width_post = width_container - 60;
+        var width_post = width_container;
         var width_header = $(this).find(".header").width();
         var width_media = $(this).find(".media").width();
         var width_content = width_post - width_media - 60;

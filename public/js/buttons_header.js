@@ -7,7 +7,7 @@ $(function(){
   */
 }); 
 
-$('#menu_profile').on("click","div.popr-item", function(){
+$('#menu_profile').on("click","div.popr-item", function(e){
   var btn = $(this).data('btn');
   switch(btn)
   {
@@ -20,17 +20,17 @@ $('#menu_profile').on("click","div.popr-item", function(){
   } 
 });
 
-$('#menu_view_posts').on("click","div.popr-item", function(){
+$('#menu_view_posts').on("click","div.popr-item", function(e){
   var view = $(this).data('view');
   set_view(view,"posts");
 });
 
-$('#menu_view_catalogs').on("click","div.popr-item", function(){
+$('#menu_view_catalogs').on("click","div.popr-item", function(e){
   var view = $(this).data('view');
   set_view(view,"catalogs");
 });
 
-$('.box_popup').on("click","div.popr-item", function(){
+$('.box_popup').on("click","div.popr-item", function(e){
   var btn = $(this).data('btn');
   switch(btn)
   {

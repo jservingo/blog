@@ -1,6 +1,6 @@
 // ADD USER, ADD SUBSCRIPTION SAVE & DISCARD POST
 
-$('.app-posts').on("click",".btn_save_app_post", function(){
+$('.app-posts').on("click",".btn_save_app_post", function(e){
   var app_id = $(this).data("id");
   var title = $('#t-title').text();
   var excerpt = $('#t-excerpt').text();
