@@ -1,6 +1,11 @@
 {{-- buttons.page_category --}}
 
 <div style="float:left">
+	<a class="btn_show_page_categories"
+			data-id="{{ $page->id }}">
+		<img src="/img/categories.png" width="28" />
+	</a>
+	 
 	<a class="btn_edit_page"
 			data-id="{{ $page->id }}">
 		<img src="/img/edit.png" width="28" />

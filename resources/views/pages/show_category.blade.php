@@ -13,6 +13,8 @@
 	<div>
 		<div class="loader" style="float:left;"></div>
 
+    @include('pages.menu')
+
 		<div id="main_panel" style="visibility:hidden;">
 			@include('pages.title')
 			@include('pages.subtitle')
@@ -43,7 +45,7 @@
 	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	  crossorigin="anonymous">
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/jstree.min.js"></script>
 	<script type="text/javascript" src="/js/diyslider.min.js"></script>
 	<script type="text/javascript" src="/js/confirmDialog.min.js"></script>
 	<script type="text/javascript" src="/js/growl.js"></script>
@@ -80,6 +82,7 @@
     @endif
   </script>
 	<script type="text/javascript" src="/js/categoriesTree.js"></script>
+  <script type="text/javascript" src="/js/buttons_show_categories.js"></script>
 	<script> 
     var rv_type_id = 22; 
     var rv_post_id = 0;

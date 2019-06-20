@@ -19,7 +19,8 @@
 				<li>Pages (#)</li>
 			</ul>
 		</li>
-		<li>Most viewd by you (Apps, pages, catalogs, users)</li>
+    <li>Favorites</li>
+		<li>Most viewd by you (Saved apps, pages, catalogs, users)</li>
 		<li>Recomendations (Apps, pages, catalogs, users)</li>
 		<li>Recently viewed</li> 		  	
   </div>  

@@ -1,6 +1,7 @@
 $(function() {
   //var $appPostsContainer = $('#app-body').find('.tv-shows');
   var $appPostsContainer = $('#posts_container').find('.app-posts');
+  var $appPostsMenu = $('#app_posts_menu');
   var $pagination = $('#pagination');
   var app = get_info(app_id);
   var per_page= 10;
@@ -19,6 +20,11 @@ $(function() {
   });
   */
 
+var template_menu = '<div class="popr-box" data-box-id=":post_id:">'+
+  '<div class="popr-item" data-btn="btn_copy_app_post" data-id=":post_id:">Copy</div>'+
+  '<div class="popr-item" data-btn="btn_save_app_post" data-id=":post_id:">Save</div>'+
+  '</div>';
+
 var template = '<div class="post pfull">'+
   '<div class="content-post" style="background-color:#fefdfd">'+
     '<div style="float:right;">'+
@@ -26,7 +32,7 @@ var template = '<div class="post pfull">'+
         '<header class="xcontainer-flex xspace-between">'+
         '<div class="date truncate" data-height="51" style="width: 20px; padding: 10px 5px 2px 10px; background-color: rgb(254, 253, 253); height: 51px;">'+
           '<div>'+ 
-            '<div class="popr box_popup" style="position:absolute; top:10px; right:5px;" data-id="7">'+
+            '<div class="popr box_popup" style="position:absolute; top:10px; right:5px;" data-id=":post_id:">'+
               '<img src="/img/options.png" width="20">'+
             '</div>'+ 
           '</div>'+ 
@@ -36,7 +42,7 @@ var template = '<div class="post pfull">'+
       '</div>'+
       '<div style="float:left;">'+
         '<div class="content" style="width: 578px; background-color: rgb(254, 253, 253); padding: 8px 10px 0px;">'+      
-          '<a href=":url:" target="_blank" class="text-uppercase c-blue" data-id="7">'+
+          '<a href=":url:" target="_blank" class="text-uppercase c-blue" data-id=":app_id:">'+
             '<h1 id="t-title" class="t-title" style="margin-top:0;margin-bottom:6px">:title:</h1>'+  
           '</a>'+
         '</div>'+            
@@ -44,7 +50,7 @@ var template = '<div class="post pfull">'+
       '<div style="clear:both;"></div>'+
       '<div>'+
         '<div class="scontent" style="width: 605px; background-color: rgb(254, 253, 253); padding: 2px 10px 10px; text-align: justify;">'+
-          '<a href=":url:" id="t-excerpt" class="t-excerpt c-negro" data-id="7">'+
+          '<a href=":url:" id="t-excerpt" class="t-excerpt c-negro" data-id=":app_id:">'+
             ':excerpt:'+
           '</a>'+
         '</div>'+
@@ -82,10 +88,10 @@ var template = '<div class="post pfull">'+
     '<div>'+
       '<div style="float:right;">'+
         '<footer class="xcontainer-flex xspace-between" style="width:210px; height:24px; background-color:#fefdfd; padding: 6px 10px; text-align:right;">'+
-          '<a class="btn_copy_app_post" data-source=":href:" data-id=":app_id:" data-custom_type=":custom_type:">'+
+          '<a class="btn_copy_app_post" data-source=":href:" data-id=":post_id:" data-custom_type=":custom_type:">'+
             '<img src="/img/copy.png" width="24">'+
           '</a>'+
-          '<a class="btn_save_app_post" data-source=":href:" data-id=":app_id:" data-custom_type=":custom_type:">'+ 
+          '<a class="btn_save_app_post" data-source=":href:" data-id=":post_id:" data-custom_type=":custom_type:">'+ 
             '<img src="/img/save.png" width="24">'+
           '</a>'+
         '</footer>'+ 
@@ -114,6 +120,9 @@ var template = '<div class="post pfull">'+
   function renderPosts(visible_posts) {
     //render posts
     $appPostsContainer.empty();
+    $appPostsMenu.empty();
+
+    var post_id = 1;
     visible_posts.forEach(function (post) {
       var f = new Date();
       var date = f.getDate() + ' ' + get_month(f) + ' ' + f.getFullYear();
@@ -128,15 +137,29 @@ var template = '<div class="post pfull">'+
         .replace(':img alt:', post.title + " Logo")
         .replace(':app_id:', app_id)
         .replace(':app_id:', app_id)
+        .replace(':post_id:', post_id)
+        .replace(':post_id:', post_id)
         .replace(':owner_name:', owner_name)
         .replace(':owner_post:', owner_post)        
         .replace(':date:', date)
         .replace(':custom_type:', post.custom_type)
         .replace(':custom_type:', post.custom_type)
 
-      var $post = $(post)
+      var post_menu = template_menu
+        .replace(':post_id:', post_id)
+        .replace(':post_id:', post_id)
+        .replace(':post_id:', post_id)
+
+      var $post = $(post);
+      var $post_menu = $(post_menu);
+
       $appPostsContainer.append($post.fadeIn(1500));
-    })    
+      $appPostsMenu.append($post_menu);
+
+      post_id = post_id + 1;
+    });
+
+    $('.popr').popr();    
   }   
 
   function renderPagination(num)

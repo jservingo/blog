@@ -7,6 +7,8 @@
 
     <div class="loader"></div>
 
+    @include('home.menu_categories')
+
     <div id="main_panel" style="visibility:hidden;">
       @include('posts.title')
       @include('pages.subtitle')
@@ -55,7 +57,7 @@
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/jstree.min.js"></script>
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>
   <script type="text/javascript" src="/js/growl.js"></script>
   <script type="text/javascript" src="/js/buttons_add_save_discard.js"></script>
@@ -90,9 +92,10 @@
     @endif
   </script>   
   @if ($root=="contacts" || $root=="contacts_group")
-    <script type="text/javascript" src="/js/contactsTree.js"></script>     
+    <script type="text/javascript" src="/js/contactsTree.js"></script>
+    <script type="text/javascript" src="/js/buttons_show_categories.js"></script>     
   @endif  
-  @if ($root=="page_catalogs_posts")
+  @if ($root=="page_category")
     <script>
       var page_id = {{ $page->id }};
       @if ($reset_categories_tree)
@@ -102,6 +105,7 @@
       @endif
     </script>
     <script type="text/javascript" src="/js/categoriesTree.js"></script>
+    <script type="text/javascript" src="/js/buttons_show_categories.js"></script>
   @endif    
   @if ($root=="catalog")
   <script> 

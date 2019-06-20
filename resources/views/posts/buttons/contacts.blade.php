@@ -1,6 +1,10 @@
 {{-- buttons.contacts --}}
 		
 <div style="float:left">
+	<a class="btn_show_contacts_categories">
+		<img src="/img/categories.png" width="28" />
+	</a> 
+
 	<a class="btn_paste_post_to_contacts"
 			data-id="{{ $group_id }}">
 		<img src="/img/paste.png" width="28" />

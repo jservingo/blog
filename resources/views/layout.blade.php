@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="/css/popr.css">
     <link rel="stylesheet" href="/css/jqsimplemenu.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/themes/default/style.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> 
     @stack('styles')
