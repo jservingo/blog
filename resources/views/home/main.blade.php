@@ -3,31 +3,63 @@
 @extends('layout')
 
 @section('content')
-  <div class="gradient-top">
-		<ul>
-		<li>Received (#)</li>
-		<li>Notifications (#)</li>
-		<li>Subscribers
-			<ul>
-				<li>Apps (#)</li>
-				<li>Pages (#)</li>
-			</ul>
-		</li>
-		<li>Subscriptions
-			<ul>
-			  <li>Apps (#)</li>
-				<li>Pages (#)</li>
-			</ul>
-		</li>
-    <li>Favorites</li>
-		<li>Most viewd by you (Saved apps, pages, catalogs, users)</li>
-		<li>Recomendations (Apps, pages, catalogs, users)</li>
-		<li>Recently viewed</li> 		  	
-  </div>  
+  <div style="overflow: hidden; width:100%">
+    
+    <div class="loader"></div>
+
+    <div id="main_panel" style="visibility:hidden;">
+      @include('home.title')
+
+      <div id="posts_container" class="posts container">
+        {{-- 'Row 1' --}}
+
+        @include('home.post_user_stats')
+        
+        @php $ad_text='Offers'; @endphp
+        @include('home.post_ad')
+
+        @php $ad_image='ads/ad1.jpg'; @endphp
+        @include('home.post_ad_image')        
+
+        {{-- 'Row 2' --}}
+
+        @php $ad_text='Recomendations'; @endphp
+        @include('home.post_ad')
+
+        @php $ad_text='Favorites'; @endphp
+        @include('home.post_ad')
+
+        @php $ad_image='ads/ad3.jpg'; @endphp
+        @include('home.post_ad_image')
+
+        {{-- 'Row 3' --}}
+        @php $ad_text='Most viewed by you'; @endphp
+        @include('home.post_ad')
+
+        @php $ad_text='Recently viewed'; @endphp
+        @include('home.post_ad')
+
+        @php $ad_image='ads/ad4.jpg'; @endphp
+        @include('home.post_ad_image')
+
+        {{-- 'Row 4' --}}
+
+        @php $ad_image='ads/ad5.jpg'; @endphp
+        @include('home.post_ad_image')
+
+        @php $ad_image='ads/ad6.jpg'; @endphp
+        @include('home.post_ad_image')
+
+        @php $ad_image='ads/ad7.jpg'; @endphp
+        @include('home.post_ad_image')
+
+      </div>      
+    </div>
+  </div> 
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework.css">
+  <link rel="stylesheet" href="/css/framework_ad.css">
   <!--<link rel="stylesheet" href="/css/multiselect.css">-->
 @endpush
 
@@ -58,6 +90,12 @@
     });
   </script> 
   @include('home.message')
+  <script>
+    $(function() {
+      $(".loader").fadeOut("slow");
+      $('#main_panel').css("visibility","visible");
+    });
+  </script>
 @endpush
 
 
