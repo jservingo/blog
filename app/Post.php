@@ -158,15 +158,10 @@ class Post extends Model
         */
     }
 
-    public function getLikesAttribute()
-    {
-        return $this->rating_points;
-    }
-
     public function getUserLikesAttribute()
     {
         if($this->kpost)
-            return $this->kpost->rating_points;
+            return $this->kpost->likes;
         return 0;
     }
 

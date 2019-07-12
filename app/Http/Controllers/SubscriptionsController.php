@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Kpost;
 use App\Page;
@@ -14,7 +14,7 @@ use App\App;
 
 class SubscriptionsController extends Controller
 {
-  public function show_subscriptions()
+  public function show()
   {
     //Estas son las subscripciones a Pages    
     $posts_pages = Post
@@ -87,6 +87,49 @@ class SubscriptionsController extends Controller
 
     return view('subscriptions.subscriptions_show',compact('pages'));
     */
+  }
+
+  public function show_pages()
+  {
+    $posts = Post
+      ::join('pages', 'ref_id', '=', 'pages.id')
+      ->join('page_user', 'pages.id', '=', 'page_user.page_id')
+      ->where("type_id","=",22)
+      ->where("page_user.user_id","=",auth()->id())
+      ->orderBy('pages.name', 'asc')
+      ->select('posts.*');
+
+    $posts = $posts->paginate(12); 
+
+    $title = "Pages subscriptions";  
+    $root = "subscriptions";
+    $buttons = "posts.buttons.subscriptions";
+    $subtitle = "";
+    
+    return view(get_view(),compact(
+      'posts','title','root','buttons','subtitle'));
+  }
+
+  public function show_apps()
+  {
+    $posts = Post
+      ::join('apps', 'ref_id', '=', 'apps.id')
+      ->join('app_user', 'apps.id', '=', 'app_user.app_id')
+      ->where("type_id","=",23)
+      ->where("app_user.user_id","=",auth()->id())
+      ->where("apps.parent_id","=",null)
+      ->orderBy('apps.name', 'asc')
+      ->select('posts.*');
+
+    $posts = $posts->paginate(12); 
+
+    $title = "Apps subscriptions";  
+    $root = "subscriptions";
+    $buttons = "posts.buttons.subscriptions";
+    $subtitle = "";
+    
+    return view(get_view(),compact(
+      'posts','title','root','buttons','subtitle'));
   }
 
   public function add_subscription(Request $request)

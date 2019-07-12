@@ -30,7 +30,7 @@
       </a>
     </li>
     <li>
-      <a class="vlink" href="{{ route('pages.show_subscriptions') }}" 
+      <a class="vlink" href="{{ route('subscriptions.show') }}" 
         class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
           Subscriptions
       </a>

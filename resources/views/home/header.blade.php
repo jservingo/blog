@@ -20,7 +20,11 @@
         </div>
         @if (auth()->check())
             <div class="container-flex space-between" style="width:210px;">
-                {{ Auth::user()->name }}
+                <span class="user c-blue">
+                    <a id="t-user" href="post/user/{{ Auth::user()->id }}">
+                        {{ Auth::user()->name }}
+                    </a>
+                </span>
                 <a class="btn_configuration"> 
                     <img src="/img/configuration.png" alt="" style="width:20px;height:20px;">
                 </a>

@@ -175,8 +175,8 @@ a.vlink{
 .img-responsive{
 	position: absolute;
   object-fit: cover;
-  width: 230px;
-  height: 135px;
+  width: 384px;
+  height: 280px;
   display: block;
 }
 .img-responsive-card{

@@ -415,7 +415,7 @@
 @endif
 
 <?php 
-	$likes = format_num($post->rating_points);
+	$likes = format_num($post->likes);
 ?>
 
 <span id="likes">{{ $likes }}</span>

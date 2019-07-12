@@ -106,6 +106,12 @@
       });
     });
   </script>
+  <script> 
+    var rv_type_id = 23; 
+    var rv_post_id = 0;
+    var rv_ref_id = app_id;
+  </script> 
+  <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
   <script>
     $(function() {
       $(".loader").fadeOut("slow");

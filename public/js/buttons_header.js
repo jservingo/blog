@@ -179,6 +179,10 @@ $('.btn_update_likes').bind('click', function(e){
   btn_update_likes (post_id, mode, $(this));
 });
 
+$('.searchButton').bind('click', function(e){
+  alert("Sorry! Search button is not implemented yet");
+});
+
 // FUNCTIONS
 
 function logout()

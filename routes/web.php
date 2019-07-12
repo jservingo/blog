@@ -16,9 +16,24 @@ Route::get('email',function(){
 Route::get('/','HomeController@index')->name('home');
 Route::get('user/login','HomeController@login')->name('login');
 Route::get('user/register','HomeController@register')->name('register');
+Route::get('ad/{position1}/{position2}','HomeController@get_ad');
 Route::get('colorpicker', function () {
     return view('home.color_picker');
 });
+
+//User stats, recommendations, recent views, favorites, most_viewed
+Route::get('recommendations','HomeController@show_recommendations')->name('home.show_recommendations');
+Route::get('offers','HomeController@show_offers')->name('home.show_offers');
+Route::get('favorites','HomeController@show_favorites')->name('home.show_favorites');
+Route::get('most/viewed','HomeController@show_most_viewed')->name('home.show_most_viewed');
+Route::get('recent/views','HomeController@show_recent_views')->name('home.show_recent_views');
+
+Route::get('user_stats/get','HomeController@get_user_stats');
+Route::get('recommendations/get','HomeController@get_recommendations');
+Route::get('favorites/get','HomeController@get_favorites');
+Route::get('most_viewed/get','HomeController@get_most_viewed');
+Route::get('recent_views/get','HomeController@get_recent_views');
+Route::post('recent_views','HomeController@store_recent_views');
 
 //Set session message
 Route::post('message','HomeController@set_message');
@@ -40,10 +55,13 @@ Route::get('pages/{page}/{category}','PagesController@show_page_category')->name
 Route::get('pages','PagesController@show_created')->name('pages.show_created');
 Route::get('page/subscribers/{page}','PagesController@show_subscribers')->name('page.show_subscribers');
 Route::get('page/{page}','PagesController@edit')->name('page.edit');
+Route::post('page','PagesController@store')->name('page.create');
 Route::delete('pages/{post}','PagesController@destroy');
 
 //Subscriptions
-Route::get('subscriptions','SubscriptionsController@show_subscriptions')->name('pages.show_subscriptions');
+Route::get('subscriptions','SubscriptionsController@show')->name('subscriptions.show');
+Route::get('subscriptions/pages','SubscriptionsController@show_pages')->name('subscriptions.show_pages');
+Route::get('subscriptions/apps','SubscriptionsController@show_apps')->name('subscriptions.show_apps');
 Route::post('subscriptions/add','SubscriptionsController@add_subscription');
 Route::delete('subscriptions/{post}','SubscriptionsController@destroy');
 
@@ -77,9 +95,11 @@ Route::delete('catalogs/{catalog}','CatalogsController@destroy');
 
 //Posts
 Route::get('posts/received/{status?}/{type?}','PostsController@show_received')->name('posts.show_received');
+Route::get('posts/notifications','PostsController@show_notifications')->name('posts.show_notifications');
 Route::get('posts/sent/{type?}','PostsController@show_sent')->name('posts.show_sent');
 Route::get('posts/created/{type?}','PostsController@show_created')->name('posts.show_created');
 Route::get('posts/{post}','PostsController@show_post')->name('post.show_post');
+Route::get('post/user/{user}','PostsController@show_user')->name('post.show_user');
 Route::get('post/{post}','PostsController@edit')->name('post.edit');
 Route::get('blog/{post}','PostsController@show_post')->name('post.show');
 Route::post('post','PostsController@store')->name('post.create');
@@ -93,10 +113,6 @@ Route::delete('posts/{post}','PostsController@destroy');
 //Types & Tags
 Route::get('types/{type}','TypesController@show')->name('types.show');
 Route::get('tags/{tag}','TagsController@show')->name('tags.show');
-
-//Recent views
-Route::get('recent','PostsController@show_recent')->name('posts.show_recent');
-Route::post('recent','PostsController@store_recent');
 
 //Clipboard
 Route::get('clipboards/contacts','ClipboardsController@get_contacts');

@@ -60,6 +60,12 @@
   </script>  
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>
   <script type="text/javascript" src="/js/growl.js"></script>
+  <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.menu').jqsimplemenu();
+    });
+  </script>
   <script>
     var iframe_width = 600;
   </script>

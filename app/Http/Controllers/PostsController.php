@@ -6,10 +6,14 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Contact;
 use App\Catalog;
 use App\Kpost;
+use App\Page;
 use App\Post;
 use App\Type;
+use App\User;
+use App\App;
 use App\Tag;
 
 class PostsController extends Controller
@@ -94,35 +98,33 @@ class PostsController extends Controller
   	return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_recent()
-  {   
-    if(isset($_COOKIE['recentviews']))
-    {
-      $recentviews = $_COOKIE['recentviews']; 
-      $recent = explode(',',$recentviews);
+  public function show_notifications()
+  {
+    $posts = Post
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where("status_id","=",0)
+      ->where("kposts.user_id","=",auth()->id())
+      ->where("posts.type_id", "=", 4)
+      ->select('posts.*')
+      ->latest('kposts.created_at')
+      ->paginate(12); 
 
-      $posts = Post
-        ::whereIn('id', $recent)
-        ->orderByRaw(\DB::raw("FIELD(id, ".$recentviews.")"))
-        ->paginate(12);
-    }
-    else
-    {
-      $posts = Post
-        ::where('type_id',"=",99)
-        ->paginate(12);
-    }
-
-    $title = "Recently viewed";
-    $root = "created_posts";
-    $buttons = "posts.buttons.created_posts"; 
-    $subtitle = "";    
+    $title = "Notifications";
+    $root = 'received_posts';
+    $buttons = "posts.buttons.received_posts";
+    $subtitle = "";
 
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
   public function show_post(Post $post)
   {
+    return view('posts.show_post',compact('post'));
+  }
+
+  public function show_user(User $user)
+  {
+    $post = $user->post;
     return view('posts.show_post',compact('post'));
   }
 
@@ -276,20 +278,20 @@ class PostsController extends Controller
 
     if ($mode=="up")
     {
-      $kpost->rating_points = 1;
+      $kpost->likes = 1;
       $kpost->save();
-      $post->rating_points = $post->rating_points + 1;
+      $post->likes = $post->likes + 1;
       $post->save();
     }
     else
     {
-      $kpost->rating_points = 0;
+      $kpost->likes = 0;
       $kpost->save();
-      $post->rating_points = $post->rating_points - 1;
+      $post->likes = $post->likes - 1;
       $post->save();
     }
 
-    $likes = format_num($post->rating_points); 
+    $likes = format_num($post->likes); 
 
     echo json_encode(array('success'=>true,'likes'=>$likes));      
   }
@@ -348,59 +350,6 @@ class PostsController extends Controller
     echo json_encode(array('success'=>true));  
   }
 
-  public function store_recent(Request $request)
-  {
-    $type_id = $request->get('type_id');
-    switch ($type_id)
-    {
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-      case 6:
-        $post_id = $request->get('post_id');
-        break;
-      case 21:
-      case 22:
-      case 23:
-      case 24:
-      case 25:
-        $ref_id = $request->get('ref_id');
-        $post = Post
-          ::where("type_id","=",$type_id)
-          ->where("ref_id","=",$ref_id)
-          ->first();
-        $post_id = $post->id;  
-        break;        
-    }
-
-    if(isset($_COOKIE['recentviews']))
-    {
-      $recentviews = $_COOKIE['recentviews']; 
-      $recent = explode(',',$recentviews);
-      //Si el post existe, quitarlo
-      if (($key = array_search($post_id, $recent)) !== false) {
-        unset($recent[$key]);
-      }
-      //Quitar excesos
-      while (count($recent)>120)
-        array_pop($recent);
-      //Añadir al inicio
-      array_unshift($recent, $post_id);
-      //Convertir a string
-      $recentviews = implode(',',$recent);
-    } 
-    else 
-    {
-      $recentviews = $post_id;
-    }
-
-    // save the cookie
-    setcookie('recentviews', $recentviews, time()+(86400*30));      
-
-    echo json_encode(array('success'=>true));
-  }
 
   public function delete_post_from_catalog(Catalog $catalog, Post $post)
   {

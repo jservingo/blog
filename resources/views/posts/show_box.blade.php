@@ -81,6 +81,14 @@
     <script type="text/javascript" src="/js/contactsTree.js"></script> 
     <script type="text/javascript" src="/js/buttons_show_categories.js"></script>   
   @endif  
+  @if ($root=="app_subs" || $root=="app_pages")
+    <script> 
+      var rv_type_id = 23; 
+      var rv_post_id = 0;
+      var rv_ref_id = {{ $app->id }};
+    </script> 
+    <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
+  @endif  
   @if ($root=="page_category")
     <script>
       var page_id = {{ $page->id }};
@@ -89,17 +97,21 @@
       @else
         var reset_categories_tree = false; 
       @endif
+      var rv_type_id = 22; 
+      var rv_post_id = 0;
+      var rv_ref_id = page_id;
     </script>
     <script type="text/javascript" src="/js/categoriesTree.js"></script>
     <script type="text/javascript" src="/js/buttons_show_categories.js"></script>
+    <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
   @endif  
   @if ($root=="catalog")
-  <script> 
-    var rv_type_id = 21; 
-    var rv_post_id = 0;
-    var rv_ref_id = {{ $ref_id }};
-  </script> 
-  <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
+    <script> 
+      var rv_type_id = 21; 
+      var rv_post_id = 0;
+      var rv_ref_id = {{ $ref_id }};
+    </script> 
+    <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
   @endif  
   @include('home.message')
   <script>

@@ -10,7 +10,7 @@ var data = {
 };
 $.ajax({
   type: 'post',
-  url: '/recent',
+  url: '/recent_views',
   data: data,
   dataType: 'json',
   success: function(data) {

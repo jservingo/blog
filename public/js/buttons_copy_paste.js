@@ -104,9 +104,19 @@ function btn_paste_post_to_catalog(catalog_id)
     success: function(data) {
       //Crear ventana modal
       var html = "<div id='clipboard' class='multiselect'>";
+      var zcolor="#f0f69a";
       data.rows.forEach(function (post) {
         var type = get_type(post.type_id);
-        html = html + "<div><label><input type='checkbox' name='option[]' value="+post.id+" /> "+type+" - "+post.title+"</label></div>";
+        html = html + "<div style='padding:8px; background-color:";
+        html = html + zcolor + "'><label style='margin:0'>";
+        html = html + "<input type='checkbox' name='option[]' value=" + post.id;
+        html = html + " />&nbsp;&nbsp;&nbsp;&nbsp;";
+        html = html + type + " - " + post.title;
+        html = html + "</label></div>";
+        if (zcolor=="#f0f69a")
+          zcolor="#cee3ea";
+        else
+          zcolor="#f0f69a";
       });
       html = html + "</div>";
       $.createDialog({
@@ -146,8 +156,19 @@ function btn_paste_post_to_contacts(group_id)
     success: function(data) {
       //Crear ventana modal
       var html = "<div id='clipboard' class='multiselect'>";
+      var zcolor="#f0f69a";
       data.rows.forEach(function (post) {
-        html = html + "<div><label><input type='checkbox' name='option[]' value="+post.id+" />"+post.title+"</label></div>";
+        //html = html + "<div><label><input type='checkbox' name='option[]' value="+post.id+" />"+post.title+"</label></div>";
+        html = html + "<div style='padding:8px; background-color:";
+        html = html + zcolor + "'><label style='margin:0'>";
+        html = html + "<input type='checkbox' name='option[]' value=" + post.id;
+        html = html + " />&nbsp;&nbsp;&nbsp;&nbsp;";
+        html = html + post.title;
+        html = html + "</label></div>";
+        if (zcolor=="#f0f69a")
+          zcolor="#cee3ea";
+        else
+          zcolor="#f0f69a";
       });
       html = html + "</div>";
       $.createDialog({
@@ -187,8 +208,19 @@ function btn_paste_catalog_to_category(category_id)
     success: function(data) {
       //Crear ventana modal
       var html = "<div id='clipboard' class='multiselect'>";
+      var zcolor="#f0f69a";
       data.rows.forEach(function (catalog) {
-        html = html + "<div><label><input type='checkbox' name='option[]' value="+catalog.id+" />"+catalog.name+"</label></div>";
+        //html = html + "<div><label><input type='checkbox' name='option[]' value="+catalog.id+" />"+catalog.name+"</label></div>";
+        html = html + "<div style='padding:8px; background-color:";
+        html = html + zcolor + "'><label style='margin:0'>";
+        html = html + "<input type='checkbox' name='option[]' value=" + catalog.id;
+        html = html + " />&nbsp;&nbsp;&nbsp;&nbsp;";
+        html = html + catalog.name;
+        html = html + "</label></div>";
+        if (zcolor=="#f0f69a")
+          zcolor="#cee3ea";
+        else
+          zcolor="#f0f69a";
       });
       html = html + "</div>";
       $.createDialog({

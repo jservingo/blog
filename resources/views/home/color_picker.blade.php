@@ -1,4 +1,4 @@
-{{-- home.show --}} 
+{{-- home.color_picker --}} 
 
 @extends('layout')
 
