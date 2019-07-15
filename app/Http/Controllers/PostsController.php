@@ -34,6 +34,7 @@ class PostsController extends Controller
     $posts = Post
   		::join('kposts', 'posts.id', '=', 'kposts.post_id')
   		->where("status_id","=",$status_id)
+      ->where("kposts.sent_by","<>",auth()->id())
   		->where("kposts.user_id","=",auth()->id())
       ->select('posts.*')
       ->latest('kposts.created_at')
@@ -70,6 +71,7 @@ class PostsController extends Controller
     $posts = Post
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.sent_by","=",auth()->id())
+      ->where("kposts.user_id","<>",auth()->id())
       ->select('posts.*')
       ->latest('kposts.created_at')
       ->paginate(12);  
@@ -87,6 +89,7 @@ class PostsController extends Controller
   	//Falta el type ***OJO***
     $posts = Post  //::join('kposts', 'posts.id', '=', 'kposts.post_id')  		
   		::where("posts.user_id","=",auth()->id())
+      ->where("type_id","<=",20)
       ->latest('posts.created_at')
   		->paginate(12);
 
@@ -104,6 +107,7 @@ class PostsController extends Controller
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("status_id","=",0)
       ->where("kposts.user_id","=",auth()->id())
+      ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 4)
       ->select('posts.*')
       ->latest('kposts.created_at')

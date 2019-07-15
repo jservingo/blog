@@ -12,7 +12,7 @@
 @section('page-description',$post->excerpt)
 
 @section('content')
-  <div style="overflow: hidden;">
+  <div style="overflow:hidden; padding-left:30px;">
     <div class="loader"></div>
 
     <div id="main_panel" style="visibility:hidden;">  
@@ -20,7 +20,7 @@
         @include('posts.single.header') 
         @include('posts.single.content')
 
-        <div class="container-flex space-between" style="width:98%;padding-right:20px;">
+        <div class="container-flex space-between" style="width:98%;padding:20px 20px 20px 0;">
           @include('posts.box.tags')
         </div>
 
@@ -28,7 +28,7 @@
           {!! $post->excerpt !!}
         </div>
 
-        <div class="image-w-text" style="padding-right:20px;padding-top:20px;">
+        <div class="image-w-text" style="padding:20px 20px 20px 0;">
           {!! $post->body !!}
         </div>
 
@@ -60,12 +60,19 @@
   </script>  
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>
   <script type="text/javascript" src="/js/growl.js"></script>
+  <script type="text/javascript" src="/js/buttons_header.js"></script>
+  <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
       $('.menu').jqsimplemenu();
     });
   </script>
+  <script>
+    $(document).ready(function() {
+     $('.popr').popr();
+    });
+  </script> 
   <script>
     var iframe_width = 600;
   </script>
@@ -76,12 +83,6 @@
     var rv_ref_id = {{ $post->ref_id ? $post->ref_id : 0 }};
   </script> 
   <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
-  <script>
-    $(".container").width($(window).width() - 380);
-    $(window).resize(function () {
-      $(".container").width($(window).width() - 380);
-    });
-  </script>
   <!--<script src="/js/twitter-bootstrap.js"></script>--> 
   <script>
     $(function() {

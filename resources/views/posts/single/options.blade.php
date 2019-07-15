@@ -1,4 +1,5 @@
 <div style="width:98%;padding-right:20px;">
+	{{--
 	<h2>Opciones</h2>
 
 	@if ($post->kpost)
@@ -60,4 +61,5 @@
 	    </div> 
 	  @endif
 	@endif
+	--}}
 </div>

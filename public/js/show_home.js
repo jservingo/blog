@@ -17,19 +17,19 @@ $(function() {
   	$('#ad3').find('img').attr('src',photo3);
   });
 
-  get_ad(1,4, function(ad4) {
+  get_ad(4,4, function(ad4) {
   	$('#ad4').attr('href',ad4.url);
   	var photo4 = "/storage/"+ad4.photo;
   	$('#ad4').find('img').attr('src',photo4);
   });
 
-  get_ad(4,5, function(ad5) {
+  get_ad(5,5, function(ad5) {
   	$('#ad5').attr('href',ad5.url);
   	var photo5 = "/storage/"+ad5.photo;
   	$('#ad5').find('img').attr('src',photo5);
   });
 
-  get_ad(5,6, function(ad6) {
+  get_ad(6,6, function(ad6) {
   	$('#ad6').attr('href',ad6.url);
   	var photo6 = "/storage/"+ad6.photo;
   	$('#ad6').find('img').attr('src',photo6);

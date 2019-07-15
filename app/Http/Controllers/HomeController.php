@@ -310,12 +310,14 @@ class HomeController extends Controller
     $received = Kpost
       ::where("status_id","=",0)
       ->where("user_id","=",auth()->id())
+      ->where("kposts.sent_by","<>",auth()->id())
       ->count();
 
     $notifications = Post
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("status_id","=",0)
       ->where("kposts.user_id","=",auth()->id())
+      ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 4)
       ->count();
 
@@ -338,6 +340,7 @@ class HomeController extends Controller
 
     $posts = Post
       ::where("user_id","=",auth()->id())
+      ->where("type_id","<=",20)
       ->count(); 
 
     $apps_subscriptions = App

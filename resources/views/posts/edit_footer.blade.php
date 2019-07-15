@@ -1,4 +1,4 @@
-{{-- posts.edit_post --}} 
+{{-- posts.edit_footer --}} 
 
 @php
  include(app_path() . '/functions/box_options.php')

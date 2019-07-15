@@ -180,7 +180,7 @@ $('.btn_update_likes').bind('click', function(e){
 });
 
 $('.searchButton').bind('click', function(e){
-  alert("Sorry! Search button is not implemented yet");
+  alert("Sorry! Search button is not implemented yet.");
 });
 
 // FUNCTIONS
@@ -304,7 +304,7 @@ function replaceAll(str,x,y)
 
 function get_month(f)
 {
-  var meses = new Array ("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
+  var meses = new Array ("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
   return (meses[f.getMonth()]);  
 }
 

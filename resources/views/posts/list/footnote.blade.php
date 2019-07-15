@@ -21,6 +21,5 @@
 		@else
 		  {{ $post->footnote }}
 	  @endif
-	  footnote footnote footnote footnote footnote footnote footnote footnote footnote footnote footnote footnote footnote footnote footnote footnote
 	</div>
 </div>

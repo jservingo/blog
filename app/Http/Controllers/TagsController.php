@@ -12,7 +12,7 @@ class TagsController extends Controller
 
     	$title = "Avisos del tag #$tag->name";
     	$root = "tag_posts";
-    	$buttons = "posts.undefined"; 
+    	$buttons = "posts.buttons.received_posts"; 
     	$subtitle = "";
 
     	return view(get_view(), compact('posts','title','root','buttons','subtitle'));

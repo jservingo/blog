@@ -9,6 +9,10 @@ $('.btn_create_catalog').bind('click', function(e){
   btn_create_catalog();
 }); 
 
+$('.btn_create_app').bind('click', function(e){
+  alert("Sorry! Add app button is not implemented yet.");
+}); 
+
 $('.btn_create_page').bind('click', function(e){
   btn_create_page();
 }); 
@@ -87,7 +91,8 @@ function btn_create_catalog_from_category(category_id)
         dataType: 'json',
         success: function(data) {
           if (data.success){
-            location = "/post/"+data.post_id;
+            url = "/post/"+data.post_id;
+            btn_edit (url);
           }
           else if(data.msg)
           {
@@ -136,7 +141,8 @@ function btn_create_catalog()
         dataType: 'json',
         success: function(data) {
           if (data.success){
-            location = "/post/"+data.post_id;
+            url = "/post/"+data.post_id;
+            btn_edit (url);
           }
           else if(data.msg)
           {
@@ -185,7 +191,8 @@ function btn_create_page()
         dataType: 'json',
         success: function(data) {
           if (data.success){
-            location = "/post/"+data.post_id;
+            url = "/post/"+data.post_id;
+            btn_edit (url);
           }
           else if(data.msg)
           {
@@ -244,7 +251,8 @@ function btn_create_post()
         dataType: 'json',
         success: function(data) {
           if (data.success){
-            location = "/post/"+data.post_id;
+            url = "/post/"+data.post_id;
+            btn_edit (url);
           }
           else if(data.msg)
           {
