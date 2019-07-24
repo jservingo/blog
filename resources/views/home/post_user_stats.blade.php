@@ -18,7 +18,7 @@
           Contacts <span id="c_contacts"></span>
       	</a>
 			</li>
-			<li>My Stuff
+			<li>Created
 				<ul>
 					<li>
 						<a class="vlink" href="{{ route('apps.show_created') }}">

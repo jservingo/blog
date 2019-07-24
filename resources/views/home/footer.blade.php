@@ -12,7 +12,7 @@
                 </ul>
             </nav>
             <div class="divider-2"></div>
-            <p>Nunc placerat dolor at lectus hendrerit dignissim. Ut tortor sem, consectetur nec hendrerit ut, ullamcorper ac odio. Donec viverra ligula at quam tincidunt imperdiet. Nulla mattis tincidunt auctor.</p>
+            <p>Kodelia help users to create and save posts created by other users. Organizing them in multiple catalogs, pages and powerfull aplications to easily share and find the information posted.</p>
             <div class="divider-2" style="width: 80%;"></div>
             <p>Copyright © 2019 kodelia.com All Rights Reserved.</p>
             <p>Designed & developed by Jorge Servín Gómez, JSG WEB SERVICES</p>

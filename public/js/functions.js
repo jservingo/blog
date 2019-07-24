@@ -3,15 +3,17 @@
     switch(type)
     {
       case 1:
-        return "Photo gallery";
+        return "Post";
       case 2:
-        return "Frame";
+        return "Post";
       case 3:
-        return "Text";
+        return "Post";
       case 4:
         return "Notification";
       case 5:
         return "Web page";
+      case 6:
+        return "Alert";
       case 21:
         return "Catalog";
       case 22:

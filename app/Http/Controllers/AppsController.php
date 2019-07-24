@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Kpost;
@@ -30,6 +32,40 @@ class AppsController extends Controller
     $title = "Discover apps";   
     $root = "discover_apps";
     $buttons = "posts.buttons.discover_apps"; 
+    $subtitle = "";
+
+    return view(get_view(),compact(
+      'posts','title','root','buttons','subtitle'));
+  }
+
+  public function show_all()
+  {
+    $posts_created = Post 
+      ::join('apps', 'ref_id', '=', 'apps.id')       
+      ->where("apps.user_id","=",auth()->id())
+      ->where("type_id","=",23)
+      ->where("apps.parent_id","=",null)
+      ->select('posts.*')
+      ->latest('posts.created_at');
+
+    $posts_subscriptions = Post
+      ::join('apps', 'ref_id', '=', 'apps.id')
+      ->join('app_user', 'apps.id', '=', 'app_user.app_id')
+      ->where("type_id","=",23)
+      ->where("app_user.user_id","=",auth()->id())
+      ->where("apps.parent_id","=",null)
+      ->orderBy('apps.name', 'asc')
+      ->select('posts.*');
+
+    $posts_created->union($posts_subscriptions);
+    $querySql = $posts_created->toSql();
+
+    $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
+    $posts = $query->paginate(12); 
+
+    $title = "Apps";   
+    $root = "created_apps";
+    $buttons = "posts.buttons.created_apps"; 
     $subtitle = "";
 
     return view(get_view(),compact(

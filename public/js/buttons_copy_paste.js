@@ -104,19 +104,20 @@ function btn_paste_post_to_catalog(catalog_id)
     success: function(data) {
       //Crear ventana modal
       var html = "<div id='clipboard' class='multiselect'>";
-      var zcolor="#f0f69a";
+      var zcolor="#d5fcfd";
       data.rows.forEach(function (post) {
-        var type = get_type(post.type_id);
+        var type = "Post";
+        type = get_type(post.type_id);
         html = html + "<div style='padding:8px; background-color:";
         html = html + zcolor + "'><label style='margin:0'>";
         html = html + "<input type='checkbox' name='option[]' value=" + post.id;
         html = html + " />&nbsp;&nbsp;&nbsp;&nbsp;";
         html = html + type + " - " + post.title;
         html = html + "</label></div>";
-        if (zcolor=="#f0f69a")
+        if (zcolor=="#d5fcfd")
           zcolor="#cee3ea";
         else
-          zcolor="#f0f69a";
+          zcolor="#d5fcfd";
       });
       html = html + "</div>";
       $.createDialog({

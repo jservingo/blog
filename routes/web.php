@@ -43,7 +43,8 @@ Route::post('view','HomeController@set_view');
 
 //Apps
 Route::get('apps/discover','AppsController@discover')->name('apps.discover');
-Route::get('apps','AppsController@show_created')->name('apps.show_created');
+Route::get('apps','AppsController@show_all')->name('apps.show_all');
+Route::get('apps/created','AppsController@show_created')->name('apps.show_created');
 Route::get('apps/{app}','AppsController@show_app')->name('app.show_app');
 Route::get('app/subscribers/{app}','AppsController@show_subscribers')->name('app.show_subscribers');
 Route::post('apps/post','AppsController@save_app_post');
@@ -52,9 +53,11 @@ Route::post('apps/post','AppsController@save_app_post');
 Route::get('pages/discover','PagesController@discover')->name('pages.discover');
 Route::get('pages/visited','PagesController@show_visited')->name('pages.show_visited');
 Route::get('pages/{page}/{category}','PagesController@show_page_category')->name('page.show_page_category');
-Route::get('pages','PagesController@show_created')->name('pages.show_created');
+Route::get('pages','PagesController@show_all')->name('pages.show_all');
+Route::get('pages/created','PagesController@show_created')->name('pages.show_created');
 Route::get('page/subscribers/{page}','PagesController@show_subscribers')->name('page.show_subscribers');
 Route::get('page/{page}','PagesController@edit')->name('page.edit');
+Route::get('page/isOwner/{page}','PagesController@isOwner')->name('page.isOwner');
 Route::post('page','PagesController@store')->name('page.create');
 Route::delete('pages/{post}','PagesController@destroy');
 
@@ -89,6 +92,7 @@ Route::get('catalogs/discover','CatalogsController@discover')->name('catalogs.di
 Route::get('catalogs/{catalog}','CatalogsController@show_catalog')->name('catalog.show_catalog');
 Route::get('catalogs','CatalogsController@show_created')->name('catalogs.show_created');
 Route::get('catalog/{catalog}','CatalogsController@edit')->name('catalog.edit');
+Route::get('catalog/isOwner/{catalog}','CatalogsController@isOwner')->name('catalog.isOwner');
 Route::post('catalog','CatalogsController@store')->name('catalog.create');
 Route::delete('catalogs/{category}/{catalog}','CatalogsController@delete_catalog_from_category');	
 Route::delete('catalogs/{catalog}','CatalogsController@destroy');
@@ -101,12 +105,15 @@ Route::get('posts/created/{type?}','PostsController@show_created')->name('posts.
 Route::get('posts/{post}','PostsController@show_post')->name('post.show_post');
 Route::get('post/user/{user}','PostsController@show_user')->name('post.show_user');
 Route::get('post/{post}','PostsController@edit')->name('post.edit');
+Route::get('post/footer/{post}','PostsController@edit_footer')->name('post.edit_footer');
+Route::get('post/isOwner/{post}','PostsController@isOwner')->name('post.isOwner');
 Route::get('blog/{post}','PostsController@show_post')->name('post.show');
 Route::post('post','PostsController@store')->name('post.create');
 Route::post('posts/save','PostsController@save_post');
 Route::post('posts/discard','PostsController@discard_post');
 Route::post('posts/likes/{post}/{mode}','PostsController@update_likes');
 Route::put('post/{post}','PostsController@update')->name('post.update');
+Route::put('post/footer/{post}','PostsController@update_footer')->name('post.update_footer');
 Route::delete('posts/{catalog}/{post}','PostsController@delete_post_from_catalog');	
 Route::delete('posts/{post}','PostsController@destroy');
 

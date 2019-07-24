@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Category;
@@ -52,6 +54,36 @@ class PagesController extends Controller
     return view('pages.pages_show',compact('pages'));
     */
   }
+
+  public function show_all()
+  {
+    $posts_created = Post        
+      ::where("posts.user_id","=",auth()->id())
+      ->where("type_id","=",22)
+      ->latest('posts.created_at');
+
+    $posts_subscriptions = Post
+      ::join('pages', 'ref_id', '=', 'pages.id')
+      ->join('page_user', 'pages.id', '=', 'page_user.page_id')
+      ->where("type_id","=",22)
+      ->where("page_user.user_id","=",auth()->id())
+      ->orderBy('pages.name', 'asc')
+      ->select('posts.*');
+
+    $posts_created->union($posts_subscriptions);
+    $querySql = $posts_created->toSql();
+
+    $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
+    $posts = $query->paginate(12); 
+
+    $title = "Pages";   
+    $root = "created_pages";
+    $buttons = "posts.buttons.created_pages"; 
+    $subtitle = "";
+
+    return view(get_view(),compact(
+      'posts','title','root','buttons','subtitle'));
+  }  
 
   public function show_created()
   {
@@ -118,7 +150,7 @@ class PagesController extends Controller
       ->latest('posts.created_at')
       ->paginate(12);
 
-      $title = "Page: ".$page->name; 
+      $title = $page->name; 
       $subtitle = "Category: ".$category->name; 
       $root = "page_category";
       $buttons = "posts.buttons.page_category"; 
@@ -144,6 +176,16 @@ class PagesController extends Controller
     $subtitle = "";     
 
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
+  }
+
+  public function isOwner(Page $page)
+  {
+    if ($page->user_id == auth()->id())
+      $response = "Y";
+    else
+      $response = "N";
+
+    echo json_encode(array('success'=>true,'response'=>$response));
   }
 
   public function store(Request $request)

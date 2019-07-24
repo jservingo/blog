@@ -53,17 +53,20 @@
 		data-id="{{ $post->id }}">
 		Edit
 	</div>
-	<div class="popr-item" data-btn="btn_delete_post_from_created_pages" 
-		data-id="{{ $post->id }}">
-		Delete
-	</div>
+	@if ($post->user_id == auth()->id())
+		<div class="popr-item" data-btn="btn_delete_catalog_from_created_catalogs" 
+			data-id="{{ $post->id }}">
+			Delete
+		</div>  
+	@else
+		<div class="popr-item" data-btn="btn_delete_post_from_subscription"
+			data-id="{{ $post->id }}">
+			Unsubscribe
+		</div>
+	@endif
 	<div class="popr-item" data-btn="btn_copy_post"
 		data-id="{{ $post->id }}">
 		Copy
-	</div>
-	<div class="popr-item" data-btn="btn_add_subscription"
-		data-id="{{ $post->id }}">
-		Subscribe
 	</div>
 	@if ($post->kpost)
 	<div class="popr-item" data-btn="btn_send_post" 
@@ -80,11 +83,7 @@
 	<div class="popr-item" data-btn="btn_edit_post"
 		data-id="{{ $post->id }}">
 		Edit
-	</div>
-	<div class="popr-item" data-btn="btn_delete_catalog_from_created_catalogs" 
-		data-id="{{ $post->id }}">
-		Delete
-	</div>
+	</div>	
 	<div class="popr-item" data-btn="btn_copy_post"
 		data-id="{{ $post->id }}">
 		Copy
@@ -105,17 +104,20 @@
 		data-id="{{ $post->id }}">
 		Edit
 	</div>
-	<div class="popr-item" data-btn="btn_delete_post_from_created_apps" 
-		data-id="{{ $post->id }}">
-		Delete
-	</div>
+	@if ($post->user_id == auth()->id())
+		<div class="popr-item" data-btn="btn_delete_post_from_created_apps" 
+			data-id="{{ $post->id }}">
+			Delete
+		</div>
+	@else
+		<div class="popr-item" data-btn="btn_delete_post_from_subscription"
+			data-id="{{ $post->id }}">
+			Unsubscribe
+		</div>
+	@endif
 	<div class="popr-item" data-btn="btn_copy_post"
 		data-id="{{ $post->id }}">
 		Copy
-	</div>
-	<div class="popr-item" data-btn="btn_add_subscription"
-		data-id="{{ $post->id }}">
-		Subscribe
 	</div>
 	@if ($post->kpost)
 	<div class="popr-item" data-btn="btn_send_post" 

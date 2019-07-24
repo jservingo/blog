@@ -47,7 +47,7 @@
         {{-- 'Row 3' --}}
         @php 
           $route='home.show_most_viewed';
-          $title='Most viewed by you'; 
+          $title='Most viewed'; 
           $type='most_viewed';
         @endphp
         @include('home.post')

@@ -159,6 +159,17 @@ class PostsController extends Controller
     echo json_encode(array('success'=>true,'post_id'=>$post->id));
   }
 
+  public function edit_footer(Post $post)
+  {
+    //$this->authorize('update',$post);
+
+    return view('posts.edit_footer',[
+      'post' => $post,
+      'tags' => Tag::all(),
+      'types' => Type::all()
+    ]);
+  }
+
   public function edit(Post $post)
   {
     //$this->authorize('update',$post);
@@ -168,6 +179,18 @@ class PostsController extends Controller
       'tags' => Tag::all(),
       'types' => Type::all()
     ]);
+  }
+
+  public function update_footer(Post $post, Request $request)
+  {
+    $kpost = $post->kpost;
+    $kpost->excerpt = $request->get('excerpt');
+    $kpost->observation = $request->get('observation');
+    $kpost->footnote = $request->get('footnote');
+    $kpost->featured = $request->get('featured'); 
+    $kpost->save();
+
+    echo json_encode(array('success'=>true));
   }
 
   public function update(Post $post, Request $request)
@@ -300,6 +323,16 @@ class PostsController extends Controller
     echo json_encode(array('success'=>true,'likes'=>$likes));      
   }
 
+  public function isOwner(Post $post)
+  {
+    if ($post->user_id == auth()->id())
+      $response = "Y";
+    else
+      $response = "N";
+
+    echo json_encode(array('success'=>true,'response'=>$response));
+  }
+
   public function save_post(Request $request)
   {
     //Obtener kpost asociado al post
@@ -353,7 +386,6 @@ class PostsController extends Controller
 
     echo json_encode(array('success'=>true));  
   }
-
 
   public function delete_post_from_catalog(Catalog $catalog, Post $post)
   {

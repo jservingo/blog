@@ -38,11 +38,7 @@
         <div style="clear:both;"></div>
       </div>
       <div style="padding:4px 10px 4px 10px; text-align:justify;">
-        <a href="{{ route('post.show_post',$post) }}"
-            class="t-excerpt c-negro" 
-            data-id="{{ $post->id }}">
-          {{ $post->excerpt }}
-        </a>
+        @include('posts.full.content')
       </div>
       @else
       <div>  
@@ -54,11 +50,7 @@
         </div>
         <div style="clear:both;"></div>
         <div style="padding:4px 10px 4px 10px; text-align:justify;">
-          <a href="{{ route('post.show_post',$post) }}"
-              class="t-excerpt c-negro" 
-              data-id="{{ $post->id }}">
-            {{ $post->excerpt }}
-          </a>
+          @include('posts.full.content')
         </div>
       </div>
       @endif
@@ -73,10 +65,7 @@
       </div>
       <div style="clear:both;"></div>
       <div style="padding:4px 10px 4px 10px; text-align:justify;">
-        <a href="{{ route('post.show_post',$post) }}"
-            class="t-excerpt c-negro" 
-            data-id="{{ $post->id }}">
-          {{ $post->excerpt }}
+        @include('posts.full.content')
         </a>
       </div>
     </div>    

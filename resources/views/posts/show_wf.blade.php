@@ -19,17 +19,17 @@
             @if ($post->isPhotoGallery() || $post->isFrame())     
               @include('posts.exp.view')
             @elseif ($post->isText())
-              @include('posts.box.view')
-            @elseif ($post->isNotification())
               @include('posts.card.view')
+            @elseif ($post->isNotification())
+              @include('posts.box.view')
             @elseif ($post->isWebPage())
               @include('posts.box.view')  
             @elseif ($post->isCatalog())
               @include('posts.box.view')
             @elseif ($post->isPage() || $post->isApp())     
-              @include('posts.exp.view')
+              @include('posts.card.view')
             @elseif ($post->isUser() || $post->isCompany()) 
-              @include('posts.card.view')   
+              @include('posts.box.view')   
             @endif
           </div>
         @endforeach

@@ -55,21 +55,15 @@ $('.box_popup').on("click","div.popr-item", function(e){
       break;
     case 'btn_edit_post':
       var post_id = $(this).data("id");
-      var url = "/post/"+post_id;
-      btn_edit (url);
-      //location = "/post/"+post_id;
+      btn_edit ("post", post_id);
       break;
     case 'btn_edit_catalog':
       var catalog_id = $(this).data("id");
-      var url = "/catalog/"+catalog_id;
-      btn_edit (url);
-      //location = "/catalog/"+catalog_id;
+      btn_edit ("catalog", post_id);
       break;
     case 'btn_edit_page':
       var page_id = $(this).data("id");
-      var url = "/page/"+page_id;
-      btn_edit (url);
-      //location = "/page/"+page_id;
+      btn_edit ("page", post_id);
       break;
     case 'btn_add_subscription':
       var post_id = $(this).data("id");
@@ -313,17 +307,17 @@ function get_type(type)
 	switch(type)
 	{
 		case 1:
-			return "Photo gallery";
+			return "Post";
 		case 2:
-			return "Frame";
+			return "Post";
 		case 3:
-			return "Text";
+			return "Post";
 		case 4:
 			return "Notification";
     case 5:
       return "Web page";
     case 6:
-      return "Offer";		
+      return "Alert";		
 		case 21:
 			return "Catalog";
 		case 22:

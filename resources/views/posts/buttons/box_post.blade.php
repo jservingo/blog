@@ -78,18 +78,21 @@
 			data-id="{{ $post->id }}">
 		<img src="/img/edit.png" width="24" />
 	</a>				
-	<a class="btn_delete_post_from_created_pages" 
-			data-id="{{ $post->id }}"> 
-		<img src="/img/delete.png" width="24" />
-	</a>
+	@if ($post->user_id == auth()->id())
+		<a class="btn_delete_post_from_created_pages" 
+				data-id="{{ $post->id }}"> 
+			<img src="/img/delete.png" width="24" />
+		</a>	
+	@else
+		<a class="btn_delete_post_from_subscription"
+				data-id="{{ $post->id }}">
+			<img src="/img/delete.png" width="24" />
+		</a>
+	@endif	
 	<a class="btn_copy_post"
 			data-id="{{ $post->id }}">
 		<img src="/img/copy.png" width="24" />
 	</a>
-	<a class="btn_add_subscription"
-			data-id="{{ $post->id }}">
-		<img src="/img/subscribe.png" width="24" />
-	</a>	
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
@@ -130,17 +133,20 @@
 			data-id="{{ $post->id }}">
 		<img src="/img/edit.png" width="24" />
 	</a>				
-	<a class="btn_delete_post_from_created_apps" 
-			data-id="{{ $post->id }}"> 
-		<img src="/img/delete.png" width="24" />
-	</a>
+	@if ($post->user_id == auth()->id())
+		<a class="btn_delete_post_from_created_apps" 
+				data-id="{{ $post->id }}"> 
+			<img src="/img/delete.png" width="24" />
+		</a>
+	@else
+		<a class="btn_delete_post_from_subscription"
+				data-id="{{ $post->id }}">
+			<img src="/img/delete.png" width="24" />
+		</a>
+	@endif
 	<a class="btn_copy_post"
 			data-id="{{ $post->id }}">
 		<img src="/img/copy.png" width="24" />
-	</a>
-	<a class="btn_add_subscription"
-			data-id="{{ $post->id }}">
-		<img src="/img/subscribe.png" width="24" />
 	</a>
 	@if ($post->kpost)
 	<a class="btn_send_post" 

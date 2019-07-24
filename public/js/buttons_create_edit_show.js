@@ -23,30 +23,26 @@ $('.btn_create_post').bind('click', function(e){
 
 $('.btn_edit_post').bind('click', function(e){
   var post_id = $(this).data("id");
-  url = "/post/"+post_id;
-  btn_edit (url);
-  //location = "/post/"+post_id;
+  //url = "/post/"+post_id;
+  btn_edit ("post", post_id);
 });
 
 $('.btn_edit_catalog').bind('click', function(e){
   var catalog_id = $(this).data("id");
-  var url = "/catalog/"+catalog_id;
-  btn_edit (url);
-  //location = "/catalog/"+catalog_id;
+  //var url = "/catalog/"+catalog_id;
+  btn_edit ("catalog", catalog_id);
 });
 
 $('.btn_edit_page').bind('click', function(e){
   var page_id = $(this).data("id");
-  var url = "/page/"+page_id;
-  btn_edit (url);
-  //location = "/page/"+page_id;
+  //var url = "/page/"+page_id;
+  btn_edit ("page", page_id);
 });
 
 $('.btn_show_post').bind('click', function(e){
   var post_id = $(this).data("id");
-  url = "/posts/"+post_id;
+  //url = "/posts/"+post_id;
   btn_show (url);
-  //location = "/post/"+post_id;
 });
 
 $('.btn_show_page_subscribers').bind('click', function(e){
@@ -271,13 +267,42 @@ function btn_create_post()
   $.showDialog();
 }
 
-function btn_edit(url)
+function btn_edit(el, id)
+{
+  url = '/'+el+'/isOwner/'+id;
+  $.ajax({
+      url: url,
+      dataType: 'json',
+      success: function(data) {
+        if (data.response=="Y")
+        {
+          url = '/'+el+'/'+id;
+          edit_post(url);
+        }
+        else
+        {
+          if (el=="post")
+          {
+            url = '/'+el+'/footer/'+id;
+            edit_post(url);
+          }  
+          else
+            alert("Ud. no esta autorizado para editar el post");
+        }  
+      },
+      error: function (data) {
+        console.log('Error:', data);
+      }
+    }); 
+}
+
+function edit_post(url)
 {
   var myWidth = screen.width - 100;
   var myHeight = screen.height - 200;
   var left = (screen.width - myWidth) / 2;
   var top = (screen.height - myHeight) / 4;
-  var myWindow = window.open(url, 'Edit', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + myWidth + ', height=' + myHeight + ', top=' + top + ', left=' + left);
+  var myWindow = window.open(url, 'Edit', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + myWidth + ', height=' + myHeight + ', top=' + top + ', left=' + left);  
 }
 
 function btn_show($url)

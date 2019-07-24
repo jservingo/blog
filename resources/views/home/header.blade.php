@@ -38,8 +38,8 @@
             </div>
         @else
             <div class="container-flex" style="align-items:center;">
-                <a class="btn_login button blue" href="#">Iniciar sesión</a>
-                <a class="btn_register button green" href="#">Regístrate</a>
+                <a class="btn_login button blue" href="#">&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;</a>
+                <a class="btn_register button green" href="#">&nbsp;&nbsp;Signup&nbsp;&nbsp;</a>
             </div>
         @endif
     </div>

@@ -1,18 +1,18 @@
 {{-- home.menu_items --}}
 
 <ul class="menu" style="position:absolute; z-index:999999;">
-  <li><a href="{{ route('home') }}">Home</a></li>
+  <li><a href="{{ route('home') }}">Dashboard</a></li>
 
   <li><a href="#">My Stuff</a>
   <ul>
     <li>
-      <a class="vlink" href="{{ route('apps.show_created') }}" 
+      <a class="vlink" href="{{ route('apps.show_all') }}" 
         class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
           Apps
       </a>
     </li>  
     <li>
-      <a class="vlink" href="{{ route('pages.show_created') }}" 
+      <a class="vlink" href="{{ route('pages.show_all') }}" 
         class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
           Pages
       </a>
@@ -29,12 +29,14 @@
           Posts
       </a>
     </li>
+    {{-- 
     <li>
       <a class="vlink" href="{{ route('subscriptions.show') }}" 
         class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
           Subscriptions
       </a>
-    </li>   
+    </li>
+    --}}   
   </ul>
   </li>
 

@@ -1,0 +1,49 @@
+#formulario{
+    border:solid 2px #708090;
+    border-radius: 15px;
+    box-shadow: 12px 12px 15px #ABCABC;
+    background-color:#dfffff;
+    margin:0 auto;
+    width :400px;
+    padding:14px;
+}
+
+#formulario h2{
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+#formulario label{
+    display:block;
+    font-weigth:bold;
+    text-aligin:right;
+    width:140px;
+    float:left;
+}
+
+#formulario input{
+    vfloat:left;
+    font-size:12px;
+    padding:4px 2px;
+    border:salid 1px #708090;
+    width:200px;
+    margin:2px 0 20px 10px;
+}
+
+#formulario input[type='checkbox'] { 
+	width:30px;
+}
+
+#formulario button{
+    clear:both;
+    margin:0 auto;
+    width:100px;
+    height:31px;
+    background:#696969;
+    text-align:center;
+    line-height:31px;
+    color : #fff;
+    font-size:11px;
+    font-weight:bold;
+}

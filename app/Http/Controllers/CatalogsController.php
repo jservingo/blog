@@ -77,7 +77,7 @@ class CatalogsController extends Controller
   {
     $posts = $catalog->posts()->paginate(12);
 
-    $title = "Catalog: ".$catalog->name; 
+    $title = $catalog->name; 
     $root = "catalog";
     $ref_id = $catalog->id;
     $buttons = "posts.buttons.catalog_posts";
@@ -87,6 +87,16 @@ class CatalogsController extends Controller
         'posts','title','root','ref_id','catalog','buttons','subtitle'));
 
   	//return view('catalogs.catalog_show',compact('catalog','posts'));
+  }
+
+  public function isOwner(Catalog $catalog)
+  {
+    if ($catalog->user_id == auth()->id())
+      $response = "Y";
+    else
+      $response = "N";
+
+    echo json_encode(array('success'=>true,'response'=>$response));
   }
 
   public function store(Request $request)
