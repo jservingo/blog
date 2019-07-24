@@ -1,3 +1,3 @@
 {{-- home.presentation_slider --}} 
 
-<img src="{{ url('storage/posts/kodelia.jpg') }}" width="80%"> 
+<img src="/img/kodelia.jpg" width="80%"> 
