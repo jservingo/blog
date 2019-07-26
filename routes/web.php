@@ -93,8 +93,8 @@ Route::get('catalogs','CatalogsController@show_created')->name('catalogs.show_cr
 Route::get('catalog/{catalog}','CatalogsController@edit')->name('catalog.edit');
 Route::get('catalog/isOwner/{catalog}','CatalogsController@isOwner')->name('catalog.isOwner');
 Route::post('catalog','CatalogsController@store')->name('catalog.create');
-Route::delete('catalogs/{category}/{catalog}','CatalogsController@delete_catalog_from_category');	
-Route::delete('catalogs/{catalog}','CatalogsController@destroy');
+Route::delete('catalogs/{category}/{post}','CatalogsController@delete_catalog_from_category');	
+Route::delete('catalogs/{post}','CatalogsController@destroy');
 
 //Posts
 Route::get('posts/received/{status?}/{type?}','PostsController@show_received')->name('posts.show_received');

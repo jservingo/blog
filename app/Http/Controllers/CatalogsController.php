@@ -153,8 +153,12 @@ class CatalogsController extends Controller
     ]);
   }
 
-  public function delete_catalog_from_category(Category $category, Catalog $catalog)
+  public function delete_catalog_from_category(Category $category, Post $post)
   {
+    $catalog = Catalog
+      ::where("id","=",$post->ref_id)
+      ->first();
+
     if ($category->page->user_id != auth()->id() && $catalog->user_id != auth()->id())
     {
       echo json_encode(array('success'=>false,'msg'=>'You are not authorized to perform this operation.'));
@@ -166,9 +170,13 @@ class CatalogsController extends Controller
     echo json_encode(array('success'=>true));  
   }
 
-  public function destroy(Catalog $catalog)
+  public function destroy(Post $post)
   {
-    if ($catalog->user_id != auth()->id())
+    $catalog = Catalog
+      ::where("id","=",$post->ref_id)
+      ->first();
+
+    if ($catalog && $catalog->user_id != auth()->id())
     {
       echo json_encode(array('success'=>false,'msg'=>'You are not authorized to perform this operation.'));
       return;
@@ -176,29 +184,22 @@ class CatalogsController extends Controller
 
     //OJO: Solo se puede eliminar el catalogo si no ha sido 
     //guardado por ningún otro usuario. 
-
-    $post = Post
-      ::where("type_id","=",21)
-      ->where("ref_id","=",$catalog->id)
-      ->first();
-
-    if($post)
-    {  
-      //Eliminar todos los tags
-      if ($post->tags)  
-        $post->tags()->detach();
-        
-      //Eliminar todas las fotos
-      foreach ($post->photos as $photo)
-      {
-        $photo->delete();
-        Storage::disk('public')->delete($photo->url);
-      }
-
-      $post->delete();
+ 
+    //Eliminar todos los tags
+    if ($post->tags)  
+      $post->tags()->detach();
+      
+    //Eliminar todas las fotos
+    foreach ($post->photos as $photo)
+    {
+      $photo->delete();
+      Storage::disk('public')->delete($photo->url);
     }
 
-    $catalog->delete();
+    $post->delete();
+
+    if ($catalog)
+      $catalog->delete();
 
     echo json_encode(array('success'=>true));
   } 
