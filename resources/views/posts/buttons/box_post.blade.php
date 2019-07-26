@@ -54,8 +54,9 @@
 			data-id="{{ $post->id }}">
 		<img src="/img/edit.png" width="24" />
 	</a>				
-	<a class="btn_delete_post_from_created_pages" 
-			data-id="{{ $post->id }}"> 
+	<a class="btn_delete_catalog_from_category" 
+			data-id="{{ $post->id }}"
+			data-category="{{ $category->id }}"> 
 		<img src="/img/delete.png" width="24" />
 	</a>
 	<a class="btn_copy_post"

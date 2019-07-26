@@ -114,7 +114,7 @@ function btn_delete_post_from_created_pages(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Are you sure you want to delete this catalog?',
+    title: 'Are you sure you want to delete this page?',
     accept: 'Si',
     refuse: 'No',
     acceptStyle: 'red',
@@ -312,7 +312,7 @@ function delete_post_from_created_pages(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","The catalog was deleted.");
+        set_message("notice","The page was deleted.");
         location.reload();
       }
       else if(data.msg)

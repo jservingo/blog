@@ -209,7 +209,11 @@ class PostsController extends Controller
     $post->excerpt = $request->get('excerpt');
     $post->body = $request->get('body');
     $post->url = $request->get('url');
-    $post->iframe = $request->get('iframe');    
+    $post->iframe = $request->get('iframe');  
+    if ($post->user_id == auth()->id())
+    {
+      $post->footnote = $request->get('footnote');
+    }  
     $post->published_at = Carbon::parse($request->get('published_at'));
     $post->rating_mode = $request->get('rating_mode');    
     $post->cstr_privacy = $request->get('cstr_privacy');
@@ -230,9 +234,20 @@ class PostsController extends Controller
     {
       foreach ($tags as $tag_str)
       {
-        $tag = Tag::where('name', trim($tag_str))->first();
-        if($tag)
-          $post->tags()->attach($tag->id, array('user_id' => auth()->id()));
+        if (strlen($tag_str) >= 3)
+        {
+          $tag_str = trim(preg_replace('/\s+/', '', $tag_str));
+          $tag = Tag::where('name', $tag_str)->first();
+          if($tag)
+            $post->tags()->attach($tag->id, array('user_id' => auth()->id()));
+          else
+          {
+            $tag = Tag::create([
+              'name' => $tag_str
+            ]);
+            $post->tags()->attach($tag->id, array('user_id' => auth()->id()));
+          }
+        }
       }
     }  
 

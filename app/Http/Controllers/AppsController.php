@@ -117,7 +117,7 @@ class AppsController extends Controller
       ->latest('posts.created_at')
       ->paginate(12);
 
-	    $title = "App: $app->name";   
+	    $title = $app->name;   
 	    $root = "app_subs";
 	    $buttons = "posts.buttons.app_subs"; 
       $subtitle = "";
@@ -135,7 +135,7 @@ class AppsController extends Controller
       ->latest('posts.created_at')
       ->paginate(12);
 
-	    $title = "App pages: $app->name";   
+	    $title = $app->name;   
 	    $root = "app_pages";
 	    $buttons = "posts.buttons.app_subs"; 
       $subtitle = "";

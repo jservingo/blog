@@ -62,14 +62,14 @@
       <div class="form-control">
         <label><span>Observation:</span></label>
         <textarea id="observation" 
-          placeholder="Enter an observation">{{ old('observation',$post->observation) }}</textarea>
+          placeholder="Enter an observation">{{ old('observation',$post->kpost->observation) }}</textarea>
         {!! $errors->first('observation','<span class="help-block">:message</span>') !!}
       </div>
 
       <div class="form-control">
         <label><span>Footnote:</span></label>
         <input id="footnote" type="text" 
-          value="{{ old('footnote',$post->footnotee) }}"
+          value="{{ old('footnote',$post->footnote) }}"
           placeholder="Enter the footnote">
         {!! $errors->first('footnote','<span class="help-block">:message</span>') !!}
       </div>  
@@ -99,8 +99,8 @@
       <div class="form-control">
         <label>Rating mode: </label>
           <select id='rating_mode'>
-            <option value='1'>Stars</option>
             <option value='2'>Likes</option>
+            <option value='1'>Stars</option>            
             <option value='3'>Likes & dislikes</option>
             <option value='4'>No rating</option>
           </select>     
@@ -110,7 +110,7 @@
       <div class="form-control">
         <label>
           <input type="checkbox" id="featured" 
-            {!! $post->featured ? 'checked' : '' !!}>
+            {!! $post->kpost->featured ? 'checked' : '' !!}>
           {{ $opc_featured }}
         </label>
       </div>
@@ -210,6 +210,12 @@
             data-type="{{ $post->type_id }}"
             data-kpost="{{ $post->kpost ? 1 : 0 }}">
             Save changes
+        </a>
+      </div>
+
+      <div class="form-control">
+        <a href="#" class="btn_cancel_edit">
+            Cancel
         </a>
       </div>
 
@@ -327,23 +333,19 @@
     var kpost = $(this).data("kpost");    
     var type = get_type(type_id);
     var title = $('#title').val();
-    var excerpt = $('#excerpt').val();
-    var body = CKEDITOR.instances.body.getData();
+    var excerpt = " "; 
+    excerpt = $('#excerpt').val();
+    var body = " ";
+    body = CKEDITOR.instances.body.getData();
     var url = "";
     if (type=="Web page")
       url = $('#url').val();
     var iframe = "";
     if (type=="Frame")
       iframe = $('#iframe').val();
-    var observation = "";
-    var footnote = "";
-    var featured = 0;
-    if (kpost==1)
-    {
-      observation = $('#observation').val();
-      footnote = $('#footnote').val();
-      featured = get_value('#featured');
-    }
+    var observation = $('#observation').val();
+    var footnote = $('#footnote').val();
+    var featured = get_value('#featured');
     var published_at = $('#published_at').val();
     var tags = $('#tags').val();
     var rating_mode = $('#rating_mode').val();
@@ -392,7 +394,9 @@
       dataType: 'json',
       success: function(data) {
         if (data.success){
-          $.growl.notice({ message:"{{ $msg_update }}"});
+          set_message("notice","{{ $msg_update }}");
+          //$.growl.notice({ message:"{{ $msg_update }}"});
+          window.close();
         }
         else {
           set_message("error","Sorry but the update was not possible. Try again, please");
@@ -436,11 +440,37 @@
     });
   }
 
+  $('.btn_cancel_edit').bind('click', function(e){
+  });
+
   function get_value(s)
   {
     if ($(s).is(':checked'))
       return(1);
     return(0);
+  }
+
+  function set_message(type, message)
+  {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    var data = {type:type, message:message};
+    $.ajax({
+      type: 'post',
+      url: '/message',
+      data: data,
+      dataType: 'json',
+      success: function(data) {
+        //alert("set_message OK");
+      },
+      error: function (data) {
+        console.log('Error:', data);
+        //alert("set_message ERROR. Ver consola");
+      }
+    }); 
   }
 
   </script>

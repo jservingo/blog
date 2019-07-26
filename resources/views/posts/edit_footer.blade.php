@@ -115,7 +115,8 @@
       dataType: 'json',
       success: function(data) {
         if (data.success){
-          $.growl.notice({ message:"{{ $msg_update }}"});
+          set_message("notice","{{ $msg_update }}");
+          //$.growl.notice({ message:"{{ $msg_update }}"});
           window.close();
         }
         else {
@@ -129,11 +130,37 @@
     }); 
   });
 
+  $('.btn_update_post').bind('click', function(e){
+  });
+
   function get_value(s)
   {
     if ($(s).is(':checked'))
       return(1);
     return(0);
+  }
+
+  function set_message(type, message)
+  {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    var data = {type:type, message:message};
+    $.ajax({
+      type: 'post',
+      url: '/message',
+      data: data,
+      dataType: 'json',
+      success: function(data) {
+        //alert("set_message OK");
+      },
+      error: function (data) {
+        console.log('Error:', data);
+        //alert("set_message ERROR. Ver consola");
+      }
+    }); 
   }
 
   </script>

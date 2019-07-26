@@ -88,7 +88,7 @@ function btn_create_catalog_from_category(category_id)
         success: function(data) {
           if (data.success){
             url = "/post/"+data.post_id;
-            btn_edit (url);
+            btn_edit ("post", data.post_id);
           }
           else if(data.msg)
           {
@@ -138,7 +138,7 @@ function btn_create_catalog()
         success: function(data) {
           if (data.success){
             url = "/post/"+data.post_id;
-            btn_edit (url);
+            btn_edit ("post", data.post_id);
           }
           else if(data.msg)
           {
@@ -188,7 +188,7 @@ function btn_create_page()
         success: function(data) {
           if (data.success){
             url = "/post/"+data.post_id;
-            btn_edit (url);
+            btn_edit ("post", data.post_id);
           }
           else if(data.msg)
           {
@@ -248,7 +248,7 @@ function btn_create_post()
         success: function(data) {
           if (data.success){
             url = "/post/"+data.post_id;
-            btn_edit (url);
+            btn_edit ("post", data.post_id);
           }
           else if(data.msg)
           {

@@ -245,7 +245,7 @@ class PagesController extends Controller
       ::where("id","=",$post->ref_id)
       ->first();
 
-    if ($page->user_id != auth()->id())
+    if ($page && $page->user_id != auth()->id())
     {
       echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
       return;
@@ -278,7 +278,8 @@ class PagesController extends Controller
     
     $post->delete();
 
-    $page->delete();
+    if ($page)
+      $page->delete();
 
     echo json_encode(array('success'=>true));
   } 

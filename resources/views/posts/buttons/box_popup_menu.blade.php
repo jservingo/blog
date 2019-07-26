@@ -30,8 +30,9 @@
 		data-id="{{ $post->id }}">
 		Edit
 	</div>
-	<div class="popr-item" data-btn="btn_delete_post_from_created_pages" 
-		data-id="{{ $post->id }}">
+	<div class="popr-item" data-btn="btn_delete_catalog_from_category" 
+		data-id="{{ $post->id }}"
+		data-category="{{ $category->id }}">
 		Delete
 	</div>
 	<div class="popr-item" data-btn="btn_copy_post"
