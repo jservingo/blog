@@ -155,15 +155,15 @@ $('.btn_register').bind('click', function(e){
 }); 
 
 $('.btn_configuration').bind('click', function(e){
-  alert("/user/configuration");
+  alert("Sorry! /user/configuration is not implemented yet.");
 });
 
 $('.btn_notifications').bind('click', function(e){
-  alert("/user/notifications");
+  alert("Sorry! /user/notifications are not implemented yet.");
 });
 
 $('.btn_options').bind('click', function(e){
-  alert("btn_options");
+  alert("Sorry! btn_options are not implemented yet.");
 });
 
 $('.btn_update_likes').bind('click', function(e){

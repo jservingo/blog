@@ -100,7 +100,7 @@ class AppsController extends Controller
 
     if($app->name == "TVmaze")
     {
-      $title = "App: $app->name";
+      $title = $app->name;
       $buttons = ""; 
       $subtitle = "";
       $root = "app_api";

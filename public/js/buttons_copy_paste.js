@@ -266,7 +266,7 @@ function paste_post_to_catalog(selected, catalog_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","El catálogo fue actualizado");
+        set_message("notice","The catalog was updated.");
         location.reload();
       }
       else if(data.msg)
@@ -298,7 +298,7 @@ function paste_catalog_to_category(selected, category_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","La página fue actualizada");
+        set_message("notice","The page was updated.");
         location.reload();
       }
       else if(data.msg)
@@ -330,7 +330,7 @@ function paste_post_to_contacts(selected, group_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","Los contactos fueron actualizados");
+        set_message("notice","Your contacts were updated.");
         location.reload();
       }
       else if(data.msg)

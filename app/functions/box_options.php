@@ -1,17 +1,17 @@
 <?php 
   if($post->isCatalog()){
-  $title = "Nombre del catálogo";
-  $msg_update = "El catálogo fue actualizado";
-  $opc_featured = "El catálogo aparecerá entre los primeros.";
-  $opc_privacy = "Solamente el propietario puede ver el catálogo.";
-  $opc_restricted = "Solamente el propietario puede reenviar el catálogo.";
+  $title = "Catalog title";
+  $msg_update = "The catalog was updated.";
+  $opc_featured = "Featured: The catalog will appear among the first.";
+  $opc_privacy = "Only the owner can see the catalog.";
+  $opc_restricted = "Only the owner can forward the catalog.";
   } 
   elseif($post->isPage()) {
-  $title = "Nombre de la página";
-  $msg_update = "La página fue actualizada";
-  $opc_featured = "La página aparecerá entre las primeras.";
-  $opc_privacy = "Solamente el propietario puede ver la página.";
-  $opc_restricted = "Solamente el propietario puede reenviar la página.";
+  $title = "Page Title";
+  $msg_update = "The page was updated.";
+  $opc_featured = "Featured: The page will appear among the first.";
+  $opc_privacy = "Only the owner can see the page.";
+  $opc_restricted = "Only the owner can forward the page.";
   //Campos que no están en el post
   $page = $post->page;
   $cstr_allow_subscribers = $page->cstr_allow_subscribers;
@@ -19,24 +19,24 @@
   $cstr_main_page = $page->cstr_main_page; 
   }
   elseif($post->isUser()) {
-  $title = "Nombre del usuario";
-  $msg_update = "El usuario fue actualizado";
-  $opc_featured = "El usuario aparecerá entre los primeros.";
-  $opc_privacy = "Solamente el propietario puede ver el post.";
-  $opc_restricted = "Solamente el propietario puede reenviar el post.";
+  $title = "Name";
+  $msg_update = "The user was updated.";
+  $opc_featured = "Featured: The user will appear among the first.";
+  $opc_privacy = "Only the owner can see the user.";
+  $opc_restricted = "Only the owner can forward the user.";
   }
   elseif($post->isCompany()) {
-  $title = "Nombre de la empresa";
-  $msg_update = "La empresa fue actualizada";
-  $opc_featured = "La empresa aparecerá entre las primeras.";
-  $opc_privacy = "Solamente el propietario puede ver la empresa.";
-  $opc_restricted = "Solamente el propietario puede reenviar la empresa.";
+  $title = "Company name";
+  $msg_update = "The company was updated.";
+  $opc_featured = "Featured: The company will appear among the first.";
+  $opc_privacy = "Only the owner can see the company.";
+  $opc_restricted = "Only the owner can forward the company.";
   }
   else {
-  $title = "Título del post"; 
-  $msg_update = "El post fue actualizado";
-  $opc_featured = "El post aparecerá entre los primeros."; 
-  $opc_privacy = "Solamente el propietario puede ver el post.";
-  $opc_restricted = "Solamente el propietario puede reenviar el post.";  
+  $title = "Post title"; 
+  $msg_update = "The post was updated.";
+  $opc_featured = "Featured: The post will appear among the first."; 
+  $opc_privacy = "Only the owner can see the post.";
+  $opc_restricted = "Only the owner can forward the post.";  
   }
 ?>

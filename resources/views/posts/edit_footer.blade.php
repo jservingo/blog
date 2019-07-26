@@ -16,22 +16,22 @@
       <div class="form-control">
 			  <label><span>Excerpt:</span></label>
 			  <textarea id="excerpt" 
-				  placeholder="Ingresa un extracto del post">{{ old('excerpt',$post->kpost->excerpt) }}</textarea>
+				  placeholder="Enter an excerpt from the post">{{ old('excerpt',$post->kpost->excerpt) }}</textarea>
 			    {!! $errors->first('excerpt','<span class="help-block">:message</span>') !!}
 			</div>
 
 			<div class="form-control">
         <label><span>Observation:</span></label>
         <textarea id="observation" 
-          placeholder="Ingresa una observación">{{ old('observation',$post->kpost->observation) }}</textarea>
+          placeholder="Enter an observation">{{ old('observation',$post->kpost->observation) }}</textarea>
         {!! $errors->first('observation','<span class="help-block">:message</span>') !!}
       </div>
 
       <div class="form-control">
-        <label><span>Footnote</span></label>
+        <label><span>Footnote:</span></label>
         <input id="footnote" type="text" 
           value="{{ old('footnote',$post->kpost->footnote) }}"
-          placeholder="Ingrese el footnote">
+          placeholder="Enter the footnote">
         {!! $errors->first('footnote','<span class="help-block">:message</span>') !!}
       </div>  
 
@@ -56,7 +56,7 @@
             data-id="{{ $post->id }}"
             data-type="{{ $post->type_id }}"
             data-kpost="{{ $post->kpost ? 1 : 0 }}">
-            Guardar
+            Save changes
         </a>
       </div>
 
@@ -119,7 +119,7 @@
           window.close();
         }
         else {
-          set_message("error","Lo sentimos pero no fue posible realizar la actualización. Intente de nuevo");
+          set_message("error","Sorry but the update was not possible. Try again, please");
           location.reload();
         }
       },

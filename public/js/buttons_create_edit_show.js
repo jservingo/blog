@@ -62,8 +62,8 @@ function btn_create_catalog_from_category(category_id)
   //Crear ventana modal
   var html = "<div id='edit'>";
   html = html + "<h3>Create catalog</h3>";
-  html = html + "<p>Título del catálogo</p>";
-  html = html + "<input id='title' type='text' class='form-control' placeholder='Ingrese el título del aviso' required>";
+  html = html + "<p>Title</p>";
+  html = html + "<input id='title' type='text' class='form-control' placeholder='Enter the title of the catalog' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -112,8 +112,8 @@ function btn_create_catalog()
   //Crear ventana modal
   var html = "<div id='edit'>";
   html = html + "<h3>Create catalog</h3>";
-  html = html + "<p>Título del catálogo</p>";
-  html = html + "<input id='title' type='text' class='form-control' placeholder='Ingrese el título del aviso' required>";
+  html = html + "<p>Title</p>";
+  html = html + "<input id='title' type='text' class='form-control' placeholder='Enter the title of the catalog' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -162,8 +162,8 @@ function btn_create_page()
   //Crear ventana modal
   var html = "<div id='edit'>";
   html = html + "<h3>Create page</h3>";
-  html = html + "<p>Título de la página</p>";
-  html = html + "<input id='title' type='text' class='form-control' placeholder='Ingrese el título del aviso' required>";
+  html = html + "<p>Title</p>";
+  html = html + "<input id='title' type='text' class='form-control' placeholder='Enter the title of the page' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -212,7 +212,7 @@ function btn_create_post()
   //Crear ventana modal
   var html = "<div id='edit'>";
   html = html + "<h3>Create post</h3>";
-  html = html + "<p>Tipo de post</p>";
+  html = html + "<p>Type</p>";
   html = html + "<select id='type'>";
   html = html + "<option value='1'>Photo gallery</option>";
   html = html + "<option value='2'>Frame: video or soundcloud</option>";
@@ -220,8 +220,8 @@ function btn_create_post()
   html = html + "<option value='4'>Notification</option>";
   html = html + "<option value='11'>Web Page link</option>";
   html = html + "</select>";
-  html = html + "<p>Título del post</p>";
-  html = html + "<input id='title' type='text' class='form-control' placeholder='Ingrese el título del aviso' required>";
+  html = html + "<p>Title</p>";
+  html = html + "<input id='title' type='text' class='form-control' placeholder='Enter the title of the post' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -287,7 +287,7 @@ function btn_edit(el, id)
             edit_post(url);
           }  
           else
-            alert("Ud. no esta autorizado para editar el post");
+            alert("Sorry but you are not authorized to edit the post.");
         }  
       },
       error: function (data) {

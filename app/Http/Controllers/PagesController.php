@@ -151,7 +151,7 @@ class PagesController extends Controller
       ->paginate(12);
 
       $title = $page->name; 
-      $subtitle = "Category: ".$category->name; 
+      $subtitle = $category->name; 
       $root = "page_category";
       $buttons = "posts.buttons.page_category"; 
 

@@ -4,9 +4,9 @@
 
 @section('content')
 	@php
-    $title = "Page: ".$page->name; 
+    $title = $page->name; 
     $root = "page_category";
-    $subtitle = "Category: ".$category->name;
+    $subtitle = $category->name;
     $catalogs = $category->catalogs()->paginate(2);
   @endphp 
 

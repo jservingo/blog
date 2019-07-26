@@ -243,7 +243,7 @@ class ContactsController extends Controller
     }
     else
     {
-      echo json_encode(array('msg'=>'Antes de eliminar esta lista debe crear otra.'));
+      echo json_encode(array('msg'=>'Before eliminate this list you must create other.'));
     }
   }
 }

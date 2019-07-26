@@ -41,7 +41,7 @@ function btn_save_app_post(app_id, title, excerpt, img, tags, footnote, date, us
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Está seguro que desea guardar este post?',
+    title: 'Are you sure you want to save this post?',
     accept: 'Si',
     refuse: 'No',
     acceptStyle: 'red',
@@ -57,7 +57,7 @@ function btn_add_subscription(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Está seguro que desea suscribirse?',
+    title: 'Are you sure you want to subscribe?',
     accept: 'Si',
     refuse: 'No',
     acceptStyle: 'red',
@@ -73,7 +73,7 @@ function btn_add_user_to_contacts(user_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Está seguro que desea añadir este usuario a sus contactos?',
+    title: 'Are you sure you want to add this user to your contacts?',
     accept: 'Si',
     refuse: 'No',
     acceptStyle: 'red',
@@ -89,7 +89,7 @@ function btn_save_post(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Está seguro que desea guardar este post?',
+    title: 'Are you sure you want to save this post?',
     accept: 'Si',
     refuse: 'No',
     acceptStyle: 'red',
@@ -105,7 +105,7 @@ function btn_discard_post(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Está seguro que desea descartar este post?',
+    title: 'Are you sure you want to discard this post?',
     accept: 'Si',
     refuse: 'No',
     acceptStyle: 'red',
@@ -144,7 +144,7 @@ function save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, 
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","El post fue guardado");
+        set_message("notice","Te post was saved.");
         location.reload();
       }
       else if(data.msg)
@@ -152,7 +152,7 @@ function save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, 
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Lo sentimos pero no fue posible guardar el post. Intente de nuevo");
+        set_message("error","Sorry but the post was not saved. Try again, please.");
         location.reload();
       }
     },
@@ -177,7 +177,7 @@ function add_subscription(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","La suscripcion fue exitosa");
+        set_message("notice","The subscription was successful.");
         location.reload();
       }
       else if(data.msg)
@@ -185,7 +185,7 @@ function add_subscription(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Lo sentimos pero no fue posible realizar la suscripcion. Intente de nuevo");
+        set_message("error","Sorry but the subscription was failed. Try again, please.");
         location.reload();
       }
     },
@@ -210,7 +210,7 @@ function add_user_to_contacts(user_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","El usuario fue añadido a los contactos");
+        set_message("notice","The user was addded to you contacts.");
         location.reload();
       }
       else if(data.msg)
@@ -218,7 +218,7 @@ function add_user_to_contacts(user_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Lo sentimos pero el usuario no fue añadido a los contactos. Intente de nuevo");
+        set_message("error","Sorry but the user was not addded to you contacts. Try again, please.");
         location.reload();
       }
     },
@@ -243,7 +243,7 @@ function save_post(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","El post fue guardado");
+        set_message("notice","The post was saved.");
         location.reload();
       }
       else if(data.msg)
@@ -251,7 +251,7 @@ function save_post(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Lo sentimos pero el post no fue guardado. Intente de nuevo");
+        set_message("error","Sorry but the post was not saved. Try again, please.");
         location.reload();
       }
     },
@@ -276,7 +276,7 @@ function discard_post(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","El post fue descartado");
+        set_message("notice","The post was discarded.");
         location.reload();
       }
       else if(data.msg)
@@ -284,7 +284,7 @@ function discard_post(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Lo sentimos pero el post no fue descartado. Intente de nuevo");
+        set_message("error","Sorry but the post was not discarded. Try again, please.");
         location.reload();
       }
     },

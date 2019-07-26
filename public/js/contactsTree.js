@@ -90,7 +90,7 @@ $(function() {
       success: function(d) {
         if(d.success)
         {
-          $.growl.notice({ message: "La lista fue eliminada." });
+          $.growl.notice({ message: "The list was deleted." });
         }
         else
         {
@@ -124,11 +124,11 @@ function context_menu(node){
         "Create": {
             "separator_before": false,
             "separator_after": false,
-            "label": "Crear lista",
+            "label": "Create list",
             "action": function (data) { 
                 var ref = $.jstree.reference(data.reference);
                 sel = ref.get_selected();
-                sel = ref.create_node(sel, 'lista', 'after');
+                sel = ref.create_node(sel, 'list', 'after');
                 if(sel) {
                   ref.edit(sel);
                 }
@@ -137,13 +137,13 @@ function context_menu(node){
         "Create child": {
             "separator_before": false,
             "separator_after": false,
-            "label": "Crear sublista",
+            "label": "Create sublist",
             "action": function (data) { 
                 var ref = $.jstree.reference(data.reference);
                 sel = ref.get_selected();
                 if(!sel.length) { return false; }
                 sel = sel[0];
-                sel = ref.create_node(sel, 'lista');
+                sel = ref.create_node(sel, 'list');
                 if(sel) {
                   ref.edit(sel);
                 }
@@ -152,7 +152,7 @@ function context_menu(node){
         "Rename": {
             "separator_before": false,
             "separator_after": false,
-            "label": "Renombrar",
+            "label": "Rename",
             "action": function (data) { 
                 var inst = $.jstree.reference(data.reference);
                 obj = inst.get_node(data.reference);
@@ -162,7 +162,7 @@ function context_menu(node){
         "Remove": {
             "separator_before": true,
             "separator_after": false,
-            "label": "Eliminar",
+            "label": "Delete",
             "action": function (data) { 
               if(confirm('Are you sure to remove this contact?')){
                 var ref = $.jstree.reference(data.reference),
@@ -175,7 +175,7 @@ function context_menu(node){
         "Expand" : {
             "separator_before": true,
             "separator_after": false,
-            "label": "Expandir",
+            "label": "Expand",
             "action": function (data) { 
               $("#contacts_tree").jstree("open_all");
             }
@@ -183,7 +183,7 @@ function context_menu(node){
         "Collapse" : {
             "separator_before": true,
             "separator_after": false,
-            "label": "Colapsar",
+            "label": "Collapse",
             "action": function (data) { 
               $("#contacts_tree").jstree("close_all");
               $("#contacts_tree").jstree("select_node", "#node_0", true);

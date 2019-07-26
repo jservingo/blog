@@ -17,30 +17,30 @@
         <label><span>{{ $title }}</span></label>
 			  <input id="title" type="text"  
 				  value="{{ old('title',$post->title) }}"
-				  placeholder="Ingrese el título del aviso">
+				  placeholder="Enter the title of the post">
 			  {!! $errors->first('title','<span class="help-block">:message</span>') !!}				
       </div>
 
       <div class="form-control">
-			  <label><span>Extracto:</span></label>
+			  <label><span>Excerpt:</span></label>
 			  <textarea id="excerpt" 
-				  placeholder="Ingresa un extracto del post">{{ old('excerpt',$post->excerpt) }}</textarea>
+				  placeholder="Enter an excerpt from the post">{{ old('excerpt',$post->excerpt) }}</textarea>
 			    {!! $errors->first('excerpt','<span class="help-block">:message</span>') !!}
 			</div>
 
 			<div class="form-control">
-        <label><span>Contenido</span></label>
+        <label><span>Content:</span></label>
       </div>
       <div>
 			  <textarea id="body" 
-				  placeholder="Ingresa el contenido del post" rows="10"
+				  placeholder="Enter the content of the post" rows="10"
 			  >{{ old('body',$post->body)}}</textarea>
 			  {!! $errors->first('body','<span class="help-block">:message</span>') !!}
       </div>
 
       @if($post->isWebPage())
       <div class="form-control">
-        <label><span>Web Page url</span></label>
+        <label><span>Web Page url:</span></label>
 			  <input id="url" type="text" 
 				  value="{{ old('url',$post->url) }}"
 				  placeholder="Ingrese el url">
@@ -50,9 +50,9 @@
 
 			@if($post->isFrame())
       <div class="form-control">
-			  <label><span>Audio y Video (iframe)</span></label>
+			  <label><span>iframe (Audio and video):</span></label>
 			  <textarea rows="2" id="iframe" 
-				  placeholder="Ingresa el contenido del aviso" rows="10"
+				  placeholder="Enter the content of the post" rows="10"
 			  >{{ old('iframe',$post->iframe)}}</textarea>
 			  {!! $errors->first('iframe','<span class="help-block">:message</span>') !!}
 			</div>
@@ -62,15 +62,15 @@
       <div class="form-control">
         <label><span>Observation:</span></label>
         <textarea id="observation" 
-          placeholder="Ingresa una observación">{{ old('observation',$post->observation) }}</textarea>
+          placeholder="Enter an observation">{{ old('observation',$post->observation) }}</textarea>
         {!! $errors->first('observation','<span class="help-block">:message</span>') !!}
       </div>
 
       <div class="form-control">
-        <label><span>Footnote</span></label>
+        <label><span>Footnote:</span></label>
         <input id="footnote" type="text" 
           value="{{ old('footnote',$post->footnotee) }}"
-          placeholder="Ingrese el footnote">
+          placeholder="Enter the footnote">
         {!! $errors->first('footnote','<span class="help-block">:message</span>') !!}
       </div>  
       @endif	        
@@ -78,7 +78,7 @@
 
     <div id="siteAds">
       <div class="form-control">
-        <label><span>Fecha de publicación:</span></label>
+        <label><span>Publication date:</span></label>
         <input type="text" id="published_at" 
           class="pull-right" 
           value="{{ old('published_at',$post->published_at ? $post->published_at->format('m/d/Y') : null) }}"
@@ -88,12 +88,12 @@
       <div class="form-control">
         <label><span>Tags:</span></label>
         <textarea id="tags" 
-          placeholder="Ingresa las etiquetas separadas por una coma ','">{{ old('tags',$post->strTags()) }}</textarea>
+          placeholder="Enter tags separated by a comma','">{{ old('tags',$post->strTags()) }}</textarea>
           {!! $errors->first('tags','<span class="help-block">:message</span>') !!}
       </div> 
 
       <div class="form-control">
-        <label><span>Opciones</span></label>
+        <label><span>Options</span></label>
       </div>
 
       <div class="form-control">
@@ -136,7 +136,7 @@
         <label>
           <input type="checkbox" id="cstr_allow_comments" 
             {!! $post->cstr_allow_comments ? 'checked' : '' !!}>
-          Cualquier usuario puede realizar comentarios.
+          Any user can comment.
         </label>
       </div>
 
@@ -145,7 +145,7 @@
         <label>
           <input type="checkbox" id="cstr_colaborative" 
             {!! $post->cstr_colaborative ? 'checked' : '' !!}>
-          Cualquier usuario agregar posts al catálogo.
+          Any user can add posts to the catalog.
         </label>
       </div>
       @endif
@@ -155,7 +155,7 @@
         <label>
           <input type="checkbox" id="cstr_colaborative" 
             {!! $post->cstr_colaborative ? 'checked' : '' !!}>
-          Cualquier usuario agregar catálogos a la página.
+          Any user can add catalogs to the page.
         </label>
       </div>
 
@@ -163,7 +163,7 @@
         <label>
           <input type="checkbox" id="cstr_allow_subscribers" 
             {!! $cstr_allow_subscribers ? 'checked' : '' !!}>
-          Permitir subscriptores. 
+          Allow subscriptions. 
         </label>
       </div>
 
@@ -171,7 +171,7 @@
         <label>
           <input type="checkbox" id="cstr_show_subscribers" 
             {!! $cstr_show_subscribers ? 'checked' : '' !!}>
-          Mostrar subscriptores. 
+          Show subscribers. 
         </label>
       </div>
 
@@ -179,7 +179,7 @@
         <label>
           <input type="checkbox" id="cstr_main_page" 
             {!! $cstr_main_page ? 'checked' : '' !!}>
-          Página principal. 
+          Main page. 
         </label>
       </div>
       @endif
@@ -197,7 +197,7 @@
 
       @if($post->isPhotoGallery())
       <div class="form-control">
-        <label><span>Subir imágenes</span></label>
+        <label><span>Upload images</span></label>
       </div>
       <div class="dropzone"></div>
       @endif 
@@ -209,12 +209,12 @@
             data-id="{{ $post->id }}"
             data-type="{{ $post->type_id }}"
             data-kpost="{{ $post->kpost ? 1 : 0 }}">
-            Guardar
+            Save changes
         </a>
       </div>
 
       @if($post->isPhotoGallery())
-    	  <p>Aqui van las imagenes guardadas</p>
+    	  <p>Saved images</p>
     	  <br>
         @if ($post->photos->count())		
   			  <div class="row"> 
@@ -395,7 +395,7 @@
           $.growl.notice({ message:"{{ $msg_update }}"});
         }
         else {
-          set_message("error","Lo sentimos pero no fue posible realizar la actualización. Intente de nuevo");
+          set_message("error","Sorry but the update was not possible. Try again, please");
           location.reload();
         }
       },
@@ -420,7 +420,7 @@
       paramName: 'photo',
       maxFileSize: 2,
       maxFiles:8,
-      dictDefaultMessage: 'Arrastra las fotos aquí para subirlas'
+      dictDefaultMessage: 'Drag the photos here to upload'
     });
 
     Dropzone.autoDiscover = false;

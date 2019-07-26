@@ -54,7 +54,7 @@
 		Edit
 	</div>
 	@if ($post->user_id == auth()->id())
-		<div class="popr-item" data-btn="btn_delete_catalog_from_created_catalogs" 
+		<div class="popr-item" data-btn="btn_delete_post_from_created_pages" 
 			data-id="{{ $post->id }}">
 			Delete
 		</div>  
@@ -84,6 +84,10 @@
 		data-id="{{ $post->id }}">
 		Edit
 	</div>	
+	<div class="popr-item" data-btn="btn_delete_catalog_from_created_catalogs" 
+		data-id="{{ $post->id }}">
+		Delete
+	</div>
 	<div class="popr-item" data-btn="btn_copy_post"
 		data-id="{{ $post->id }}">
 		Copy

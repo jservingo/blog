@@ -10,7 +10,7 @@ class TagsController extends Controller
     public function show(Tag $tag){
     	$posts = $tag->posts()->paginate(12);
 
-    	$title = "Avisos del tag #$tag->name";
+    	$title = "#$tag->name";
     	$root = "tag_posts";
     	$buttons = "posts.buttons.received_posts"; 
     	$subtitle = "";

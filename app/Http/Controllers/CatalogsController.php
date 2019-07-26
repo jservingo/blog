@@ -157,7 +157,7 @@ class CatalogsController extends Controller
   {
     if ($category->page->user_id != auth()->id() && $catalog->user_id != auth()->id())
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>'You are not authorized to perform this operation.'));
       return;
     }
 
@@ -170,7 +170,7 @@ class CatalogsController extends Controller
   {
     if ($catalog->user_id != auth()->id())
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>'You are not authorized to perform this operation.'));
       return;
     }
 

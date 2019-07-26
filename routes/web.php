@@ -3,10 +3,9 @@
 //Web Routes
 
 //Info
-Route::get('home_original','InfoController@home')->name('pages.home');
-Route::get('nosotros','InfoController@about')->name('pages.about');
-Route::get('archivo','InfoController@archive')->name('pages.archive');
-Route::get('contacto','InfoController@contact')->name('pages.contact');
+Route::get('about','InfoController@about')->name('info.about');
+Route::get('archive','InfoController@archive')->name('info.archive');
+Route::get('contact','InfoController@contact')->name('info.contact');
 
 Route::get('email',function(){
 	return new App\Mail\LoginCredentials(App\User::first(),'123456');
