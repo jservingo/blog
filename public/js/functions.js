@@ -14,6 +14,8 @@
         return "Web page";
       case 6:
         return "Alert";
+      case 7:
+        return "Offer";
       case 21:
         return "Catalog";
       case 22:

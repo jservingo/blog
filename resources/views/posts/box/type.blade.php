@@ -16,6 +16,15 @@
    </span>
   </div>
 @endif
+@if ($post->isAlert())
+  <div class="post-category">
+   <span class="category red text-capitalize">
+      <a href="{{ route('post.show',$post) }}">
+        {{ $post->type->name }}
+      </a>
+    </span>
+  </div>
+@endif 
 @if ($post->isWebPage())
   <div class="post-category">     
    <span class="category lime text-capitalize">
@@ -27,7 +36,7 @@
 @endif
 @if ($post->isOffer())
   <div class="post-category">
-   <span class="category orange text-capitalize">
+   <span class="category light-green text-capitalize">
       <a href="{{ route('post.show',$post) }}">
         {{ $post->type->name }}
       </a>

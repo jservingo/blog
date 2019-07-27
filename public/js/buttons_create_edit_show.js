@@ -214,11 +214,13 @@ function btn_create_post()
   html = html + "<h3>Create post</h3>";
   html = html + "<p>Type</p>";
   html = html + "<select id='type'>";
-  html = html + "<option value='1'>Photo gallery</option>";
-  html = html + "<option value='2'>Frame: video or soundcloud</option>";
   html = html + "<option value='3'>Text</option>";
   html = html + "<option value='4'>Notification</option>";
+  html = html + "<option value='6'>Alert</option>";
+  html = html + "<option value='7'>Offer</option>";
   html = html + "<option value='11'>Web Page link</option>";
+  html = html + "<option value='1'>Photo gallery</option>";
+  html = html + "<option value='2'>Frame: video or soundcloud</option>";
   html = html + "</select>";
   html = html + "<p>Title</p>";
   html = html + "<input id='title' type='text' class='form-control' placeholder='Enter the title of the post' required>";
@@ -283,11 +285,34 @@ function btn_edit(el, id)
         {
           if (el=="post")
           {
-            url = '/'+el+'/footer/'+id;
-            edit_post(url);
+            //url = '/'+el+'/footer/'+id;
+            edit_footer(el, id);
           }  
           else
             alert("Sorry but you are not authorized to edit the post.");
+        }  
+      },
+      error: function (data) {
+        console.log('Error:', data);
+      }
+    }); 
+}
+
+function edit_footer(el, id)
+{
+  url = '/'+el+'/isSaved/'+id;
+  $.ajax({
+      url: url,
+      dataType: 'json',
+      success: function(data) {
+        if (data.response=="Y")
+        {
+          url = '/'+el+'/footer/'+id;
+          edit_post(url);
+        }
+        else
+        {
+          alert("Sorry but you are not authorized to edit the post.");
         }  
       },
       error: function (data) {

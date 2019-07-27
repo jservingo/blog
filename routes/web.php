@@ -106,6 +106,7 @@ Route::get('post/user/{user}','PostsController@show_user')->name('post.show_user
 Route::get('post/{post}','PostsController@edit')->name('post.edit');
 Route::get('post/footer/{post}','PostsController@edit_footer')->name('post.edit_footer');
 Route::get('post/isOwner/{post}','PostsController@isOwner')->name('post.isOwner');
+Route::get('post/isSaved/{post}','PostsController@isSaved')->name('post.isSaved');
 Route::get('blog/{post}','PostsController@show_post')->name('post.show');
 Route::post('post','PostsController@store')->name('post.create');
 Route::post('posts/save','PostsController@save_post');

@@ -227,10 +227,15 @@ class Post extends Model
         return $this->type_id===5 ? true : false;
     }
 
-    public function isOffer()
+    public function isAlert()
     {
         return $this->type_id===6 ? true : false;
-    }
+    }  
+
+    public function isOffer()
+    {
+        return $this->type_id===7 ? true : false;
+    }  
 
     public function isCatalog()
     {
@@ -255,5 +260,5 @@ class Post extends Model
     public function isCompany()
     {
         return $this->type_id===25 ? true : false;
-    }    
+    }  
 }

@@ -162,7 +162,6 @@ class HomeController extends Controller
   {
     $posts = Post
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
-      ->where("status_id","=",2)
       ->where("kposts.views",">",0)
       ->where("kposts.user_id","=",auth()->id())
       ->select('posts.*')
@@ -292,7 +291,6 @@ class HomeController extends Controller
   { 
     $posts = Post::with('owner')
       ->join('kposts', 'posts.id', '=', 'kposts.post_id')
-      ->where("status_id","=",2)
       ->where("kposts.views",">",0)
       ->where("kposts.user_id","=",auth()->id())
       ->select('posts.*')
@@ -392,6 +390,7 @@ class HomeController extends Controller
       case 4:
       case 5:
       case 6:
+      case 7:
         $post_id = $request->get('post_id');
         $post = Post::find($post_id);
         break;
@@ -401,6 +400,7 @@ class HomeController extends Controller
       case 24:
       case 25:
       case 26:
+      case 27:
         $ref_id = $request->get('ref_id');
         $post = Post
           ::where("type_id","=",$type_id)

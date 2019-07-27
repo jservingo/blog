@@ -348,6 +348,16 @@ class PostsController extends Controller
     echo json_encode(array('success'=>true,'response'=>$response));
   }
 
+  public function isSaved(Post $post)
+  {
+    if ($post->kpost)
+      $response = "Y";
+    else
+      $response = "N";
+
+    echo json_encode(array('success'=>true,'response'=>$response));
+  }
+
   public function save_post(Request $request)
   {
     //Obtener kpost asociado al post
