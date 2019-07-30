@@ -28,7 +28,7 @@ $('.btn_update_post').bind('click', function(e){
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","{{ $msg_update }}");
+        set_message("notice","The changes where saved.");
         window.opener.location.reload();
         window.close();
       }

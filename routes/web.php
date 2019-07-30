@@ -4,7 +4,7 @@
 
 //Info
 Route::get('about','InfoController@about')->name('info.about');
-Route::get('archive','InfoController@archive')->name('info.archive');
+Route::get('support','InfoController@support')->name('info.support');
 Route::get('contact','InfoController@contact')->name('info.contact');
 
 Route::get('email',function(){
@@ -29,6 +29,7 @@ Route::get('recent/views','HomeController@show_recent_views')->name('home.show_r
 
 Route::get('user_stats/get','HomeController@get_user_stats');
 Route::get('recommendations/get','HomeController@get_recommendations');
+Route::get('offers/get','HomeController@get_offers');
 Route::get('favorites/get','HomeController@get_favorites');
 Route::get('most_viewed/get','HomeController@get_most_viewed');
 Route::get('recent_views/get','HomeController@get_recent_views');
@@ -69,6 +70,7 @@ Route::delete('subscriptions/{post}','SubscriptionsController@destroy');
 
 //Contacts
 Route::get('contacts/discover','ContactsController@discover')->name('contacts.discover');
+Route::get('contacts/get','ContactsController@get_contacts');
 Route::get('contacts/tree','ContactsController@get_contacts_tree');
 Route::get('contacts/{group}','ContactsController@show_group')->name('contacts.show_group');
 Route::get('contacts','ContactsController@show_contacts')->name('contacts.show_contacts');
@@ -76,6 +78,7 @@ Route::post('contacts/create','ContactsController@create_node');
 Route::post('contacts/rename','ContactsController@rename_node');
 Route::post('contacts/delete','ContactsController@delete_node');
 Route::post('contacts/add','ContactsController@add_user_to_contacts');
+Route::post('contacts/send/post','ContactsController@send_post');
 Route::delete('contacts/group/{post}/{group}','ContactsController@delete_contact_from_group');
 Route::delete('contacts/{post}','ContactsController@destroy');
 

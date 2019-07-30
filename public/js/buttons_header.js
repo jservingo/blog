@@ -77,6 +77,10 @@ $('.box_popup').on("click","div.popr-item", function(e){
       var post_id = $(this).data("id");
       btn_save_post(post_id);
       break;
+    case 'btn_send_post':
+      var post_id = $(this).data("id");
+      btn_send_post(post_id);
+      break;
     case 'btn_discard_post':
       var post_id = $(this).data("id");
       btn_discard_post(post_id);
@@ -318,6 +322,8 @@ function get_type(type)
       return "Web page";
     case 6:
       return "Alert";		
+    case 7:
+      return "Offer"; 
 		case 21:
 			return "Catalog";
 		case 22:

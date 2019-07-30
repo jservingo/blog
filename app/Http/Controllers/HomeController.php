@@ -123,12 +123,12 @@ class HomeController extends Controller
   public function show_offers()
   {
     $posts = Post
-      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
-      ->where("status_id","=",0)
-      ->where("kposts.user_id","=",auth()->id())
-      ->where("posts.type_id", "=", 6)
-      ->select('posts.*')
-      ->latest('kposts.created_at')
+      //::join('kposts', 'posts.id', '=', 'kposts.post_id')
+      //->where("status_id","=",0)
+      ::where("type_id", "=", 7)
+      ->where("user_id","<>",auth()->id())      
+      //->select('posts.*')
+      ->latest('created_at')
       ->paginate(12); 
 
     $title = "Offers";
@@ -269,6 +269,23 @@ class HomeController extends Controller
 
     echo json_encode($result);
   }
+
+  public function get_offers()
+  { 
+    $posts = Post::with('owner')
+      //->join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where("type_id","=",7)
+      ->where("user_id","<>",auth()->id())
+      //->select('posts.*')
+      ->latest('created_at')
+      ->limit(100)
+      ->get(); 
+
+    $result['rows'] = $posts;
+
+    echo json_encode($result);
+  }
+
 
   public function get_favorites()
   { 

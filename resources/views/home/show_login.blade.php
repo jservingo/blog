@@ -55,8 +55,8 @@
   <script type="text/javascript" src="/js/popr.js"></script>
   <script>
     $(document).ready(function() {
-     $('.popr').popr();
-     $("#menu_standard").hide();
+      $('.popr').popr();
+      $("#menu_standard").hide();
     });
   </script> 
   @include('home.message')

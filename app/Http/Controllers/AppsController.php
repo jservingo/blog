@@ -194,7 +194,7 @@ class AppsController extends Controller
         'body' => 'source:'.$source,
         'footnote' => $footnote,
         'type_id' => 27,
-        'user_id' => $app->owner->id,
+        'user_id' => $app->user_id,
         'custom_type' => $custom_type,
         'app_id' => $app_id,
         'source' => $source,

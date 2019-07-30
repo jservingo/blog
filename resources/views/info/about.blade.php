@@ -1,13 +1,40 @@
 @extends('layout')
 
 @section('content')
+  <br/>
 	<section class="pages container">
 		<div class="page page-about">
 			<h1 class="text-capitalize">about</h1>
-			<cite>Aliquam rhoncus tincidunt dui ut auctor. Maecenas eget purus maximus, commodo sem et, porta nunc. Maecenas lacinia nibh in elementum sagittis.</cite>
+			<cite>Kodelia allows users to create and save posts created by other users. Organizing them in multiple catalogs, pages and powerfull aplications to easily share and find the information posted.</cite>
 			<div class="divider-2" style="margin: 35px 0;"></div>
-			<p>Maecenas auctor, libero sit amet varius lacinia, ante orci tincidunt lorem, at posuere neque ligula eu sapien. Etiam pellentesque, leo a porta auctor, nisi magna pellentesque mauris, eu lacinia risus lectus at diam. In vel consequat orci. Integer quis tristique enim. Proin ut orci ut ex eleifend porttitor. Vestibulum cursus sodales rhoncus.</p>
-			<p>Cras ac elit non massa sodales commodo. Nullam dapibus sed orci nec finibus. Sed gravida nibh at mattis mattis. Ut bibendum orci at diam pharetra viverra. Nam pellentesque varius eleifend. Integer vitae elit viverra, mollis quam et, vehicula odio.</p>
+			<p>Designed & developed by Jorge Servín Gómez.</p>
+			<p>Caracas, Venezuela.</p>
 		</div>
 	</section>
 @endsection
+
+@push('styles')
+  <link rel="stylesheet" href="/css/framework.css">
+@endpush
+
+@push('scripts')
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/js/confirmDialog.min.js"></script>
+  <script type="text/javascript" src="/js/growl.js"></script>
+  <script type="text/javascript" src="/js/buttons_header.js"></script>
+  <script type="text/javascript" src="/js/popr.js"></script>
+  <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.popr').popr();
+      $('.menu').jqsimplemenu();
+      @if (! Auth::check())
+     	  $("#menu_standard").hide();
+    	@endif 
+    });
+  </script> 
+  @include('home.message')
+@endpush

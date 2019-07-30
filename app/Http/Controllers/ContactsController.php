@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Contact;
 use App\Group;
 use App\Kpost;
@@ -157,6 +158,43 @@ class ContactsController extends Controller
     $group->contacts()->detach($post->ref_id);
     echo json_encode(array('success'=>true));
   } 
+
+  public function get_contacts()
+  {
+    $contacts = Contact
+      ::join('users','contacts.user_ref','=','users.id')
+      ->where("contacts.user_id","=",auth()->id())
+      ->orderBy('users.name', 'asc')
+      ->get();
+
+    $data = [];
+
+    foreach ($contacts as $contact)
+    {
+      $data[] = array(
+          "id"=>$contact->user_ref,
+          "name"=>$contact->name);
+    }
+    echo json_encode($data);
+  }
+
+  public function send_post(Request $request)
+  { 
+    $post = Post::find($request->get('post_id'));
+    $selected = $request->get('selected');
+
+    foreach ($selected as $user_id)
+    {
+      $kpost = Kpost::create([
+        'post_id' => $post->id,
+        'user_id' => $user_id,
+        'sent_by' => auth()->id(),
+        'sent_at' => Carbon::now() 
+      ]);
+    }
+
+    echo json_encode(array('success'=>true));
+  }
 
   /******************************************************
     Contacts tree

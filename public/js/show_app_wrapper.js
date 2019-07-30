@@ -88,10 +88,13 @@ var template = '<div class="post pfull">'+
     '<div>'+
       '<div style="float:right;">'+
         '<footer class="xcontainer-flex xspace-between" style="width:210px; height:24px; background-color:#fefdfd; padding: 6px 10px; text-align:right;">'+
-          '<a class="btn_copy_app_post" data-source=":href:" data-id=":post_id:" data-custom_type=":custom_type:">'+
+          '<a class="btn_copy_app_post" data-source=":href:" data-id=":app_id:" data-custom_type=":custom_type:">'+
             '<img src="/img/copy.png" width="24">'+
           '</a>'+
-          '<a class="btn_save_app_post" data-source=":href:" data-id=":post_id:" data-custom_type=":custom_type:">'+ 
+          '<a class="btn_save_app_post"'+  
+            ' data-id=":app_id:"'+
+            ' data-source=":href:"'+
+            ' data-custom_type=":custom_type:">'+
             '<img src="/img/save.png" width="24">'+
           '</a>'+
         '</footer>'+ 
@@ -128,13 +131,20 @@ var template = '<div class="post pfull">'+
       var date = f.getDate() + ' ' + get_month(f) + ' ' + f.getFullYear();
       var post = template
         .replace(':title:', post.title)
+        .replace(':title:', post.title)
+        .replace(':img:', post.img)
         .replace(':img:', post.img)
         .replace(':excerpt:', post.excerpt)
+        .replace(':excerpt:', post.excerpt)
+        .replace(':tags:', post.tags)
+        .replace(':footnote:', post.footnote)
         .replace(':url:', post.url)
         .replace(':url:', post.url)
         .replace(':href:', post.href)
         .replace(':href:', post.href)
         .replace(':img alt:', post.title + " Logo")
+        .replace(':app_id:', app_id)
+        .replace(':app_id:', app_id)
         .replace(':app_id:', app_id)
         .replace(':app_id:', app_id)
         .replace(':post_id:', post_id)

@@ -7,7 +7,7 @@
                 <ul class="container-flex space-center list-unstyled">
                     <li><a href="{{ route('home') }}" class="text-uppercase c-white">home</a></li>
                     <li><a href="{{ route('info.about') }}" class="text-uppercase c-white">about</a></li>
-                    <li><a href="{{ route('info.archive') }}" class="text-uppercase c-white">archive</a></li>
+                    <li><a href="{{ route('info.support') }}" class="text-uppercase c-white">support</a></li>
                     <li><a href="{{ route('info.contact') }}" class="text-uppercase c-white">contact</a></li>
                 </ul>
             </nav>

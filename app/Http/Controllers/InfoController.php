@@ -18,9 +18,9 @@ class InfoController extends Controller
     	return view('info.about');
     }
 
-    public function archive()
+    public function support()
     {
-    	return view('info.archive');
+    	return view('info.support');
     }
 
     public function contact()

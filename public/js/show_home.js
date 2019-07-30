@@ -135,6 +135,7 @@ $(function() {
 
   show_user_stats();
   show_home_posts("recommendations");
+  show_home_posts("offers");
   show_home_posts("favorites");
   show_home_posts("most_viewed");
   show_home_posts("recently_viewed");
@@ -172,6 +173,13 @@ $(function() {
 					renderPosts(posts,"#recommendations");
 				});
 				break;
+			case "offers":
+			  url = '/offers/get';
+				get_home_posts(url, function(posts) {
+					console.log(posts);
+					renderPosts(posts,"#offers");
+				});
+				break;	
 			case "favorites":
 			  url = '/favorites/get';
 				get_home_posts(url, function(posts) {

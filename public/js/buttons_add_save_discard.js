@@ -11,7 +11,7 @@ $('.app-posts').on("click",".btn_save_app_post", function(e){
   var user = $('#t-user').text();
   var source = $(this).data("source");
   var custom_type = $(this).data("custom_type");
-  alert("click: "+title);
+  alert("btn_save_app_post: "+app_id);
   btn_save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, source, custom_type); 
 });
 

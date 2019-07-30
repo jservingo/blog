@@ -20,16 +20,41 @@
         @include('posts.single.header') 
         @include('posts.single.content')
 
-        <div class="container-flex space-between" style="width:98%;padding:20px 20px 20px 0;">
-          @include('posts.box.tags')
+        <div class="image-w-text" style="padding-right:20px;">
+          <h3>Excerpt:</h3>
+          @if ($post->kpost && $post->kpost->excerpt)
+            {{ $post->kpost->excerpt }}
+          @else
+            {{ $post->excerpt }}
+          @endif
         </div>
 
         <div class="image-w-text" style="padding-right:20px;">
-          {!! $post->excerpt !!}
+          <h3>Content:</h3>
+          {!! $post->body !!}
         </div>
 
-        <div class="image-w-text" style="padding:20px 20px 20px 0;">
-          {!! $post->body !!}
+        <div class="image-w-text" style="padding-right:20px;">
+          <h3>Observation:</h3>
+          @if ($post->kpost && $post->kpost->observation)
+            {{ $post->kpost->observation }}
+          @else
+            {{ $post->observation }}
+          @endif
+        </div>
+
+        <div class="image-w-text" style="padding-right:20px;">
+          <h3>Footenote:</h3>
+          @if ($post->kpost && $post->kpost->footnote)
+            {{ $post->kpost->footnote }}
+          @else
+            {{ $post->footnote }}
+          @endif
+        </div>
+
+        <div class="image-w-text" style="padding-right:20px;">
+          <h3>Tags:</h3>
+          @include('posts.box.tags')
         </div>
 
         @include('posts.single.options')

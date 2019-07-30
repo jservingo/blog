@@ -30,6 +30,12 @@ $('.btn_paste_post_to_contacts').bind('click', function(e){
   btn_paste_post_to_contacts(group_id);
 });
 
+$('.btn_send_post').bind('click', function(e){
+  e.preventDefault();
+  var post_id = $(this).data("id");
+  btn_send_post(post_id);
+});
+
 // FUNCTIONS
 
 function btn_copy_catalog(ref_id)
@@ -123,8 +129,8 @@ function btn_paste_post_to_catalog(catalog_id)
       $.createDialog({
         attachAfter: '#main_panel',
         title: html,
-        accept: 'Pegar',
-        refuse: 'Cancelar',
+        accept: 'Paste',
+        refuse: 'Cancel',
         acceptStyle: 'red',
         refuseStyle: 'gray',
         acceptAction: function(){
@@ -175,8 +181,8 @@ function btn_paste_post_to_contacts(group_id)
       $.createDialog({
         attachAfter: '#main_panel',
         title: html,
-        accept: 'Pegar',
-        refuse: 'Cancelar',
+        accept: 'Paste',
+        refuse: 'Cancel',
         acceptStyle: 'red',
         refuseStyle: 'gray',
         acceptAction: function(){
@@ -227,8 +233,8 @@ function btn_paste_catalog_to_category(category_id)
       $.createDialog({
         attachAfter: '#main_panel',
         title: html,
-        accept: 'Pegar',
-        refuse: 'Cancelar',
+        accept: 'Paste',
+        refuse: 'Cancel',
         acceptStyle: 'red',
         refuseStyle: 'gray',
         acceptAction: function(){
@@ -347,3 +353,86 @@ function paste_post_to_contacts(selected, group_id)
   }); 
 }
 
+function btn_send_post(post_id)
+{
+  //Obtener contactos
+  $.ajax({
+    url: '/contacts/get',
+    type: 'get',
+    dataType: 'json',
+    success: function(data) {
+      //Crear ventana modal
+      var html = "<div id='clipboard' class='multiselect'>";
+      var zcolor="#d5fcfd";
+      data.forEach(function (contact) {
+        var type = "Post";
+        html = html + "<div style='padding:8px; background-color:";
+        html = html + zcolor + "'><label style='margin:0'>";
+        html = html + "<input type='checkbox' name='option[]' value=" + contact.id;
+        html = html + " />&nbsp;&nbsp;&nbsp;&nbsp;";
+        html = html + contact.name;
+        html = html + "</label></div>";
+        if (zcolor=="#d5fcfd")
+          zcolor="#cee3ea";
+        else
+          zcolor="#d5fcfd";
+      });
+      html = html + "</div>";
+      $.createDialog({
+        attachAfter: '#main_panel',
+        title: html,
+        accept: 'Send',
+        refuse: 'Cancel',
+        acceptStyle: 'red',
+        refuseStyle: 'gray',
+        acceptAction: function(){
+          //Crear arreglo con posts seleccionados
+          var selected = [];
+          $('div#clipboard input[type=checkbox]').each(function() {
+            if ($(this).is(":checked")) {
+              selected.push($(this).attr('value'));
+            }
+          });
+          send_post_to_contacts(selected, post_id); 
+        }
+      });
+      $.showDialog();
+      $(".multiselect").multiselect();
+    },
+    error: function (data) {
+      console.log('Error:', data);
+    }
+  });     
+}
+
+function send_post_to_contacts(selected, post_id)
+{
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  var data = {selected:selected, post_id:post_id};
+  $.ajax({
+    type: 'post',
+    url: '/contacts/send/post',
+    data: data,
+    dataType: 'json',
+    success: function(data) {
+      if (data.success){
+        set_message("notice","The post was sent.");
+        location.reload();
+      }
+      else if(data.msg)
+      {
+        $.growl.warning({ message:data.msg });
+      }
+      else {
+        alert('error');
+      }
+    },
+    error: function (data) {
+      console.log('Error:', data);
+    }
+  }); 
+}
