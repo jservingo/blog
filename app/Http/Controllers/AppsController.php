@@ -163,9 +163,24 @@ class AppsController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function save_app_post(Request $request)
+  public function get_post(Request $request)
   {
-    //Buscar post de la app
+    $app_id = $request->get('app_id');
+    $source = $request->get('source');
+
+    $post = Post
+      ::where("app_id","=",$app_id)
+      ->where("source","=",$source)
+      ->first();
+
+    if ($post)
+      echo json_encode(array('success'=>true,'post_id'=>$post->id));
+    else
+      echo json_encode(array('success'=>false));
+  }  
+
+  public function save_app_post(Request $request)
+  {    
     $app_id = $request->get('app_id');
     $title = $request->get('title');
     $excerpt = $request->get('excerpt');
@@ -177,23 +192,25 @@ class AppsController extends Controller
     $source = $request->get('source');
     $custom_type = $request->get('custom_type');
 
+    //Buscar post de la app
     $post = Post
       ::where("app_id","=",$app_id)
       ->where("source","=",$source)
       ->first();
 
+    //Buscar el owner de la app
+    $app = App::find($app_id);
+
     //Si el post no existe hay que crearlo
     //OJO El usuario debería ser el administrador de la App
     if (! $post)
-    {
-      $app = App::find($app_id);
-
+    { 
       $post = Post::create([
         'title' => $title,
         'excerpt' => $excerpt,
-        'body' => 'source:'.$source,
+        'body' => '<a href="'.$source.'" target="_blank">source</a>',
         'footnote' => $footnote,
-        'type_id' => 27,
+        'type_id' => 8,
         'user_id' => $app->user_id,
         'custom_type' => $custom_type,
         'app_id' => $app_id,
@@ -202,12 +219,16 @@ class AppsController extends Controller
       ]);
     }
 
-    $kpost = Kpost::create([
-      'post_id' => $post->id,
-      'user_id' => auth()->id(),
-      'sent_by' => auth()->id(),
-      'sent_at' => Carbon::now() 
-    ]);
+    if (!$post->kpost)
+    {
+      $kpost = Kpost::create([
+        'post_id' => $post->id,
+        'status_id' => 2,
+        'user_id' => auth()->id(),
+        'sent_by' => auth()->id(),
+        'sent_at' => Carbon::now() 
+      ]);
+    }
 
     echo json_encode(array('success'=>true,'post_id'=>$post->id));
   }

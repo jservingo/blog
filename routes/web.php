@@ -47,6 +47,7 @@ Route::get('apps','AppsController@show_all')->name('apps.show_all');
 Route::get('apps/created','AppsController@show_created')->name('apps.show_created');
 Route::get('apps/{app}','AppsController@show_app')->name('app.show_app');
 Route::get('app/subscribers/{app}','AppsController@show_subscribers')->name('app.show_subscribers');
+Route::post('app/get/post','AppsController@get_post');
 Route::post('apps/post','AppsController@save_app_post');
 
 //Pages

@@ -308,6 +308,35 @@
   <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
   <script type="text/javascript" src="/js/edit_post.js"></script>
   <script type="text/javascript" src="/js/functions.js"></script>
+  <script>
+    if($('.dropzone').length)
+    {     
+      var myDropzone = new Dropzone('.dropzone',{
+        url: '/admin/posts/{{ $post->id }}/photos',
+        headers: {
+          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        acceptedFiles: 'image/*',
+        paramName: 'photo',
+        maxFileSize: 2,
+        maxFiles:8,
+        dictDefaultMessage: 'Drag the photos here to upload'
+      });
+
+      Dropzone.autoDiscover = false;
+
+      myDropzone.on("addedfile", function(file) {
+        console.log(file);
+        //alert("Ver consola");
+      });
+
+      myDropzone.on('error', function(file, res) {
+        var msg = res.errors.photo[0];
+        $('.dz-error-message:last > span').text(msg);
+      });
+    }
+  </script>
+
   <!-- <script src="/adminlte/plugins/select2/select2.full.min.js"></script> -->
   <!-- <script src="/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script> -->
 @endpush

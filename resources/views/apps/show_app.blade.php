@@ -52,8 +52,12 @@
     var owner_post = "{{ $app->owner->post->id }}";
   </script>
   <script type="text/javascript" src="/js/show_app_wrapper.js"></script>
-  <script type="text/javascript" src="/js/buttons_header.js"></script>
   <script type="text/javascript" src="/js/buttons_add_save_discard.js"></script>
+  <script type="text/javascript" src="/js/buttons_catalog_ribbon.js"></script>
+  <script type="text/javascript" src="/js/buttons_copy_paste.js"></script>
+  <script type="text/javascript" src="/js/buttons_create_edit_show.js"></script>
+  <script type="text/javascript" src="/js/buttons_delete.js"></script>
+  <script type="text/javascript" src="/js/buttons_header.js"></script>
   <script type="text/javascript" src="/js/multiselect.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/truncate.js"></script>

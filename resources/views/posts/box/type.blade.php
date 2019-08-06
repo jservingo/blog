@@ -82,7 +82,8 @@
 @if ($post->custom_type)
   <div class="post-category">
    <span class="category dark-wine text-capitalize">
-      <a href="{{ route('app.show_app',[$post->ref_id,0]) }}">
+      {{-- route('app.show_app',[$post->ref_id,0]) --}}
+      <a href="{{ $post->source }}" target="_blank">
         {{ $post->custom_type }}
       </a>
     </span>

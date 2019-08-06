@@ -2,18 +2,17 @@
 
 $('.app-posts').on("click",".btn_save_app_post", function(e){
   var app_id = $(this).data("id");
-  var title = $('#t-title').text();
-  var excerpt = $('#t-excerpt').text();
-  var img = $('#t-img').attr("src");
-  var tags = $('#t-tags').text();
-  var footnote = $('#t-footnote').text();
-  var date = $('#t-date').text();
-  var user = $('#t-user').text();
+  var title = $(this).data("title");
+  var excerpt = $(this).data("excerpt");
+  var img = $(this).data("img");
+  var tags = $(this).data("tags");
+  var footnote = $(this).data("footnote");
+  var date = $(this).data("date");
+  var user = $(this).data("user");
   var source = $(this).data("source");
   var custom_type = $(this).data("custom_type");
-  alert("btn_save_app_post: "+app_id);
   btn_save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, source, custom_type); 
-});
+}); 
 
 $('.btn_add_subscription').bind('click', function(e){
   var post_id = $(this).data("id");

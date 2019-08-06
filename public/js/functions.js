@@ -16,6 +16,8 @@
         return "Alert";
       case 7:
         return "Offer";
+      case 8:
+        return "App item";
       case 21:
         return "Catalog";
       case 22:

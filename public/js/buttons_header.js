@@ -36,9 +36,16 @@ $('.box_popup').on("click","div.popr-item", function(e){
   {
     case 'btn_save_app_post':
       var app_id = $(this).data("id");
+      var title = $('#t-title').text();
+      var excerpt = $('#t-excerpt').text();
+      var img = $('#t-img').attr("src");
+      var tags = $('#t-tags').text();
+      var footnote = $('#t-footnote').text();
+      var date = $('#t-date').text();
+      var user = $('#t-user').text();
       var source = $(this).data("source");
       var custom_type = $(this).data("custom_type");
-      btn_save_app_post(app_id, source, custom_type);
+      btn_save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, source, custom_type); 
       break;
     case 'btn_create_catalog_from_category':
       var category_id = $(this).data("id");
@@ -324,6 +331,8 @@ function get_type(type)
       return "Alert";		
     case 7:
       return "Offer"; 
+    case 8:
+      return "App item";
 		case 21:
 			return "Catalog";
 		case 22:

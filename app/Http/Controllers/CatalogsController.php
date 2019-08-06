@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Category;
@@ -57,13 +58,27 @@ class CatalogsController extends Controller
     }
     else
     {
-      $posts = Post        
+      $posts_created = Post        
       ::where("posts.user_id","=",auth()->id())
       ->where("type_id","=",21)
-      ->latest('posts.created_at')
-      ->paginate(12);
+      ->latest('posts.created_at'); 
 
-      $title = "Created catalogs";   
+      $posts_saved = Post
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where("type_id","=",21)
+      ->where("status_id","=",2)
+      ->where("kposts.sent_by","=",auth()->id())
+      ->where("kposts.user_id","=",auth()->id())
+      ->select('posts.*')
+      ->latest('kposts.created_at');
+
+      $posts_created->union($posts_saved);
+      $querySql = $posts_created->toSql();
+
+      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
+      $posts = $query->paginate(12); 
+
+      $title = "Catalogs";   
       $root = "created_catalogs";
       $buttons = "posts.buttons.created_catalogs"; 
       $subtitle = "";

@@ -408,6 +408,7 @@ class HomeController extends Controller
       case 5:
       case 6:
       case 7:
+      case 8:
         $post_id = $request->get('post_id');
         $post = Post::find($post_id);
         break;
