@@ -19,7 +19,7 @@
             </div>
         </div>
         @if (auth()->check())
-            <div class="container-flex space-between" style="width:210px;">
+            <div class="container-flex space-between" style="width:310px;">
                 <span class="user c-blue">
                     <a id="t-user" href="/post/user/{{ Auth::user()->id }}">
                         {{ Auth::user()->name }}
