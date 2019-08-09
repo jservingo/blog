@@ -133,6 +133,10 @@ $(function() {
     $appPostsMenu.empty();
 
     visible_posts.forEach(function (post) {
+      renderPost(post,0);
+      $('.popr').popr();
+      return;
+
       $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
