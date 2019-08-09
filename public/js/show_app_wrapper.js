@@ -138,8 +138,7 @@ $(function() {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
       }); 
-      console.log(post.href);
-      var data = {app_id: app_id, source: post.href};
+      var data = {app_id: app_id, title: post.title};
       $.ajax({
         type: 'post',
         url: '/app/get/post/',

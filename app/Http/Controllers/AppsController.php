@@ -166,11 +166,11 @@ class AppsController extends Controller
   public function get_post(Request $request)
   {
     $app_id = $request->get('app_id');
-    $source = $request->get('source');
+    $title = $request->get('title');
 
     $post = Post
       ::where("app_id","=",$app_id)
-      ->where("source","=",$source)
+      ->where("title","=",$title)
       ->first();
 
     if ($post)
