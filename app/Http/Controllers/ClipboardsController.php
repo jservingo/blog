@@ -81,6 +81,38 @@ class ClipboardsController extends Controller
         echo json_encode(array('success'=>true));
     }
 
+    public function copy_app_post(Request $request)
+    {
+        $app_id = $request->get('app_id');
+        $title = $request->get('title');
+
+        //Buscar el post
+        $post = Post
+            ::where("app_id","=",$app_id)
+            ->where("title","=",$title)
+            ->first();
+
+        //Si existe copiar al clipboard
+        if ($post)
+        {
+            //Eliminar post del clipboard
+            $res = Clipboard
+                ::where("post_id","=",$post->id)
+                ->where("user_id","=",auth()->id())
+                ->delete();
+
+            //Agregar post al clipboard
+            $clipboard = Clipboard::create([
+                'post_id' => $post->id,
+                'user_id' => auth()->id()
+            ]);
+
+            echo json_encode(array('success'=>true));
+        }
+        else
+            echo json_encode(array('success'=>false, 'msg'=>'Sorry! The post must be saved first.'));
+    }
+
     public function paste_catalog_to_category(Request $request)
     {
         $category = Category::find($request->get('category_id'));

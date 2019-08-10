@@ -132,6 +132,7 @@ Route::get('clipboards/posts','ClipboardsController@get_posts');
 Route::post('clipboards/copy/contact','ClipboardsController@copy_contact');
 Route::post('clipboards/copy/catalog','ClipboardsController@copy_catalog');
 Route::post('clipboards/copy/post','ClipboardsController@copy_post');
+Route::post('clipboards/copy/app/post','ClipboardsController@copy_app_post');
 Route::post('clipboards/paste/contact','ClipboardsController@paste_post_to_contacts');
 Route::post('clipboards/paste/catalog','ClipboardsController@paste_catalog_to_category');
 Route::post('clipboards/paste/post','ClipboardsController@paste_post_to_catalog');

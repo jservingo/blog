@@ -165,6 +165,7 @@ class AppsController extends Controller
 
   public function get_post(Request $request)
   {
+    //YA NO SE USA (ELIMINAR)
     $app_id = $request->get('app_id');
     $title = $request->get('title');
 

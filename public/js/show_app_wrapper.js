@@ -88,7 +88,10 @@ $(function() {
       '<div>'+
         '<div style="float:right;">'+
           '<footer class="xcontainer-flex xspace-between" style="width:210px; height:24px; background-color:#fefdfd; padding: 6px 10px; text-align:right;">'+
-            '<a class="btn_copy_app_post" data-id=":post_id:">'+
+            '<a class="btn_copy_app_post" '+ 
+                'data-id=":app_id:" '+
+                'data-title=":title:" '+
+                'data-source=":url:">'+
               '<img src="/img/copy.png" width="24">'+
             '</a>'+
             '<a class="btn_save_app_post" '+ 
@@ -134,37 +137,9 @@ $(function() {
 
     visible_posts.forEach(function (post) {
       renderPost(post,0);
-      $('.popr').popr();
-      return;
-
-      $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      }); 
-      var data = {app_id: app_id, title: post.title};
-      $.ajax({
-        type: 'post',
-        url: '/app/get/post/',
-        data: data,
-        dataType: 'json',
-        success: function(data) {
-          if (data.success)
-          {
-            renderPost(post,data.post_id);
-            $('.popr').popr();
-          }
-          else
-          {
-            renderPost(post,0);
-            $('.popr').popr();
-          }  
-        },
-        error: function (data) {
-          console.log('Error:', data);
-        }
-      }); 
     });
+
+    $('.popr').popr();
   }
 
   function renderPost(post, post_id)

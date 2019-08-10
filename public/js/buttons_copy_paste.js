@@ -1,11 +1,5 @@
 // COPY & PASTE
 
-$('.btn_copy_app_post').bind('click', function(e){
-  e.preventDefault();
-  var source = $(this).data("source");
-  btn_copy_app_post(source);
-});
-
 $('.btn_copy_catalog').bind('click', function(e){
 	e.preventDefault();
   var ref_id = $(this).data("id");
@@ -20,8 +14,10 @@ $('.btn_copy_post').bind('click', function(e){
 
 $('.app-posts').on("click",".btn_copy_app_post", function(e){
   e.preventDefault();
-  var post_id = $(this).data("id");
-  btn_copy_post(post_id);
+  var app_id = $(this).data("id");
+  var title = $(this).data("title");
+  var source = $(this).data("source");
+  btn_copy_app_post(app_id,title,source);
 }); 
 
 $('.btn_paste_post_to_catalog').bind('click', function(e){
@@ -50,14 +46,14 @@ $('.btn_send_post').bind('click', function(e){
 
 // FUNCTIONS
 
-function btn_copy_app_post(source)
+function btn_copy_app_post(app_id,title,source)
 {
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
-  var data = {source: source};
+  var data = {app_id:app_id, title:title, source:source};
   $.ajax({
     type: 'post',
     url: '/clipboards/copy/app/post',
@@ -65,7 +61,7 @@ function btn_copy_app_post(source)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        location.reload();
+        $.growl.notice({ message:'The post was added to the clipboard.'});
       }
       else if(data.msg)
       {
