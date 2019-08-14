@@ -332,7 +332,7 @@ function get_type(type)
     case 7:
       return "Offer"; 
     case 8:
-      return "App item";
+      return "App post";
 		case 21:
 			return "Catalog";
 		case 22:

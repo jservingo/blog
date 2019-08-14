@@ -22,7 +22,9 @@ $('.btn_update_post').bind('click', function(e){
   var title = $('#title').val();
   var excerpt = $('#excerpt').val();
   if (! excerpt)
-    excerpt = "Empty excerpt";  
+    excerpt = "Empty excerpt"; 
+  else
+    excerpt = excerpt.replace(/['"]+/g, '').replace(/<[^>]+>/g, ''); 
   var body = CKEDITOR.instances.body.getData();
   if (! body)
     body = "Empty content";
@@ -88,9 +90,7 @@ $('.btn_update_post').bind('click', function(e){
         window.close();
       }
       else {
-        set_message("error","Sorry but the update was not possible. Try again, please");
-        window.opener.location.reload();
-        window.close();
+        $.growl.error({ message:'Sorry but the update was not possible.'});
       }
     },
     error: function (data) {

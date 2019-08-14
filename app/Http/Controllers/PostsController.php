@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
@@ -85,35 +87,73 @@ class PostsController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_created($type=0)
-  {  	
-  	//Falta el type ***OJO***
-    $posts_created = Post  //::join('kposts', 'posts.id', '=', 'kposts.post_id')  		
-  		::where("posts.user_id","=",auth()->id())
+  public function show_all($type=0)
+  { 
+    $posts_created = Post  
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where("kposts.user_id","=",auth()->id())
+      ->where("posts.user_id","=",auth()->id())
       ->where("type_id","<=",20)
-      ->latest('posts.created_at');
+      ->select('posts.*','featured');
 
     $posts_saved = Post
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("type_id","<",21)
       ->where("status_id","=",2)
       ->where("kposts.sent_by","=",auth()->id())
-      ->where("kposts.user_id","=",auth()->id())
-      ->select('posts.*')
-      ->latest('kposts.created_at');
+      ->where("kposts.user_id","=",auth()->id())  
+      ->select('posts.*','featured');
 
-      $posts_created->union($posts_saved);
-      $querySql = $posts_created->toSql();
+    $posts_created->union($posts_saved);
+    $querySql = $posts_created->toSql();
 
-      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
-      $posts = $query->paginate(12); 
+    $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
+    $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
 
     $title = "Posts";
+    $root = "created_posts";
+    $buttons = "posts.buttons.created_posts"; 
+    $subtitle = ""; 
+      
+    return view(get_view(),compact('posts','title','root','buttons','subtitle'));
+  }
+
+  public function show_created($type=0)
+  {  	
+  	//Falta el type ***OJO***
+    $posts = Post  
+  		::join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where("posts.user_id","=",auth()->id())
+      ->where("kposts.user_id","=",auth()->id())
+      ->where("posts.type_id","<=",20)      
+      ->orderBy('kposts.featured','DESC')
+      ->latest('posts.created_at')
+      ->select('posts.*')
+      ->paginate(12);
+
+    $title = "Posts created";
     $root = "created_posts";
     $buttons = "posts.buttons.created_posts"; 
     $subtitle = "";	
 
   	return view(get_view(),compact('posts','title','root','buttons','subtitle'));
+  }
+
+  public function show_created_user($type=0, $user)
+  {   
+    //Falta el type ***OJO***
+    $posts = Post       
+      ::where("posts.user_id","=",$user->id)
+      ->where("type_id","<=",20)
+      ->latest('posts.created_at')
+      ->paginate(12);
+
+    $title = "Created posts by $user->name";
+    $root = "created_posts";
+    $buttons = "posts.buttons.created_posts"; 
+    $subtitle = ""; 
+
+    return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
   public function show_notifications()
@@ -129,6 +169,26 @@ class PostsController extends Controller
       ->paginate(12); 
 
     $title = "Notifications";
+    $root = 'received_posts';
+    $buttons = "posts.buttons.received_posts";
+    $subtitle = "";
+
+    return view(get_view(),compact('posts','title','root','buttons','subtitle'));
+  }
+
+  public function show_alerts()
+  {
+    $posts = Post
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where("status_id","=",0)
+      ->where("kposts.user_id","=",auth()->id())
+      ->where("kposts.sent_by","<>",auth()->id())
+      ->where("posts.type_id", "=", 6)
+      ->select('posts.*')
+      ->latest('kposts.created_at')
+      ->paginate(12); 
+
+    $title = "Alerts";
     $root = 'received_posts';
     $buttons = "posts.buttons.received_posts";
     $subtitle = "";

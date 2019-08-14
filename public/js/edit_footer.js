@@ -10,6 +10,7 @@ $('.btn_update_post').bind('click', function(e){
   var kpost = $(this).data("kpost");    
   var type = get_type(type_id);
   var excerpt = $('#excerpt').val();
+  excerpt = excerpt.replace(/['"]+/g, '').replace(/<[^>]+>/g, '');
   var observation = $('#observation').val();;
   var footnote = $('#footnote').val();
   var featured = get_value('#featured');

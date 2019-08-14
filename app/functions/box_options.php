@@ -5,6 +5,7 @@
   $opc_featured = "Featured: The catalog will appear among the first.";
   $opc_privacy = "Only the owner can see the catalog.";
   $opc_restricted = "Only the owner can forward the catalog.";
+  $catalog = $post->catalog;
   } 
   elseif($post->isPage()) {
   $title = "Page Title";

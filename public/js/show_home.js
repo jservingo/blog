@@ -148,6 +148,7 @@ $(function() {
 	    success: function(data) {
 	      $('#c_received').text('('+data.received+')');
 	      $('#c_notifications').text('('+data.notifications+')');
+	      $('#c_alerts').text('('+data.alerts+')');
 	      $('#c_contacts').text('('+data.contacts+')');
 	      $('#c_apps').text('('+data.apps+')');
 	      $('#c_pages').text('('+data.pages+')');

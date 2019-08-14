@@ -92,7 +92,7 @@ function btn_copy_catalog(ref_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        location.reload();
+        $.growl.notice({ message:'The catalog was added to the clipboard.'});
       }
       else if(data.msg)
       {
@@ -123,7 +123,7 @@ function btn_copy_post(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        location.reload();
+        $.growl.notice({ message:'The post was added to the clipboard.'});
       }
       else if(data.msg)
       {
@@ -459,8 +459,7 @@ function send_post_to_contacts(selected, post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","The post was sent.");
-        location.reload();
+        $.growl.notice({ message:'The post was sent.'});
       }
       else if(data.msg)
       {

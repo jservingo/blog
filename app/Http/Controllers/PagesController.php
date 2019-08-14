@@ -57,24 +57,25 @@ class PagesController extends Controller
 
   public function show_all()
   {
-    $posts_created = Post        
-      ::where("posts.user_id","=",auth()->id())
+    $posts_created = Post  
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')      
+      ->where("posts.user_id","=",auth()->id())
+      ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",22)
-      ->latest('posts.created_at');
+      ->select('posts.*','featured');
 
     $posts_subscriptions = Post
       ::join('pages', 'ref_id', '=', 'pages.id')
       ->join('page_user', 'pages.id', '=', 'page_user.page_id')
       ->where("type_id","=",22)
       ->where("page_user.user_id","=",auth()->id())
-      ->orderBy('pages.name', 'asc')
-      ->select('posts.*');
+      ->select('posts.*','featured');
 
     $posts_created->union($posts_subscriptions);
     $querySql = $posts_created->toSql();
 
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
-    $posts = $query->paginate(12); 
+    $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
 
     $title = "Pages";   
     $root = "created_pages";
@@ -87,8 +88,10 @@ class PagesController extends Controller
 
   public function show_created()
   {
-    $posts = Post        
-      ::where("posts.user_id","=",auth()->id())
+    $posts = Post  
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')      
+      ->where("posts.user_id","=",auth()->id())
+      ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",22)
       ->latest('posts.created_at')
       ->paginate(12);
@@ -111,6 +114,23 @@ class PagesController extends Controller
 
     return view('pages.pages_show',compact('pages'));
     */
+  }
+
+  public function show_created_user(User $user)
+  {
+    $posts = Post        
+      ::where("posts.user_id","=",$user->id)
+      ->where("type_id","=",22)
+      ->latest('posts.created_at')
+      ->paginate(12);
+
+    $title = "Created pages by $user->name";   
+    $root = "created_pages";
+    $buttons = "posts.buttons.created_pages"; 
+    $subtitle = "";
+
+    return view(get_view(),compact(
+      'posts','title','root','buttons','subtitle'));
   }
 
   public function show_page(Page $page)

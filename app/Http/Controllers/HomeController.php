@@ -110,7 +110,7 @@ class HomeController extends Controller
     $querySql = $posts_apps->toSql();
 
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_apps->getBindings());
-    $posts = $query->paginate(12); 
+    $posts = $query->latest('created_at')->paginate(12); 
 
     $title = "Recomendations";
     $root = 'received_posts';
@@ -263,7 +263,7 @@ class HomeController extends Controller
     $querySql = $posts_apps->toSql();
 
     $query = Post::with('owner')->from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_apps->getBindings());
-    $posts = $query->get(); 
+    $posts = $query->latest('created_at')->get(); 
 
     $result['rows'] = $posts;
 
@@ -336,6 +336,14 @@ class HomeController extends Controller
       ->where("posts.type_id", "=", 4)
       ->count();
 
+    $alerts = Post
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where("status_id","=",0)
+      ->where("kposts.user_id","=",auth()->id())
+      ->where("kposts.sent_by","<>",auth()->id())
+      ->where("posts.type_id", "=", 6)
+      ->count();
+
     $contacts = Contact
       ::where("user_id","=",auth()->id())
       ->count();
@@ -370,7 +378,8 @@ class HomeController extends Controller
       ->count();
 
     $result = array("received"=>$received, 
-                    "notifications"=>$notifications,   
+                    "notifications"=>$notifications,
+                    "alerts"=>$alerts,   
                     "contacts"=>$contacts,
                     "apps"=>$apps,
                     "pages"=>$pages,

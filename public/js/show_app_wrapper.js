@@ -149,7 +149,7 @@ $(function() {
     var post_new = template_post
       .replace(/:title:/g, post.title)
       .replace(/:img:/g, post.img)
-      .replace(/:excerpt:/g, post.excerpt.replace(/['"]+/g, ''))
+      .replace(/:excerpt:/g, post.excerpt.replace(/['"]+/g, '').replace(/<[^>]+>/g, ''))
       .replace(/:tags:/g, post.tags)
       .replace(/:footnote:/g, post.footnote)
       .replace(/:url:/g, post.url)

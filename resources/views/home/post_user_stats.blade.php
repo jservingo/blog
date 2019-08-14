@@ -14,6 +14,11 @@
       	</a>				
 			</li>
 			<li>
+				<a class="vlink" href="{{ route('posts.show_alerts') }}">
+          Alerts <span id="c_alerts"></span>
+      	</a>				
+			</li>
+			<li>
 				<a class="vlink" href="{{ route('contacts.show_contacts') }}">
           Contacts <span id="c_contacts"></span>
       	</a>

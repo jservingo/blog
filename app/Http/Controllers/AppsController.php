@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Kpost;
 use App\Post;
+use App\User;
 use App\App;
 
 class AppsController extends Controller
@@ -41,27 +42,28 @@ class AppsController extends Controller
   public function show_all()
   {
     $posts_created = Post 
-      ::join('apps', 'ref_id', '=', 'apps.id')       
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->join('apps', 'ref_id', '=', 'apps.id')       
       ->where("apps.user_id","=",auth()->id())
+      ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
-      ->select('posts.*')
-      ->latest('posts.created_at');
+      ->select('posts.*','featured');
 
     $posts_subscriptions = Post
-      ::join('apps', 'ref_id', '=', 'apps.id')
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->join('apps', 'ref_id', '=', 'apps.id')
       ->join('app_user', 'apps.id', '=', 'app_user.app_id')
       ->where("type_id","=",23)
       ->where("app_user.user_id","=",auth()->id())
       ->where("apps.parent_id","=",null)
-      ->orderBy('apps.name', 'asc')
-      ->select('posts.*');
+      ->select('posts.*','featured');
 
     $posts_created->union($posts_subscriptions);
     $querySql = $posts_created->toSql();
 
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
-    $posts = $query->paginate(12); 
+    $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
 
     $title = "Apps";   
     $root = "created_apps";
@@ -75,15 +77,38 @@ class AppsController extends Controller
   public function show_created()
   {
   	$posts = Post 
-  	  ::join('apps', 'ref_id', '=', 'apps.id')       
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+  	  ->join('apps', 'ref_id', '=', 'apps.id')       
       ->where("apps.user_id","=",auth()->id())
+      ->where("kposts.user_id","=",auth()->id())
+      ->where("type_id","=",23)
+      ->where("apps.parent_id","=",null)
+      ->orderBy('kposts.featured')
+      ->latest('posts.created_at')
+      ->select('posts.*')
+      ->paginate(12);
+
+    $title = "Created apps";   
+    $root = "created_apps";
+    $buttons = "posts.buttons.created_apps"; 
+    $subtitle = "";
+
+    return view(get_view(),compact(
+      'posts','title','root','buttons','subtitle'));
+  }
+
+  public function show_created_user(User $user)
+  {
+    $posts = Post 
+      ::join('apps', 'ref_id', '=', 'apps.id')       
+      ->where("apps.user_id","=",$user->id)
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
       ->select('posts.*')
       ->latest('posts.created_at')
       ->paginate(12);
 
-    $title = "Created apps";   
+    $title = "Created apps by $user->name";   
     $root = "created_apps";
     $buttons = "posts.buttons.created_apps"; 
     $subtitle = "";

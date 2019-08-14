@@ -14,7 +14,7 @@
 
     <div id="mainArticle">
     	<div class="form-control">
-        <label><span>{{ $title }}</span></label>
+        <label><span>{{ $title }}: (*) This field is required </span></label>
 			  <input id="title" type="text"  
 				  value="{{ old('title',$post->title) }}"
 				  placeholder="Enter the title of the post">
@@ -22,14 +22,14 @@
       </div>
 
       <div class="form-control">
-			  <label><span>Excerpt:</span></label>
+			  <label><span>Excerpt: (*) This field is required</span></label>
 			  <textarea id="excerpt" 
 				  placeholder="Enter an excerpt from the post">{{ old('excerpt',$post->excerpt) }}</textarea>
 			    {!! $errors->first('excerpt','<span class="help-block">:message</span>') !!}
 			</div>
 
 			<div class="form-control">
-        <label><span>Content:</span></label>
+        <label><span>Content: (*) This field is required</span></label>
       </div>
       <div>
 			  <textarea id="body" 

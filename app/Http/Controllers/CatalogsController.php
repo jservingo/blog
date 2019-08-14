@@ -45,6 +45,50 @@ class CatalogsController extends Controller
     }
   }
 
+  public function show_all()
+  {
+    if(get_view('catalogs')=="ribbon")
+    {
+      $catalogs = Catalog
+        ::where("user_id","=",auth()->id())
+        ->latest('created_at')
+        ->paginate(6);      
+
+      return view('catalogs.show',compact('catalogs'));
+    }
+    else
+    {
+      $posts_created = Post  
+        ::join('kposts', 'posts.id', '=', 'kposts.post_id')      
+        ->where("posts.user_id","=",auth()->id())
+        ->where("kposts.user_id","=",auth()->id())
+        ->where("type_id","=",21)
+        ->select('posts.*','featured'); 
+
+      $posts_saved = Post
+        ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+        ->where("type_id","=",21)
+        ->where("status_id","=",2)
+        ->where("kposts.sent_by","=",auth()->id())
+        ->where("kposts.user_id","=",auth()->id())
+        ->select('posts.*','featured');
+
+      $posts_created->union($posts_saved);
+      $querySql = $posts_created->toSql();
+
+      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
+      $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
+
+      $title = "Catalogs";   
+      $root = "created_catalogs";
+      $buttons = "posts.buttons.created_catalogs"; 
+      $subtitle = "";
+
+      return view(get_view('catalogs'),compact(
+        'posts','title','root','buttons','subtitle')); 
+    }
+  }  
+
   public function show_created()
   {
     if(get_view('catalogs')=="ribbon")
@@ -58,27 +102,46 @@ class CatalogsController extends Controller
     }
     else
     {
-      $posts_created = Post        
-      ::where("posts.user_id","=",auth()->id())
-      ->where("type_id","=",21)
-      ->latest('posts.created_at'); 
-
-      $posts_saved = Post
-      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
-      ->where("type_id","=",21)
-      ->where("status_id","=",2)
-      ->where("kposts.sent_by","=",auth()->id())
+      $posts = Post 
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')       
+      ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
+      ->where("type_id","=",21)
+      ->orderBy('kposts.featured','DESC')
+      ->latest('posts.created_at')
       ->select('posts.*')
-      ->latest('kposts.created_at');
+      ->paginate(12);
 
-      $posts_created->union($posts_saved);
-      $querySql = $posts_created->toSql();
+      $title = "Catalogs created";   
+      $root = "created_catalogs";
+      $buttons = "posts.buttons.created_catalogs"; 
+      $subtitle = "";
 
-      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
-      $posts = $query->paginate(12); 
+      return view(get_view('catalogs'),compact(
+        'posts','title','root','buttons','subtitle')); 
+    }
+  }
 
-      $title = "Catalogs";   
+  public function show_created_user(User $user)
+  {
+    if(get_view('catalogs')=="ribbon")
+    {
+      $catalogs = Catalog
+        ::where("user_id","=",$user->id)
+        ->latest('created_at')
+        ->paginate(6);      
+
+      return view('catalogs.show',compact('catalogs'));
+    }
+    else
+    {
+      $posts = Post        
+      ::where("posts.user_id","=",$user->id)
+      ->where("type_id","=",21)
+      ->latest('posts.created_at')
+      ->paginate(12);
+
+      $title = "Created catalogs by $user->name";   
       $root = "created_catalogs";
       $buttons = "posts.buttons.created_catalogs"; 
       $subtitle = "";

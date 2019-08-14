@@ -18,13 +18,13 @@
       </a>
     </li>    
     <li>
-      <a class="vlink" href="{{ route('catalogs.show_created') }}" 
+      <a class="vlink" href="{{ route('catalogs.show_all') }}" 
         class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
           Catalogs
       </a>
     </li>  
     <li>
-      <a class="vlink" href="{{ route('posts.show_created') }}" 
+      <a class="vlink" href="{{ route('posts.show_all') }}" 
         class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
           Posts
       </a>
