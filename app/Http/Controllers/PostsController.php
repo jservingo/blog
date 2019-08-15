@@ -139,7 +139,7 @@ class PostsController extends Controller
   	return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_created_user($user, $type=0)
+  public function show_created_user(User $user, $type=0)
   {   
     //Falta el type ***OJO***
     $posts = Post       

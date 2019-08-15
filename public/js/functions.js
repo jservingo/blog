@@ -3,11 +3,11 @@
     switch(type)
     {
       case 1:
-        return "Post";
+        return "PhotoGallery";
       case 2:
-        return "Post";
+        return "Frame";
       case 3:
-        return "Post";
+        return "Text";
       case 4:
         return "Notification";
       case 5:
@@ -27,8 +27,6 @@
       case 24:
         return "User";
       case 25:
-        return "Company";
-      case 26:
-        return "Offer";      
+        return "Company";     
     }
   }
