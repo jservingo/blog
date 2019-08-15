@@ -56,6 +56,7 @@ class AppsController extends Controller
       ->join('app_user', 'apps.id', '=', 'app_user.app_id')
       ->where("type_id","=",23)
       ->where("app_user.user_id","=",auth()->id())
+      ->where("kposts.user_id","=",auth()->id())
       ->where("apps.parent_id","=",null)
       ->select('posts.*','featured');
 

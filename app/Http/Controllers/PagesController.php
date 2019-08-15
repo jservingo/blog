@@ -65,10 +65,12 @@ class PagesController extends Controller
       ->select('posts.*','featured');
 
     $posts_subscriptions = Post
-      ::join('pages', 'ref_id', '=', 'pages.id')
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->join('pages', 'ref_id', '=', 'pages.id')
       ->join('page_user', 'pages.id', '=', 'page_user.page_id')
       ->where("type_id","=",22)
       ->where("page_user.user_id","=",auth()->id())
+      ->where("kposts.user_id","=",auth()->id())
       ->select('posts.*','featured');
 
     $posts_created->union($posts_subscriptions);
