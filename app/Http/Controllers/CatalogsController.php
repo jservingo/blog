@@ -106,7 +106,7 @@ class CatalogsController extends Controller
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')       
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
-      ->where("type_id","=",21)
+      ->where("posts.type_id","=",21)
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*')
