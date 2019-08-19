@@ -167,12 +167,9 @@ class PagesController extends Controller
     else
     {
       $posts = Post 
-        ::join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')       
-        ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
-        ->where("kposts.user_id","=",auth()->id())
+        ::join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')
         ->where("posts.type_id","=",21)
         ->where("catalog_category.category_id","=",$category_id)
-        ->orderBy('kposts.featured','DESC')
         ->latest('posts.created_at')
         ->select('posts.*')
         ->paginate(12);
