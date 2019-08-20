@@ -32,7 +32,12 @@ class CatalogsController extends Controller
       $posts = Post        
       ::where("posts.user_id","<>",auth()->id())
       ->where("type_id","=",21)
-      ->whereDoesntHave('kposts')
+      ->whereNotIn('id', function($query)
+        {
+          $query->select('post_id')
+                ->from('kposts')
+                ->where('user_id','=',auth()->id());
+        })
       ->latest('posts.created_at')
       ->paginate(12);
 
