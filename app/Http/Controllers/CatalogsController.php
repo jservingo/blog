@@ -173,6 +173,20 @@ class CatalogsController extends Controller
   	//return view('catalogs.catalog_show',compact('catalog','posts'));
   }
 
+  public function get_stats(Post $post)
+  { 
+    $catalog = Catalog
+      ::where("id","=",$post->ref_id)
+      ->first();
+
+    $posts = Post 
+      ::join('catalog_post', 'posts.id', '=', 'catalog_post.post_id')
+      ->where("catalog_post.catalog_id","=",$catalog->id)
+      ->count(); 
+
+    echo json_encode($posts);
+  }
+
   public function isOwner(Catalog $catalog)
   {
     if ($catalog->user_id == auth()->id())

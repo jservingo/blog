@@ -110,6 +110,58 @@
   <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
   <!--<script src="/js/twitter-bootstrap.js"></script>--> 
   <script>
+    var post_id = {{ $post->id }}; 
+    var type_id = {{ $post->type_id }};
+    var type = get_type(type_id);
+
+    if (type=="Page")
+    {
+      $.ajax({
+        url: '/page/stats/get/'+post_id,
+        dataType: 'json',
+        success: function(data) {
+          console.log(data);
+          $('#p_catalogs').text('('+data+')');
+        },
+        error: function (data) {
+          console.log('Error:', data);
+        }
+      }); 
+    }
+
+    if (type=="Catalog")
+    {
+      $.ajax({
+        url: '/catalog/stats/get/'+post_id,
+        dataType: 'json',
+        success: function(data) {
+          console.log(data);
+          $('#c_posts').text('('+data+')');
+        },
+        error: function (data) {
+          console.log('Error:', data);
+        }
+      }); 
+    }
+
+    if (type=="User")
+    {
+      $.ajax({
+        url: '/user_stats/get',
+        dataType: 'json',
+        success: function(data) {
+          $('#u_apps').text('('+data.apps+')');
+          $('#u_pages').text('('+data.pages+')');
+          $('#u_catalogs').text('('+data.catalogs+')');
+          $('#u_posts').text('('+data.posts+')');
+        },
+        error: function (data) {
+          console.log('Error:', data);
+        }
+      });
+    }
+  </script>
+  <script>
     $(function() {
       $(".loader").fadeOut("slow");
       $('#main_panel').css("visibility","visible");

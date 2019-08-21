@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Category;
+use App\Catalog;
 use App\Kpost;
 use App\Page;
 use App\Post;
@@ -200,6 +201,20 @@ class PagesController extends Controller
     $subtitle = "";     
 
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
+  }
+
+  public function get_stats(Post $post)
+  { 
+    $page = Page
+      ::where("id","=",$post->ref_id)
+      ->first();
+
+    $catalogs = Category 
+      ::join('catalog_category', 'categories.id', '=', 'catalog_category.category_id')
+      ->where("categories.page_id","=",$page->id)
+      ->count(); 
+
+    echo json_encode($catalogs);
   }
 
   public function isOwner(Page $page)

@@ -25,16 +25,16 @@
 	</div>
 	<div style="float:right; width:60%">
 		@if ($post->isUser())
-			<div><a class="vlink" href="{{ route('apps.show_created_user',['user' => $post->user->id]) }}">Apps</a></div>
-			<div><a class="vlink" href="{{ route('pages.show_created_user',['user' => $post->user->id]) }}">Pages</a></div>
-			<div><a class="vlink" href="{{ route('catalogs.show_created_user',['user' => $post->user->id]) }}">Catalogs</a></div>	
-			<div><a class="vlink" href="{{ route('posts.show_created_user',['user' => $post->user->id, 'type' => 0]) }}">Posts</a></div>
+			<div><a class="vlink" href="{{ route('apps.show_created_user',['user' => $post->user->id]) }}">Apps <span id="u_apps"></span></a></div>
+			<div><a class="vlink" href="{{ route('pages.show_created_user',['user' => $post->user->id]) }}">Pages <span id="u_pages"></a></div>
+			<div><a class="vlink" href="{{ route('catalogs.show_created_user',['user' => $post->user->id]) }}">Catalogs <span id="u_catalogs"></a></div>	
+			<div><a class="vlink" href="{{ route('posts.show_created_user',['user' => $post->user->id, 'type' => 0]) }}">Posts <span id="u_posts"></a></div>
 		@endif
 		@if ($post->isPage())
-			<div><a class="vlink" href="{{ route('page.show_page_category',['page' => $page->id, 'category' => 0]) }}">Catalogs</a></div>
+			<div><a class="vlink" href="{{ route('page.show_page_category',['page' => $page->id, 'category' => 0]) }}">Catalogs <span id="p_catalogs"></a></div>
 		@endif
 		@if ($post->isCatalog())
-			<div><a class="vlink" href="{{ route('catalog.show_catalog',['catalog' => $catalog->id]) }}">Posts</a></div>
+			<div><a class="vlink" href="{{ route('catalog.show_catalog',['catalog' => $catalog->id]) }}">Posts <span id="c_posts"></a></div>
 		@endif
   </div>
 </div>

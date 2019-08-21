@@ -61,6 +61,7 @@ Route::get('pages/{page}/{category}','PagesController@show_page_category')->name
 Route::get('page/subscribers/{page}','PagesController@show_subscribers')->name('page.show_subscribers');
 Route::get('page/{page}','PagesController@edit')->name('page.edit');
 Route::get('page/isOwner/{page}','PagesController@isOwner')->name('page.isOwner');
+Route::get('page/stats/get/{post}','PagesController@get_stats')->name('page.get_stats');
 Route::post('page','PagesController@store')->name('page.create');
 Route::delete('pages/{post}','PagesController@destroy');
 
@@ -99,6 +100,7 @@ Route::get('catalogs/created','CatalogsController@show_created')->name('catalogs
 Route::get('catalogs/created/{user}','CatalogsController@show_created_user')->name('catalogs.show_created_user');
 Route::get('catalogs/{catalog}','CatalogsController@show_catalog')->name('catalog.show_catalog');
 Route::get('catalog/{catalog}','CatalogsController@edit')->name('catalog.edit');
+Route::get('catalog/stats/get/{post}','CatalogsController@get_stats')->name('catalog.get_stats');
 Route::get('catalog/isOwner/{catalog}','CatalogsController@isOwner')->name('catalog.isOwner');
 Route::post('catalog','CatalogsController@store')->name('catalog.create');
 Route::delete('catalogs/{category}/{post}','CatalogsController@delete_catalog_from_category');	
