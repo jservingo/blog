@@ -9,6 +9,7 @@ use App\Contact;
 use App\Group;
 use App\Kpost;
 use App\Post;
+use App\User;
 
 class ContactsController extends Controller
 {
