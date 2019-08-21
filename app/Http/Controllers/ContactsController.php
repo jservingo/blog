@@ -6,10 +6,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Contact;
+use App\Catalog;
 use App\Group;
 use App\Kpost;
 use App\Post;
+use App\Page;
 use App\User;
+use App\App;
 
 class ContactsController extends Controller
 {
