@@ -61,7 +61,7 @@ Route::get('pages/{page}/{category}','PagesController@show_page_category')->name
 Route::get('page/subscribers/{page}','PagesController@show_subscribers')->name('page.show_subscribers');
 Route::get('page/{page}','PagesController@edit')->name('page.edit');
 Route::get('page/isOwner/{page}','PagesController@isOwner')->name('page.isOwner');
-Route::get('page/stats/get/{post}','PagesController@get_stats')->name('page.get_stats');
+Route::get('page/stats/{post}','PagesController@get_stats')->name('page.get_stats');
 Route::post('page','PagesController@store')->name('page.create');
 Route::delete('pages/{post}','PagesController@destroy');
 
@@ -78,6 +78,7 @@ Route::get('contacts/get','ContactsController@get_contacts');
 Route::get('contacts/tree','ContactsController@get_contacts_tree');
 Route::get('contacts/{group}','ContactsController@show_group')->name('contacts.show_group');
 Route::get('contacts','ContactsController@show_contacts')->name('contacts.show_contacts');
+Route::get('contacts/stats/{post}','ContactsController@get_stats')->name('contacts.get_stats');
 Route::post('contacts/create','ContactsController@create_node');
 Route::post('contacts/rename','ContactsController@rename_node');
 Route::post('contacts/delete','ContactsController@delete_node');
@@ -100,7 +101,7 @@ Route::get('catalogs/created','CatalogsController@show_created')->name('catalogs
 Route::get('catalogs/created/{user}','CatalogsController@show_created_user')->name('catalogs.show_created_user');
 Route::get('catalogs/{catalog}','CatalogsController@show_catalog')->name('catalog.show_catalog');
 Route::get('catalog/{catalog}','CatalogsController@edit')->name('catalog.edit');
-Route::get('catalog/stats/get/{post}','CatalogsController@get_stats')->name('catalog.get_stats');
+Route::get('catalog/stats/{post}','CatalogsController@get_stats')->name('catalog.get_stats');
 Route::get('catalog/isOwner/{catalog}','CatalogsController@isOwner')->name('catalog.isOwner');
 Route::post('catalog','CatalogsController@store')->name('catalog.create');
 Route::delete('catalogs/{category}/{post}','CatalogsController@delete_catalog_from_category');	

@@ -117,7 +117,7 @@
     if (type=="Page")
     {
       $.ajax({
-        url: '/page/stats/get/'+post_id,
+        url: '/page/stats/'+post_id,
         dataType: 'json',
         success: function(data) {
           console.log(data);
@@ -132,7 +132,7 @@
     if (type=="Catalog")
     {
       $.ajax({
-        url: '/catalog/stats/get/'+post_id,
+        url: '/catalog/stats/'+post_id,
         dataType: 'json',
         success: function(data) {
           console.log(data);
@@ -147,7 +147,7 @@
     if (type=="User")
     {
       $.ajax({
-        url: '/user_stats/get',
+        url: '/contacts/stats/'+post_id,
         dataType: 'json',
         success: function(data) {
           $('#u_apps').text('('+data.apps+')');

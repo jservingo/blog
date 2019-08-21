@@ -95,6 +95,38 @@ class ContactsController extends Controller
     return view(get_view(),compact('posts','title','root','group_id','buttons','subtitle'));	
   }
 
+  public function get_stats(Post $post)
+  {
+    $user = User
+      ::where("id","=",$post->ref_id)
+      ->first();
+
+    $apps = App
+      ::where("user_id","=",$user->id)
+      ->where("parent_id","=",null)
+      ->count(); 
+
+    $pages = Page
+      ::where("user_id","=",$user->id)
+      ->count(); 
+
+    $catalogs = Catalog
+      ::where("user_id","=",$user->id)
+      ->count(); 
+
+    $posts = Post
+      ::where("user_id","=",$user->id)
+      ->where("type_id","<=",20)
+      ->count(); 
+
+    $result = array("apps"=>$apps,
+                    "pages"=>$pages,
+                    "catalogs"=>$catalogs,
+                    "posts"=>$posts); 
+      
+    echo json_encode($result); 
+  }
+
   public function destroy(Post $post)
   {
     $co = Contact
