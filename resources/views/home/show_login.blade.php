@@ -6,15 +6,15 @@
   <h1 style="padding-left:60px;">Save, organize and share your posts</h1>
   <p style="padding-left:60px;"> Beta version 1.0, July 27 2019</p>
   <div class="gradient-top">
-    <div style="float:left; width:56%; text-align:center;">
+    <div style="float:left; width:50%; text-align:center;">
 			<div style="width:100%; padding-top:40px; display:inline-block;">
 				@include('home.presentation_slider')
 			</div>
 
 		</div>
 
-    <div style="float:right; width:40%; text-align:center;">
-      <div style="width:100%; padding-top:40px; display:inline-block;">
+    <div style="float:right; width:46%; text-align:center;">
+      <div style="width:90%; padding-top:40px; display:inline-block;">
       	@if($mode=='login')
       		@include('home.login_form')
       	@else
