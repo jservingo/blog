@@ -7,24 +7,26 @@
                 <img src="/img/kodelia_logo.png" alt="">
             </figure>
             <span id="logoFont" style="padding-left:5px;">Kodelia</span>
-        </div>
-        <div class="container-flex">
-            <div class="searchWrap">
-                <div class="search">
-                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                    <button type="submit" class="searchButton">
-                        <i class="fa fa-search"></i>
-                    </button>
+        </div>        
+        @if (auth()->check())
+            <div class="container-flex">
+                <div class="searchWrap">
+                    <div class="search">
+                        <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                        <button type="submit" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        @if (auth()->check())
-            <div class="container-flex space-between" style="width:310px;">
+            <div style="width:400px; text-align:right;">
                 <span class="user c-blue">
                     <a id="t-user" href="/post/user/{{ Auth::user()->id }}">
                         {{ Auth::user()->name }}
                     </a>
                 </span>
+            </div>        
+            <div class="container-flex space-between" style="width:110px;">                
                 <a class="btn_configuration"> 
                     <img src="/img/configuration.png" alt="" style="width:20px;height:20px;">
                 </a>
