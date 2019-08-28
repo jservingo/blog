@@ -17,7 +17,8 @@
 		getAllShows: function(callback) {
 			alert("getAllShows");
 			var req = $.ajax({
-				url:'http://api.tvmaze.com/shows'
+				url:'http://api.tvmaze.com/shows',
+				dataType:'jsonp'
 			});
 			req.done(callback);	
 		} 
