@@ -289,7 +289,7 @@ function btn_edit(el, id)
             edit_footer(el, id);
           }  
           else
-            alert("Sorry but you are not authorized to edit the post.");
+            $.growl.warning("Sorry but you are not authorized to edit the post, unless you save it first.");
         }  
       },
       error: function (data) {
@@ -312,7 +312,7 @@ function edit_footer(el, id)
         }
         else
         {
-          alert("Sorry but you are not authorized to edit the post.");
+          $.growl.warning("Sorry but you are not authorized to edit the post, unless you save it first.");
         }  
       },
       error: function (data) {

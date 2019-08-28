@@ -3,7 +3,7 @@
 @php
   $height = 122;
 
-  if ($post->isPhotoGallery() || $post->isFrame())
+  if ($post->isPhotoGallery() || $post->isFrame() || $post->isOffer())
   {
     $height = 53;
   }

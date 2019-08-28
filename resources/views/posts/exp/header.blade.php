@@ -6,7 +6,7 @@
     $width = 215;
     $height = 120; 
   }
-  elseif ($post->isPhotoGallery())
+  elseif ($post->isPhotoGallery() || $post->isOffer())
   {
     $width = 215;
     $height = 120;

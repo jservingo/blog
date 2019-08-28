@@ -1,7 +1,7 @@
 {{-- posts.box.content --}} 
 
 @php
-  if ($post->isPhotoGallery() || $post->isFrame())
+  if ($post->isPhotoGallery() || $post->isFrame() || $post->isOffer())
   {
     $show_title = true;
     $show_excerpt = false;

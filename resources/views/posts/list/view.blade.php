@@ -9,7 +9,7 @@
       <div class="media" style="float:left;">
         @if ($post->iframe)
           @include('posts.list.iframe')
-        @elseif ($post->isPhotoGallery())
+        @elseif ($post->isPhotoGallery() || $post->isOffer())
           @if ($post->photos->count() >= 1)
             @include('posts.list.photo')
           @else

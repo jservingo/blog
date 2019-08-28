@@ -1,5 +1,5 @@
 @php
-  if ($post->isPhotoGallery() || $post->isFrame())
+  if ($post->isPhotoGallery() || $post->isFrame() || $post->isOffer())
   {
     $width = 496;
     $height = 110;

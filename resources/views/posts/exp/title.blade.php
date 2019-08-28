@@ -8,7 +8,7 @@
       $width = 133;
     }
   }
-  elseif ($post->isPhotoGallery() || $post->isFrame())
+  elseif ($post->isPhotoGallery() || $post->isFrame() || $post->isOffer())
   {
     $height = 49;  
   }

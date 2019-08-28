@@ -8,7 +8,7 @@
   	<div style="float:left;">
       @if ($post->iframe)
         @include('posts.card.iframe')
-      @elseif ($post->isPhotoGallery())
+      @elseif ($post->isPhotoGallery() || $post->isOffer())
         @if ($post->photos->count() >= 1)
           @include('posts.card.photo')
         @else

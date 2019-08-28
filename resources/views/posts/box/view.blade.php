@@ -9,7 +9,7 @@
       @include('posts.box.empty')
       @include('posts.box.date')
       @include('posts.box.footer')
-    @elseif ($post->isPhotoGallery())
+    @elseif ($post->isPhotoGallery() || $post->isOffer())
       @if ($post->photos->count() >= 1)
         @include('posts.box.photo')
         @include('posts.box.empty')

@@ -195,7 +195,7 @@
           allow_subscribers, show_subscribers, main_page
       --}}
 
-      @if($post->isPhotoGallery())
+      @if($post->isPhotoGallery() || $post->isOffer())
       <div class="form-control">
         <label><span>Upload images</span></label>
       </div>
@@ -219,7 +219,7 @@
         </a>
       </div>
 
-      @if($post->isPhotoGallery())
+      @if($post->isPhotoGallery() || $post->isOffer())
     	  <p>Saved images</p>
     	  <br>
         @if ($post->photos->count())		

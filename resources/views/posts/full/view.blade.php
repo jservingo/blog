@@ -2,7 +2,7 @@
 
 <div class="post pfull">     
   <div class="content-post" style="background-color:{{ $zcolor }}">
-    @if ($post->isPhotoGallery() || $post->isFrame())
+    @if ($post->isPhotoGallery() || $post->isFrame() || $post->isOffer())
     <div style="float:right;">
       <div class="header" style="float:right;">
         @include('posts.full.header')

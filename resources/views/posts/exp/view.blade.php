@@ -10,7 +10,7 @@
         @include('posts.box.iframe')
       </div>
       <div style="clear:both;"></div>
-    @elseif ($post->isPhotoGallery())
+    @elseif ($post->isPhotoGallery() || $post->isOffer())
       @if ($post->photos->count() >= 1)
         <div style="float:right;">
           @include('posts.exp.header')  
