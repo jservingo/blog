@@ -293,25 +293,25 @@ $(function() {
 function get_posts_from_tvmaze(url, callback)
 {
   var posts = new Array();
-  alert(url);
 
-  $.tvmaze.getAllShows((rows) => {
-    alert("getAllShows OK");
-    rows.forEach(function (row) {
-      post = {
-        title: row.name, 
-        excerpt: row.summary, 
-        img: row.image ? row.image.medium : '',
-        url: row.url,
-        href: row._links.self.href,
-        custom_type: 'TV Show',
-        footnote: 'footnote',
-        tags: 'tags'
-      };
-      posts.push(post);
-    });    
-    callback(posts);
-  })
+  $.ajax('http://api.tvmaze.com/shows')
+    .then(function (shows) {
+      alert("done");
+      rows.forEach(function (row) {
+        post = {
+          title: row.name, 
+          excerpt: row.summary, 
+          img: row.image ? row.image.medium : '',
+          url: row.url,
+          href: row._links.self.href,
+          custom_type: 'TV Show',
+          footnote: 'footnote',
+          tags: 'tags'
+        };
+        posts.push(post);
+      });    
+      callback(posts);      
+    });
 }	
 
 function search_posts_from_tvmaze(url, callback)

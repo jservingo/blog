@@ -15,7 +15,7 @@
 		},
 
 		getAllShows: function(callback) {
-			alert("getAllShows");
+			alert("getAllShows QUEEEEEEE");
 			var req = $.ajax({
 				url:'http://api.tvmaze.com/shows',
 				dataType:'jsonp'
