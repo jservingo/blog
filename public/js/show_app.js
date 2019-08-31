@@ -294,7 +294,28 @@ function get_posts_from_tvmaze(url, callback)
 {
   var posts = new Array();
 
-  $.ajax('http://api.tvmaze.com/shows')
+  fetch('https://api.tvmaze.com/shows')
+  .then((res) => res.json())
+  .then(function(rows) {
+    rows.forEach(function (row) {
+      post = {
+        title: row.name, 
+        excerpt: row.summary, 
+        img: row.image ? row.image.medium : '',
+        url: row.url,
+        href: row._links.self.href,
+        custom_type: 'TV Show',
+        footnote: 'footnote',
+        tags: 'tags'
+      };
+      posts.push(post);
+    });    
+    callback(posts);  
+   })
+  .catch((error) => console.log(error))
+  
+  /*
+  $.ajax('https://api.tvmaze.com/shows')
     .then(function (shows) {
       alert("done");
       rows.forEach(function (row) {
@@ -312,6 +333,8 @@ function get_posts_from_tvmaze(url, callback)
       });    
       callback(posts);      
     });
+  */
+  
 }	
 
 function search_posts_from_tvmaze(url, callback)
