@@ -67,7 +67,7 @@ class AppsController extends Controller
     $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
 
     $title = "Apps";   
-    $root = "created_apps";
+    $root = "all_apps";
     $buttons = "posts.buttons.created_apps"; 
     $subtitle = "";
 

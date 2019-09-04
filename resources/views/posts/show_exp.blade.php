@@ -14,11 +14,15 @@
       @include('pages.subtitle')
 
       <div id="posts_container" class="posts container">
-        @foreach($posts as $post)
-          <div>
-            @include('posts.exp.view')    
-          </div>
-        @endforeach
+        @if(!$posts->isEmpty())
+          @foreach($posts as $post)
+            <div>
+              @include('posts.exp.view')    
+            </div>
+          @endforeach
+        @else
+          @include('posts.show_message')
+        @endif
       </div>
       
       {{ $posts->render("pagination::default") }}

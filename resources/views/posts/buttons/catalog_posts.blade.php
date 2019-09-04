@@ -11,6 +11,11 @@
 		<img src="/img/copy.png" width="28" />
 	</a>
 
+	<a class="btn_create_post_from_catalog"
+			data-id="{{ $catalog->id }}">
+		<img src="/img/add.png" width="28" />
+	</a>	
+
 	<a class="btn_paste_post_to_catalog"
 			data-id="{{ $catalog->id }}">
 		<img src="/img/paste.png" width="28" />

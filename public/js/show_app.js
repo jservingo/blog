@@ -3,7 +3,6 @@ $(function() {
   var $appPostsContainer = $('#posts_container').find('.app-posts');
   var $appPostsMenu = $('#app_posts_menu');
   var $pagination = $('#pagination');
-  var app = get_info(app_id);
   var per_page= 10;
 
   /*
@@ -195,50 +194,7 @@ $(function() {
     {
       $('#light-pagination').pagination('destroy');
     }
-  }
-
-  function get_info(app_id,q='')
-  {
-    var info;
-    switch (app_id) 
-    {
-      case 3:
-        info = {
-          title: 'TVMaze',
-          url_web: "https://www.tvmaze.com/",
-          url_api: "http://api.tvmaze.com/shows", 
-          url_search: 'http://api.tvmaze.com/search/shows?q='+q   
-        };
-        break;
-    }
-    return info;  
-  }
-
-  function get_posts(app_id, callback)
-  {
-    var app = get_info(app_id);
-    switch (app_id) 
-    {
-      case 3:
-        get_posts_from_tvmaze(app.url_api, function(posts) {
-          callback(posts);
-        });
-        break;  
-    }
-  }
-
-  function search_posts(app_id, q, callback)
-  {
-    var app = get_info(app_id, q) 
-    switch (app_id) 
-    {
-      case 3:
-        search_posts_from_tvmaze(app.url_search, function(posts) {
-          callback(posts);
-        });
-        break;        
-    }
-  }    
+  }   
 
   $('.searchButton').on('click', function () {
     q = $('.searchTerm').val().trim();
@@ -248,10 +204,9 @@ $(function() {
     }
     else
     {   
-      app = get_info(app_id,q);
-      search_posts(app_id,q, function(posts) {
+      search_posts(q, function(posts) {
         localStorage.posts = JSON.stringify(posts);
-        localStorage.app_url = app.url_search;
+        localStorage.app_url = url_search;
         var num = posts.length;
         var visible_posts = slicePosts(posts,num,1);
         $appPostsContainer.find('.app-loader').remove();
@@ -261,14 +216,12 @@ $(function() {
     }
   }); 
 
-  var app = get_info(app_id);
-
-  if (!localStorage.posts || localStorage.app_url != app.url_api)
+  if (!localStorage.posts || localStorage.app_url != url_api)
   {
-  	get_posts(app_id, function(posts) {
+  	get_posts(function(posts) {
   		//console.log(posts);
   		localStorage.posts = JSON.stringify(posts);
-    	localStorage.app_url = app.url_api;
+    	localStorage.app_url = url_api;
     	var num = posts.length;
   		var visible_posts = slicePosts(posts,num,1);
   		$appPostsContainer.find('.app-loader').remove();
@@ -288,75 +241,3 @@ $(function() {
   }
 })
 
-// TVMaze
-
-function get_posts_from_tvmaze(url, callback)
-{
-  var posts = new Array();
-
-  fetch('https://api.tvmaze.com/shows')
-  .then((res) => res.json())
-  .then(function(rows) {
-    rows.forEach(function (row) {
-      post = {
-        title: row.name, 
-        excerpt: row.summary, 
-        img: row.image ? row.image.medium : '',
-        url: row.url,
-        href: row._links.self.href,
-        custom_type: 'TV Show',
-        footnote: 'footnote',
-        tags: 'tags'
-      };
-      posts.push(post);
-    });    
-    callback(posts);  
-   })
-  .catch((error) => console.log(error))
-  
-  /*
-  $.ajax('https://api.tvmaze.com/shows')
-    .then(function (shows) {
-      alert("done");
-      rows.forEach(function (row) {
-        post = {
-          title: row.name, 
-          excerpt: row.summary, 
-          img: row.image ? row.image.medium : '',
-          url: row.url,
-          href: row._links.self.href,
-          custom_type: 'TV Show',
-          footnote: 'footnote',
-          tags: 'tags'
-        };
-        posts.push(post);
-      });    
-      callback(posts);      
-    });
-  */
-  
-}	
-
-function search_posts_from_tvmaze(url, callback)
-{
-	var posts = new Array();
-
-	$.ajax(url)
-    .then(function (res) { 
-      var rows = res.map(function (el) {
-        return el.show;
-      });
-      rows.forEach(function (row) {
-	  		post = {
-	  			title: row.name, 
-	  			excerpt: row.summary, 
-	  			img: row.image ? row.image.medium : '',
-	  			url: row.url,
-	  			href: row._links.self.href,
-	  			custom_type: 'TV Show'
-	  		};
-	  		posts.push(post);
-	  	});
-      callback(posts);
-  	}) 
-}

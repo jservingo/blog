@@ -14,17 +14,21 @@
       @include('pages.subtitle')
 
       <div id="posts_container" class="posts container">
-        @php ($zcolor="#fefdfd")
-        @foreach($posts as $post)
-          <div>
-            @include('posts.list.view')    
-          </div>
-          @if ($zcolor=="#fefdfd")
-            @php ($zcolor="#cee3ea")
-          @else
-            @php ($zcolor="#fefdfd")
-          @endif
-        @endforeach
+        @if(!$posts->isEmpty())
+          @php ($zcolor="#fefdfd")
+          @foreach($posts as $post)
+            <div>
+              @include('posts.list.view')    
+            </div>
+            @if ($zcolor=="#fefdfd")
+              @php ($zcolor="#cee3ea")
+            @else
+              @php ($zcolor="#fefdfd")
+            @endif
+          @endforeach
+        @else
+          @include('posts.show_message')
+        @endif
       </div>
       
       {{ $posts->render("pagination::default") }}

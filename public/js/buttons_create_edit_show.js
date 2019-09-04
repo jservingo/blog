@@ -18,8 +18,13 @@ $('.btn_create_page').bind('click', function(e){
 }); 
 
 $('.btn_create_post').bind('click', function(e){
-  btn_create_post();
+  btn_create_post(0);
 });	
+
+$('.btn_create_post_from_catalog').bind('click', function(e){
+  var catalog_id = $(this).data("id");
+  btn_create_post(catalog_id);
+}); 
 
 $('.btn_edit_post').bind('click', function(e){
   var post_id = $(this).data("id");
@@ -207,7 +212,7 @@ function btn_create_page()
   $.showDialog();  
 }
 
-function btn_create_post()
+function btn_create_post(catalog_id)
 {
   //Crear ventana modal
   var html = "<div id='edit'>";
@@ -218,7 +223,7 @@ function btn_create_post()
   html = html + "<option value='4'>Notification</option>";
   html = html + "<option value='6'>Alert</option>";
   html = html + "<option value='7'>Offer</option>";
-  html = html + "<option value='11'>Web Page link</option>";
+  html = html + "<option value='5'>Web Page link</option>";
   html = html + "<option value='1'>Photo gallery</option>";
   html = html + "<option value='2'>Frame: video or soundcloud</option>";
   html = html + "</select>";
@@ -241,7 +246,7 @@ function btn_create_post()
         }
       });
       //var ref_id = $(this).data("id");  OJO QUITAR ESTO
-      var data = {type_id:type_id, title:title};
+      var data = {type_id:type_id, title:title, catalog_id:catalog_id};
       $.ajax({
         type: 'post',
         url: '/post',

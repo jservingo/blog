@@ -169,7 +169,7 @@ class PostsController extends Controller
       ->paginate(12); 
 
     $title = "Notifications";
-    $root = 'received_posts';
+    $root = 'notifications';
     $buttons = "posts.buttons.received_posts";
     $subtitle = "";
 
@@ -189,7 +189,7 @@ class PostsController extends Controller
       ->paginate(12); 
 
     $title = "Alerts";
-    $root = 'received_posts';
+    $root = 'alerts';
     $buttons = "posts.buttons.received_posts";
     $subtitle = "";
 
@@ -230,6 +230,16 @@ class PostsController extends Controller
       'sent_by' => auth()->id(),
       'sent_at' => Carbon::now() 
     ]);
+
+    $catalog_id = $request->get('catalog_id');
+    if ($catalog_id !=0 )
+    {
+      $catalog = Catalog::find($catalog_id);
+      $catalog->posts()->attach(
+        $post->id, 
+        array('user_id' => auth()->id())
+      );
+    }
 
     echo json_encode(array('success'=>true,'post_id'=>$post->id));
   }

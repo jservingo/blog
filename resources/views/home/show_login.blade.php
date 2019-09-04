@@ -4,7 +4,11 @@
 
 @section('content')
   <h1 style="padding-left:60px;">Save, organize and share your posts</h1>
-  <p style="padding-left:60px;"> Beta version 1.0, July 27 2019</p>
+  <p style="padding-left:60px;">
+    <span style="background-color:red; color:white; font-size:18px; font-weight:900;">
+        Beta version 1.2 - September 2019
+    </span>
+  </p>
   <div class="gradient-top">
     <div style="float:left; width:46%; padding-left:50px;">
 			<div style="width:100%; padding-top:40px; display:inline-block;">

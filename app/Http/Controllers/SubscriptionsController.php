@@ -102,7 +102,7 @@ class SubscriptionsController extends Controller
     $posts = $posts->paginate(12); 
 
     $title = "Pages subscriptions";  
-    $root = "subscriptions";
+    $root = "subscriptions_pages";
     $buttons = "posts.buttons.subscriptions";
     $subtitle = "";
     
@@ -124,7 +124,7 @@ class SubscriptionsController extends Controller
     $posts = $posts->paginate(12); 
 
     $title = "Apps subscriptions";  
-    $root = "subscriptions";
+    $root = "subscriptions_apps";
     $buttons = "posts.buttons.subscriptions";
     $subtitle = "";
     

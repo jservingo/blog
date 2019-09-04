@@ -14,25 +14,29 @@
       @include('pages.subtitle')
 
       <div id="posts_container" class="posts container">
-        @foreach($posts as $post)
-          <div class="wf-box">
-            @if ($post->isPhotoGallery() || $post->isFrame() || $post->isOffer() )     
-              @include('posts.exp.view')
-            @elseif ($post->isText())
-              @include('posts.card.view')
-            @elseif ($post->isNotification() || $post->isAlert())
-              @include('posts.box.view')
-            @elseif ($post->isWebPage())
-              @include('posts.box.view')  
-            @elseif ($post->isCatalog())
-              @include('posts.box.view')
-            @elseif ($post->isPage() || $post->isApp())     
-              @include('posts.card.view')
-            @elseif ($post->isUser() || $post->isCompany()) 
-              @include('posts.box.view')   
-            @endif
-          </div>
-        @endforeach
+        @if(!$posts->isEmpty())
+          @foreach($posts as $post)
+            <div class="wf-box">
+              @if ($post->isPhotoGallery() || $post->isFrame() || $post->isOffer() )     
+                @include('posts.exp.view')
+              @elseif ($post->isText())
+                @include('posts.card.view')
+              @elseif ($post->isNotification() || $post->isAlert())
+                @include('posts.box.view')
+              @elseif ($post->isWebPage())
+                @include('posts.box.view')  
+              @elseif ($post->isCatalog())
+                @include('posts.box.view')
+              @elseif ($post->isPage() || $post->isApp())     
+                @include('posts.card.view')
+              @elseif ($post->isUser() || $post->isCompany()) 
+                @include('posts.box.view')   
+              @endif
+            </div>
+          @endforeach
+        @else
+          @include('posts.show_message')
+        @endif
       </div>
       
       {{ $posts->render("pagination::default") }}

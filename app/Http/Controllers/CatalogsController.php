@@ -86,7 +86,7 @@ class CatalogsController extends Controller
       $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
 
       $title = "Catalogs";   
-      $root = "created_catalogs";
+      $root = "all_catalogs";
       $buttons = "posts.buttons.created_catalogs"; 
       $subtitle = "";
 

@@ -49,7 +49,7 @@
 		Save
 	</div>
 	@endif
-@elseif ($root=="created_pages")
+@elseif ($root=="created_pages" || $root=="all_pages")
 	<div class="popr-item" data-btn="btn_edit_post"
 		data-id="{{ $post->id }}">
 		Edit
@@ -80,7 +80,7 @@
 		Save
 	</div>
 	@endif
-@elseif ($root=="created_catalogs")
+@elseif ($root=="created_catalogs" || $root=="all_catalogs")
 	<div class="popr-item" data-btn="btn_edit_post"
 		data-id="{{ $post->id }}">
 		Edit
@@ -104,7 +104,7 @@
 		Save
 	</div>
 	@endif
-@elseif ($root=="created_apps")
+@elseif ($root=="created_apps" || $root=="all_apps")
 	<div class="popr-item" data-btn="btn_edit_post"
 		data-id="{{ $post->id }}">
 		Edit
@@ -135,7 +135,7 @@
 		Save
 	</div>
 	@endif	
-@elseif ($root=="subscriptions")
+@elseif ($root=="subscriptions" || $root=="subscriptions_apps" || $root=="subscriptions_pages")
 	<div class="popr-item" data-btn="btn_delete_post_from_subscription" 
 		data-id="{{ $post->id }}">
 		Delete
@@ -239,7 +239,7 @@
 		Save
 	</div>
 	@endif
-@elseif ($root=="received_posts")
+@elseif ($root=="received_posts" || $root=="notifications" || $root=="alerts")
 	<div class="popr-item" data-btn="btn_save_post" 
 		data-id="{{ $post->id }}">
 		Save
@@ -279,7 +279,7 @@
 		data-id="{{ $post->id }}">
 		Save
 	</div>
-@elseif ($root=="created_posts")
+@elseif ($root=="created_posts" || $root=="tag_posts")
 	<div class="popr-item" data-btn="btn_edit_post"
 		data-id="{{ $post->id }}">
 		Edit

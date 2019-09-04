@@ -81,7 +81,7 @@ class PagesController extends Controller
     $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
 
     $title = "Pages";   
-    $root = "created_pages";
+    $root = "all_pages";
     $buttons = "posts.buttons.created_pages"; 
     $subtitle = "";
 

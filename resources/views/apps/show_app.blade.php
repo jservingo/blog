@@ -49,8 +49,11 @@
   <script>
     var app_id = {{ $app->id }};
     var owner_name = "{{ $app->owner->name }}";
-    var owner_post = "{{ $app->owner->post->id }}";
+    var owner_post = "{{ $app->owner->post->id }}";       
   </script>
+  @if ($app->mode==2)
+    <script type="text/javascript" src="/js/show_app_{{ $app->name }}.js"></script>
+  @endif
   <script type="text/javascript" src="/js/show_app.js"></script>
   <script type="text/javascript" src="/js/buttons_add_save_discard.js"></script>
   <script type="text/javascript" src="/js/buttons_catalog_ribbon.js"></script>

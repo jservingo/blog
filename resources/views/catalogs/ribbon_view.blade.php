@@ -22,9 +22,11 @@
 						  	</div>
 							@endforeach
 						@else
-							<div>
-								<h4>Este catálogo no tiene posts</h4>
-							</div>
+						  @php
+						  	$msg_title = "This catalog doesn't have posts.";
+						  	$msg_subtitle = "You cad add or paste a post.";
+						  @endphp	
+							@include('catalogs.show_message')
 						@endif			
 					</div>
 				</div>
@@ -35,7 +37,11 @@
 @else
 	<div class="category container catcont">
 		<div class="posts container">
-			<h4>Esta categoría no tiene catálogos</h4>
+			@php
+		  	$msg_title = "This category doesn't have catalogs.";
+		  	$msg_subtitle = "You can add or paste a catalog.";
+		  @endphp	
+			@include('catalogs.show_message')
 		</div>
 	</div>
 @endif

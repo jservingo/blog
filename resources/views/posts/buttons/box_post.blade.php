@@ -25,7 +25,7 @@
 		<img src="/img/save.png" width="24" />
 	</a>
 	@endif
-@elseif ($root=="created_catalogs")
+@elseif ($root=="created_catalogs" || $root=="all_catalogs")
 	<a class="btn_edit_post"
 			data-id="{{ $post->id }}">
 		<img src="/img/edit.png" width="24" />
@@ -74,7 +74,7 @@
 		<img src="/img/save.png" width="24" />
 	</a>
 	@endif
-@elseif ($root=="created_pages")
+@elseif ($root=="created_pages" || $root=="all_pages")
 	<a class="btn_edit_post"
 			data-id="{{ $post->id }}">
 		<img src="/img/edit.png" width="24" />
@@ -105,31 +105,7 @@
 		<img src="/img/save.png" width="24" />
 	</a>
 	@endif
-@elseif ($root=="created_catalogs")
-	<a class="btn_edit_post"
-			data-id="{{ $post->id }}">
-		<img src="/img/edit.png" width="24" />
-	</a>				
-	<a class="btn_catalog_post_from_created_catalogs" 
-			data-id="{{ $post->id }}"> 
-		<img src="/img/delete.png" width="24" />
-	</a>
-	<a class="btn_copy_post"
-			data-id="{{ $post->id }}">
-		<img src="/img/copy.png" width="24" />
-	</a>
-	@if ($post->kpost)
-	<a class="btn_send_post" 
-			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
-	</a>
-	@else
-	<a class="btn_save_post" 
-			data-id="{{ $post->id }}"> 
-		<img src="/img/save.png" width="24" />
-	</a>
-	@endif
-@elseif ($root=="created_apps")
+@elseif ($root=="created_apps" || $root=="all_apps")
 	<a class="btn_edit_post"
 			data-id="{{ $post->id }}">
 		<img src="/img/edit.png" width="24" />
@@ -160,7 +136,7 @@
 		<img src="/img/save.png" width="24" />
 	</a>
 	@endif	
-@elseif ($root=="subscriptions")
+@elseif ($root=="subscriptions" || $root=="subscriptions_apps" || $root=="subscriptions_pages")
 	<a class="btn_delete_post_from_subscription" 
 			data-id="{{ $post->id }}"> 
 		<img src="/img/delete.png" width="24" />
@@ -265,7 +241,7 @@
 		<img src="/img/save.png" width="24" />
 	</a>
 	@endif
-@elseif ($root=="received_posts")
+@elseif ($root=="received_posts" || $root=="notifications" || $root=="alerts")
 	<a class="btn_save_post" 
 			data-id="{{ $post->id }}"> 
 		<img src="/img/save.png" width="24" />
@@ -305,7 +281,7 @@
 			data-id="{{ $post->id }}"> 
 		<img src="/img/save.png" width="24" />
 	</a>
-@elseif ($root=="created_posts")
+@elseif ($root=="created_posts" || $root=="tag_posts")
 	<a class="btn_edit_post"
 			data-id="{{ $post->id }}">
 		<img src="/img/edit.png" width="24" />
