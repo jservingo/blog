@@ -13,16 +13,14 @@ class CreateArtistsTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('artists')) {
-            Schema::create('artists', function (Blueprint $table) {
-                $table->string('mbid')->unique();
-                $table->string('name');
-                $table->unsignedInteger('post_id')->default(0);
-                $table->smallInteger('populate')->default(0);
-                $table->increments('id');
-                $table->timestamps();
-            });
-        }
+       Schema::create('artists', function (Blueprint $table) {
+            $table->string('mbid')->unique();
+            $table->string('name');
+            $table->unsignedInteger('post_id')->default(0);
+            $table->smallInteger('populate')->default(0);
+            $table->increments('id');
+            $table->timestamps();
+        });
     }
 
     /**
