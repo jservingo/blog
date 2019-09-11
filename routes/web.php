@@ -1,6 +1,6 @@
 <?php
 
-//Web Routes
+//Web Routes (cambiado)
 
 //Info
 Route::get('about','InfoController@about')->name('info.about');
