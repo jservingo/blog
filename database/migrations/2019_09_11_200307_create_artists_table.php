@@ -14,11 +14,11 @@ class CreateArtistsTable extends Migration
     public function up()
     {
        Schema::create('artists', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('mbid')->unique();
             $table->string('name');
             $table->unsignedInteger('post_id')->default(0);
-            $table->smallInteger('populate')->default(0);
-            $table->increments('id');
+            $table->smallInteger('populate')->default(0);            
             $table->timestamps();
         });
     }

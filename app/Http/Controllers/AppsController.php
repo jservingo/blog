@@ -259,4 +259,33 @@ class AppsController extends Controller
 
     echo json_encode(array('success'=>true,'post_id'=>$post->id));
   }
+
+  function generate_artists()
+  {
+    set_time_limit(36000);
+    error_reporting(0);
+
+    $fp = fopen("mbid/artist.sql", 'r');
+
+    $i = 1;
+    $fo = fopen("mbid/artist".$i.".sql", 'a');
+    fwrite($fo,"INSERT INTO 'artists' ('id', 'mbid', 'name', 'post_id', 'populate', 'created_at', 'updated_at') VALUES\n");
+  
+    $j=0;
+    while (!feof($fp)) {
+      $line = fgets($fp);
+      fwrite($fo, "$line\n");
+      $j=$j+1;
+      if ($j>=15379)
+      {
+        $j=0;
+        $i=$i+1;
+        fclose($fo);
+        $fo = fopen("mbid/artist".$i.".sql", 'a');
+        fwrite($fo,"INSERT INTO 'artists' ('id', 'mbid', 'name', 'post_id', 'populate', 'created_at', 'updated_at') VALUES\n");
+      }  
+    }
+    fclose($fp);
+    fclose($fo);
+  }
 }
