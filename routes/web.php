@@ -52,7 +52,8 @@ Route::post('/app/get/post','AppsController@get_post');
 Route::post('apps/post','AppsController@save_app_post');
 
 //App Last.fm
-Route::get('app/generate/artists','AppsController@generate_artists')->name('apps.generate_artists');
+Route::get('app/generate/artists','AppsController@generate_artists')->name('app.generate_artists');
+Route::get('app/create/artists/{i}','AppsController@create_artists')->name('app.create_artists');
 
 //Pages
 Route::get('pages/discover','PagesController@discover')->name('pages.discover');

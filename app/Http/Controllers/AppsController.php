@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Artist;
 use App\Kpost;
 use App\Post;
 use App\User;
@@ -265,27 +266,47 @@ class AppsController extends Controller
     set_time_limit(36000);
     error_reporting(0);
 
-    $fp = fopen("mbid/artist.sql", 'r');
+    $fp = fopen("mbid/artists.txt", 'r');
 
     $i = 1;
-    $fo = fopen("mbid/artist".$i.".sql", 'a');
-    fwrite($fo,"INSERT INTO 'artists' ('id', 'mbid', 'name', 'post_id', 'populate', 'created_at', 'updated_at') VALUES\n");
+    $fo = fopen("mbid/artists".$i.".txt", 'a');
   
     $j=0;
-    while (!feof($fp)) {
+    while (!feof($fp)) 
+    {
       $line = fgets($fp);
-      fwrite($fo, "$line\n");
-      $j=$j+1;
-      if ($j>=15379)
+      if (strlen($line)>1)
       {
-        $j=0;
-        $i=$i+1;
-        fclose($fo);
-        $fo = fopen("mbid/artist".$i.".sql", 'a');
-        fwrite($fo,"INSERT INTO 'artists' ('id', 'mbid', 'name', 'post_id', 'populate', 'created_at', 'updated_at') VALUES\n");
+        $all = explode("\t",$line);
+        fwrite($fo, $all[1]."\t".$all[2]."\n");
+        $j=$j+1;
+        if ($j>=15379)
+        {
+          $j=0;
+          $i=$i+1;
+          fclose($fo);
+          $fo = fopen("mbid/artists".$i.".txt", 'a');
+        }
       }  
     }
     fclose($fp);
     fclose($fo);
+  }
+
+  function create_artists($i)
+  {
+    set_time_limit(36000);
+    error_reporting(0);
+
+    $fp = fopen("mbid/artists".$i.".txt", 'r');
+
+    while (!feof($fp)) {
+      $line = fgets($fp);
+      $all = explode("\t",$line);
+      $artist = Artist::create([
+        'mbid' => $all[0],
+        'name' => $all[1]
+      ]);
+    }
   }
 }
