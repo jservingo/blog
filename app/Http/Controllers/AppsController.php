@@ -303,7 +303,7 @@ class AppsController extends Controller
     while (!feof($fp)) {
       $line = fgets($fp);
       $all = explode("\t",$line);
-      $artist = Artist::create([
+      $artist = Artist::firstOrCreate([
         'mbid' => $all[0],
         'name' => $all[1]
       ]);
