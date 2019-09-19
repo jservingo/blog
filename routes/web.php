@@ -48,12 +48,14 @@ Route::get('apps/created','AppsController@show_created')->name('apps.show_create
 Route::get('apps/created/{user}','AppsController@show_created_user')->name('apps.show_created_user');
 Route::get('apps/{app}','AppsController@show_app')->name('app.show_app');
 Route::get('app/subscribers/{app}','AppsController@show_subscribers')->name('app.show_subscribers');
-Route::post('/app/get/post','AppsController@get_post');
+Route::post('app/get/post','AppsController@get_post');
 Route::post('apps/post','AppsController@save_app_post');
 
 //App Last.fm
-Route::get('app/generate/artists','AppsController@generate_artists')->name('app.generate_artists');
-Route::get('app/create/artists/{i}','AppsController@create_artists')->name('app.create_artists');
+Route::get('artists/generate','ArtistsController@generate_artists')->name('artists.generate');
+Route::get('artists/create/{i}','ArtistsController@create_artists')->name('artists.create');
+Route::get('artists/get/all','ArtistsController@get_all')->name('artists.get_all');
+Route::get('artists/search/{q}','ArtistsController@search')->name('artists.search');
 
 //Pages
 Route::get('pages/discover','PagesController@discover')->name('pages.discover');

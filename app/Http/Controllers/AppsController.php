@@ -125,7 +125,7 @@ class AppsController extends Controller
       ::where("parent_id","=",$app->id)
       ->get();
 
-    if($app->name == "TVmaze")
+    if($app->mode==2 || $app->mode==3)
     {
       $title = $app->name;
       $buttons = ""; 
@@ -261,52 +261,4 @@ class AppsController extends Controller
     echo json_encode(array('success'=>true,'post_id'=>$post->id));
   }
 
-  function generate_artists()
-  {
-    set_time_limit(36000);
-    error_reporting(0);
-
-    $fp = fopen("mbid/artists.txt", 'r');
-
-    $i = 1;
-    $fo = fopen("mbid/artists".$i.".txt", 'a');
-  
-    $j=0;
-    while (!feof($fp)) 
-    {
-      $line = fgets($fp);
-      if (strlen($line)>1)
-      {
-        $all = explode("\t",$line);
-        fwrite($fo, $all[1]."\t".$all[2]."\n");
-        $j=$j+1;
-        if ($j>=15379)
-        {
-          $j=0;
-          $i=$i+1;
-          fclose($fo);
-          $fo = fopen("mbid/artists".$i.".txt", 'a');
-        }
-      }  
-    }
-    fclose($fp);
-    fclose($fo);
-  }
-
-  function create_artists($i)
-  {
-    set_time_limit(36000);
-    error_reporting(0);
-
-    $fp = fopen("mbid/artists".$i.".txt", 'r');
-
-    while (!feof($fp)) {
-      $line = fgets($fp);
-      $all = explode("\t",$line);
-      $artist = Artist::firstOrCreate([
-        'mbid' => $all[0],
-        'name' => $all[1]
-      ]);
-    }
-  }
 }

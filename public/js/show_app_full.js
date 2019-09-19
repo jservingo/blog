@@ -157,6 +157,7 @@ $(function() {
       .replace(/:app_id:/g, app_id)
       .replace(/:post_id:/g, post_id)
       .replace(/:owner_name:/g, owner_name)
+      .replace(/:owner_post:/g, owner_post)
       .replace(/:date:/g, date)
       .replace(/:custom_type:/g, post.custom_type)
 

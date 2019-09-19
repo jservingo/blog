@@ -53,8 +53,11 @@
   </script>
   @if ($app->mode==2)
     <script type="text/javascript" src="/js/show_app_{{ $app->name }}.js"></script>
-  @endif
-  <script type="text/javascript" src="/js/show_app.js"></script>
+    <script type="text/javascript" src="/js/show_app_full.js"></script>
+  @else if ($app->mode==3)
+    <script type="text/javascript" src="/js/show_app_{{ $app->name }}.js"></script>
+    <script type="text/javascript" src="/js/show_app_list.js"></script>    
+  @endif  
   <script type="text/javascript" src="/js/buttons_add_save_discard.js"></script>
   <script type="text/javascript" src="/js/buttons_catalog_ribbon.js"></script>
   <script type="text/javascript" src="/js/buttons_copy_paste.js"></script>
