@@ -125,51 +125,73 @@ class AppsController extends Controller
       ::where("parent_id","=",$app->id)
       ->get();
 
-    if($app->mode==2 || $app->mode==3)
+    if(count($apps) > 0)
     {
-      $title = $app->name;
-      $buttons = ""; 
-      $subtitle = "";
-      $root = "app_api";
-      return view('apps.show_app',compact(
-        'app','title','root','buttons','subtitle'));
-    }
-    elseif(count($apps) > 0)
-    {
-			$posts = Post 
-  	  ::join('apps', 'ref_id', '=', 'apps.id')       
+      $posts = Post 
+      ::join('apps', 'ref_id', '=', 'apps.id')       
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",$app->id)
       ->select('posts.*')
       ->latest('posts.created_at')
       ->paginate(12);
 
-	    $title = $app->name;   
-	    $root = "app_subs";
-	    $buttons = "posts.buttons.app_subs"; 
+      $title = $app->name;   
+      $root = "app_subs";
+      $buttons = "posts.buttons.app_subs"; 
       $subtitle = "";
 
-	    return view(get_view(),compact(
-	      'posts','title','root','buttons','subtitle','app'));
-	  }
-	  else
-	  {
-			$posts = Post  
-			::join('pages', 'ref_id', '=', 'pages.id')      
+      return view(get_view(),compact(
+        'posts','title','root','buttons','subtitle','app'));
+    }
+
+    if($app->mode==1)
+    {
+      $posts = Post  
+      ::join('pages', 'ref_id', '=', 'pages.id')      
       ->where("type_id","=",22)
       ->where("pages.app_id","=",$app->id)
       ->select('posts.*')
       ->latest('posts.created_at')
       ->paginate(12);
 
-	    $title = $app->name;   
-	    $root = "app_pages";
-	    $buttons = "posts.buttons.app_subs"; 
+      $title = $app->name;   
+      $root = "app_pages";
+      $buttons = "posts.buttons.app_subs"; 
       $subtitle = "";
 
-	    return view(get_view(),compact(
-	      'posts','title','root','buttons','subtitle','app'));
-	  }     	
+      return view(get_view(),compact(
+        'posts','title','root','buttons','subtitle','app'));
+    }     
+
+    if($app->mode==2)
+    {
+      $title = $app->name;
+      $buttons = ""; 
+      $subtitle = "";
+      $root = "app_api";
+      return view('apps.show_app_full',compact(
+        'app','title','root','buttons','subtitle'));
+    }
+
+    if($app->mode==3)
+    {
+      $title = $app->name;
+      $buttons = ""; 
+      $subtitle = "";
+      $root = "app_api";
+      return view('apps.show_app_list',compact(
+        'app','title','root','buttons','subtitle'));
+    }
+
+    if($app->mode==4)
+    {
+      $title = $app->name;
+      $buttons = ""; 
+      $subtitle = "";
+      $root = "app_api";
+      return view('apps.show_app_card',compact(
+        'app','title','root','buttons','subtitle'));
+    }
   }
 
   public function show_subscribers(App $app)

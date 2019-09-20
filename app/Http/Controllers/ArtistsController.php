@@ -74,7 +74,7 @@ class ArtistsController extends Controller
   {
     $artists = Artist
       ::leftjoin('posts', 'artists.post_id', '=', 'posts.id')
-      ->where('name', 'like', '%'.$q.'%')
+      ->where('name', 'like', $q.'%')
       ->orderBy('artists.updated_at', 'DESC')
       ->get();
 

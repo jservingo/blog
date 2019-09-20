@@ -1,4 +1,4 @@
-{{-- apps.show --}} 
+{{-- apps.show_app_list --}} 
 
 @extends('layout')
 
@@ -51,13 +51,8 @@
     var owner_name = "{{ $app->owner->name }}";
     var owner_post = "{{ $app->owner->post->id }}";       
   </script>
-  @if ($app->mode==2)
-    <script type="text/javascript" src="/js/show_app_{{ $app->name }}.js"></script>
-    <script type="text/javascript" src="/js/show_app_full.js"></script>
-  @else if ($app->mode==3)
-    <script type="text/javascript" src="/js/show_app_{{ $app->name }}.js"></script>
-    <script type="text/javascript" src="/js/show_app_list.js"></script>    
-  @endif  
+  <script type="text/javascript" src="/js/show_app_{{ $app->name }}.js"></script>
+  <script type="text/javascript" src="/js/show_app_list.js"></script>    
   <script type="text/javascript" src="/js/buttons_add_save_discard.js"></script>
   <script type="text/javascript" src="/js/buttons_catalog_ribbon.js"></script>
   <script type="text/javascript" src="/js/buttons_copy_paste.js"></script>
