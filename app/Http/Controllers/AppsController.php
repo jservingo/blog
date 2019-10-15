@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Artist;
 use App\Kpost;
+use App\Photo;
 use App\Post;
 use App\User;
+use App\Tag;
 use App\App;
 
 class AppsController extends Controller
@@ -169,7 +171,7 @@ class AppsController extends Controller
       $buttons = ""; 
       $subtitle = "";
       $root = "app_api";
-      return view('apps.show_app_full',compact(
+      return view('apps.show_full',compact(
         'app','title','root','buttons','subtitle'));
     }
 
@@ -179,7 +181,7 @@ class AppsController extends Controller
       $buttons = ""; 
       $subtitle = "";
       $root = "app_api";
-      return view('apps.show_app_list',compact(
+      return view('apps.show_list',compact(
         'app','title','root','buttons','subtitle'));
     }
 
@@ -189,7 +191,7 @@ class AppsController extends Controller
       $buttons = ""; 
       $subtitle = "";
       $root = "app_api";
-      return view('apps.show_app_card',compact(
+      return view('apps.show_card',compact(
         'app','title','root','buttons','subtitle'));
     }
   }
@@ -229,6 +231,21 @@ class AppsController extends Controller
       echo json_encode(array('success'=>false));
   }  
 
+  function get_posts(App $app)
+  {
+    $posts = Post
+      ::with('photos')
+      ->with('tags')
+      ->where("type_id","=",8)
+      ->where("app_id","=",$app->id)
+      ->where("user_id","=",$app->user_id)     
+      ->orderBy('updated_at', 'DESC')
+      ->limit(100)
+      ->get();
+
+    echo json_encode($posts);
+  }
+
   public function save_app_post(Request $request)
   {    
     $app_id = $request->get('app_id');
@@ -267,8 +284,50 @@ class AppsController extends Controller
         'source' => $source,
         'published_at' => Carbon::now()
       ]);
-    }
 
+      Photo::create([
+        'url' => $request->get('img'),
+        'post_id' => $post->id,
+        'user_id' => $app->user_id
+      ]);
+
+      //Eliminar tags del post
+      $post->tags()
+        ->wherePivot('post_id', '=', $post->id)
+        ->wherePivot('user_id', '=', $app->user_id)
+        ->detach();
+      
+      //Agregar tags al post
+      $tags = explode(',',$request->get('tags'));
+      if(!empty($tags))
+      {
+        foreach ($tags as $tag_str)
+        {
+          if (strlen($tag_str) >= 3)
+          {
+            $tag_str = trim(preg_replace('/\s+/', '', $tag_str));
+            $tag = Tag::where('name', $tag_str)->first();
+            if($tag)
+              $post->tags()->attach($tag->id, array('user_id' => $app->user_id));
+            else
+            {
+              $tag = Tag::create([
+                'name' => $tag_str
+              ]);
+              $post->tags()->attach($tag->id, array('user_id' => $app->user_id));
+            }
+          }
+        }
+      }
+
+      $kpost = Kpost::create([
+        'post_id' => $post->id,
+        'user_id' => $app->user_id,
+        'sent_by' => $app->user_id,
+        'sent_at' => Carbon::now() 
+      ]);
+    }
+    
     if (!$post->kpost)
     {
       $kpost = Kpost::create([

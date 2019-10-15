@@ -126,6 +126,7 @@ a.vlink{
 .img-responsive{
 	position: absolute;
   object-fit: cover;
+  object-position: 0px 0px;
   width: 174px;
   height: 98px;
   display: block;
@@ -133,6 +134,7 @@ a.vlink{
 .img-responsive-card{
   position: absolute;
   object-fit: cover;
+  object-position: 0px 0px;
   width: 98px;
   height: 98px;
   display: block;

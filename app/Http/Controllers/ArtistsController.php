@@ -10,6 +10,7 @@ class ArtistsController extends Controller
 {
   function generate_artists()
   {
+    return;
     set_time_limit(36000);
     error_reporting(0);
 
@@ -42,6 +43,7 @@ class ArtistsController extends Controller
 
   function create_artists($i)
   {
+    return;
     set_time_limit(36000);
     error_reporting(0);
 
@@ -59,6 +61,7 @@ class ArtistsController extends Controller
 
   function get_all()
   {
+    // ESTO YA NO SE USA (ELIMINAR)
   	$artists = Post
       ::where("type_id","=",8)
       ->where("app_id","=",4)
@@ -70,14 +73,64 @@ class ArtistsController extends Controller
     echo json_encode($artists);
   }
 
+  function get_image(Request $request)
+  {
+    $url_image = $request->get('url_image');
+    $src = "/img/music.png";    
+    $doc = new \DOMDocument();
+    @$doc->loadHTMLFile($url_image);
+    if ($doc)
+    {  
+      $xpath = new \DOMXpath($doc);
+      if ($xpath)
+      {
+        $imgs = $xpath->query("//img");
+        if ($imgs)
+        {
+          $img = $imgs->item(0);
+          if ($img)
+            $src = $img->getAttribute("src");        
+        }
+      }
+    }
+    echo json_encode($src);
+  }
+
+  public function show_post($mbid)
+  {
+    //Mostrar post en una ventana popup
+    return view('apps.show_post_LastFm',[
+      'mbid' => $mbid,
+    ]);
+  }
+
   function search($q)
   {
     $artists = Artist
       ::leftjoin('posts', 'artists.post_id', '=', 'posts.id')
-      ->where('name', 'like', $q.'%')
+      ->where('name', '=', $q)  //like $q.'%'
       ->orderBy('artists.updated_at', 'DESC')
       ->get();
 
     echo json_encode($artists);
   }
+
+  public function destroy($mbid)
+  {
+    //$this->authorize('delete',$post);
+
+    if (auth()->id() != 10)
+    {
+      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      return;
+    }
+
+    $artist = Artist
+      ::where("mbid","=",$mbid)
+      ->first();
+
+    $artist->delete();
+
+    echo json_encode(array('success'=>true));  
+  }  
 }

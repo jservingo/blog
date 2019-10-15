@@ -13,6 +13,7 @@
     margin-right: auto;
     margin-left: auto;
 }
+
 @media (max-width: 723px) {
   .container {
     width: 367px; 
@@ -189,6 +190,7 @@ a.vlink{
 .img-responsive{
 	position: absolute;
   object-fit: cover;
+  object-position: 0px 0px;
   width: 66px;
   height: 66px;
   display: block;
@@ -196,6 +198,7 @@ a.vlink{
 .img-responsive-card{
   position: absolute;
   object-fit: cover;
+  object-position: 0px 0px;
   width: 66px;
   height: 66px;
   display: block;

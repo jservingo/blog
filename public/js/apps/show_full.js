@@ -3,7 +3,7 @@ $(function() {
   var $appPostsContainer = $('#posts_container').find('.app-posts');
   var $appPostsMenu = $('#app_posts_menu');
   var $pagination = $('#pagination');
-  var per_page= 10;
+  var per_page= 12;
 
   /*
   $('#light-pagination').pagination({
@@ -41,7 +41,7 @@ $(function() {
         '</div>'+
         '<div style="float:left;">'+
           '<div class="content" style="width: 578px; background-color: rgb(254, 253, 253); padding: 8px 10px 0px;">'+      
-            '<a href=":url:" target="_blank" class="text-uppercase c-blue" data-id=":app_id:">'+
+            '<a href=":source:" target="_blank" class="text-uppercase c-blue" data-id=":app_id:">'+
               '<h1 id="t-title" class="t-title" style="margin-top:0;margin-bottom:6px">:title:</h1>'+  
             '</a>'+
           '</div>'+            
@@ -49,7 +49,7 @@ $(function() {
         '<div style="clear:both;"></div>'+
         '<div>'+
           '<div class="scontent" style="width: 605px; background-color: rgb(254, 253, 253); padding: 2px 10px 10px; text-align: justify;">'+
-            '<a href=":url:" id="t-excerpt" class="t-excerpt c-negro" data-id=":app_id:">'+
+            '<a href=":source:" id="t-excerpt" target="_blank" class="t-excerpt c-negro" data-id=":app_id:">'+
               ':excerpt:'+
             '</a>'+
           '</div>'+
@@ -78,7 +78,7 @@ $(function() {
         '<div style="float:left;">'+               
           '<div class="truncate footnote" data-height="24" data-adjust="false" style="width: 723px; color: rgb(21, 85, 151); font-weight: 800; background-color: rgb(254, 253, 253); padding: 6px 10px;">'+     
             '<div id="t-tags" class="t-tags">'+
-              ':custom_type:'+
+              ':tags_str:'+
             '</div>'+ 
           '</div>'+
         '</div>'+
@@ -90,7 +90,7 @@ $(function() {
             '<a class="btn_copy_app_post" '+ 
                 'data-id=":app_id:" '+
                 'data-title=":title:" '+
-                'data-source=":url:">'+
+                'data-source=":source:">'+
               '<img src="/img/copy.png" width="24">'+
             '</a>'+
             '<a class="btn_save_app_post" '+ 
@@ -99,10 +99,10 @@ $(function() {
                   'data-excerpt=":excerpt:" '+
                   'data-img=":img:" '+
                   'data-tags=":tags:" '+
-                  'data-footnote=":url:" '+
+                  'data-footnote=":footnote:" '+
                   'data-date=":date:" '+
                   'data-user=":owner_name:" '+
-                  'data-source=":url:" '+
+                  'data-source=":source:" '+
                   'data-custom_type=":custom_type:">'+
               '<img src="/img/save.png" width="24">'+
             '</a>'+
@@ -111,7 +111,7 @@ $(function() {
         '<div style="float:left;">'+               
           '<div class="truncate footnote" data-height="24" data-adjust="false" style="width: 723px; color: rgb(29, 113, 167); font-weight: 800; background-color: rgb(254, 253, 253); padding: 6px 10px;">'+     
             '<div id="t-footnote" class="t-footnote">'+
-              ':url:'+
+              ':footnote:'+
             '</div>'+
           '</div>'+
         '</div>'+
@@ -150,9 +150,9 @@ $(function() {
       .replace(/:img:/g, post.img)
       .replace(/:excerpt:/g, post.excerpt.replace(/['"]+/g, '').replace(/<[^>]+>/g, ''))
       .replace(/:tags:/g, post.tags)
+      .replace(/:tags_str:/g, renderTags(post.tags))
       .replace(/:footnote:/g, post.footnote)
-      .replace(/:url:/g, post.url)
-      .replace(/:href:/g, post.href)
+      .replace(/:source:/g, post.source)
       .replace(/:img alt:/g, post.title + " Logo")
       .replace(/:app_id:/g, app_id)
       .replace(/:post_id:/g, post_id)
@@ -163,7 +163,6 @@ $(function() {
 
     var post_menu = template_menu
       .replace(/:post_id:/g, post_id)
-      .replace(/:href:/g, post.href)
       .replace(/:custom_type:/g, post.custom_type)
 
     var $post_new = $(post_new);
@@ -172,6 +171,17 @@ $(function() {
     $appPostsContainer.append($post_new.fadeIn(1500));
     $appPostsMenu.append($post_menu);
   }   
+
+  function renderTags(tags)
+  {
+    var tags_str = "";
+    var tags = tags.split(",");
+    for (i=0; i < tags.length; i++)
+    {
+      tags_str = tags_str + tags[i] + " ";  
+    } 
+    return tags_str; 
+  }
 
   function renderPagination(num)
   {
@@ -201,44 +211,28 @@ $(function() {
     q = $('.searchTerm').val().trim();
     if(!q.length)
     {
-      alert("Add some text friend");
+      alert("Add some text please");
     }
     else
     {   
       search_posts(q, function(posts) {
-        localStorage.posts = JSON.stringify(posts);
-        localStorage.app_url = url_search;
         var num = posts.length;
         var visible_posts = slicePosts(posts,num,1);
         $appPostsContainer.find('.app-loader').remove();
         renderPosts(visible_posts);
         renderPagination(num); 
+        $(window).trigger('resize');
       });       
     }
   }); 
 
-  if (!localStorage.posts || localStorage.app_url != url_api)
-  {
-  	get_posts(function(posts) {
-  		//console.log(posts);
-  		localStorage.posts = JSON.stringify(posts);
-    	localStorage.app_url = url_api;
-    	var num = posts.length;
-  		var visible_posts = slicePosts(posts,num,1);
-  		$appPostsContainer.find('.app-loader').remove();
-  		renderPosts(visible_posts);
-  		renderPagination(num);
-      $(window).trigger('resize');
-  	});
-  }
-  else {
-    posts = JSON.parse(localStorage.posts);
+  get_posts(function(posts) {
+    //console.log(posts);
     var num = posts.length;
     var visible_posts = slicePosts(posts,num,1);
     $appPostsContainer.find('.app-loader').remove();
     renderPosts(visible_posts);
     renderPagination(num);
     $(window).trigger('resize');
-  }
+  });
 })
-

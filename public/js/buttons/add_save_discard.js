@@ -1,5 +1,6 @@
 // ADD USER, ADD SUBSCRIPTION SAVE & DISCARD POST
 
+//Event Delegation
 $('.app-posts').on("click",".btn_save_app_post", function(e){
   var app_id = $(this).data("id");
   var title = $(this).data("title");
@@ -135,7 +136,6 @@ function save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, 
     source: source, 
     custom_type: custom_type
   };
-  console.log(data);
   $.ajax({
     type: 'post',
     url: '/apps/post',

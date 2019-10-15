@@ -11,8 +11,8 @@
       @include('apps.title')
       {{-- @include('apps.show_app_rows') --}}
       <div id="posts_container" class="posts container">
-        <div class="app-posts">
-          <div class="app-loader"></div>
+        <div class="app-posts" style="display:flex; flex-wrap:wrap">
+          <div class="loader"></div>
         </div>
         <div class="pagination-holder clearfix">
           <div id="light-pagination"></div>
@@ -27,8 +27,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework_full.css">
-  <link rel="stylesheet" href="/css/framework_app.css">
+  <link rel="stylesheet" href="/css/framework_card.css">
   <link rel="stylesheet" href="/css/multiselect.css">
   <link rel="stylesheet" href="/css/simplePagination.css" >
 @endpush
@@ -51,14 +50,15 @@
     var owner_name = "{{ $app->owner->name }}";
     var owner_post = "{{ $app->owner->post->id }}";       
   </script>
-  <script type="text/javascript" src="/js/show_app_{{ $app->name }}.js"></script>
-  <script type="text/javascript" src="/js/show_app_card.js"></script>    
-  <script type="text/javascript" src="/js/buttons_add_save_discard.js"></script>
-  <script type="text/javascript" src="/js/buttons_catalog_ribbon.js"></script>
-  <script type="text/javascript" src="/js/buttons_copy_paste.js"></script>
-  <script type="text/javascript" src="/js/buttons_create_edit_show.js"></script>
-  <script type="text/javascript" src="/js/buttons_delete.js"></script>
-  <script type="text/javascript" src="/js/buttons_header.js"></script>
+  <script type="text/javascript" src="/js/apps/show_{{ $app->name }}.js"></script>
+  <script type="text/javascript" src="/js/apps/show_card.js"></script>    
+  <script type="text/javascript" src="/js/buttons/add_save_discard.js"></script>
+  <script type="text/javascript" src="/js/buttons/catalog_ribbon.js"></script>
+  <script type="text/javascript" src="/js/buttons/copy_paste.js"></script>
+  <script type="text/javascript" src="/js/buttons/create_edit_show.js"></script>
+  <script type="text/javascript" src="/js/buttons/delete.js"></script>
+  <script type="text/javascript" src="/js/buttons/header.js"></script>
+  <script type="text/javascript" src="/js/functions.js"></script>
   <script type="text/javascript" src="/js/multiselect.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/truncate.js"></script>
@@ -78,39 +78,6 @@
   </script>
   <script type="text/javascript" src="/js/resize_iframe.js"></script>
   @include('home.message')
-  <script>
-    var width_container = $(window).width() * 0.90; 
-    $(".container").width(width_container);
-    $(".post").each(function() {
-      var width_post = width_container;
-      var width_header = $(this).find(".header").width();
-      var width_media = $(this).find(".media").width();
-      var width_content = width_post - width_media - 60;
-      var width_scontent = width_post - width_media - 28;
-      var width_footnote = width_post - 260;
-      $(this).width(width_post);
-      $(this).find(".content").width(width_content);
-      $(this).find(".scontent").width(width_content);
-      $(this).find(".footnote").width(width_footnote);
-    });
-    
-    $(window).resize(function () {
-      var width_container = $(window).width() * 0.90; 
-      $(".container").width(width_container);      
-      $(".post").each(function() {
-        var width_post = width_container;
-        var width_header = $(this).find(".header").width();
-        var width_media = $(this).find(".media").width();
-        var width_content = width_post - width_media - 60;
-        var width_scontent = width_post - width_media - 28;
-        var width_footnote = width_post - 260;
-        $(this).width(width_post);
-        $(this).find(".content").width(width_content);
-        $(this).find(".scontent").width(width_content);
-        $(this).find(".footnote").width(width_footnote);
-      });
-    });
-  </script>
   <script> 
     var rv_type_id = 23; 
     var rv_post_id = 0;

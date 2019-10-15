@@ -13,7 +13,7 @@
     }
     else
     {
-      $width = 670;
+      $width = 324;
       $height = 178;
     }
   }

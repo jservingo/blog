@@ -42,16 +42,22 @@
       </div>
       @else
       <div>  
-        <div class="header" style="float:right;">
-          @include('posts.full.header')
+        <div style="float:right;">
+          <div class="header" style="float:right;">
+            @include('posts.full.header')
+          </div>
+          <div class="media" style="float:left;">
+            @include('posts.full.title')  
+          </div>
+          <div style="clear:both;"></div>
+          <div>
+            @include('posts.full.scontent')
+          </div>
         </div>
         <div class="media" style="float:left;">
-          @include('posts.full.title')  
+          @include('posts.full.photo')
         </div>
-        <div style="clear:both;"></div>
-        <div style="padding:4px 10px 4px 10px; text-align:justify;">
-          @include('posts.full.content')
-        </div>
+        <div style="clear:both;"></div>   
       </div>
       @endif
     @else
@@ -66,7 +72,6 @@
       <div style="clear:both;"></div>
       <div style="padding:4px 10px 4px 10px; text-align:justify;">
         @include('posts.full.content')
-        </a>
       </div>
     </div>    
     @endif

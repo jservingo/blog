@@ -49,12 +49,13 @@
 	<script type="text/javascript" src="/js/diyslider.min.js"></script>
 	<script type="text/javascript" src="/js/confirmDialog.min.js"></script>
 	<script type="text/javascript" src="/js/growl.js"></script>
-	<script type="text/javascript" src="/js/buttons_add_save_discard.js"></script>
-  <script type="text/javascript" src="/js/buttons_catalog_ribbon.js"></script>
-  <script type="text/javascript" src="/js/buttons_copy_paste.js"></script>
-  <script type="text/javascript" src="/js/buttons_create_edit_show.js"></script>
-  <script type="text/javascript" src="/js/buttons_delete.js"></script>
-  <script type="text/javascript" src="/js/buttons_header.js"></script>
+	<script type="text/javascript" src="/js/buttons/add_save_discard.js"></script>
+  <script type="text/javascript" src="/js/buttons/catalog_ribbon.js"></script>
+  <script type="text/javascript" src="/js/buttons/copy_paste.js"></script>
+  <script type="text/javascript" src="/js/buttons/create_edit_show.js"></script>
+  <script type="text/javascript" src="/js/buttons/delete.js"></script>
+  <script type="text/javascript" src="/js/buttons/header.js"></script>
+  <script type="text/javascript" src="/js/functions.js"></script>
 	<script type="text/javascript" src="/js/multiselect.js"></script>
 	<script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/truncate.js"></script>
@@ -82,7 +83,7 @@
     @endif
   </script>
 	<script type="text/javascript" src="/js/categoriesTree.js"></script>
-  <script type="text/javascript" src="/js/buttons_show_categories.js"></script>
+  <script type="text/javascript" src="/js/buttons/categories.js"></script>
 	<script> 
     var rv_type_id = 22; 
     var rv_post_id = 0;
