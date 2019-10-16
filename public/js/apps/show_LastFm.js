@@ -39,13 +39,10 @@ function search_posts(q, callback)
 {
 	var posts = new Array();
 
-  alert(q);
   fetch(url_search+q)
   .then((res) => res.json())
   .then(function(rows) {
-    console.log(rows);
     rows.forEach(function (row) {
-      console.log(row);
       source = row.source ? row.source : "javascript:show_post('"+row.mbid+"')";
   		post = {
   			title: row.name, 
@@ -56,7 +53,6 @@ function search_posts(q, callback)
         footnote: row.footnote ? row.footnote : ' ',
         tags: row.tags ? row.tags : ''
   		};
-      console.log(post);
   		posts.push(post);
   	});
     callback(posts);
