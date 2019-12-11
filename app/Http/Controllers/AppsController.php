@@ -253,6 +253,7 @@ class AppsController extends Controller
     $excerpt = $request->get('excerpt');
     $img = $request->get('img');
     $tags = $request->get('tags');
+    $links = $request->get('links');
     $footnote = $request->get('footnote');
     $date = $request->get('date');
     $user = $request->get('user');
@@ -276,6 +277,7 @@ class AppsController extends Controller
         'title' => $title,
         'excerpt' => $excerpt,
         'body' => '<a href="'.$source.'" target="_blank">source</a>',
+        'links' => $links,
         'footnote' => $footnote,
         'type_id' => 8,
         'user_id' => $app->user_id,

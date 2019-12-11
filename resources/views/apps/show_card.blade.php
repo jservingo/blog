@@ -5,7 +5,7 @@
 @section('content')
   <div style="overflow: hidden;">
 
-    <div class="loader"></div>
+    <!--<div class="loader"></div>-->
 
     <div id="main_panel" style="visibility:hidden;">
       @include('apps.title')
@@ -48,9 +48,10 @@
   <script>
     var app_id = {{ $app->id }};
     var owner_name = "{{ $app->owner->name }}";
-    var owner_post = "{{ $app->owner->post->id }}";       
+    var owner_post = "{{ $app->owner->post->id }}"; 
+    var truncate_js = true;      
   </script>
-  <script type="text/javascript" src="/js/apps/show_{{ $app->name }}.js"></script>
+  <script type="text/javascript" src="/js/apps/search_{{ $app->name }}.js"></script>
   <script type="text/javascript" src="/js/apps/show_card.js"></script>    
   <script type="text/javascript" src="/js/buttons/add_save_discard.js"></script>
   <script type="text/javascript" src="/js/buttons/catalog_ribbon.js"></script>

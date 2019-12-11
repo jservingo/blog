@@ -21,7 +21,8 @@ function truncateByHeight(element, sel, height) {
   }
 }
 
-$(function() {
+function truncate()
+{
 	var elements = document.getElementsByClassName("truncate");
 	for (var i = 0; i < elements.length; i++) {
 		var element = elements[i]; 
@@ -37,6 +38,10 @@ $(function() {
   	if (adjust=="true")
   		element.style.height = ((height) + "px");
 	}
+}
+
+$(function() {
+		truncate();
 });
 
 	

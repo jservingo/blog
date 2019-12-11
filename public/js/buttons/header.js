@@ -40,12 +40,13 @@ $('.box_popup').on("click","div.popr-item", function(e){
       var excerpt = $('#t-excerpt').text();
       var img = $('#t-img').attr("src");
       var tags = $('#t-tags').text();
+      var links = "";
       var footnote = $('#t-footnote').text();
       var date = $('#t-date').text();
       var user = $('#t-user').text();
       var source = $(this).data("source");
       var custom_type = $(this).data("custom_type");
-      btn_save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, source, custom_type); 
+      btn_save_app_post(app_id, title, excerpt, img, tags, links, footnote, date, user, source, custom_type); 
       break;
     case 'btn_create_catalog_from_category':
       var category_id = $(this).data("id");

@@ -106,13 +106,46 @@ class ArtistsController extends Controller
 
   function search($q)
   {
-    $artists = Artist
-      ::leftjoin('posts', 'artists.post_id', '=', 'posts.id')
-      ->where('name', 'like', $q.'%')  //like $q.'%'
-      ->orderBy('artists.updated_at', 'DESC')
-      ->get();
+    if (auth()->id() == 10)
+    {
+      $artists = Artist
+        ::leftjoin('posts', 'artists.post_id', '=', 'posts.id')
+        ->leftjoin('photos', 'artists.post_id', '=', 'photos.post_id')
+        ->where('name', 'like', $q.'%')  //like $q.'%'
+        ->orderBy('artists.name')
+        ->get();
+    }
+    else
+    {
+      $artists = Artist
+        ::leftjoin('posts', 'artists.post_id', '=', 'posts.id')
+        ->leftjoin('photos', 'artists.post_id', '=', 'photos.post_id')
+        ->where('name', 'like', $q.'%')  //like $q.'%'
+        ->where('status_id', '=', 2) //Saved
+        ->orderBy('artists.name')
+        ->get();
+    }
 
     echo json_encode($artists);
+  }
+
+  public function save_post(Request $request)
+  {
+    if (auth()->id() != 10)
+    {
+      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      return;
+    }
+    
+    $artist = Artist
+      ::where("mbid","=",$request->get('mbid'))
+      ->first();
+
+    $artist->status_id = 2;
+    $artist->post_id = $request->get('post_id');
+    $artist->save();
+
+    echo json_encode(array('success'=>true));
   }
 
   public function destroy($mbid)
@@ -129,7 +162,10 @@ class ArtistsController extends Controller
       ::where("mbid","=",$mbid)
       ->first();
 
-    $artist->delete();
+    $artist->status_id = 1;
+    $artist->save();
+
+    //$artist->delete();
 
     echo json_encode(array('success'=>true));  
   }  

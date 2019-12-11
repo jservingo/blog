@@ -294,7 +294,7 @@ class PostsController extends Controller
     $post->excerpt = $request->get('excerpt');
     $post->body = $request->get('body');
     $post->url = $request->get('url');
-    $post->iframe = $request->get('iframe');  
+    $post->iframe = $request->get('iframe'); 
     if ($post->user_id == auth()->id())
     {
       $post->footnote = $request->get('footnote');

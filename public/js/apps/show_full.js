@@ -11,7 +11,7 @@ $(function() {
     cssStyle: 'light-theme',
     onPageClick(pageNumber, event){
       $appPostsContainer.find('.app-loader').remove();
-      var posts = JSON.parse(localStorage.posts);
+      var posts = JSON.parse(localStorage.app_posts);
       var num = posts.length;
       var visible_posts = slicePosts(posts,num,page);
       renderPosts(visible_posts);      
@@ -51,7 +51,7 @@ $(function() {
           '<div class="scontent" style="width: 605px; background-color: rgb(254, 253, 253); padding: 2px 10px 10px; text-align: justify;">'+
             '<a href=":source:" id="t-excerpt" target="_blank" class="t-excerpt c-negro" data-id=":app_id:">'+
               ':excerpt:'+
-            '</a>'+
+            '</a>'+            
           '</div>'+
         '</div>'+
       '</div>'+
@@ -194,7 +194,8 @@ $(function() {
         cssStyle: 'light-theme',
         onPageClick(page, event){
           $appPostsContainer.find('.app-loader').remove();
-          var posts = JSON.parse(localStorage.posts);
+          //LocalStorage
+          var posts = JSON.parse(localStorage.app_posts);
           var num = posts.length;
           var visible_posts = slicePosts(posts,num,page);
           renderPosts(visible_posts);      
@@ -216,6 +217,8 @@ $(function() {
     else
     {   
       search_posts(q, function(posts) {
+        localStorage.app_posts = JSON.stringify(posts);
+        localStorage.app_url = url_search;
         var num = posts.length;
         var visible_posts = slicePosts(posts,num,1);
         $appPostsContainer.find('.app-loader').remove();
@@ -226,13 +229,59 @@ $(function() {
     }
   }); 
 
-  get_posts(function(posts) {
-    //console.log(posts);
+  function get_posts(callback)
+  {
+    var posts = new Array();
+
+    fetch('/app/get/posts/'+app_id)
+    .then((res) => res.json())
+    .then(function(rows) {
+      if (rows)
+      {
+        rows.forEach(function (row) {
+          tags_str = "";
+          tags = row.tags;
+          for (i=0; i < tags.length; i++) {
+            tags_str += "," + tags[i].name;
+          }        
+          post = {
+            title: row.title, 
+            excerpt: row.excerpt, 
+            img: row.photos.length > 0 ? row.photos[0].url : '',
+            source: row.source,
+            custom_type: row.custom_type,
+            footnote: row.footnote,
+            tags: tags_str
+          };
+          posts.push(post);
+        });    
+        callback(posts);  
+      }
+    })
+    .catch((error) => console.log(error))  
+  }   
+
+  if (!localStorage.app_posts || localStorage.app_url != url_api)
+  {
+    get_posts(function(posts) {
+      //console.log(posts);
+      localStorage.app_posts = JSON.stringify(posts);
+      localStorage.app_url = url_api;
+      var num = posts.length;
+      var visible_posts = slicePosts(posts,num,1);
+      $appPostsContainer.find('.app-loader').remove();
+      renderPosts(visible_posts);
+      renderPagination(num);
+      $(window).trigger('resize');
+    });      
+  }
+  else {
+    posts = JSON.parse(localStorage.app_posts);
     var num = posts.length;
     var visible_posts = slicePosts(posts,num,1);
     $appPostsContainer.find('.app-loader').remove();
     renderPosts(visible_posts);
     renderPagination(num);
     $(window).trigger('resize');
-  });
+  }
 })

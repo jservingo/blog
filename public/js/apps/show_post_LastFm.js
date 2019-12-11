@@ -2,11 +2,14 @@ $(function() {
   var $appPostsContainer = $('#posts_container').find('.app-posts');
   var $appPostsMenu = $('#app_posts_menu');
 
-  var template_menu = '<div class="popr-box" data-box-id=":post_id:">'+
+  var template_menu = "";
+
+  /*'<div class="popr-box" data-box-id=":post_id:">'+
     '<div class="popr-item" data-btn="btn_delete_app_post" data-mbid=":mbid:">Copy</div>'+
     '<div class="popr-item" data-btn="btn_copy_post" data-id=":post_id:">Copy</div>'+
     '<div class="popr-item" data-btn="btn_save_app_post" data-id=":app_id:">Save</div>'+
     '</div>';
+  */
 
   var template_post = '<div class="post pfull">'+
     '<div class="content-post" style="background-color:#fefdfd">'+
@@ -38,7 +41,7 @@ $(function() {
             '</a>'+
           '</div>'+
           '<div class="scontent" style="width: 605px; background-color: rgb(254, 253, 253); padding: 2px 10px 10px; text-align: justify;">'+
-            ':relations:'+
+            ':links:'+
           '</div>'+
         '</div>'+
       '</div>'+
@@ -74,18 +77,13 @@ $(function() {
       '<div>'+
         '<div style="float:right;">'+
           '<footer class="xcontainer-flex xspace-between" style="width:210px; height:24px; background-color:#fefdfd; padding: 6px 10px; text-align:right;">'+
-            '<a class="btn_delete_app_post" '+ 
+            '<a class="btn_delete_lastfm_post" '+ 
                   'data-mbid=":mbid:">'+
               '<img src="/img/delete.png" width="24">'+
-            '</a>'+
-            '<a class="btn_copy_app_post" '+ 
-                'data-id=":app_id:" '+
-                'data-title=":title:" '+
-                'data-source=":source:">'+
-              '<img src="/img/copy.png" width="24">'+
-            '</a>'+            
-            '<a class="btn_save_app_post" '+ 
+            '</a>'+           
+            '<a class="btn_save_lastfm_post" '+ 
                   'data-id=":app_id:" '+
+                  'data-mbid=":mbid:" '+
                   'data-title=":title:" '+
                   'data-excerpt=":excerpt:" '+
                   'data-img=":img:" '+
@@ -113,6 +111,7 @@ $(function() {
 
 	var api_key = "8fcc4758809b19662cdb6fab49ff689b";
 	var url = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='+mbid+'&api_key='+api_key+'&format=json';
+  //console.log(url);
   fetch(url)
 	.then((res) => res.json())
 	.then(function(row) {
@@ -122,7 +121,7 @@ $(function() {
       var f = new Date();
       var date = f.getDate() + ' ' + get_month(f) + ' ' + f.getFullYear();
       var img = "/img/music.png";
-      var relations = "";
+      var links = "";
       var tags = "Music";
       if (post.tags)
       {
@@ -130,16 +129,20 @@ $(function() {
           tags += "," + post.tags.tag[i].name;
         }
       }
+      //console.log('Tags: '+tags);
       var url = "http://musicbrainz.org/ws/2/artist/"+mbid+"?inc=url-rels&fmt=json"; 
+      //console.log(url);
       fetch(url)
       .then((res) => res.json())
-      .then(function(row) {      
+      .then(function(row) {   
+        //console.log("Parsing relations");   
         for (i=0; i < row.relations.length; i++) {
-          relations = relations + row.relations[i]['type'] + "~" + row.relations[i]['url']['resource'] + "|";
+          links = links + row.relations[i]['type'] + "~" + row.relations[i]['url']['resource'] + "|";
           if (row.relations[i]['type'] == 'image')
             url_image = row.relations[i]['url']['resource'];
         }
-        relations = renderRelations(relations);
+        links = renderLinks(links);
+        //console.log('Links: '+links);
         $.ajaxSetup({
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -152,19 +155,20 @@ $(function() {
           data: data,
           dataType: 'json',
           success: function(img) {
-            renderPost(post,date,tags,relations,img);
+            //console.log('Image: '+img);
+            renderPost(post,date,tags,links,img);
           }
         });
       })
       .catch(function(error) {
-        renderPost(post,date,tags,relations,img);
+        renderPost(post,date,tags,links,img);
       });
     }
     else
     {
       var post_new = '<h2>Sorry!!! The artist was not found in the database</h2>'+
         '<p>If you are the owner of this app please delete this record &nbsp; &nbsp; &nbsp;'+
-        '<a class="btn_delete_app_post" '+ 
+        '<a class="btn_delete_lastfm_post" '+ 
           'data-mbid="'+ mbid + '">'+
           '<img src="/img/delete.png" width="24">'+
         '</a></p>';
@@ -173,16 +177,17 @@ $(function() {
     }
 	}); 
 
-  function renderPost(post, date, tags, relations, img)
+  function renderPost(post, date, tags, links, img)
   {
     var post_new = template_post
       .replace(/:title:/g, post.name)
       .replace(/:mbid:/g, mbid)
       .replace(/:img:/g, img)
       .replace(/:excerpt:/g, post.bio.summary.replace(/['"]+/g, '').replace(/<[^>]+>/g, ''))
-      .replace(/:relations:/g, relations)
+      .replace(/:links:/g, links)
       .replace(/:tags:/g, tags)
       .replace(/:tags_str:/g, renderTags(tags))
+      .replace('Read more on Last.fm', '')
       .replace(/:footnote:/g, ' ')
       .replace(/:source:/g, post.url)
       .replace(/:img alt:/g, post.name + " Logo")
@@ -197,8 +202,6 @@ $(function() {
       .replace(/:post_id:/g, 1)
       .replace(/:app_id:/g, 4)
       .replace(/:custom_type:/g, "Artist")
-
-    console.log(post_menu);  
 
     var $post_new = $(post_new);
     var $post_menu = $(post_menu);
@@ -221,16 +224,16 @@ $(function() {
     return tags_str; 
   }
 
-  function renderRelations(relations)
+  function renderLinks(links)
   {
-    var relations = relations.split("|");
-    var relations_str = "";
-    for (i=0; i < relations.length; i++)
+    var links = links.split("|");
+    var links_str = "";
+    for (i=0; i < links.length; i++)
     {
-      var parts = relations[i].split("~");
-      relations_str = relations_str + "<a href='" + parts[1] + "' target='_blank'>" + parts[0] + "</a> ";  
+      var parts = links[i].split("~");
+      links_str = links_str + "<a href='" + parts[1] + "' target='_blank'>" + parts[0] + "</a> ";  
     } 
-    return relations_str; 
+    return links_str; 
   }
 
   function get_month(f)
@@ -240,12 +243,47 @@ $(function() {
   }
 
   //Event Delegation
-  $('.app-posts').on("click",".btn_delete_app_post", function(e){
+  $('.app-posts').on("click",".btn_delete_lastfm_post", function(e){
     var mbid = $(this).data("mbid");
-    btn_delete_app_post(mbid);
+    btn_delete_lastfm_post(mbid);
   });
 
-  function btn_delete_app_post(mbid)
+  //Event Delegation
+  $('.app-posts').on("click",".btn_save_lastfm_post", function(e){
+    var app_id = $(this).data("id");
+    var mbid = $(this).data("mbid");
+    var title = $(this).data("title");
+    var excerpt = $(this).data("excerpt");
+    var img = $(this).data("img");
+    var tags = $(this).data("tags");
+    var links = $(this).data("links");
+    var footnote = $(this).data("footnote");
+    var date = $(this).data("date");
+    var user = $(this).data("user");
+    var source = $(this).data("source");
+    var custom_type = $(this).data("custom_type");
+    btn_save_lastfm_post(app_id, mbid, title, excerpt, img, tags, links, footnote, date, user, source, custom_type); 
+  }); 
+
+  function btn_save_lastfm_post(app_id, mbid, title, excerpt, img, tags, links, footnote, date, user, source, custom_type)
+  {
+    $.createDialog({
+      attachAfter: '#main_panel',
+      title: 'Are you sure you want to save this post?',
+      accept: 'Si',
+      refuse: 'No',
+      acceptStyle: 'red',
+      refuseStyle: 'gray',
+      acceptAction: function(){
+        save_app_post(app_id, title, excerpt, img, tags, links, footnote, date, user, source, custom_type, function(data){
+          save_lastfm_post(mbid, data.post_id);
+        });
+      }
+    });
+    $.showDialog();  
+  }
+
+  function btn_delete_lastfm_post(mbid)
   {
     $.createDialog({
       attachAfter: '#main_panel',
@@ -255,13 +293,46 @@ $(function() {
       acceptStyle: 'red',
       refuseStyle: 'gray',
       acceptAction: function(){
-        delete_app_post(mbid);
+        delete_lastfm_post(mbid);
       }
     });
     $.showDialog();  
-  }  
+  } 
 
-  function delete_app_post(mbid)
+  function save_lastfm_post(mbid, post_id)
+  {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    var data = { mbid: mbid, post_id: post_id };
+    $.ajax({
+      type: 'post',
+      url: '/artists/save',
+      data: data,
+      dataType: 'json',
+      success: function(data) {
+        if (data.success){        
+          set_message("notice","Te post was saved.");
+          location.reload();
+        }
+        else if(data.msg)
+        {
+          $.growl.warning({ message:data.msg });
+        }
+        else {
+          set_message("error","Sorry but the post was not saved. Try again, please.");
+          location.reload();
+        }
+      },
+      error: function (data) {
+        console.log('Error:', data);
+      }
+    }); 
+  } 
+
+  function delete_lastfm_post(mbid)
   {
     $.ajaxSetup({
       headers: {
@@ -274,8 +345,8 @@ $(function() {
       dataType: 'json',
       success: function(data) {
         if (data.success){
-          set_message("notice","The post was deleted.");
-          window.close();
+          $.growl.notice({ message:"The post was deleted." });
+          //window.close();
         }
         else if(data.msg)
         {

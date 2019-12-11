@@ -47,7 +47,7 @@ Route::get('apps','AppsController@show_all')->name('apps.show_all');
 Route::get('apps/created','AppsController@show_created')->name('apps.show_created');
 Route::get('apps/created/{user}','AppsController@show_created_user')->name('apps.show_created_user');
 Route::get('apps/{app}','AppsController@show_app')->name('app.show_app');
-Route::get('app/subscribers/{app}','AppsController@show_subscribers')->name('app.show_subscribers');
+Route::get('app/subscribers/{app}','AppsController@show_subscribers')->name('apps.show_subscribers');
 Route::get('app/get/posts/{app}','AppsController@get_posts');
 Route::post('app/get/post','AppsController@get_post');
 Route::post('apps/post','AppsController@save_app_post');
@@ -58,6 +58,7 @@ Route::get('artists/create/{i}','ArtistsController@create_artists')->name('artis
 Route::get('artists/get/all','ArtistsController@get_all')->name('artists.get_all');
 Route::get('artists/show/{mbid}','ArtistsController@show_post')->name('artists.show_post');
 Route::get('artists/search/{q}','ArtistsController@search')->name('artists.search');
+Route::post('artists/save','ArtistsController@save_post')->name('artists.save_post');
 Route::post('artists/get/image','ArtistsController@get_image')->name('artists.get_image');
 Route::delete('artists/{mbid}','ArtistsController@destroy');
 

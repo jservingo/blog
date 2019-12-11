@@ -2,7 +2,7 @@
 
 @php
 	$src = $post->photos->first()->url; 
-	if (substr($src,0,4) != "http")
+	if (substr($src,0,4) != "http" && substr($src,0,4) != "/img")
 	{
 		$src = Storage::url($post->photos->first()->url);
 	}

@@ -51,7 +51,7 @@
     var owner_name = "{{ $app->owner->name }}";
     var owner_post = "{{ $app->owner->post->id }}";       
   </script>
-  <script type="text/javascript" src="/js/apps/show_{{ $app->name }}.js"></script>
+  <script type="text/javascript" src="/js/apps/search_{{ $app->name }}.js"></script>
   <script type="text/javascript" src="/js/apps/show_full.js"></script>
   <script type="text/javascript" src="/js/buttons/add_save_discard.js"></script>
   <script type="text/javascript" src="/js/buttons/catalog_ribbon.js"></script>

@@ -1,45 +1,15 @@
 // show_app_TVmaze.js
 
+var url_api = "tvmaze";
 var url_search = "http://api.tvmaze.com/search/shows?q=";
 var custom_type = "TV Show";
-
-function get_posts(callback)
-{
-  var posts = new Array();
-
-  fetch('/app/get/posts/'+app_id)
-  .then((res) => res.json())
-  .then(function(rows) {
-    if (rows)
-    {
-      rows.forEach(function (row) {
-        tags_str = "";
-        tags = row.tags;
-        for (i=0; i < tags.length; i++) {
-          tags_str += "," + tags[i].name;
-        }        
-        post = {
-          title: row.title, 
-          excerpt: row.excerpt, 
-          img: row.photos.length > 0 ? row.photos[0].url : '',
-          source: row.source,
-          custom_type: row.custom_type,
-          footnote: row.footnote,
-          tags: tags_str
-        };
-        posts.push(post);
-      });    
-      callback(posts);  
-    }
-  })
-  .catch((error) => console.log(error))  
-}	
 
 function search_posts(q, callback)
 {
 	var posts = new Array();
 
-  fetch(url_search+q)
+  url_search = "http://api.tvmaze.com/search/shows?q="+q;
+  fetch(url_search)
   .then((res) => res.json())
   .then(function(res) {
     var rows = res.map(function (el) {

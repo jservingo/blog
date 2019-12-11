@@ -7,12 +7,13 @@ $('.app-posts').on("click",".btn_save_app_post", function(e){
   var excerpt = $(this).data("excerpt");
   var img = $(this).data("img");
   var tags = $(this).data("tags");
+  var links = $(this).data("links");
   var footnote = $(this).data("footnote");
   var date = $(this).data("date");
   var user = $(this).data("user");
   var source = $(this).data("source");
   var custom_type = $(this).data("custom_type");
-  btn_save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, source, custom_type); 
+  btn_save_app_post(app_id, title, excerpt, img, tags, links, footnote, date, user, source, custom_type); 
 }); 
 
 $('.btn_add_subscription').bind('click', function(e){
@@ -37,7 +38,7 @@ $('.btn_discard_post').bind('click', function(e){
 
 // FUNCTIONS
 
-function btn_save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, source, custom_type)
+function btn_save_app_post(app_id, title, excerpt, img, tags, links, footnote, date, user, source, custom_type)
 {
   $.createDialog({
     attachAfter: '#main_panel',
@@ -47,7 +48,7 @@ function btn_save_app_post(app_id, title, excerpt, img, tags, footnote, date, us
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
-      save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, source, custom_type);
+      save_app_post(app_id, title, excerpt, img, tags, links, footnote, date, user, source, custom_type);
     }
   });
   $.showDialog();  
@@ -117,7 +118,7 @@ function btn_discard_post(post_id)
   $.showDialog();  
 }
 
-function save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, source, custom_type)
+function save_app_post(app_id, title, excerpt, img, tags, links, footnote, date, user, source, custom_type, callback="")
 {
   $.ajaxSetup({
     headers: {
@@ -129,7 +130,8 @@ function save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, 
     title: title, 
     excerpt: excerpt, 
     img: img, 
-    tags: tags, 
+    tags: tags,
+    links: links, 
     footnote: footnote, 
     date: date, 
     user: user, 
@@ -143,6 +145,8 @@ function save_app_post(app_id, title, excerpt, img, tags, footnote, date, user, 
     dataType: 'json',
     success: function(data) {
       if (data.success){
+        if (typeof callback === 'function')
+           return callback(data);                  
         set_message("notice","Te post was saved.");
         location.reload();
       }
