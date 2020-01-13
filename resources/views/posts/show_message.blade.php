@@ -59,6 +59,26 @@
 		$msg_title = "You have not created posts.";
 		$msg_subtitle = "You can create a post by using the add button.";
 	}
+  else if ($root=="discover_apps")
+	{
+		$msg_title = "There are no apps to show.";
+		$msg_subtitle = "";
+	}
+	else if ($root=="discover_pages")
+	{
+		$msg_title = "There are no pages to show.";
+		$msg_subtitle = "";
+	}
+	else if ($root=="discover_catalogs")
+	{
+		$msg_title = "There are no catalogs to show.";
+		$msg_subtitle = "";
+	}
+	else if ($root=="discover_users")
+	{
+		$msg_title = "There are no users to show.";
+		$msg_subtitle = "";
+	}
   else if ($root=="all_apps")
 	{
 		$msg_title = "You have not created or subscribed to any app.";

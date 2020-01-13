@@ -24,12 +24,14 @@ class ContactsController extends Controller
     $posts = Post        
       ::where("posts.user_id","<>",auth()->id())
       ->where("type_id","=",24)
+      /*
       ->whereNotIn('ref_id', function($query)
         {
           $query->select('user_ref')
                 ->from('contacts')
                 ->where('user_id','=',auth()->id());
         })
+      */
       ->latest('posts.created_at')
       ->paginate(12);
 

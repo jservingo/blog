@@ -29,7 +29,7 @@ function search_posts(q, callback)
           break;
         case 2: 
           excerpt = row.excerpt ? row.excerpt : 'This post has been saved.';
-          source_post = '/blog/'+row.id;
+          source_post = '/blog/'+row.post_id;
           source_app = row.source;
       } 
   		post = {

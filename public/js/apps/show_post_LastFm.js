@@ -167,7 +167,7 @@ $(function() {
     else
     {
       var post_new = '<h2>Sorry!!! The artist was not found in the database</h2>'+
-        '<p>If you are the owner of this app please delete this record &nbsp; &nbsp; &nbsp;'+
+        '<p>Please delete this record &nbsp; &nbsp; &nbsp;'+
         '<a class="btn_delete_lastfm_post" '+ 
           'data-mbid="'+ mbid + '">'+
           '<img src="/img/delete.png" width="24">'+

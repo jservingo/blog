@@ -106,14 +106,18 @@ class ArtistsController extends Controller
 
   function search($q)
   {
+    $artists = Artist
+      ::leftjoin('posts', 'artists.post_id', '=', 'posts.id')
+      ->leftjoin('photos', 'artists.post_id', '=', 'photos.post_id')
+      ->where('name', 'like', $q.'%')  //like $q.'%'
+      ->where('status_id', '<>', '1')
+      ->orderBy('artists.name')
+      ->get();
+
+    /*
     if (auth()->id() == 10)
     {
-      $artists = Artist
-        ::leftjoin('posts', 'artists.post_id', '=', 'posts.id')
-        ->leftjoin('photos', 'artists.post_id', '=', 'photos.post_id')
-        ->where('name', 'like', $q.'%')  //like $q.'%'
-        ->orderBy('artists.name')
-        ->get();
+      //Search all records
     }
     else
     {
@@ -125,17 +129,20 @@ class ArtistsController extends Controller
         ->orderBy('artists.name')
         ->get();
     }
+    */
 
     echo json_encode($artists);
   }
 
   public function save_post(Request $request)
   {
+    /*
     if (auth()->id() != 10)
     {
       echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
       return;
     }
+    */
     
     $artist = Artist
       ::where("mbid","=",$request->get('mbid'))
@@ -152,11 +159,13 @@ class ArtistsController extends Controller
   {
     //$this->authorize('delete',$post);
 
+    /*
     if (auth()->id() != 10)
     {
       echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
       return;
     }
+    */
 
     $artist = Artist
       ::where("mbid","=",$mbid)

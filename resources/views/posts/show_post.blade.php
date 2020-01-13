@@ -35,8 +35,15 @@
         </div>
 
         <div class="image-w-text" style="padding-right:20px;">
-          <h3>Observation:</h3>
+           @if ($post->links)
+            <h3>Links:</h3>
+            {{ $post->links }}
+           @endif
+        </div>
+
+        <div class="image-w-text" style="padding-right:20px;">
           @if ($post->kpost && $post->kpost->observation)
+            <h3>Observation:</h3>
             {{ $post->kpost->observation }}
           @else
             {{ $post->observation }}
@@ -44,8 +51,8 @@
         </div>
 
         <div class="image-w-text" style="padding-right:20px;">
-          <h3>Footenote:</h3>
           @if ($post->kpost && $post->kpost->footnote)
+            <h3>Footenote:</h3>
             {{ $post->kpost->footnote }}
           @else
             {{ $post->footnote }}
@@ -53,8 +60,10 @@
         </div>
 
         <div class="image-w-text" style="padding-right:20px;">
-          <h3>Tags:</h3>
-          @include('posts.box.tags')
+          @if ($post->links)
+            <h3>Tags:</h3>
+            @include('posts.box.tags')
+          @endif
         </div>
 
         @include('posts.single.options')
