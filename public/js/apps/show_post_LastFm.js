@@ -41,7 +41,7 @@ $(function() {
             '</a>'+
           '</div>'+
           '<div class="scontent" style="width: 605px; background-color: rgb(254, 253, 253); padding: 2px 10px 10px; text-align: justify;">'+
-            ':links:'+
+            ':links_str:'+
           '</div>'+
         '</div>'+
       '</div>'+
@@ -88,6 +88,7 @@ $(function() {
                   'data-excerpt=":excerpt:" '+
                   'data-img=":img:" '+
                   'data-tags=":tags:" '+
+                  'data-links=":links:" '+
                   'data-footnote=":footnote:" '+
                   'data-date=":date:" '+
                   'data-user=":owner_name:" '+
@@ -122,6 +123,7 @@ $(function() {
       var date = f.getDate() + ' ' + get_month(f) + ' ' + f.getFullYear();
       var img = "/img/music.png";
       var links = "";
+      var links_str = "";
       var tags = "Music";
       if (post.tags)
       {
@@ -141,7 +143,7 @@ $(function() {
           if (row.relations[i]['type'] == 'image')
             url_image = row.relations[i]['url']['resource'];
         }
-        links = renderLinks(links);
+        links_str = renderLinks(links);
         //console.log('Links: '+links);
         $.ajaxSetup({
           headers: {
@@ -156,7 +158,7 @@ $(function() {
           dataType: 'json',
           success: function(img) {
             //console.log('Image: '+img);
-            renderPost(post,date,tags,links,img);
+            renderPost(post,date,tags,links,links_str,img);
           }
         });
       })
@@ -177,14 +179,15 @@ $(function() {
     }
 	}); 
 
-  function renderPost(post, date, tags, links, img)
+  function renderPost(post, date, tags, links, links_str, img)
   {
     var post_new = template_post
       .replace(/:title:/g, post.name)
       .replace(/:mbid:/g, mbid)
       .replace(/:img:/g, img)
       .replace(/:excerpt:/g, post.bio.summary.replace(/['"]+/g, '').replace(/<[^>]+>/g, ''))
-      .replace(/:links:/g, links)
+      .replace(/:links:/g, links_str)
+      .replace(/:links_str:/g, links_str)
       .replace(/:tags:/g, tags)
       .replace(/:tags_str:/g, renderTags(tags))
       .replace('Read more on Last.fm', '')
@@ -226,11 +229,11 @@ $(function() {
 
   function renderLinks(links)
   {
-    var links = links.split("|");
+    var links_spl = links.split("|");
     var links_str = "";
-    for (i=0; i < links.length; i++)
+    for (i=0; i < links_spl.length; i++)
     {
-      var parts = links[i].split("~");
+      var parts = links_spl[i].split("~");
       links_str = links_str + "<a href='" + parts[1] + "' target='_blank'>" + parts[0] + "</a> ";  
     } 
     return links_str; 

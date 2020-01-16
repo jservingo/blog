@@ -37,7 +37,7 @@
         <div class="image-w-text" style="padding-right:20px;">
            @if ($post->links)
             <h3>Links:</h3>
-            {{ $post->links }}
+            {!! $post->links !!}
            @endif
         </div>
 

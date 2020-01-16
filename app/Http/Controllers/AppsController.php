@@ -276,9 +276,9 @@ class AppsController extends Controller
       $post = Post::create([
         'title' => $title,
         'excerpt' => $excerpt,
-        'body' => '<a href="'.$source.'" target="_blank">source</a>',
-        'links' => $links,
+        'body' => '<a href="'.$source.'" target="_blank">source</a>',        
         'footnote' => $footnote,
+        'links' => $links,
         'type_id' => 8,
         'user_id' => $app->user_id,
         'custom_type' => $custom_type,
