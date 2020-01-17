@@ -147,8 +147,10 @@ function save_app_post(app_id, title, excerpt, img, tags, links, footnote, date,
     success: function(data) {
       if (data.success){
         if (typeof callback === 'function')
-           return callback(data);                  
-        set_message("notice","The post was saved.");
+        {
+          set_message("notice","The post was saved.");
+          return callback(data);                  
+        }
         location.reload();
       }
       else if(data.msg)

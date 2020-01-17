@@ -144,7 +144,7 @@ $(function() {
             url_image = row.relations[i]['url']['resource'];
         }
         links_str = renderLinks(links);
-        //console.log('Links: '+links);
+        //console.log('Links: '+links_str);
         $.ajaxSetup({
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

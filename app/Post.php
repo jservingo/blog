@@ -11,6 +11,7 @@ use App\User;
 class Post extends Model
 {
     protected $fillable = ['title','body','iframe','excerpt','footnote','links','published_at','type_id','ref_id','user_id','app_id','source','custom_type'];
+    
     protected $dates = ['published_at'];
 
     public function type()
