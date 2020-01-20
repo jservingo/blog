@@ -13,7 +13,7 @@
                 class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 
                 name="name" 
                 value="{{ old('name') }}" 
-                placeholder="Name"
+                placeholder="Username"
                 required autofocus>
 
               @if ($errors->has('name'))

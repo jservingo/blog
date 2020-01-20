@@ -34,7 +34,7 @@
           {!! $post->body !!}
         </div>
 
-        <div class="image-w-text" style="padding-right:20px;">
+        <div class="image-w-text links" style="padding-right:20px;">
            @if ($post->links)
             <h3>Links:</h3>
             {!! $post->links !!}
@@ -60,7 +60,7 @@
         </div>
 
         <div class="image-w-text" style="padding-right:20px;">
-          @if ($post->links)
+          @if ($post->tags)
             <h3>Tags:</h3>
             @include('posts.box.tags')
           @endif

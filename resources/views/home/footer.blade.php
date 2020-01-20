@@ -14,7 +14,7 @@
             <div class="divider-2"></div>
             <p>Kodelia allows users to create and save posts created by other users. Organizing them in multiple catalogs, pages and powerfull aplications to easily share and find the information posted.</p>
             <div class="divider-2" style="width: 80%;"></div>
-            <p>Copyright © 2019 kodelia.com All Rights Reserved.</p>
+            <p>Copyright © 2020 kodelia.com All Rights Reserved.</p>
             <p>Designed & developed by Jorge Servín Gómez, JSG WEB SERVICES</p>
             <ul class="social-media-footer list-unstyled">
                 <li><a href="#" class="fb"></a></li>

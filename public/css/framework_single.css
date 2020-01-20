@@ -82,6 +82,26 @@ a.vlink{
   margin-right: auto;
 }
 
+.tag{
+  margin: 0 5px;
+}
+.tag a{
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #155597;
+  font-size: inherit;
+}
+
+.links a{
+  margin: 0 5px;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #155597;
+  font-size: inherit;
+}
+
 .hidden {
   display: none !important;
 }
@@ -101,11 +121,15 @@ a.vlink{
 .c-green{
   color: #74ABC9;
 }
+.c-blue{
+  color: #155597;
+}
 .c-white{
   color: #fff;
 }
 .c-negro{
-  color: #000;
+  color: #606060;
+  font-size:14px !important;
 }
 .list-unstyled{
   padding-left: 0;

@@ -3,12 +3,15 @@
 @extends('layout')
 
 @section('content')
-  <h1 style="padding-left:60px;">Save, organize and share your posts</h1>
-  <p style="padding-left:60px;">
-    <span style="background-color:red; color:white; font-size:18px; font-weight:900;">
-        Beta version 1.2 - September 2019
-    </span>
-  </p>
+  <div style="width:100%; background-color:#baf3e8; margin-top:-22px; height:130px">
+    <h1 style="padding-left:60px; padding-top:22px">Save, organize and share your posts</h1>
+    <p style="padding-left:60px;">
+      <span style="background-color:yellow; color:black; font-size:18px; font-weight:900;">
+        &nbsp;&nbsp;Beta version 1.2.0&nbsp;&nbsp;
+      </span>
+    </p>
+  </div>
+
   <div class="gradient-top">
     <div style="float:left; width:46%; padding-left:50px;">
 			<div style="width:100%; padding-top:40px; display:inline-block;">
