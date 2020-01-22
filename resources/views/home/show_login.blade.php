@@ -3,8 +3,13 @@
 @extends('layout')
 
 @section('content')
-  <div style="width:100%; background-color:#baf3e8; margin-top:-22px; height:130px">
+  <div style="width:100%; background-color:#baf3e8; margin-top:-22px; height:180px">
     <h1 style="padding-left:60px; padding-top:22px">Save, organize and share your posts</h1>
+    <p style="padding-left:60px;">
+      <span style="font-size:24px; font-weight:500;">
+        Kodelia allows you to create and save posts created by other users. Organizing them in multiple catalogs, and pages to easily find the information posted. Share, send and receive post. Use powerfull aplications that access data comming from external sources.
+      </span>
+    </p>
     <p style="padding-left:60px;">
       <span style="background-color:yellow; color:black; font-size:18px; font-weight:900;">
         &nbsp;&nbsp;Beta version 1.2.0&nbsp;&nbsp;

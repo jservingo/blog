@@ -99,6 +99,7 @@ $(function() {
                   'data-excerpt=":excerpt:" '+
                   'data-img=":img:" '+
                   'data-tags=":tags:" '+
+                  'data-links="" '+
                   'data-footnote=":footnote:" '+
                   'data-date=":date:" '+
                   'data-user=":owner_name:" '+
