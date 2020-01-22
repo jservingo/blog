@@ -138,7 +138,6 @@ function save_app_post(app_id, title, excerpt, img, tags, links, footnote, date,
     source: source, 
     custom_type: custom_type
   };
-  alert(links);
   $.ajax({
     type: 'post',
     url: '/apps/post',
