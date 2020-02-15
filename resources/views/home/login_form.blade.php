@@ -1,14 +1,14 @@
 {{-- home.login_form --}} 
 
 <div id="formulario">
-  <h2>Login form</h2>
+  <h2>{{ __('messages.log-in') }}</h2>
 
   <form role="form" method="POST" action="{{ url('/login') }}">
     {{ csrf_field() }}
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
       <input type="email" 
               class="form-control" 
-              placeholder="Email" 
+              placeholder="{{ __('messages.email') }}" 
               name="email" 
               value="{{ old('email') }}" 
               required autofocus>
@@ -22,7 +22,7 @@
     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
       <input type="password" 
               class="form-control" 
-              placeholder="Password" 
+              placeholder="{{ __('messages.password') }}" 
               name="password" 
               required>
       @if ($errors->has('password'))
@@ -35,12 +35,12 @@
     <div class="row">
       <div class="col-xs-8">
         <div class="checkbox icheck">
-            <input type="checkbox" name="remember"> Remember me
+            <input type="checkbox" name="remember"> {{ __('messages.remember-me') }}
         </div>
       </div>
       <!-- /.col -->
       <div class="col-xs-4">
-        <button type="submit" class="btn btn-primary btn-block btn-flat">Enter</button>
+        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ __('messages.enter') }}</button>
       </div>
       <!-- /.col -->
     </div>
@@ -48,7 +48,7 @@
   </form>
 </div>
 
-<p>if you have not registered please signup<p> 
+<p>{{ __('messages.please-sign-up') }}<p> 
 
 {{-- 
 <div class="social-auth-links text-center">

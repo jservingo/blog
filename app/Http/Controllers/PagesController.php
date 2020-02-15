@@ -36,7 +36,7 @@ class PagesController extends Controller
       ->latest('posts.created_at')
       ->paginate(12);
 
-    $title = "Discover pages";   
+    $title = __('messages.discover-pages');   
     $root = "discover_pages";
     $buttons = "posts.buttons.discover_pages"; 
     $subtitle = "";
@@ -80,7 +80,7 @@ class PagesController extends Controller
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
     $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
 
-    $title = "Pages";   
+    $title = __('messages.pages');   
     $root = "all_pages";
     $buttons = "posts.buttons.created_pages"; 
     $subtitle = "";
@@ -101,7 +101,7 @@ class PagesController extends Controller
       ->select('posts.*')
       ->paginate(12);
 
-    $title = "Created pages";   
+    $title = __('messages.created-pages');   
     $root = "created_pages";
     $buttons = "posts.buttons.created_pages"; 
     $subtitle = "";
@@ -129,7 +129,7 @@ class PagesController extends Controller
       ->latest('posts.created_at')
       ->paginate(12);
 
-    $title = "Created pages by $user->name";   
+    $title = __('messages.created-pages-by')." ".$user->name;   
     $root = "created_pages";
     $buttons = "posts.buttons.created_pages"; 
     $subtitle = "";
@@ -195,7 +195,7 @@ class PagesController extends Controller
       ->latest('page_user.created_at')
       ->paginate(12);  
 
-    $title = "$page->name subscribers";
+    $title = $page->name." ".__('messages.subscribers');
     $root = "page_subscribers";
     $buttons = "posts.buttons.page_subscribers";
     $subtitle = "";     
@@ -286,7 +286,7 @@ class PagesController extends Controller
 
     if ($page && $page->user_id != auth()->id())
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
     } 
 

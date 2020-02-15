@@ -33,7 +33,7 @@ class AppsController extends Controller
       ->latest('posts.created_at')
       ->paginate(12);
 
-    $title = "Discover apps";   
+    $title = __('messages.discover-apps');   
     $root = "discover_apps";
     $buttons = "posts.buttons.discover_apps"; 
     $subtitle = "";
@@ -69,7 +69,7 @@ class AppsController extends Controller
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
     $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
 
-    $title = "Apps";   
+    $title = __('messages.apps');   
     $root = "all_apps";
     $buttons = "posts.buttons.created_apps"; 
     $subtitle = "";
@@ -92,7 +92,7 @@ class AppsController extends Controller
       ->select('posts.*')
       ->paginate(12);
 
-    $title = "Created apps";   
+    $title = __('messages.created-apps');   
     $root = "created_apps";
     $buttons = "posts.buttons.created_apps"; 
     $subtitle = "";
@@ -112,7 +112,7 @@ class AppsController extends Controller
       ->latest('posts.created_at')
       ->paginate(12);
 
-    $title = "Created apps by $user->name";   
+    $title = __('messages.created-apps-by')." ".$user->name;   
     $root = "created_apps";
     $buttons = "posts.buttons.created_apps"; 
     $subtitle = "";
@@ -206,7 +206,7 @@ class AppsController extends Controller
       ->latest('app_user.created_at')
       ->paginate(12);  
 
-    $title = "$app->name subscribers";
+    $title = "$app->name"." ".__('messages.subscribers');
     $root = "app_subscribers";
     $buttons = "posts.buttons.app_subscribers";
     $subtitle = "";     

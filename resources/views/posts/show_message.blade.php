@@ -1,108 +1,113 @@
 @php
 	if ($root=="page_category")
 	{
-		$msg_title = "This category doesn't have catalogs.";
-		$msg_subtitle = "You can create or paste a catalog.";
+		$msg_title = __('messages.category-empty');
+		$msg_subtitle = __('messages.category-advice');
+	}
+	else if ($root=="catalog")
+	{
+		$msg_title = __('messages.catalog-empty');
+		$msg_subtitle = __('messages.catalog-advice');
 	}
   else if ($root=="contacts")
 	{
-		$msg_title = "This lists doesn't have contacts.";
-		$msg_subtitle = "You can discover and paste a contact.";
+		$msg_title = __('messages.contacts-empty');
+		$msg_subtitle = __('messages.contacts-advice');
 	}
   else if ($root=="received_posts")
 	{
-		$msg_title = "You have not received posts.";
-		$msg_subtitle = "";
+		$msg_title = __('messages.received-empty');
+		$msg_subtitle = __('messages.received-advice');
 	}
   else if ($root=="notifications")
 	{
-		$msg_title = "You have not received notifications.";
-		$msg_subtitle = "";
+		$msg_title = __('messages.notifications-empty');
+		$msg_subtitle = __('messages.notifications-advice');
 	}
 	else if ($root=="alerts")
 	{
-		$msg_title = "You have not received alerts.";
-		$msg_subtitle = "";
+		$msg_title = __('messages.alerts-empty');
+		$msg_subtitle = __('messages.alerts-advice');
 	}
   else if ($root=="sent_posts")
 	{
-		$msg_title = "You have not sent posts.";
-		$msg_subtitle = "";
+		$msg_title = __('messages.sent-empty');
+		$msg_subtitle = __('messages.sent-advice');
 	}
   else if ($root=="saved_posts")
 	{
-		$msg_title = "You have not saved posts.";
-		$msg_subtitle = "";
+		$msg_title = __('messages.saved-empty');
+		$msg_subtitle = __('messages.saved-advice');
 	}
   else if ($root=="discarded_posts")
 	{
-		$msg_title = "You have not discarded posts.";
-		$msg_subtitle = "";
+		$msg_title = __('messages.discarded-empty');
+		$msg_subtitle = __('messages.discarded-advice');
 	}
   else if ($root=="created_apps")
 	{
-		$msg_title = "You have not created apps.";
-		$msg_subtitle = "Sorry! This option is not implemented yet.";
+		$msg_title = __('messages.created-apps-empty');
+		$msg_subtitle = __('messages.created-apps-advice');
 	}
   else if ($root=="created_pages")
 	{
-		$msg_title = "You have not created pages.";
-		$msg_subtitle = "You can create a page by using the add button.";
+		$msg_title = __('messages.created-pages-empty');
+		$msg_subtitle = __('messages.created-pages-advice');
 	}
   else if ($root=="created_catalogs")
 	{
-		$msg_title = "You have not created catalogs.";
-		$msg_subtitle = "You can create a catalog by using the add button.";
+		$msg_title = __('messages.created-catalogs-empty');
+		$msg_subtitle = __('messages.created-catalogs-advice');
 	}
   else if ($root=="created_posts")
 	{
-		$msg_title = "You have not created posts.";
-		$msg_subtitle = "You can create a post by using the add button.";
+		$msg_title = __('messages.created-posts-empty');
+		$msg_subtitle = __('messages.created-posts-advice');
 	}
   else if ($root=="discover_apps")
 	{
-		$msg_title = "There are no apps to show.";
-		$msg_subtitle = "";
+		$msg_title = __('messages.apps-empty');
+		$msg_subtitle = __('messages.apps-advice');
 	}
 	else if ($root=="discover_pages")
 	{
-		$msg_title = "There are no pages to show.";
-		$msg_subtitle = "";
+		$msg_title = __('messages.pages-empty');
+		$msg_subtitle = __('messages.pages-advice');
 	}
 	else if ($root=="discover_catalogs")
 	{
-		$msg_title = "There are no catalogs to show.";
-		$msg_subtitle = "";
+		$msg_title = __('messages.catalogs-empty');
+		$msg_subtitle = __('messages.catalogs-advice');
 	}
 	else if ($root=="discover_users")
 	{
-		$msg_title = "There are no users to show.";
-		$msg_subtitle = "";
+		$msg_title = __('messages.users-empty');
+		$msg_subtitle = __('messages.users-advice');
 	}
   else if ($root=="all_apps")
 	{
-		$msg_title = "You have not created or subscribed to any app.";
-		$msg_subtitle = "You can subscribe to any app by discovering first.";
+		$msg_title = __('messages.all-apps-empty');
+		$msg_subtitle = __('messages.all-apps-advice');
 	}
   else if ($root=="all_pages")
 	{
-		$msg_title = "You have not created or subscribed to any page.";
-		$msg_subtitle = "You can create a page or you can subscribe to any page by discovering first.";
+		$msg_title = __('messages.all-pages-empty');
+		$msg_subtitle = __('messages.all-pages-advice');
 	}
   else if ($root=="all_catalogs")
 	{
-		$msg_title = "You have not created or saved any catalog.";
-		$msg_subtitle = "You can create a catalog or you can save any catalog from any page.";
+		$msg_title = __('messages.all-catalogs-empty');
+		$msg_subtitle = __('messages.all-catalogs-advice');
 	}
   else if ($root=="subscriptions_apps")
 	{
-		$msg_title = "You have not subscribed to any app.";
-		$msg_subtitle = "You can subscribe to any app by discovering first.";
+		$msg_title = __('messages.app-subscriptions-empty');
+		$msg_subtitle = __('messages.app-subscriptions-advice');
 	}
   else if ($root=="subscriptions_pages")
 	{
-		$msg_title = "You have subscribed to any page.";
-		$msg_subtitle = "You can subscribe to any page by discovering first.";
+		$msg_title = __('messages.page-subscriptions-empty');
+		$msg_subtitle = __('messages.page-subscriptions-advice');
 	}
   else
   {

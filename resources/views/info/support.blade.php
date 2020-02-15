@@ -4,12 +4,12 @@
   <br/>
 	<section class="pages container">
 		<div class="page page-archive">
-			<h1 class="text-capitalize">support</h1>
-			<p>If you want to make a donation to this startup, your name will appear in this page. Please, help us to continue growth. We thank you in advance.</p>
+			<h1 class="text-capitalize">{{ __('messages.support') }}</h1>
+			<h3>{{ __('messages.send-donation') }}</h3>
 			<div class="divider-2" style="margin: 35px 0;"></div>
 			<div class="container-flex space-between">
 				<div class="authors-categories">
-					<h3 class="text-capitalize">Donators</h3>
+					<h3 class="text-capitalize">{{ __('messages.donators') }}</h3>
 					<ul class="list-unstyled">
 						<li></li>
 						<li></li>
@@ -30,10 +30,9 @@
 					--}}
 				</div>
 				<div class="latest-posts">
-					<h3 class="text-capitalize">Account</h3>
-					<p>.</p>
-					<p>.</p>
-					<p>.</p>
+					<h3 class="text-capitalize">{{ __('messages.accounts') }}</h3>
+					<p>{{ __('messages.account-1') }}</p>
+					<p>{{ __('messages.account-2') }}</p>
 					{{--
 					<h3 class="text-capitalize">posts by month</h3>
 					<ul class="list-unstyled">

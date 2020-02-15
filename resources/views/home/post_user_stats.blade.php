@@ -5,58 +5,58 @@
   	<ul>
 			<li>
 				<a class="vlink" href="{{ route('posts.show_received',0) }}">
-          Received <span id="c_received"></span>
+          {{ __('messages.received') }} <span id="c_received"></span>
       	</a>
 			</li>
 			<li>
 				<a class="vlink" href="{{ route('posts.show_notifications') }}">
-          Notifications <span id="c_notifications"></span>
+          {{ __('messages.notifications') }} <span id="c_notifications"></span>
       	</a>				
 			</li>
 			<li>
 				<a class="vlink" href="{{ route('posts.show_alerts') }}">
-          Alerts <span id="c_alerts"></span>
+          {{ __('messages.alerts') }} <span id="c_alerts"></span>
       	</a>				
 			</li>
 			<li>
 				<a class="vlink" href="{{ route('contacts.show_contacts') }}">
-          Contacts <span id="c_contacts"></span>
+          {{ __('messages.contacts') }} <span id="c_contacts"></span>
       	</a>
 			</li>
-			<li>Created
+			<li>{{ __('messages.created') }}
 				<ul>
 					<li>
 						<a class="vlink" href="{{ route('apps.show_created') }}">
-          		Apps <span id="c_apps"></span>
+          		{{ __('messages.apps') }} <span id="c_apps"></span>
       			</a>
       		</li>
 					<li>
 						<a class="vlink" href="{{ route('pages.show_created') }}">
-          		Pages <span id="c_pages"></span>
+          		{{ __('messages.pages') }} <span id="c_pages"></span>
       			</a>
       		</li>
 					<li>
 						<a class="vlink" href="{{ route('catalogs.show_created') }}">
-          		Catalogs <span id="c_catalogs"></span>
+          		{{ __('messages.catalogs') }} <span id="c_catalogs"></span>
       			</a>
 					</li>
 					<li>
 						<a class="vlink" href="{{ route('posts.show_created') }}">
-          		Posts <span id="c_posts"></span>
+          		{{ __('messages.posts') }} <span id="c_posts"></span>
       			</a>
 					</li>
 				</ul>
 			</li>
-			<li>Subscriptions
+			<li>{{ __('messages.subscriptions') }}
 				<ul>
 			  	<li>
 						<a class="vlink" href="{{ route('subscriptions.show_apps') }}">
-          		Apps <span id="c_apps_subscriptions"></span>
+          		{{ __('messages.apps') }} <span id="c_apps_subscriptions"></span>
       			</a>
 					</li>
 					<li>
 						<a class="vlink" href="{{ route('subscriptions.show_pages') }}">
-          		Pages <span id="c_pages_subscriptions"></span>
+          		{{ __('messages.pages') }} <span id="c_pages_subscriptions"></span>
       			</a>
 					</li>
 				</ul>

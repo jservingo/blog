@@ -5,17 +5,17 @@
         <div class="container" style="display:block">
             <nav>
                 <ul class="container-flex space-center list-unstyled">
-                    <li><a href="{{ route('home') }}" class="text-uppercase c-white">home</a></li>
-                    <li><a href="{{ route('info.about') }}" class="text-uppercase c-white">about</a></li>
-                    <li><a href="{{ route('info.support') }}" class="text-uppercase c-white">support</a></li>
-                    <li><a href="{{ route('info.contact') }}" class="text-uppercase c-white">contact</a></li>
+                    <li><a href="{{ route('home') }}" class="text-uppercase c-white">{{ __('messages.home') }}</a></li>
+                    <li><a href="{{ route('info.about') }}" class="text-uppercase c-white">{{ __('messages.about') }}</a></li>
+                    <li><a href="{{ route('info.support') }}" class="text-uppercase c-white">{{ __('messages.support') }}</a></li>
+                    <li><a href="{{ route('info.contact') }}" class="text-uppercase c-white">{{ __('messages.contact') }}</a></li>
                 </ul>
             </nav>
             <div class="divider-2"></div>
-            <p>Kodelia allows users to create and save posts created by other users. Organizing them in multiple catalogs, pages and powerfull aplications to easily share and find the information posted.</p>
+            <p style="font-size:18px">{{ __('messages.solution') }}</p>
             <div class="divider-2" style="width: 80%;"></div>
-            <p>Copyright © 2020 kodelia.com All Rights Reserved.</p>
-            <p>Designed & developed by Jorge Servín Gómez, JSG WEB SERVICES</p>
+            <p style="opacity:1">{{ __('messages.d&d') }}</p>
+            <p>Copyright © 2020 kodelia.com {{ __('messages.all-rights') }}</p>            
             <ul class="social-media-footer list-unstyled">
                 <li><a href="#" class="fb"></a></li>
                 <li><a href="#" class="tw"></a></li>

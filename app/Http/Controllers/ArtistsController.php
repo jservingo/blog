@@ -159,13 +159,11 @@ class ArtistsController extends Controller
   {
     //$this->authorize('delete',$post);
 
-    /*
     if (auth()->id() != 10)
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
     }
-    */
 
     $artist = Artist
       ::where("mbid","=",$mbid)

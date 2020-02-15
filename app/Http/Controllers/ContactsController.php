@@ -35,7 +35,7 @@ class ContactsController extends Controller
       ->latest('posts.created_at')
       ->paginate(12);
 
-    $title = "Discover users";   
+    $title = __('messages.discover-users');   
     $root = "discover_users";
     $buttons = "posts.buttons.discover_users"; 
     $subtitle = "";
@@ -63,7 +63,7 @@ class ContactsController extends Controller
   		->get();
     */
 
-  	$title = "Contacts";
+  	$title = __('messages.contacts');
     $root = "contacts";
     $group_id = 0;
     $buttons = "posts.buttons.contacts";
@@ -92,7 +92,7 @@ class ContactsController extends Controller
   		->get();
     */
 
-  	$title = "Contacts";
+  	$title = __('messages.contacts');
     $root = "contacts_group";
     $group_id = $group->id;
     $buttons = "posts.buttons.contacts";  

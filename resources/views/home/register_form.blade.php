@@ -1,7 +1,7 @@
 {{-- home.register_form --}} 
 
 <div id="formulario">
-  <h2>Register form</h2>
+  <h2>{{ __('messages.sign-up') }}</h2>
 
   <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
       @csrf
@@ -13,7 +13,7 @@
                 class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 
                 name="name" 
                 value="{{ old('name') }}" 
-                placeholder="Username"
+                placeholder="{{ __('messages.username') }}"
                 required autofocus>
 
               @if ($errors->has('name'))
@@ -31,7 +31,7 @@
                 class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" 
                 name="email" 
                 value="{{ old('email') }}" 
-                placeholder="E-Mail Address"
+                placeholder="{{ __('messages.email') }}"
                 required>
 
               @if ($errors->has('email'))
@@ -48,7 +48,7 @@
                 type="password" 
                 class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" 
                 name="password" 
-                placeholder="Password"
+                placeholder="{{ __('messages.password') }}"
                 required>
 
               @if ($errors->has('password'))
@@ -65,7 +65,7 @@
                 type="password" 
                 class="form-control" 
                 name="password_confirmation" 
-                placeholder="Confirm Password"
+                placeholder="{{ __('messages.confirm') }}"
                 required>
           </div>
       </div>
@@ -73,11 +73,11 @@
       <div class="form-group row mb-0">
           <div class="col-md-6 offset-md-4">
               <button type="submit" class="btn btn-primary">
-                  {{ __('Register') }}
+                  {{ __('messages.register') }}
               </button>
           </div>
       </div>
   </form>
 </div>
 
-<p>if you have registered please login<p> 
+<p>{{ __('messages.please-sign-up') }}<p> 

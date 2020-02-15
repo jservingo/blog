@@ -41,7 +41,7 @@ class CatalogsController extends Controller
       ->latest('posts.created_at')
       ->paginate(12);
 
-      $title = "Discover catalogs";   
+      $title = __('messages.discover-catalogs');   
       $root = "discover_catalogs";
       $buttons = "posts.buttons.discover_catalogs"; 
       $subtitle = "";
@@ -85,7 +85,7 @@ class CatalogsController extends Controller
       $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
       $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
 
-      $title = "Catalogs";   
+      $title = __('messages.catalogs');   
       $root = "all_catalogs";
       $buttons = "posts.buttons.created_catalogs"; 
       $subtitle = "";
@@ -118,7 +118,7 @@ class CatalogsController extends Controller
       ->select('posts.*')
       ->paginate(12);
 
-      $title = "Catalogs created";   
+      $title = __('messages.created-catalogs');   
       $root = "created_catalogs";
       $buttons = "posts.buttons.created_catalogs"; 
       $subtitle = "";
@@ -147,7 +147,7 @@ class CatalogsController extends Controller
       ->latest('posts.created_at')
       ->paginate(12);
 
-      $title = "Created catalogs by $user->name";   
+      $title = __('messages.creasted-catalogs-by')." ".$user->name;   
       $root = "created_catalogs";
       $buttons = "posts.buttons.created_catalogs"; 
       $subtitle = "";
@@ -259,7 +259,7 @@ class CatalogsController extends Controller
 
     if ($category->page->user_id != auth()->id() && $catalog->user_id != auth()->id())
     {
-      echo json_encode(array('success'=>false,'msg'=>'You are not authorized to perform this operation.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
     }
 
@@ -276,7 +276,7 @@ class CatalogsController extends Controller
 
     if ($catalog && $catalog->user_id != auth()->id())
     {
-      echo json_encode(array('success'=>false,'msg'=>'You are not authorized to perform this operation.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
     }
 

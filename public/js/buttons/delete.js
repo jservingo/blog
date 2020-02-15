@@ -50,9 +50,9 @@ function btn_delete_catalog_from_category(catalog_id, category_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Are you sure you want to delete this catalog?',
-    accept: 'Si',
-    refuse: 'No',
+    title: want_to_delete_this_catalog,
+    accept: yes,
+    refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -66,9 +66,9 @@ function btn_delete_catalog_from_created_catalogs(catalog_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Are you sure you want to delete this catalog?',
-    accept: 'Si',
-    refuse: 'No',
+    title: want_to_delete_this_catalog,
+    accept: yes,
+    refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -82,9 +82,9 @@ function btn_delete_post_from_catalog(post_id, catalog_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Are you sure you want to delete this post from the catalog?',
-    accept: 'Si',
-    refuse: 'No',
+    title: want_to_delete_this_post_from_the_catalog,
+    accept: yes,
+    refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -98,9 +98,9 @@ function btn_delete_post_from_created_posts(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Are you sure you want to delete this post?',
-    accept: 'Si',
-    refuse: 'No',
+    title: want_to_delete_this_post,
+    accept: yes,
+    refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -114,9 +114,9 @@ function btn_delete_post_from_created_pages(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Are you sure you want to delete this page?',
-    accept: 'Si',
-    refuse: 'No',
+    title: want_to_delete_this_page,
+    accept: yes,
+    refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -130,9 +130,9 @@ function btn_delete_post_from_subscription(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Are you sure you want to unsubscribe?',
-    accept: 'Si',
-    refuse: 'No',
+    title: want_to_unsubscribe,
+    accept: yes,
+    refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -146,9 +146,9 @@ function btn_delete_post_from_contacts(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Are you sure you want delete this contact?',
-    accept: 'Si',
-    refuse: 'No',
+    title: want_delete_this_contact,
+    accept: yes,
+    refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -162,9 +162,9 @@ function btn_delete_post_from_contacts_group(post_id, group_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: 'Are you sure you want delete this contact?',
-    accept: 'Si',
-    refuse: 'No',
+    title: want_delete_this_contact,
+    accept: yes,
+    refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -187,7 +187,7 @@ function delete_catalog_from_category(catalog_id,category_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","The catalog was deleted.");
+        set_message("notice",the_catalog_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -195,7 +195,7 @@ function delete_catalog_from_category(catalog_id,category_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Sorry but the catalog was not deleted. Try again, please.");
+        set_message("error",the_catalog_was_not_deleted);
         location.reload();
       }
     },
@@ -218,7 +218,7 @@ function delete_catalog_from_created_catalogs(catalog_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","The catalog was deleted.");
+        set_message("notice",the_catalog_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -227,7 +227,7 @@ function delete_catalog_from_created_catalogs(catalog_id)
       }
       else
       {
-        set_message("error","Sorry but the catalog was not deleted. Try again, please.");
+        set_message("error",the_catalog_was_not_deleted);
         location.reload();
       }
     },
@@ -250,7 +250,7 @@ function delete_post_from_catalog(post_id,catalog_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","The post was deleted.");
+        set_message("notice",the_post_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -258,7 +258,7 @@ function delete_post_from_catalog(post_id,catalog_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Sorry but the post was not deleted. Try again, please.");
+        set_message("error",the_post_was_not_deleted);
         location.reload();
       }
     },
@@ -281,7 +281,7 @@ function delete_post_from_created_posts(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","The post was not deleted.");
+        set_message("notice",the_post_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -289,7 +289,7 @@ function delete_post_from_created_posts(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Sorry but the post was not deleted. Try again, please.");
+        set_message("error",the_post_was_not_deleted);
         location.reload();
       }
     },
@@ -312,7 +312,7 @@ function delete_post_from_created_pages(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","The page was deleted.");
+        set_message("notice",the_page_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -320,7 +320,7 @@ function delete_post_from_created_pages(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Sorry but the page was not deleted. Try again, please.");
+        set_message("error",the_page_was_not_deleted);
         location.reload();
       }
     },
@@ -343,7 +343,7 @@ function delete_post_from_subscription(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","The subscription was deleted.");
+        set_message("notice",the_subscription_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -351,7 +351,7 @@ function delete_post_from_subscription(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Sorry but the subscription was not deleted. Try again, please.");
+        set_message("error",the_subscription_was_not_deleted);
         location.reload();
       }
     },
@@ -374,7 +374,7 @@ function delete_post_from_contacts(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","The contact was deleted.");
+        set_message("notice",the_contact_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -382,7 +382,7 @@ function delete_post_from_contacts(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Sorry but the contact was not deleted. Try again, please.");
+        set_message("error",the_contact_was_not_deleted);
         location.reload();
       }
     },
@@ -405,7 +405,7 @@ function delete_post_from_contacts_group(post_id,group_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","The contact was deleted from the list.");
+        set_message("notice",the_contact_was_deleted_from_the_list);
         location.reload();
       }
       else if(data.msg)
@@ -413,7 +413,7 @@ function delete_post_from_contacts_group(post_id,group_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error","Sorry but the contact was not deleted from the list. Try again, please.");
+        set_message("error",the_contact_was_not_deleted_from_the_list);
         location.reload();
       }
     },

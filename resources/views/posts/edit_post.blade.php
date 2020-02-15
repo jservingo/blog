@@ -9,50 +9,50 @@
 @section('content')
   <div class="grid-container">
     <div id="pageHeader">
-      <h2>Edit {{ $post->type->name }}</h2>
+      <h2>{{ __('messages.edit') }} {{ $post->type->name }}</h2>
     </div>
 
     <div id="mainArticle">
     	<div class="form-control">
-        <label><span>{{ $title }}: (*) This field is required </span></label>
+        <label><span>{{ $title }}: (*) {{ __('messages.required-field') }} </span></label>
 			  <input id="title" type="text"  
 				  value="{{ old('title',$post->title) }}"
-				  placeholder="Enter the title of the post">
+				  placeholder="{{ __('messages.enter-title') }}">
 			  {!! $errors->first('title','<span class="help-block">:message</span>') !!}				
       </div>
 
       <div class="form-control">
-			  <label><span>Excerpt: (*) This field is required</span></label>
+			  <label><span>{{ __('messages.excerpt') }}: (*) {{ __('messages.required-field') }}</span></label>
 			  <textarea id="excerpt" 
-				  placeholder="Enter an excerpt from the post">{{ old('excerpt',$post->excerpt) }}</textarea>
+				  placeholder="{{ __('messages.enter-excerpt') }}">{{ old('excerpt',$post->excerpt) }}</textarea>
 			    {!! $errors->first('excerpt','<span class="help-block">:message</span>') !!}
 			</div>
 
 			<div class="form-control">
-        <label><span>Content: (*) This field is required</span></label>
+        <label><span>{{ __('messages.content') }}: (*) {{ __('messages.required-field') }}</span></label>
       </div>
       <div>
 			  <textarea id="body" 
-				  placeholder="Enter the content of the post" rows="10"
+				  placeholder="{{ __('messages.enter-content') }}" rows="10"
 			  >{{ old('body',$post->body)}}</textarea>
 			  {!! $errors->first('body','<span class="help-block">:message</span>') !!}
       </div>
 
       @if($post->isWebPage())
       <div class="form-control">
-        <label><span>Web Page url:</span></label>
+        <label><span>{{ __('messages.web-page-url') }}:</span></label>
 			  <input id="url" type="text" 
 				  value="{{ old('url',$post->url) }}"
-				  placeholder="Ingrese el url">
+				  placeholder="{{ __('messages.enter-web-page-url') }}">
 			  {!! $errors->first('url','<span class="help-block">:message</span>') !!}
       </div>
 			@endif       						
 
 			@if($post->isFrame())
       <div class="form-control">
-			  <label><span>iframe (Audio and video):</span></label>
+			  <label><span>{{ __('messages.frame') }}:</span></label>
 			  <textarea rows="2" id="iframe" 
-				  placeholder="Enter the content of the post" rows="10"
+				  placeholder="{{ __('messages.enter-frame') }}" rows="10"
 			  >{{ old('iframe',$post->iframe)}}</textarea>
 			  {!! $errors->first('iframe','<span class="help-block">:message</span>') !!}
 			</div>
@@ -60,17 +60,17 @@
 
       @if ($post->kpost)
       <div class="form-control">
-        <label><span>Observation:</span></label>
+        <label><span>{{ __('messages.observation') }}:</span></label>
         <textarea id="observation" 
-          placeholder="Enter an observation">{{ old('observation',$post->kpost->observation) }}</textarea>
+          placeholder="{{ __('messages.enter-observation') }}">{{ old('observation',$post->kpost->observation) }}</textarea>
         {!! $errors->first('observation','<span class="help-block">:message</span>') !!}
       </div>
 
       <div class="form-control">
-        <label><span>Footnote:</span></label>
+        <label><span>{{ __('messages.footnote') }}:</span></label>
         <input id="footnote" type="text" 
           value="{{ old('footnote',$post->footnote) }}"
-          placeholder="Enter the footnote">
+          placeholder="{{ __('messages.enter-footnote') }}">
         {!! $errors->first('footnote','<span class="help-block">:message</span>') !!}
       </div>  
       @endif	        
@@ -78,7 +78,7 @@
 
     <div id="siteAds">
       <div class="form-control">
-        <label><span>Publication date:</span></label>
+        <label><span>{{ __('messages.publication-date') }}:</span></label>
         <input type="text" id="published_at" 
           class="pull-right" 
           value="{{ old('published_at',$post->published_at ? $post->published_at->format('m/d/Y') : null) }}"
@@ -86,23 +86,23 @@
       </div>
       
       <div class="form-control">
-        <label><span>Tags:</span></label>
+        <label><span>{{ __('messages.tags') }}:</span></label>
         <textarea id="tags" 
-          placeholder="Enter tags separated by a comma','">{{ old('tags',$post->strTags()) }}</textarea>
+          placeholder="{{ __('messages.emter-tags') }}">{{ old('tags',$post->strTags()) }}</textarea>
           {!! $errors->first('tags','<span class="help-block">:message</span>') !!}
       </div> 
 
       <div class="form-control">
-        <label><span>Options</span></label>
+        <label><span>{{ __('messages.options') }}:</span></label>
       </div>
 
       <div class="form-control">
-        <label>Rating mode: </label>
+        <label>{{ __('messages.rating-mode') }}: </label>
           <select id='rating_mode'>
-            <option value='2'>Likes</option>
-            <option value='1'>Stars</option>            
-            <option value='3'>Likes & dislikes</option>
-            <option value='4'>No rating</option>
+            <option value='2'>{{ __('messages.likes') }}</option>
+            <option value='1'>{{ __('messages.stars') }}</option>            
+            <option value='3'>{{ __('messages.likes-dislikes') }}</option>
+            <option value='4'>{{ __('messages.no-rating') }}</option>
           </select>     
       </div>
 
@@ -136,7 +136,7 @@
         <label>
           <input type="checkbox" id="cstr_allow_comments" 
             {!! $post->cstr_allow_comments ? 'checked' : '' !!}>
-          Any user can comment.
+          {{ __('messages.add-comments') }}
         </label>
       </div>
 
@@ -145,7 +145,7 @@
         <label>
           <input type="checkbox" id="cstr_colaborative" 
             {!! $post->cstr_colaborative ? 'checked' : '' !!}>
-          Any user can add posts to the catalog.
+          {{ __('messages.add-posts') }}
         </label>
       </div>
       @endif
@@ -155,7 +155,7 @@
         <label>
           <input type="checkbox" id="cstr_colaborative" 
             {!! $post->cstr_colaborative ? 'checked' : '' !!}>
-          Any user can add catalogs to the page.
+          {{ __('messages.add-catalogs') }}
         </label>
       </div>
 
@@ -163,7 +163,7 @@
         <label>
           <input type="checkbox" id="cstr_allow_subscribers" 
             {!! $cstr_allow_subscribers ? 'checked' : '' !!}>
-          Allow subscriptions. 
+          {{ __('messages.allow-subcriptions') }} 
         </label>
       </div>
 
@@ -171,7 +171,7 @@
         <label>
           <input type="checkbox" id="cstr_show_subscribers" 
             {!! $cstr_show_subscribers ? 'checked' : '' !!}>
-          Show subscribers. 
+          {{ __('messages.show-subscribers') }} 
         </label>
       </div>
 
@@ -179,7 +179,7 @@
         <label>
           <input type="checkbox" id="cstr_main_page" 
             {!! $cstr_main_page ? 'checked' : '' !!}>
-          Main page. 
+          {{ __('messages.main-page') }} 
         </label>
       </div>
       @endif
@@ -197,7 +197,7 @@
 
       @if($post->isPhotoGallery() || $post->isOffer())
       <div class="form-control">
-        <label><span>Upload images</span></label>
+        <label><span>{{ __('messages.upload-images') }}</span></label>
       </div>
       <div class="dropzone"></div>
       @endif 
@@ -209,18 +209,18 @@
             data-id="{{ $post->id }}"
             data-type="{{ $post->type_id }}"
             data-kpost="{{ $post->kpost ? 1 : 0 }}">
-            Save changes
+            {{ __('messages.save-changes') }}
         </a>
       </div>
 
       <div class="form-control">
         <a href="#" class="btn_cancel_edit">
-            Cancel
+            {{ __('messages.cancel') }}
         </a>
       </div>
 
       @if($post->isPhotoGallery() || $post->isOffer())
-    	  <p>Saved images</p>
+    	  <p>{{ __('messages.saved-images') }}</p>
     	  <br>
         @if ($post->photos->count())		
   			  <div class="row"> 
@@ -302,6 +302,9 @@
 
 @push('scripts')
   <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+  @php
+    include(app_path() . '/functions/messages_js.blade.php')
+  @endphp
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>  
   <script type="text/javascript" src="/js/growl.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>

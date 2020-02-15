@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App as Kapp;
 use App\Contact;
 use App\Catalog;
 use App\Kpost;
@@ -22,6 +23,8 @@ class HomeController extends Controller
 {
 	public function index(Request $request)
   {
+    Kapp::setLocale('es');
+
 		// Verificamos que el usuario no esta autenticado
 		if (Auth::check())
 		{
@@ -112,7 +115,7 @@ class HomeController extends Controller
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_apps->getBindings());
     $posts = $query->latest('created_at')->paginate(12); 
 
-    $title = "Recomendations";
+    $title = __('messages.recommendations');
     $root = 'received_posts';
     $buttons = "posts.buttons.received_posts";
     $subtitle = "";
@@ -131,7 +134,7 @@ class HomeController extends Controller
       ->latest('created_at')
       ->paginate(12); 
 
-    $title = "Offers";
+    $title = __('messages.offers');
     $root = 'received_posts';
     $buttons = "posts.buttons.received_posts";
     $subtitle = "";
@@ -150,7 +153,7 @@ class HomeController extends Controller
       ->latest('kposts.created_at')
       ->paginate(12); 
 
-    $title = "Favorites";
+    $title = __('messages.favorites');
     $root = 'received_posts';
     $buttons = "posts.buttons.received_posts";
     $subtitle = "";
@@ -170,7 +173,7 @@ class HomeController extends Controller
 
     $result['rows'] = $posts;
 
-    $title = "Most viewed";
+    $title = __('messages.most-viewed');
     $root = 'received_posts';
     $buttons = "posts.buttons.received_posts";
     $subtitle = "";
@@ -197,7 +200,7 @@ class HomeController extends Controller
         ->paginate(12);
     }
 
-    $title = "Recently viewed";
+    $title = __('messages.recently-viewed');
     $root = "created_posts";
     $buttons = "posts.buttons.created_posts"; 
     $subtitle = "";    

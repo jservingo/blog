@@ -4,11 +4,13 @@
   <br/>
 	<section class="pages container">
 		<div class="page page-about">
-			<h1 class="text-capitalize">about</h1>
-			<cite>Kodelia allows users to create and save posts created by other users. Organizing them in multiple catalogs, pages and powerfull aplications to easily share and find the information posted.</cite>
+      <h1 class="text-capitalize">{{ __('messages.about') }}</h1>
+			<h2>{{ __('messages.slogan') }}</h2>
+      <h3>{{ __('messages.version') }}</h3>
+			<cite>{{ __('messages.solution') }}</cite>
 			<div class="divider-2" style="margin: 35px 0;"></div>
-			<p>Designed & developed by Jorge Servín Gómez.</p>
-			<p>Caracas, Venezuela.</p>
+			<p>{{ __('messages.d&d') }}</p>
+			<p>{{ __('messages.headquarters') }}</p>
 		</div>
 	</section>
 @endsection

@@ -46,17 +46,17 @@ class PostsController extends Controller
     switch ($status_id)
     {
       case 0:
-        $title = "Received posts";
+        $title = __('messages.received-posts');
         $root = 'received_posts';
         $buttons = "posts.buttons.received_posts";
         break;
       case 1:
-        $title = "Discarded posts";
+        $title = __('messages.discarded-posts');
         $root = "discarded_posts";
         $buttons = "posts.buttons.discarded_posts";
         break;
       case 2:
-        $title = "Saved posts";
+        $title = __('messages.saved-posts');
         $root = 'saved_posts';
         $buttons = "posts.buttons.saved_posts";
         break;
@@ -79,7 +79,7 @@ class PostsController extends Controller
       ->latest('kposts.created_at')
       ->paginate(12);  
 
-    $title = "Sent posts";
+    $title = __('messages.sent-posts');
     $root = "sent_posts";
     $buttons = "posts.buttons.sent_posts";
     $subtitle = "";     
@@ -110,7 +110,7 @@ class PostsController extends Controller
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
     $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
 
-    $title = "Posts";
+    $title = __('messages.posts');
     $root = "created_posts";
     $buttons = "posts.buttons.created_posts"; 
     $subtitle = ""; 
@@ -131,7 +131,7 @@ class PostsController extends Controller
       ->select('posts.*')
       ->paginate(12);
 
-    $title = "Posts created";
+    $title = __('messages.created-posts');
     $root = "created_posts";
     $buttons = "posts.buttons.created_posts"; 
     $subtitle = "";	
@@ -148,7 +148,7 @@ class PostsController extends Controller
       ->latest('posts.created_at')
       ->paginate(12);
 
-    $title = "Created posts by $user->name";
+    $title = __('messages.created-posts-by')." ".$user->name;
     $root = "created_posts";
     $buttons = "posts.buttons.created_posts"; 
     $subtitle = ""; 
@@ -168,7 +168,7 @@ class PostsController extends Controller
       ->latest('kposts.created_at')
       ->paginate(12); 
 
-    $title = "Notifications";
+    $title = __('messages.notifications');
     $root = 'notifications';
     $buttons = "posts.buttons.received_posts";
     $subtitle = "";
@@ -188,7 +188,7 @@ class PostsController extends Controller
       ->latest('kposts.created_at')
       ->paginate(12); 
 
-    $title = "Alerts";
+    $title = __('messages.alerts');
     $root = 'alerts';
     $buttons = "posts.buttons.received_posts";
     $subtitle = "";
@@ -501,7 +501,7 @@ class PostsController extends Controller
   {
     if ($catalog->user_id != auth()->id() && $post->user_id != auth()->id())
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
     }
 
@@ -516,7 +516,7 @@ class PostsController extends Controller
 
     if ($post->user_id != auth()->id())
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
     }
 
@@ -525,31 +525,31 @@ class PostsController extends Controller
 
     if ($post->isCatalog())
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;  
     }
 
     if ($post->isPage())
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;  
     }    
 
     if ($post->isApp())
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;  
     }
 
     if ($post->isUser())
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;  
     }
 
     if ($post->isCompany())
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. no está autorizado para realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;  
     }
 

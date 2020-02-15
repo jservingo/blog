@@ -15,16 +15,19 @@
 
       <div id="posts_container" class="posts container">
         @if(!$posts->isEmpty())
-          @php ($zcolor="#fefdfd")
+          @php 
+            $zcolor="#fefdfd";
+          @endphp
           @foreach($posts as $post)
             <div>
               @include('posts.full.view')    
             </div>
-            @if ($zcolor=="#fefdfd")
-              @php ($zcolor="#fefdfd")
-            @else
-              @php ($zcolor="#fefdfd")
-            @endif
+            @php
+              if ($zcolor=="#fefdfd")
+                $zcolor="#fefdfd";
+              else
+                $zcolor="#fefdfd";
+            @endphp
           @endforeach
         @else
           @include('posts.show_message')
@@ -54,6 +57,9 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/jstree.min.js"></script>
+  @php
+    include(app_path() . '/functions/messages_js.blade.php')
+  @endphp
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>
   <script type="text/javascript" src="/js/growl.js"></script>
   <script type="text/javascript" src="/js/buttons/add_save_discard.js"></script>

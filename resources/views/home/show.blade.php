@@ -17,7 +17,7 @@
 
         @php
           $route='home.show_recommendations';
-          $title='Recommendations';
+          $title=__('messages.recommendations');
           $type='recommendations'; 
         @endphp
         @include('home.post')
@@ -29,14 +29,14 @@
 
         @php 
           $route='home.show_offers';
-          $title='Offers';
+          $title=__('messages.offers');
           $type='offers'; 
         @endphp
         @include('home.post')
 
         @php 
           $route='home.show_favorites';
-          $title='Favorites'; 
+          $title=__('messages.favorites'); 
           $type='favorites';
         @endphp
         @include('home.post')
@@ -47,14 +47,14 @@
         {{-- 'Row 3' --}}
         @php 
           $route='home.show_most_viewed';
-          $title='Most viewed'; 
+          $title=__('messages.most-viewed'); 
           $type='most_viewed';
         @endphp
         @include('home.post')
 
         @php 
           $route='home.show_recent_views';
-          $title='Recently viewed';
+          $title=__('messages.recently-viewed');
           $type='recently_viewed'; 
         @endphp
         @include('home.post')

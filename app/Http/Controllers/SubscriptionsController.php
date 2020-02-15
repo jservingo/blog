@@ -41,7 +41,7 @@ class SubscriptionsController extends Controller
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_apps->getBindings());
     $posts = $query->paginate(12); 
 
-    $title = "Subscriptions";  
+    $title = __('messages.subscriptions');  
     $root = "subscriptions";
     $buttons = "posts.buttons.subscriptions";
     $subtitle = "";
@@ -101,7 +101,7 @@ class SubscriptionsController extends Controller
 
     $posts = $posts->paginate(12); 
 
-    $title = "Pages subscriptions";  
+    $title = __('messages.pages-subscriptions');  
     $root = "subscriptions_pages";
     $buttons = "posts.buttons.subscriptions";
     $subtitle = "";
@@ -123,7 +123,7 @@ class SubscriptionsController extends Controller
 
     $posts = $posts->paginate(12); 
 
-    $title = "Apps subscriptions";  
+    $title = __('messages.apps-subscriptions');  
     $root = "subscriptions_apps";
     $buttons = "posts.buttons.subscriptions";
     $subtitle = "";

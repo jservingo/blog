@@ -1,18 +1,18 @@
 <?php 
   if($post->isCatalog()){
-  $title = "Catalog title";
-  $msg_update = "The catalog was updated.";
-  $opc_featured = "Featured: The catalog will appear among the first.";
-  $opc_privacy = "Only the owner can see the catalog.";
-  $opc_restricted = "Only the owner can forward the catalog.";
+  $title = __('messages.catalog-title');
+  $msg_update = __('messages.catalog-updated');
+  $opc_featured = __('messages.catalog-featured');
+  $opc_privacy = __('messages.catalog-privacy');
+  $opc_restricted = __('messages.catalog-restricted');
   $catalog = $post->catalog;
   } 
   elseif($post->isPage()) {
-  $title = "Page Title";
-  $msg_update = "The page was updated.";
-  $opc_featured = "Featured: The page will appear among the first.";
-  $opc_privacy = "Only the owner can see the page.";
-  $opc_restricted = "Only the owner can forward the page.";
+  $title = __('messages.page-title');
+  $msg_update = __('messages.page-updated');
+  $opc_featured = __('messages.page-featured');
+  $opc_privacy = __('messages.page-privacy');
+  $opc_restricted = __('messages.page-restricted');
   //Campos que no están en el post
   $page = $post->page;
   $cstr_allow_subscribers = $page->cstr_allow_subscribers;
@@ -20,24 +20,24 @@
   $cstr_main_page = $page->cstr_main_page; 
   }
   elseif($post->isUser()) {
-  $title = "Name";
-  $msg_update = "The user was updated.";
-  $opc_featured = "Featured: The user will appear among the first.";
-  $opc_privacy = "Only the owner can see the user.";
-  $opc_restricted = "Only the owner can forward the user.";
+  $title = __('messages.user-title');
+  $msg_update = __('messages.user-updated');
+  $opc_featured = __('messages.user-featured');
+  $opc_privacy = __('messages.user-privacy');
+  $opc_restricted = __('messages.user-restricted');
   }
   elseif($post->isCompany()) {
-  $title = "Company name";
-  $msg_update = "The company was updated.";
-  $opc_featured = "Featured: The company will appear among the first.";
-  $opc_privacy = "Only the owner can see the company.";
-  $opc_restricted = "Only the owner can forward the company.";
+  $title = __('messages.company-title');
+  $msg_update = __('messages.company-updated');
+  $opc_featured = __('messages.company-featured');
+  $opc_privacy = __('messages.company-privacy');
+  $opc_restricted = __('messages.company-restricted');
   }
   else {
-  $title = "Post title"; 
-  $msg_update = "The post was updated.";
-  $opc_featured = "Featured: The post will appear among the first."; 
-  $opc_privacy = "Only the owner can see the post.";
-  $opc_restricted = "Only the owner can forward the post.";  
+  $title = __('messages.post-title'); 
+  $msg_update = __('messages.post-updated');
+  $opc_featured = __('messages.post-featured'); 
+  $opc_privacy = __('messages.post-privacy');
+  $opc_restricted = __('messages.post-restricted');  
   }
 ?>

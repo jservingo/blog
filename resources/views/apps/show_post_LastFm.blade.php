@@ -27,6 +27,9 @@
 
 @push('scripts')
   <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+  @php
+    include(app_path() . '/functions/messages_js.blade.php')
+  @endphp
   <script type="text/javascript" src="/js/buttons/add_save_discard.js"></script>
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>  
   <script type="text/javascript" src="/js/growl.js"></script>

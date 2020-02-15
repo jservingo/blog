@@ -42,6 +42,9 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://www.solodev.com/assets/pagination/jquery.twbsPagination.js"></script>
   -->
+  @php
+    include(app_path() . '/functions/messages_js.blade.php')
+  @endphp
   <script type="text/javascript" src="/js/simplePagination.js"></script>
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>
   <script type="text/javascript" src="/js/growl.js"></script>

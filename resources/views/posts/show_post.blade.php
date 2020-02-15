@@ -1,10 +1,9 @@
 {{-- posts.show_post --}} 
 
 @php
-  include(app_path() . '/functions/box_options.php')
+  include(app_path() . '/functions/box_options.php');
+  $zcolor="#fefdfd";
 @endphp
-
-@php ($zcolor="#fefdfd")
 
 @extends('layout')
 
@@ -52,7 +51,7 @@
 
         <div class="image-w-text" style="padding-right:20px;">
           @if ($post->kpost && $post->kpost->footnote)
-            <h3>Footenote:</h3>
+            <h3>Footnote:</h3>
             {{ $post->kpost->footnote }}
           @else
             {{ $post->footnote }}
@@ -92,6 +91,9 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous">
   </script>  
+  @php
+    include(app_path() . '/functions/messages_js.blade.php')
+  @endphp
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>
   <script type="text/javascript" src="/js/growl.js"></script>
   <script type="text/javascript" src="/js/buttons/header.js"></script>
