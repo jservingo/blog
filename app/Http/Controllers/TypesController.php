@@ -8,6 +8,7 @@ use App\Type;
 class TypesController extends Controller
 {
     public function show(Type $type){
+    	//OJO AQUI FALTA MOSTRAR LOS POSTS ORDENADOS
     	$posts = $type->posts()->paginate(12);
 
     	$title = $type->name;

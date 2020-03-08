@@ -198,6 +198,37 @@ class Post extends Model
         return 'posts.box.undefined';        
     }
 
+    function get_type()
+    {
+        switch($this->type_id)
+        {
+          case 1:
+            return __('messages.type-photo-gallery');
+          case 2:
+            return __('messages.type-frame');
+          case 3:
+            return __('messages.type-text');
+          case 4:
+            return __('messages.type-notification');
+          case 5:
+            return __('messages.web-page');
+          case 6:
+            return __('messages.type-alert');
+          case 7:
+            return __('messages.type-offer');
+          case 8:
+            return $this->custom_type;
+          case 21:
+            return __('messages.type-catalog');
+          case 22:
+            return __('messages.type-text');
+          case 23:
+            return __('messages.type-app');
+          case 24:
+            return __('messages.type-user');    
+        }
+    }
+
     public function isPublished()
     {
         return(bool) ! is_null($this->publishedAt) && $this->publishedAt < today();

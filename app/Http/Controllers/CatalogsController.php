@@ -21,7 +21,16 @@ class CatalogsController extends Controller
     if(get_view('catalogs')=="ribbon")
     {
       $catalogs = Catalog
-        ::where("user_id","<>",auth()->id())
+        ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
+        ->where("catalogs.user_id","<>",auth()->id())
+        ->where("posts.type_id","=",21)
+        ->whereNotIn('posts.id', function($query)
+          {
+            $query->select('post_id')
+                  ->from('kposts')
+                  ->where('user_id','=',auth()->id());
+          })
+        ->select('catalogs.*')
         ->latest('created_at')
         ->paginate(6);      
 
@@ -55,9 +64,16 @@ class CatalogsController extends Controller
   {
     if(get_view('catalogs')=="ribbon")
     {
+      //OJO AQUI FALTA MOSTRAR LOS SALVADOS
       $catalogs = Catalog
-        ::where("user_id","=",auth()->id())
-        ->latest('created_at')
+        ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
+        ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+        ->where("catalogs.user_id","=",auth()->id())
+        ->where("kposts.user_id","=",auth()->id())
+        ->where("posts.type_id","=",21)
+        ->orderBy('kposts.featured','DESC')
+        ->latest('posts.created_at')
+        ->select('catalogs.*','kposts.featured')
         ->paginate(6);      
 
       return view('catalogs.show',compact('catalogs'));
@@ -100,10 +116,15 @@ class CatalogsController extends Controller
     if(get_view('catalogs')=="ribbon")
     {
     	$catalogs = Catalog
-    		::where("user_id","=",auth()->id())
-        ->latest('created_at')
-    		->paginate(6);  		
-
+        ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
+        ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+        ->where("catalogs.user_id","=",auth()->id())
+        ->where("kposts.user_id","=",auth()->id())
+        ->where("posts.type_id","=",21)
+        ->orderBy('kposts.featured','DESC')
+        ->latest('posts.created_at')
+        ->select('catalogs.*','kposts.featured')
+        ->paginate(6);   
     	return view('catalogs.show',compact('catalogs'));
     }
     else
@@ -115,7 +136,7 @@ class CatalogsController extends Controller
       ->where("posts.type_id","=",21)
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
-      ->select('posts.*')
+      ->select('posts.*','kposts.featured')
       ->paginate(12);
 
       $title = __('messages.created-catalogs');   
@@ -133,21 +154,31 @@ class CatalogsController extends Controller
     if(get_view('catalogs')=="ribbon")
     {
       $catalogs = Catalog
-        ::where("user_id","=",$user->id)
-        ->latest('created_at')
+        ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
+        ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+        ->where("catalogs.user_id","=",$user->id)
+        ->where("kposts.user_id","=",auth()->id())
+        ->where("posts.type_id","=",21)
+        ->orderBy('kposts.featured','DESC')
+        ->latest('posts.created_at')
+        ->select('catalogs.*','kposts.featured')
         ->paginate(6);      
 
       return view('catalogs.show',compact('catalogs'));
     }
     else
     {
-      $posts = Post        
-      ::where("posts.user_id","=",$user->id)
-      ->where("type_id","=",21)
-      ->latest('posts.created_at')
-      ->paginate(12);
+      $posts = Post 
+        ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+        ->where("kposts.user_id","=",auth()->id())       
+        ->where("posts.user_id","=",$user->id)
+        ->where("type_id","=",21)
+        ->orderBy('kposts.featured')
+        ->latest('posts.created_at')
+        ->select('posts.*','kposts.featured')
+        ->paginate(12);
 
-      $title = __('messages.creasted-catalogs-by')." ".$user->name;   
+      $title = __('messages.created-catalogs-by')." ".$user->name;   
       $root = "created_catalogs";
       $buttons = "posts.buttons.created_catalogs"; 
       $subtitle = "";
@@ -159,7 +190,13 @@ class CatalogsController extends Controller
 
   public function show_catalog(Catalog $catalog)
   {
-    $posts = $catalog->posts()->paginate(12);
+    $posts = $catalog->posts()
+      ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where("kposts.user_id","=",auth()->id())
+      ->orderBy('kposts.featured','DESC')
+      ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
+      ->paginate(12);
 
     $title = $catalog->name; 
     $root = "catalog";

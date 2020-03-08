@@ -49,6 +49,11 @@
 		$msg_title = __('messages.created-apps-empty');
 		$msg_subtitle = __('messages.created-apps-advice');
 	}
+	else if ($root=="app_pages")
+	{
+		$msg_title = __('messages.app-pages-empty');
+		$msg_subtitle = __('messages.app-pages-advice');
+	}
   else if ($root=="created_pages")
 	{
 		$msg_title = __('messages.created-pages-empty');
@@ -108,6 +113,16 @@
 	{
 		$msg_title = __('messages.page-subscriptions-empty');
 		$msg_subtitle = __('messages.page-subscriptions-advice');
+	}
+	else if ($root=="app_subscribers")
+	{
+		$msg_title = __('messages.app-subscribers-empty');
+		$msg_subtitle = __('messages.app-subscribers-advice');
+	}
+  else if ($root=="page_subscribers")
+	{
+		$msg_title = __('messages.page-subscribers-empty');
+		$msg_subtitle = __('messages.page-subscribers-advice');
 	}
   else
   {

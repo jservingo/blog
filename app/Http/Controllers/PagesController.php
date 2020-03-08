@@ -123,10 +123,14 @@ class PagesController extends Controller
 
   public function show_created_user(User $user)
   {
-    $posts = Post        
-      ::where("posts.user_id","=",$user->id)
+    $posts = Post
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')        
+      ->where("posts.user_id","=",$user->id)
+      ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",22)
+      ->orderBy('kposts.featured')
       ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
       ->paginate(12);
 
     $title = __('messages.created-pages-by')." ".$user->name;   
@@ -168,11 +172,14 @@ class PagesController extends Controller
     else
     {
       $posts = Post 
-        ::join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')
+        ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+        ->join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')
+        ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)
         ->where("catalog_category.category_id","=",$category_id)
+        ->orderBy('kposts.featured')
         ->latest('posts.created_at')
-        ->select('posts.*')
+        ->select('posts.*','kposts.featured')
         ->paginate(12);
 
       $title = $page->name; 
@@ -188,11 +195,14 @@ class PagesController extends Controller
   public function show_subscribers(Page $page)
   {
     $posts = Post
-      ::join('page_user', 'posts.user_id', '=', 'page_user.user_id')
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->join('page_user', 'posts.user_id', '=', 'page_user.user_id')
+      ->where("kposts.user_id","=",auth()->id())
       ->where("page_user.page_id","=",$page->id)
       ->where("type_id","=",24)
-      ->select('posts.*')
-      ->latest('page_user.created_at')
+      ->orderBy('kposts.featured')
+      ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
       ->paginate(12);  
 
     $title = $page->name." ".__('messages.subscribers');

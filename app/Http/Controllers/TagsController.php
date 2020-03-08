@@ -8,6 +8,7 @@ use App\Tag;
 class TagsController extends Controller
 {
     public function show(Tag $tag){
+    	//OJO AQUI FALTA MOSTRAR LOS POSTS ORDENADOS
     	$posts = $tag->posts()->paginate(12);
 
     	$title = "#$tag->name";

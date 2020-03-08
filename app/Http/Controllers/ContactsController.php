@@ -47,12 +47,15 @@ class ContactsController extends Controller
 	public function show_contacts()
   {
   	$posts = Post
-  		::join('users', 'ref_id', '=', 'users.id')
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+  		->join('users', 'ref_id', '=', 'users.id')
   		->join('contacts', 'users.id', '=', 'contacts.user_ref')
   		->where("type_id","=",24)
   		->where("contacts.user_id","=",auth()->id())
+      ->where("kposts.user_id","=",auth()->id())
+      ->orderBy('kposts.featured')
   		->orderBy('users.name', 'asc')
-      ->select('posts.*')
+      ->select('posts.*','kposts.featured')
   		->paginate(12);	
 
   	/* QUITAR ESTO
@@ -75,13 +78,16 @@ class ContactsController extends Controller
   public function show_group(Group $group)
   {
   	$posts = Post
-  	  ::join('users', 'ref_id', '=', 'users.id')
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+  	  ->join('users', 'ref_id', '=', 'users.id')
   		->join('group_user', 'users.id', '=', 'group_user.user_id')
   		->join('groups', 'group_user.group_id', '=', 'groups.id')  		
   		->where("type_id","=",24)
   		->where('groups.id',"=",$group->id)
-  		->orderBy('users.name', 'asc')
-      ->select('posts.*')
+      ->where("kposts.user_id","=",auth()->id())
+  		->orderBy('kposts.featured')
+      ->orderBy('users.name', 'asc')
+      ->select('posts.*','kposts.featured')
   		->paginate(12);	
 
   	/* QUITAR ESTO

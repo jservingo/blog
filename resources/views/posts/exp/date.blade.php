@@ -26,6 +26,6 @@
       &nbsp;&nbsp;
     </span>
     <span class="c-gray-1" style="">
-      {{ $post->published_at->format('d M Y')}}
+      {{ $post->published_at->format('d/m/y')}}
     </span>
 </div>

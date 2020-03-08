@@ -9,7 +9,7 @@
 @section('content')
   <div class="grid-container">
     <div id="pageHeader">
-      <h2>{{ __('messages.edit') }} {{ $post->type->name }}</h2>
+      <h2>{{ __('messages.edit') }} {{ $post->get_type() }}</h2>
     </div>
 
     <div id="mainArticle">
@@ -88,7 +88,7 @@
       <div class="form-control">
         <label><span>{{ __('messages.tags') }}:</span></label>
         <textarea id="tags" 
-          placeholder="{{ __('messages.emter-tags') }}">{{ old('tags',$post->strTags()) }}</textarea>
+          placeholder="{{ __('messages.enter-tags') }}">{{ old('tags',$post->strTags()) }}</textarea>
           {!! $errors->first('tags','<span class="help-block">:message</span>') !!}
       </div> 
 
@@ -163,7 +163,7 @@
         <label>
           <input type="checkbox" id="cstr_allow_subscribers" 
             {!! $cstr_allow_subscribers ? 'checked' : '' !!}>
-          {{ __('messages.allow-subcriptions') }} 
+          {{ __('messages.subscribe-page') }} 
         </label>
       </div>
 

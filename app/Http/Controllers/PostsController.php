@@ -39,8 +39,9 @@ class PostsController extends Controller
   		->where("status_id","=",$status_id)
       ->where("kposts.sent_by","<>",auth()->id())
   		->where("kposts.user_id","=",auth()->id())
-      ->select('posts.*')
-      ->latest('kposts.created_at')
+      ->orderBy('kposts.featured')
+      ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
   		->paginate(12);	
       
     switch ($status_id)
@@ -75,8 +76,9 @@ class PostsController extends Controller
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.sent_by","=",auth()->id())
       ->where("kposts.user_id","<>",auth()->id())
-      ->select('posts.*')
-      ->latest('kposts.created_at')
+      ->orderBy('kposts.featured')
+      ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
       ->paginate(12);  
 
     $title = __('messages.sent-posts');
@@ -126,9 +128,9 @@ class PostsController extends Controller
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("posts.type_id","<=",20)      
-      ->orderBy('kposts.featured','DESC')
+      ->orderBy('kposts.featured')
       ->latest('posts.created_at')
-      ->select('posts.*')
+      ->select('posts.*','kposts.featured')
       ->paginate(12);
 
     $title = __('messages.created-posts');
@@ -142,10 +144,14 @@ class PostsController extends Controller
   public function show_created_user(User $user, $type=0)
   {   
     //Falta el type ***OJO***
-    $posts = Post       
-      ::where("posts.user_id","=",$user->id)
+    $posts = Post   
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')    
+      ->where("posts.user_id","=",$user->id)
+      ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","<=",20)
+      ->orderBy('kposts.featured')
       ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
       ->paginate(12);
 
     $title = __('messages.created-posts-by')." ".$user->name;
@@ -164,8 +170,9 @@ class PostsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 4)
-      ->select('posts.*')
-      ->latest('kposts.created_at')
+      ->orderBy('kposts.featured')
+      ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
       ->paginate(12); 
 
     $title = __('messages.notifications');
@@ -184,8 +191,9 @@ class PostsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 6)
-      ->select('posts.*')
-      ->latest('kposts.created_at')
+      ->orderBy('kposts.featured')
+      ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
       ->paginate(12); 
 
     $title = __('messages.alerts');

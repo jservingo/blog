@@ -92,14 +92,16 @@ class SubscriptionsController extends Controller
   public function show_pages()
   {
     $posts = Post
-      ::join('pages', 'ref_id', '=', 'pages.id')
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->join('pages', 'ref_id', '=', 'pages.id')
       ->join('page_user', 'pages.id', '=', 'page_user.page_id')
+      ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",22)
       ->where("page_user.user_id","=",auth()->id())
-      ->orderBy('pages.name', 'asc')
-      ->select('posts.*');
-
-    $posts = $posts->paginate(12); 
+      ->orderBy('kposts.featured')
+      ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
+      ->paginate(12);
 
     $title = __('messages.pages-subscriptions');  
     $root = "subscriptions_pages";
@@ -113,15 +115,17 @@ class SubscriptionsController extends Controller
   public function show_apps()
   {
     $posts = Post
-      ::join('apps', 'ref_id', '=', 'apps.id')
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->join('apps', 'ref_id', '=', 'apps.id')
       ->join('app_user', 'apps.id', '=', 'app_user.app_id')
+      ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",23)
       ->where("app_user.user_id","=",auth()->id())
       ->where("apps.parent_id","=",null)
-      ->orderBy('apps.name', 'asc')
-      ->select('posts.*');
-
-    $posts = $posts->paginate(12); 
+      ->orderBy('kposts.featured')
+      ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
+      ->paginate(12);
 
     $title = __('messages.apps-subscriptions');  
     $root = "subscriptions_apps";

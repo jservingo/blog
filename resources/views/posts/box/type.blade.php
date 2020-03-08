@@ -11,7 +11,7 @@
   <div class="post-category">
    <span class="category yellow text-capitalize">
       <a href="{{ route('post.show',$post) }}">
-        {{ $post->type->name }}
+        {{ __('messages.type-notification') }}
       </a>
    </span>
   </div>
@@ -20,7 +20,7 @@
   <div class="post-category">
    <span class="category red text-capitalize">
       <a href="{{ route('post.show',$post) }}">
-        {{ $post->type->name }}
+        {{ __('messages.type-alert') }}
       </a>
     </span>
   </div>
@@ -29,7 +29,7 @@
   <div class="post-category">     
    <span class="category lime text-capitalize">
       <a href="{{ $post->url }}" target="_blank">
-        {{ $post->type->name }}
+        {{ __('messages.type-web-page') }}
       </a>
     </span>
   </div>
@@ -38,7 +38,7 @@
   <div class="post-category">
    <span class="category light-green text-capitalize">
       <a href="{{ route('post.show',$post) }}">
-        {{ $post->type->name }}
+        {{ __('messages.type-offer') }}
       </a>
     </span>
   </div>
@@ -47,7 +47,7 @@
   <div class="post-category">     
    <span class="category sepia text-capitalize">
       <a href="{{ route('catalog.show_catalog',$post->ref_id) }}">
-        {{ $post->type->name }}
+        {{ __('messages.type-catalog') }}
       </a>
     </span>
   </div>
@@ -56,7 +56,7 @@
   <div class="post-category">
 	 <span class="category green text-capitalize">
   	  <a href="{{ route('page.show_page_category',[$post->ref_id,0]) }}">
-         {{ $post->type->name }}
+         {{ __('messages.type-page') }}
        </a>
     </span>
   </div>
@@ -65,7 +65,7 @@
   <div class="post-category">
    <span class="category dark-wine text-capitalize">
       <a href="{{ route('app.show_app',[$post->ref_id,0]) }}">
-        {{ $post->type->name }}
+        {{ __('messages.type-app') }}
       </a>
     </span>
   </div>
@@ -74,7 +74,7 @@
   <div class="post-category">    
    <span class="category azure text-capitalize">
       <a href="{{ route('post.show',$post) }}">
-         {{ $post->type->name }}
+         {{ __('messages.type-user') }}
       </a>
     </span>
   </div>

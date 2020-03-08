@@ -10,7 +10,7 @@
 			background-color:#e6f2ff;
 			z-index:2">
 	<div style="float:left">
-		<h2>Categories</h2>
+		<h2>{{ __('messages.categories') }}</h2>
 	</div>
 	<div style="float:right">
 		<a class="btn_close_menu_panel">

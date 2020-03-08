@@ -29,12 +29,12 @@ $('.btn_update_post').bind('click', function(e){
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice","The changes where saved.");
+        set_message("notice",the_changes_where_saved);
         window.opener.location.reload();
         window.close();
       }
       else {
-        set_message("error","Sorry but the update was not possible. Try again, please");
+        set_message("error", the_post_was_not_updated);
         window.opener.location.reload();
         window.close();
       }

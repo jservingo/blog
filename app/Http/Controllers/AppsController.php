@@ -89,7 +89,7 @@ class AppsController extends Controller
       ->where("apps.parent_id","=",null)
       ->orderBy('kposts.featured')
       ->latest('posts.created_at')
-      ->select('posts.*')
+      ->select('posts.*','kposts.featured')
       ->paginate(12);
 
     $title = __('messages.created-apps');   
@@ -104,12 +104,15 @@ class AppsController extends Controller
   public function show_created_user(User $user)
   {
     $posts = Post 
-      ::join('apps', 'ref_id', '=', 'apps.id')       
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->join('apps', 'ref_id', '=', 'apps.id')       
       ->where("apps.user_id","=",$user->id)
+      ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
-      ->select('posts.*')
+      ->orderBy('kposts.featured')
       ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
       ->paginate(12);
 
     $title = __('messages.created-apps-by')." ".$user->name;   
@@ -130,11 +133,14 @@ class AppsController extends Controller
     if(count($apps) > 0)
     {
       $posts = Post 
-      ::join('apps', 'ref_id', '=', 'apps.id')       
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->join('apps', 'ref_id', '=', 'apps.id') 
+      ->where("kposts.user_id","=",auth()->id())      
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",$app->id)
-      ->select('posts.*')
+      ->orderBy('kposts.featured')
       ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
       ->paginate(12);
 
       $title = $app->name;   
@@ -149,11 +155,14 @@ class AppsController extends Controller
     if($app->mode==1)
     {
       $posts = Post  
-      ::join('pages', 'ref_id', '=', 'pages.id')      
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->join('pages', 'ref_id', '=', 'pages.id') 
+      ->where("kposts.user_id","=",auth()->id())     
       ->where("type_id","=",22)
       ->where("pages.app_id","=",$app->id)
-      ->select('posts.*')
+      ->orderBy('kposts.featured')
       ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
       ->paginate(12);
 
       $title = $app->name;   
@@ -199,11 +208,14 @@ class AppsController extends Controller
   public function show_subscribers(App $app)
   {
     $posts = Post
-      ::join('app_user', 'posts.user_id', '=', 'app_user.user_id')
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->join('app_user', 'posts.user_id', '=', 'app_user.user_id')
+      ->where("kposts.user_id","=",auth()->id())
       ->where("app_user.app_id","=",$app->id)
       ->where("type_id","=",24)
-      ->select('posts.*')
-      ->latest('app_user.created_at')
+      ->orderBy('kposts.featured')
+      ->latest('posts.created_at')
+      ->select('posts.*','kposts.featured')
       ->paginate(12);  
 
     $title = "$app->name"." ".__('messages.subscribers');

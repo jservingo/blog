@@ -57,7 +57,8 @@
   var the_contact_was_not_deleted = "<?=__('messages.the-contact-was-not-deleted');?>";
   var the_contact_was_deleted_from_the_list = "<?=__('messages.the-contact-was-deleted-from-the-list');?>";
   var the_contact_was_not_deleted_from_the_list = "<?=__('messages.the-contact-was-not-deleted-from-the-list');?>";
-
+  var the_changes_were_saved = "<?=__('messages.the-changes-were-saved');?>";
+  var the_post_was_not_updated = "<?=__('messages.the-post-was-not-updated');?>";
 </script>
 
 

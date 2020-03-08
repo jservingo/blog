@@ -20,7 +20,7 @@
         @include('posts.single.content')
 
         <div class="image-w-text" style="padding-right:20px;">
-          <h3>Excerpt:</h3>
+          <h3>{{ __('messages.excerpt') }}:</h3>
           @if ($post->kpost && $post->kpost->excerpt)
             {{ $post->kpost->excerpt }}
           @else
@@ -29,20 +29,20 @@
         </div>
 
         <div class="image-w-text" style="padding-right:20px;">
-          <h3>Content:</h3>
+          <h3>{{ __('messages.content') }}:</h3>
           {!! $post->body !!}
         </div>
 
         <div class="image-w-text links" style="padding-right:20px;">
            @if ($post->links)
-            <h3>Links:</h3>
+            <h3>{{ __('messages.links') }}:</h3>
             {!! $post->links !!}
            @endif
         </div>
 
         <div class="image-w-text" style="padding-right:20px;">
           @if ($post->kpost && $post->kpost->observation)
-            <h3>Observation:</h3>
+            <h3>{{ __('messages.observation') }}:</h3>
             {{ $post->kpost->observation }}
           @else
             {{ $post->observation }}
@@ -51,7 +51,7 @@
 
         <div class="image-w-text" style="padding-right:20px;">
           @if ($post->kpost && $post->kpost->footnote)
-            <h3>Footnote:</h3>
+            <h3>{{ __('messages.footnote') }}:</h3>
             {{ $post->kpost->footnote }}
           @else
             {{ $post->footnote }}
@@ -60,7 +60,7 @@
 
         <div class="image-w-text" style="padding-right:20px;">
           @if ($post->tags)
-            <h3>Tags:</h3>
+            <h3>{{ __('messages.tags') }}:</h3>
             @include('posts.box.tags')
           @endif
         </div>

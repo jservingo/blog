@@ -24,14 +24,14 @@
 
 	@if ($post->cstr_allow_comments)
 	  <div class="image-w-text">
-	    Cualquier usuario puede realizar comentarios.
+	    {{ __('messages.add-comments') }}
 	  </div>
 	@endif  
 
 	@if ($post->isCatalog())
 	  @if ($post->cstr_colaborative)
 	    <div class="image-w-text">
-	      Cualquier usuario agregar posts al catálogo.
+	      {{ __('messages.add-posts') }}
 	    </div>
 	  @endif
 	@endif
@@ -39,25 +39,25 @@
 	@if ($post->isPage())
 	  @if ($post->cstr_colaborative)
 	    <div class="image-w-text">
-	      Cualquier usuario agregar catálogos a la página.
+	      {{ __('messages.catalogs') }}
 	    </div>
 	  @endif
 	  
 	  @if ($cstr_allow_subscribers)
 	    <div class="image-w-text">
-	      Permitir subscriptores.
+	      {{ __('messages.subscribe-page') }}
 	    </div> 
 	  @endif
 
 	  @if ($cstr_show_subscribers)
 	    <div class="image-w-text">
-	      Mostrar subscriptores. 
+	      {{ __('messages.show-subscribers') }} 
 	    </div>
 	  @endif
 
 	  @if ($cstr_main_page)
 	    <div class="image-w-text">
-	      Página principal.
+	      {{ __('messages.main-page') }}
 	    </div> 
 	  @endif
 	@endif

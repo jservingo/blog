@@ -23,8 +23,8 @@
 							@endforeach
 						@else
 						  @php
-						  	$msg_title = "This catalog doesn't have posts.";
-						  	$msg_subtitle = "You cad add or paste a post.";
+						  	$msg_title = __('messages.category-empty');
+						  	$msg_subtitle = __('messages.category-advice');
 						  @endphp	
 							@include('catalogs.show_message')
 						@endif			
