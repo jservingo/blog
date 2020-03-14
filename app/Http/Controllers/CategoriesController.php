@@ -10,7 +10,7 @@ class CategoriesController extends Controller
 {
   public function show_category(Category $category)
   {
-    //OJO AQUI FALTA MOSTRAR LOS CATALOGOS ORDENADAOS
+    //OJO ESTO NO SE USA 
   	$catalogs = $category->catalogs()->paginate(6);
   	return view('categories.show_category',compact('category','catalogs'));
   }

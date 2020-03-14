@@ -7,6 +7,11 @@
 
 <header class="xcontainer-flex xspace-between">
 	<div class="date truncate" data-height="51" style="width:215px; padding:10px 5px 5px 10px; background-color:{{ $zcolor }}">
+    @if ($post->featured)
+	    <div style="position:absolute; top:-3px; left:-10px;">
+	      <img src="/img/featured.png" width="20" />
+	    </div> 
+    @endif
 		<a href="{{ route('post.show_post',$post) }}"
 				class="text-uppercase c-blue"
 	  		data-id="{{ $post->id }}">

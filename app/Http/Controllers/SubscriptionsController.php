@@ -14,7 +14,7 @@ use App\App;
 
 class SubscriptionsController extends Controller
 {
-  public function show()
+  public function show(Request $request)
   {
     //Estas son las subscripciones a Pages    
     $posts_pages = Post
@@ -22,6 +22,7 @@ class SubscriptionsController extends Controller
       ->join('page_user', 'pages.id', '=', 'page_user.page_id')
       ->where("type_id","=",22)
       ->where("page_user.user_id","=",auth()->id())
+      ->title($request->get('title'))
       ->orderBy('pages.name', 'asc')
       ->select('posts.*');
 
@@ -32,6 +33,7 @@ class SubscriptionsController extends Controller
       ->where("type_id","=",23)
       ->where("app_user.user_id","=",auth()->id())
       ->where("apps.parent_id","=",null)
+      ->title($request->get('title'))
       ->orderBy('apps.name', 'asc')
       ->select('posts.*');
     
@@ -89,7 +91,7 @@ class SubscriptionsController extends Controller
     */
   }
 
-  public function show_pages()
+  public function show_pages(Request $request)
   {
     $posts = Post
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -98,7 +100,8 @@ class SubscriptionsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",22)
       ->where("page_user.user_id","=",auth()->id())
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
@@ -112,7 +115,7 @@ class SubscriptionsController extends Controller
       'posts','title','root','buttons','subtitle'));
   }
 
-  public function show_apps()
+  public function show_apps(Request $request)
   {
     $posts = Post
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -122,7 +125,8 @@ class SubscriptionsController extends Controller
       ->where("type_id","=",23)
       ->where("app_user.user_id","=",auth()->id())
       ->where("apps.parent_id","=",null)
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);

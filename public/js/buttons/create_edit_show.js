@@ -10,7 +10,7 @@ $('.btn_create_catalog').bind('click', function(e){
 }); 
 
 $('.btn_create_app').bind('click', function(e){
-  alert("Sorry! Add app button is not implemented yet.");
+  $.growl.warning({ message: not_implented });
 }); 
 
 $('.btn_create_page').bind('click', function(e){

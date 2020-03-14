@@ -16,19 +16,20 @@ use App\App;
 
 class AppsController extends Controller
 {
-  public function discover()
+  public function discover(Request $request)
   {
     $posts = Post 
       ::join('apps', 'ref_id', '=', 'apps.id')       
       ->where("apps.user_id","<>",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
+      ->title($request->get('title'))
       ->whereNotIn('apps.id', function($query)
         {
           $query->select('app_id')
                 ->from('app_user')
                 ->where('user_id','=',auth()->id());
-        })
+        })      
       ->select('posts.*')
       ->latest('posts.created_at')
       ->paginate(12);
@@ -42,7 +43,7 @@ class AppsController extends Controller
       'posts','title','root','buttons','subtitle'));
   }
 
-  public function show_all()
+  public function show_all(Request $request)
   {
     $posts_created = Post 
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -51,6 +52,7 @@ class AppsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
+      ->title($request->get('title'))
       ->select('posts.*','featured');
 
     $posts_subscriptions = Post
@@ -61,6 +63,7 @@ class AppsController extends Controller
       ->where("app_user.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("apps.parent_id","=",null)
+      ->title($request->get('title'))
       ->select('posts.*','featured');
 
     $posts_created->union($posts_subscriptions);
@@ -78,7 +81,7 @@ class AppsController extends Controller
       'posts','title','root','buttons','subtitle'));
   }
 
-  public function show_created()
+  public function show_created(Request $request)
   {
   	$posts = Post 
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -87,7 +90,8 @@ class AppsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
@@ -101,7 +105,7 @@ class AppsController extends Controller
       'posts','title','root','buttons','subtitle'));
   }
 
-  public function show_created_user(User $user)
+  public function show_created_user(User $user, Request $request)
   {
     $posts = Post 
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -110,7 +114,8 @@ class AppsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
@@ -138,7 +143,7 @@ class AppsController extends Controller
       ->where("kposts.user_id","=",auth()->id())      
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",$app->id)
-      ->orderBy('kposts.featured')
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
@@ -160,7 +165,7 @@ class AppsController extends Controller
       ->where("kposts.user_id","=",auth()->id())     
       ->where("type_id","=",22)
       ->where("pages.app_id","=",$app->id)
-      ->orderBy('kposts.featured')
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
@@ -205,7 +210,7 @@ class AppsController extends Controller
     }
   }
 
-  public function show_subscribers(App $app)
+  public function show_subscribers(App $app, Request $request)
   {
     $posts = Post
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -213,7 +218,8 @@ class AppsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("app_user.app_id","=",$app->id)
       ->where("type_id","=",24)
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);  

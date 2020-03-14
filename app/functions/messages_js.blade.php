@@ -59,6 +59,9 @@
   var the_contact_was_not_deleted_from_the_list = "<?=__('messages.the-contact-was-not-deleted-from-the-list');?>";
   var the_changes_were_saved = "<?=__('messages.the-changes-were-saved');?>";
   var the_post_was_not_updated = "<?=__('messages.the-post-was-not-updated');?>";
+  var search_empty = "<?=__('messages.search-empty');?>";
+  var not_implemented = "<?=__('messages.not-implemented');?>"; 
+  
 </script>
 
 

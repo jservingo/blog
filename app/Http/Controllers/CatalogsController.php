@@ -16,7 +16,7 @@ use App\Tag;
 
 class CatalogsController extends Controller
 {
-  public function discover()
+  public function discover(Request $request)
   {
     if(get_view('catalogs')=="ribbon")
     {
@@ -41,6 +41,7 @@ class CatalogsController extends Controller
       $posts = Post        
       ::where("posts.user_id","<>",auth()->id())
       ->where("type_id","=",21)
+      ->title($request->get('title'))
       ->whereNotIn('id', function($query)
         {
           $query->select('post_id')
@@ -60,7 +61,7 @@ class CatalogsController extends Controller
     }
   }
 
-  public function show_all()
+  public function show_all(Request $request)
   {
     if(get_view('catalogs')=="ribbon")
     {
@@ -85,6 +86,7 @@ class CatalogsController extends Controller
         ->where("posts.user_id","=",auth()->id())
         ->where("kposts.user_id","=",auth()->id())
         ->where("type_id","=",21)
+        ->title($request->get('title'))
         ->select('posts.*','featured'); 
 
       $posts_saved = Post
@@ -93,6 +95,7 @@ class CatalogsController extends Controller
         ->where("status_id","=",2)
         ->where("kposts.sent_by","=",auth()->id())
         ->where("kposts.user_id","=",auth()->id())
+        ->title($request->get('title'))
         ->select('posts.*','featured');
 
       $posts_created->union($posts_saved);
@@ -111,7 +114,7 @@ class CatalogsController extends Controller
     }
   }  
 
-  public function show_created()
+  public function show_created(Request $request)
   {
     if(get_view('catalogs')=="ribbon")
     {
@@ -134,6 +137,7 @@ class CatalogsController extends Controller
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("posts.type_id","=",21)
+      ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
@@ -149,7 +153,7 @@ class CatalogsController extends Controller
     }
   }
 
-  public function show_created_user(User $user)
+  public function show_created_user(User $user, Request $request)
   {
     if(get_view('catalogs')=="ribbon")
     {
@@ -173,7 +177,8 @@ class CatalogsController extends Controller
         ->where("kposts.user_id","=",auth()->id())       
         ->where("posts.user_id","=",$user->id)
         ->where("type_id","=",21)
-        ->orderBy('kposts.featured')
+        ->title($request->get('title'))
+        ->orderBy('kposts.featured','DESC')
         ->latest('posts.created_at')
         ->select('posts.*','kposts.featured')
         ->paginate(12);

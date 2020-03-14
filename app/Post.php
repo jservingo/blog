@@ -77,6 +77,14 @@ class Post extends Model
     			->latest('published_at');
     }
 
+    public function scopeTitle($query, $title)
+    {
+        if (trim($title) != "")
+        {
+            $query->where('title','like','%'.$title.'%');
+        }
+    }
+
     public function setPublishedAtAttribute($published_at)
     {
         $this->attributes['published_at'] = Carbon::parse($published_at);
@@ -268,6 +276,11 @@ class Post extends Model
     {
         return $this->type_id===7 ? true : false;
     }  
+
+    public function isCustom()
+    {
+        return $this->type_id===8 ? true : false;
+    } 
 
     public function isCatalog()
     {

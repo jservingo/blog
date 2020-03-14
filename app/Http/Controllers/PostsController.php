@@ -31,7 +31,7 @@ class PostsController extends Controller
   	abort (404);
   }
 
-  public function show_received($status_id=0,$type=0)
+  public function show_received($status_id=0,$type=0,Request $request)
   {
   	//Falta el type ***OJO***
     $posts = Post
@@ -39,7 +39,8 @@ class PostsController extends Controller
   		->where("status_id","=",$status_id)
       ->where("kposts.sent_by","<>",auth()->id())
   		->where("kposts.user_id","=",auth()->id())
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
   		->paginate(12);	
@@ -68,7 +69,7 @@ class PostsController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_sent($type=0)
+  public function show_sent($type=0,Request $request)
   {   
     //Falta el type ***OJO***
     //Falta posts.buttons.sent_posts
@@ -76,7 +77,8 @@ class PostsController extends Controller
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.sent_by","=",auth()->id())
       ->where("kposts.user_id","<>",auth()->id())
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);  
@@ -89,13 +91,14 @@ class PostsController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_all($type=0)
+  public function show_all($type=0,Request $request)
   { 
     $posts_created = Post  
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.user_id","=",auth()->id())
       ->where("posts.user_id","=",auth()->id())
       ->where("type_id","<=",20)
+      ->title($request->get('title'))
       ->select('posts.*','featured');
 
     $posts_saved = Post
@@ -104,6 +107,7 @@ class PostsController extends Controller
       ->where("status_id","=",2)
       ->where("kposts.sent_by","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())  
+      ->title($request->get('title'))
       ->select('posts.*','featured');
 
     $posts_created->union($posts_saved);
@@ -120,15 +124,16 @@ class PostsController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_created($type=0)
+  public function show_created($type=0,Request $request)
   {  	
   	//Falta el type ***OJO***
     $posts = Post  
   		::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
-      ->where("posts.type_id","<=",20)      
-      ->orderBy('kposts.featured')
+      ->where("posts.type_id","<=",20)  
+      ->title($request->get('title'))    
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
@@ -141,7 +146,7 @@ class PostsController extends Controller
   	return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_created_user(User $user, $type=0)
+  public function show_created_user(User $user, $type=0, Request $request)
   {   
     //Falta el type ***OJO***
     $posts = Post   
@@ -149,7 +154,8 @@ class PostsController extends Controller
       ->where("posts.user_id","=",$user->id)
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","<=",20)
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
@@ -162,7 +168,7 @@ class PostsController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_notifications()
+  public function show_notifications(Request $request)
   {
     $posts = Post
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -170,7 +176,8 @@ class PostsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 4)
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12); 
@@ -183,7 +190,7 @@ class PostsController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_alerts()
+  public function show_alerts(Request $request)
   {
     $posts = Post
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -191,7 +198,8 @@ class PostsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 6)
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12); 

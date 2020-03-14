@@ -12,6 +12,7 @@
 		'unregisred-user' => 'Sorry! You need to log in first.',
 		'send-donation' => 'If you want to make a donation to this startup, your name will appear in this page. Please, help us to continue growth. We thank you in advance.',
 		'search' => 'What are you looking for?',
+		'search-empty' => 'Please enter search text',
 		'feature-1' => 'Create and save posts',
 		'feature-2' => 'Organize the posts in multiple catalogs and pages',
 		'feature-3' => 'Share your posts',
@@ -267,7 +268,7 @@
 		'post-featured' => 'Featured: This post will appear among the first.',
 		'post-privacy' => 'Any user can see this post.',
 		'post-restricted' => 'Any user can forward this post.',
-		'' => '',
+		'not-implemented' => 'Sorry! This option is not implemented yet.',
  
  
 				

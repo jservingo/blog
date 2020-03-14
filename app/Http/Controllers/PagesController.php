@@ -22,11 +22,12 @@ class PagesController extends Controller
     return view('home.show');
   }
 
-  public function discover()
+  public function discover(Request $request)
   {
     $posts = Post        
       ::where("posts.user_id","<>",auth()->id())
       ->where("type_id","=",22)
+      ->title($request->get('title'))
       ->whereNotIn('ref_id', function($query)
         {
           $query->select('page_id')
@@ -56,13 +57,14 @@ class PagesController extends Controller
     */
   }
 
-  public function show_all()
+  public function show_all(Request $request)
   {
     $posts_created = Post  
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')      
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",22)
+      ->title($request->get('title'))
       ->select('posts.*','featured');
 
     $posts_subscriptions = Post
@@ -72,6 +74,7 @@ class PagesController extends Controller
       ->where("type_id","=",22)
       ->where("page_user.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
+      ->title($request->get('title'))
       ->select('posts.*','featured');
 
     $posts_created->union($posts_subscriptions);
@@ -89,13 +92,14 @@ class PagesController extends Controller
       'posts','title','root','buttons','subtitle'));
   }  
 
-  public function show_created()
+  public function show_created(Request $request)
   {
     $posts = Post  
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')      
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("posts.type_id","=",22)
+      ->title($request->get('title'))
       ->orderBy('kposts.featured', 'DESC')
       ->latest('posts.created_at')
       ->select('posts.*')
@@ -121,14 +125,15 @@ class PagesController extends Controller
     */
   }
 
-  public function show_created_user(User $user)
+  public function show_created_user(User $user, Request $request)
   {
     $posts = Post
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')        
       ->where("posts.user_id","=",$user->id)
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",22)
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
@@ -167,6 +172,19 @@ class PagesController extends Controller
 
     if(get_view('catalogs')=="ribbon")
     {
+      //OJO FALTA PASAR LOS CATALOGOS ORDENADOS Y
+      //EN catalogs.ribbon_view FALTA ORDENAR LOS POSTS
+      $catalogs = Catalog
+        ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
+        ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+        ->where("catalogs.user_id","=",auth()->id())
+        ->where("kposts.user_id","=",auth()->id())
+        ->where("posts.type_id","=",21)
+        ->orderBy('kposts.featured','DESC')
+        ->latest('posts.created_at')
+        ->select('catalogs.*','kposts.featured')
+        ->paginate(6); 
+
       return view('pages.show_category',compact('page','category','reset_categories_tree'));
     }
     else
@@ -177,7 +195,8 @@ class PagesController extends Controller
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)
         ->where("catalog_category.category_id","=",$category_id)
-        ->orderBy('kposts.featured')
+        ->title($request->get('title'))
+        ->orderBy('kposts.featured','DESC')
         ->latest('posts.created_at')
         ->select('posts.*','kposts.featured')
         ->paginate(12);
@@ -192,7 +211,7 @@ class PagesController extends Controller
     }  
   }
 
-  public function show_subscribers(Page $page)
+  public function show_subscribers(Page $page, Request $request)
   {
     $posts = Post
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -200,7 +219,8 @@ class PagesController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("page_user.page_id","=",$page->id)
       ->where("type_id","=",24)
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
       ->latest('posts.created_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);  

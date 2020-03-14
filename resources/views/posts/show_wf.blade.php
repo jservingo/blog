@@ -27,7 +27,7 @@
                 @include('posts.box.view')  
               @elseif ($post->isCatalog())
                 @include('posts.box.view')
-              @elseif ($post->isPage() || $post->isApp())     
+              @elseif ($post->isPage() || $post->isApp() || $post->isCustom())     
                 @include('posts.card.view')
               @elseif ($post->isUser() || $post->isCompany()) 
                 @include('posts.box.view')   
@@ -136,6 +136,10 @@
     <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
   @endif  
   @include('home.message')
+  <script>
+    var url_current = "{{ url()->current() }}";
+  </script>
+  <script type="text/javascript" src="/js/searchButton.js"></script>
   <script>
     $(function() {
       $(".loader").fadeOut("slow");

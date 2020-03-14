@@ -19,11 +19,12 @@ class ContactsController extends Controller
   //Aqui hay que colocar el método que muestra y
 	//hay que modificar la vista de los posts
 
-  public function discover()
+  public function discover(Request $request)
   {
     $posts = Post        
       ::where("posts.user_id","<>",auth()->id())
       ->where("type_id","=",24)
+      ->title($request->get('title'))
       /*
       ->whereNotIn('ref_id', function($query)
         {
@@ -31,7 +32,7 @@ class ContactsController extends Controller
                 ->from('contacts')
                 ->where('user_id','=',auth()->id());
         })
-      */
+      */      
       ->latest('posts.created_at')
       ->paginate(12);
 
@@ -44,7 +45,7 @@ class ContactsController extends Controller
       'posts','title','root','buttons','subtitle'));
   }
 
-	public function show_contacts()
+	public function show_contacts(Request $request)
   {
   	$posts = Post
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -53,7 +54,8 @@ class ContactsController extends Controller
   		->where("type_id","=",24)
   		->where("contacts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
-      ->orderBy('kposts.featured')
+      ->title($request->get('title'))
+      ->orderBy('kposts.featured','DESC')
   		->orderBy('users.name', 'asc')
       ->select('posts.*','kposts.featured')
   		->paginate(12);	
@@ -85,7 +87,7 @@ class ContactsController extends Controller
   		->where("type_id","=",24)
   		->where('groups.id',"=",$group->id)
       ->where("kposts.user_id","=",auth()->id())
-  		->orderBy('kposts.featured')
+  		->orderBy('kposts.featured','DESC')
       ->orderBy('users.name', 'asc')
       ->select('posts.*','kposts.featured')
   		->paginate(12);	

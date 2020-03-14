@@ -82,32 +82,33 @@ class HomeController extends Controller
 
   // Show
 
-  public function show_recommendations()
+  public function show_recommendations(Request $request)
   {
     $posts_pages = Post
       ::where("user_id","<>",auth()->id())
-      ->where("type_id","=",22)      
+      ->where("type_id","=",22)  
+      ->title($request->get('title'))    
       ->whereNotIn('ref_id', function($query)
         {
           $query->select('page_id')
                 ->from('page_user')
                 ->where('user_id','=',auth()->id());
         })
-      ->latest('created_at');
+      ->select('posts.*');
 
     $posts_apps = Post 
       ::join('apps', 'ref_id', '=', 'apps.id')       
       ->where("apps.user_id","<>",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
+      ->title($request->get('title'))
       ->whereNotIn('apps.id', function($query)
         {
           $query->select('app_id')
                 ->from('app_user')
                 ->where('user_id','=',auth()->id());
         })
-      ->select('posts.*')
-      ->latest('posts.created_at');
+      ->select('posts.*');
 
     $posts_apps->union($posts_pages);
     $querySql = $posts_apps->toSql();
@@ -123,14 +124,14 @@ class HomeController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_offers()
+  public function show_offers(Request $request)
   {
     $posts = Post
       //::join('kposts', 'posts.id', '=', 'kposts.post_id')
       //->where("status_id","=",0)
       ::where("type_id", "=", 7)
-      ->where("user_id","<>",auth()->id())      
-      //->select('posts.*')
+      ->where("user_id","<>",auth()->id()) 
+      ->title($request->get('title'))     
       ->latest('created_at')
       ->paginate(12); 
 
@@ -142,15 +143,15 @@ class HomeController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_favorites()
+  public function show_favorites(Request $request)
   {
     $posts = Post
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
-      ->where("status_id","=",2)
-      ->where("kposts.likes",">",0)
+      ->where("kposts.featured", "=", 1)
       ->where("kposts.user_id","=",auth()->id())
-      ->select('posts.*')
+      ->title($request->get('title'))
       ->latest('kposts.created_at')
+      ->select('posts.*','kposts.featured')
       ->paginate(12); 
 
     $title = __('messages.favorites');
@@ -161,14 +162,15 @@ class HomeController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_most_viewed()
+  public function show_most_viewed(Request $request)
   {
     $posts = Post
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.views",">",0)
       ->where("kposts.user_id","=",auth()->id())
-      ->select('posts.*')
-      ->orderBy('kposts.views', 'DESC')
+      ->title($request->get('title'))
+      ->orderBy('kposts.views', 'DESC')  
+      ->select('posts.*')      
       ->paginate(12); 
 
     $result['rows'] = $posts;
@@ -208,7 +210,7 @@ class HomeController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  //Get 
+  //Gets 
 
   public function get_recent_views()
   {   
@@ -294,11 +296,10 @@ class HomeController extends Controller
   { 
     $posts = Post::with('owner')
       ->join('kposts', 'posts.id', '=', 'kposts.post_id')
-      ->where("status_id","=",2)
-      ->where("kposts.likes",">",0)
+      ->where("kposts.featured", "=", 1)
       ->where("kposts.user_id","=",auth()->id())
-      ->select('posts.*')
       ->latest('kposts.created_at')
+      ->select('posts.*')      
       ->limit(100)
       ->get(); 
 
@@ -313,8 +314,8 @@ class HomeController extends Controller
       ->join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.views",">",0)
       ->where("kposts.user_id","=",auth()->id())
-      ->select('posts.*')
       ->orderBy('kposts.views', 'DESC')
+      ->select('posts.*')
       ->limit(100)
       ->get();
 

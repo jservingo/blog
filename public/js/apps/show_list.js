@@ -214,7 +214,7 @@ $(function() {
     q = $('.searchTerm').val().trim();
     if(!q.length)
     {
-      alert("Add some text friend");
+      $.growl.warning({ message: search_empty });
     }
     else
     {   

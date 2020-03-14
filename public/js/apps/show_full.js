@@ -213,7 +213,7 @@ $(function() {
     q = $('.searchTerm').val().trim();
     if(!q.length)
     {
-      alert("Add some text please");
+      $.growl.warning({ message: search_empty });
     }
     else
     {   

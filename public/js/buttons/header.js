@@ -12,7 +12,7 @@ $('#menu_profile').on("click","div.popr-item", function(e){
   switch(btn)
   {
     case 'btn_account':
-      alert("/user/account");
+      $.growl.warning({ message: not_implemented });
       break;
     case 'btn_logout':
       logout();
@@ -167,15 +167,15 @@ $('.btn_register').bind('click', function(e){
 }); 
 
 $('.btn_configuration').bind('click', function(e){
-  alert("Sorry! /user/configuration is not implemented yet.");
+  $.growl.warning({ message: not_implemented });
 });
 
 $('.btn_notifications').bind('click', function(e){
-  alert("Sorry! /user/notifications are not implemented yet.");
+  $.growl.warning({ message: not_implemented });
 });
 
 $('.btn_options').bind('click', function(e){
-  alert("Sorry! btn_options are not implemented yet.");
+  $.growl.warning({ message: not_implemented });
 });
 
 $('.btn_update_likes').bind('click', function(e){

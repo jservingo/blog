@@ -37,7 +37,12 @@
 
 <header class="xcontainer-flex xspace-between">
 	<div class="date truncate" data-height="{{ $height }}" style="width:{{ $width }}px; padding:10px 5px 5px 10px; background-color:{{ $zcolor }}">
-		<a href="{{ route('post.show_post',$post) }}"
+		@if ($post->featured)
+      <div style="position:absolute; top:-3px; left:-10px;">
+        <img src="/img/featured.png" width="20" />
+      </div> 
+    @endif
+    <a href="{{ route('post.show_post',$post) }}"
 				class="text-uppercase c-blue"
 	  		data-id="{{ $post->id }}">
 	  	<h1 class="t-title" style="margin-top:0;margin-bottom:0px;margin-right:22px;">{{ $post->title }}</h1>  

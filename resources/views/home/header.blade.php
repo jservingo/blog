@@ -12,7 +12,7 @@
             <div class="container-flex">
                 <div class="searchWrap">
                     <div class="search">
-                        <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                        <input type="text" class="searchTerm" placeholder="{{ __('messages.search') }}">
                         <button type="submit" class="searchButton">
                             <i class="fa fa-search"></i>
                         </button>
