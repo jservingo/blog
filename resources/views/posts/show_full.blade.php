@@ -166,7 +166,7 @@
   <script>
     var url_current = "{{ url()->current() }}";
   </script>
-  <script type="text/javascript" src="/js/searchButton.js"></script>
+  <script type="text/javascript" src="/js/buttons/searchButton.js"></script>
   <script>
     $(function() {
       $(".loader").fadeOut("slow");
