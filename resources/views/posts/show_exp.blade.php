@@ -95,7 +95,7 @@
       var rv_post_id = 0;
       var rv_ref_id = {{ $app->id }};
     </script> 
-    <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
+    <script type="text/javascript" src="/js/save_recent_views.js"></script>
   @endif  
   @if ($root=="page_category")
     <script>
@@ -111,7 +111,7 @@
     </script>
     <script type="text/javascript" src="/js/categoriesTree.js"></script>
     <script type="text/javascript" src="/js/buttons/categories.js"></script>
-    <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
+    <script type="text/javascript" src="/js/save_recent_views.js"></script>
   @endif    
   @if ($root=="catalog")
     <script> 
@@ -119,7 +119,7 @@
       var rv_post_id = 0;
       var rv_ref_id = {{ $ref_id }};
     </script> 
-    <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
+    <script type="text/javascript" src="/js/save_recent_views.js"></script>
   @endif  
   @include('home.message')
   <script>

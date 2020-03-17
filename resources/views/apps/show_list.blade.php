@@ -120,7 +120,7 @@
     var rv_post_id = 0;
     var rv_ref_id = app_id;
   </script> 
-  <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
+  <script type="text/javascript" src="/js/save_recent_views.js"></script>
   <script>
     $(function() {
       $(".loader").fadeOut("slow");

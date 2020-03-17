@@ -93,7 +93,7 @@
     var rv_post_id = 0;
     var rv_ref_id = {{ $page->id }};
   </script> 
-  <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
+  <script type="text/javascript" src="/js/save_recent_views.js"></script>
 	@include('catalogs.ribbon_script')  
 	@include('home.message')
 	<script>

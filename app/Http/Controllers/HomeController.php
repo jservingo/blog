@@ -185,22 +185,15 @@ class HomeController extends Controller
 
   public function show_recent_views()
   {   
-    if(isset($_COOKIE['recentviews']))
-    {
-      $recentviews = $_COOKIE['recentviews']; 
-      $recent = explode(',',$recentviews);
+    $user = auth()->user();
 
-      $posts = Post
-        ::whereIn('id', $recent)
-        ->orderByRaw(\DB::raw("FIELD(id, ".$recentviews.")"))
-        ->paginate(12);
-    }
-    else
-    {
-      $posts = Post
-        ::where('type_id',"=",99)
-        ->paginate(12);
-    }
+    $recentviews = $user->recentviews; 
+    $recent = explode(',',$recentviews);
+
+    $posts = Post
+      ::whereIn('id', $recent)
+      ->orderByRaw(\DB::raw("FIELD(id, ".$recentviews.")"))
+      ->paginate(12);
 
     $title = __('messages.recently-viewed');
     $root = "created_posts";
@@ -214,23 +207,16 @@ class HomeController extends Controller
 
   public function get_recent_views()
   {   
-    if(isset($_COOKIE['recentviews']))
-    {
-      $recentviews = $_COOKIE['recentviews']; 
-      $recent = explode(',',$recentviews);
+    $user = auth()->user();
 
-      $posts = Post::with('owner')        
-        ->whereIn('id', $recent)
-        ->orderByRaw(\DB::raw("FIELD(id, ".$recentviews.")"))
-        ->limit(100)
-        ->get();
-    }
-    else
-    {
-      $posts = Post
-        ::where('type_id',"=",99)
-        ->get();
-    }
+    $recentviews = $user->recentviews; 
+    $recent = explode(',',$recentviews);
+
+    $posts = Post::with('owner')        
+      ->whereIn('id', $recent)
+      ->orderByRaw(\DB::raw("FIELD(id, ".$recentviews.")"))
+      ->limit(100)
+      ->get();
 
     $result['rows'] = $posts;
 
@@ -446,16 +432,21 @@ class HomeController extends Controller
     if ($kpost)
     {
       $kpost->views = $kpost->views + 1;
+      $kpost->timestamps = false;
       $kpost->save();      
     }
 
     //update views de posts
     $post->views = $post->views + 1;
+    $post->timestamps = false;
     $post->save();
 
-    if(isset($_COOKIE['recentviews']))
+    //update recent views
+    $user = auth()->user();
+
+    if ($user->recentviews)
     {
-      $recentviews = $_COOKIE['recentviews']; 
+      $recentviews = $user->recentviews;
       $recent = explode(',',$recentviews);
       //Si el post existe, quitarlo
       if (($key = array_search($post_id, $recent)) !== false) {
@@ -468,14 +459,15 @@ class HomeController extends Controller
       array_unshift($recent, $post_id);
       //Convertir a string
       $recentviews = implode(',',$recent);
-    } 
-    else 
+      $user->recentviews = $recentviews;
+    }
+    else
     {
-      $recentviews = $post_id;
+      $user->recentviews = $post_id;
     }
 
-    // save the cookie
-    setcookie('recentviews', $recentviews, time()+(86400*30));      
+    $user->timestamps = false;
+    $user->save();
 
     echo json_encode(array('success'=>true));
   }  

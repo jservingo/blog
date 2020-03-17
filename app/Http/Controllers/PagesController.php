@@ -152,7 +152,7 @@ class PagesController extends Controller
     return view('pages.page_show',compact('page'));
   }  
 
-  public function show_page_category(Page $page, $category_id)
+  public function show_page_category(Page $page, $category_id, Request $request)
   {
     if ($category_id==0)
     {

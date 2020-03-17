@@ -119,7 +119,7 @@
     var rv_post_id = {{ $post->id }};
     var rv_ref_id = {{ $post->ref_id ? $post->ref_id : 0 }};
   </script> 
-  <script type="text/javascript" src="/js/saveCookieRecentViews.js"></script>
+  <script type="text/javascript" src="/js/save_recent_views.js"></script>
   <!--<script src="/js/twitter-bootstrap.js"></script>--> 
   <script>
     var post_id = {{ $post->id }}; 
