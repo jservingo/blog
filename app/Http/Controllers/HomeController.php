@@ -23,8 +23,6 @@ class HomeController extends Controller
 {
 	public function index(Request $request)
   {
-    Kapp::setLocale('es');
-
 		// Verificamos que el usuario no esta autenticado
 		if (Auth::check())
 		{
@@ -59,6 +57,20 @@ class HomeController extends Controller
     return view('home.show_login',compact('mode'));
   }
 
+  public function change_language(Request $request)
+  {
+    $lang = $request->get('lang');
+    Kapp::setLocale($lang);
+
+    //Save language
+    $user = auth()->user();
+    $user->language = $lang;
+    $user->save();
+
+    session()->put('locale', $lang);
+    return redirect()->back();
+  }
+  
   public function set_message(Request $request)
   {
   	$type = $request->get('type');

@@ -29,11 +29,7 @@
 
 <header class="xcontainer-flex xspace-between">
 	<div class="date truncate" data-height="{{ $height }}" style="width:{{ $width }}px; padding:10px 5px 5px 10px; background-color:{{ $zcolor }}">
-    @if ($post->featured)
-      <div style="position:absolute; top:-3px; left:-10px;">
-        <img src="/img/featured.png" width="20" style="z-index:10;" />
-      </div> 
-    @endif
+    @include('posts.box.featured')
     <a href="{{ route('post.show_post',$post) }}"
 				class="text-uppercase c-blue"
 	  		data-id="{{ $post->id }}">

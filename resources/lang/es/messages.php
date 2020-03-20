@@ -1,5 +1,6 @@
 <?php
 	return[
+		'lang' => 'es',
 		'log-in' => 'Ingresar',
 		'sign-up' => 'Registrarse',
 		'version' => 'Beta version 1.0',

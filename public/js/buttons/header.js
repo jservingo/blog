@@ -20,6 +20,19 @@ $('#menu_profile').on("click","div.popr-item", function(e){
   } 
 });
 
+$('#menu_languages').on("click","div.popr-item", function(e){
+  var btn = $(this).data('btn');
+  switch(btn)
+  {
+    case 'btn_en':
+      location = "/user/language?lang=en";
+      break;
+    case 'btn_es':
+      location = "/user/language?lang=es";
+      break;
+  } 
+});
+
 $('#menu_view_posts').on("click","div.popr-item", function(e){
   var view = $(this).data('view');
   set_view(view,"posts");

@@ -26,7 +26,10 @@
                     </a>
                 </span>
             </div>        
-            <div class="container-flex space-between" style="width:110px;">                
+            <div class="container-flex space-between" style="width:130px;">                
+                <div id="menu_languages" class="popr" data-id="languages"> 
+                    <img src="/img/{{ __('messages.lang') }}.png" alt="" style="width:22px;height:20px;">
+                </div>
                 <a class="btn_configuration"> 
                     <img src="/img/configuration.png" alt="" style="width:20px;height:20px;">
                 </a>

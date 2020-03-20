@@ -31,6 +31,7 @@
     <!--<div class="preload"></div>-->
     @include('home.header')
     @include('home.menu_standard')
+    @include('home.menu_languages')
     @yield('content')
     @include('home.footer')
     @stack('scripts')      

@@ -61,7 +61,6 @@
   var the_post_was_not_updated = "<?=__('messages.the-post-was-not-updated');?>";
   var search_empty = "<?=__('messages.search-empty');?>";
   var not_implemented = "<?=__('messages.not-implemented');?>"; 
-  
 </script>
 
 

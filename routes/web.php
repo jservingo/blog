@@ -15,6 +15,7 @@ Route::get('email',function(){
 Route::get('/','HomeController@index')->name('home');
 Route::get('user/login','HomeController@login')->name('login');
 Route::get('user/register','HomeController@register')->name('register');
+Route::get('user/language','HomeController@change_language')->name('language');
 Route::get('ad/{position1}/{position2}','HomeController@get_ad');
 Route::get('colorpicker', function () {
     return view('home.color_picker');
