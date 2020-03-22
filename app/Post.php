@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App as Kapp;
 use App\Catalog;
 use App\Page;
 use App\User;
@@ -72,9 +73,18 @@ class Post extends Model
 
     public function scopePublished($query)
     {
-    	$query->whereNotNull('published_at')
-    			->where('published_at','<=',Carbon::now())
-    			->latest('published_at');
+    	if ($this->isOffer())
+        {
+            $current = Carbon::now();
+            $query->whereNotNull('published_at')
+                ->where('published_at','<=',$current)
+                ->where('published_at','>=',$current->addDays(3));
+        }
+        else
+        {
+            $query->whereNotNull('published_at')
+                ->where('published_at','<=',Carbon::now());
+        }  
     }
 
     public function scopeTitle($query, $title)
@@ -166,6 +176,16 @@ class Post extends Model
         return (! is_null($kpost) ? $kpost->status_id : null);
         */
     }
+
+    public function getPublishedDateAttribute()
+    {
+        if (Kapp::isLocale('en')) 
+            return $this->published_at->format('m/d/y');
+        else if (Kapp::isLocale('es')) 
+            return $this->published_at->format('d/m/y');
+        return $this->published_at->format('m/d/y');
+    }
+
 
     public function getUserLikesAttribute()
     {

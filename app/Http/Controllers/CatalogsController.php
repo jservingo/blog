@@ -42,13 +42,14 @@ class CatalogsController extends Controller
       ::where("posts.user_id","<>",auth()->id())
       ->where("type_id","=",21)
       ->title($request->get('title'))
+      ->published()
       ->whereNotIn('id', function($query)
         {
           $query->select('post_id')
                 ->from('kposts')
                 ->where('user_id','=',auth()->id());
         })
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->paginate(12);
 
       $title = __('messages.discover-catalogs');   
@@ -73,7 +74,7 @@ class CatalogsController extends Controller
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)
         ->orderBy('kposts.featured','DESC')
-        ->latest('posts.created_at')
+        ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
         ->paginate(6);      
 
@@ -125,7 +126,7 @@ class CatalogsController extends Controller
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)
         ->orderBy('kposts.featured','DESC')
-        ->latest('posts.created_at')
+        ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
         ->paginate(6);   
     	return view('catalogs.show',compact('catalogs'));
@@ -139,7 +140,7 @@ class CatalogsController extends Controller
       ->where("posts.type_id","=",21)
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
 
@@ -164,7 +165,7 @@ class CatalogsController extends Controller
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)
         ->orderBy('kposts.featured','DESC')
-        ->latest('posts.created_at')
+        ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
         ->paginate(6);      
 
@@ -178,8 +179,9 @@ class CatalogsController extends Controller
         ->where("posts.user_id","=",$user->id)
         ->where("type_id","=",21)
         ->title($request->get('title'))
+        ->published()
         ->orderBy('kposts.featured','DESC')
-        ->latest('posts.created_at')
+        ->latest('posts.published_at')
         ->select('posts.*','kposts.featured')
         ->paginate(12);
 
@@ -199,7 +201,7 @@ class CatalogsController extends Controller
       ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.user_id","=",auth()->id())
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
 

@@ -33,7 +33,7 @@ class ContactsController extends Controller
                 ->where('user_id','=',auth()->id());
         })
       */      
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->paginate(12);
 
     $title = __('messages.discover-users');   

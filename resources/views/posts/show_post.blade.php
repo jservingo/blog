@@ -14,68 +14,28 @@
   <div style="overflow:hidden; padding-left:30px;">
     <div class="loader"></div>
 
-    <div id="main_panel" style="visibility:hidden;">  
-      <div class="container" style="margin:0;">          
-        @include('posts.single.header') 
+    <div id="header_panel" style="visibility:hidden;">  
+      <div class="container" style="margin:0;">  
+         @include('posts.single.header') 
+      </div>
+    </div>
+
+    <div id="main_panel" style="float:left; width:70%; visibility:hidden;">  
+      <div class="container" style="margin:0;">                 
+        @include('posts.single.owner')
         @include('posts.single.content')
-
-        <div class="image-w-text" style="padding-right:20px;">
-          <h3>{{ __('messages.excerpt') }}:</h3>
-          @if ($post->kpost && $post->kpost->excerpt)
-            {{ $post->kpost->excerpt }}
-          @else
-            {{ $post->excerpt }}
-          @endif
-        </div>
-
-        <div class="image-w-text" style="padding-right:20px;">
-          <h3>{{ __('messages.content') }}:</h3>
-          {!! $post->body !!}
-        </div>
-
-        <div class="image-w-text links" style="padding-right:20px;">
-           @if ($post->links)
-            <h3>{{ __('messages.links') }}:</h3>
-            {!! $post->links !!}
-           @endif
-        </div>
-
-        <div class="image-w-text" style="padding-right:20px;">
-          @if ($post->kpost && $post->kpost->observation)
-            <h3>{{ __('messages.observation') }}:</h3>
-            {{ $post->kpost->observation }}
-          @else
-            {{ $post->observation }}
-          @endif
-        </div>
-
-        <div class="image-w-text" style="padding-right:20px;">
-          @if ($post->kpost && $post->kpost->footnote)
-            <h3>{{ __('messages.footnote') }}:</h3>
-            {{ $post->kpost->footnote }}
-          @else
-            {{ $post->footnote }}
-          @endif
-        </div>
-
-        <div class="image-w-text" style="padding-right:20px;">
-          @if ($post->tags)
-            <h3>{{ __('messages.tags') }}:</h3>
-            @include('posts.box.tags')
-          @endif
-        </div>
-
-        @include('posts.single.options')
-        
-        {{-- 
-        <div class="comments">
-          <div class="divider"></div>
-          <div id="disqus_thread"></div>
-          @include('partials.disqus-scripts')
-        </div><!-- .comments -->
-        --}}        
+        @include('posts.single.body')
+        @include('posts.single.options')      
       </div>      
     </div>
+
+    <div id="ads_panel" style="float:right; width:30%; visibility:hidden;">  
+      <div class="container" style="margin:0;">  
+         @include('posts.single.ads') 
+      </div>
+    </div>
+
+    <div style="clear: both;"></div>
   </div> 
 @endsection
 
@@ -121,11 +81,11 @@
   </script> 
   <script type="text/javascript" src="/js/save_recent_views.js"></script>
   <!--<script src="/js/twitter-bootstrap.js"></script>--> 
+  <script type="text/javascript" src="/js/show_ads.js"></script> 
   <script>
     var post_id = {{ $post->id }}; 
     var type_id = {{ $post->type_id }};
     var type = get_type(type_id);
-
     if (type=="Page")
     {
       $.ajax({
@@ -176,7 +136,9 @@
   <script>
     $(function() {
       $(".loader").fadeOut("slow");
+      $('#header_panel').css("visibility","visible");
       $('#main_panel').css("visibility","visible");
+      $('#ads_panel').css("visibility","visible");
     });
   </script> 
 @endpush

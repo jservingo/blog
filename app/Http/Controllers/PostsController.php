@@ -23,6 +23,7 @@ class PostsController extends Controller
 {
   public function show(Post $post)
   {
+    //ELIMINAR ESTA FUNCION PORQUE YA NO SE USA (OJO)
   	if ($post->isPublished() || auth()->check())
   	{
   		return view(get_view(),compact('post'));
@@ -40,8 +41,9 @@ class PostsController extends Controller
       ->where("kposts.sent_by","<>",auth()->id())
   		->where("kposts.user_id","=",auth()->id())
       ->title($request->get('title'))
+      ->published()
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
   		->paginate(12);	
       
@@ -79,7 +81,7 @@ class PostsController extends Controller
       ->where("kposts.user_id","<>",auth()->id())
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);  
 
@@ -134,7 +136,7 @@ class PostsController extends Controller
       ->where("posts.type_id","<=",20)  
       ->title($request->get('title'))    
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
 
@@ -155,8 +157,9 @@ class PostsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","<=",20)
       ->title($request->get('title'))
+      ->published()
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
 
@@ -177,8 +180,9 @@ class PostsController extends Controller
       ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 4)
       ->title($request->get('title'))
+      ->published()
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12); 
 
@@ -199,8 +203,9 @@ class PostsController extends Controller
       ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 6)
       ->title($request->get('title'))
+      ->published()
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12); 
 

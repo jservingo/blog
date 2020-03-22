@@ -99,6 +99,7 @@
   <!--<script type="text/javascript" src="/js/jquery.multiselect.js"></script>-->
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
+  <script type="text/javascript" src="/js/show_ads.js"></script> 
   <script type="text/javascript" src="/js/show_home.js"></script>  
   <script type="text/javascript" src="/js/truncate.js"></script>
   <script type="text/javascript">

@@ -99,7 +99,8 @@ class HomeController extends Controller
     $posts_pages = Post
       ::where("user_id","<>",auth()->id())
       ->where("type_id","=",22)  
-      ->title($request->get('title'))    
+      ->title($request->get('title'))  
+      ->published()  
       ->whereNotIn('ref_id', function($query)
         {
           $query->select('page_id')
@@ -114,6 +115,7 @@ class HomeController extends Controller
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
       ->title($request->get('title'))
+      ->published()
       ->whereNotIn('apps.id', function($query)
         {
           $query->select('app_id')
@@ -143,7 +145,8 @@ class HomeController extends Controller
       //->where("status_id","=",0)
       ::where("type_id", "=", 7)
       ->where("user_id","<>",auth()->id()) 
-      ->title($request->get('title'))     
+      ->title($request->get('title'))   
+      ->published()  
       ->latest('created_at')
       ->paginate(12); 
 
@@ -239,7 +242,8 @@ class HomeController extends Controller
   {
     $posts_pages = Post
       ::where("user_id","<>",auth()->id())
-      ->where("type_id","=",22)      
+      ->where("type_id","=",22) 
+      ->published()     
       ->whereNotIn('ref_id', function($query)
         {
           $query->select('page_id')
@@ -253,6 +257,7 @@ class HomeController extends Controller
       ->where("apps.user_id","<>",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
+      ->published()
       ->whereNotIn('apps.id', function($query)
         {
           $query->select('app_id')
@@ -260,7 +265,7 @@ class HomeController extends Controller
                 ->where('user_id','=',auth()->id());
         })
       ->select('posts.*')
-      ->latest('posts.created_at');
+      ->latest('posts.published_at');
 
     $posts_apps->union($posts_pages);
     $querySql = $posts_apps->toSql();
@@ -279,7 +284,7 @@ class HomeController extends Controller
       //->join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("type_id","=",7)
       ->where("user_id","<>",auth()->id())
-      //->select('posts.*')
+      ->published()
       ->latest('created_at')
       ->limit(100)
       ->get(); 
@@ -336,6 +341,7 @@ class HomeController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 4)
+      ->published()
       ->count();
 
     $alerts = Post
@@ -344,6 +350,7 @@ class HomeController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 6)
+      ->published()
       ->count();
 
     $contacts = Contact
@@ -366,6 +373,7 @@ class HomeController extends Controller
     $posts = Post
       ::where("user_id","=",auth()->id())
       ->where("type_id","<=",20)
+      ->published()
       ->count(); 
 
     $apps_subscriptions = App

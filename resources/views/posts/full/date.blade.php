@@ -23,9 +23,9 @@
         </a>
       @endif
       --}}
-      &nbsp;&nbsp;
+      &nbsp;
     </span>
-    <span class="c-gray-1" style="">
-      {{ $post->published_at->format('d/m/y')}}
+    <span class="c-gray-1" style="font-size:14px">
+      {{ $post->published_date }}
     </span>
 </div>

@@ -28,13 +28,14 @@ class PagesController extends Controller
       ::where("posts.user_id","<>",auth()->id())
       ->where("type_id","=",22)
       ->title($request->get('title'))
+      ->published()
       ->whereNotIn('ref_id', function($query)
         {
           $query->select('page_id')
                 ->from('page_user')
                 ->where('user_id','=',auth()->id());
         })
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->paginate(12);
 
     $title = __('messages.discover-pages');   
@@ -101,7 +102,7 @@ class PagesController extends Controller
       ->where("posts.type_id","=",22)
       ->title($request->get('title'))
       ->orderBy('kposts.featured', 'DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*')
       ->paginate(12);
 
@@ -133,8 +134,9 @@ class PagesController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",22)
       ->title($request->get('title'))
+      ->published()
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
 
@@ -181,7 +183,7 @@ class PagesController extends Controller
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)
         ->orderBy('kposts.featured','DESC')
-        ->latest('posts.created_at')
+        ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
         ->paginate(6); 
 
@@ -197,7 +199,7 @@ class PagesController extends Controller
         ->where("catalog_category.category_id","=",$category_id)
         ->title($request->get('title'))
         ->orderBy('kposts.featured','DESC')
-        ->latest('posts.created_at')
+        ->latest('posts.published_at')
         ->select('posts.*','kposts.featured')
         ->paginate(12);
 
@@ -221,7 +223,7 @@ class PagesController extends Controller
       ->where("type_id","=",24)
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);  
 
