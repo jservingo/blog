@@ -52,6 +52,21 @@ function replaceAll(str,x,y)
   return(str.replace(regex, y)); 
 }
 
+function fdate(d)
+{
+  if (lang=='en')
+  {
+    return d.toLocaleString('en-US',
+      {"year":"2-digit","month":"numeric","day":"numeric"});
+
+  }
+  else if (lang=='es')
+  {
+    return d.toLocaleString('es-ES',
+      {"year":"2-digit","month":"numeric","day":"numeric"});
+  }
+}
+
 function get_month(f)
 {
   var meses = new Array ("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");

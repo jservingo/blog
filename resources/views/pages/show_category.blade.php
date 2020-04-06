@@ -7,8 +7,6 @@
     $title = $page->name; 
     $root = "page_category";
     $subtitle = $category->name;
-    //OJO FALTA ORDENAR LOS CATALOGOS EN EL PageController
-    $catalogs = $category->catalogs()->paginate(6);
   @endphp 
 
 	<div>

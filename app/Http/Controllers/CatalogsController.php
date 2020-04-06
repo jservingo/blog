@@ -20,10 +20,13 @@ class CatalogsController extends Controller
   {
     if(get_view('catalogs')=="ribbon")
     {
+      //OK
       $catalogs = Catalog
         ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
         ->where("catalogs.user_id","<>",auth()->id())
         ->where("posts.type_id","=",21)
+        ->published()
+        ->title($request->get('title'))
         ->whereNotIn('posts.id', function($query)
           {
             $query->select('post_id')
@@ -31,18 +34,19 @@ class CatalogsController extends Controller
                   ->where('user_id','=',auth()->id());
           })
         ->select('catalogs.*')
-        ->latest('created_at')
+        ->latest('published_at')
         ->paginate(6);      
 
       return view('catalogs.show',compact('catalogs'));
     }
     else
     {
+      //OK
       $posts = Post        
       ::where("posts.user_id","<>",auth()->id())
       ->where("type_id","=",21)
-      ->title($request->get('title'))
       ->published()
+      ->title($request->get('title'))
       ->whereNotIn('id', function($query)
         {
           $query->select('post_id')
@@ -66,13 +70,27 @@ class CatalogsController extends Controller
   {
     if(get_view('catalogs')=="ribbon")
     {
-      //OJO AQUI FALTA MOSTRAR LOS SALVADOS
+      //OK
       $catalogs = Catalog
         ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
         ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
-        ->where("catalogs.user_id","=",auth()->id())
-        ->where("kposts.user_id","=",auth()->id())
-        ->where("posts.type_id","=",21)
+        ->where(function ($query) use ($request) {
+            //Catálogos creados
+            $query->where("catalogs.user_id","=",auth()->id())
+                  ->where("kposts.user_id","=",auth()->id())
+                  ->where("type_id","=",21)
+                  ->where("posts.user_id","=",auth()->id())
+                  ->title($request->get('title'));                            
+        })->orWhere(function ($query) use ($request) {
+            //Catálogos guardados
+            $query->where("catalogs.user_id","=",auth()->id())
+                  ->where("kposts.user_id","=",auth()->id())
+                  ->where("type_id","=",21)
+                  ->where("posts.user_id","<>",auth()->id())                  
+                  ->whereIn('status_id',[0,2]) 
+                  ->published()                 
+                  ->title($request->get('title'));            
+        })
         ->orderBy('kposts.featured','DESC')
         ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
@@ -82,28 +100,28 @@ class CatalogsController extends Controller
     }
     else
     {
-      $posts_created = Post  
-        ::join('kposts', 'posts.id', '=', 'kposts.post_id')      
-        ->where("posts.user_id","=",auth()->id())
-        ->where("kposts.user_id","=",auth()->id())
-        ->where("type_id","=",21)
-        ->title($request->get('title'))
-        ->select('posts.*','featured'); 
-
-      $posts_saved = Post
+      //OK
+      $posts = Post  
         ::join('kposts', 'posts.id', '=', 'kposts.post_id')
-        ->where("type_id","=",21)
-        ->where("status_id","=",2)
-        ->where("kposts.sent_by","=",auth()->id())
-        ->where("kposts.user_id","=",auth()->id())
-        ->title($request->get('title'))
-        ->select('posts.*','featured');
-
-      $posts_created->union($posts_saved);
-      $querySql = $posts_created->toSql();
-
-      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
-      $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
+        ->where(function ($query) use ($request) {
+            //Catálogos creados
+            $query->where("kposts.user_id","=",auth()->id())
+                  ->where("type_id","=",21)
+                  ->where("posts.user_id","=",auth()->id())
+                  ->title($request->get('title'));                            
+        })->orWhere(function ($query) use ($request) {
+            //Catálogos guardados
+            $query->where("kposts.user_id","=",auth()->id())
+                  ->where("type_id","=",21)
+                  ->where("posts.user_id","<>",auth()->id())                  
+                  ->whereIn('status_id',[0,2]) 
+                  ->published()                 
+                  ->title($request->get('title'));            
+        })
+        ->orderBy('featured','DESC')
+        ->latest('published_at') 
+        ->select('posts.*','featured')
+        ->paginate(12);
 
       $title = __('messages.catalogs');   
       $root = "all_catalogs";
@@ -119,12 +137,14 @@ class CatalogsController extends Controller
   {
     if(get_view('catalogs')=="ribbon")
     {
+      //OK
     	$catalogs = Catalog
         ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
         ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
         ->where("catalogs.user_id","=",auth()->id())
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)
+        ->title($request->get('title'))
         ->orderBy('kposts.featured','DESC')
         ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
@@ -133,6 +153,7 @@ class CatalogsController extends Controller
     }
     else
     {
+      //OK
       $posts = Post 
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')       
       ->where("posts.user_id","=",auth()->id())
@@ -158,12 +179,15 @@ class CatalogsController extends Controller
   {
     if(get_view('catalogs')=="ribbon")
     {
+      //OK
       $catalogs = Catalog
         ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
         ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
         ->where("catalogs.user_id","=",$user->id)
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)
+        ->title($request->get('title'))
+        ->published()
         ->orderBy('kposts.featured','DESC')
         ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
@@ -173,6 +197,7 @@ class CatalogsController extends Controller
     }
     else
     {
+      //OK
       $posts = Post 
         ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
         ->where("kposts.user_id","=",auth()->id())       
@@ -195,16 +220,48 @@ class CatalogsController extends Controller
     }
   }
 
-  public function show_catalog(Catalog $catalog)
+  public function show_catalog(Catalog $catalog, Request $request)
   {
-    $posts = $catalog->posts()
-      ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+    //OK
+    $posts_offers = Post
+      ::where("type_id","=",7)
+      ->where("user_id","<>",auth()->id())
+      ->published()
+      ->whereNotIn('id', function($query) use ($catalog)
+        {
+          $query->select('post_id')
+                ->from('catalog_post')
+                ->where('catalog_id','=',$catalog->id);
+        })
+      ->skipOffers()
+      ->limit(1)
+      ->select('posts.*', DB::raw('1 as section'), DB::raw('1 as featured'));
+
+    $posts_saved = $catalog->posts() 
+      ->join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.user_id","=",auth()->id())
+      ->title($request->get('title'))
+      ->published() 
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
-      ->select('posts.*','kposts.featured')
-      ->paginate(12);
+      ->select('posts.*', DB::raw('2 as section'), 'kposts.featured'); 
+  
+    $posts_not_saved = $catalog->posts()
+      ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->whereNull('kposts.post_id')
+      ->title($request->get('title'))
+      ->published()
+      ->latest('posts.published_at')
+      ->select('posts.*', DB::raw('3 as section'),  DB::raw('0 as featured'));
 
+    $posts = $posts_offers
+      ->union($posts_saved) 
+      ->union($posts_not_saved);
+
+    $querySql = $posts->toSql();
+    $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts->getBindings());
+    $posts = $query->orderBy('section')->orderBy('featured','DESC')->latest('published_at')->paginate(12); 
+      
     $title = $catalog->name; 
     $root = "catalog";
     $ref_id = $catalog->id;
@@ -215,6 +272,51 @@ class CatalogsController extends Controller
         'posts','title','root','ref_id','catalog','buttons','subtitle'));
 
   	//return view('catalogs.catalog_show',compact('catalog','posts'));
+  }
+
+  public static function get_posts($catalog_id)
+  {
+    //OK
+    $catalog = Catalog::find($catalog_id);
+
+    $posts_offers = Post
+      ::where("type_id","=",7)
+      ->where("user_id","<>",auth()->id())
+      ->published()
+      ->whereNotIn('id', function($query) use ($catalog)
+        {
+          $query->select('post_id')
+                ->from('catalog_post')
+                ->where('catalog_id','=',$catalog->id);
+        })
+      ->skipOffers()
+      ->limit(1)
+      ->select('posts.*', DB::raw('1 as section'), DB::raw('1 as featured'));
+
+    $posts_saved = $catalog->posts() 
+      ->join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where("kposts.user_id","=",auth()->id())
+      ->published() 
+      ->orderBy('kposts.featured','DESC')
+      ->latest('posts.published_at')
+      ->select('posts.*', DB::raw('2 as section'), 'kposts.featured'); 
+  
+    $posts_not_saved = $catalog->posts()
+      ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->whereNull('kposts.post_id')
+      ->published()
+      ->latest('posts.published_at')
+      ->select('posts.*', DB::raw('3 as section'),  DB::raw('0 as featured'));
+
+    $posts = $posts_offers
+      ->union($posts_saved) 
+      ->union($posts_not_saved);
+
+    $querySql = $posts->toSql();
+    $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts->getBindings());
+    $posts = $query->orderBy('section')->orderBy('featured','DESC')->latest('published_at')->paginate(12); 
+  
+    return $posts;
   }
 
   public function get_stats(Post $post)

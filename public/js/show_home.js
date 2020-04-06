@@ -30,9 +30,7 @@ $(function() {
   	var zcolor="#fefdfd";
 		posts.rows.forEach(function (post) {
 			var date = new Date(post.created_at);
-			date = date.toLocaleString('en-US',
-				{"year":"numeric","month":"short","day":"2-digit"}
-			);
+			date = fdate(date);
 			var url_post = 'posts/'+post.id;
 			switch(post.type_id)
 			{

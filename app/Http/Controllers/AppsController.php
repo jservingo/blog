@@ -71,7 +71,7 @@ class AppsController extends Controller
     $querySql = $posts_created->toSql();
 
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
-    $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
+    $posts = $query->orderBy('featured','DESC')->latest('published_at')->paginate(12); 
 
     $title = __('messages.apps');   
     $root = "all_apps";

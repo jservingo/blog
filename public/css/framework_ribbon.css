@@ -86,6 +86,13 @@
   padding-right: 40px;
 }
 
+.pbox
+{
+  padding: 13px 8px 7px 12px !important;
+  background-color: #d2d2d2 !important;
+  box-shadow: 4px 4px 4px 4px #d2d2d2 !important;
+}
+
 a.vlink:link {text-decoration:none}
 a.vlink:visited {text-decoration:none}
 a.vlink:hover{text-decoration:none}

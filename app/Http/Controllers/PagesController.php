@@ -51,7 +51,7 @@ class PagesController extends Controller
         ::where("user_id","=",auth()->id())
         ->orderBy('featured', 'DESC')
         ->orderBy('position', 'ASC')
-        ->latest('created_at')
+        ->latest('published_at')
         ->paginate();           
 
     return view('pages.pages_show',compact('pages'));
@@ -82,7 +82,7 @@ class PagesController extends Controller
     $querySql = $posts_created->toSql();
 
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
-    $posts = $query->orderBy('featured','DESC')->latest('created_at')->paginate(12); 
+    $posts = $query->orderBy('featured','DESC')->latest('published_at')->paginate(12); 
 
     $title = __('messages.pages');   
     $root = "all_pages";
@@ -119,7 +119,7 @@ class PagesController extends Controller
         ::where("user_id","=",auth()->id())
         ->orderBy('featured', 'DESC')
         ->orderBy('position', 'ASC')
-        ->latest('created_at')
+        ->latest('published_at')
         ->paginate();           
 
     return view('pages.pages_show',compact('pages'));
@@ -174,29 +174,30 @@ class PagesController extends Controller
 
     if(get_view('catalogs')=="ribbon")
     {
-      //OJO FALTA PASAR LOS CATALOGOS ORDENADOS Y
-      //EN catalogs.ribbon_view FALTA ORDENAR LOS POSTS
-      $catalogs = Catalog
-        ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
-        ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
-        ->where("catalogs.user_id","=",auth()->id())
+      //EN catalogs.ribbon_view FALTA ORDENAR LOS POSTS DE LOS CATALOGOS
+      $catalogs = Catalog 
+        ::join('catalog_category', 'catalog_category.catalog_id', '=', 'catalogs.id')
+        ->join('posts', 'posts.ref_id', '=', 'catalogs.id')
+        ->leftjoin('kposts', 'kposts.post_id', '=', 'posts.id')    
+        ->where("catalog_category.category_id","=",$category_id)
         ->where("kposts.user_id","=",auth()->id())
-        ->where("posts.type_id","=",21)
+        ->where("posts.type_id","=",21)        
         ->orderBy('kposts.featured','DESC')
         ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
-        ->paginate(6); 
+        ->paginate(6);
 
-      return view('pages.show_category',compact('page','category','reset_categories_tree'));
+      return view('pages.show_category',compact('page','category','catalogs','reset_categories_tree'));
     }
     else
     {
+      //OK
       $posts = Post 
         ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
         ->join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')
-        ->where("kposts.user_id","=",auth()->id())
-        ->where("posts.type_id","=",21)
         ->where("catalog_category.category_id","=",$category_id)
+        ->where("kposts.user_id","=",auth()->id())
+        ->where("posts.type_id","=",21)        
         ->title($request->get('title'))
         ->orderBy('kposts.featured','DESC')
         ->latest('posts.published_at')

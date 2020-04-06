@@ -7,7 +7,7 @@
                 <ul class="container-flex space-center list-unstyled">
                     <li><a href="{{ route('home') }}" class="text-uppercase c-white">{{ __('messages.home') }}</a></li>
                     <li><a href="{{ route('info.about') }}" class="text-uppercase c-white">{{ __('messages.about') }}</a></li>
-                    <li><a href="{{ route('info.support') }}" class="text-uppercase c-white">{{ __('messages.support') }}</a></li>
+                    <li><a href="{{ route('info.support') }}" class="text-uppercase c-white">{{ __('messages.donate') }}</a></li>
                     <li><a href="{{ route('info.contact') }}" class="text-uppercase c-white">{{ __('messages.contact') }}</a></li>
                 </ul>
             </nav>

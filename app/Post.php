@@ -87,6 +87,19 @@ class Post extends Model
         }  
     }
 
+    public function scopeSkipOffers($query)
+    {
+        $max = Post
+            ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+            ->where("type_id","=",7)
+            ->where("kposts.user_id","<>",auth()->id())
+            ->published()
+            ->count();
+
+        $num = rand(0, $max-1);
+        $query->skip($num);
+    }
+
     public function scopeTitle($query, $title)
     {
         if (trim($title) != "")

@@ -27,10 +27,10 @@ Route::get('offers','HomeController@show_offers')->name('home.show_offers');
 Route::get('favorites','HomeController@show_favorites')->name('home.show_favorites');
 Route::get('most/viewed','HomeController@show_most_viewed')->name('home.show_most_viewed');
 Route::get('recent/views','HomeController@show_recent_views')->name('home.show_recent_views');
-
 Route::get('user_stats/get','HomeController@get_user_stats');
 Route::get('recommendations/get','HomeController@get_recommendations');
 Route::get('offers/get','HomeController@get_offers');
+Route::get('offers/random/get/{num}','HomeController@get_random_offers');
 Route::get('favorites/get','HomeController@get_favorites');
 Route::get('most_viewed/get','HomeController@get_most_viewed');
 Route::get('recent_views/get','HomeController@get_recent_views');

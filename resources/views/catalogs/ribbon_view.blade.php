@@ -1,5 +1,7 @@
 {{-- catalogs.ribbon_view --}}
 
+@inject('provider', 'App\Http\Controllers\CatalogsController')
+
 @php
 	$i = 0;
 @endphp
@@ -8,6 +10,7 @@
 	@foreach($catalogs as $catalog)
 	  @php
 	    $i = $i+1;
+	    $posts =  $provider::get_posts($catalog->id);
 		@endphp
 		<div class="category container catcont" data-id="{{ $i }}" style="overflow: hidden">
 			@include('catalogs.buttons')
@@ -15,8 +18,8 @@
 			<div class="posts container">
 				<div id="slider{{ $i }}" class="slider">
 					<div>
-						@if(!$catalog->posts->isEmpty())
-							@foreach($catalog->posts as $post)
+						@if(!$posts->isEmpty())
+							@foreach($posts as $post)
 						  	<div>
 						  		@include('posts.box.view')
 						  	</div>

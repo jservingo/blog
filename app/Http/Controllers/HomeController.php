@@ -128,7 +128,7 @@ class HomeController extends Controller
     $querySql = $posts_apps->toSql();
 
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_apps->getBindings());
-    $posts = $query->latest('created_at')->paginate(12); 
+    $posts = $query->latest('published_at')->paginate(12); 
 
     $title = __('messages.recommendations');
     $root = 'received_posts';
@@ -147,7 +147,7 @@ class HomeController extends Controller
       ->where("user_id","<>",auth()->id()) 
       ->title($request->get('title'))   
       ->published()  
-      ->latest('created_at')
+      ->latest('published_at')
       ->paginate(12); 
 
     $title = __('messages.offers');
@@ -165,7 +165,7 @@ class HomeController extends Controller
       ->where("kposts.featured", "=", 1)
       ->where("kposts.user_id","=",auth()->id())
       ->title($request->get('title'))
-      ->latest('kposts.created_at')
+      ->latest('published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12); 
 
@@ -250,7 +250,7 @@ class HomeController extends Controller
                 ->from('page_user')
                 ->where('user_id','=',auth()->id());
         })
-      ->latest('created_at');
+      ->latest('published_at');
 
     $posts_apps = Post 
       ::join('apps', 'ref_id', '=', 'apps.id')       
@@ -271,7 +271,7 @@ class HomeController extends Controller
     $querySql = $posts_apps->toSql();
 
     $query = Post::with('owner')->from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_apps->getBindings());
-    $posts = $query->latest('created_at')->get(); 
+    $posts = $query->latest('published_at')->get(); 
 
     $result['rows'] = $posts;
 
@@ -285,7 +285,7 @@ class HomeController extends Controller
       ->where("type_id","=",7)
       ->where("user_id","<>",auth()->id())
       ->published()
-      ->latest('created_at')
+      ->latest('published_at')
       ->limit(100)
       ->get(); 
 
@@ -294,6 +294,21 @@ class HomeController extends Controller
     echo json_encode($result);
   }
 
+  public function get_random_offers($num)
+  { 
+    $posts = Post::with('owner')
+      //->join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where("type_id","=",7)
+      ->where("user_id","<>",auth()->id())
+      ->published()
+      ->inRandomOrder()
+      ->limit($num)
+      ->get(); 
+
+    $result['rows'] = $posts;
+
+    echo json_encode($result);
+  }
 
   public function get_favorites()
   { 
@@ -301,7 +316,7 @@ class HomeController extends Controller
       ->join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.featured", "=", 1)
       ->where("kposts.user_id","=",auth()->id())
-      ->latest('kposts.created_at')
+      ->latest('published_at')
       ->select('posts.*')      
       ->limit(100)
       ->get(); 

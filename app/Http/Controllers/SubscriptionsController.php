@@ -102,7 +102,7 @@ class SubscriptionsController extends Controller
       ->where("page_user.user_id","=",auth()->id())
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
 
@@ -127,7 +127,7 @@ class SubscriptionsController extends Controller
       ->where("apps.parent_id","=",null)
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
-      ->latest('posts.created_at')
+      ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
 

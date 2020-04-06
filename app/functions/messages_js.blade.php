@@ -1,4 +1,5 @@
 <script>
+  var lang = "<?=__('messages.lang');?>";
   var want_to_save_this_post = "<?=__('messages.want-to-save-this-post');?>";
   var want_to_subscribe = "<?=__('messages.want-to-subscribe');?>";
   var want_to_add_this_user_to_your_contacts = "<?=__('messages.want-to-add-this-user-to-your-contacts');?>";
