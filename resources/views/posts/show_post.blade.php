@@ -20,6 +20,7 @@
       </div>
     </div>
 
+    <div style="width:95%;">
     <div id="main_panel" style="float:left; width:70%; visibility:hidden;">  
       <div class="container" style="margin:0;">                 
         @include('posts.single.owner')
@@ -36,6 +37,7 @@
     </div>
 
     <div style="clear: both;"></div>
+    </div>
   </div> 
 @endsection
 

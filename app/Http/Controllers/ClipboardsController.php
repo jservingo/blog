@@ -122,7 +122,12 @@ class ClipboardsController extends Controller
         {
             //$catalog->posts->contains($post)
             //$catalog->posts()->where('post_id', $post_id)->exists()
-            if (! $category->catalogs()->where('catalog_id', $catalog_id)->exists()) {
+            if (($category->page->post->cstr_colaborative==0) && ($category->page->user_id<>auth()->id()))
+            {
+                //No se puede agregar un catalogo a una pagina
+                //de otro usuario que no sea colaborativa  
+            }
+            elseif (! $category->catalogs()->where('catalog_id', $catalog_id)->exists()) {
                 $category->catalogs()->attach(
                     $catalog_id, 
                     array('user_id' => auth()->id())
@@ -142,7 +147,17 @@ class ClipboardsController extends Controller
         {
             //$catalog->posts->contains($post)
             //$catalog->posts()->where('post_id', $post_id)->exists()
-            if (! $catalog->posts()->where('post_id', $post_id)->exists()) {
+            if (($catalog->post->cstr_colaborative==0) && ($catalog->user_id<>auth()->id()))
+            {
+                //No se puede agregar un post a un catálogo
+                //de otro usuario que no sea colaborativo  
+            }
+            elseif (($post_id==4 || $post_id==6 || $post_id==7) && ($catalog->user_id<>auth()->id()))
+            {
+                //Las notificaciones, alertas y ofertas no pueden 
+                //ser agregadas a catálogos de otros usuarios
+            }
+            elseif (! $catalog->posts()->where('post_id', $post_id)->exists()) {
                 $catalog->posts()->attach(
                     $post_id, 
                     array('user_id' => auth()->id())

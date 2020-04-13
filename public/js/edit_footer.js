@@ -14,6 +14,8 @@ $('.btn_update_post').bind('click', function(e){
   var observation = $('#observation').val();;
   var footnote = $('#footnote').val();
   var featured = get_value('#featured');
+  var hide = get_value('#hide');
+  var order_num = $('#order_num').val();
   var data = {
     post_id: post_id,
     type_id: type_id,
@@ -21,6 +23,8 @@ $('.btn_update_post').bind('click', function(e){
     observation: observation,
     footnote: footnote,
     featured: featured,
+    hide: hide,
+    order_num: order_num,
   };
   $.ajax({
     type: 'put',

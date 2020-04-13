@@ -164,6 +164,8 @@ class HomeController extends Controller
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.featured", "=", 1)
       ->where("kposts.user_id","=",auth()->id())
+      ->published()
+      ->hide()
       ->title($request->get('title'))
       ->latest('published_at')
       ->select('posts.*','kposts.featured')
@@ -183,6 +185,8 @@ class HomeController extends Controller
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.views",">",0)
       ->where("kposts.user_id","=",auth()->id())
+      ->published()
+      ->hide()
       ->title($request->get('title'))
       ->orderBy('kposts.views', 'DESC')  
       ->select('posts.*')      
@@ -316,6 +320,8 @@ class HomeController extends Controller
       ->join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.featured", "=", 1)
       ->where("kposts.user_id","=",auth()->id())
+      ->published()
+      ->hide()
       ->latest('published_at')
       ->select('posts.*')      
       ->limit(100)
@@ -332,6 +338,8 @@ class HomeController extends Controller
       ->join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.views",">",0)
       ->where("kposts.user_id","=",auth()->id())
+      ->published()
+      ->hide()
       ->orderBy('kposts.views', 'DESC')
       ->select('posts.*')
       ->limit(100)
@@ -357,6 +365,7 @@ class HomeController extends Controller
       ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 4)
       ->published()
+      ->hide()
       ->count();
 
     $alerts = Post
@@ -366,6 +375,7 @@ class HomeController extends Controller
       ->where("kposts.sent_by","<>",auth()->id())
       ->where("posts.type_id", "=", 6)
       ->published()
+      ->hide()
       ->count();
 
     $contacts = Contact

@@ -54,6 +54,7 @@ class ContactsController extends Controller
   		->where("type_id","=",24)
   		->where("contacts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
+      ->hide()
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
   		->orderBy('users.name', 'asc')
@@ -87,6 +88,7 @@ class ContactsController extends Controller
   		->where("type_id","=",24)
   		->where('groups.id',"=",$group->id)
       ->where("kposts.user_id","=",auth()->id())
+      ->hide()
   		->orderBy('kposts.featured','DESC')
       ->orderBy('users.name', 'asc')
       ->select('posts.*','kposts.featured')
@@ -231,12 +233,19 @@ class ContactsController extends Controller
 
     foreach ($selected as $user_id)
     {
-      $kpost = Kpost::create([
-        'post_id' => $post->id,
-        'user_id' => $user_id,
-        'sent_by' => auth()->id(),
-        'sent_at' => Carbon::now() 
-      ]);
+      if ($post->type_id > 20)
+      {
+        //No se pueden enviar catalogos, paginas, app ni usuarios
+      }
+      elseif ($post->cstr_restricted==0 && $post->user_id<>auth()->id())
+      {
+        $kpost = Kpost::create([
+          'post_id' => $post->id,
+          'user_id' => $user_id,
+          'sent_by' => auth()->id(),
+          'sent_at' => Carbon::now() 
+        ]);
+      }
     }
 
     echo json_encode(array('success'=>true));

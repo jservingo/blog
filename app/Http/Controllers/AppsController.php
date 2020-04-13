@@ -53,6 +53,7 @@ class AppsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
+      ->hide()
       ->title($request->get('title'))
       ->select('posts.*','featured');
 
@@ -64,6 +65,8 @@ class AppsController extends Controller
       ->where("app_user.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("apps.parent_id","=",null)
+      ->published()
+      ->hide()
       ->title($request->get('title'))
       ->select('posts.*','featured');
 
@@ -91,6 +94,7 @@ class AppsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
+      ->hide()
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
@@ -117,6 +121,7 @@ class AppsController extends Controller
       ->where("apps.parent_id","=",null)
       ->title($request->get('title'))
       ->published()
+      ->hide()
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
@@ -220,6 +225,8 @@ class AppsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("app_user.app_id","=",$app->id)
       ->where("type_id","=",24)
+      ->published()
+      ->hide()
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')

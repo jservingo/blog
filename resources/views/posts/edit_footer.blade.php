@@ -43,6 +43,21 @@
         </label>
       </div>
 
+      <div class="form-control">
+        <label>
+          <input type="checkbox" id="hide" 
+            {!! $post->kpost->hide ? 'checked' : '' !!}>
+          {{ 'opc_hide' }}
+        </label>
+      </div>
+
+      <div class="form-control">
+        <label>Order num: </label>
+          <input type="number" id="order_num" min="0"
+            style = "width: 50px;" step="1" 
+            value="{{ old('order_num',$post->kpost->order_num) }}">
+      </div>
+
       {{--
       <div class="form-control">
         <a href="#" class="btn_update_post"

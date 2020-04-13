@@ -37,6 +37,8 @@ $('.btn_update_post').bind('click', function(e){
   var observation = $('#observation').val();
   var footnote = $('#footnote').val();
   var featured = get_value('#featured');
+  var hide = get_value('#hide');
+  var order_num = $('#order_num').val();
   var published_at = $('#published_at').val();
   var tags = $('#tags').val();
   var rating_mode = $('#rating_mode').val();
@@ -70,6 +72,8 @@ $('.btn_update_post').bind('click', function(e){
     tags: tags,
     rating_mode: rating_mode,
     featured: featured,
+    hide: hide,
+    order_num: order_num,
     cstr_privacy: cstr_privacy,
     cstr_restricted: cstr_restricted,
     cstr_allow_comments: cstr_allow_comments,

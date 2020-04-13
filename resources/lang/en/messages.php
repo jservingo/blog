@@ -232,7 +232,7 @@
 		'stars' => 'Stars',
 		'likes-dislikes' => 'Likes & dislikes',
 		'no-rating' => 'No rating',
-		'add-comments' => '>Any user can add a comment.',
+		'add-comments' => 'Any user can add a comment.',
 		'add-posts' => 'Any user can add posts to this catalog.',
 		'add-catalogs' => 'Any user can add catalogs to this page.',
 		'subscribe-app' => 'Any user can subscribe to this app.',

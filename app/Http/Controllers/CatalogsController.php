@@ -80,6 +80,7 @@ class CatalogsController extends Controller
                   ->where("kposts.user_id","=",auth()->id())
                   ->where("type_id","=",21)
                   ->where("posts.user_id","=",auth()->id())
+                  ->hide()
                   ->title($request->get('title'));                            
         })->orWhere(function ($query) use ($request) {
             //Catálogos guardados
@@ -88,7 +89,8 @@ class CatalogsController extends Controller
                   ->where("type_id","=",21)
                   ->where("posts.user_id","<>",auth()->id())                  
                   ->whereIn('status_id',[0,2]) 
-                  ->published()                 
+                  ->published()    
+                  ->hide()             
                   ->title($request->get('title'));            
         })
         ->orderBy('kposts.featured','DESC')
@@ -108,6 +110,7 @@ class CatalogsController extends Controller
             $query->where("kposts.user_id","=",auth()->id())
                   ->where("type_id","=",21)
                   ->where("posts.user_id","=",auth()->id())
+                  ->hide()
                   ->title($request->get('title'));                            
         })->orWhere(function ($query) use ($request) {
             //Catálogos guardados
@@ -115,7 +118,8 @@ class CatalogsController extends Controller
                   ->where("type_id","=",21)
                   ->where("posts.user_id","<>",auth()->id())                  
                   ->whereIn('status_id',[0,2]) 
-                  ->published()                 
+                  ->published() 
+                  ->hide()                
                   ->title($request->get('title'));            
         })
         ->orderBy('featured','DESC')
@@ -144,6 +148,7 @@ class CatalogsController extends Controller
         ->where("catalogs.user_id","=",auth()->id())
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)
+        ->hide()
         ->title($request->get('title'))
         ->orderBy('kposts.featured','DESC')
         ->latest('posts.published_at')
@@ -159,6 +164,7 @@ class CatalogsController extends Controller
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("posts.type_id","=",21)
+      ->hide()
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
@@ -188,6 +194,7 @@ class CatalogsController extends Controller
         ->where("posts.type_id","=",21)
         ->title($request->get('title'))
         ->published()
+        ->hide()
         ->orderBy('kposts.featured','DESC')
         ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
@@ -205,6 +212,7 @@ class CatalogsController extends Controller
         ->where("type_id","=",21)
         ->title($request->get('title'))
         ->published()
+        ->hide()
         ->orderBy('kposts.featured','DESC')
         ->latest('posts.published_at')
         ->select('posts.*','kposts.featured')
@@ -242,6 +250,7 @@ class CatalogsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->title($request->get('title'))
       ->published() 
+      ->hide()
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
       ->select('posts.*', DB::raw('2 as section'), 'kposts.featured'); 
@@ -297,6 +306,7 @@ class CatalogsController extends Controller
       ->join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.user_id","=",auth()->id())
       ->published() 
+      ->hide()
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
       ->select('posts.*', DB::raw('2 as section'), 'kposts.featured'); 

@@ -68,7 +68,7 @@ function btn_create_catalog_from_category(category_id)
   var html = "<div id='edit'>";
   html = html + "<h3>"+create_catalog+"</h3>";
   html = html + "<p>"+title+"</p>";
-  html = html + "<input id='title' type='text' class='form-control' placeholder='"+enter_catalog+"' required>";
+  html = html + "<input id='title' type='text' style='width:500px;' class='form-control' placeholder='"+enter_catalog+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -118,7 +118,7 @@ function btn_create_catalog()
   var html = "<div id='edit'>";
   html = html + "<h3>"+create_catalog+"</h3>";
   html = html + "<p>"+title+"</p>";
-  html = html + "<input id='title' type='text' class='form-control' placeholder='"+enter_catalog+"' required>";
+  html = html + "<input id='title' type='text' style='width:500px;' class='form-control' placeholder='"+enter_catalog+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -168,7 +168,7 @@ function btn_create_page()
   var html = "<div id='edit'>";
   html = html + "<h3>"+create_page+"</h3>";
   html = html + "<p>"+title+"</p>";
-  html = html + "<input id='title' type='text' class='form-control' placeholder='"+enter_page+"' required>";
+  html = html + "<input id='title' type='text' style='width:500px;' class='form-control' placeholder='"+enter_page+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -228,7 +228,7 @@ function btn_create_post(catalog_id)
   html = html + "<option value='2'>"+type_frame+"</option>";
   html = html + "</select>";
   html = html + "<p>"+title+"</p>";
-  html = html + "<input id='title' type='text' class='form-control' placeholder='"+enter_post+"' required>";
+  html = html + "<input id='title' type='text' style='width:500px;' class='form-control' placeholder='"+enter_post+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -294,7 +294,7 @@ function btn_edit(el, id)
             edit_footer(el, id);
           }  
           else
-            $.growl.warning(you_are_not_authorized_to_edit_the_post);
+            $.growl.warning({ message: you_are_not_authorized_to_edit_the_post });
         }  
       },
       error: function (data) {
@@ -317,7 +317,7 @@ function edit_footer(el, id)
         }
         else
         {
-          $.growl.warning(you_are_not_authorized_to_edit_the_post);
+          $.growl.warning({ message: you_are_not_authorized_to_edit_the_post });
         }  
       },
       error: function (data) {

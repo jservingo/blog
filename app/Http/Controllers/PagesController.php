@@ -65,6 +65,7 @@ class PagesController extends Controller
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",22)
+      ->hide()
       ->title($request->get('title'))
       ->select('posts.*','featured');
 
@@ -75,6 +76,8 @@ class PagesController extends Controller
       ->where("type_id","=",22)
       ->where("page_user.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
+      ->published()
+      ->hide()
       ->title($request->get('title'))
       ->select('posts.*','featured');
 
@@ -100,6 +103,7 @@ class PagesController extends Controller
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("posts.type_id","=",22)
+      ->hide()
       ->title($request->get('title'))
       ->orderBy('kposts.featured', 'DESC')
       ->latest('posts.published_at')
@@ -135,6 +139,7 @@ class PagesController extends Controller
       ->where("type_id","=",22)
       ->title($request->get('title'))
       ->published()
+      ->hide()
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
@@ -174,7 +179,6 @@ class PagesController extends Controller
 
     if(get_view('catalogs')=="ribbon")
     {
-      //EN catalogs.ribbon_view FALTA ORDENAR LOS POSTS DE LOS CATALOGOS
       $catalogs = Catalog 
         ::join('catalog_category', 'catalog_category.catalog_id', '=', 'catalogs.id')
         ->join('posts', 'posts.ref_id', '=', 'catalogs.id')
@@ -182,6 +186,9 @@ class PagesController extends Controller
         ->where("catalog_category.category_id","=",$category_id)
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)        
+        ->published()
+        ->hide()      
+        ->title($request->get('title'))
         ->orderBy('kposts.featured','DESC')
         ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
@@ -197,7 +204,9 @@ class PagesController extends Controller
         ->join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')
         ->where("catalog_category.category_id","=",$category_id)
         ->where("kposts.user_id","=",auth()->id())
-        ->where("posts.type_id","=",21)        
+        ->where("posts.type_id","=",21)  
+        ->published()
+        ->hide()      
         ->title($request->get('title'))
         ->orderBy('kposts.featured','DESC')
         ->latest('posts.published_at')
@@ -222,6 +231,8 @@ class PagesController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("page_user.page_id","=",$page->id)
       ->where("type_id","=",24)
+      ->published()
+      ->hide()      
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')

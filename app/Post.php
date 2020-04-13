@@ -12,7 +12,7 @@ use App\User;
 class Post extends Model
 {
     protected $fillable = ['title','body','iframe','excerpt','footnote','links','published_at','type_id','ref_id','user_id','app_id','source','custom_type'];
-    
+
     protected $dates = ['published_at'];
 
     public function type()
@@ -73,18 +73,41 @@ class Post extends Model
 
     public function scopePublished($query)
     {
-    	if ($this->isOffer())
+        if ($this->isOffer())
         {
             $current = Carbon::now();
-            $query->whereNotNull('published_at')
-                ->where('published_at','<=',$current)
-                ->where('published_at','>=',$current->addDays(3));
+            $query->where(function ($query) {
+                $query->where('posts.user_id','=',auth()->id());
+            })->orWhere(function ($query) use ($current) {
+                $query->where('posts.user_id','<>',auth()->id())
+                    ->where('cstr_privacy','=',1)
+                    ->whereNotNull('published_at')
+                    ->where('published_at','<=',$current)
+                    ->where('published_at','>=',$current->addDays(7));
+            });    
         }
         else
         {
-            $query->whereNotNull('published_at')
-                ->where('published_at','<=',Carbon::now());
-        }  
+            $current = Carbon::now();
+            $query->where(function ($query) {
+                $query->where('posts.user_id','=',auth()->id());
+            })->orWhere(function ($query) use ($current) {
+                $query->where('posts.user_id','<>',auth()->id())
+                    ->where('cstr_privacy','=',1)
+                    ->whereNotNull('published_at')
+                    ->where('published_at','<=',$current);
+            }); 
+        }
+    }
+
+    public function scopeHide($query)
+    {
+        $query->where(function ($query) {
+            $query->where('posts.user_id','=',auth()->id());
+        })->orWhere(function ($query) {  
+            $query->where('posts.user_id','<>',auth()->id())      
+                ->where('kposts.hide','=',0);
+        });
     }
 
     public function scopeSkipOffers($query)

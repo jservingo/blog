@@ -1,22 +1,22 @@
 <div style="width:95%; padding-right:20px;"> 	
 	<div style="float:left; width:60%">	
 		<div class="image-w-text">
-		  {{ __('messages.owner') }}: {{ $post->owner->name }}
+		  <span class="cite-2">{{ __('messages.owner') }}:</span> {{ $post->owner->name }}
 		</div>
 
 		<div class="image-w-text">
-		  {{ __('messages.publication-date') }}: {{ $post->published_at->format('d/m/y')}}
+		  <span class="cite-2">{{ __('messages.publication-date') }}:</span> {{ $post->published_at->format('d/m/y')}}
 		</div> 
 
 		@if ($post->published_at <> $post->updated_at)
 			<div class="image-w-text">
-		  	{{ __('messages.updated-date') }}: {{ $post->updated_at->format('d/m/y')}}
+		  	<span class="cite-2">{{ __('messages.updated-date') }}:</span> {{ $post->updated_at->format('d/m/y')}}
 			</div> 
 		@endif     
 
 		@if ($post->kpost && ($post->sender->id <> $post->user_id))
 		  <div class="image-w-text">
-		    {{ __('messages.sent-by') }}: {{ $post->sender->name }}
+		    <span class="cite-2">{{ __('messages.sent-by') }}:</span> {{ $post->sender->name }}
 		  </div>
 		@endif  
 	</div>

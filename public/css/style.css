@@ -200,12 +200,9 @@ cite .img-cite, .cite .img-cite{
 	max-width: 720px;
 }
 .image-w-text span.cite-2, span.cite-2{
-	color: #999999;
-	padding-left: 15px;
-	border-left: 4px solid #eeeeee;
-	display: block;
-	line-height: 1.7;
-	font-size: 19px;
+	color: #000;
+	font-weight: 800;
+	font-size: 16px;
 }
 .pagination ul li{
 	margin: 0 15px;

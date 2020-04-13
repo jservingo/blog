@@ -136,9 +136,16 @@ a.vlink{
     list-style: none;
 }
 
+.post {
+    width: 384px;
+    display: flex;
+    margin-right: 30px;
+}
 .img-responsive{
-  max-width: 100%;
-  height: auto;
+  position: absolute;
+  object-fit: contain;
+  width: 384px;
+  height: 280px;
   display: block;
 }
 .space-inter{

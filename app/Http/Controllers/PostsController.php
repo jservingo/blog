@@ -42,6 +42,7 @@ class PostsController extends Controller
   		->where("kposts.user_id","=",auth()->id())
       ->title($request->get('title'))
       ->published()
+      ->hide()      
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
@@ -79,6 +80,7 @@ class PostsController extends Controller
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where("kposts.sent_by","=",auth()->id())
       ->where("kposts.user_id","<>",auth()->id())
+      ->hide()
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
@@ -100,6 +102,7 @@ class PostsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("posts.user_id","=",auth()->id())
       ->where("type_id","<=",20)
+      ->hide()
       ->title($request->get('title'))
       ->select('posts.*','featured');
 
@@ -108,7 +111,9 @@ class PostsController extends Controller
       ->where("type_id","<",21)
       ->where("status_id","=",2)
       ->where("kposts.sent_by","=",auth()->id())
-      ->where("kposts.user_id","=",auth()->id())  
+      ->where("kposts.user_id","=",auth()->id()) 
+      ->published() 
+      ->hide()
       ->title($request->get('title'))
       ->select('posts.*','featured');
 
@@ -134,6 +139,7 @@ class PostsController extends Controller
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("posts.type_id","<=",20)  
+      ->hide()
       ->title($request->get('title'))    
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
@@ -158,6 +164,7 @@ class PostsController extends Controller
       ->where("type_id","<=",20)
       ->title($request->get('title'))
       ->published()
+      ->hide()
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
@@ -181,6 +188,7 @@ class PostsController extends Controller
       ->where("posts.type_id", "=", 4)
       ->title($request->get('title'))
       ->published()
+      ->hide()
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
@@ -204,6 +212,7 @@ class PostsController extends Controller
       ->where("posts.type_id", "=", 6)
       ->title($request->get('title'))
       ->published()
+      ->hide()
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
@@ -294,6 +303,8 @@ class PostsController extends Controller
     $kpost->observation = $request->get('observation');
     $kpost->footnote = $request->get('footnote');
     $kpost->featured = $request->get('featured'); 
+    $kpost->hide = $request->get('hide');
+    $kpost->order_num = $request->get('order_num'); 
     $kpost->save();
 
     echo json_encode(array('success'=>true));
@@ -362,7 +373,9 @@ class PostsController extends Controller
       $kpost = $post->kpost;
       $kpost->observation = $request->get('observation');
       $kpost->footnote = $request->get('footnote');
-      $kpost->featured = $request->get('featured');  
+      $kpost->featured = $request->get('featured'); 
+      $kpost->hide = $request->get('hide');
+      $kpost->order_num = $request->get('order_num'); 
       $kpost->save();
     }  
 
