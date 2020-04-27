@@ -31,7 +31,7 @@
 		'remember-me' => 'Recuérdame',
 		'register' => 'Registrarse',
 		'enter' => 'Ingresar',		
-		'account' => 'Cuenta',
+		'account' => 'Ver cuenta',
 		'logout' => 'Cerrar sesión',
 		'dashboard' => 'Dashboard',
 		'my-stuff' => 'Mis Bienes',

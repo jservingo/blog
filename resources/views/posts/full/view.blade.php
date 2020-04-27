@@ -72,6 +72,7 @@
       <div style="clear:both;"></div>
       <div style="padding:4px 10px 4px 10px; text-align:justify;">
         @include('posts.full.content')
+        <hr/>
       </div>
     </div>    
     @endif

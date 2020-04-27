@@ -3,6 +3,7 @@
 #confirm_title{color: #525252;padding: 0px 0px 5px 5px;font-weight: bold;font-size: 18px;}
 #confirm_actions{margin-top: 20px;text-align: center;}
 #confirm_actions button{padding: 10px 15px;border: 0;color: #FFFFFF;text-transform: uppercase;cursor: pointer;												border-radius: 3px;}
+#confirm_actions button.white{background: white;}
 #confirm_actions button.red{background: #e51c23;}
 #confirm_actions button.gray{background: #969696;}
 #confirm_doit{margin-right: 10px;}

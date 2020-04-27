@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div style="width:400px; text-align:right;">
-                <span class="user c-blue">
+                <span class="user-header">
                     <a id="t-user" href="/post/user/{{ Auth::user()->id }}">
                         {{ Auth::user()->name }}
                     </a>
@@ -29,13 +29,13 @@
             <div class="container-flex space-between" style="width:130px;">                
                 <div id="menu_languages" class="popr" data-id="languages"> 
                     <img src="/img/{{ __('messages.lang') }}.png" alt="" style="width:22px;height:20px;">
-                </div>
+                </div>    
+                <a class="btn_show_alerts">    
+                    <img src="/img/bell.png" alt="" style="width:20px;height:20px;">
+                </a>            
                 <a class="btn_configuration"> 
                     <img src="/img/configuration.png" alt="" style="width:20px;height:20px;">
-                </a>
-                <a class="btn_notifications">    
-                    <img src="/img/bell.png" alt="" style="width:20px;height:20px;">
-                </a>
+                </a>                
                 <div id="menu_profile" class="popr" data-id="profile">
                   <img src="/img/profile.png" width="20" />
                 </div>

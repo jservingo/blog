@@ -176,15 +176,16 @@ $('.btn_login').bind('click', function(e){
 }); 
 
 $('.btn_register').bind('click', function(e){
-  location = "/user/register";
+  $.growl.warning({ message: not_implemented });
+  //location = "/user/register";
 }); 
 
 $('.btn_configuration').bind('click', function(e){
   $.growl.warning({ message: not_implemented });
 });
 
-$('.btn_notifications').bind('click', function(e){
-  $.growl.warning({ message: not_implemented });
+$('.btn_show_alerts').bind('click', function(e){
+  btn_show_alerts();
 });
 
 $('.btn_options').bind('click', function(e){
@@ -257,6 +258,74 @@ function btn_update_likes(post_id, mode, e)
       else {
         alert('error');
       }
+    },
+    error: function (data) {
+      console.log('Error:', data);
+    }
+  }); 
+}
+
+function btn_show_alerts()
+{
+    $.ajax({
+    url: '/alerts/get',
+    type: 'get',
+    dataType: 'json',
+    success: function(data) {
+      //Crear ventana modal
+      var html = "<div id='alerts' style='height:370px;overflow-y:scroll;'>";
+      var zcolor="#d5fcfd";
+      data.rows.forEach(function (post) {
+        if (post.type_id==4)
+          var img = '<img src="/img/featured_notification.png" width="16">';
+        else 
+          var img = '<img src="/img/featured_alert.png" width="16">';
+        var date = new Date(post.published_at);
+        date = fdate(date);
+        html = html + "<div style='padding:8px; background-color:"+zcolor+";'>";
+        html = html + "<div>" + img + '  ';  
+        html = html + '<a href="http://127.0.0.1:8000/posts/'+post.id+'" class="text-uppercase c-blue" data-id="'+post.id+'">';      
+        html = html + '<span class="c-blue" style="margin-top:0;margin-bottom:6px">'+post.title+'</span></a>  ';
+        html = html + '<span class="c-negro">'+post.excerpt +'</span>';
+        html = html + '</div>';
+        html = html + '<div style="text-align:right;">';
+        html = html + '<span class="user c-blue"><a href="/post/user/'+post.owner.id+'">'+post.owner.name+'  </a></span>';
+        html = html + '<span class="c-gray-1" style="font-size:14px">'+date+'</span>';
+        html = html + '</div>';
+        html = html + '<div>';
+        html = html + '<div style="float:right;">';
+        html = html + '<footer class="xcontainer-flex xspace-between" style="width:210px; height:24px; padding: 6px 10px; text-align:right;">';
+        html = html + '<a class="btn_save_post" data-id="'+post.id+'">'; 
+        html = html + '<img src="/img/save.png" width="24">';
+        html = html + '</a><a class="btn_discard_post" data-id="'+post.id+'">';
+        html = html + '<img src="/img/delete.png" width="24"></a>';  
+        html = html + '<a class="btn_update_likes" data-id="'+post.id+'" data-mode="up">'; 
+        html = html + '<img src="/img/likes_white.png" width="24"></a><span id="likes">'+post.likes+'</span>';
+        html = html + '</footer>';
+        html = html + '</div>';
+        html = html + '<div style="float:left;">';               
+        html = html + '<div class="truncate footnote" data-height="24" data-adjust="false" style="width: 200px; color:#0a1fa7; font-weight: 800; padding: 6px 10px;">';     
+        html = html + '<div class="t-footnote">'+'footnote';
+        html = html + '</div></div></div></div>';
+        html = html + '<div style="clear:both;"></div>';
+        html = html + '</div>';
+        if (zcolor=="#d5fcfd")
+          zcolor="#cee3ea";
+        else
+          zcolor="#d5fcfd";
+      });
+      html = html + "</div>";
+      $.createDialog({
+        attachAfter: '#main_panel',
+        title: html,
+        accept: '',
+        refuse: cancel,
+        acceptStyle: 'white',
+        refuseStyle: 'gray',
+        acceptAction: function(){
+        }
+      });
+      $.showDialog();
     },
     error: function (data) {
       console.log('Error:', data);

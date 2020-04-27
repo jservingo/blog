@@ -298,6 +298,35 @@ class HomeController extends Controller
     echo json_encode($result);
   }
 
+  public function get_alerts()
+  { 
+    $posts = Post::with('owner')
+      ->join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where(function ($query) {
+          $query->where("status_id","=",0)
+            ->where("kposts.user_id","=",auth()->id())
+            ->where("kposts.sent_by","<>",auth()->id())
+            ->where("posts.type_id", "=", 4)
+            ->published()
+            ->hide();
+      })->orWhere(function ($query) {
+          $query->where("status_id","=",0)
+            ->where("kposts.user_id","=",auth()->id())
+            ->where("kposts.sent_by","<>",auth()->id())
+            ->where("posts.type_id", "=", 6)
+            ->published()
+            ->hide();
+      })
+      ->latest('posts.published_at')
+      ->select('posts.*')
+      ->limit(100)
+      ->get();
+
+    $result['rows'] = $posts;
+
+    echo json_encode($result);
+  }
+
   public function get_random_offers($num)
   { 
     $posts = Post::with('owner')

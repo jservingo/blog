@@ -28,6 +28,7 @@ Route::get('favorites','HomeController@show_favorites')->name('home.show_favorit
 Route::get('most/viewed','HomeController@show_most_viewed')->name('home.show_most_viewed');
 Route::get('recent/views','HomeController@show_recent_views')->name('home.show_recent_views');
 Route::get('user_stats/get','HomeController@get_user_stats');
+Route::get('alerts/get','HomeController@get_alerts');
 Route::get('recommendations/get','HomeController@get_recommendations');
 Route::get('offers/get','HomeController@get_offers');
 Route::get('offers/random/get/{num}','HomeController@get_random_offers');

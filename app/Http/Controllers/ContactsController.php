@@ -237,7 +237,11 @@ class ContactsController extends Controller
       {
         //No se pueden enviar catalogos, paginas, app ni usuarios
       }
-      elseif ($post->cstr_restricted==0 && $post->user_id<>auth()->id())
+      elseif (($post->cstr_restricted==0) && ($post->user_id<>auth()->id()))
+      {
+        //No se pueden enviar posts que esten restingidos
+      }
+      else
       {
         $kpost = Kpost::create([
           'post_id' => $post->id,

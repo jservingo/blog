@@ -23,7 +23,7 @@
           @endif
         @endif
       </div>
-      <div style="float:left;">
+      <div style="float:left; background-color:lightgray">
         @include('posts.list.content')
       </div>
       <div style="clear:both;"></div>
