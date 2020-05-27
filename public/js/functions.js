@@ -93,6 +93,8 @@ function get_type(type)
       return "Offer";
     case 8:
       return "App post";
+    case 9:
+      return "Message";
     case 21:
       return "Catalog";
     case 22:

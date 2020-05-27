@@ -16,6 +16,7 @@ class PhotosController extends Controller
     		'photo'=>'required|image|max:3072'
     	]);
 
+        //date('mdYHis').uniqid().
     	Photo::create([
     		'url' => request()->file('photo')->store('posts','public'),
     		'post_id' => $post->id,

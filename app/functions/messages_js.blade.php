@@ -21,6 +21,7 @@
   var the_post_was_sent = "<?=__('messages.the-post-was-sent');?>";
   var type_text = "<?=__('messages.type-text');?>";
   var type_notification = "<?=__('messages.type-notification');?>";
+  var type_message = "<?=__('messages.type-message');?>";
   var type_alert = "<?=__('messages.type-alert');?>";
   var type_offer = "<?=__('messages.type-offer');?>";
   var type_web_page = "<?=__('messages.type-web-page');?>";
@@ -62,6 +63,8 @@
   var the_post_was_not_updated = "<?=__('messages.the-post-was-not-updated');?>";
   var search_empty = "<?=__('messages.search-empty');?>";
   var not_implemented = "<?=__('messages.not-implemented');?>"; 
+  var show_all = "<?=__('messages.show-all');?>";
+  var send_message = "<?=__('messages.send-message');?>";
 </script>
 
 

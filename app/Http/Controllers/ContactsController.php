@@ -255,6 +255,36 @@ class ContactsController extends Controller
     echo json_encode(array('success'=>true));
   }
 
+  public function send_message(Request $request)
+  { 
+    $type_id = $request->get('type_id');
+    $title = $request->get('title');
+    $user_id = $request->get('user_id');
+
+    $post = Post::create([
+      'title' => $request->get('title'),
+      'type_id' => $request->get('type_id'),
+      'user_id' => auth()->id(),
+      'published_at' => Carbon::now()
+    ]);
+
+    $kpost = Kpost::create([
+      'post_id' => $post->id,
+      'user_id' => auth()->id(),
+      'sent_by' => auth()->id(),
+      'sent_at' => Carbon::now() 
+    ]);
+
+    $kpost = Kpost::create([
+      'post_id' => $post->id,
+      'user_id' => $user_id,
+      'sent_by' => auth()->id(),
+      'sent_at' => Carbon::now() 
+    ]);
+
+    echo json_encode(array('success'=>true,'post_id'=>$post->id));
+  }
+
   /******************************************************
     Contacts tree
   *******************************************************/

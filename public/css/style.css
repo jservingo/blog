@@ -52,7 +52,7 @@ header nav li a:hover{
 	padding-bottom: 5px;
 }
 .logo img{
-	width: 40px;
+	width: 180px;
 }
 #logoFont {
 font-family: "Arial Black", Gadget, sans-serif;
@@ -111,6 +111,10 @@ color: #fff;
 }
 .orange{
 	background: #ff8f0f;
+	color: #3b1702;
+}
+.ocre{
+	background: #f5efdc; 
 	color: #3b1702;
 }
 .red{
@@ -173,6 +177,10 @@ color: #fff;
 	margin-top: 0px;
 	padding-top: 10px;
 	background: none;
+}
+.btn {
+	width:32px;
+	float: left;
 }
 .masonry {
     column-count: 2;

@@ -200,7 +200,7 @@ class ClipboardsController extends Controller
         $posts = Clipboard
             ::join('posts', 'clipboards.post_id', '=', 'posts.id')
             ->where("clipboards.user_id","=",auth()->id())
-            ->latest('clipboards.published_at')
+            ->latest('clipboards.created_at')
             ->select('posts.*')
             ->get();
 
@@ -216,7 +216,7 @@ class ClipboardsController extends Controller
             ->where("clipboards.user_id","=",auth()->id())
             ->where("posts.type_id","=",21)
             ->join('catalogs', 'posts.ref_id', '=', 'catalogs.id')  
-            ->latest('clipboards.published_at')                      
+            ->latest('clipboards.created_at')                      
             ->select('catalogs.*')
             ->get();
 
@@ -231,7 +231,7 @@ class ClipboardsController extends Controller
             ::join('posts', 'clipboards.post_id', '=', 'posts.id')
             ->where("clipboards.user_id","=",auth()->id())
             ->where("posts.type_id","=",24)
-            ->latest('clipboards.published_at')
+            ->latest('clipboards.created_at')
             ->select('posts.*')
             ->get();
 

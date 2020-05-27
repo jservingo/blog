@@ -59,7 +59,7 @@
   <script type="text/javascript" src="/js/growl.js"></script>
     <script type="text/javascript" src="/js/buttons/add_save_discard.js"></script>
   <script type="text/javascript" src="/js/buttons/catalog_ribbon.js"></script>
-  <script type="text/javascript" src="/js/buttons/copy_paste.js"></script>
+  <script type="text/javascript" src="/js/buttons/copy_paste_send.js"></script>
   <script type="text/javascript" src="/js/buttons/create_edit_show.js"></script>
   <script type="text/javascript" src="/js/buttons/delete.js"></script>
   <script type="text/javascript" src="/js/buttons/header.js"></script>

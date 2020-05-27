@@ -11,7 +11,7 @@
 
     <div id="main_panel" style="visibility:hidden;">
       @include('posts.title')
-      @include('pages.subtitle')
+      @include('pages.buttons_subtitle')
 
       <div id="posts_container" class="posts container">
         @if(!$posts->isEmpty())
@@ -55,13 +55,15 @@
   <script type="text/javascript" src="/js/growl.js"></script>
   <script type="text/javascript" src="/js/buttons/add_save_discard.js"></script>
   <script type="text/javascript" src="/js/buttons/catalog_ribbon.js"></script>
-  <script type="text/javascript" src="/js/buttons/copy_paste.js"></script>
+  <script type="text/javascript" src="/js/buttons/copy_paste_send.js"></script>
   <script type="text/javascript" src="/js/buttons/create_edit_show.js"></script>
   <script type="text/javascript" src="/js/buttons/delete.js"></script>
   <script type="text/javascript" src="/js/buttons/header.js"></script>
   <script type="text/javascript" src="/js/functions.js"></script>
+  <script type="text/javascript" src="/js/buttons/play_video.js"></script>
   <script type="text/javascript" src="/js/multiselect.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
+  <script type="text/javascript" src="/js/tipr.js"></script>
   <script type="text/javascript" src="/js/truncate.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript">
@@ -72,6 +74,7 @@
   <script>
     $(document).ready(function() {
      $('.popr').popr();
+     $('.tip').tipr();
     });
   </script>  
   <script>

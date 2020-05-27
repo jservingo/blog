@@ -6,7 +6,6 @@
             <figure class="logo">
                 <img src="/img/kodelia_logo.png" alt="">
             </figure>
-            <span id="logoFont" style="padding-left:5px;">Kodelia</span>
         </div>        
         @if (auth()->check())
             <div class="container-flex">

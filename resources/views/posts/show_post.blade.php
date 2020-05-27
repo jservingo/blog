@@ -70,6 +70,7 @@
   <script>
     $(document).ready(function() {
      $('.popr').popr();
+     $('.tip').tipr();
     });
   </script> 
   <script>

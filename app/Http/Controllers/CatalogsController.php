@@ -142,7 +142,7 @@ class CatalogsController extends Controller
     if(get_view('catalogs')=="ribbon")
     {
       //OK
-    	$catalogs = Catalog
+      $catalogs = Catalog
         ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
         ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
         ->where("catalogs.user_id","=",auth()->id())
@@ -154,7 +154,7 @@ class CatalogsController extends Controller
         ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
         ->paginate(6);   
-    	return view('catalogs.show',compact('catalogs'));
+      return view('catalogs.show',compact('catalogs'));
     }
     else
     {
@@ -181,7 +181,7 @@ class CatalogsController extends Controller
     }
   }
 
-  public function show_created_user(User $user, Request $request)
+  public function show_created_by_user(User $user, Request $request)
   {
     if(get_view('catalogs')=="ribbon")
     {
@@ -280,7 +280,7 @@ class CatalogsController extends Controller
     return view(get_view(),compact(
         'posts','title','root','ref_id','catalog','buttons','subtitle'));
 
-  	//return view('catalogs.catalog_show',compact('catalog','posts'));
+    //return view('catalogs.catalog_show',compact('catalog','posts'));
   }
 
   public static function get_posts($catalog_id)

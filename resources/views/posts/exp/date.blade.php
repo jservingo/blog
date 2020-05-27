@@ -7,7 +7,7 @@
 
 <div class="truncate" data-height="18" style="width:440px; background-color:#fefdfd; padding:4px 10px 4px 10px; text-align:right;">
     <span class="user c-blue">
-      <a href="{{ route('post.show',$post->owner_post) }}">
+      <a href="{{ route('post.show',[$post->owner_post,\Illuminate\Support\Str::slug($post->owner->name)]) }}">
         {{ $post->owner->name }}
       </a>
       @if ($post->owner->id != auth()->id()) 

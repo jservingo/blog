@@ -154,7 +154,7 @@ class PostsController extends Controller
   	return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
-  public function show_created_user(User $user, $type=0, Request $request)
+  public function show_created_by_user(User $user, $type=0, Request $request)
   {   
     //Falta el type ***OJO***
     $posts = Post   
@@ -226,6 +226,38 @@ class PostsController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
+  public function show_alerts_notifications(Request $request)
+  {
+    $posts = Post
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+      ->where(function ($query) use ($request) {
+          $query->where("status_id","=",0)
+                ->where("kposts.user_id","=",auth()->id())
+                ->where("kposts.sent_by","<>",auth()->id())
+                ->where("posts.type_id", "=", 4)
+                ->title($request->get('title'));
+      })->orWhere(function ($query) use ($request) {
+          $query->where("status_id","=",0)
+                ->where("kposts.user_id","=",auth()->id())
+                ->where("kposts.sent_by","<>",auth()->id())
+                ->where("posts.type_id", "=", 6)
+                ->title($request->get('title'));
+      })  
+      ->published()
+      ->hide()
+      ->orderBy('kposts.featured','DESC')
+      ->latest('posts.published_at')
+      ->select('posts.*','kposts.featured')
+      ->paginate(12); 
+
+    $title = __('messages.alerts-notifications');
+    $root = 'alerts';
+    $buttons = "posts.buttons.received_posts";
+    $subtitle = "";
+
+    return view(get_view(),compact('posts','title','root','buttons','subtitle'));
+  }
+
   public function show_post(Post $post)
   {
     return view('posts.show_post',compact('post'));
@@ -235,6 +267,17 @@ class PostsController extends Controller
   {
     $post = $user->post;
     return view('posts.show_post',compact('post'));
+  }
+
+  public function show_iframe(Post $post)
+  {
+    //$this->authorize('update',$post);
+
+    return view('posts.show_iframe',[
+      'post' => $post,
+      'tags' => Tag::all(),
+      'types' => Type::all()
+    ]);
   }
 
   public function store(Request $request)

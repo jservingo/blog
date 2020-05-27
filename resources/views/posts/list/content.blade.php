@@ -27,13 +27,13 @@
 <!-- height:{{ $height }}px; -->
 <div class="truncate content" data-height="{{ $height }}" data-adjust="false"
       style="width:{{ $width }}px; background-color:{{ $zcolor }}; padding:8px 10px;">
-  <a href="{{ route('post.show_post',$post) }}"
+  <a href="{{ route('post.show',[$post,\Illuminate\Support\Str::slug($post->title)]) }}"
       class="text-uppercase c-blue" 
       data-id="{{ $post->id }}">
     <h1 class="t-title" style="margin-top:0;margin-bottom:6px">{{ $post->title }}</h1>  
   </a>
   <div style="text-align:justify;">
-  <a href="{{ route('post.show_post',$post) }}"
+  <a href="{{ route('post.show',[$post,\Illuminate\Support\Str::slug($post->title)]) }}"
       class="t-excerpt c-negro" 
       data-id="{{ $post->id }}">
     @if ($post->Kpost && $post->kpost->excerpt)

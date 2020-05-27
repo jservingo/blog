@@ -13,7 +13,7 @@
     <div class="loader" style="float:left;"></div>
 
     <div id="main_panel" style="visibility:hidden;">
-		  @include('catalogs.title')
+		  @include('catalogs.buttons_title')
 			@include('catalogs.ribbon_view')
 			{{ $catalogs->render("pagination::default") }}
 		  {{-- $catalogs->links() --}}
@@ -41,18 +41,22 @@
 	  src="https://code.jquery.com/jquery-3.3.1.min.js"
 	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	  crossorigin="anonymous"></script>
+  @php
+    include(app_path() . '/functions/messages_js.blade.php')
+  @endphp
 	<script type="text/javascript" src="/js/diyslider.min.js"></script>
 	<script type="text/javascript" src="/js/confirmDialog.min.js"></script>
 	<script type="text/javascript" src="/js/growl.js"></script>
   <script type="text/javascript" src="/js/buttons/add_save_discard.js"></script>
   <script type="text/javascript" src="/js/buttons/catalog_ribbon.js"></script>
-  <script type="text/javascript" src="/js/buttons/copy_paste.js"></script>
+  <script type="text/javascript" src="/js/buttons/copy_paste_send.js"></script>
   <script type="text/javascript" src="/js/buttons/create_edit_show.js"></script>
   <script type="text/javascript" src="/js/buttons/delete.js"></script>
   <script type="text/javascript" src="/js/buttons/header.js"></script>
   <script type="text/javascript" src="/js/functions.js"></script>
   <script type="text/javascript" src="/js/multiselect.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
+  <script type="text/javascript" src="/js/tipr.js"></script>
   <script type="text/javascript" src="/js/truncate.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript">
@@ -63,6 +67,7 @@
   <script>
     $(document).ready(function() {
      $('.popr').popr();
+     $('.tip').tipr();
     });
   </script>  
   <script>

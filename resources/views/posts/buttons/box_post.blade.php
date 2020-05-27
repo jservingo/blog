@@ -17,7 +17,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -41,7 +41,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -66,7 +66,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -97,7 +97,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -128,7 +128,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -148,7 +148,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -168,7 +168,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -192,7 +192,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -210,8 +210,8 @@
 		<img src="/img/copy.png" width="24" />
 	</a>
 	@if ($post->kpost)
-	<a class="btn_send_post" 
-			data-id="{{ $post->id }}"> 
+	<a class="btn_send_message" 
+			data-id="{{ $post->user_id }}"> 
 		<img src="/img/mail.png" width="24" />
 	</a>
 	@else
@@ -231,8 +231,8 @@
 		<img src="/img/copy.png" width="24" />
 	</a>
 	@if ($post->kpost)
-	<a class="btn_send_post" 
-			data-id="{{ $post->id }}"> 
+	<a class="btn_send_message" 
+			data-id="{{ $post->user_id }}"> 
 		<img src="/img/mail.png" width="24" />
 	</a>
 	@else
@@ -257,7 +257,7 @@
 	</a>
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>		
 @elseif ($root=="saved_posts")		
 	<a class="btn_edit_post"
@@ -274,7 +274,7 @@
 	</a>
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 @elseif ($root=="discarded_posts")		
 	<a class="btn_save_post" 
@@ -297,7 +297,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -317,7 +317,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -337,7 +337,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -353,7 +353,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -369,7 +369,7 @@
 	@if ($post->kpost)
 	<a class="btn_send_post" 
 			data-id="{{ $post->id }}"> 
-		<img src="/img/mail.png" width="24" />
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 

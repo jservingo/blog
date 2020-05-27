@@ -33,7 +33,7 @@ $('.btn_update_post').bind('click', function(e){
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice",the_changes_where_saved);
+        set_message("notice",the_changes_were_saved);
         window.opener.location.reload();
         window.close();
       }
@@ -49,7 +49,8 @@ $('.btn_update_post').bind('click', function(e){
   }); 
 });
 
-$('.btn_update_post').bind('click', function(e){
+$('.btn_cancel_edit').bind('click', function(e){
+  window.close();
 });
 
 function get_value(s)

@@ -25,7 +25,7 @@
 @endphp
 
 <div class="content" style="width:{{ $width }}px; background-color:{{ $zcolor }}; padding:8px 10px 0px 10px;">      
-  <a href="{{ route('post.show_post',$post) }}"
+  <a href="{{ route('post.show',[$post,\Illuminate\Support\Str::slug($post->title)]) }}"
       class="text-uppercase c-blue" 
       data-id="{{ $post->id }}">
     <h1 class="t-title" style="margin-top:0;margin-bottom:6px">{{ $post->title }}</h1>  

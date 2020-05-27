@@ -3,27 +3,26 @@
 @section('content')
   <br/>
 	<section class="pages container">
-		<div class="page page-contact">
-			<h1 class="text-capitalize">contact us</h1>
+		<div id="main_panel" class="page page-contact">
+			<h1 class="text-capitalize">{{ __('messages.contact-us') }}</h1>
 			<p>Nam in maximus arcu, ac aliquam tellus. Donec vestibulum ipsum nunc, at placerat ante posuere non. Integer at dui a lacus suscipit elementum id non massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc eu neque eros. Ut eu quam justo.</p>
-			<div class="divider-2" style="margin:25px 0;"></div>
-			<div class="form-contact">
-				<form action="#">
-					<div class="input-container container-flex space-between">
-						<input type="text" placeholder="Your Name" class="input-name">
-						<input type="text" placeholder="Email" class="input-email">
-					</div>
-					<div class="input-container">
-						<input type="text" placeholder="Subject" class="input-subject">
-					</div>
-					<div class="input-container">
-						<textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
-					</div>
-					<div class="send-message">
-						<a href="#" class="text-uppercase c-green">send message</a>
-					</div>
-				</form>
-			</div>			
+			<div class="divider-2" style="margin:25px 0;"></div>	
+			<h3>{{ __('messages.send-message') }} {{ __('messages.support') }} 
+				<a class="btn_send_message" data-id="15"> 
+					<img src="/img/send_message.png" width="24" style="margin-top:-5px;">
+				</a>
+			</h3>		
+			<h3>{{ __('messages.send-message') }} {{ __('messages.sales') }}
+				<a class="btn_send_message" data-id="16"> 
+					<img src="/img/send_message.png" width="24" style="margin-top:-5px;">
+				</a>
+			</h3>		
+			<h3>{{ __('messages.send-message') }} {{ __('messages.admin') }}
+				<a class="btn_send_message" data-id="14"> 
+					<img src="/img/send_message.png" width="24" style="margin-top:-5px;">
+				</a>
+			</h3>	
+			<h3>WhatsApp +58(424)2618854</h3>
 		</div>
 	</section>
 @endsection
@@ -37,9 +36,13 @@
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
+  @php
+    include(app_path() . '/functions/messages_js.blade.php')
+  @endphp
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>
   <script type="text/javascript" src="/js/growl.js"></script>
   <script type="text/javascript" src="/js/buttons/header.js"></script>
+  <script type="text/javascript" src="/js/buttons/copy_paste_send.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script>

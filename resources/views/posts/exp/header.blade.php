@@ -38,7 +38,7 @@
 <header class="xcontainer-flex xspace-between">
 	<div class="date truncate" data-height="{{ $height }}" style="width:{{ $width }}px; padding:10px 5px 5px 10px; background-color:{{ $zcolor }}">
 		@include('posts.box.featured')
-    <a href="{{ route('post.show_post',$post) }}"
+    <a href="{{ route('post.show',[$post,\Illuminate\Support\Str::slug($post->title)]) }}"
 				class="text-uppercase c-blue"
 	  		data-id="{{ $post->id }}">
 	  	<h1 class="t-title" style="margin-top:0;margin-bottom:0px;margin-right:22px;">{{ $post->title }}</h1>  

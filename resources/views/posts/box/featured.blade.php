@@ -3,6 +3,10 @@
 	  <div style="position:absolute; top:-3px; left:-10px;">
 	    <img src="/img/featured_notification.png" width="20" />
 	  </div> 
+	@elseif ($post->isMessage())
+	  <div style="position:absolute; top:-3px; left:-10px;">
+	    <img src="/img/featured_message.png" width="20" />
+	  </div> 
 	@elseif ($post->isWebPage())
 	  <div style="position:absolute; top:-3px; left:-10px;">
 	    <img src="/img/featured_web_page.png" width="20" />

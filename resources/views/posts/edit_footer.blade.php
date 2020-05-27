@@ -31,7 +31,7 @@
         <label><span>{{ __('messages.footnote') }}:</span></label>
         <input id="footnote" type="text" 
           value="{{ old('footnote',$post->kpost->footnote) }}"
-          placeholder="{{ __('messages.enter-foootnote') }}">
+          placeholder="{{ __('messages.enter-footnote') }}">
         {!! $errors->first('footnote','<span class="help-block">:message</span>') !!}
       </div>  
 
@@ -47,27 +47,30 @@
         <label>
           <input type="checkbox" id="hide" 
             {!! $post->kpost->hide ? 'checked' : '' !!}>
-          {{ 'opc_hide' }}
+          {{ __('messages.hide-post') }}
         </label>
       </div>
 
       <div class="form-control">
-        <label>Order num: </label>
+        <label>{{ __('messages.order-num') }}: </label>
           <input type="number" id="order_num" min="0"
             style = "width: 50px;" step="1" 
             value="{{ old('order_num',$post->kpost->order_num) }}">
       </div>
 
-      {{--
-      <div class="form-control">
-        <a href="#" class="btn_update_post"
-            data-id="{{ $post->id }}"
-            data-type="{{ $post->type_id }}"
-            Save changes
-        </a>
+      <div id="confirm_actions">
+        <button id="confirm_doit" class="btn_update_post red"
+          data-id="{{ $post->id }}"
+          data-type="{{ $post->type_id }}"
+          data-kpost="{{ $post->kpost ? 1 : 0 }}">
+          {{ __('messages.save-changes') }}
+        </button>
+        <button id="confirm_dont" class="btn_cancel_edit gray">
+          {{ __('messages.cancel') }}
+        </button>
       </div>
-      --}}
 
+      {{-- 
       <div class="form-control">
         <a href="#" class="btn_update_post"
             data-id="{{ $post->id }}"
@@ -76,6 +79,7 @@
             {{ __('messages.save-changes') }}
         </a>
       </div>
+      --}}
 
     </div>
 @endsection

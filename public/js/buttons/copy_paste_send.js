@@ -44,6 +44,12 @@ $('.btn_send_post').bind('click', function(e){
   btn_send_post(post_id);
 });
 
+$('.btn_send_message').bind('click', function(e){
+  e.preventDefault();
+  var user_id = $(this).data("id");
+  btn_send_message(user_id);
+});
+
 // FUNCTIONS
 
 function btn_copy_app_post(app_id,title,source)
@@ -473,4 +479,56 @@ function send_post_to_contacts(selected, post_id)
       console.log('Error:', data);
     }
   }); 
+}
+
+function btn_send_message(user_id)
+{
+  //Crear ventana modal
+  var html = "<div id='edit'>";
+  html = html + "<h3>"+send_message+"</h3>";
+  html = html + "<p>"+title+"</p>";
+  html = html + "<input id='title' type='text' style='width:500px;' class='form-control' placeholder='"+enter_post+"' required>";
+  html = html + "</div>";
+  $.createDialog({
+    attachAfter: '#main_panel',
+    title: html,
+    accept: create,
+    refuse: cancel,
+    acceptStyle: 'blue',
+    refuseStyle: 'red',
+    acceptAction: function(){
+      title = $('#title').val();
+      type_id = 3;
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      //var ref_id = $(this).data("id");  OJO QUITAR ESTO
+      var data = {type_id:type_id, title:title, user_id:user_id };
+      $.ajax({
+        type: 'post',
+        url: 'contacts/send/message',
+        data: data,
+        dataType: 'json',
+        success: function(data) {
+          if (data.success){
+            url = "/post/"+data.post_id;
+            btn_edit ("post", data.post_id);
+          }
+          else if(data.msg)
+          {
+            $.growl.warning({ message:data.msg });
+          }
+          else {
+            alert('error');
+          }
+        },
+        error: function (data) {
+          console.log('Error:', data);
+        }
+      }); 
+    }
+  });
+  $.showDialog();
 }

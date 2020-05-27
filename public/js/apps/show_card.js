@@ -219,7 +219,7 @@ $(function() {
             excerpt: row.excerpt, 
             img: row.photos.length > 0 ? row.photos[0].url : '',
             source_app: row.source,
-            source_post: '/blog/'+row.id,
+            source_post: '/posts/'+row.id,
             custom_type: row.custom_type,
             footnote: row.footnote,
             tags: tags_str

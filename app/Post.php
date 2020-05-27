@@ -275,13 +275,15 @@ class Post extends Model
           case 4:
             return __('messages.type-notification');
           case 5:
-            return __('messages.web-page');
+            return __('messages.type-web-page');
           case 6:
             return __('messages.type-alert');
           case 7:
             return __('messages.type-offer');
           case 8:
             return $this->custom_type;
+          case 9: 
+            return __('messages.type-message');
           case 21:
             return __('messages.type-catalog');
           case 22:
@@ -337,6 +339,11 @@ class Post extends Model
     {
         return $this->type_id===8 ? true : false;
     } 
+
+    public function isMessage()
+    {
+        return $this->type_id===9 ? true : false;
+    }
 
     public function isCatalog()
     {

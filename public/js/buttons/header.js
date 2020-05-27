@@ -318,11 +318,12 @@ function btn_show_alerts()
       $.createDialog({
         attachAfter: '#main_panel',
         title: html,
-        accept: '',
+        accept: show_all,
         refuse: cancel,
-        acceptStyle: 'white',
+        acceptStyle: 'green',
         refuseStyle: 'gray',
         acceptAction: function(){
+          location = "/posts/alerts/notifications";
         }
       });
       $.showDialog();

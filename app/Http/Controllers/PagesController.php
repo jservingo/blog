@@ -130,7 +130,7 @@ class PagesController extends Controller
     */
   }
 
-  public function show_created_user(User $user, Request $request)
+  public function show_created_by_user(User $user, Request $request)
   {
     $posts = Post
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')        

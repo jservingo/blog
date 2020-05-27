@@ -13,7 +13,7 @@
 	    $posts =  $provider::get_posts($catalog->id);
 		@endphp
 		<div class="category container catcont" data-id="{{ $i }}" style="overflow: hidden">
-			@include('catalogs.buttons')
+			@include('catalogs.buttons_ribbon')
 
 			<div class="posts container">
 				<div id="slider{{ $i }}" class="slider">

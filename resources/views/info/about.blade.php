@@ -5,11 +5,15 @@
 	<section class="pages container">
 		<div class="page page-about">
       <h1 class="text-capitalize">{{ __('messages.about') }}</h1>
-			<h2>{{ __('messages.slogan') }}</h2>
-      <h3>{{ __('messages.version') }}</h3>
+			<div>
+        <figure class="xlogo" style="margin:0">
+          <img src="/img/kodelia_slogan.png" style="height:90px;" alt="kodelia_slogan">
+        </figure>
+      </div>
 			<cite>{{ __('messages.solution') }}</cite>
 			<div class="divider-2" style="margin: 35px 0;"></div>
-			<p>{{ __('messages.d&d') }}</p>
+			<p>Powered by Digital Ocean cloud hosting</p>
+      <p>{{ __('messages.d&d') }}</p>
 			<p>{{ __('messages.headquarters') }}</p>
 		</div>
 	</section>
