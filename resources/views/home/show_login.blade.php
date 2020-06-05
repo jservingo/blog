@@ -10,11 +10,6 @@
         {{ __('messages.solution') }}
       </span>
     </p>
-    <p style="padding-left:60px;">
-      <span style="background-color:yellow; color:black; font-size:18px; font-weight:900;">
-        &nbsp;&nbsp;{{ __('messages.version') }}&nbsp;&nbsp;
-      </span>
-    </p>
   </div>
 
   <div class="gradient-top">

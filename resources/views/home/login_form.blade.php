@@ -39,7 +39,7 @@
         </div>
       </div>
       <!-- /.col -->
-      <div class="col-xs-4">
+      <div class="col-xs-4" style="height:30px;padding-left:100px;">
         <button type="submit" class="btn btn-primary btn-block btn-flat">{{ __('messages.enter') }}</button>
       </div>
       <!-- /.col -->
@@ -48,7 +48,7 @@
   </form>
 </div>
 
-<p>{{ __('messages.please-sign-up') }}<p> 
+<p>{{ __('messages.please-register') }} <a class="btn_register" href="#"><img src="\img\register.png"></a><p> 
 
 {{-- 
 <div class="social-auth-links text-center">

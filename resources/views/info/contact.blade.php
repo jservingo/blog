@@ -5,7 +5,7 @@
 	<section class="pages container">
 		<div id="main_panel" class="page page-contact">
 			<h1 class="text-capitalize">{{ __('messages.contact-us') }}</h1>
-			<p>Nam in maximus arcu, ac aliquam tellus. Donec vestibulum ipsum nunc, at placerat ante posuere non. Integer at dui a lacus suscipit elementum id non massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc eu neque eros. Ut eu quam justo.</p>
+			<h3>{{ __('messages.need-help') }}</h3>
 			<div class="divider-2" style="margin:25px 0;"></div>	
 			<h3>{{ __('messages.send-message') }} {{ __('messages.support') }} 
 				<a class="btn_send_message" data-id="15"> 

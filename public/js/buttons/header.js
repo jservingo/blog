@@ -176,8 +176,7 @@ $('.btn_login').bind('click', function(e){
 }); 
 
 $('.btn_register').bind('click', function(e){
-  $.growl.warning({ message: not_implemented });
-  //location = "/user/register";
+  location = "/user/register";
 }); 
 
 $('.btn_configuration').bind('click', function(e){

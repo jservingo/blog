@@ -71,7 +71,7 @@
       </div>
 
       <div class="form-group row mb-0">
-          <div class="col-md-6 offset-md-4">
+          <div class="col-md-6 offset-md-4" style="height:30px;padding-left:100px;">
               <button type="submit" class="btn btn-primary">
                   {{ __('messages.register') }}
               </button>
@@ -80,4 +80,4 @@
   </form>
 </div>
 
-<p>{{ __('messages.please-sign-up') }}<p> 
+<p>{{ __('messages.please-login') }} <a class="btn_login" href="#"><img src="\img\register.png"></a><p>
