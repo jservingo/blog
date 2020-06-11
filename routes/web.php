@@ -11,6 +11,11 @@ Route::get('email',function(){
 	return new App\Mail\LoginCredentials(App\User::first(),'123456');
 });
 
+//Password reset
+Route::get('password/reset', function () {
+    return view('auth.passwords.reset');
+});
+
 //Home & User 
 Route::get('/','HomeController@index')->name('home');
 Route::get('user/login','HomeController@login')->name('login');
