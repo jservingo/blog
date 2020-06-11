@@ -49,7 +49,7 @@ $(function() {
         .replace(':url_post:', url_post)
         .replace(':post_id:', post.id)
         .replace(':owner_name:', post.owner.name)
-        .replace(':owner_post:', 'post/user/'+post.owner.id)        
+        .replace(':owner_post:', '/user/'+post.owner.id)        
         .replace(':date:', date)
         .replace(':zcolor:', zcolor)
 

@@ -11,11 +11,13 @@ Route::get('email',function(){
 	return new App\Mail\LoginCredentials(App\User::first(),'123456');
 });
 
-//Home
+//Home & User 
 Route::get('/','HomeController@index')->name('home');
 Route::get('user/login','HomeController@login')->name('login');
 Route::get('user/register','HomeController@register')->name('register');
 Route::get('user/language','HomeController@change_language')->name('language');
+Route::get('user/verify/{token}', 'Auth\RegisterController@verifyUser');
+Route::get('user/{user}/{url?}','PostsController@show_user')->name('post.show_user');
 Route::get('ad/{position1}/{position2}','HomeController@get_ad');
 Route::get('colorpicker', function () {
     return view('home.color_picker');
@@ -131,7 +133,6 @@ Route::get('posts/all/{type?}','PostsController@show_all')->name('posts.show_all
 Route::get('posts/created/{type?}','PostsController@show_created')->name('posts.show_created');
 Route::get('posts/created-by/{user}/{type?}/{url?}','PostsController@show_created_by_user')->name('posts.show_created_by_user');
 Route::get('posts/{post}/{url?}','PostsController@show_post')->name('post.show');
-Route::get('post/user/{user}/{url?}','PostsController@show_user')->name('post.show_user');
 Route::get('post/{post}','PostsController@edit')->name('post.edit');
 Route::get('post/footer/{post}','PostsController@edit_footer')->name('post.edit_footer');
 Route::get('post/iframe/{post}/{url?}','PostsController@show_iframe')->name('post.show_iframe');

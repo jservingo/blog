@@ -288,7 +288,7 @@ function btn_show_alerts()
         html = html + '<span class="c-negro">'+post.excerpt +'</span>';
         html = html + '</div>';
         html = html + '<div style="text-align:right;">';
-        html = html + '<span class="user c-blue"><a href="/post/user/'+post.owner.id+'">'+post.owner.name+'  </a></span>';
+        html = html + '<span class="user c-blue"><a href="/user/'+post.owner.id+'">'+post.owner.name+'  </a></span>';
         html = html + '<span class="c-gray-1" style="font-size:14px">'+date+'</span>';
         html = html + '</div>';
         html = html + '<div>';

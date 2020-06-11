@@ -12,22 +12,22 @@
 				<div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Paypal</h3>
-						<img src="/img/paypal.jpg" width="200">
+						<img src="/img/paypal.jpg" height="180">
 						<p><a href="https://www.paypal.me/jservingo">paypal.me/jservingo</a><p>
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Airtm</h3>
-						<img src="/img/airtm-logo.png" width="200">
+						<img src="/img/airtm-logo.png" height="180">
 						<p>Email: jservingo@gmail.com<p>
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Pipol Pay - Facebank</h3>
-						<img src="/img/pipolpay.png" width="200">
+						<img src="/img/pipolpay.png" height="180">
 						<p>Email: jservingo@gmail.com<p>
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Zelle</h3>
-						<img src="/img/zelle.png" width="200">
+						<img src="/img/zelle.png" height="180">
 						<p>Sorry! Zelle is not working anymore in Venezuela</a><p>
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">

@@ -62,10 +62,13 @@ class HomeController extends Controller
     $lang = $request->get('lang');
     Kapp::setLocale($lang);
 
-    //Save language
-    $user = auth()->user();
-    $user->language = $lang;
-    $user->save();
+    if (Auth::check())
+    {
+      //Save language
+      $user = auth()->user();
+      $user->language = $lang;
+      $user->save();
+    }
 
     session()->put('locale', $lang);
     return redirect()->back();

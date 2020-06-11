@@ -12,6 +12,17 @@
     </p>
   </div>
 
+  @if (session('status'))
+    <div class="alert alert-success">
+      {{ session('status') }}
+    </div>
+  @endif
+  @if (session('warning'))
+    <div class="alert alert-warning">
+      {{ session('warning') }}
+    </div>
+  @endif    
+
   <div class="gradient-top">
     <div style="float:left; width:46%; padding-left:50px;">
 			<div style="width:100%; padding-top:40px; display:inline-block;">

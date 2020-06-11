@@ -32,7 +32,6 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Ingresa tus datos para iniciar sesión</p>
-
     <form role="form" method="POST" action="{{ url('/login') }}">
       {{ csrf_field() }}
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
