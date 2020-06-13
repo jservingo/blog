@@ -97,7 +97,15 @@ class RegisterController extends Controller
            'token' => sha1($user->name.time())
         ]);
 
-        Mail::to($user->email)->send(new VerifyMail($user));
+         $data = [
+          'name' => $user->name,
+          'email' => $user->email,
+          'token' => $verifyUser->token
+        ];
+
+        Mail::send('emails.verifyUser', $data, function($message) {
+          $message->to($user->email)->subject('Registro de usuario');
+        });
 
         return $user;
     }
@@ -105,7 +113,7 @@ class RegisterController extends Controller
     public function verifyUser($token)
     {
         $verifyUser = VerifyUser::where('token', $token)->first();
-        if(isset($verifyUser) )
+        if(isset($verifyUser))
         {
             $user = $verifyUser->user;
             if(!$user->verified)
