@@ -103,8 +103,8 @@ class RegisterController extends Controller
           'token' => $verifyUser->token
         ];
 
-        Mail::send('emails.verifyUser', $data, function($message) {
-          $message->to($email)
+        Mail::send('emails.verifyUser', $data, function($message) use ($data) {
+          $message->to($data['email'], $data['name']);
                   ->from('no-reply@kodelia.com')
                   ->subject('Registro de usuario');
         });
