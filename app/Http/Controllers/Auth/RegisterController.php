@@ -104,7 +104,7 @@ class RegisterController extends Controller
         ];
 
         Mail::send('emails.verifyUser', $data, function($message) use ($data) {
-          $message->to($data['email'], $data['name']);
+          $message->to($data['email'], $data['name'])
                   ->from('no-reply@kodelia.com')
                   ->subject('Registro de usuario');
         });
