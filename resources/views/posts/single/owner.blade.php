@@ -1,16 +1,22 @@
 <div style="width:95%; padding-right:20px;"> 	
 	<div style="float:left; width:60%">	
+		@if ($post->type_id >= 21)
+			<div class="image-w-text">
+			  <span class="cite-2">{{ $post->get_type() }}
+			</div>
+		@endif
+
 		<div class="image-w-text">
 		  <span class="cite-2">{{ __('messages.owner') }}:</span> {{ $post->owner->name }}
 		</div>
 
 		<div class="image-w-text">
-		  <span class="cite-2">{{ __('messages.publication-date') }}:</span> {{ $post->published_at->format('d/m/y')}}
+		  <span class="cite-2">{{ __('messages.publication-date') }}:</span> {{ $post->published_at->format('d/m/y') }}
 		</div> 
 
 		@if ($post->published_at <> $post->updated_at)
 			<div class="image-w-text">
-		  	<span class="cite-2">{{ __('messages.updated-date') }}:</span> {{ $post->updated_at->format('d/m/y')}}
+		  	<span class="cite-2">{{ __('messages.updated-date') }}:</span> {{ $post->updated_at->format('d/m/y') }}
 			</div> 
 		@endif     
 

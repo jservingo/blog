@@ -93,6 +93,7 @@ $(function() {
 	    url: '/user_stats/get',
 	    dataType: 'json',
 	    success: function(data) {
+	    	$('#t_username').text(data.username);
 	      $('#c_received').text('('+data.received+')');
 	      $('#c_notifications').text('('+data.notifications+')');
 	      $('#c_alerts').text('('+data.alerts+')');

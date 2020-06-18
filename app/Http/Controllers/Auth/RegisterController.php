@@ -131,14 +131,14 @@ class RegisterController extends Controller
         } 
         else 
         {
-            return redirect('user/login')->with('warning', "Sorry your email cannot be identified.");
+            return redirect('/user/login')->with('warning', "Sorry your email cannot be identified.");
         }       
-        return redirect('user/login')->with('status', $status); 
+        return redirect('/user/login')->with('status', $status); 
     }
 
     protected function registered(Request $request, $user)
     {
         $this->guard()->logout();
-        return redirect('user/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
+        return redirect('/user/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
     }
 }

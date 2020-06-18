@@ -383,7 +383,12 @@ class HomeController extends Controller
   }
 
   public function get_user_stats()
-  { 
+  {
+    $user = Post
+      ::where("type_id", "=", 24)
+      ->where("user_id","=",auth()->id())
+      ->first();
+
     $received = Kpost
       ::where("status_id","=",0)
       ->where("user_id","=",auth()->id())
@@ -444,17 +449,19 @@ class HomeController extends Controller
       ->where("page_user.user_id","=",auth()->id())
       ->count();
 
-    $result = array("received"=>$received, 
-                    "notifications"=>$notifications,
-                    "alerts"=>$alerts,   
-                    "contacts"=>$contacts,
-                    "apps"=>$apps,
-                    "pages"=>$pages,
-                    "catalogs"=>$catalogs,
-                    "posts"=>$posts,
-                    "apps_subscriptions"=>$apps_subscriptions,
-                    "pages_subscriptions"=>$pages_subscriptions                    
-                    ); 
+    $result = array(
+      "username"=>$user->title,
+      "received"=>$received, 
+      "notifications"=>$notifications,
+      "alerts"=>$alerts,   
+      "contacts"=>$contacts,
+      "apps"=>$apps,
+      "pages"=>$pages,
+      "catalogs"=>$catalogs,
+      "posts"=>$posts,
+      "apps_subscriptions"=>$apps_subscriptions,
+      "pages_subscriptions"=>$pages_subscriptions                    
+    ); 
       
     echo json_encode($result); 
   }
