@@ -109,6 +109,8 @@ class RegisterController extends Controller
                   ->subject('Registro de usuario');
         });
 
+        dd("STOP");
+
         return $user;
     }
 
