@@ -74,6 +74,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'language' => 'es'
         ]);
 
         //Crear el post del usuario
@@ -108,8 +109,6 @@ class RegisterController extends Controller
                   ->from('no-reply@kodelia.com')
                   ->subject('Registro de usuario');
         });
-
-        dd("STOP");
 
         return $user;
     }
