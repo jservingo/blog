@@ -13,7 +13,7 @@
 		'email-verified' => 'Your email is verified. You can now login.',
 		'email-already-verified' => 'Your email is already verified. You can now login.',
 		'email-not-verified' => 'Sorry your email cannot be identified.',
-		'check-your-email' => 'We sent you an activation code. Check your email and click on the link to verify.',
+		'check-email' => 'We sent you an activation code. Check your email and click on the link to verify.',
 		'please-login' => 'If you already registered please enter here',
 		'please-register' => 'If you have not registered please sign up here',
 		'registered-user' => 'Sorry! You need to log in first.',

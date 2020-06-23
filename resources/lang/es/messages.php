@@ -13,7 +13,7 @@
 		'email-verified' => 'Su email está verificado. Ud. puede ingresar ahora.',
 		'email-already-verified' => 'Su email ya está verificado. Ud. puede ingresar ahora.',
 		'email-not-verified' => 'Lo sentimos, su email no pudo ser identificado.',
-		'check-your-email' => 'Le enviamos un código de activación. Revise su correo y haga clic en el enlace para verificar.',
+		'check-email' => 'Le enviamos un código de activación. Revise su correo y haga clic en el enlace para verificar.',
 		'please-login' => 'Si ya te registraste por favor ingresa aquí',
 		'please-register' => 'Si no te has registrado por favor regístrate aquí',
 		'unregistered-user' => 'Lo sentimos, pero tienes que ingresar primero.',
