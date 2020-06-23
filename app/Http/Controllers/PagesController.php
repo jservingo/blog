@@ -134,11 +134,11 @@ class PagesController extends Controller
   {
     $posts = Post
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')        
-      ->where(function ($query) use ($request) {
+      ->where(function ($query) use ($request, $user) {
           $query->where("posts.user_id","=",$user->id)
                 ->where("kposts.user_id","=",auth()->id())
                 ->where("type_id","=",22);
-      })->orWhere(function ($query) use ($request) {
+      })->orWhere(function ($query) use ($request, $user) {
           $query->where("posts.user_id","=",$user->id)
                 ->where("kposts.user_id","=",null)
                 ->where("type_id","=",22);

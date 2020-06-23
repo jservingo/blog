@@ -115,12 +115,12 @@ class AppsController extends Controller
     $posts = Post 
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
       ->join('apps', 'ref_id', '=', 'apps.id') 
-      ->where(function ($query) use ($request) {
+      ->where(function ($query) use ($request, $user) {
           $query->where("apps.user_id","=",$user->id)
                 ->where("kposts.user_id","=",auth()->id())
                 ->where("type_id","=",23)
                 ->where("apps.parent_id","=",null);
-        })->orWhere(function ($query) use ($request) {
+        })->orWhere(function ($query) use ($request, $user) {
           $query->where("apps.user_id","=",$user->id)
                 ->where("kposts.user_id","=",null)
                 ->where("type_id","=",23)
