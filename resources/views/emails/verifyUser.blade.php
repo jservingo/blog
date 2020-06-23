@@ -13,7 +13,7 @@
       <p>Your registered email is {{ $email }}, Please click on the below link to verify your email account.
       <a href="{{url('user/verify', $token)}}">Verify email</a></p>
       <p>If this request has been sent without your consent, please discard it.</p>
-    @else if (Config::get('app.locale')=='es')
+    @elseif (Config::get('app.locale')=='es')
       <h2>Registro de usuario: {{ $name }}</h2> 
       <p>Hemos recibido su solicitud de registro en nuestra plataforma. 
          Por favor, recuerde verificar su identidad para iniciar.
