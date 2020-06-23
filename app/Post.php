@@ -73,29 +73,30 @@ class Post extends Model
 
     public function scopePublished($query)
     {
+        $current = Carbon::now();
+        $from = $current;
+        $to = $current->addDays(7);
+
         if ($this->isOffer())
         {
-            $current = Carbon::now();
             $query->where(function ($query) {
                 $query->where('posts.user_id','=',auth()->id());
-            })->orWhere(function ($query) use ($current) {
+            })->orWhere(function ($query) use ($from, $to) {
                 $query->where('posts.user_id','<>',auth()->id())
                     ->where('cstr_privacy','=',1)
                     ->whereNotNull('published_at')
-                    ->where('published_at','<=',$current)
-                    ->where('published_at','>=',$current->addDays(7));
+                    ->whereBetween('published_at', [$from, $to]);
             });    
         }
         else
         {
-            $current = Carbon::now();
             $query->where(function ($query) {
                 $query->where('posts.user_id','=',auth()->id());
             })->orWhere(function ($query) use ($current) {
                 $query->where('posts.user_id','<>',auth()->id())
                     ->where('cstr_privacy','=',1)
                     ->whereNotNull('published_at')
-                    ->where('published_at','<=',$current);
+                    ->where('published_at','>=',$current);
             }); 
         }
     }
