@@ -107,7 +107,7 @@ class RegisterController extends Controller
         Mail::send('emails.verifyUser', $data, function($message) use ($data) {
           $message->to($data['email'], $data['name'])
                   ->from('no-reply@kodelia.com')
-                  ->subject("{{ __('messages.user-registration') }}");
+                  ->subject(__('messages.user-registration'));
         });
 
         return $user;
@@ -123,16 +123,16 @@ class RegisterController extends Controller
             {
                 $verifyUser->user->verified = 1;
                 $verifyUser->user->save();
-                $status = "{{ __('messages.email-verified') }}";                
+                $status = __('messages.email-verified');                
             } 
             else 
             {
-                $status = "{{ __('messages.email-already-verified') }}";
+                $status = __('messages.email-already-verified');
             }
         } 
         else 
         {
-            return redirect('/user/login')->with('warning', "{{ __('messages.email-not-verified') }}");
+            return redirect('/user/login')->with('warning', __('messages.email-not-verified'));
         }       
         return redirect('/user/login')->with('status', $status); 
     }
@@ -140,6 +140,6 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         $this->guard()->logout();
-        return redirect('/user/login')->with('status', "{{ __('messages.check-email') }}");
+        return redirect('/user/login')->with('status', __('messages.check-email'));
     }
 }
