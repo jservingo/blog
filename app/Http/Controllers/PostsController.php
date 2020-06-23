@@ -158,10 +158,16 @@ class PostsController extends Controller
   {   
     //Falta el type ***OJO***
     $posts = Post   
-      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')    
-      ->where("posts.user_id","=",$user->id)
-      ->where("kposts.user_id","=",auth()->id())
-      ->where("type_id","<=",20)
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id') 
+      ->where(function ($query) use ($request) {   
+          $query->where("posts.user_id","=",$user->id)
+                ->where("kposts.user_id","=",auth()->id())
+                ->where("type_id","<=",20);
+      })->orWhere(function ($query) use ($request) {
+          $query->where("posts.user_id","=",$user->id)
+                ->where("kposts.user_id","=",null)
+                ->where("type_id","<=",20);
+      })
       ->title($request->get('title'))
       ->published()
       ->hide()

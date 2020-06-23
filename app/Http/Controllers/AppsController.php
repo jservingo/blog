@@ -114,11 +114,18 @@ class AppsController extends Controller
   {
     $posts = Post 
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
-      ->join('apps', 'ref_id', '=', 'apps.id')       
-      ->where("apps.user_id","=",$user->id)
-      ->where("kposts.user_id","=",auth()->id())
-      ->where("type_id","=",23)
-      ->where("apps.parent_id","=",null)
+      ->join('apps', 'ref_id', '=', 'apps.id') 
+      ->where(function ($query) use ($request) {
+          $query->where("apps.user_id","=",$user->id)
+                ->where("kposts.user_id","=",auth()->id())
+                ->where("type_id","=",23)
+                ->where("apps.parent_id","=",null);
+        })->orWhere(function ($query) use ($request) {
+          $query->where("apps.user_id","=",$user->id)
+                ->where("kposts.user_id","=",null)
+                ->where("type_id","=",23)
+                ->where("apps.parent_id","=",null);
+      })
       ->title($request->get('title'))
       ->published()
       ->hide()

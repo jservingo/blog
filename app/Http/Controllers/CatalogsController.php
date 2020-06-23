@@ -189,9 +189,15 @@ class CatalogsController extends Controller
       $catalogs = Catalog
         ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
         ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
-        ->where("catalogs.user_id","=",$user->id)
-        ->where("kposts.user_id","=",auth()->id())
-        ->where("posts.type_id","=",21)
+        ->where(function ($query) use ($request) {
+            $query->where("catalogs.user_id","=",$user->id)
+                  ->where("kposts.user_id","=",auth()->id())
+                  ->where("posts.type_id","=",21);
+          })->orWhere(function ($query) use ($request) {
+            $query->where("catalogs.user_id","=",$user->id)
+                  ->where("kposts.user_id","=",null)
+                  ->where("posts.type_id","=",21);
+        })
         ->title($request->get('title'))
         ->published()
         ->hide()
