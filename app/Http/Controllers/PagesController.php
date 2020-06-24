@@ -144,7 +144,7 @@ class PagesController extends Controller
                 ->where("type_id","=",22);
       })
       ->title($request->get('title'))
-      ->published()
+      
       ->hide()
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
