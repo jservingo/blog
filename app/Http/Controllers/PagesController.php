@@ -146,7 +146,7 @@ class PagesController extends Controller
       ->where("type_id","=",22)
       ->published()
       ->hide()
-      ->select('posts.*','false as featured');
+      ->select('posts.*','0 as featured');
 
     $posts_saved->union($posts_created);
     $querySql = $posts_saved->toSql();
