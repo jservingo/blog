@@ -132,24 +132,27 @@ class PagesController extends Controller
 
   public function show_created_by_user(User $user, Request $request)
   {
-    $posts = Post
+    $posts_saved = Post
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')        
-      ->where(function ($query) use ($request, $user) {
-          $query->where("posts.user_id","=",$user->id)
-                ->where("kposts.user_id","=",auth()->id())
-                ->where("type_id","=",22);
-      })->orWhere(function ($query) use ($request, $user) {
-          $query->where("posts.user_id","=",$user->id)
-                ->where("kposts.user_id","=",null)
-                ->where("type_id","=",22);
-      })
-      ->title($request->get('title'))
-      
+      ->where("posts.user_id","=",$user->id)
+      ->where("kposts.user_id","=",auth()->id())
+      ->where("type_id","=",22);
+      ->published()
       ->hide()
-      ->orderBy('kposts.featured','DESC')
-      ->latest('posts.published_at')
-      ->select('posts.*','kposts.featured')
-      ->paginate(12);
+      ->select('posts.*','kposts.featured');
+
+    $posts_created = Post
+      ::where("user_id","=",$user->id)
+      ->where("type_id","=",22)
+      ->published()
+      ->hide()
+      ->select('posts.*','false as featured');
+
+    $posts_saved->union($posts_created);
+    $querySql = $posts_saved->toSql();
+
+    $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_saved->getBindings());
+    $posts = $query->orderBy('featured','DESC')->latest('published_at')->paginate(12);
 
     $title = __('messages.created-pages-by')." ".$user->name;   
     $root = "created_pages";
