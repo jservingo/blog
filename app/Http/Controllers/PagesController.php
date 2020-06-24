@@ -144,7 +144,6 @@ class PagesController extends Controller
     $posts_created = Post
       ::where("user_id","=",$user->id)
       ->where("type_id","=",22)
-      ->published()
       ->select('posts.*', DB::raw('0 as featured'));
 
     $posts_saved->union($posts_created);
