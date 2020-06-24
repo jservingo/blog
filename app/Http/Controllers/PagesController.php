@@ -136,7 +136,7 @@ class PagesController extends Controller
       ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')        
       ->where("posts.user_id","=",$user->id)
       ->where("kposts.user_id","=",auth()->id())
-      ->where("type_id","=",22);
+      ->where("type_id","=",22)
       ->published()
       ->hide()
       ->select('posts.*','kposts.featured');
