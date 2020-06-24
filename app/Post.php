@@ -96,7 +96,7 @@ class Post extends Model
                 $query->where('posts.user_id','<>',auth()->id())
                     ->where('cstr_privacy','=',1)
                     ->whereNotNull('published_at')
-                    ->where('published_at','>=',$current);
+                    ->where('published_at','<=',$current);
             }); 
         }
     }

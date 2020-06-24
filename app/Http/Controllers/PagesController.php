@@ -137,6 +137,7 @@ class PagesController extends Controller
       ->where("posts.user_id","=",$user->id)
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",22)
+      ->title($request->get('title'))
       ->published()
       ->hide()
       ->select('posts.*','kposts.featured');
@@ -144,13 +145,15 @@ class PagesController extends Controller
     $posts_created = Post
       ::where("user_id","=",$user->id)
       ->where("type_id","=",22)
+      ->title($request->get('title'))
+      ->published()
       ->select('posts.*', DB::raw('0 as featured'));
 
     $posts_saved->union($posts_created);
     $querySql = $posts_saved->toSql();
 
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_saved->getBindings());
-    $posts = $query->orderBy('featured','DESC')->latest('published_at')->paginate(12);
+    $posts = $query->groupBy('id')->orderBy('featured','DESC')->latest('published_at')->paginate(12);
 
     $title = __('messages.created-pages-by')." ".$user->name;   
     $root = "created_pages";
