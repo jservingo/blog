@@ -117,22 +117,35 @@ class ContactsController extends Controller
       ::where("id","=",$post->ref_id)
       ->first();
 
-    $apps = App
-      ::where("user_id","=",$user->id)
+    //OJO: Falta hide()
+    $apps = Post
+      ::join('apps', 'ref_id', '=', 'apps.id') 
+      ->where("apps.user_id","=",$user->id)
+      ->where("posts.user_id","=",$user->id)
+      ->where("type_id","=",23)
       ->where("parent_id","=",null)
+      ->published()
       ->count(); 
 
-    $pages = Page
+    //OJO: Falta hide()
+    $pages = Post
       ::where("user_id","=",$user->id)
+      ->where("type_id","=",22)
+      ->published()
       ->count(); 
 
-    $catalogs = Catalog
+    //OJO: Falta hide()
+    $catalogs = Post
       ::where("user_id","=",$user->id)
+      ->where("type_id","=",21)
+      ->published()
       ->count(); 
 
+    //OJO: Falta hide()
     $posts = Post
       ::where("user_id","=",$user->id)
       ->where("type_id","<=",20)
+      ->published()
       ->count(); 
 
     $result = array("apps"=>$apps,

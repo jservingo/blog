@@ -141,14 +141,13 @@ class CatalogsController extends Controller
   {
     if(get_view('catalogs')=="ribbon")
     {
-      //OK
+      //OJO: Se quito hide()
       $catalogs = Catalog
         ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
         ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
         ->where("catalogs.user_id","=",auth()->id())
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)
-        ->hide()
         ->title($request->get('title'))
         ->orderBy('kposts.featured','DESC')
         ->latest('posts.published_at')
@@ -158,13 +157,12 @@ class CatalogsController extends Controller
     }
     else
     {
-      //OK
+      //OJO: Se quito hide()
       $posts = Post 
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')       
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("posts.type_id","=",21)
-      ->hide()
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
@@ -186,32 +184,37 @@ class CatalogsController extends Controller
     if(get_view('catalogs')=="ribbon")
     {
       //OK
-      $catalogs = Catalog
+      $catalogs_saved = Catalog
         ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
         ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
-        ->where(function ($query) use ($request, $user) {
-            $query->where("catalogs.user_id","=",$user->id)
-                  ->where("kposts.user_id","=",auth()->id())
-                  ->where("posts.type_id","=",21);
-          })->orWhere(function ($query) use ($request, $user) {
-            $query->where("catalogs.user_id","=",$user->id)
-                  ->where("kposts.user_id","=",null)
-                  ->where("posts.type_id","=",21);
-        })
+        ->where("catalogs.user_id","=",$user->id)
+        ->where("kposts.user_id","=",auth()->id())
+        ->where("posts.type_id","=",21)
         ->title($request->get('title'))
         ->published()
         ->hide()
-        ->orderBy('kposts.featured','DESC')
-        ->latest('posts.published_at')
-        ->select('catalogs.*','kposts.featured')
-        ->paginate(6);      
+        ->select('catalogs.*','kposts.featured');
+
+      $catalogs_created = Catalog  
+        ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
+        ->where("catalogs.user_id","=",$user->id)
+        ->where("posts.type_id","=",21)
+        ->title($request->get('title'))
+        ->published()
+        ->select('catalogs.*', DB::raw('0 as featured'));
+           
+      $catalogs_saved->union($catalogs_created);
+      $querySql = $catalogs_saved->toSql();
+
+      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($catalogs_saved->getBindings());
+      $catalogs = $query->orderBy('featured','DESC')->latest('published_at')->paginate(12);                 
 
       return view('catalogs.show',compact('catalogs'));
     }
     else
     {
       //OK
-      $posts = Post 
+      $posts_saved = Post 
         ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
         ->where("kposts.user_id","=",auth()->id())       
         ->where("posts.user_id","=",$user->id)
@@ -219,10 +222,20 @@ class CatalogsController extends Controller
         ->title($request->get('title'))
         ->published()
         ->hide()
-        ->orderBy('kposts.featured','DESC')
-        ->latest('posts.published_at')
-        ->select('posts.*','kposts.featured')
-        ->paginate(12);
+        ->select('posts.*','kposts.featured');
+
+      $posts_created = Post
+      ::where("user_id","=",$user->id)
+      ->where("type_id","=",21)
+      ->title($request->get('title'))
+      ->published()
+      ->select('posts.*', DB::raw('0 as featured'));  
+
+      $posts_saved->union($posts_created);
+      $querySql = $posts_saved->toSql();
+
+      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_saved->getBindings());
+      $posts = $query->orderBy('featured','DESC')->latest('published_at')->paginate(12);
 
       $title = __('messages.created-catalogs-by')." ".$user->name;   
       $root = "created_catalogs";

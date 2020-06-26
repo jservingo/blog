@@ -98,12 +98,12 @@ class PagesController extends Controller
 
   public function show_created(Request $request)
   {
+    //OJO: Se quito hide()
     $posts = Post  
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')      
       ->where("posts.user_id","=",auth()->id())
       ->where("kposts.user_id","=",auth()->id())
       ->where("posts.type_id","=",22)
-      ->hide()
       ->title($request->get('title'))
       ->orderBy('kposts.featured', 'DESC')
       ->latest('posts.published_at')
