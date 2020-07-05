@@ -57,6 +57,21 @@ class HomeController extends Controller
     return view('home.show_login',compact('mode'));
   }
 
+  public function account()
+  {
+    return view('home.show_account');
+  }
+
+  public function configuration()
+  {
+    $post = Post        
+      ::where("posts.user_id","<>",auth()->id())
+      ->where("type_id","=",24)
+      ->first();
+      
+    return redirect()->route('post.edit', [$post->id]);
+  }
+
   public function change_language(Request $request)
   {
     $lang = $request->get('lang');

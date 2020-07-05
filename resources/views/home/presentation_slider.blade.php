@@ -1,3 +1,3 @@
 {{-- home.presentation_slider --}} 
 
-<img src="/img/ko_main.jpg" width="100%"> 
+<img src="/img/kodelia_main.jpg" width="100%"> 

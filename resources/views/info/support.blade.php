@@ -26,6 +26,14 @@
 						<p>Email: jservingo@gmail.com<p>
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
+					  <h3>Pago móvil</h3>
+						<img src="/img/pago_movil.png" height="180">
+						<br>
+						<br>Cel: 0412-6000713
+						<br>C.I. 5966618
+						<br>Jorge Servin
+					</div>
+					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Zelle</h3>
 						<img src="/img/zelle.png" height="180">
 						<p>Sorry! Zelle is not working anymore in Venezuela</a><p>

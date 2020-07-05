@@ -19,8 +19,10 @@ Route::get('password/reset', function () {
 //Home & User 
 Route::get('/','HomeController@index')->name('home');
 Route::get('user/login','HomeController@login')->name('login');
+Route::get('user/account','HomeController@account')->name('account');
 Route::get('user/register','HomeController@register')->name('register');
 Route::get('user/language','HomeController@change_language')->name('language');
+Route::get('user/configuration','HomeController@configuration')->name('configuration');
 Route::get('user/verify/{token}', 'Auth\RegisterController@verifyUser');
 Route::get('user/{user}/{url?}','PostsController@show_user')->name('post.show_user');
 Route::get('ad/{position1}/{position2}','HomeController@get_ad');

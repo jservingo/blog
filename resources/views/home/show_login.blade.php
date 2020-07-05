@@ -3,14 +3,15 @@
 @extends('layout')
 
 @section('content')
-  <div style="width:100%; background-color:#baf3e8; margin-top:-22px; height:180px">
-    <h1 style="padding-left:60px; padding-top:22px">{{ __('messages.slogan') }}</h1>
-    <p style="padding-left:60px;">
-      <span style="font-size:24px; font-weight:500;">
-        {{ __('messages.solution') }}
-      </span>
-    </p>
+  <div style="margin:0">
+    <img src="/img/kodelia_intro.png" style="width:100%;">
   </div>
+
+  <div style="width:100%; background-color:#155597; margin-top:-26px; height:80px"> 
+   <h1 style="padding-left:60px; padding-top:22px; color:#ffff;" align="center">{{ __('messages.introducing') }}</h1>
+  </div>
+
+  @include('home.presentation_solutions')
 
   @if (session('status'))
     <div class="alert alert-success">
@@ -45,7 +46,11 @@
 
     <div style="width:100%; text-align:center;">
     	<div style="width:100%; padding-top:40px; display:inline-block;">
-    		@include('home.presentation_features')
+    		@include('home.feature1')
+        @include('home.feature2')
+        @include('home.feature3')
+        @include('home.feature4')
+        @include('home.feature5')
     	</div>
   </div>  
 @endsection
