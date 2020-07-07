@@ -12,7 +12,7 @@
       </div>
 			<cite>{{ __('messages.solution') }}</cite>
 			<div class="divider-2" style="margin: 35px 0;"></div>
-			<p>Powered by Digital Ocean cloud hosting</p>
+			<p>{{ __('messages.powered-by') }}</p>
       <p>{{ __('messages.d&d') }}</p>
 			<p>{{ __('messages.headquarters') }}</p>
 		</div>

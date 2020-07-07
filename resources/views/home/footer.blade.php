@@ -14,9 +14,9 @@
             <div class="divider-2"></div>
             <p style="font-size:18px">{{ __('messages.solution') }}</p>
             <div class="divider-2" style="width: 80%;"></div>
-            <p style="opacity:1">Powered by Digital Ocean Cloud Hosting</p>
+            <p style="opacity:1">{{ __('messages.powered-by') }}</p>
             <p style="opacity:1">{{ __('messages.d&d') }}</p>
-            <p>Copyright © 2020 kodelia.com {{ __('messages.all-rights') }}</p>            
+            <p>{{ __('messages.copyright') }} kodelia.com {{ __('messages.all-rights') }}</p>            
             <ul class="social-media-footer list-unstyled">
                 <li><a href="#" class="fb"></a></li>
                 <li><a href="#" class="tw"></a></li>

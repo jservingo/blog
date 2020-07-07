@@ -9,7 +9,7 @@
   <div style="float:left; width:46%; text-align:left; padding-left:30px;">
     <div style="width:90%; padding-top:40px; display:inline-block;">
       <span style="font-size:24px; font-weight:500;">
-         Feature 1 
+         {!! __('messages.feature-1-desc') !!}
       </span>
     </div>
   </div>
