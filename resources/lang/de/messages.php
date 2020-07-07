@@ -1,6 +1,6 @@
 <?php
 	return[
-		'lang' => 'en',
+		'lang' => 'de',
 		'log-in' => 'Log In',
 		'sign-up' => 'Sign Up',
 		'version' => '',
