@@ -180,7 +180,7 @@ $('.btn_register').bind('click', function(e){
 }); 
 
 $('.btn_configuration').bind('click', function(e){
-  location = "/user/configuration";acc
+  location = "/user/configuration";
 });
 
 $('.btn_show_alerts').bind('click', function(e){

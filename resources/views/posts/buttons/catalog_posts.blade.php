@@ -43,7 +43,7 @@
 	</a>
 	</div>
 
-	<div id="menu_view_posts" class="btn tip popr box_popup" 
+	<div id="menu_view_posts" class="btn xtip popr box_popup" 
 			style = "width:28px; float:left;"
 			data-id="view_posts"
 			data-tip="{{ __('messages.tip-select-view') }}">

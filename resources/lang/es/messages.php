@@ -319,5 +319,7 @@
  		'send-message' => 'Enviar mensaje',
  		'hide-post' => 'Ocultar en todos los catálogos',
  		'order-num' => 'Orden (ingrese un número)',
+ 		'promoted-post' => 'Post promocionado',
+ 		'until' => 'hasta',
 
 	];

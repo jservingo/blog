@@ -261,7 +261,6 @@ class CatalogsController extends Controller
                 ->where('catalog_id','=',$catalog->id);
         })
       ->skipOffers()
-      ->limit(1)
       ->select('posts.*', DB::raw('1 as section'), DB::raw('1 as featured'));
 
     $posts_saved = $catalog->posts() 
@@ -318,7 +317,6 @@ class CatalogsController extends Controller
                 ->where('catalog_id','=',$catalog->id);
         })
       ->skipOffers()
-      ->limit(1)
       ->select('posts.*', DB::raw('1 as section'), DB::raw('1 as featured'));
 
     $posts_saved = $catalog->posts() 

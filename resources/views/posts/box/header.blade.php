@@ -11,7 +11,7 @@
 		<a href="{{ route('post.show',[$post,\Illuminate\Support\Str::slug($post->title)]) }}"
 				class="text-uppercase c-blue"
 	  		data-id="{{ $post->id }}">
-	  	<h1 class="t-title" style="margin-top:0;margin-bottom:0px;margin-right:22px;">{{ $post->title }}</h1>  
+	  	<h1 class="t-title" style="margin-top:0;margin-bottom:0px;margin-right:22px;">{{ $post->title }}</h1>
 		</a>		
 	  <div> 
 	    <div class="popr box_popup" style="position:absolute; top:10px; right:5px;"

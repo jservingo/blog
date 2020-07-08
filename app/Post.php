@@ -84,7 +84,6 @@ class Post extends Model
             })->orWhere(function ($query) use ($from, $to) {
                 $query->where('posts.user_id','<>',auth()->id())
                     ->where('cstr_privacy','=',1)
-                    ->whereNotNull('published_at')
                     ->whereBetween('published_at', [$from, $to]);
             });    
         }
@@ -120,8 +119,8 @@ class Post extends Model
             ->published()
             ->count();
 
-        $num = rand(0, $max-1);
-        $query->skip($num);
+        $num = rand(0, $max - 1);
+        $query->skip($num)->take(1);
     }
 
     public function scopeTitle($query, $title)
@@ -223,6 +222,15 @@ class Post extends Model
         return $this->published_at->format('m/d/y');
     }
 
+    public function getValidUntilAttribute()
+    {
+        $valid_until = $this->published_at->addDays(7);
+        if (Kapp::isLocale('en')) 
+            return $valid_until->format('m/d/y');
+        else if (Kapp::isLocale('es')) 
+            return $valid_until->format('d/m/y');
+        return $valid_until->format('m/d/y');
+    }
 
     public function getUserLikesAttribute()
     {

@@ -65,7 +65,7 @@ class HomeController extends Controller
   public function configuration()
   {
     $post = Post        
-      ::where("posts.user_id","<>",auth()->id())
+      ::where("posts.user_id","=",auth()->id())
       ->where("type_id","=",24)
       ->first();
       
