@@ -319,7 +319,7 @@
  		'send-message' => 'Send message',
  		'hide-post' => 'Hide in all catalogs',
  		'order-num' => 'Order (enter a number)',
- 		'promoted-post' => 'Promoted Post',
+ 		'promoted-post' => 'Promoted',
  		'until' => 'until',
 				
 	];
