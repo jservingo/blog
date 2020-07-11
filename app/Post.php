@@ -119,8 +119,15 @@ class Post extends Model
             ->published()
             ->count();
 
-        $num = rand(0, $max - 1);
-        $query->skip($num)->take(1);
+        if ($max > 1)
+        {    
+            $num = rand(0, $max - 1);
+            $query->skip($num)->take(1);
+        }
+        else
+        {
+            $query->take(1);
+        }
     }
 
     public function scopeTitle($query, $title)
@@ -220,6 +227,15 @@ class Post extends Model
         else if (Kapp::isLocale('es')) 
             return $this->published_at->format('d/m/y');
         return $this->published_at->format('m/d/y');
+    }
+
+    public function getCreatedDateAttribute()
+    {
+        if (Kapp::isLocale('en')) 
+            return $this->created_at->format('m/d/y');
+        else if (Kapp::isLocale('es')) 
+            return $this->created_at->format('d/m/y');
+        return $this->created_at->format('m/d/y');
     }
 
     public function getValidUntilAttribute()

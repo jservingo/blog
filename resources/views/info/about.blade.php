@@ -11,6 +11,15 @@
         </figure>
       </div>
 			<cite>{{ __('messages.solution') }}</cite>
+      <div class="divider-2" style="margin: 35px 0;"></div>
+      <h3>{{ __('messages.mission') }}</h3>
+      <p>{{ __('messages.mission-desc') }}</p>
+      <div class="divider-2" style="margin: 35px 0;"></div>
+      <h3>{{ __('messages.vision') }}</h3>
+      <p>{{ __('messages.vision-desc') }}</p>
+      <div class="divider-2" style="margin: 35px 0;"></div>
+      <h3>{{ __('messages.values') }}</h3>
+      <p>{{ __('messages.values-desc') }}</p>
 			<div class="divider-2" style="margin: 35px 0;"></div>
 			<p>{{ __('messages.powered-by') }}</p>
       <p>{{ __('messages.d&d') }}</p>

@@ -57,11 +57,6 @@ class HomeController extends Controller
     return view('home.show_login',compact('mode'));
   }
 
-  public function account()
-  {
-    return view('home.show_account');
-  }
-
   public function configuration()
   {
     $post = Post        
@@ -111,6 +106,13 @@ class HomeController extends Controller
   }
 
   // Show
+
+  public function show_account()
+  {
+    $user = User::find(auth()->id());
+
+    return view('home.show_account',compact('user'));
+  }
 
   public function show_recommendations(Request $request)
   {

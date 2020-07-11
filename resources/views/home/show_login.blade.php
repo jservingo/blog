@@ -11,6 +11,7 @@
    <h1 style="padding-left:60px; padding-top:22px; color:#ffff;" align="center">{{ __('messages.introducing') }}</h1>
   </div>
 
+  @include('home.presentation_value_proposition')
   @include('home.presentation_solutions')
 
   @if (session('status'))

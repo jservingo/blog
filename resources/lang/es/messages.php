@@ -8,7 +8,7 @@
 		'solution' => 'Organiza, guarda y comparte tus posts y los de otros usuarios',
 		'solution-1' => 'Organiza, guarda y comparte tus posts y los de otros usuarios en un ambiente colaborativo y así dispondrás rápidamente de toda la información de tu interés.',
 		'solution-2' => 'Personaliza los posts de tu interés, de tal forma que puedas destacar, comentar y cambiar el orden de éstos.',
-		'solution-3' =>	'Utiliza aplicaciones potentes que acceden en tiempo real a bases de datos de terceros. Con solo registrarte gratuitamente ya podrás consultar miles de datos que hayas seleccionado previamente.',
+		'solution-3' =>	'Utiliza aplicaciones potentes que acceden en tiempo real a bases de datos de terceros. Con solo registrarte gratuitamente ya podrás consultar miles de datos dispersos en la internet.',
 		'introducing' => 'Presentamos la nueva plataforma Kodelia',
 		'all-rights' => 'Todos los derechos reservados.',
 		'copyright' => 'Copyright © 2020',
@@ -321,5 +321,11 @@
  		'order-num' => 'Orden (ingrese un número)',
  		'promoted-post' => 'Promocionado',
  		'until' => 'hasta',
-
+ 		'mission' => 'Misión',
+ 		'vision' => 'Visión',
+ 		'values' => 'Valores',
+ 		'mission-desc' => 'Proveer una plataforma que permita a los usuarios organizar, guardar y compartir sus posts y los de otros usuarios en un ambiente colaborativo, de tal forma que puedan disponner rápidamente de toda la información de su interés.',
+ 		'vision-desc' => 'Convertir a Kodelia en la plataforma No. 1 para almacenamiento y consulta de información en la internet. Alcanzar en menos de 3 años al menos 500 millones de usuarios.',
+ 		'values-desc' => 'Integramos un grupo de colaboradores altamanente motivados en ofrecer una plataforma colaborativa, innovadora y eficiente basados en el respeto, la igualdad y la libertad de expresión responsable. Estamos comprometidos en realizar una labor social, informativa, educativa  y de entretenimiento que beneficie a toda la sociedad.',
+ 		'value-proposition' => '¿Demasiada información en la internet? ¿Todavía no has encontrado lo que estás buscando? La plataforma Kodelia te permite organizar en múltiples páginas y catálogos todos los posts, tanto tuyos como de otros usuarios y de esta forma acceder rápidamente a toda la información de tu interés, ahorrarás tiempo y podrás consultar gratuitamente miles de datos provenientes de fuentes externas sin tener que navegar por distintos sitios web. Gracias a lo cual no seguirás perdido en un mar de datos.',
 	];
