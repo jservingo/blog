@@ -438,9 +438,6 @@ class PostsController extends Controller
       if ($catalog)
       {
         $catalog->name = $post->title;
-        $catalog->cstr_privacy = $post->cstr_privacy;
-        $catalog->cstr_restricted = $post->cstr_restricted;
-        $catalog->cstr_colaborative = $post->cstr_colaborative;
         $catalog->save();
       }
     }
@@ -451,9 +448,6 @@ class PostsController extends Controller
       if ($page)
       { 
         $page->name = $post->title; 
-        $page->cstr_privacy = $post->cstr_privacy;
-        $page->cstr_restricted = $post->cstr_restricted;
-        $page->cstr_colaborative = $post->cstr_colaborative;
         $page->cstr_allow_subscribers = $request->get('cstr_allow_subscribers');
         $page->cstr_show_subscribers = $request->get('cstr_show_subscribers');
         $page->cstr_main_page = $request->get('cstr_main_page');

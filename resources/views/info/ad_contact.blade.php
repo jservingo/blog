@@ -4,7 +4,7 @@
   <br/>
 	<section class="pages container">
 		<div class="page page-about">
-      <h1 class="text-capitalize">{{ __('messages.place-ad') }}</h1>
+      <h1 class="text-capitalize">{{ __('messages.ad-contact') }}</h1>
 			<div>
         <figure class="xlogo" style="margin:0">
           <img src="/img/kodelia_slogan.png" style="height:90px;" alt="kodelia_slogan">
@@ -32,6 +32,7 @@
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>
   <script type="text/javascript" src="/js/growl.js"></script>
   <script type="text/javascript" src="/js/buttons/header.js"></script>
+  <script type="text/javascript" src="/js/buttons/create_edit_show.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script>

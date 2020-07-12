@@ -6,12 +6,12 @@
 		<div class="page page-about">
       <h1 class="text-capitalize">{{ __('messages.account') }}</h1>		
 			<h2>{{ $user->post->title }}</h2>
-			<p>username: {{ $user->name }}</p>
-			<p>email: {{ $user->email }}</p>
-			<p>language: {{ $user->language }}</p>
-			<p>created_at: {{ $user->post->created_date }}</p>
-      <p>views: {{ $user->post->views }}</p>
-			<p>likes: {{ $user->post->likes }}</p>
+			<p>{{ __('messages.username') }}: {{ $user->name }}</p>
+			<p>{{ __('messages.email') }}: {{ $user->email }}</p>
+			<p>{{ __('messages.language') }}: {{ $user->language }}</p>
+			<p>{{ __('messages.creation-date') }}: {{ $user->post->created_date }}</p>
+      <p>{{ __('messages.views') }}: {{ $user->post->views }}</p>
+			<p>{{ __('messages.likes') }}: {{ $user->post->likes }}</p>
 		</div>
 	</section>
 @endsection

@@ -330,4 +330,8 @@
  		'value-proposition' => '¿Demasiada información en la internet? ¿Todavía no has encontrado lo que estás buscando? La plataforma Kodelia te permite organizar en múltiples páginas y catálogos todos los posts, tanto tuyos como de otros usuarios y de esta forma acceder rápidamente a toda la información de tu interés, ahorrarás tiempo y podrás consultar gratuitamente miles de datos provenientes de fuentes externas sin tener que navegar por distintos sitios web. Ya no seguirás perdido en un mar de datos.',
  		'register-now' => 'Registráte ahora',
  		'register-free' => 'Completamente gratis',
+ 		'ad-contact' => '¿Quieres colocar un anuncio?',
+ 		'language' => 'Lenguaje',
+ 		'creation-date' => 'Fecha de creación',
+ 		'views' => 'Vistas',
 	];

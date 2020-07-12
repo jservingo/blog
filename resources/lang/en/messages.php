@@ -330,5 +330,11 @@
  		'value-proposition' => 'Too much information on the internet? Still haven\'t found what you\'re looking for? The Kodelia platform allows you to organize all posts, both yours and other users, in multiple pages and catalogs and thus quickly access all the information of your interest, save time and you can freely consult thousands of data from external sources without having than browsing different websites. You will not continue lost in a sea of ​​data.',
  		'register-now' => 'Register now',
  		'register-free' => 'Completely free',		
+ 		'ad-contact' => '¿Do you want to place an ad?',
+ 		'language' => 'Language',
+ 		'creation-date' => 'Creation Date',
+ 		'views' => 'Views',
+
+
 	];
 
