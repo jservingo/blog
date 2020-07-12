@@ -48,7 +48,8 @@
   </form>
 </div>
 
-<p>{{ __('messages.please-register') }} <a class="btn_register button green" href="#"><img src="\img\register.png"></a><p> 
+<p>{{ __('messages.please-register') }} <a class="btn_register button green" href="#">{{ __('messages.register-now') }}</a><p> 
+<p>{{ __('messages.register-free') }}</p>
 
 {{-- 
 <div class="social-auth-links text-center">

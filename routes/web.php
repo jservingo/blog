@@ -6,6 +6,7 @@
 Route::get('about','InfoController@about')->name('info.about');
 Route::get('support','InfoController@support')->name('info.support');
 Route::get('contact','InfoController@contact')->name('info.contact');
+Route::get('ad/contact','InfoController@ad_contact')->name('info.ad_contact');
 
 Route::get('email',function(){
 	return new App\Mail\LoginCredentials(App\User::first(),'123456');

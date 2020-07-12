@@ -32,7 +32,7 @@
                 <a class="btn_show_alerts">    
                     <img src="/img/bell.png" alt="" style="width:20px;height:20px;">
                 </a>            
-                <a class="btn_configuration"> 
+                <a class="btn_edit_post" data-id="{{ Auth::user()->post->id }}"> 
                     <img src="/img/configuration.png" alt="" style="width:20px;height:20px;">
                 </a>                
                 <div id="menu_profile" class="popr" data-id="profile">

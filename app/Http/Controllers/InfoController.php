@@ -27,4 +27,9 @@ class InfoController extends Controller
     {
     	return view('info.contact');
     }
+
+    public function ad_contact()
+    {
+        return view('info.ad_contact');
+    }
 }

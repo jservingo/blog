@@ -21,7 +21,7 @@
 		'email-not-verified' => 'Sorry your email cannot be identified.',
 		'check-email' => 'We sent you an activation code. Check your email and click on the link to verify.',
 		'please-login' => 'If you already registered please enter here',
-		'please-register' => 'If you have not registered please sign up here',
+		'please-register' => 'If you have not registered please',
 		'registered-user' => 'Sorry! You need to log in first.',
 		'send-donation' => 'With your help, we can continue to improve our service to you and support our team of experts to develope more apps with quality information for your bussiness and pleasure. You can easily make a small donation using the following accounts:',
 		'need-help' => 'Need help? have questions? Any suggestion? Please send a message if you need our support. We thank you in advance for your comments and suggestions.',
@@ -327,6 +327,8 @@
  		'mission-desc' => 'Provide a platform that allows users to organize, save and share their posts and those of other users in a collaborative environment, so that they can quickly have all the information of their interest.',
  		'vision-desc' => 'Convert Kodelia into the No. 1 platform for storing and consulting information on the internet. Reach at least 500 million users in less than 3 years.',
  		'values-desc' => 'We integrate a group of highly motivated collaborators to offer a collaborative, innovative and efficient platform based on respect, equality and responsible freedom of expression. We are committed to carrying out social, informative, educational and entertainment work that benefits all of society.',
- 		'value-proposition' => 'Too much information on the internet? Still haven\'t found what you\'re looking for? The Kodelia platform allows you to organize all posts, both yours and other users, in multiple pages and catalogs and thus quickly access all the information of your interest, save time and you can freely consult thousands of data from external sources without having than browsing different websites. Thanks to which you will not continue lost in a sea of ​​data.',		
+ 		'value-proposition' => 'Too much information on the internet? Still haven\'t found what you\'re looking for? The Kodelia platform allows you to organize all posts, both yours and other users, in multiple pages and catalogs and thus quickly access all the information of your interest, save time and you can freely consult thousands of data from external sources without having than browsing different websites. You will not continue lost in a sea of ​​data.',
+ 		'register-now' => 'Register now',
+ 		'register-free' => 'Completely free',		
 	];
 
