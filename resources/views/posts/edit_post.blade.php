@@ -210,7 +210,7 @@
           allow_subscribers, show_subscribers, main_page
       --}}
 
-      @if($post->isPhotoGallery() || $post->isOffer())
+      @if($post->isPhotoGallery() || $post->isOffer() || $post->isUser())
       <div class="form-control">
         <label><span>{{ __('messages.upload-images') }}</span></label>
       </div>

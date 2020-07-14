@@ -31,6 +31,7 @@
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>
   <script type="text/javascript" src="/js/growl.js"></script>
+  <script type="text/javascript" src="/js/functions.js"></script>
   <script type="text/javascript" src="/js/buttons/header.js"></script>
   <script type="text/javascript" src="/js/buttons/create_edit_show.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
