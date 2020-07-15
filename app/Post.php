@@ -35,6 +35,11 @@ class Post extends Model
         return $this->hasMany(Photo::class);
     }
 
+    public function audios()
+    {
+        return $this->hasMany(Audio::class);
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);

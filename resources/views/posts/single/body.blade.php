@@ -12,6 +12,13 @@
   {!! $post->body !!}
 </div>
 
+<div class="image-w-text" style="padding-right:20px;">
+   @if ($post->audios)
+    <h3>{{ __('messages.audios') }}:</h3>
+     @include('posts.single.audios')
+   @endif
+</div>
+
 <div class="image-w-text links" style="padding-right:20px;">
    @if ($post->links)
     <h3>{{ __('messages.links') }}:</h3>

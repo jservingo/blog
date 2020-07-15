@@ -334,4 +334,5 @@
  		'language' => 'Lenguaje',
  		'creation-date' => 'Fecha de creación',
  		'views' => 'Vistas',
+ 		'audios' => 'Audios',
 	];
