@@ -137,6 +137,20 @@ class Post extends Model
         return $kpost;
     }
 
+    public function getFirstAudioAttribute()
+    {
+        $audio = Audio
+            ::where('post_id','=',$this->id)
+            ->first();
+
+        if ($audio)
+            $url = url('storage/'.$audio->url);
+        else
+            $url = "";
+
+        return $url;
+    }
+
     public function getCatalogAttribute()
     {
         $catalog = Catalog

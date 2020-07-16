@@ -13,7 +13,7 @@
 </div>
 
 <div style="padding-right:20px;">
-   @if ($post->audios)
+   @if ($post->audios->count() >= 1)
     <h3>{{ __('messages.audios') }}:</h3>
      @include('posts.single.audios')
    @endif
@@ -45,16 +45,11 @@
 </div>
 
 <div class="image-w-text" style="padding-right:20px;">
-  @if ($post->tags)
+  @if ($post->tags->count() >= 1)
     <h3>{{ __('messages.tags') }}:</h3>
     @include('posts.box.tags')
   @endif
 </div>
-
-<div class="image-w-text" style="padding-right:20px;">
-  <p>id: {{ $post->id}}</p>
-</div>
-
 
 {{-- 
 <div class="comments">

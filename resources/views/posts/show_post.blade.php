@@ -148,24 +148,27 @@
   </script> 
   <script>
     $(function() {
-      var player = $.AudioPlayer;
+      @if ($post->first_audio != '') 
+        var url = "{{ $post->first_audio }}";      
+        var player = $.AudioPlayer;
+              
+        player.init({
+              container: '#audioWrap'
+              ,source: url
+              ,imagePath: '/image'
+              ,debuggers: false
+              ,allowSeek: true        
+        });
 
-      player.init({
-            container: '#audioWrap'
-            ,source: ''
-            ,imagePath: '/image'
-            ,debuggers: false
-            ,allowSeek: true        
-      });
+        $('[data-url]').on('click', function(event) {
+            event.preventDefault();
+            url = $(this).data('url');
 
-      $('[data-url]').on('click', function(event) {
-          event.preventDefault();
-          url = $(this).data('url');
-
-          player.updateSource({
-              source: url
-          });
-      });
+            player.updateSource({
+                source: url
+            });
+        });
+      @endif
     });
   </script>    
 @endpush
