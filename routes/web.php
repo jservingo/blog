@@ -12,6 +12,11 @@ Route::get('email',function(){
 	return new App\Mail\LoginCredentials(App\User::first(),'123456');
 });
 
+//Google, verify that you own the website
+Route::get('/google/verify', function () {
+    return file_get_contents(public_path().'/google6e785e14523272c5.html'); 
+});
+
 //Password reset
 Route::get('password/reset', function () {
     return view('auth.passwords.reset');
