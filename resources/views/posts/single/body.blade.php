@@ -51,6 +51,11 @@
   @endif
 </div>
 
+<div class="image-w-text" style="padding-right:20px;">
+  <p>id: {{ $post->id}}</p>
+</div>
+
+
 {{-- 
 <div class="comments">
   <div class="divider"></div>
