@@ -2,12 +2,15 @@
 	<div style="float:left; width:60%">	
 		@if ($post->type_id >= 21)
 			<div class="image-w-text">
-			  <span class="cite-2">{{ $post->get_type() }}
+			  <span class="cite-2">{{ $post->get_type() }}</span>
 			</div>
 		@endif
 
 		<div class="image-w-text">
-		  <span class="cite-2">{{ __('messages.owner') }}:</span> {{ $post->owner->name }}
+			<span class="cite-2">{{ __('messages.owner') }}: </span>
+		  <span class="user c-blue">
+		    <a id="t-user" href="/user/{{ $post->owner->id }}"></span> {{ $post->owner->name }}</a>
+		  </span>
 		</div>
 
 		<div class="image-w-text">

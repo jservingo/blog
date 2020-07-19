@@ -3,7 +3,8 @@
 @section('content')
   <br/>
 	<section class="pages container">
-		<div class="page page-about">
+@extends('layout')
+		<div id="main_panel" class="page page-about">
       <h1 class="text-capitalize">{{ __('messages.ad-contact') }}</h1>
 			<div>
         <figure class="xlogo" style="margin:0">
