@@ -94,7 +94,7 @@ class CatalogsController extends Controller
                   ->title($request->get('title'));            
         })
         ->orderBy('kposts.featured','DESC')
-        ->latest('kposts.order_num')
+        ->orderBy('kposts.order_num')
         ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
         ->paginate(6);      
@@ -124,7 +124,7 @@ class CatalogsController extends Controller
                   ->title($request->get('title'));            
         })
         ->orderBy('featured','DESC')
-        ->latest('kposts.order_num')
+        ->orderBy('kposts.order_num')
         ->latest('published_at') 
         ->select('posts.*','featured')
         ->paginate(12);
@@ -152,7 +152,7 @@ class CatalogsController extends Controller
         ->where("posts.type_id","=",21)
         ->title($request->get('title'))
         ->orderBy('kposts.featured','DESC')
-        ->latest('kposts.order_num')
+        ->orderBy('kposts.order_num')
         ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
         ->paginate(6);   
@@ -168,7 +168,7 @@ class CatalogsController extends Controller
       ->where("posts.type_id","=",21)
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
-      ->latest('kposts.order_num')
+      ->orderBy('kposts.order_num')
       ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
       ->paginate(12);
