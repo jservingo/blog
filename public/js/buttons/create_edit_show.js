@@ -220,8 +220,8 @@ function btn_create_post(catalog_id)
   html = html + "<p>"+type+"</p>";
   html = html + "<select id='type'>";
   html = html + "<option value='3'>"+type_text+"</option>";
-  html = html + "<option value='5'>"+type_web_page+"</option>";
   html = html + "<option value='1'>"+type_photo_gallery+"</option>";
+  html = html + "<option value='5'>"+type_web_page+"</option>";  
   html = html + "<option value='2'>"+type_frame+"</option>";
   html = html + "<option value='4'>"+type_notification+"</option>";
   html = html + "<option value='6'>"+type_alert+"</option>";
