@@ -200,6 +200,7 @@ class PagesController extends Controller
         ->hide()      
         ->title($request->get('title'))
         ->orderBy('kposts.featured','DESC')
+        ->orderBy('kposts.order_num')
         ->latest('posts.published_at')
         ->select('catalogs.*','kposts.featured')
         ->paginate(6);
@@ -219,6 +220,7 @@ class PagesController extends Controller
         ->hide()      
         ->title($request->get('title'))
         ->orderBy('kposts.featured','DESC')
+        ->orderBy('kposts.order_num')
         ->latest('posts.published_at')
         ->select('posts.*','kposts.featured')
         ->paginate(12);
