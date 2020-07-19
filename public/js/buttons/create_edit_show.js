@@ -220,12 +220,12 @@ function btn_create_post(catalog_id)
   html = html + "<p>"+type+"</p>";
   html = html + "<select id='type'>";
   html = html + "<option value='3'>"+type_text+"</option>";
-  html = html + "<option value='4'>"+type_notification+"</option>";
-  html = html + "<option value='6'>"+type_alert+"</option>";
-  html = html + "<option value='7'>"+type_offer+"</option>";
   html = html + "<option value='5'>"+type_web_page+"</option>";
   html = html + "<option value='1'>"+type_photo_gallery+"</option>";
   html = html + "<option value='2'>"+type_frame+"</option>";
+  html = html + "<option value='4'>"+type_notification+"</option>";
+  html = html + "<option value='6'>"+type_alert+"</option>";
+  html = html + "<option value='7'>"+type_offer+"</option>";      
   html = html + "</select>";
   html = html + "<p>"+title+"</p>";
   html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+enter_post+"' required>";
