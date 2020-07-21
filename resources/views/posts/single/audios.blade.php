@@ -4,7 +4,7 @@
 	<div id="audioWrap" style="background:#333"></div>
 	<div>
 		<ul>
-			@foreach ($post->audios as $audio)
+			@foreach ($post->audios->sortBy('featured')->sortBy('position') as $audio)
 				<li>
 					<a id="btn_play_audio" 
 							data-url="{{ url('storage/'.$audio->url) }}" 
