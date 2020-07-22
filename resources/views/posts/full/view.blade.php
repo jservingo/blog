@@ -80,7 +80,7 @@
       {!! $post->body !!}
     </div>
     @if ($post->audios->count() >= 1)
-      @include('posts.single.audios')
+      @include('posts.full.audios')
     @endif
     <div>
       <div style="float:right;">
