@@ -80,7 +80,6 @@
       {!! $post->body !!}
     </div>
     @if ($post->audios->count() >= 1)
-      <h3>{{ __('messages.audios') }}:</h3>
       @include('posts.single.audios')
     @endif
     <div>

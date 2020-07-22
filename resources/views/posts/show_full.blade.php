@@ -49,6 +49,7 @@
 @push('styles')
   <link rel="stylesheet" href="/css/framework_full.css">
   <link rel="stylesheet" href="/css/multiselect.css">
+  <link rel="stylesheet" href="/css/audioPlayer.min.css">
 @endpush
 
 @push('scripts')
@@ -74,6 +75,7 @@
   <script type="text/javascript" src="/js/tipr.js"></script>
   <script type="text/javascript" src="/js/truncate.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
+  <script type="text/javascript" src="/js/audioPlayer.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
       $('.menu').jqsimplemenu();
@@ -175,4 +177,29 @@
       $('#main_panel').css("visibility","visible");
     });
   </script>
+  <script>
+    $(function() {
+      @if ($post->first_audio != '') 
+        var url = "{{ $post->first_audio }}";      
+        var player = $.AudioPlayer;
+              
+        player.init({
+              container: '#audioWrap'
+              ,source: url
+              ,imagePath: '/image'
+              ,debuggers: false
+              ,allowSeek: true        
+        });
+
+        $('[data-url]').on('click', function(event) {
+            event.preventDefault();
+            url = $(this).data('url');
+
+            player.updateSource({
+                source: url
+            });
+        });
+      @endif
+    });
+  </script>      
 @endpush
