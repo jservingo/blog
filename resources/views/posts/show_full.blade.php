@@ -179,27 +179,29 @@
   </script>
   <script>
     $(function() {
-      @if ($post->first_audio != '') 
-        var url = "{{ $post->first_audio }}";      
-        var player = $.AudioPlayer;
-              
-        player.init({
-              container: '#audioWrap'
-              ,source: url
-              ,imagePath: '/image'
-              ,debuggers: false
-              ,allowSeek: true        
-        });
+      @foreach($posts as $post)
+        @if ($post->first_audio != '') 
+          var url = "{{ $post->first_audio }}";      
+          var player{{ $post->id }} = $.AudioPlayer;
+                
+          player{{ $post->id }}.init({
+                container: '#audioWrap{{ $post->id }}'
+                ,source: url
+                ,imagePath: '/image'
+                ,debuggers: false
+                ,allowSeek: true        
+          });
 
-        $('[data-url]').on('click', function(event) {
-            event.preventDefault();
-            url = $(this).data('url');
+          $('[data-url]').on('click', function(event) {
+              event.preventDefault();
+              url = $(this).data('url');
 
-            player.updateSource({
-                source: url
-            });
-        });
-      @endif
+              player{{ $post->id }}.updateSource({
+                  source: url
+              });
+          });
+        @endif
+      @endforeach
     });
   </script>      
 @endpush
