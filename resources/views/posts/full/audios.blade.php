@@ -6,7 +6,7 @@
 		<ul>
 			@foreach ($post->audios->sortBy('featured')->sortBy('position') as $audio)
 				<li>
-					<a id="btn_play_audio" 
+					<a class="btn_play_audio" 
 							data-url="{{ url('storage/'.$audio->url) }}"
 							data-post="{{ $post->id }}" 
 							href="#">
