@@ -180,28 +180,29 @@
   <script>
     $(function() {
       @foreach($posts as $post)
-        @if ($post->first_audio != '') 
+        @if ($post->audios->count() >= 1) 
           var url = "{{ $post->first_audio }}";      
-          var player{{ $post->id }} = $.AudioPlayer;
+          var player[{{ $post->id }}] = $.AudioPlayer;
                 
-          player{{ $post->id }}.init({
+          player[{{ $post->id }}].init({
                 container: '#audioWrap{{ $post->id }}'
                 ,source: url
                 ,imagePath: '/image'
                 ,debuggers: false
                 ,allowSeek: true        
-          });
-
-          $('[data-url]').on('click', function(event) {
-              event.preventDefault();
-              url = $(this).data('url');
-
-              player{{ $post->id }}.updateSource({
-                  source: url
-              });
-          });
+          });          
         @endif
       @endforeach
+
+      $('[data-url]').on('click', function(event) {
+        event.preventDefault();
+        url = $(this).data('url');
+        post = $(this).data('post');
+
+        player[post].updateSource({
+          source: url
+        });
+      });
     });
   </script>      
 @endpush
