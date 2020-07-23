@@ -49,7 +49,6 @@
 @push('styles')
   <link rel="stylesheet" href="/css/framework_full.css">
   <link rel="stylesheet" href="/css/multiselect.css">
-  <link rel="stylesheet" href="/css/audioPlayer.min.css">
 @endpush
 
 @push('scripts')
@@ -75,7 +74,7 @@
   <script type="text/javascript" src="/js/tipr.js"></script>
   <script type="text/javascript" src="/js/truncate.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
-  <script type="text/javascript" src="/js/audioPlayer.min.js"></script>
+  <script type="text/javascript" src="/js/audio.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
       $('.menu').jqsimplemenu();
@@ -179,31 +178,7 @@
   </script>
   <script>
     $(function() {
-      var player = [];
-      @foreach($posts as $post)
-        @if ($post->audios->count() >= 1) 
-          var url = "{{ $post->first_audio }}";      
-          player[{{ $post->id }}] = $.AudioPlayer;
-                
-          player[{{ $post->id }}].init({
-                container: '#audioWrap{{ $post->id }}'
-                ,source: url
-                ,imagePath: '/image'
-                ,debuggers: false
-                ,allowSeek: true        
-          });          
-        @endif
-      @endforeach
-
-      $('[data-url]').on('click', function(event) {
-        event.preventDefault();
-        url = $(this).data('url');
-        post = $(this).data('post');
-
-        player[post].updateSource({
-          source: url
-        });
-      });
+      $('audio').initAudioPlayer();
     });
   </script>      
 @endpush
