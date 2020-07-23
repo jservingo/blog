@@ -6,11 +6,7 @@
 		<ul>
 			@foreach ($post->audios->sortBy('featured')->sortBy('position') as $audio)
 				<li>
-					<a id="btn_play_audio" 
-							data-url="{{ url('storage/'.$audio->url) }}" 
-							href="#">
-							{{ $audio->description }}
-					</a>
+					<audio preload="auto" src="{{ url('storage/'.$audio->url) }}"></audio>
 				</li>
 			@endforeach
 		</ul>

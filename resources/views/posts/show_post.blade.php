@@ -44,7 +44,6 @@
 @push('styles')
   <!--<link rel="stylesheet" href="/css/twitter-bootstrap.css">-->
   <link rel="stylesheet" href="/css/framework_single.css">
-  <link rel="stylesheet" href="/css/audioPlayer.min.css">
 @endpush
 
 @push('scripts')
@@ -63,7 +62,7 @@
   <script type="text/javascript" src="/js/functions.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
-  <script type="text/javascript" src="/js/audioPlayer.min.js"></script>
+  <script type="text/javascript" src="/js/audio.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
       $('.menu').jqsimplemenu();
@@ -148,27 +147,7 @@
   </script> 
   <script>
     $(function() {
-      @if ($post->first_audio != '') 
-        var url = "{{ $post->first_audio }}";      
-        var player = $.AudioPlayer;
-              
-        player.init({
-              container: '#audioWrap'
-              ,source: url
-              ,imagePath: '/image'
-              ,debuggers: false
-              ,allowSeek: true        
-        });
-
-        $('[data-url]').on('click', function(event) {
-            event.preventDefault();
-            url = $(this).data('url');
-
-            player.updateSource({
-                source: url
-            });
-        });
-      @endif
+      $('audio').initAudioPlayer();
     });
   </script>    
 @endpush
