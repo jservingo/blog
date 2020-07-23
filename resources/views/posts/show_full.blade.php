@@ -179,10 +179,11 @@
   </script>
   <script>
     $(function() {
+      var player = [];
       @foreach($posts as $post)
         @if ($post->audios->count() >= 1) 
           var url = "{{ $post->first_audio }}";      
-          var player[{{ $post->id }}] = $.AudioPlayer;
+          player[{{ $post->id }}] = $.AudioPlayer;
                 
           player[{{ $post->id }}].init({
                 container: '#audioWrap{{ $post->id }}'
