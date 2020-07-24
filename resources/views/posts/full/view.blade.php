@@ -79,9 +79,12 @@
     <div style="padding:2px 10px 4px 10px; text-align:justify;">
       {!! $post->body !!}
     </div>
-    @if ($post->audios->count() >= 1)
-      @include('posts.full.audios')
-    @endif
+    <div style="padding-left:10px;padding-right:10px;">
+      @if ($post->audios->count() >= 1)
+        <h3>{{ __('messages.audios') }}:</h3>
+        @include('posts.single.audios')
+      @endif
+    </div>
     <div>
       <div style="float:right;">
         @include('posts.full.date') 
