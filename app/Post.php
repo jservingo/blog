@@ -83,6 +83,7 @@ class Post extends Model
         $toDate = $current->addDays(7)->toDateTimeString();
 
         $query->where('cstr_privacy','=',1)
+            ->whereNotNull('published_at')
             ->whereBetween('published_at', array($fromDate, $toDate));
     }
 
@@ -99,6 +100,7 @@ class Post extends Model
             })->orWhere(function ($query) use ($fromDate, $toDate) {
                 $query->where('posts.user_id','<>',auth()->id())
                     ->where('cstr_privacy','=',1)
+                    ->whereNotNull('published_at')
                     ->whereBetween('published_at', array($fromDate, $toDate));
             });    
         }
@@ -110,7 +112,7 @@ class Post extends Model
                 $query->where('posts.user_id','<>',auth()->id())
                     ->where('cstr_privacy','=',1)
                     ->whereNotNull('published_at')
-                    ->where('published_at','<=',$current);
+                    ->where('published_at','>=',date('Y-m-d').' 00:00:00'));
             }); 
         }
     }

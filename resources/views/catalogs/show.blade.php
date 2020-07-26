@@ -4,7 +4,7 @@
 
 @section('content')
 	@php
-    $title = "Created catalogs";
+    $title = "{{ __('messages.created-catalogs') }}";
     $root = "created_catalogs";
     $category = null;
   @endphp
