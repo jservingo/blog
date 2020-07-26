@@ -76,6 +76,16 @@ class Post extends Model
         return $str;
     }
 
+    public function scopePublishedOffer($query)
+    {
+        $current = Carbon::now();
+        $fromDate = $current->toDateTimeString();
+        $toDate = $current->addDays(7)->toDateTimeString();
+
+        $query->where('cstr_privacy','=',1)
+            ->whereBetween('published_at', array($fromDate, $toDate));
+    }
+
     public function scopePublished($query)
     {
         $current = Carbon::now();

@@ -257,13 +257,7 @@ class CatalogsController extends Controller
     $posts_offers = Post
       ::where("type_id","=",7)
       ->where("user_id","<>",auth()->id())
-      ->published()
-      ->whereNotIn('id', function($query) use ($catalog)
-        {
-          $query->select('post_id')
-                ->from('catalog_post')
-                ->where('catalog_id','=',$catalog->id);
-        })
+      ->publishedOffer()
       ->inRandomOrder()->limit(1)
       ->select('posts.*', DB::raw('1 as section'), DB::raw('1 as featured'), DB::raw('0 as order_num'));
 
