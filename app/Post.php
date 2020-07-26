@@ -79,8 +79,8 @@ class Post extends Model
     public function scopePublished($query)
     {
         $current = Carbon::now();
-        $from = $current;
-        $to = $current->addDays(7);
+        $fromDate = $current;
+        $toDate = $fromDate->addDays(7);
 
         if ($this->isOffer())
         {
@@ -89,7 +89,7 @@ class Post extends Model
             })->orWhere(function ($query) use ($from, $to) {
                 $query->where('posts.user_id','<>',auth()->id())
                     ->where('cstr_privacy','=',1)
-                    ->whereBetween('published_at', [$from, $to]);
+                    ->whereBetween('published_at', array($fromDate->toDateTimeString(), $toDate->toDateTimeString()));
             });    
         }
         else
