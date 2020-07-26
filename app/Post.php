@@ -79,17 +79,17 @@ class Post extends Model
     public function scopePublished($query)
     {
         $current = Carbon::now();
-        $fromDate = $current;
-        $toDate = $fromDate->addDays(7);
+        $fromDate = $current->toDateTimeString();
+        $toDate = $current->addDays(7)->toDateTimeString();
 
         if ($this->isOffer())
         {
             $query->where(function ($query) {
                 $query->where('posts.user_id','=',auth()->id());
-            })->orWhere(function ($query) use ($from, $to) {
+            })->orWhere(function ($query) use ($fromDate, $toDate) {
                 $query->where('posts.user_id','<>',auth()->id())
                     ->where('cstr_privacy','=',1)
-                    ->whereBetween('published_at', array($fromDate->toDateTimeString(), $toDate->toDateTimeString()));
+                    ->whereBetween('published_at', array($fromDate, $toDate));
             });    
         }
         else
