@@ -93,6 +93,7 @@ class Post extends Model
         $fromDate = $current->toDateTimeString();
         $toDate = $current->addDays(7)->toDateTimeString();
 
+        /*
         if ($this->isOffer())
         {
             $query->where(function ($query) {
@@ -115,6 +116,7 @@ class Post extends Model
                     ->where('published_at','<=',date('Y-m-d').' 00:00:00');
             }); 
         }
+        */
     }
 
     public function scopeHide($query)
