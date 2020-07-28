@@ -104,8 +104,12 @@ class Post extends Model
         $query->where(function ($query) {
             $query->where('posts.user_id','=',auth()->id());
         })->orWhere(function ($query) {  
-            $query->where('posts.user_id','<>',auth()->id())      
+            $query->where('posts.user_id','<>',auth()->id()) 
+                ->whereNotNull('kposts.hide')     
                 ->where('kposts.hide','=',0);
+        })->orWhere(function ($query) {  
+            $query->where('posts.user_id','<>',auth()->id())
+                ->whereNull('kposts.hide');      
         });
     }
 
