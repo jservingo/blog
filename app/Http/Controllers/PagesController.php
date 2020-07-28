@@ -214,15 +214,24 @@ class PagesController extends Controller
         ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
         ->join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')
         ->where("catalog_category.category_id","=",$category_id)
-        ->where("kposts.user_id","=",auth()->id())
-        ->where("posts.type_id","=",21)  
-        ->published()
-        ->hide()      
-        ->title($request->get('title'))
-        ->orderBy('kposts.featured','DESC')
-        ->orderBy('kposts.order_num')
-        ->latest('posts.published_at')
-        ->select('posts.*','kposts.featured')
+        ->where("posts.type_id","=",21)
+        ->where(function ($query) use ($request) {
+            $query->where("kposts.user_id","=",auth()->id())
+                  ->published()
+                  ->hide()      
+                  ->title($request->get('title'))
+                  ->orderBy('kposts.featured','DESC')
+                  ->orderBy('kposts.order_num')
+                  ->latest('posts.published_at')
+                  ->select('posts.*','kposts.featured');
+        })->orWhere(function ($query) use ($request) {
+            $query->whereNull('kposts.post_id')
+                  ->published()
+                  ->hide()      
+                  ->title($request->get('title'))
+                  ->latest('posts.published_at')
+                  ->select('posts.*', DB::raw('0 as featured'));
+        })
         ->paginate(12);
 
       $title = $page->name; 

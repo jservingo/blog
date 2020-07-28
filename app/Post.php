@@ -89,10 +89,6 @@ class Post extends Model
 
     public function scopePublished($query)
     {
-        $current = Carbon::now();
-        $fromDate = $current->toDateTimeString();
-        $toDate = $current->addDays(7)->toDateTimeString();
-        
         $query->where(function ($query) {
             $query->where('posts.user_id','=',auth()->id());
         })->orWhere(function ($query) use ($current) {
