@@ -94,21 +94,9 @@ class Post extends Model
         $toDate = $current->addDays(7)->toDateTimeString();
         
         $query->where(function ($query) {
-            $query->where('posts.type_id','=',7)
-                ->where('posts.user_id','=',auth()->id());
-        })->orWhere(function ($query) use ($fromDate, $toDate) {
-            $query->where('posts.type_id','=',7)
-                ->where('posts.user_id','<>',auth()->id())
-                ->where('cstr_privacy','=',1)
-                ->whereNotNull('published_at')
-                ->whereBetween('published_at', array($fromDate, $toDate));
-        })->orWhere(function ($query) {    
-            $query->where(function ($query) {
-                $query->where('posts.type_id','<>',7)
-                ->where('posts.user_id','=',auth()->id());
+            $query->where('posts.user_id','=',auth()->id());
         })->orWhere(function ($query) use ($current) {
-            $query->where('posts.type_id','<>',7)
-                ->where('posts.user_id','<>',auth()->id())
+            $query->where('posts.user_id','<>',auth()->id())
                 ->where('cstr_privacy','=',1)
                 ->whereNotNull('published_at')
                 ->where('published_at','<=',date('Y-m-d').' 00:00:00');
