@@ -91,7 +91,7 @@ class Post extends Model
     {
         $query->where(function ($query) {
             $query->where('posts.user_id','=',auth()->id());
-        })->orWhere(function ($query) use ($current) {
+        })->orWhere(function ($query) {
             $query->where('posts.user_id','<>',auth()->id())
                 ->where('cstr_privacy','=',1)
                 ->whereNotNull('published_at')
