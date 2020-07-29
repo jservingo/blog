@@ -267,14 +267,10 @@ class CatalogsController extends Controller
       ->title($request->get('title'))
       ->published() 
       ->hide()
-      ->orderBy('kposts.featured','DESC')
-
       ->latest('posts.published_at')
       ->select('posts.*', DB::raw('2 as section'), 'kposts.featured', 'kposts.order_num'); 
   
     $posts_not_saved = $catalog->posts()
-      ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
-      ->whereNull('kposts.post_id')
       ->title($request->get('title'))
       ->published()
       ->latest('posts.published_at')
