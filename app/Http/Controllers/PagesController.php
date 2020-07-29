@@ -211,7 +211,7 @@ class PagesController extends Controller
     {
       //OK
       $posts_saved = Post 
-        ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+        ::join('kposts', 'posts.id', '=', 'kposts.post_id')
         ->join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')
         ->where("kposts.user_id","=",auth()->id())
         ->where("catalog_category.category_id","=",$category_id)
@@ -226,7 +226,6 @@ class PagesController extends Controller
 
       $posts_not_saved = Post  
         ::join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')
-        ->where("kposts.user_id","=",auth()->id())
         ->where("catalog_category.category_id","=",$category_id)
         ->where("posts.type_id","=",21)
         ->published()     
