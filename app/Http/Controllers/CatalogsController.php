@@ -259,7 +259,7 @@ class CatalogsController extends Controller
       ->where("user_id","<>",auth()->id())
       ->publishedOffer()
       ->inRandomOrder()->limit(1)
-      ->select('posts.*', DB::raw('1 as section'), DB::raw('1 as featured'), DB::raw('0 as order_num'));
+      ->select('posts.*', DB::raw('1 as section'), DB::raw('1 as featured'), DB::raw('0 as position'));
 
     $posts_saved = $catalog->posts() 
       ->join('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -268,13 +268,13 @@ class CatalogsController extends Controller
       ->published() 
       ->hide()
       ->latest('posts.published_at')
-      ->select('posts.*', DB::raw('2 as section'), 'kposts.featured', 'kposts.order_num'); 
+      ->select('posts.*', DB::raw('2 as section'), 'kposts.featured', 'kposts.order_num as position'); 
   
     $posts_not_saved = $catalog->posts()
       ->title($request->get('title'))
       ->published()
       ->latest('posts.published_at')
-      ->select('posts.*', DB::raw('3 as section'),  DB::raw('0 as featured'), DB::raw('0 as order_num'));
+      ->select('posts.*', DB::raw('3 as section'),  DB::raw('0 as featured'), 'posts.order_num as position');
 
     $posts = $posts_offers
       ->union($posts_saved) 
@@ -282,7 +282,7 @@ class CatalogsController extends Controller
 
     $querySql = $posts->toSql();
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts->getBindings());
-    $posts = $query->orderBy('section')->orderBy('featured','DESC')->orderBy('order_num')->latest('published_at')->paginate(12); 
+    $posts = $query->orderBy('section')->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12); 
       
     $title = $catalog->name; 
     $root = "catalog";
