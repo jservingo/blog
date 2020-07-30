@@ -384,6 +384,7 @@ class PostsController extends Controller
     {
       $post->footnote = $request->get('footnote');
     }  
+    $post->order_num = $request->get('order_num');
     $post->published_at = Carbon::parse($request->get('published_at'));
     $post->rating_mode = $request->get('rating_mode');    
     $post->cstr_privacy = $request->get('cstr_privacy');
@@ -541,6 +542,7 @@ class PostsController extends Controller
       //crear kpost
       $kpost = Kpost::create([
         'post_id' => $post->id,
+        'order_num' => $post->order_num,
         'status_id' => 2,
         'user_id' => auth()->id(),
         'sent_by' => auth()->id(),
