@@ -222,7 +222,7 @@ class PagesController extends Controller
         ->orderBy('kposts.featured','DESC')
         ->orderBy('kposts.order_num')
         ->latest('posts.published_at')
-        ->select('posts.*', 'kposts.featured', 'kposts.order_num');
+        ->select('posts.*', 'kposts.featured', 'kposts.order_num as position');
 
       $posts_not_saved = Post  
         ::join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')
@@ -231,14 +231,14 @@ class PagesController extends Controller
         ->published()     
         ->title($request->get('title'))
         ->latest('posts.published_at')
-        ->select('posts.*', DB::raw('0 as featured'), DB::raw('0 as order_num'));
+        ->select('posts.*', DB::raw('0 as featured'), 'posts.order_num as position');
 
       $posts = $posts_saved
       ->union($posts_not_saved);
 
       $querySql = $posts->toSql();
       $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts->getBindings());
-      $posts = $query->orderBy('featured','DESC')->orderBy('order_num')->latest('published_at')->paginate(12);
+      $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12);
 
       $title = $page->name; 
       $subtitle = $category->name; 
