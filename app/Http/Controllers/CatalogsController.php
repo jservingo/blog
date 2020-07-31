@@ -271,6 +271,12 @@ class CatalogsController extends Controller
       ->select('posts.*', DB::raw('2 as section'), 'kposts.featured', 'kposts.order_num as position'); 
   
     $posts_not_saved = $catalog->posts()
+      ->whereNotIn('posts.id', function($query)
+        {
+          $query->select('post_id')
+                ->from('kposts')
+                ->where('user_id','=',auth()->id());
+        })    
       ->title($request->get('title'))
       ->published()
       ->latest('posts.published_at')
