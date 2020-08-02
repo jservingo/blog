@@ -170,7 +170,7 @@ class PagesController extends Controller
       $catalogs_saved = Catalog 
         ::join('catalog_category', 'catalog_category.catalog_id', '=', 'catalogs.id')
         ->join('posts', 'posts.ref_id', '=', 'catalogs.id')
-        ->join('kposts', 'kposts.post_id', '=', 'posts.id')    
+        ->leftjoin('kposts', 'kposts.post_id', '=', 'posts.id')    
         ->where("catalog_category.category_id","=",$category_id)
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)        
