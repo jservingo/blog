@@ -193,7 +193,7 @@ class PagesController extends Controller
 
       $querySql = $catalogs->toSql();
       $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($catalogs->getBindings());
-      $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published')->paginate(6);
+      $catalogs = $query->orderBy('featured','DESC')->orderBy('position')->latest('published')->paginate(6);
 
       return view('pages.show_category',compact('page','category','catalogs','reset_categories_tree'));
     }
