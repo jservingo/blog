@@ -45,17 +45,6 @@ class PagesController extends Controller
 
     return view(get_view(),compact(
       'posts','title','root','buttons','subtitle'));
-
-    /*
-    $pages = Page
-        ::where("user_id","=",auth()->id())
-        ->orderBy('featured', 'DESC')
-        ->orderBy('position', 'ASC')
-        ->latest('published_at')
-        ->paginate();           
-
-    return view('pages.pages_show',compact('pages'));
-    */
   }
 
   public function show_all(Request $request)
@@ -117,17 +106,6 @@ class PagesController extends Controller
 
     return view(get_view(),compact(
       'posts','title','root','buttons','subtitle'));
-
-    /*
-    $pages = Page
-        ::where("user_id","=",auth()->id())
-        ->orderBy('featured', 'DESC')
-        ->orderBy('position', 'ASC')
-        ->latest('published_at')
-        ->paginate();           
-
-    return view('pages.pages_show',compact('pages'));
-    */
   }
 
   public function show_created_by_user(User $user, Request $request)
@@ -189,7 +167,7 @@ class PagesController extends Controller
 
     if(get_view('catalogs')=="ribbon")
     {
-      $catalogs = Catalog 
+      $catalogs_saved = Catalog 
         ::join('catalog_category', 'catalog_category.catalog_id', '=', 'catalogs.id')
         ->join('posts', 'posts.ref_id', '=', 'catalogs.id')
         ->leftjoin('kposts', 'kposts.post_id', '=', 'posts.id')    
@@ -199,11 +177,23 @@ class PagesController extends Controller
         ->published()
         ->hide()      
         ->title($request->get('title'))
-        ->orderBy('kposts.featured','DESC')
-        ->orderBy('kposts.order_num')
-        ->latest('posts.published_at')
-        ->select('catalogs.*','kposts.featured')
-        ->paginate(6);
+        ->select('catalogs.*', 'kposts.featured', 'kposts.order_num as position', 'posts.published_at as published');
+
+      $catalogs_not_saved = Catalog 
+        ::join('catalog_category', 'catalog_category.catalog_id', '=', 'catalogs.id')
+        ->join('posts', 'posts.ref_id', '=', 'catalogs.id')   
+        ->where("catalog_category.category_id","=",$category_id)
+        ->where("posts.type_id","=",21)        
+        ->published()
+        ->title($request->get('title'))
+        ->select('catalogs.*', DB::raw('0 as featured'), 'posts.order_num as position', 'posts.published_at as published');
+
+      $catalogs = $catalogs_saved
+      ->union($catalogs_not_saved);
+
+      $querySql = $catalogs->toSql();
+      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($catalogs->getBindings());
+      $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published')->paginate(6);
 
       return view('pages.show_category',compact('page','category','catalogs','reset_categories_tree'));
     }
@@ -219,9 +209,6 @@ class PagesController extends Controller
         ->published()
         ->hide()      
         ->title($request->get('title'))
-        ->orderBy('kposts.featured','DESC')
-        ->orderBy('kposts.order_num')
-        ->latest('posts.published_at')
         ->select('posts.*', 'kposts.featured', 'kposts.order_num as position');
 
       $posts_not_saved = Post  
@@ -230,7 +217,6 @@ class PagesController extends Controller
         ->where("posts.type_id","=",21)
         ->published()     
         ->title($request->get('title'))
-        ->latest('posts.published_at')
         ->select('posts.*', DB::raw('0 as featured'), 'posts.order_num as position');
 
       $posts = $posts_saved

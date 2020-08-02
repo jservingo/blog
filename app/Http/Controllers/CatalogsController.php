@@ -211,7 +211,7 @@ class CatalogsController extends Controller
       $querySql = $catalogs_saved->toSql();
 
       $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($catalogs_saved->getBindings());
-      $catalogs = $query->orderBy('featured','DESC')->latest('published_at')->paginate(12);                 
+      $catalogs = $query->orderBy('featured','DESC')->latest('published_at')->paginate(6);                 
 
       return view('catalogs.show',compact('catalogs'));
     }
@@ -312,7 +312,7 @@ class CatalogsController extends Controller
       ->where("user_id","<>",auth()->id())
       ->publishedOffer()
       ->inRandomOrder()->limit(1)
-      ->select('posts.*', DB::raw('1 as section'), DB::raw('1 as featured'));
+      ->select('posts.*', DB::raw('1 as section'), DB::raw('1 as featured'), DB::raw('0 as position'));
 
     $posts_saved = $catalog->posts() 
       ->join('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -321,14 +321,18 @@ class CatalogsController extends Controller
       ->hide()
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
-      ->select('posts.*', DB::raw('2 as section'), 'kposts.featured'); 
+      ->select('posts.*', DB::raw('2 as section'), 'kposts.featured', 'kposts.order_num as position'); 
   
     $posts_not_saved = $catalog->posts()
-      ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
-      ->whereNull('kposts.post_id')
+      ->whereNotIn('posts.id', function($query)
+        {
+          $query->select('post_id')
+                ->from('kposts')
+                ->where('user_id','=',auth()->id());
+        })  
       ->published()
       ->latest('posts.published_at')
-      ->select('posts.*', DB::raw('3 as section'),  DB::raw('0 as featured'));
+      ->select('posts.*', DB::raw('3 as section'),  DB::raw('0 as featured'), 'posts.order_num as position');
 
     $posts = $posts_offers
       ->union($posts_saved) 
@@ -336,7 +340,7 @@ class CatalogsController extends Controller
 
     $querySql = $posts->toSql();
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts->getBindings());
-    $posts = $query->orderBy('section')->orderBy('featured','DESC')->latest('published_at')->paginate(12); 
+    $posts = $query->orderBy('section')->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12); 
   
     return $posts;
   }
