@@ -194,10 +194,10 @@ class PagesController extends Controller
         ->title($request->get('title'))
         ->select('catalogs.*', DB::raw('0 as featured'), 'posts.order_num as position', 'posts.published_at as published');
 
-      $catalogs = $catalogs_saved->union($catalogs_not_saved);
+      $catalogs_saved->union($catalogs_not_saved);
 
-      $querySql = $catalogs->toSql();
-      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($catalogs->getBindings());
+      $querySql = $catalogs_saved->toSql();
+      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($catalogs_saved->getBindings());
       $catalogs = $query->orderBy('featured','DESC')->orderBy('position')->latest('published')->paginate(6);
 
       return view('pages.show_category',compact('page','category','catalogs','reset_categories_tree'));
