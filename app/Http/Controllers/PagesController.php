@@ -170,7 +170,7 @@ class PagesController extends Controller
       $catalogs_saved = Catalog 
         ::join('catalog_category', 'catalog_category.catalog_id', '=', 'catalogs.id')
         ->join('posts', 'posts.ref_id', '=', 'catalogs.id')
-        ->leftjoin('kposts', 'kposts.post_id', '=', 'posts.id')    
+        ->join('kposts', 'kposts.post_id', '=', 'posts.id')    
         ->where("catalog_category.category_id","=",$category_id)
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)        
@@ -183,13 +183,18 @@ class PagesController extends Controller
         ::join('catalog_category', 'catalog_category.catalog_id', '=', 'catalogs.id')
         ->join('posts', 'posts.ref_id', '=', 'catalogs.id')   
         ->where("catalog_category.category_id","=",$category_id)
-        ->where("posts.type_id","=",21)        
+        ->where("posts.type_id","=",21)    
+        ->whereNotIn('posts.id', function($query)
+        {
+          $query->select('post_id')
+                ->from('kposts')
+                ->where('user_id','=',auth()->id());
+        })     
         ->published()
         ->title($request->get('title'))
         ->select('catalogs.*', DB::raw('0 as featured'), 'posts.order_num as position', 'posts.published_at as published');
 
-      $catalogs = $catalogs_saved
-      ->union($catalogs_not_saved);
+      $catalogs = $catalogs_saved->union($catalogs_not_saved);
 
       $querySql = $catalogs->toSql();
       $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($catalogs->getBindings());
@@ -215,12 +220,17 @@ class PagesController extends Controller
         ::join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')
         ->where("catalog_category.category_id","=",$category_id)
         ->where("posts.type_id","=",21)
+        ->whereNotIn('posts.id', function($query)
+        {
+          $query->select('post_id')
+                ->from('kposts')
+                ->where('user_id','=',auth()->id());
+        })  
         ->published()     
         ->title($request->get('title'))
         ->select('posts.*', DB::raw('0 as featured'), 'posts.order_num as position');
 
-      $posts = $posts_saved
-      ->union($posts_not_saved);
+      $posts = $posts_saved->union($posts_not_saved);
 
       $querySql = $posts->toSql();
       $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts->getBindings());
