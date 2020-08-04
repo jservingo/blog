@@ -25,16 +25,16 @@ class CatalogsController extends Controller
         ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
         ->where("catalogs.user_id","<>",auth()->id())
         ->where("posts.type_id","=",21)
-        ->published()
-        ->title($request->get('title'))
         ->whereNotIn('posts.id', function($query)
           {
             $query->select('post_id')
                   ->from('kposts')
                   ->where('user_id','=',auth()->id());
           })
+        ->title($request->get('title'))
+        ->published()
+        ->latest('published_at')        
         ->select('catalogs.*')
-        ->latest('published_at')
         ->paginate(6);      
 
       return view('catalogs.show',compact('catalogs'));
@@ -44,15 +44,15 @@ class CatalogsController extends Controller
       //OK
       $posts = Post        
       ::where("posts.user_id","<>",auth()->id())
-      ->where("type_id","=",21)
-      ->published()
-      ->title($request->get('title'))
+      ->where("type_id","=",21)      
       ->whereNotIn('id', function($query)
         {
           $query->select('post_id')
                 ->from('kposts')
                 ->where('user_id','=',auth()->id());
         })
+      ->title($request->get('title'))
+      ->published()
       ->latest('posts.published_at')
       ->paginate(12);
 
@@ -190,7 +190,7 @@ class CatalogsController extends Controller
       //OK
       $catalogs_saved = Catalog
         ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
-        ->leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+        ->join('kposts', 'posts.id', '=', 'kposts.post_id')
         ->where("catalogs.user_id","=",$user->id)
         ->where("kposts.user_id","=",auth()->id())
         ->where("posts.type_id","=",21)
@@ -203,6 +203,12 @@ class CatalogsController extends Controller
         ::join('posts', 'catalogs.id', '=', 'posts.ref_id')
         ->where("catalogs.user_id","=",$user->id)
         ->where("posts.type_id","=",21)
+        ->whereNotIn('posts.id', function($query)
+          {
+            $query->select('post_id')
+                  ->from('kposts')
+                  ->where('user_id','=',auth()->id());
+          })  
         ->title($request->get('title'))
         ->published()
         ->select('catalogs.*', DB::raw('0 as featured'));
@@ -223,6 +229,12 @@ class CatalogsController extends Controller
         ->where("kposts.user_id","=",auth()->id())       
         ->where("posts.user_id","=",$user->id)
         ->where("type_id","=",21)
+        ->whereNotIn('posts.id', function($query)
+          {
+            $query->select('post_id')
+                  ->from('kposts')
+                  ->where('user_id','=',auth()->id());
+          })  
         ->title($request->get('title'))
         ->published()
         ->hide()

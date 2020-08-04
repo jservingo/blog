@@ -26,15 +26,15 @@ class PagesController extends Controller
   {
     $posts = Post        
       ::where("posts.user_id","<>",auth()->id())
-      ->where("type_id","=",22)
-      ->title($request->get('title'))
-      ->published()
+      ->where("type_id","=",22)      
       ->whereNotIn('ref_id', function($query)
         {
           $query->select('page_id')
                 ->from('page_user')
                 ->where('user_id','=',auth()->id());
         })
+      ->title($request->get('title'))
+      ->published()
       ->latest('posts.published_at')
       ->paginate(12);
 
@@ -111,27 +111,33 @@ class PagesController extends Controller
   public function show_created_by_user(User $user, Request $request)
   {
     $posts_saved = Post
-      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')        
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')        
       ->where("posts.user_id","=",$user->id)
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",22)
-      ->title($request->get('title'))
       ->published()
       ->hide()
-      ->select('posts.*','kposts.featured');
+      ->title($request->get('title'))      
+      ->select('posts.*','kposts.featured', 'kposts.order_num as position');
 
     $posts_created = Post
       ::where("user_id","=",$user->id)
       ->where("type_id","=",22)
-      ->title($request->get('title'))
+      ->whereNotIn('posts.id', function($query)
+        {
+          $query->select('post_id')
+                ->from('kposts')
+                ->where('user_id','=',auth()->id());
+        }) 
       ->published()
-      ->select('posts.*', DB::raw('0 as featured'));
+      ->title($request->get('title'))
+      ->select('posts.*', DB::raw('0 as featured'), 'posts.order_num as position');
 
     $posts_saved->union($posts_created);
     $querySql = $posts_saved->toSql();
 
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_saved->getBindings());
-    $posts = $query->orderBy('featured','DESC')->latest('published_at')->paginate(12);
+    $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12);
 
     $title = __('messages.created-pages-by')." ".$user->name;   
     $root = "created_pages";
@@ -172,8 +178,8 @@ class PagesController extends Controller
         ->join('posts', 'posts.ref_id', '=', 'catalogs.id')
         ->join('kposts', 'kposts.post_id', '=', 'posts.id')    
         ->where("catalog_category.category_id","=",$category_id)
+        ->where("posts.type_id","=",21)
         ->where("kposts.user_id","=",auth()->id())
-        ->where("posts.type_id","=",21)        
         ->published()
         ->hide()      
         ->title($request->get('title'))
@@ -185,18 +191,18 @@ class PagesController extends Controller
         ->where("catalog_category.category_id","=",$category_id)
         ->where("posts.type_id","=",21)    
         ->whereNotIn('posts.id', function($query)
-        {
-          $query->select('post_id')
-                ->from('kposts')
-                ->where('user_id','=',auth()->id());
-        })     
+          {
+            $query->select('post_id')
+                  ->from('kposts')
+                  ->where('user_id','=',auth()->id());
+          })     
         ->published()
         ->title($request->get('title'))
         ->select('catalogs.*', DB::raw('0 as featured'), 'posts.order_num as position', 'posts.published_at as published');
 
       $catalogs_saved->union($catalogs_not_saved);
-
       $querySql = $catalogs_saved->toSql();
+
       $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($catalogs_saved->getBindings());
       $catalogs = $query->orderBy('featured','DESC')->orderBy('position')->latest('published')->paginate(6);
 
@@ -207,10 +213,10 @@ class PagesController extends Controller
       //OK
       $posts_saved = Post 
         ::join('kposts', 'posts.id', '=', 'kposts.post_id')
-        ->join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')
-        ->where("kposts.user_id","=",auth()->id())
+        ->join('catalog_category', 'posts.ref_id', '=', 'catalog_category.catalog_id')        
         ->where("catalog_category.category_id","=",$category_id)
         ->where("posts.type_id","=",21)
+        ->where("kposts.user_id","=",auth()->id())
         ->published()
         ->hide()      
         ->title($request->get('title'))
@@ -221,18 +227,18 @@ class PagesController extends Controller
         ->where("catalog_category.category_id","=",$category_id)
         ->where("posts.type_id","=",21)
         ->whereNotIn('posts.id', function($query)
-        {
-          $query->select('post_id')
-                ->from('kposts')
-                ->where('user_id','=',auth()->id());
-        })  
+          {
+            $query->select('post_id')
+                  ->from('kposts')
+                  ->where('user_id','=',auth()->id());
+          })  
         ->published()     
         ->title($request->get('title'))
         ->select('posts.*', DB::raw('0 as featured'), 'posts.order_num as position');
 
       $posts = $posts_saved->union($posts_not_saved);
-
       $querySql = $posts->toSql();
+
       $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts->getBindings());
       $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12);
 

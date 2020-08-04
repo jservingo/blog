@@ -83,8 +83,8 @@ class Post extends Model
         $toDate = $current->addDays(7)->toDateTimeString();
 
         $query->where('cstr_privacy','=',1)
-            ->whereNotNull('published_at')
-            ->whereBetween('published_at', array($fromDate, $toDate));
+            ->whereNotNull('posts.published_at')
+            ->whereBetween('posts.published_at', array($fromDate, $toDate));
     }
 
     public function scopePublished($query)
@@ -93,24 +93,15 @@ class Post extends Model
             $query->where('posts.user_id','=',auth()->id());
         })->orWhere(function ($query) {
             $query->where('posts.user_id','<>',auth()->id())
-                ->where('cstr_privacy','=',1)
-                ->whereNotNull('published_at')
-                ->where('published_at','<=',date('Y-m-d').' 00:00:00');
+                ->where('posts.cstr_privacy','=',1)
+                ->whereNotNull('posts.published_at')
+                ->where('posts.published_at','<=',date('Y-m-d').' 00:00:00');
         }); 
     }
 
     public function scopeHide($query)
     {
-        $query->where(function ($query) {
-            $query->where('posts.user_id','=',auth()->id());
-        })->orWhere(function ($query) {  
-            $query->where('posts.user_id','<>',auth()->id()) 
-                ->whereNotNull('kposts.hide')     
-                ->where('kposts.hide','=',0);
-        })->orWhere(function ($query) {  
-            $query->where('posts.user_id','<>',auth()->id())
-                ->whereNull('kposts.hide');      
-        });
+        $query->where('kposts.hide','=',0);
     }
 
     public function scopeTitle($query, $title)

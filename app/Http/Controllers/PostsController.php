@@ -158,27 +158,33 @@ class PostsController extends Controller
   {   
     //Falta el type ***OJO***
     $posts_saved = Post
-      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')        
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')        
       ->where("posts.user_id","=",$user->id)
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","<=",20)
-      ->title($request->get('title'))
       ->published()
       ->hide()
-      ->select('posts.*','kposts.featured');
+      ->title($request->get('title'))
+      ->select('posts.*','kposts.featured', 'kposts.order_num as position');
 
     $posts_created = Post
       ::where("user_id","=",$user->id)
       ->where("type_id","<=",20)
-      ->title($request->get('title'))
+      ->whereNotIn('posts.id', function($query)
+        {
+          $query->select('post_id')
+                ->from('kposts')
+                ->where('user_id','=',auth()->id());
+        }) 
       ->published()
-      ->select('posts.*', DB::raw('0 as featured'));
+      ->title($request->get('title'))      
+      ->select('posts.*', DB::raw('0 as featured'), 'posts.order_num as position');
 
     $posts_saved->union($posts_created);
     $querySql = $posts_saved->toSql();
 
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_saved->getBindings());
-    $posts = $query->orderBy('featured','DESC')->latest('published_at')->paginate(12);
+    $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12);
 
     $title = __('messages.created-posts-by')." ".$user->name;
     $root = "created_posts";

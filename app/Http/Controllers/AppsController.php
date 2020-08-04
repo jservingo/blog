@@ -22,17 +22,17 @@ class AppsController extends Controller
       ::join('apps', 'ref_id', '=', 'apps.id')       
       ->where("apps.user_id","<>",auth()->id())
       ->where("type_id","=",23)
-      ->where("apps.parent_id","=",null)
-      ->title($request->get('title'))
-      ->published()
+      ->where("apps.parent_id","=",null)      
       ->whereNotIn('apps.id', function($query)
         {
           $query->select('app_id')
                 ->from('app_user')
                 ->where('user_id','=',auth()->id());
         })      
-      ->select('posts.*')
+      ->title($request->get('title'))
+      ->published()
       ->latest('posts.published_at')
+      ->select('posts.*')
       ->paginate(12);
 
     $title = __('messages.discover-apps');   
@@ -95,7 +95,6 @@ class AppsController extends Controller
       ->where("kposts.user_id","=",auth()->id())
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
-      ->hide()
       ->title($request->get('title'))
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
@@ -114,7 +113,7 @@ class AppsController extends Controller
   public function show_created_by_user(User $user, Request $request)
   {
     $posts_saved = Post 
-      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
+      ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->join('apps', 'ref_id', '=', 'apps.id') 
       ->where("apps.user_id","=",$user->id)
       ->where("kposts.user_id","=",auth()->id())
@@ -123,22 +122,28 @@ class AppsController extends Controller
       ->title($request->get('title'))
       ->published()
       ->hide()
-      ->select('posts.*','kposts.featured');
+      ->select('posts.*','kposts.featured', 'kposts.order_num as position');
       
     $posts_created = Post
       ::join('apps', 'ref_id', '=', 'apps.id')
       ->where("apps.user_id","=",$user->id)
       ->where("type_id","=",23)
       ->where("apps.parent_id","=",null)
+      ->whereNotIn('posts.id', function($query)
+        {
+          $query->select('post_id')
+                ->from('kposts')
+                ->where('user_id','=',auth()->id());
+        }) 
       ->title($request->get('title'))
       ->published()
-      ->select('posts.*', DB::raw('0 as featured'));
+      ->select('posts.*', DB::raw('0 as featured'), 'posts.order_num as position');
 
     $posts_saved->union($posts_created);
     $querySql = $posts_saved->toSql();
 
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_saved->getBindings());
-    $posts = $query->orderBy('featured','DESC')->latest('published_at')->paginate(12);
+    $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12);
 
     $title = __('messages.created-apps-by')." ".$user->name;   
     $root = "created_apps";
