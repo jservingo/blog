@@ -2,6 +2,8 @@
 
 @extends('layout')
 
+@inject('provider', 'App\Http\Controllers\CatalogsController')
+
 @section('content')
 	@php
     $title = $page->name; 
@@ -25,11 +27,14 @@
 	</div>
 
 	<div>
-  	@foreach($catalogs as $catalog)
-  		@foreach($catalog->posts as $post)
-				@include('posts.buttons.box_popup_menu')
-			@endforeach
-		@endforeach	
+    @foreach($catalogs as $catalog)
+      @php
+        $posts =  $provider::get_posts($catalog->id);
+      @endphp
+      @foreach($posts as $post)
+			  @include('posts.buttons.box_popup_menu')
+      @endforeach
+		@endforeach
 	</div>	
 @endsection
 

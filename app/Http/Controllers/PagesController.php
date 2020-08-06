@@ -236,10 +236,10 @@ class PagesController extends Controller
         ->title($request->get('title'))
         ->select('posts.*', DB::raw('0 as featured'), 'posts.order_num as position');
 
-      $posts = $posts_saved->union($posts_not_saved);
-      $querySql = $posts->toSql();
+      $posts_saved->union($posts_not_saved);
+      $querySql = $posts_saved->toSql();
 
-      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts->getBindings());
+      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_saved->getBindings());
       $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12);
 
       $title = $page->name; 

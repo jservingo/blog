@@ -352,7 +352,7 @@ class CatalogsController extends Controller
 
     $querySql = $posts->toSql();
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts->getBindings());
-    $posts = $query->orderBy('section')->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12); 
+    $posts = $query->orderBy('section')->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->get(); 
   
     return $posts;
   }
