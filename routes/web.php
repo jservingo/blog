@@ -88,6 +88,7 @@ Route::get('pages/created-by/{user}/{url?}','PagesController@show_created_by_use
 Route::get('pages/{page}/{category}/{url?}','PagesController@show_page_category')->name('page.show_page_category');
 Route::get('page/subscribers/{page}/{url?}','PagesController@show_subscribers')->name('page.show_subscribers');
 Route::get('page/{page}','PagesController@edit')->name('page.edit');
+Route::get('page/change_user/{page}/{user_id}','PagesController@change_user')->name('page.change_user');
 Route::get('page/isOwner/{page}','PagesController@isOwner')->name('page.isOwner');
 Route::get('page/stats/{post}','PagesController@get_stats')->name('page.get_stats');
 Route::post('page','PagesController@store')->name('page.create');

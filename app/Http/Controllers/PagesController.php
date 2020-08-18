@@ -290,6 +290,62 @@ class PagesController extends Controller
     echo json_encode($catalogs);
   }
 
+  public function change_user(Page $page, $user_id)
+  {
+    $page->user_id = $user_id;
+    $page->save();
+
+    $post = $page->post;
+    $kpost = $post->kpost;
+
+    $post->user_id = $user_id;
+    $post->save();
+    
+    if ($kpost)
+    {
+      $kpost->user_id = $user_id;
+      $kpost->sent_by = $user_id;
+      $kpost->save();
+    }
+
+    foreach ($page->categories as $category)
+    {
+      foreach ($category->catalogs as $catalog)
+      {
+        $catalog->user_id = $user_id;
+        $catalog->save();
+
+        $post = $catalog->post;
+        $kpost = $post->kpost;
+
+        $post->user_id = $user_id;
+        $post->save();
+
+        if ($kpost)
+        {
+          $kpost->user_id = $user_id;
+          $kpost->sent_by = $user_id;
+          $kpost->save();
+        }
+
+        foreach ($catalog->posts as $post)
+        {
+          $kpost = $post->kpost;
+
+          $post->user_id = $user_id;
+          $post->save();
+          
+          if ($kpost)
+          {
+            $kpost->user_id = $user_id;
+            $kpost->sent_by = $user_id;
+            $kpost->save();
+          }
+        }
+      }
+    }
+  }
+
   public function isOwner(Page $page)
   {
     if ($page->user_id == auth()->id())
