@@ -185,11 +185,10 @@ class AppsController extends Controller
     if($app->mode==1)
     {
       $posts = Post  
-      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
-      ->join('pages', 'ref_id', '=', 'pages.id') 
+      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id') 
       ->where("kposts.user_id","=",auth()->id())     
       ->where("type_id","=",22)
-      ->where("pages.app_id","=",$app->id)
+      ->where("app_id","=",$app->id)
       ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
       ->select('posts.*','kposts.featured')
