@@ -185,13 +185,10 @@ class AppsController extends Controller
     if($app->mode==1)
     {
       $posts = Post  
-      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id') 
-      ->where("kposts.user_id","=",auth()->id())     
       ->where("type_id","=",22)
       ->where("app_id","=",$app->id)
-      ->orderBy('kposts.featured','DESC')
       ->latest('posts.published_at')
-      ->select('posts.*','kposts.featured')
+      ->select('posts.*', DB::raw('0 as featured'))
       ->paginate(12);
 
       $title = $app->name;   
