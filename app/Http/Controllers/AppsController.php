@@ -185,7 +185,7 @@ class AppsController extends Controller
     if($app->mode==1)
     {
       $posts = Post  
-      ->where("type_id","=",22)
+      ::where("type_id","=",22)
       ->where("app_id","=",$app->id)
       ->latest('posts.published_at')
       ->select('posts.*', DB::raw('0 as featured'))
