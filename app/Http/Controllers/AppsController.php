@@ -211,7 +211,7 @@ class AppsController extends Controller
       $querySql = $posts_saved->toSql();
 
       $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_saved->getBindings());
-      $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published')->paginate(12);  
+      $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12);  
 
       $title = $app->name;   
       $root = "app_pages";
