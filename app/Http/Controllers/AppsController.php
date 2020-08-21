@@ -154,7 +154,7 @@ class AppsController extends Controller
       'posts','title','root','buttons','subtitle'));
   }
 
-  public function show_app(App $app)
+  public function show_app(App $app, Request $request)
   {
     $apps = App
       ::where("parent_id","=",$app->id)
