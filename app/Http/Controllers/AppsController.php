@@ -55,7 +55,7 @@ class AppsController extends Controller
       ->where("apps.parent_id","=",null)
       ->hide()
       ->title($request->get('title'))
-      ->select('posts.*','featured');
+      ->select('posts.*','featured','kposts.order_num as position');
 
     $posts_subscriptions = Post
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -68,13 +68,13 @@ class AppsController extends Controller
       ->published()
       ->hide()
       ->title($request->get('title'))
-      ->select('posts.*','featured');
+      ->select('posts.*','featured','kposts.order_num as position');
 
     $posts_created->union($posts_subscriptions);
     $querySql = $posts_created->toSql();
 
     $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_created->getBindings());
-    $posts = $query->orderBy('featured','DESC')->latest('published_at')->paginate(12); 
+    $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12); 
 
     $title = __('messages.apps');   
     $root = "all_apps";
