@@ -162,16 +162,31 @@ class AppsController extends Controller
 
     if(count($apps) > 0)
     {
-      $posts = Post 
-      ::leftjoin('kposts', 'posts.id', '=', 'kposts.post_id')
-      ->join('apps', 'ref_id', '=', 'apps.id') 
-      ->where("kposts.user_id","=",auth()->id())      
-      ->where("type_id","=",23)
-      ->where("apps.parent_id","=",$app->id)
-      ->orderBy('kposts.featured','DESC')
-      ->latest('posts.published_at')
-      ->select('posts.*','kposts.featured')
-      ->paginate(12);
+      $posts_saved = Post 
+        ::join('kposts', 'posts.id', '=', 'kposts.post_id')
+        ->join('apps', 'ref_id', '=', 'apps.id') 
+        ->where("kposts.user_id","=",auth()->id())      
+        ->where("type_id","=",23)
+        ->where("apps.parent_id","=",$app->id)
+        ->select('posts.*','kposts.featured', 'kposts.order_num as position');
+
+      $posts_not_saved = Post
+        ::join('apps', 'ref_id', '=', 'apps.id') 
+        ->where("type_id","=",23)
+        ->where("apps.parent_id","=",$app->id)
+        ->whereNotIn('posts.id', function($query)
+          {
+            $query->select('post_id')
+                  ->from('kposts')
+                  ->where('user_id','=',auth()->id());
+          }) 
+        ->select('posts.*', DB::raw('0 as featured'), 'posts.order_num as position');
+
+      $posts_saved->union($posts_not_saved);
+      $querySql = $posts_saved->toSql();
+
+      $query = Post::from(DB::raw("($querySql) as a"))->select('a.*')->addBinding($posts_saved->getBindings());
+      $posts = $query->orderBy('featured','DESC')->orderBy('position')->latest('published_at')->paginate(12);  
 
       $title = $app->name;   
       $root = "app_subs";
