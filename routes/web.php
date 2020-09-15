@@ -161,6 +161,12 @@ Route::put('post/footer/{post}','PostsController@update_footer')->name('post.upd
 Route::delete('posts/{catalog}/{post}','PostsController@delete_post_from_catalog');	
 Route::delete('posts/{post}','PostsController@destroy');
 
+//Audios
+Route::get('audios/get/{post}','AudiosController@get_audios');
+Route::post('audio/{post}','AudiosController@store')->name('audio.create');
+Route::put('audio/{audio}','AudiosController@update')->name('audio.update');
+Route::delete('audios/{audio}','AudiosController@destroy')->name('audio.destroy');
+
 //Types & Tags
 Route::get('types/{type}','TypesController@show')->name('types.show');
 Route::get('tags/{tag}','TagsController@show')->name('tags.show');

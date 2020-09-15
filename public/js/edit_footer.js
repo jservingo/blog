@@ -11,7 +11,7 @@ $('.btn_update_post').bind('click', function(e){
   var type = get_type(type_id);
   var excerpt = $('#excerpt').val();
   excerpt = excerpt.replace(/['"]+/g, '').replace(/<[^>]+>/g, '');
-  var observation = $('#observation').val();;
+  var observation = $('#observation').val();
   var footnote = $('#footnote').val();
   var featured = get_value('#featured');
   var hide = get_value('#hide');

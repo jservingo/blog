@@ -7,12 +7,14 @@
 @extends('layout_popup')
 
 @section('content')
-  <div class="grid-container">
-    <div id="pageHeader">
-      <h2>{{ __('messages.edit') }} {{ $post->get_type() }}</h2>
+  <div class="main-container">
+    <div class="wide-container">
+      <div class="pageHeader">
+        <h2>{{ __('messages.edit') }} {{ $post->get_type() }}</h2>
+      </div>
     </div>
-
-    <div id="mainArticle">
+    
+    <div class="left-container">  
     	<div class="form-control">
         <label><span>{{ $title }}: (*) {{ __('messages.required-field') }} </span></label>
 			  <input id="title" type="text"  
@@ -76,7 +78,7 @@
       @endif	        
     </div>
 
-    <div id="siteAds">
+    <div class="right-container">
       <div class="form-control">
         <label><span>{{ __('messages.publication-date') }}:</span></label>
         <input type="text" id="published_at" 
@@ -209,16 +211,9 @@
         pages   
           allow_subscribers, show_subscribers, main_page
       --}}
+    </div>
 
-      @if($post->isPhotoGallery() || $post->isOffer() || $post->isUser())
-      <div class="form-control">
-        <label><span>{{ __('messages.upload-images') }}</span></label>
-      </div>
-      <div class="dropzone"></div>
-      @endif 
-    </div>    
-
-    <div id="pageFooter">
+    <div class="wide-container">
       <div id="confirm_actions">
         <button id="confirm_doit" class="btn_update_post red"
           data-id="{{ $post->id }}"
@@ -230,7 +225,25 @@
           {{ __('messages.cancel') }}
         </button>
       </div>
+    </div>
 
+    <div class="half-container">
+      @if($post->isPhotoGallery() || $post->isOffer() || $post->isUser())
+      <div class="form-control">
+        <label><span>{{ __('messages.upload-images') }}</span></label>
+      </div>
+      <div class="dropzone"></div>
+      @endif 
+    </div>
+
+    <div class="half-container">
+      <div class="form-control">
+        <label><span>{{ __('messages.upload-audios') }}</span></label>
+        @include('posts.edit_audio')
+      </div>
+    </div>    
+
+    <div class="wide-container">  
       @if($post->isPhotoGallery() || $post->isOffer())
     	  <p>{{ __('messages.saved-images') }}</p>
     	  <br>
@@ -246,7 +259,7 @@
                   </a>
                   --}}
                   <input type="submit" value="x" style="background:url(/img/delete2.png) no-repeat;" />
-                  <img class="img-responsive" src="{{ url('storage/'.$photo->url) }}"> 
+                  <img class="img-responsive" src="{{ url('storage/'.$photo->url) }}" width="400"> 
                 </div>
               </form> 
             @endforeach 
@@ -261,55 +274,46 @@
 @push('styles')
   <link rel="stylesheet" href="/css/framework_post_box.css">
   <link rel="stylesheet" href="/css/form_control.css">
+  <link rel="stylesheet" href="/css/easyui.css">
+  <link rel="stylesheet" href="/css/icon.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css">
-<style>
-.grid-container { 
-  display: grid;
-  grid-template-areas: 
-    "header header"
-    "main ads"
-    "footer footer";
-  grid-template-rows: 50px auto auto;  
-  grid-template-columns: 3fr 2fr;
-  grid-row-gap: 10px;
-  grid-column-gap: 10px;
-  height: auto;
-  margin: 0;
-}  
-.grid-container > div {
-  padding: 1.2em;
-}
-#pageHeader {
-  grid-area: header;
-}
-#pageFooter {
-  grid-area: footer;
-}
-#mainArticle { 
-  grid-area: main;      
-}
-#mainNav { 
-  grid-area: menu; 
-  background: #e6f2ff;
-  padding-left: 20px;
-}
-#siteAds { 
-  grid-area: ads; 
-} 
-/* Stack the layout on small devices/viewports. */
-@media all and (max-width: 575px) {
-  .grid-container { 
-    grid-template-areas:
-      "header" 
-      "main"
-      "ads"
-      "menu"
-      "footer";
-    grid-template-rows: 70px 1fr 70px 1fr 70px;  
-    grid-template-columns: 1fr;
+  <style>
+  .main-container { 
+    height: auto;
+  } 
+  .wide-container {
+    float:left;
+    padding: 1.2em;
+    width:96%;
+  } 
+  .half-container {
+    float:left;
+    padding: 1.2em;
+    width:48%;
   }
-}
-</style>
+  .left-container {
+    float:left;
+    padding: 1.2em;
+    width:62%;
+  }
+  .right-container {
+    float:left;
+    padding: 1.2em;
+    width:34%;
+  }
+  /* Stack the layout on small devices/viewports. */
+  @media all and (max-width: 800px) {
+    .left-container { 
+      width:96%;
+    }
+    .right-container { 
+      width:96%;
+    }
+    .half-container { 
+      width:96%;
+    }
+  }
+  </style>
 @endpush
 
 @push('scripts')
@@ -321,7 +325,9 @@
   <script type="text/javascript" src="/js/growl.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
   <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+  <script type="text/javascript" src="/js/easyui.min.js"></script>
   <script type="text/javascript" src="/js/edit_post.js"></script>
+  <script type="text/javascript" src="/js/edit_audios.js"></script>
   <script type="text/javascript" src="/js/functions.js"></script>
   <script>
     if($('.dropzone').length)
