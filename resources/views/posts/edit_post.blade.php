@@ -227,14 +227,14 @@
       </div>
     </div>
 
-    <div class="half-container">
-      @if($post->isPhotoGallery() || $post->isOffer() || $post->isUser())
-      <div class="form-control">
-        <label><span>{{ __('messages.upload-images') }}</span></label>
+    @if($post->isPhotoGallery() || $post->isOffer() || $post->isUser())
+      <div class="half-container">  
+        <div class="form-control">
+          <label><span>{{ __('messages.upload-images') }}</span></label>
+        </div>
+        <div class="dropzone"></div>       
       </div>
-      <div class="dropzone"></div>
-      @endif 
-    </div>
+    @endif
 
     <div class="half-container">
       <div class="form-control">
@@ -243,8 +243,8 @@
       </div>
     </div>    
 
-    <div class="wide-container">  
-      @if($post->isPhotoGallery() || $post->isOffer())
+    @if($post->isPhotoGallery() || $post->isOffer())
+      <div class="wide-container">        
     	  <p>{{ __('messages.saved-images') }}</p>
     	  <br>
         @if ($post->photos->count())		
@@ -264,9 +264,9 @@
               </form> 
             @endforeach 
           </div> 
-  		  @endif
-      @endif
-	  </div>
+  		  @endif      
+	   </div>
+     @endif
   </div>	
    	
 @endsection
