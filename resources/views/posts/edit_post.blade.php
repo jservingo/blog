@@ -282,17 +282,17 @@
   .wide-container {
     float:left;
     padding: 1.2em;
-    width:98%;
+    width:100%;
   } 
   .half-container {
     float:left;
     padding: 1.2em;
-    width:49%;
+    width:50%;
   }
   .left-container {
     float:left;
     padding: 1.2em;
-    width:62%;
+    width:64%;
   }
   .right-container {
     float:left;
@@ -300,15 +300,15 @@
     width:36%;
   }
   /* Stack the layout on small devices/viewports. */
-  @media all and (max-width: 800px) {
+  @media all and (max-width: 768px) {
     .left-container { 
-      width:98%;
+      width:100%;
     }
     .right-container { 
-      width:98%;
+      width:100%;
     }
     .half-container { 
-      width:98%;
+      width:100%;
     }
   }
   </style>
