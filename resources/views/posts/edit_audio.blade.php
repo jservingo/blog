@@ -18,7 +18,7 @@
 		<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteRegister()">Delete</a>
 	</div>
 	
-	<div id="dlg" class="easyui-dialog" style="width:94%;height:500px;padding:10px 20px"
+	<div id="dlg" class="easyui-dialog" style="width:94%;height:200px;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
 		<div class="ftitle">Audios</div>
 		<form id="fm" method="post" novalidate>

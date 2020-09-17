@@ -32,10 +32,8 @@
 
 			<div class="form-control">
         <label><span>{{ __('messages.content') }}: (*) {{ __('messages.required-field') }}</span></label>
-      </div>
-      <div>
-			  <textarea id="body" 
-				  placeholder="{{ __('messages.enter-content') }}" rows="10"
+			  <textarea id="body" style="width:90%"
+				  placeholder="{{ __('messages.enter-content') }}" rows="12"
 			  >{{ old('body',$post->body)}}</textarea>
 			  {!! $errors->first('body','<span class="help-block">:message</span>') !!}
       </div>
@@ -231,8 +229,8 @@
       <div class="half-container">  
         <div class="form-control">
           <label><span>{{ __('messages.upload-images') }}</span></label>
+          <div class="dropzone"></div>       
         </div>
-        <div class="dropzone"></div>       
       </div>
     @endif
 
@@ -284,12 +282,12 @@
   .wide-container {
     float:left;
     padding: 1.2em;
-    width:96%;
+    width:98%;
   } 
   .half-container {
     float:left;
     padding: 1.2em;
-    width:48%;
+    width:49%;
   }
   .left-container {
     float:left;
@@ -299,18 +297,18 @@
   .right-container {
     float:left;
     padding: 1.2em;
-    width:34%;
+    width:36%;
   }
   /* Stack the layout on small devices/viewports. */
   @media all and (max-width: 800px) {
     .left-container { 
-      width:96%;
+      width:98%;
     }
     .right-container { 
-      width:96%;
+      width:98%;
     }
     .half-container { 
-      width:96%;
+      width:98%;
     }
   }
   </style>
