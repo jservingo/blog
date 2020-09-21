@@ -35,9 +35,9 @@
 
 /*Resize the wrap to see the search bar change!*/
 .searchWrap{
-  width: 40%;
+  width: 30%;
   position: absolute;
-  top: 10px;
-  left: 220px;
-  //transform: translate(-50%, -50%);
+  top: 14px;
+  /*left: 220px;
+  transform: translate(-50%, -50%);*/
 }

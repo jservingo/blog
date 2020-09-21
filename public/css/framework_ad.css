@@ -1,28 +1,79 @@
-.container-header{
-	/*padding-right: 15px;
-  	padding-left: 15px;*/
-  	padding-right: 20px;
-  	padding-left: 20px;
-    box-sizing: border-box;
-    background-color: #74ABC9;
-    width:100%;
-}
 .container{
   /*padding-right: 15px;
     padding-left: 15px;*/
     margin-right: auto;
     margin-left: auto;
 }
-@media (max-width: 877px) {
+@media (max-width: 499px) { 
   .container {
-    width: 444px; 
+    width: 384px; 
     display: flex;
-		flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .container-header-username{
+    padding-right: 0px;
+    padding-left: 0px;
+    width:240px;
+  }
+  .container-header-buttons{
+    padding-right: 10px;
+    padding-left: 0px;
+    width:140px;
   }
   .post {
-  	width: 384px;	
-  	display: flex;
-  	margin-right: 30px;
+    width: 384px; 
+    display: flex;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    box-shadow: 0px;
+  }
+}
+@media (min-width: 480px) {
+  .container {
+    width: 414px; 
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .container-header-username{
+    padding-right: 5px;
+    padding-left: 20px;
+    width:260px;
+  }
+  .container-header-buttons{
+    padding-right: 20px;
+    padding-left: 5px;
+    width:180px;
+  }
+  .post {
+    width: 414px; 
+    display: flex;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    box-shadow: 4px 4px 24px 0px rgba(0,0,0,0.3);
+  }
+}
+@media (max-width: 799px) { 
+  .container-header-logo{
+    float:none;
+  }
+  .container-header-search{
+    width:88%;    
+    float:none;
+  }
+  .searchWrap {
+    width:86%;
+    top:74px;
+  } 
+}
+@media (min-width: 800px) {
+  .container-header-logo{
+    float:left;
+  }
+  .container-header-search{
+    width:60%;
+  }
+  .searchWrap {
+    width:58%;
   }
 }
 @media (min-width: 878px) {
@@ -35,9 +86,19 @@
   	width: 384px;	
   	display: flex;
   	margin-right: 30px;
+    margin-bottom: 30px;
+    box-shadow: 4px 4px 24px 0px rgba(0,0,0,0.3);
   }
   .no-desktop{
   	display: none !important; 
+  }
+}
+@media (min-width: 1024px) {
+  .container-header-search{
+    width:34%;
+  }
+  .searchWrap {
+    width:32%;
   }
 }
 @media (min-width: 1292px) {

@@ -45,7 +45,11 @@ body{
 	background-image: -ms-linear-gradient(top,rgba(242, 255, 253, 1),rgba(186, 243, 232, 1) 800px);
 	background-image: -o-linear-gradient(top,rgba(242, 255, 253, 1),rgba(186, 243, 232, 1) 800px);
 }
-header nav li{
+header {
+	width:100%;
+	background-color: #74ABC9;
+} 
+header nav li{ 
 	margin: 0 10px;
 }
 header nav li a{
@@ -57,6 +61,51 @@ header nav li a{
 header nav li a:hover{
 	border-bottom: 2px solid #1abc9c;
 	padding-bottom: 5px;
+}
+.container-header-logo{
+  	padding-right: 5px;
+  	padding-left: 20px;
+    box-sizing: border-box;
+    background-color: #74ABC9;
+    width:220px; height:58px; 
+    float:left;
+}
+.container-header-search{
+  	padding-right: 5px;
+  	padding-left: 20px;
+    box-sizing: border-box;
+    background-color: #74ABC9;
+    width:32%; height:58px; 
+    float:left;
+}
+.container-header-username{
+  	padding-right: 5px;
+  	padding-left: 20px;
+  	padding-top: 17px;
+    box-sizing: border-box;
+    background-color: #74ABC9;
+    text-align:center; 
+    width:260px; height:58px; 
+    float:left;
+}
+.container-header-buttons{
+	  padding-right: 20px;
+	  padding-left: 5px;
+	  padding-top: 17px;
+    box-sizing: border-box;
+    background-color: #74ABC9;
+    width:180px; height:58px; 
+    float:right;
+}
+.container-header-login{
+  	padding-right: 30px;
+  	padding-left: 5px;
+  	padding-top: 14px;
+    box-sizing: border-box;
+    background-color: #74ABC9;
+    align-items:center; 
+    height:58px; 
+    float:right;
 }
 .logo img{
 	width: 180px;
@@ -76,7 +125,7 @@ color: #fff;
 }
 .post{
 	background: #fff;
-	box-shadow: 4px 4px 24px 0px rgba(0,0,0,0.3);
+	/*box-shadow: 4px 4px 24px 0px rgba(0,0,0,0.3);*/
 	margin-bottom: 30px;
 }
 .post .content-post{
@@ -241,7 +290,7 @@ cite .img-cite, .cite .img-cite{
 
 .footer footer{
 	background: #74ABC9;
-	padding: 45px;
+	padding-top: 45px;
 	text-align: center;
 	color: #ffffff;
 	
