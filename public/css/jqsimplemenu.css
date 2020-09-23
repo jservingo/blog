@@ -13,7 +13,7 @@
 }
 .menu > li
 {
-    margin-left: 15px;
+    margin-left: 7px;
 }
 .menu > li:first
 {
@@ -41,7 +41,7 @@ div.box
 }
 li.pull-down
 {
-    padding-right:6px;
+    padding-right:5px;
     }
 li.pull-down > a
 {
