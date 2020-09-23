@@ -73,7 +73,7 @@ li.right-menu > a
 {
     position: absolute;
     display: none;
-    width: 200px;
+    width: 120px;
     top: 2.5em; /*padding-right: 10px;*/
     background-color: #75CDD2; /*-moz-opacity: .50;     filter: alpha(opacity=50);     opacity: .50;*/
     border-radius: 0px 4px 4px 4px;
@@ -83,11 +83,12 @@ li.right-menu > a
 
 .menu li ul a
 {
-    width: 180px;
+    width: 100px;
     height: auto;
     float: left;
     color: #FFFEFD;
     font-size: 18px; 
+    font-weight: bold;
     padding: 0 10px;
 }
 .menu li ul li
@@ -102,7 +103,7 @@ li.right-menu > a
 
 .menu li ul ul
 {
-    left: 198px; /*margin: 0px 0 0 10px;*/
+    left: 118px; /*margin: 0px 0 0 10px;*/
 }
 .menu-item-selected > a
 {

@@ -1,7 +1,7 @@
 body{
 	background: #EEEEEE; 
 	font-family: 'lato', sans-serif;
-	min-width: 320px;
+	min-width: 360px !important; 
 }
 .preload{
 	border:1.2px solid #74ABC9;
@@ -77,6 +77,10 @@ header nav li a:hover{
     background-color: #74ABC9;
     width:32%; height:58px; 
     float:left;
+}
+.container-header-subject{
+	  height:58px;
+		float:right;
 }
 .container-header-username{
   	padding-right: 5px;

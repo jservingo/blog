@@ -5,6 +5,40 @@
 
   <li><a href="#">{{ __('messages.my-stuff') }}</a>
   <ul>
+    <li><a href="#">{{ __('messages.messages') }}</a>
+    <ul>        
+      <li>
+        <a class="vlink" href="{{ route('posts.show_received',0) }}" 
+          class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+            {{ __('messages.received') }} 
+        </a>
+      </li>
+        <li>
+        <a class="vlink" href="{{ route('posts.show_sent',2) }}" 
+          class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+            {{ __('messages.sent') }} 
+        </a>
+      </li>  
+      <li>
+        <a class="vlink" href="{{ route('posts.show_received',2) }}" 
+          class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+            {{ __('messages.saved') }} 
+        </a>
+      </li>
+      <li>
+        <a class="vlink" href="{{ route('posts.show_received',1) }}" 
+          class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+            {{ __('messages.discarded') }} 
+        </a>
+      </li>
+    </ul>
+    </li>
+    <li>
+      <a class="vlink" href="{{ route('contacts.show_contacts') }}" 
+        class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+          {{ __('messages.contacts') }}
+      </a>
+    </li> 
     <li>
       <a class="vlink" href="{{ route('apps.show_all') }}" 
         class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
@@ -28,7 +62,7 @@
         class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
           {{ __('messages.posts') }}
       </a>
-    </li>
+    </li> 
     {{-- 
     <li>
       <a class="vlink" href="{{ route('subscriptions.show') }}" 
@@ -68,39 +102,4 @@
   </li> 
   </ul>
   </li> 
-
-  <li><a href="#">{{ __('messages.messages') }}</a>
-  <ul> 
-    <li>
-      <a class="vlink" href="{{ route('contacts.show_contacts') }}" 
-        class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
-          {{ __('messages.contacts') }}
-      </a>
-    </li>         
-  	<li>
-  		<a class="vlink" href="{{ route('posts.show_received',0) }}" 
-        class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
-          {{ __('messages.received') }} 
-      </a>
-    </li>
-      <li>
-      <a class="vlink" href="{{ route('posts.show_sent',2) }}" 
-        class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
-          {{ __('messages.sent') }} 
-      </a>
-    </li>  
-    <li>
-      <a class="vlink" href="{{ route('posts.show_received',2) }}" 
-        class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
-          {{ __('messages.saved') }} 
-      </a>
-    </li>
-    <li>
-      <a class="vlink" href="{{ route('posts.show_received',1) }}" 
-        class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
-          {{ __('messages.discarded') }} 
-      </a>
-    </li>
-  </ul>
-  </li>
 </ul>

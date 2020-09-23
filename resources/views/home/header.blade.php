@@ -17,25 +17,28 @@
                 </div>
             </div>
         </div>
-        <div class="container-header-username">
-            <span class="user-header">
-                <a id="t-user" href="/user/{{ Auth::user()->id }}">
-                    {{ Auth::user()->name }}
-                </a>
-            </span>
-        </div>        
-        <div class="container-header-buttons container-flex space-between">                
-            <div id="menu_languages" class="popr" data-id="languages"> 
-                <img src="/img/{{ __('messages.lang') }}.png" alt="" style="width:22px;height:20px;">
-            </div>    
-            <a class="btn_show_alerts">    
-                <img src="/img/bell.png" alt="" style="width:20px;height:20px;">
-            </a>            
-            <a class="btn_edit_post" data-id="{{ Auth::user()->post->id }}"> 
-                <img src="/img/configuration.png" alt="" style="width:20px;height:20px;">
-            </a>                
-            <div id="menu_profile" class="popr" data-id="profile">
-              <img src="/img/profile.png" width="20" />
+        <div class="container-header-subject">
+            <div class="container-header-username">
+                <span class="user-header">
+                    <a id="t-user" href="/user/{{ Auth::user()->id }}">
+                        {{ Auth::user()->name }}
+                    </a>
+                </span>
+            </div>        
+            <div class="container-header-buttons container-flex space-between">                
+                <div id="menu_languages" class="popr" data-id="languages"> 
+                    <img src="/img/{{ __('messages.lang') }}.png" alt="" style="width:22px;height:20px;">
+                </div>    
+                <a class="btn_show_alerts">    
+                    <img src="/img/bell.png" alt="" style="width:20px;height:20px;">
+                </a>            
+                <a class="btn_edit_post" data-id="{{ Auth::user()->post->id }}"> 
+                    <img src="/img/configuration.png" alt="" style="width:20px;height:20px;">
+                </a>                
+                <div id="menu_profile" class="popr" data-id="profile">
+                  <img src="/img/profile.png" width="20" />
+                </div>
+                <div style="width:10px">&nbsp;</div>
             </div>
             <div style="width:10px">&nbsp;</div>
         </div>

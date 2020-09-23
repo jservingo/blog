@@ -10,15 +10,31 @@
     display: flex;
     flex-wrap: wrap;
   }
+  .container-header-logo{
+    padding-left: 5px;
+  }
+  .container-header-search{
+    padding-left: 10px;
+    height: 32px;
+  }
+  .searchWrap {
+    top:64px !important;
+  } 
+  .container-header-subject{
+    padding-left: 10px;
+    height:48px;
+    float:left;
+  }
   .container-header-username{
     padding-right: 0px;
     padding-left: 0px;
-    width:230px;
+    text-align: left;
+    height:48px; width: 230px;
   }
   .container-header-buttons{
     padding-right: 0px;
     padding-left: 0px;
-    width:130px;
+    height:48px; width: 120px;
   }
   .post {
     width: 384px; 
@@ -37,12 +53,12 @@
   .container-header-username{
     padding-right: 5px;
     padding-left: 20px;
-    width:260px;
+    width: 260px;
   }
   .container-header-buttons{
     padding-right: 20px;
     padding-left: 5px;
-    width:180px;
+    width: 180px;
   }
   .post {
     width: 414px; 
