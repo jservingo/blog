@@ -64,13 +64,14 @@
   #ads_panel {
     float:none; 
     margin: 0 auto;
-    padding-bottom: 10px;
+    margin-top: 10px;
     width: 384px;
   }
   .post {
     width: 360px; 
     display: flex;
     margin: 0 auto;
+    margin-bottom: 10px;
     box-shadow: 0px;
   }
   .image-full .img-responsive, .video {
