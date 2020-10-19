@@ -23,16 +23,14 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     -->
     <link rel="stylesheet" href="/css/normalize.css">
-    <!--<link rel="stylesheet" href="/css/framework.css">-->
-    <link rel="stylesheet" href="/css/style.css">
-    <!--<link rel="stylesheet" href="/css/responsive.css">-->
-    <link rel="stylesheet" href="/css/confirmDialog.css">
-    <link rel="stylesheet" href="/css/jquery.growl.css">
-    <link rel="stylesheet" href="/css/search.css">
-    <link rel="stylesheet" href="/css/buttons.css">
-    <link rel="stylesheet" href="/css/popr.css">
-    <link rel="stylesheet" href="/css/tipr.css">
-    <link rel="stylesheet" href="/css/jqsimplemenu.css">
+    <link rel="stylesheet" href="/css/style.css?ver=1.1">
+    <link rel="stylesheet" href="/css/confirmDialog.css?ver=1.1">
+    <link rel="stylesheet" href="/css/jquery.growl.css?ver=1.1">
+    <link rel="stylesheet" href="/css/search.css?ver=1.1">
+    <link rel="stylesheet" href="/css/buttons.css?ver=1.1">
+    <link rel="stylesheet" href="/css/popr.css?ver=1.1">
+    <link rel="stylesheet" href="/css/tipr.css?ver=1.1">
+    <link rel="stylesheet" href="/css/jqsimplemenu.css?ver=1.1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/themes/default/style.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
