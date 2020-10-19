@@ -1,5 +1,5 @@
-{{-- posts.box_iframe --}}
+{{-- posts.single.iframe --}}
 
-<div class="video" style="width:100%;visibility:hidden;"><!--height:153px;-->
+<div class="video" style="visibility:hidden;">
 	{!! $post->iframe !!}
 </div>

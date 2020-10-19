@@ -11,7 +11,7 @@
 @section('page-description',$post->excerpt)
 
 @section('content')
-  <div style="overflow:hidden; padding-left:30px;">
+  <div style="overflow:hidden; width:100%;">
     <div class="loader"></div>
 
     <div id="header_panel" style="visibility:hidden;">  
@@ -20,23 +20,38 @@
       </div>
     </div>
 
-    <div style="width:95%;">
-    <div id="main_panel" style="float:left; width:70%; visibility:hidden;">  
-      <div class="container" style="margin:0;">                 
-        @include('posts.single.owner')
-        @include('posts.single.content')
-        @include('posts.single.body')
-        @include('posts.single.options')      
-      </div>      
-    </div>
-
-    <div id="ads_panel" style="float:right; width:30%; visibility:hidden;">  
-      <div class="container" style="margin:0;">  
-         @include('posts.single.ads') 
+    <div id="details_panel" style="visibility:hidden;">
+      <div id="owner_panel">  
+        <div class="container" style="margin:0;">
+          @include('posts.single.owner')
+        </div>  
       </div>
+
+      <div id="links_panel">  
+        <div class="container" style="margin:0;">
+          @include('posts.single.links')
+        </div>
+      </div>
+
+      <div style="clear: both;"></div> 
     </div>
 
-    <div style="clear: both;"></div>
+    <div style="width:100%;">
+      <div id="main_panel" style="visibility:hidden;">  
+        <div class="container" style="margin:0;">                 
+          @include('posts.single.content')
+          @include('posts.single.body')
+          @include('posts.single.options')      
+        </div>      
+      </div>
+
+      <div id="ads_panel" style="visibility:hidden;">  
+        <div class="container" style="margin:0;">  
+           @include('posts.single.ads') 
+        </div>
+      </div>
+
+      <div style="clear: both;"></div>
     </div>
   </div> 
 @endsection
@@ -141,6 +156,7 @@
     $(function() {
       $(".loader").fadeOut("slow");
       $('#header_panel').css("visibility","visible");
+      $('#details_panel').css("visibility","visible");
       $('#main_panel').css("visibility","visible");
       $('#ads_panel').css("visibility","visible");
     });

@@ -1,80 +1,74 @@
-.container-header{
-  /*padding-right: 15px;
-    padding-left: 15px;*/
-    padding-right: 20px;
-    padding-left: 20px;
-    box-sizing: border-box;
-    background-color: #74ABC9;
-    width:100%;
-}
 .container{
-	/*padding-right: 15px;
-  	padding-left: 15px;*/
+    display: flex;
+    flex-wrap: wrap;
     margin-right: auto;
     margin-left: auto;
 }
-@media (max-width: 569px) {
-  /*
-  .no-mobile{
-  	display: none !important;
-	}
-	*/
-	.container, .slider {
-    width: 300px;
-    display: 1;
+@media (max-width: 499px) { 
+  .container-header-logo{
+    padding-left: 5px;
   }
-	.post {
-  	width: 236px;	
+  .container-header-search{
+    padding-left: 10px;
+    height: 32px;
   }
-}
-@media (min-width: 570px) {
-  .container, .slider {
-    width: 520px; /* 260 * 2 */
-    display: 2;
+  .searchWrap {
+    top:64px !important;
+  } 
+  .container-header-subject{
+    padding-left: 10px;
+    height:48px;
+    float:left;
   }
-  .post {
-    width: 236px; 
+  .container-header-username{
+    padding-right: 0px;
+    padding-left: 0px;
+    text-align: left;
+    height:48px; width: 230px;
   }
-  .no-desktop{
-    display: none !important; 
-  }
-}
-@media (min-width: 830px) {
-  .container, .slider {
-    width: 780px; /* 260 * 3 */
-    display: 3;
-  }
-  .post {
-  	width: 236px;	
-  }
-  .no-desktop{
-  	display: none !important; 
+  .container-header-buttons{
+    padding-right: 0px;
+    padding-left: 0px;
+    height:48px; width: 120px;
   }
 }
-@media (min-width: 1090px) {
-  .container, .slider {
-    width: 1040px; /* 260 * 4 */
-    display: 4;
+@media (min-width: 500px) {
+  .container-header-username{
+    padding-right: 5px;
+    padding-left: 20px;
+    width: 260px;
   }
-  .post {
-  	width: 236px;	
-  }
-  .no-desktop{
-  	display: none !important; 
-  }
-}
-@media (min-width: 1610px) {
-  .container, .slider {
-    width: 1560px; /* 260 * 6 */
-    display: 6;
-  }
-  .post {
-    width: 236px; 
-  }
-  .no-desktop{
-    display: none !important; 
+  .container-header-buttons{
+    padding-right: 20px;
+    padding-left: 5px;
+    width: 180px;
   }
 }
+@media (max-width: 799px) { 
+  .container-header-logo{
+    float:none;
+  }
+  .container-header-search{
+    width:88%;    
+    float:none;
+  }
+  .searchWrap {
+    width:86%;
+    top:74px;
+  } 
+}
+@media (min-width: 800px) {
+  .container-header-logo{
+    float:left;
+  }
+  .container-header-search{
+    width:60%;
+  }
+  .searchWrap {
+    width:58%;
+  }
+}
+
 .category{
   /* background-color: pink; */ 
 }

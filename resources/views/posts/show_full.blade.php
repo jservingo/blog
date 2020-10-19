@@ -89,7 +89,7 @@
   <script>
     var iframe_width = 345;
   </script>
-  <script type="text/javascript" src="/js/resize_iframe.js"></script>
+  <script type="text/javascript" src="/js/resize_iframe_full.js"></script>
   <script>
     @if ($root=="contacts")
       var reset_contacts_tree = true;

@@ -11,7 +11,7 @@
 	  $src = "/img/empty-image.png";
 @endphp
 
-<div style="width:345px; height:auto; overflow:auto; background-color:#d7e9f3">
+<div class="image-full" style="height:auto; overflow:auto; background-color:#d7e9f3">
 	<img src="{{ $src }}" 
 		alt="{{ $post->title }}" class="img-responsive ifull">
 </div>

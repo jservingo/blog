@@ -1,4 +1,4 @@
-{{-- posts.full.photo --}}
+{{-- posts.single.photo --}}
 
 @php
 	if ($post->photos->count() >= 1)
@@ -11,7 +11,7 @@
 	  $src = "/img/empty-image.png";
 @endphp
 
-<div style="width:550px; height:auto; margin-top:20px; overflow:auto; background-color:#d7e9f3">
-	<img src="{{ $src }}" width="550px" 
-		alt="{{ $post->title }}" class="">
+<div class="image-full" style="height:auto; overflow:auto;">
+	<img src="{{ $src }}" 
+		alt="{{ $post->title }}" class="img-responsive ifull">
 </div>

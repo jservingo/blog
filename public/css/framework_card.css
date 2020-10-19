@@ -4,13 +4,12 @@
 }
 @media (max-width: 499px) { 
   .container {
-    width: 337px; 
+    width: 307px; 
     display: flex;
     flex-wrap: wrap;
   }
   .container-header-logo{
     padding-left: 5px;
-    w
   }
   .container-header-search{
     padding-left: 10px;
@@ -36,7 +35,7 @@
     height:48px; width: 120px;
   }
   .post {
-    width: 337px; 
+    width: 307px; 
     display: flex;
     margin-right: 0px;
     margin-bottom: 0px;
@@ -45,7 +44,7 @@
 }
 @media (min-width: 500px) {
   .container {
-    width: 367px; 
+    width: 337px; 
     display: flex;
     flex-wrap: wrap;
   }
@@ -60,7 +59,7 @@
     width: 180px;
   }
   .post {
-    width: 367px; 
+    width: 307px; 
     display: flex;
     margin-right: 30px;
     margin-bottom: 30px;

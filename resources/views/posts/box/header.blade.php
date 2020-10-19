@@ -14,7 +14,7 @@
 	  	<h1 class="t-title" style="margin-top:0;margin-bottom:0px;margin-right:22px;">{{ $post->title }}</h1>
 		</a>		
 	  <div> 
-	    <div class="popr box_popup" style="position:absolute; top:10px; right:5px;"
+	    <div class="popr box_popup" style="position:absolute; top:10px; right:10px;"
 	        data-id="{{ $post->id }}">
 	      <img src="/img/options.png" width="20" />
 	    </div> 

@@ -1,4 +1,4 @@
-<div class="image-w-text" style="padding-right:20px;">
+<div class="image-w-text">
   <h3>{{ __('messages.excerpt') }}:</h3>
   @if ($post->kpost && $post->kpost->excerpt)
     {{ $post->kpost->excerpt }}
@@ -7,26 +7,26 @@
   @endif
 </div>
 
-<div class="image-w-text" style="padding-right:20px;">
+<div class="image-w-text">
   <h3>{{ __('messages.content') }}:</h3>
   {!! $post->body !!}
 </div>
 
-<div style="padding-right:20px;">
+<div>
    @if ($post->audios->count() >= 1)
     <h3>{{ __('messages.audios') }}:</h3>
      @include('posts.single.audios')
    @endif
 </div>
 
-<div class="image-w-text links" style="padding-right:20px;">
+<div class="image-w-text links">
    @if ($post->links)
     <h3>{{ __('messages.links') }}:</h3>
     {!! $post->links !!}
    @endif
 </div>
 
-<div class="image-w-text" style="padding-right:20px;">
+<div class="image-w-text">
   @if ($post->kpost && $post->kpost->observation)
     <h3>{{ __('messages.observation') }}:</h3>
     {{ $post->kpost->observation }}
@@ -35,7 +35,7 @@
   @endif
 </div>
 
-<div class="image-w-text" style="padding-right:20px;">
+<div class="image-w-text">
   @if ($post->kpost && $post->kpost->footnote)
     <h3>{{ __('messages.footnote') }}:</h3>
     {{ $post->kpost->footnote }}
@@ -44,7 +44,7 @@
   @endif
 </div>
 
-<div class="image-w-text" style="padding-right:20px;">
+<div class="image-w-text">
   @if ($post->tags->count() >= 1)
     <h3>{{ __('messages.tags') }}:</h3>
     @include('posts.box.tags')

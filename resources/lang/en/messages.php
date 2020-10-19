@@ -304,6 +304,7 @@
  		'tip-edit' => 'Edit',
  		'tip-copy' => 'Copy',
  		'tip-paste' => 'Paste',
+ 		'tip-save' => 'Save',
  		'tip-delete' => 'Delete',
  		'tip-discard' => 'Discard',
  		'tip-send-post' => 'Forward',

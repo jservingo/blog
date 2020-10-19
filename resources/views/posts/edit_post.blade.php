@@ -299,7 +299,6 @@
     padding: 1.2em;
     width:36%;
   }
-  /* Stack the layout on small devices/viewports. */
   @media all and (max-width: 768px) {
     .left-container { 
       width:100%;

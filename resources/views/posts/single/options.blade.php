@@ -1,4 +1,4 @@
-<div style="width:95%;padding-right:20px;">
+<div style="width:100%;">
 	{{--
 	<h2>Opciones</h2>
 

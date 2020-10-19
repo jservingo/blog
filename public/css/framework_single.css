@@ -1,15 +1,212 @@
-.container-header{
-  /*padding-right: 15px;
-    padding-left: 15px;*/
-    padding-right: 20px;
-    padding-left: 20px;
-    box-sizing: border-box;
-    background-color: #74ABC9;
-    width:100%;
-}
 .container{
-    margin-right: auto;
-    margin-left: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 499px) { 
+  .container-header-logo{
+    padding-left: 5px;
+    float:none;
+  }
+  .container-header-search{
+    padding-left: 10px;
+    width: calc(100% - 50px);
+    height: 32px;
+    float:none;
+  }
+  .searchWrap {
+    top:64px;
+    width: calc(100% - 80px);
+  } 
+  .container-header-subject{
+    padding-left: 10px;
+    height:48px;
+    float:none;
+  }
+  .container-header-username{
+    padding-right: 0px;
+    padding-left: 0px;
+    float:left;
+    text-align: left;
+    height:48px; 
+    width: 230px;
+  }
+  .container-header-buttons{
+    padding-right: 20px;
+    padding-left: 0px;
+    float:right;
+    width: 180px;
+    height:48px; 
+  }
+  #header_panel {
+    padding-left: 0px;
+    width: 100%;
+  }
+  #details_panel {
+    padding-left: 0px;
+    width: 100%;
+  }
+  #owner_panel {
+    float:left;
+    width: 360px;
+  }
+  #links_panel {
+    float:left; 
+    width: 360px;
+    margin-right: 0px;
+  }
+  #main_panel {
+    float:left;
+    width: 360px;
+  }
+  #ads_panel {
+    float:left; 
+    width: 360px;
+  }
+  .post {
+    width: 360px; 
+    display: flex;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    box-shadow: 0px;
+  }
+  .image-full .img-responsive, .video {
+    width:360px;
+  }
+}
+@media (min-width: 500px) {
+  .container-header-logo{
+    float:none;
+  }
+  .container-header-search{
+    padding-left: 20px;
+    width: calc(100% - 78px);
+    height: 32px;
+    float:none;
+  }
+  .searchWrap {
+    top:64px;
+    width: calc(100% - 98px);
+  } 
+  .container-header-subject{
+    padding-left: 10px;
+    height:48px;
+    float:none;
+  }
+  .container-header-username{
+    padding-right: 5px;
+    padding-left: 20px;
+    text-align: left;
+    width: 260px;
+  }
+  .container-header-buttons{
+    padding-right: 20px;
+    padding-left: 5px;
+    width: 200px;
+  }
+  #header_panel {
+    padding-left: 25px;
+    width: 100%;
+  }
+  #details_panel {
+    padding-left: 25px;
+    width: 100%;
+  }
+  #owner_panel {
+    float:left;
+    width: 100%;
+  }
+  #links_panel {
+    float:left;
+    width: 414px;
+    margin-right: 30px;
+  }
+  #main_panel {
+    float:left;
+    padding-left: 25px;
+    width: 100%;
+  }
+  #ads_panel {
+    float:left; 
+    padding-left: 20px;
+    width: 414px;
+  }
+  .post {
+    width: 384px; 
+    display: flex;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    box-shadow: 4px 4px 24px 0px rgba(0,0,0,0.3);
+  }
+  .image-full .img-responsive, .video {
+    width:458px;
+  }
+}
+@media (min-width: 800px) {
+  .container-header-logo{
+    float:none;
+  }
+  .container-header-search{
+    width: calc(100% - 500px);
+    float:none;
+  }
+  .searchWrap {
+    width: calc(100% - 560px);
+    top:74px;
+  }   
+  .container-header-search{
+    float:left;
+  }  
+  .image-full .img-responsive, .video {
+    width:540px;
+  }
+}
+@media (min-width: 1024px) {
+  .container-header-logo{
+    float:left;
+  }
+  .container-header-search{
+    float:left;
+    width: calc(100% - 720px);
+  }
+  .searchWrap {
+    width: calc(100% - 780px);
+    top:15px;
+  }
+  #owner_panel {
+    float:left;
+    width: calc(100% - 464px);
+  }
+  #links_panel {
+    float:right; 
+    width: 414px;
+  }
+  #main_panel {
+    float:left;
+    width: calc(100% - 464px);
+  }
+  #ads_panel {
+    float:right; 
+    width: 414px;
+  }  
+  .image-full .img-responsive, .video {
+    width:540px;
+  }
+}
+@media (min-width: 1280px) {
+  .image-full .img-responsive, .video {
+    width:600px;
+  }
+}
+@media (min-width: 1680px) {
+  .image-full .img-responsive, .video {
+    width:800px;
+  }
+}
+@media (min-width: 1920px) {
+  .image-full .img-responsive, .video {
+    width:1000px;
+  }
 }
 
 a.vlink:link {text-decoration:none}
@@ -140,10 +337,8 @@ a.vlink{
     margin-right: 30px;
 }
 .img-responsive{
-  position: absolute;
-  object-fit: contain;
-  width: 384px;
-  height: 280px;
+  position: relative;
+  height: auto;
   display: block;
 }
 .space-inter{
