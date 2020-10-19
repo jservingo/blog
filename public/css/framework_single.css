@@ -39,35 +39,37 @@
     height:48px; 
   }
   #header_panel {
-    padding-left: 0px;
-    width: 100%;
+    margin: 0 auto;
+    width: 360px;
   }
   #details_panel {
-    padding-left: 0px;
+    margin: 0 auto;
     width: 100%;
   }
   #owner_panel {
-    float:left;
+    float:none;
+    margin: 0 auto;
     width: 360px;
   }
   #links_panel {
-    float:left; 
+    float:none; 
+    margin: 0 auto;
     width: 360px;
-    margin-right: 0px;
   }
   #main_panel {
-    float:left;
+    float:none;
+    margin: 0 auto;
     width: 360px;
   }
   #ads_panel {
-    float:left; 
+    float:none; 
+    margin: 0 auto;
     width: 360px;
   }
   .post {
     width: 360px; 
     display: flex;
-    margin-right: 0px;
-    margin-bottom: 0px;
+    margin: 0 auto;
     box-shadow: 0px;
   }
   .image-full .img-responsive, .video {
@@ -127,8 +129,8 @@
     width: 100%;
   }
   #ads_panel {
-    float:left; 
-    padding-left: 20px;
+    float:none; 
+    margin: 0 auto;
     width: 414px;
   }
   .post {
