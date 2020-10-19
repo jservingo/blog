@@ -58,7 +58,7 @@
 
 @push('styles')
   <!--<link rel="stylesheet" href="/css/twitter-bootstrap.css">-->
-  <link rel="stylesheet" href="/css/framework_single.css?ver=1.1">
+  <link rel="stylesheet" href="/css/framework_single.css?ver=1.2">
 @endpush
 
 @push('scripts')

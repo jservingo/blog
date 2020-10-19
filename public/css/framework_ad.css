@@ -9,17 +9,17 @@
     flex-wrap: wrap;
   }
   .container-header-logo{
-    padding-left: 5px;
+    padding-left: 0px;
   }
   .container-header-search{
-    padding-left: 10px;
+    padding-left: 0px;
     height: 32px;
   }
   .searchWrap {
     top:64px !important;
   } 
   .container-header-subject{
-    padding-left: 10px;
+    padding-left: 0px;
     height:48px;
     float:left;
   }

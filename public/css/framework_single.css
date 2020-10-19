@@ -5,11 +5,11 @@
 
 @media (max-width: 499px) { 
   .container-header-logo{
-    padding-left: 5px;
+    padding-left: 0px;
     float:none;
   }
   .container-header-search{
-    padding-left: 10px;
+    padding-left: 0px;
     width: calc(100% - 50px);
     height: 32px;
     float:none;
@@ -19,7 +19,7 @@
     width: calc(100% - 80px);
   } 
   .container-header-subject{
-    padding-left: 10px;
+    padding-left: 0px;
     height:48px;
     float:none;
   }
