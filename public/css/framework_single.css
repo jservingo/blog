@@ -64,6 +64,7 @@
   #ads_panel {
     float:none; 
     margin: 0 auto;
+    padding-bottom: 10px;
     width: 384px;
   }
   .post {
