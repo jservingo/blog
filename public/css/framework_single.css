@@ -128,7 +128,7 @@
   #main_panel {
     float:left;
     padding-left: 25px;
-    width: 100%;
+    width: calc(100% -25px);
   }
   #ads_panel {
     float:none; 

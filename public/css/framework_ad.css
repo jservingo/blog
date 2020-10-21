@@ -2,6 +2,7 @@
     margin-right: auto;
     margin-left: auto;
 }
+
 @media (max-width: 499px) { 
   .container {
     width: 384px; 
@@ -10,35 +11,43 @@
   }
   .container-header-logo{
     padding-left: 0px;
+    float:none;
   }
   .container-header-search{
     padding-left: 0px;
+    width: calc(100% - 50px);
     height: 32px;
+    float:none;
   }
   .searchWrap {
-    top:64px !important;
+    top:64px;
+    width: calc(100% - 80px);
   } 
   .container-header-subject{
     padding-left: 0px;
     height:48px;
-    float:left;
+    float:none;
   }
   .container-header-username{
     padding-right: 0px;
     padding-left: 0px;
+    float:left;
     text-align: left;
-    height:48px; width: 230px;
+    height:48px; 
+    width: 230px;
   }
   .container-header-buttons{
-    padding-right: 0px;
+    padding-right: 20px;
     padding-left: 0px;
-    height:48px; width: 120px;
+    float:right;
+    width: 180px;
+    height:48px; 
   }
   .post {
     width: 384px; 
     display: flex;
-    margin-right: 0px;
-    margin-bottom: 0px;
+    margin: 0 auto;
+    margin-bottom: 10px;
     box-shadow: 0px;
   }
 }
@@ -48,15 +57,34 @@
     display: flex;
     flex-wrap: wrap;
   }
+  .container-header-logo{
+    float:none;
+  }
+  .container-header-search{
+    padding-left: 20px;
+    width: calc(100% - 78px);
+    height: 32px;
+    float:none;
+  }
+  .searchWrap {
+    top:64px;
+    width: calc(100% - 98px);
+  } 
+  .container-header-subject{
+    padding-left: 10px;
+    height:48px;
+    float:none;
+  }
   .container-header-username{
     padding-right: 5px;
     padding-left: 20px;
+    text-align: left;
     width: 260px;
   }
   .container-header-buttons{
     padding-right: 20px;
     padding-left: 5px;
-    width: 180px;
+    width: 200px;
   }
   .post {
     width: 384px; 
@@ -66,17 +94,20 @@
     box-shadow: 4px 4px 24px 0px rgba(0,0,0,0.3);
   }
 }
-@media (max-width: 799px) { 
+@media (min-width: 800px) { 
   .container-header-logo{
     float:none;
   }
   .container-header-search{
-    width: calc(100% - 480px);    
+    width: calc(100% - 500px);
     float:none;
   }
   .searchWrap {
-    width:calc(100% - 440px);
+    width: calc(100% - 560px);
     top:74px;
+  }   
+  .container-header-search{
+    float:left;
   } 
 }
 @media (min-width: 878px) {
@@ -102,10 +133,10 @@
   }
   .container-header-search{
     float:left;
-    width: calc(100% - 900px);
+    width: calc(100% - 720px);
   }
   .searchWrap {
-    width: calc(100% - 960px);
+    width: calc(100% - 780px);
     top:15px;
   }
 }
