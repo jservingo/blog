@@ -32,7 +32,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework_ribbon.css">
+  <link rel="stylesheet" href="/css/framework_ribbon.css?ver=1.8">
   <link rel="stylesheet" href="/css/multiselect.css">
 @endpush
 

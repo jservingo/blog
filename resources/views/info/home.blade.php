@@ -32,5 +32,5 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework_post_show.css">
+  <link rel="stylesheet" href="/css/framework_post_show.css?ver=1.8">
 @endpush
