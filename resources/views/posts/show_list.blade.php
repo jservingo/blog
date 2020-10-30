@@ -47,7 +47,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework_list.css?ver=1.7">
+  <link rel="stylesheet" href="/css/framework_list.css?ver=1.8">
   <link rel="stylesheet" href="/css/multiselect.css">
 @endpush
 
@@ -85,10 +85,7 @@
      $('.tip').tipr();
     });
   </script>  
-  <script>
-    var iframe_width = 174;
-  </script>
-  <script type="text/javascript" src="/js/resize_iframe.js"></script>
+  <script type="text/javascript" src="/js/resize_iframe_full.js"></script>
   <script>
     @if ($root=="contacts")
       var reset_contacts_tree = true;

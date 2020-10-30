@@ -85,7 +85,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework_post_box.css">
+  <link rel="stylesheet" href="/css/framework_post_box.css?ver=1.8">
   <link rel="stylesheet" href="/css/form_control.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css">
   <style>

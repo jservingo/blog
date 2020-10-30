@@ -6,5 +6,4 @@
 	<div class="popr-item" data-view="exp">{{ __('messages.tiles') }}</div>
 	<div class="popr-item" data-view="card">{{ __('messages.cards') }}</div>
 	<div class="popr-item" data-view="box">{{ __('messages.boxes') }}</div>
-	<div class="popr-item" data-view="wf">{{ __('messages.mosaic') }}</div>
 </div>

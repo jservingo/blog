@@ -58,7 +58,7 @@
 
 @push('styles')
   <!--<link rel="stylesheet" href="/css/twitter-bootstrap.css">-->
-  <link rel="stylesheet" href="/css/framework_single.css?ver=1.7">
+  <link rel="stylesheet" href="/css/framework_single.css?ver=1.8">
 @endpush
 
 @push('scripts')
@@ -89,10 +89,7 @@
      $('.tip').tipr();
     });
   </script> 
-  <script>
-    var iframe_width = 600;
-  </script>
-  <script type="text/javascript" src="/js/resize_iframe.js"></script>
+  <script type="text/javascript" src="/js/resize_iframe_full.js"></script>
   <script> 
     var rv_type_id = {{ $post->type_id }}; 
     var rv_post_id = {{ $post->id }};

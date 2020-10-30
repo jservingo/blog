@@ -2,7 +2,7 @@
 
 <section class="footer">
     <footer>
-        <div class="container" style="display:block">
+        <div class="container_footer" style="display:block">
             <nav>
                 <ul class="container-flex space-center list-unstyled">
                     <li><a href="{{ route('home') }}" class="text-uppercase c-white">{{ __('messages.home') }}</a></li>

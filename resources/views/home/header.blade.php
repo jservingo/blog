@@ -31,13 +31,13 @@
                 </div>    
                 <a class="btn_show_alerts">    
                     <img src="/img/bell.png" alt="" style="width:20px;height:20px;">
-                </a>            
-                <a class="btn_edit_post" data-id="{{ Auth::user()->post->id }}"> 
-                    <img src="/img/configuration.png" alt="" style="width:20px;height:20px;">
-                </a>                
+                </a>                                            
                 <div id="menu_profile" class="popr" data-id="profile">
                   <img src="/img/profile.png" width="20" />
                 </div>
+                <a class="btn_edit_post" data-id="{{ Auth::user()->post->id }}"> 
+                    <img src="/img/configuration.png" alt="" style="width:20px;height:20px;">
+                </a>
                 <div style="width:10px">&nbsp;</div>
             </div>
             <div style="width:10px">&nbsp;</div>

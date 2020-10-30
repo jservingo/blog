@@ -1,4 +1,4 @@
-.container{
+.container, .container_footer{
     display: flex;
     flex-wrap: wrap;
     margin-right: auto;
@@ -7,11 +7,10 @@
 
 @media (max-width: 499px) { 
   .container-header-logo{
-    padding-left: 0px;
     float:none;
   }
   .container-header-search{
-    padding-left: 0px;
+    padding-left: 20px;
     width: calc(100% - 50px);
     height: 32px;
     float:none;
@@ -21,21 +20,20 @@
     width: calc(100% - 80px);
   } 
   .container-header-subject{
-    padding-left: 0px;
+    padding-left: 10px;
     height:48px;
     float:none;
   }
   .container-header-username{
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 5px;
+    padding-left: 20px;
     float:left;
     text-align: left;
     height:48px; 
     width: 230px;
   }
   .container-header-buttons{
-    padding-right: 20px;
-    padding-left: 0px;
+    padding-left: 5px;
     float:right;
     width: 180px;
     height:48px; 
@@ -47,13 +45,13 @@
   }
   .container-header-search{
     padding-left: 20px;
-    width: calc(100% - 78px);
+    width: calc(100% - 50px);
     height: 32px;
     float:none;
   }
   .searchWrap {
     top:64px;
-    width: calc(100% - 98px);
+    width: calc(100% - 80px);
   } 
   .container-header-subject{
     padding-left: 10px;
@@ -67,9 +65,8 @@
     width: 260px;
   }
   .container-header-buttons{
-    padding-right: 20px;
     padding-left: 5px;
-    width: 200px;
+    width: 180px;
   }
 }
 @media (min-width: 800px) {

@@ -11,8 +11,7 @@
 	  $src = "/img/empty-image.png";
 @endphp
 
-<div style="width:174px; height:102px; background-color:{{ $zcolor }}">
+<div class="image-full" style="height:auto; overflow:auto; background-color:{{ $zcolor }}">
 	<img src="{{ $src }}" 
-			alt="{{ $post->title }}" class="img-responsive ilist" 
-			width="188">
+		alt="{{ $post->title }}" class="img-responsive ifull">
 </div>

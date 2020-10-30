@@ -47,7 +47,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework_full.css?ver=1.7">
+  <link rel="stylesheet" href="/css/framework_full.css?ver=1.8">
   <link rel="stylesheet" href="/css/multiselect.css">
 @endpush
 
@@ -86,9 +86,6 @@
      $('.tip').tipr();
     });
   </script>  
-  <script>
-    var iframe_width = 345;
-  </script>
   <script type="text/javascript" src="/js/resize_iframe_full.js"></script>
   <script>
     @if ($root=="contacts")
@@ -140,8 +137,8 @@
       var width_post = width_container; //-60 
       var width_header = $(this).find(".header").width();
       var width_media = $(this).find(".media").width();
-      var width_content = width_post - width_media - 60;
-      var width_scontent = width_post - width_media - 33;
+      var width_content = width_post - width_header - width_media - 20;
+      var width_scontent = width_post - width_header - width_media - 20;
       var width_footnote = width_post - 260;
       $(this).width(width_post);
       $(this).find(".content").width(width_content);
@@ -154,9 +151,10 @@
       $(".container").width(width_container);      
       $(".post").each(function() {
         var width_post = width_container; //-60
+        var width_header = $(this).find(".header").width();
         var width_media = $(this).find(".media").width();
-        var width_content = width_post - width_media - 60;
-        var width_scontent = width_post - width_media - 33;
+        var width_content = width_post - width_header - width_media - 20;
+        var width_scontent = width_post - width_header - width_media - 20;
         var width_footnote = width_post - 260;
         $(this).width(width_post);
         $(this).find(".content").width(width_content);
