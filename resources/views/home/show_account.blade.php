@@ -17,7 +17,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework.css?ver=1.8">
+  <link rel="stylesheet" href="/css/framework.css?ver=1.9">
 @endpush
 
 @push('scripts')

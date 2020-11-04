@@ -80,4 +80,10 @@
   </form>
 </div>
 
-<p>{{ __('messages.please-login') }} <a class="btn_login button green" href="#"><img src="\img\register.png"></a><p>
+<div style="margin: 0 auto; width:380px;">
+  <span>{{ __('messages.please-login') }} 
+    <a class="btn_login button green" href="#">
+      <img src="\img\register.png">
+    </a>
+  </span>
+</div>

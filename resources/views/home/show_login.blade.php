@@ -7,8 +7,10 @@
     <img src="/img/kodelia_intro.png" style="width:100%;">
   </div>
 
-  <div style="width:100%; background-color:#155597; margin-top:-26px; height:80px"> 
-   <h1 style="padding-left:60px; padding-top:22px; color:#ffff;" align="center">{{ __('messages.introducing') }}</h1>
+  <div style="width:100%; background-color:#155597; margin-top:-26px;"> 
+    <h1 style="padding-left:0px; padding-top:22px; padding-bottom:22px; color:#ffff; text-align:center;">
+      {{ __('messages.introducing') }}
+    </h1>
   </div>
 
   @include('home.presentation_value_proposition')
@@ -26,27 +28,27 @@
   @endif    
 
   <div class="gradient-top">
-    <div style="float:left; width:46%; padding-left:50px;">
+    <div class="feature-right"><!-- style="float:right; width:46%; text-align:center;" -->
+      <div style="width:100%; padding-top:40px; display:inline-block;">
+        @if($mode=='login')
+          @include('home.login_form')
+        @else
+          @include('home.register_form')
+        @endif
+      </div>
+    </div> 
+
+    <div class="feature-left"><!-- style="float:left; width:46%; padding-left:50px;" -->
 			<div style="width:100%; padding-top:40px; display:inline-block;">
 				@include('home.presentation_slider')
 			</div>
 
 		</div>
 
-    <div style="float:right; width:46%; text-align:center;">
-      <div style="width:90%; padding-top:40px; display:inline-block;">
-      	@if($mode=='login')
-      		@include('home.login_form')
-      	@else
-      		@include('home.register_form')
-      	@endif
-      </div>
-    </div>
-
     <div style="clear: both;"></div>
 
     <div style="width:100%; text-align:center;">
-    	<div style="width:100%; padding-top:40px; display:inline-block;">
+    	<div style="width:100%; display:inline-block;">
     		@include('home.feature1')
         @include('home.feature2')
         @include('home.feature3')
@@ -57,7 +59,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework.css?ver=1.8">
+  <link rel="stylesheet" href="/css/framework.css?ver=1.9">
   <link rel="stylesheet" href="/css/formulario.css">
   <!--<link rel="stylesheet" href="/css/multiselect.css">-->
 @endpush
