@@ -27,7 +27,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework_full.css">
+  <link rel="stylesheet" href="/css/framework_list.css?ver=1.11">
   <link rel="stylesheet" href="/css/framework_app.css">
   <link rel="stylesheet" href="/css/multiselect.css">
   <link rel="stylesheet" href="/css/simplePagination.css" >

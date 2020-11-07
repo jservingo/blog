@@ -48,6 +48,12 @@
     margin-bottom: 30px;
     box-shadow: 0px;
   }
+  #confirm_dialog {
+    top: 240px;
+    left: calc((100% - 320px)/2);
+    width: 320px;
+    padding: 20px;
+  }
 }
 @media (min-width: 500px) {
   .container {
@@ -90,6 +96,12 @@
     margin-bottom: 30px;
     box-shadow: 4px 4px 24px 0px rgba(0,0,0,0.3);
   }
+  #confirm_dialog {
+    top: 250px;
+    left: calc((100% - 420px)/2);
+    width: 420px;
+    padding: 20px;
+  }
 }
 @media (min-width: 800px) { 
   .container-header-logo{
@@ -106,6 +118,12 @@
   .container-header-search{
     float:left;
   } 
+  #confirm_dialog {
+    top: 220px;
+    left: calc((100% - 500px)/2);
+    width: 500px;
+    padding: 20px;
+  }
 }
 @media (min-width: 878px) {
   .container {
@@ -135,6 +153,12 @@
   .searchWrap {
     width: calc(100% - 780px);
     top:15px;
+  }
+  #confirm_dialog {
+    top: 160px;
+    left: calc((100% - 500px)/2);
+    width: 500px;
+    padding: 20px;
   }
 }
 @media (min-width: 1292px) {

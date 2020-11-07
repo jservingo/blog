@@ -47,7 +47,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework_full.css?ver=1.8">
+  <link rel="stylesheet" href="/css/framework_full.css?ver=1.11">
   <link rel="stylesheet" href="/css/multiselect.css">
 @endpush
 

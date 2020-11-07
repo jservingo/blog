@@ -38,6 +38,12 @@
     width: 180px;
     height:48px; 
   }
+  #confirm_dialog {
+    top: 240px;
+    left: calc((100% - 320px)/2);
+    width: 320px;
+    padding: 20px;
+  }
 }
 @media (min-width: 500px) {
   .container-header-logo{
@@ -67,6 +73,12 @@
   .container-header-buttons{
     padding-left: 5px;
     width: 180px;
+  }  
+  #confirm_dialog {
+    top: 250px;
+    left: calc((100% - 420px)/2);
+    width: 420px;
+    padding: 20px;
   }
 }
 @media (min-width: 800px) {
@@ -84,6 +96,12 @@
   .container-header-search{
     float:left;
   }  
+  #confirm_dialog {
+    top: 220px;
+    left: calc((100% - 500px)/2);
+    width: 500px;
+    padding: 20px;
+  }
 }
 @media (min-width: 1024px) {
   .container-header-logo{
@@ -96,6 +114,12 @@
   .searchWrap {
     width: calc(100% - 780px);
     top:15px;
+  }
+  #confirm_dialog {
+    top: 160px;
+    left: calc((100% - 500px)/2);
+    width: 500px;
+    padding: 20px;
   }
 }
 

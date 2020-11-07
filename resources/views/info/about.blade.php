@@ -29,7 +29,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework.css?ver=1.9">
+  <link rel="stylesheet" href="/css/framework.css?ver=1.11">
 @endpush
 
 @push('scripts')

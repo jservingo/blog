@@ -59,7 +59,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework.css?ver=1.9">
+  <link rel="stylesheet" href="/css/framework.css?ver=1.11">
   <link rel="stylesheet" href="/css/formulario.css">
   <!--<link rel="stylesheet" href="/css/multiselect.css">-->
 @endpush

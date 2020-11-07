@@ -20,7 +20,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework_full.css">
+  <link rel="stylesheet" href="/css/framework_full.css?ver=1.11">
 <style>
 </style>
 @endpush

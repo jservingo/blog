@@ -38,7 +38,7 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework_card.css?ver=1.8">
+  <link rel="stylesheet" href="/css/framework_card.css?ver=1.11">
   <link rel="stylesheet" href="/css/multiselect.css">
 @endpush
 
