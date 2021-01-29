@@ -48,12 +48,14 @@
   </form>
 </div>
 
-<div style="margin: 0 auto; width:380px;">
-  <span>{{ __('messages.please-register') }} 
-    <a class="btn_register button green" href="#">
-      {{ __('messages.register-now') }}
-    </a>
-  </span> 
+<div style="margin: 0 auto; width:240px;">
+  <span>{{ __('messages.please-register') }}</span> 
+</div>
+
+<div style="margin: 0 auto; width:160px;">
+  <a class="btn_register button green" href="#">
+    {{ __('messages.register-now') }}
+  </a> 
 </div>
 
 <div style="margin: 0 auto; width:160px;">

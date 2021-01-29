@@ -8,6 +8,12 @@ Route::get('support','InfoController@support')->name('info.support');
 Route::get('contact','InfoController@contact')->name('info.contact');
 Route::get('ad/contact','InfoController@ad_contact')->name('info.ad_contact');
 
+//Konetsys
+Route::get('konetsys','KonetsysController@index')->name('konetsys');
+Route::get('konetsys/about','KonetsysController@about')->name('konetsys.about');
+Route::get('konetsys/support','KonetsysController@support')->name('konetsys.support');
+Route::get('konetsys/contact','KonetsysController@contact')->name('konetsys.contact');
+
 Route::get('email',function(){
 	return new App\Mail\LoginCredentials(App\User::first(),'123456');
 });
