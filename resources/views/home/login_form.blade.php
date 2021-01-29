@@ -48,6 +48,8 @@
   </form>
 </div>
 
+<br>
+
 <div style="margin: 0 auto; width:240px;">
   <span>{{ __('messages.please-register') }}</span> 
 </div>
