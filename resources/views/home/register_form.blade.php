@@ -80,7 +80,7 @@
   </form>
 </div>
 
-<div style="margin: 0 auto; width:360px;">
+<div style="margin: 0 auto; width:330px;">
   <span>{{ __('messages.please-login') }}</span>
   <a class="btn_login button green" href="#">
     <img src="\img\register.png">
