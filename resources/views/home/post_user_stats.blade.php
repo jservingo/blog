@@ -24,7 +24,7 @@
       	</a>
 			</li>
 			<li style="font-weight:bold;">{{ __('messages.created') }}
-				<ul>
+				<ul style="list-style: none;">
 					<li>
 						<a class="vlink" href="{{ route('apps.show_created') }}">
           		{{ __('messages.apps') }} <span id="c_apps"></span>
@@ -47,8 +47,8 @@
 					</li>
 				</ul>
 			</li>
-			<li style="font-weight:bold;">>{{ __('messages.subscriptions') }}
-				<ul>
+			<li style="font-weight:bold;">{{ __('messages.subscriptions') }}
+				<ul style="list-style: none;">
 			  	<li>
 						<a class="vlink" href="{{ route('subscriptions.show_apps') }}">
           		{{ __('messages.apps') }} <span id="c_apps_subscriptions"></span>
