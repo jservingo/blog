@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     -->
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css?ver=1.1">
+    <link rel="stylesheet" href="/css/style.css?ver=1.2">
     <link rel="stylesheet" href="/css/confirmDialog.css?ver=1.1">
     <link rel="stylesheet" href="/css/jquery.growl.css?ver=1.1">
     <link rel="stylesheet" href="/css/search.css?ver=1.1">
