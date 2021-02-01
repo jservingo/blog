@@ -13,17 +13,24 @@
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Paypal</h3>
 						<img src="/img/paypal.jpg" height="180">
-						<p><a href="https://www.paypal.me/jservingo">paypal.me/jservingo</a><p>
+						<p><a href="https://www.paypal.me/jservingo">paypal.me/jservingo</a></p>
+					</div>
+					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
+					  <h3>Zelle</h3>
+						<img src="/img/zelle.png" height="180">
+						<p>Email: jservingo@gmail.com</p>
+						<p>Citibank</p>
+						<p>Name: Jorge Servin</p>
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Airtm</h3>
 						<img src="/img/airtm-logo.png" height="180">
-						<p>Email: jservingo@gmail.com<p>
+						<p>Email: jservingo@gmail.com</p>
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Pipol Pay - Facebank</h3>
 						<img src="/img/pipolpay.png" height="180">
-						<p>Email: jservingo@gmail.com<p>
+						<p>Email: jservingo@gmail.com</p>
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Pago móvil</h3>
@@ -32,11 +39,6 @@
 						<br>Cel: 0412-6000713
 						<br>C.I. 5966618
 						<br>Jorge Servin
-					</div>
-					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
-					  <h3>Zelle</h3>
-						<img src="/img/zelle.png" height="180">
-						<p>Sorry! Zelle is not working anymore in Venezuela</a><p>
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 						<h3>Citibank-USA (USD)</h3>
@@ -51,12 +53,12 @@
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Trust Wallet - Bitcoin</h3>
 						<img src="/img/bc1qgt7qvptt9l8k3xntcgwxq8qka787ty8yx8sasw.png" width="200">
-						<p>bc1qgt7qvptt9l8k3xntcgwxq8qka787ty8yx8sasw<p>
+						<p>bc1qgt7qvptt9l8k3xntcgwxq8qka787ty8yx8sasw</p>
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Trust Wallet - Dash</h3>
 						<img src="/img/XuzLYpbLrnK618yFDH5TwBbfDJN686zXvC.png" width="200">
-						<p>XuzLYpbLrnK618yFDH5TwBbfDJN686zXvC<p>
+						<p>XuzLYpbLrnK618yFDH5TwBbfDJN686zXvC</p>
 					</div>					
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 						<h3>Banco Provincial (Bs)</h3>
@@ -69,13 +71,6 @@
 						<h3>Banesco (Bs)</h3>	
 						<p>Nombre: Jorge Servin</p>
 						<p>Cuenta: 01340032690322051921</p>
-						<p>CI: 5966618</p>
-						<p>Email: jservingo@gmail.com</p>
-					</div>
-					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
-						<h3>Mercantil (Bs)</h3>	
-						<p>Nombre: Jorge Servin</p>
-						<p>Cuenta: 01050080010080393624</p>
 						<p>CI: 5966618</p>
 						<p>Email: jservingo@gmail.com</p>
 					</div>
