@@ -146,6 +146,7 @@
   #ads_panel {
     float:none; 
     margin: 0 auto;
+    margin-top: 15px;
     width: 414px;
   }
   .post {
