@@ -2,7 +2,7 @@
 
 <div class="post pexp">     
   <div class="content-post">
-  	<ul>
+  	<ul style="list-style: none;">
 			<li>
 				<a class="vlink" href="{{ route('posts.show_received',0) }}">
           {{ __('messages.received') }} <span id="c_received"></span>
@@ -23,7 +23,7 @@
           {{ __('messages.contacts') }} <span id="c_contacts"></span>
       	</a>
 			</li>
-			<li>{{ __('messages.created') }}
+			<li style="font-weight:bold;">{{ __('messages.created') }}
 				<ul>
 					<li>
 						<a class="vlink" href="{{ route('apps.show_created') }}">
@@ -47,7 +47,7 @@
 					</li>
 				</ul>
 			</li>
-			<li>{{ __('messages.subscriptions') }}
+			<li style="font-weight:bold;">>{{ __('messages.subscriptions') }}
 				<ul>
 			  	<li>
 						<a class="vlink" href="{{ route('subscriptions.show_apps') }}">
