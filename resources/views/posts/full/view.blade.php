@@ -34,12 +34,11 @@
         </div>
         <div style="float:left;">
           @include('posts.full.title')
+          @include('posts.full.content')
         </div>        
         <div style="clear:both;"></div>
       </div>
-      <div style="float:left;padding:4px 10px 4px 10px; text-align:justify;">
-        @include('posts.full.content')
-      </div>
+      
       @else
       <div>  
         <div style="float:right;">
