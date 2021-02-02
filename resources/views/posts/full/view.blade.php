@@ -32,13 +32,14 @@
         <div class="media" style="float:left;">
           @include('posts.box.photo_card')
         </div>
-        <div style="float:left; padding:4px 10px 4px 10px; text-align:justify;">
-          <div>@include('posts.full.title')</div>
-          <div>@include('posts.full.content')</div>
+        <div style="float:left;">
+          @include('posts.full.title')
+          <div style="padding:4px 10px 4px 10px; text-align:justify;">
+            @include('posts.full.content')
+          </div>
         </div>        
         <div style="clear:both;"></div>
       </div>
-      
       @else
       <div>  
         <div style="float:right;">
@@ -69,7 +70,7 @@
         @include('posts.full.title')  
       </div>
       <div style="clear:both;"></div>
-      <div style="padding:4px 10px 4px 10px; text-align:justify;">
+      <div style="padding:padding:4px 10px 0px 10px; text-align:justify;">
         @include('posts.full.content')
         <hr/>
       </div>
