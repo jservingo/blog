@@ -17,7 +17,7 @@
           @endif
         @elseif ($post->photos->count() >= 1)
           @if ($post->isApp() || $post->isUser())
-            @include('posts.list.photo_card')
+            @include('posts.box.photo_card')
           @else  
             @include('posts.list.photo')
           @endif
