@@ -70,7 +70,7 @@
         @include('posts.full.title')  
       </div>
       <div style="clear:both;"></div>
-      <div style="padding:padding:4px 10px 0px 10px; text-align:justify;">
+      <div style="padding:4px 10px 0px 10px; text-align:justify;">
         @include('posts.full.content')
         <hr/>
       </div>
