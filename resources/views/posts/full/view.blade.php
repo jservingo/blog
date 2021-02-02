@@ -37,7 +37,7 @@
         </div>        
         <div style="clear:both;"></div>
       </div>
-      <div style="padding:4px 10px 4px 10px; text-align:justify;">
+      <div style="float:left;padding:4px 10px 4px 10px; text-align:justify;">
         @include('posts.full.content')
       </div>
       @else
