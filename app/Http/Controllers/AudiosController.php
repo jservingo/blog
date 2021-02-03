@@ -40,9 +40,9 @@ class AudiosController extends Controller
     //date('mdYHis').uniqid().
     //->store('posts','public')
   	Audio::create([
-  		'url' => request()->file('url'),
   		'description' => request()->get('description'),
   		'position' => request()->get('position'),
+      'url' => request()->get('url'),
   		'post_id' => $post->id,
       'user_id' => auth()->id()
   	]);
@@ -63,6 +63,7 @@ class AudiosController extends Controller
 
     $audio->description = $request->get('description');
     $audio->position = $request->get('position');
+    $audio->url = $request->get('url');
     $audio->save();
 
     echo json_encode(array('success'=>true));
