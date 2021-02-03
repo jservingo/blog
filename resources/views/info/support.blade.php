@@ -18,9 +18,9 @@
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Zelle</h3>
 						<img src="/img/zelle.png" height="180">
-						<p>Email: jservingo@gmail.com</p>
-						<p>Citibank</p>
-						<p>Name: Jorge Servin</p>
+						<br>Email: jservingo@gmail.com
+						<br>Citibank
+						<br>Name: Jorge Servin
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Airtm</h3>
