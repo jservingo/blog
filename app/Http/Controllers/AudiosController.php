@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Audio;
 use App\Post;
 
@@ -51,7 +52,7 @@ class AudiosController extends Controller
       //$original_name = $request->file('audio')->getClientOriginalName();
       //$size = $request->file('audio')->getSize();
       $extension = $request->file('audio')->getClientOriginalExtension();
-      $filename = $audio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
+      $filename = $post->id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
       //$audiopath = url('/storage/upload/files/audio/'.$filename);
       $path = $request->file('audio')->storeAs('public/posts/',$filename);
       //$all_audios = $audiopath;
