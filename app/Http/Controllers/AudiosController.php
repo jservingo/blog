@@ -48,8 +48,8 @@ class AudiosController extends Controller
 
     if($request->hasFile('audio')){
       $uniqueid = uniqid();
-      $original_name = $request->file('audio')->getClientOriginalName();
-      $size = $request->file('audio')->getSize();
+      //$original_name = $request->file('audio')->getClientOriginalName();
+      //$size = $request->file('audio')->getSize();
       $extension = $request->file('audio')->getClientOriginalExtension();
       $filename = $audio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
       //$audiopath = url('/storage/upload/files/audio/'.$filename);
@@ -83,8 +83,8 @@ class AudiosController extends Controller
 
     if($request->hasFile('audio')){
       $uniqueid = uniqid();
-      $original_name = $request->file('audio')->getClientOriginalName();
-      $size = $request->file('audio')->getSize();
+      //$original_name = $request->file('audio')->getClientOriginalName();
+      //$size = $request->file('audio')->getSize();
       $extension = $request->file('audio')->getClientOriginalExtension();
       $filename = $audio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
       //$audiopath = url('/storage/upload/files/audio/'.$filename);
