@@ -37,12 +37,30 @@ class AudiosController extends Controller
   	]);
   	*/
 
-    //date('mdYHis').uniqid().
-    //->store('posts','public')
+    //Validación del audio
+    $this->validate($request, [
+      'description' => 'nullable',
+      'position' => 'required',
+      'audio' =>'nullable|file|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
+    ]);
+
+    $filename = "";
+
+    if($request->hasFile('audio')){
+      $uniqueid = uniqid();
+      $original_name = $request->file('audio')->getClientOriginalName();
+      $size = $request->file('audio')->getSize();
+      $extension = $request->file('audio')->getClientOriginalExtension();
+      $filename = $audio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
+      //$audiopath = url('/storage/upload/files/audio/'.$filename);
+      $path = $file->storeAs('public/posts/',$filename);
+      //$all_audios = $audiopath;
+    }
+
   	Audio::create([
   		'description' => request()->get('description'),
   		'position' => request()->get('position'),
-      'url' => request()->get('url'),
+      'url' => $filename,
   		'post_id' => $post->id,
       'user_id' => auth()->id()
   	]);
@@ -54,16 +72,29 @@ class AudiosController extends Controller
   {
     //$this->authorize('update',$post);
 
-    //Validación del post
+    //Validación del audio
     $this->validate($request, [
-        'url' => 'required',
-        'description' => 'required',
-        'position' => 'required'
-        ]);
+      'description' => 'required',
+      'position' => 'required',
+      'audio' =>'nullable|file|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
+    ]);
+
+    $filename = "";
+
+    if($request->hasFile('audio')){
+      $uniqueid = uniqid();
+      $original_name = $request->file('audio')->getClientOriginalName();
+      $size = $request->file('audio')->getSize();
+      $extension = $request->file('audio')->getClientOriginalExtension();
+      $filename = $audio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
+      //$audiopath = url('/storage/upload/files/audio/'.$filename);
+      $path = $file->storeAs('public/posts/',$filename);
+      //$all_audios = $audiopath;
+    }
 
     $audio->description = $request->get('description');
     $audio->position = $request->get('position');
-    $audio->url = $request->get('url');
+    $audio->url = $filename;
     $audio->save();
 
     echo json_encode(array('success'=>true));

@@ -13,7 +13,7 @@ class PhotosController extends Controller
     public function store(Post $post) 
     {
     	$this->validate(request(), [
-    		'photo'=>'required|image|max:3072'
+            'photo' => 'required|image|mimes:jpeg,jpg,png,gif|max:3072'
     	]);
 
         //date('mdYHis').uniqid().
