@@ -35,7 +35,7 @@ function saveRegister(post_id){
       enctype: 'multipart/form-data',
       url: '/audio/'+post_id,
       data: data,
-      processData: false,  // Important!
+      processData: false,
       contentType: false,
       cache: false,      
       success: function(data) {
@@ -74,11 +74,10 @@ function saveRegister(post_id){
     console.log(data);
     $.ajax({
 	    type: 'put',
-	    enctype: 'multipart/form-data',
 	    url: '/audio/'+audio_id,
 	    data: data,
-      processData: false,  // Important!
-      contentType: false,
+      processData: false,
+      contentType: "multipart/form-data",
       cache: false, 	 
 	    success: function(data) {
 	      if (data.success){
