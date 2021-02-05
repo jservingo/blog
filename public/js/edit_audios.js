@@ -61,6 +61,8 @@ function saveRegister(post_id){
 		url = $('#url').val();
 		position = $('#position').val();		
 		description = $('#description').val();
+		console.log(post_id);
+		console.log(audio_id);
 		console.log(description);
     $.ajaxSetup({
       headers: {
@@ -69,7 +71,6 @@ function saveRegister(post_id){
     });
     var form = $('#fm')[0];
     var data = new FormData(form);
-    console.log(audio_id);
     console.log(data);
     $.ajax({
 	    type: 'put',

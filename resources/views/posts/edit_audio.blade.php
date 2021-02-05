@@ -32,7 +32,7 @@
 			</div>	
 			<div class="fitem">
 				<label>URL:</label>
-				<input id="featured" name="url" class="easyui-validatebox" style="width:320px">
+				<input id="url" name="url" class="easyui-validatebox" style="width:320px">
 			</div>		
 			<div class="fitem">
 				<label>Upload audio:</label>
