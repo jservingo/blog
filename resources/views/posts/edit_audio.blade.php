@@ -29,7 +29,11 @@
 			<div class="fitem">
 				<label>Description:</label>
 				<input id="description" name="description" class="easyui-validatebox" required="true" style="width:320px">
-			</div>			
+			</div>	
+			<div class="fitem">
+				<label>URL:</label>
+				<input id="featured" name="url" class="easyui-validatebox" style="width:320px">
+			</div>		
 			<div class="fitem">
 				<label>Upload audio:</label>
 				<input id="audio" name="audio" type="file">
