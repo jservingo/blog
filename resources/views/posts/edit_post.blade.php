@@ -324,7 +324,7 @@
   <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
   <script type="text/javascript" src="/js/easyui.min.js"></script>
   <script type="text/javascript" src="/js/edit_post.js"></script>
-  <script type="text/javascript" src="/js/edit_audios.js?ver=1.1"></script>
+  <script type="text/javascript" src="/js/edit_audios.js?ver=1.2"></script>
   <script type="text/javascript" src="/js/functions.js"></script>
   <script>
     if($('.dropzone').length)

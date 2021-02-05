@@ -61,6 +61,7 @@ function saveRegister(post_id){
 		url = $('#url').val();
 		position = $('#position').val();		
 		description = $('#description').val();
+		console.log(description);
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -68,6 +69,8 @@ function saveRegister(post_id){
     });
     var form = $('#fm')[0];
     var data = new FormData(form);
+    console.log(audio_id);
+    console.log(data);
     $.ajax({
 	    type: 'put',
 	    enctype: 'multipart/form-data',
