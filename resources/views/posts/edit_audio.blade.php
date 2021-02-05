@@ -21,7 +21,7 @@
 	<div id="dlg" class="easyui-dialog" style="width:94%;height:200px;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
 		<div class="ftitle">Audios</div>
-		<form id="fm" method="post" novalidate enctype='multipart/form-data'>
+		<form id="fm" method="post" novalidate enctype="multipart/form-data">
 			<div class="fitem">
 				<label>Position</label>
 				<input type="number" id="position" name="position" style="width:60px">
