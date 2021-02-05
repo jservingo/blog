@@ -66,12 +66,16 @@ function saveRegister(post_id){
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
-    var data = {url:url,position:position,description:description};
+    var form = $('#fm')[0];
+    var data = new FormData(form);
     $.ajax({
 	    type: 'put',
+	    enctype: 'multipart/form-data',
 	    url: '/audio/'+audio_id,
 	    data: data,
-	    dataType: 'json',
+      processData: false,  // Important!
+      contentType: false,
+      cache: false, 	 
 	    success: function(data) {
 	      if (data.success){
 	        $('#dlg').dialog('close');		// close the dialog
