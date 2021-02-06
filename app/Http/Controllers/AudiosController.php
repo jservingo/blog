@@ -46,7 +46,10 @@ class AudiosController extends Controller
       'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
     ]);
 
-    $filename = $request->get('url');
+    if ($request->filled('url'))
+      $filename = $request->get('url');
+    else 
+      $filename = "";
 
     if($request->hasFile('audio')){
       //$uniqueid = uniqid();
@@ -61,7 +64,7 @@ class AudiosController extends Controller
 
   	Audio::create([
   		'description' => request()->get('description'),
-  		'position' => request()->get('position'),
+  		'position' => request()->get('position',0),
       'url' => $filename,
   		'post_id' => $post->id,
       'user_id' => auth()->id()
@@ -82,7 +85,10 @@ class AudiosController extends Controller
       'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
     ]);
 
-    $filename = $request->get('url');
+    if ($request->filled('url'))
+      $filename = $request->get('url');
+    else 
+      $filename = "";
 
     if($request->hasFile('audio')){
       //$uniqueid = uniqid();
@@ -95,8 +101,10 @@ class AudiosController extends Controller
       //$all_audios = $audiopath;
     }
 
-    $audio->description = $request->get('description');
-    $audio->position = $request->get('position');
+    if ($request->filled('description'))
+      $audio->description = $request->get('description');
+    if ($request->filled('position'))
+      $audio->position = $request->get('position');
     $audio->url = $filename;
     $audio->save();
 
