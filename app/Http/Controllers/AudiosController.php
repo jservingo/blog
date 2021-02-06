@@ -45,7 +45,7 @@ class AudiosController extends Controller
       'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
     ]);
 
-    $filename = "";
+    $filename = $request->get('url');
 
     if($request->hasFile('audio')){
       $uniqueid = uniqid();
@@ -80,7 +80,7 @@ class AudiosController extends Controller
       'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
     ]);
 
-    $filename = $audio->url;
+    $filename = $request->get('url');
 
     if($request->hasFile('audio')){
       $uniqueid = uniqid();
