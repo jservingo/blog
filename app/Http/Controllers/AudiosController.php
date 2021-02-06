@@ -42,7 +42,7 @@ class AudiosController extends Controller
     $this->validate($request, [
       'description' => 'nullable',
       'position' => 'required',
-      'audio' =>'nullable|file|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
+      'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
     ]);
 
     $filename = "";
@@ -77,7 +77,7 @@ class AudiosController extends Controller
     $this->validate($request, [
       'description' => 'required',
       'position' => 'required',
-      'audio' =>'nullable|file|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
+      'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
     ]);
 
     $filename = $audio->url;
