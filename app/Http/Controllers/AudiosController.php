@@ -41,8 +41,6 @@ class AudiosController extends Controller
     //Validación del audio
     $this->validate($request, [
       'description' => 'required',
-      'position' => 'nullable',
-      'url' => 'nullable',
       'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
     ]);
 
@@ -59,6 +57,7 @@ class AudiosController extends Controller
       //$filename = $post->id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
       //$audiopath = url('/storage/upload/files/audio/'.$filename);
       $filename = $request->file('audio')->store('posts','public');
+      dd($filename);
       //$all_audios = $audiopath;
     }
 
@@ -79,9 +78,6 @@ class AudiosController extends Controller
 
     //Validación del audio
     $this->validate($request, [
-      'description' => 'nullable',
-      'position' => 'nullable',
-      'url' => 'nullable',
       'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
     ]);
 
@@ -98,6 +94,7 @@ class AudiosController extends Controller
       //$filename = $audio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
       //$audiopath = url('/storage/upload/files/audio/'.$filename);
       $filename = $request->file('audio')->store('posts','public');
+      dd($filename);
       //$all_audios = $audiopath;
     }
 
