@@ -40,21 +40,22 @@ class AudiosController extends Controller
 
     //Validación del audio
     $this->validate($request, [
-      'description' => 'nullable',
-      'position' => 'required',
+      'description' => 'required',
+      'position' => 'nullable',
+      'url' => 'nullable',
       'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
     ]);
 
     $filename = $request->get('url');
 
     if($request->hasFile('audio')){
-      $uniqueid = uniqid();
+      //$uniqueid = uniqid();
       //$original_name = $request->file('audio')->getClientOriginalName();
       //$size = $request->file('audio')->getSize();
-      $extension = $request->file('audio')->getClientOriginalExtension();
-      $filename = $post->id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
+      //$extension = $request->file('audio')->getClientOriginalExtension();
+      //$filename = $post->id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
       //$audiopath = url('/storage/upload/files/audio/'.$filename);
-      $path = $request->file('audio')->storeAs('public/posts',$filename);
+      $filename = $request->file('audio')->store('posts','public');
       //$all_audios = $audiopath;
     }
 
@@ -75,21 +76,22 @@ class AudiosController extends Controller
 
     //Validación del audio
     $this->validate($request, [
-      'description' => 'required',
-      'position' => 'required',
+      'description' => 'nullable',
+      'position' => 'nullable',
+      'url' => 'nullable',
       'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
     ]);
 
     $filename = $request->get('url');
 
     if($request->hasFile('audio')){
-      $uniqueid = uniqid();
+      //$uniqueid = uniqid();
       //$original_name = $request->file('audio')->getClientOriginalName();
       //$size = $request->file('audio')->getSize();
-      $extension = $request->file('audio')->getClientOriginalExtension();
-      $filename = $audio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
+      //$extension = $request->file('audio')->getClientOriginalExtension();
+      //$filename = $audio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
       //$audiopath = url('/storage/upload/files/audio/'.$filename);
-      $path = $request->file('audio')->storeAs('public/posts',$filename);
+      $filename = $request->file('audio')->store('posts','public');
       //$all_audios = $audiopath;
     }
 
