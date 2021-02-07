@@ -49,6 +49,8 @@ class AudiosController extends Controller
     else 
       $filename = "";
 
+    dd($filename);
+
     if($request->hasFile('audio')){
       //$uniqueid = uniqid();
       //$original_name = $request->file('audio')->getClientOriginalName();
@@ -85,6 +87,8 @@ class AudiosController extends Controller
       $filename = $request->get('url');
     else 
       $filename = "";
+
+    dd($filename);
 
     if($request->hasFile('audio')){
       //$uniqueid = uniqid();
