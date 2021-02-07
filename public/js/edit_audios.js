@@ -32,11 +32,10 @@ function saveRegister(post_id){
     var data = new FormData(form);
     $.ajax({
       type: 'post',
-      enctype: 'multipart/form-data',
       url: '/audio/'+post_id,
       data: data,
       processData: false,
-      contentType: false,
+      contentType: "multipart/form-data",
       cache: false,      
       success: function(data) {
         if (data.success){
