@@ -17,26 +17,30 @@ function updateRegister(){
 	}
 }
 
-function saveRegister(post_id){					
+function saveRegister(post_id){	
 	if (audio_url=='create')
-	{
-		url = $('#url').val();
-		position = $('#position').val();		
-		description = $('#description').val();
+	{		
+		var audio = $('#audio')[0].files[0];
+		var position = $('#position').val();		
+		var description = $('#description').val();
+		var url = $('#url').val();
+		var data = new FormData();
+		data.append('audio', audio);
+		data.append('position', position);
+		data.append('description', description);
+		data.append('url', url);
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
-    var form = $('#fm')[0];
-    var data = new FormData(form);
     $.ajax({
-      type: 'post',
-      url: '/audio/'+post_id,
+    	url: '/audio/'+post_id,
+    	type: 'POST',
+    	contentType: false,
       data: data,
       processData: false,
-      contentType: "multipart/form-data",
-      cache: false,      
+			cache: false,       
       success: function(data) {
         if (data.success){
           $('#dlg').dialog('close');		// close the dialog
@@ -57,9 +61,15 @@ function saveRegister(post_id){
 	}
 	else if (audio_url=='update')
 	{
-		url = $('#url').val();
-		position = $('#position').val();		
-		description = $('#description').val();
+		var audio = $('#audio')[0].files[0];
+		var position = $('#position').val();		
+		var description = $('#description').val();
+		var url = $('#url').val();
+		var data = new FormData();
+		data.append('audio', audio);
+		data.append('position', position);
+		data.append('description', description);
+		data.append('url', url);	
 		console.log(post_id);
 		console.log(audio_id);
 		console.log(description);
@@ -68,16 +78,13 @@ function saveRegister(post_id){
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
-    var form = $('#fm')[0];
-    var data = new FormData(form);
-    console.log(data);
     $.ajax({
 	    type: 'put',
 	    url: '/audio/'+audio_id,
-	    data: data,
+	    contentType: false,
+      data: data,
       processData: false,
-      contentType: "multipart/form-data",
-      cache: false, 	 
+			cache: false, 
 	    success: function(data) {
 	      if (data.success){
 	        $('#dlg').dialog('close');		// close the dialog
