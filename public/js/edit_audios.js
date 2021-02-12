@@ -29,6 +29,11 @@ function saveRegister(post_id){
 		data.append('position', position);
 		data.append('description', description);
 		data.append('url', url);
+		console.log(post_id);
+		console.log(audio);
+		console.log(position);
+		console.log(description);
+		console.log(url);
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -72,7 +77,10 @@ function saveRegister(post_id){
 		data.append('url', url);	
 		console.log(post_id);
 		console.log(audio_id);
+		console.log(audio);
+		console.log(position);
 		console.log(description);
+		console.log(url);
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
