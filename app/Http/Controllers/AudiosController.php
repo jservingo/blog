@@ -84,6 +84,11 @@ class AudiosController extends Controller
     ]);
     */
 
+    var_dump ($audio);
+    var_dump ($request);
+
+    return;
+
     if ($request->filled('url'))
       $filename = $request->get('url');
     else 
