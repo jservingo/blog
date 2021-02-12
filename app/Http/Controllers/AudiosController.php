@@ -46,28 +46,29 @@ class AudiosController extends Controller
     ]);
     */
 
-    var_dump ($request);
-    return;
-
     if ($request->filled('url'))
       $filename = $request->get('url');
     else 
       $filename = "";
 
+    if ($request->filled('position'))
+      $position = $request->get('position');
+    else 
+      $position = 0;
+
     if($request->hasFile('audio')){
-      //$uniqueid = uniqid();
-      //$original_name = $request->file('audio')->getClientOriginalName();
-      //$size = $request->file('audio')->getSize();
-      //$extension = $request->file('audio')->getClientOriginalExtension();
-      //$filename = $post->id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
-      //$audiopath = url('/storage/upload/files/audio/'.$filename);
-      $filename = $request->file('audio')->store('posts','public');
-      //$all_audios = $audiopath;
+      $faudio = $request->file('audio');
+      //$original_name = $audio->getClientOriginalName();
+      //$size = $audio->getSize();
+      $extension = $faudio->getClientOriginalExtension();
+      $filename = $post->id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
+      //$filename = $request->file('audio')->store('posts','public');
+      $faudio->move(public_path('posts'), $filename);
     }
 
   	Audio::create([
-  		'description' => request()->get('description'),
-  		'position' => request()->get('position',0),
+  		'description' => $request->get('description'),
+  		'position' => $position,
       'url' => $filename,
   		'post_id' => $post->id,
       'user_id' => auth()->id()
@@ -87,24 +88,19 @@ class AudiosController extends Controller
     ]);
     */
 
-    var_dump ($audio);
-    var_dump ($request);
-    return;
-
     if ($request->filled('url'))
       $filename = $request->get('url');
     else 
       $filename = "";
 
     if($request->hasFile('audio')){
-      //$uniqueid = uniqid();
+      $faudio = $request->file('audio');
       //$original_name = $request->file('audio')->getClientOriginalName();
       //$size = $request->file('audio')->getSize();
-      //$extension = $request->file('audio')->getClientOriginalExtension();
-      //$filename = $audio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
-      //$audiopath = url('/storage/upload/files/audio/'.$filename);
-      $filename = $request->file('audio')->store('posts','public');
-      //$all_audios = $audiopath;
+      $extension = $faudio->getClientOriginalExtension();
+      $filename = $faudio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
+      //$filename = $request->file('audio')->store('posts','public');
+      $faudio->move(public_path('posts'), $filename);
     }
 
     if ($request->filled('description'))
