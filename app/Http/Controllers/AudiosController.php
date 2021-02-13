@@ -64,7 +64,8 @@ class AudiosController extends Controller
       //$extension = $faudio->getClientOriginalExtension();
       //$filename = $post->id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
       //$filename = $request->file('audio')->store('posts','public');
-      $faudio->move(public_path('posts'), $filename);
+      //$faudio->move(public_path('posts'), $filename);
+      $path = $faudio->storeAs('public/posts',$filename);
     }
 
   	Audio::create([
@@ -102,7 +103,8 @@ class AudiosController extends Controller
       //$extension = $faudio->getClientOriginalExtension();
       //$filename = $faudio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
       //$filename = $request->file('audio')->store('posts','public');
-      $faudio->move(public_path('posts'), $filename);
+      //$faudio->move(public_path('posts'), $filename);
+      $path = $faudio->storeAs('public/posts',$filename);
     }
 
     if ($request->filled('description'))
