@@ -104,7 +104,7 @@ class AudiosController extends Controller
       //$filename = $faudio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
       //$filename = $request->file('audio')->store('posts','public');
       //$faudio->move(public_path('posts'), $filename);
-      $path = $faudio->storeAs('public/posts',$filename);
+      //$path = $faudio->storeAs('public/posts',$filename);
     }
 
     if ($request->filled('description'))
