@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Audio;
@@ -57,15 +59,12 @@ class AudiosController extends Controller
       $position = 0;
 
     if($request->hasFile('audio')){
-      $faudio = $request->audio->File;
-      $filename = $faudio->name;
-      //$original_name = $audio->getClientOriginalName();
+      $file = $request->file('audio');
+      $filename = $file->getClientOriginalName();
+      $path = $file->storeAs('public/posts/', $filename);
       //$size = $audio->getSize();
       //$extension = $faudio->getClientOriginalExtension();
       //$filename = $post->id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
-      //$filename = $request->file('audio')->store('posts','public');
-      //$faudio->move(public_path('posts'), $filename);
-      $path = $faudio->storeAs('public/posts',$filename);
     }
 
   	Audio::create([
@@ -96,15 +95,12 @@ class AudiosController extends Controller
       $filename = "";
 
     if($request->hasFile('audio')){
-      $faudio = $request->audio->File;
-      $filename = $faudio->name;
-      //$original_name = $request->file('audio')->getClientOriginalName();
+      $file = $request->file('audio');
+      $filename = $file->getClientOriginalName();
+      //$path = $file->storeAs('public/posts/', $filename);
       //$size = $request->file('audio')->getSize();
       //$extension = $faudio->getClientOriginalExtension();
       //$filename = $faudio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
-      //$filename = $request->file('audio')->store('posts','public');
-      //$faudio->move(public_path('posts'), $filename);
-      $path = $faudio->storeAs('public/posts',$filename);
     }
 
     if ($request->filled('description'))
