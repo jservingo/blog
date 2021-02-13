@@ -58,10 +58,11 @@ class AudiosController extends Controller
 
     if($request->hasFile('audio')){
       $faudio = $request->file('audio');
+      $filename = $faudio->name;
       //$original_name = $audio->getClientOriginalName();
       //$size = $audio->getSize();
-      $extension = $faudio->getClientOriginalExtension();
-      $filename = $post->id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
+      //$extension = $faudio->getClientOriginalExtension();
+      //$filename = $post->id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
       //$filename = $request->file('audio')->store('posts','public');
       $faudio->move(public_path('posts'), $filename);
     }
@@ -95,10 +96,11 @@ class AudiosController extends Controller
 
     if($request->hasFile('audio')){
       $faudio = $request->file('audio');
+      $filename = $faudio->name;
       //$original_name = $request->file('audio')->getClientOriginalName();
       //$size = $request->file('audio')->getSize();
-      $extension = $faudio->getClientOriginalExtension();
-      $filename = $faudio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
+      //$extension = $faudio->getClientOriginalExtension();
+      //$filename = $faudio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
       //$filename = $request->file('audio')->store('posts','public');
       $faudio->move(public_path('posts'), $filename);
     }
