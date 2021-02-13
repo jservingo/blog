@@ -18,7 +18,7 @@
 		<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteRegister()">Delete</a>
 	</div>
 	
-	<div id="dlg" class="easyui-dialog" style="width:94%;height:200px;padding:10px 20px"
+	<div id="dlg" class="easyui-dialog" style="width:94%;height:300px;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
 		<div class="ftitle">Audios</div>
 		<form id="fm" method="post" novalidate enctype="multipart/form-data">
@@ -33,11 +33,16 @@
 			<div class="fitem">
 				<label>URL:</label>
 				<input id="url" name="url" class="easyui-validatebox" style="width:320px">
-			</div>		
-			<div class="fitem">
-				<label>Upload audio:</label>
-				<input id="audio" name="audio" type="file">
-			</div>
+			</div>					
+		</form>
+		<form id="faudio" method="post" action="/audio/upload" enctype="multipart/form-data">
+			<input id="audio_id" name="audio_id" type="hidden">
+			<input id="audio_url" name="audio_id" type="hidden">
+			<input id="post_id" name="audio_id" type="hidden">			
+			<label>Upload audio:</label>
+			<input id="audio" name="audio" type="file">
+			<button>Upload</button>
+			{{ csrf_field() }}
 		</form>
 	</div>
 
