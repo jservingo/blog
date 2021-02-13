@@ -16,9 +16,10 @@
 		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="createRegister()">Add</a>
 		<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateRegister()">Edit</a>
 		<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteRegister()">Delete</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-upload" plain="true" onclick="uploadFile()">Upload</a>
 	</div>
 	
-	<div id="dlg" class="easyui-dialog" style="width:94%;height:250px;padding:10px 20px"
+	<div id="dlg" class="easyui-dialog" style="width:94%;height:200px;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
 		<div class="ftitle">Audios</div>
 		<form id="fm" method="post" novalidate enctype="multipart/form-data">
@@ -34,7 +35,12 @@
 				<label>URL:</label>
 				<input id="url" name="url" class="easyui-validatebox" style="width:320px">
 			</div>					
-		</form>
+		</form>	
+	</div>
+
+	<div id="dlg_upload" class="easyui-dialog" style="width:94%;height:150px;padding:10px 20px"
+			closed="true" buttons="">
+		<div class="ftitle">Audios</div>
 		<form id="faudio" method="post" action="/audio/upload" enctype="multipart/form-data">
 			<input id="audio_id" name="audio_id" type="hidden">
 			<input id="audio_url" name="audio_id" type="hidden">

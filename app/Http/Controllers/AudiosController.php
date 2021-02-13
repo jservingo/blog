@@ -113,6 +113,10 @@ class AudiosController extends Controller
     echo json_encode(array('success'=>true));
   }
 
+  public function upload(Request $request)
+  {
+  }
+
   public function destroy(Audio $audio)
   {
       $audio->delete();

@@ -144,6 +144,15 @@ function deleteRegister(){
 	}
 }
 
+function uploadFile(){
+	var row = $('#dg').datagrid('getSelected');
+	if (row){
+		$('#dlg_upload').dialog('open').dialog('setTitle','Upload');
+		console.log(row);
+		//$('#audio_url').val();
+	}
+}
+
 function doSearch(){  
     $('#dg').datagrid('load',{  
         ejecutivo: $('#ejecutivo').val()  
