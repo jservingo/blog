@@ -58,7 +58,7 @@ class AudiosController extends Controller
 
     if($request->hasFile('audio')){
       $faudio = $request->file('audio');
-      $filename = $faudio->name;
+      $filename = $faudio->getClientOriginalName();
       //$original_name = $audio->getClientOriginalName();
       //$size = $audio->getSize();
       //$extension = $faudio->getClientOriginalExtension();
@@ -97,7 +97,7 @@ class AudiosController extends Controller
 
     if($request->hasFile('audio')){
       $faudio = $request->file('audio');
-      $filename = $faudio->name;
+      $filename = $faudio->getClientOriginalName();
       //$original_name = $request->file('audio')->getClientOriginalName();
       //$size = $request->file('audio')->getSize();
       //$extension = $faudio->getClientOriginalExtension();
