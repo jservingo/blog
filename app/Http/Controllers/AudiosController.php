@@ -57,8 +57,8 @@ class AudiosController extends Controller
       $position = 0;
 
     if($request->hasFile('audio')){
-      $faudio = $request->file('audio');
-      $filename = $faudio->getClientOriginalName();
+      $faudio = $request->audio->File;
+      $filename = $faudio->name;
       //$original_name = $audio->getClientOriginalName();
       //$size = $audio->getSize();
       //$extension = $faudio->getClientOriginalExtension();
@@ -96,15 +96,15 @@ class AudiosController extends Controller
       $filename = "";
 
     if($request->hasFile('audio')){
-      $faudio = $request->file('audio');
-      $filename = $faudio->getClientOriginalName();
+      $faudio = $request->audio->File;
+      $filename = $faudio->name;
       //$original_name = $request->file('audio')->getClientOriginalName();
       //$size = $request->file('audio')->getSize();
       //$extension = $faudio->getClientOriginalExtension();
       //$filename = $faudio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
       //$filename = $request->file('audio')->store('posts','public');
       //$faudio->move(public_path('posts'), $filename);
-      //$path = $faudio->storeAs('public/posts',$filename);
+      $path = $faudio->storeAs('public/posts',$filename);
     }
 
     if ($request->filled('description'))
