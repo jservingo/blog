@@ -43,7 +43,9 @@
 		<form id="faudio" method="post" action="/audio/upload" enctype="multipart/form-data">
 			<input id="audio_id" name="audio_id" type="hidden">			
 			<label>Upload audio:</label>
-			<label><span id="description"></span></label>
+			<br>
+			<label><span id="description">Description</span></label>
+			<br>
 			<input id="audio" name="audio" type="file">
 			<button>Upload</button>
 			{{ csrf_field() }}
