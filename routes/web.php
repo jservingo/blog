@@ -169,8 +169,8 @@ Route::delete('posts/{post}','PostsController@destroy');
 
 //Audios
 Route::get('audios/get/{post}','AudiosController@get_audios');
-Route::post('audio/{post}','AudiosController@store')->name('audio.create');
 Route::post('audio/upload','AudiosController@upload')->name('audio.upload');
+Route::post('audio/{post}','AudiosController@store')->name('audio.create');
 Route::put('audio/{audio}','AudiosController@update')->name('audio.update');
 Route::delete('audios/{audio}','AudiosController@destroy')->name('audio.destroy');
 
