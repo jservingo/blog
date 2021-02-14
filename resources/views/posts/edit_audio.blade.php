@@ -45,7 +45,7 @@
 			<input id="audio_id" name="audio_id" type="hidden">			
 			<label>Upload audio:</label>
 			<br>
-			<label><span id="description">Description</span></label>
+			<label><span id="description_upload">Description</span></label>
 			<br>
 			<input id="audio" name="audio" type="file">
 			<button>Upload</button>

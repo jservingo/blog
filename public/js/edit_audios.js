@@ -149,7 +149,7 @@ function uploadFile(){
 	if (row){
 		$('#dlg_upload').dialog('open').dialog('setTitle','Upload File');
 		//console.log(row);
-		$("#description").html(row.description);
+		$("#description_upload").html(row.description);
 		$('#audio_id').val(row.id);
 	}
 }
