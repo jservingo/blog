@@ -77,14 +77,14 @@ class AudiosController extends Controller
 
     if($request->hasFile('audio')){
       $file = $request->file('audio');
-      $filename = $file->getClientOriginalName();
+      $name = $file->getClientOriginalName();      
+      $size = $file('audio')->getSize();
+      $extension = $file->getClientOriginalExtension();
+      $filename = $audio->post->id.'_'.$audio->id.'_'.$name.$extension;
       $path = $file->storeAs('public/posts/', $filename);
-      //$file->move($location,$filename);
       $audio->url = $filename;
       $audio->save();
-      //$size = $request->file('audio')->getSize();
-      //$extension = $faudio->getClientOriginalExtension();
-      //$filename = $faudio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
+      
     }
 
     return back()->with('flash','Uploaded audio');

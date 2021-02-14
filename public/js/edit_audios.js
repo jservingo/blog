@@ -116,32 +116,47 @@ function saveRegister(post_id){
 function deleteRegister(){
 	var row = $('#dg').datagrid('getSelected');
 	if (row){
-		$.ajaxSetup({
-	    headers: {
-	      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	  $.createDialog({
+	    attachAfter: '#main-container',
+	    title: '¿Está seguro que desea eliminar este audio?',
+	    accept: yes,
+	    refuse: no,
+	    acceptStyle: 'red',
+	    refuseStyle: 'gray',
+	    acceptAction: function(){
+	      deleteAudio(row.id);
 	    }
 	  });
-	  $.ajax({
-	    type: 'delete',
-	    url: '/audios/'+row.id,
-	    dataType: 'json',
-	    success: function(data) {
-	      if (data.success){
-	        $('#dg').datagrid('reload');	// reload the data
-	      }
-	      else if(data.msg)
-        {
-          $.growl.warning({ message:data.msg });
-        }
-        else {
-          alert('error');
-        }
-	    },
-	    error: function (data) {
-	      console.log('Error:', data);
-	    }
-	  });
-	}
+	  $.showDialog();  
+	} 
+}
+
+function deleteAudio(audio_id){
+	$.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    type: 'delete',
+    url: '/audios/'+audio_id,
+    dataType: 'json',
+    success: function(data) {
+      if (data.success){
+        $('#dg').datagrid('reload');	// reload the data
+      }
+      else if(data.msg)
+      {
+        $.growl.warning({ message:data.msg });
+      }
+      else {
+        alert('error');
+      }
+    },
+    error: function (data) {
+      console.log('Error:', data);
+    }
+  });
 }
 
 function uploadFile(){

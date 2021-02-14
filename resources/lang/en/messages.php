@@ -336,6 +336,7 @@
  		'creation-date' => 'Creation Date',
  		'views' => 'Views',
  		'audios' => 'Audios',
+ 		'upload-audios' => 'Upload audios',
 
 	];
 

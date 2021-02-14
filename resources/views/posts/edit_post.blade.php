@@ -234,7 +234,7 @@
       </div>
     @endif
 
-    <div class="half-container">
+    <div class="half-container" id="">
       <div class="form-control">
         <label><span>{{ __('messages.upload-audios') }}</span></label>
         @include('posts.edit_audio')
@@ -324,7 +324,7 @@
   <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
   <script type="text/javascript" src="/js/easyui.min.js"></script>
   <script type="text/javascript" src="/js/edit_post.js"></script>
-  <script type="text/javascript" src="/js/edit_audios.js?ver=1.29"></script>
+  <script type="text/javascript" src="/js/edit_audios.js?ver=1.30"></script>
   <script type="text/javascript" src="/js/functions.js"></script>
   <script>
     if($('.dropzone').length)

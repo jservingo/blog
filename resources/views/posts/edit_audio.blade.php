@@ -35,12 +35,12 @@
 	</div>
 
 	<div id="dlg_upload" class="easyui-dialog" style="width:94%;height:150px;padding:10px 20px"
-			closed="true" buttons="">
+			closed="true" buttons="#dlg-upload-buttons">
 		<form id="faudio" method="post" action="{{ route('audio.upload') }}" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			<input id="audio_id" name="audio_id" type="hidden">			
 			<label>Upload audio: <span id="description_upload">Description</span></label>
-			<br>
+			<br><br>
 			<input id="audio" name="audio" type="file">
 			<input type='submit' name='submit' value='Upload'>
 		</form>
@@ -49,4 +49,8 @@
 	<div id="dlg-buttons">
 		<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveRegister({{ $post->id }})">Save</a>
 		<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">Cancel</a>
+	</div>
+
+	<div id="dlg-upload-buttons">
+		<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg_upload').dialog('close')">Cancel</a>
 	</div>
