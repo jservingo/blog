@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Audio;
@@ -80,14 +78,13 @@ class AudiosController extends Controller
     if($request->hasFile('audio')){
       $file = $request->file('audio');
       $filename = $file->getClientOriginalName();
-      $path = $file->storeAs('public/posts/', $filename);
+      $path = $file->storeAs('public/posts', $filename);
       $audio->url = $filename;
+      $audio->save();
       //$size = $request->file('audio')->getSize();
       //$extension = $faudio->getClientOriginalExtension();
       //$filename = $faudio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
     }
-
-    echo json_encode(array('success'=>true));
   }
 
   public function destroy(Audio $audio)
