@@ -22,7 +22,7 @@
 	<div id="dlg" class="easyui-dialog" style="width:94%;height:200px;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
 		<div class="ftitle">Audios</div>
-		<form id="fm" method="post" novalidate enctype="multipart/form-data">
+		<form id="fm" method="post">
 			<div class="fitem">
 				<label>Position</label>
 				<input type="number" id="position" name="position" style="width:60px">
@@ -31,10 +31,6 @@
 				<label>Description:</label>
 				<input id="description" name="description" class="easyui-validatebox" required="true" style="width:320px">
 			</div>	
-			<div class="fitem">
-				<label>URL:</label>
-				<input id="url" name="url" class="easyui-validatebox" style="width:320px">
-			</div>					
 		</form>	
 	</div>
 
@@ -43,12 +39,10 @@
 		<form id="faudio" method="post" action="{{ route('audio.upload') }}" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			<input id="audio_id" name="audio_id" type="hidden">			
-			<label>Upload audio:</label>
-			<br>
-			<label><span id="description_upload">Description</span></label>
+			<label>Upload audio: <span id="description_upload">Description</span></label>
 			<br>
 			<input id="audio" name="audio" type="file">
-			<button>Upload</button>
+			<input type='submit' name='submit' value='Upload'>
 		</form>
 	</div>
 
