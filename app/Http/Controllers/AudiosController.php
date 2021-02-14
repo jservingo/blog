@@ -34,43 +34,19 @@ class AudiosController extends Controller
 
   public function store(Post $post, Request $request) 
   {
-  	/*
-  	$this->validate(request(), [
-  		'photo'=>'required|image|max:3072'
-  	]);
-  	*/
-
-    //Validación del audio
-    /*
     $this->validate($request, [
-      'description' => 'required',
-      'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
+      'description' => 'required'
     ]);
-    */
-
-    if ($request->filled('url'))
-      $filename = $request->get('url');
-    else 
-      $filename = "";
 
     if ($request->filled('position'))
       $position = $request->get('position');
     else 
       $position = 0;
 
-    if($request->hasFile('audio')){
-      $file = $request->file('audio');
-      $filename = $file->getClientOriginalName();
-      //$path = $file->storeAs('public/posts/', $filename);
-      //$size = $audio->getSize();
-      //$extension = $faudio->getClientOriginalExtension();
-      //$filename = $post->id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
-    }
-
   	Audio::create([
   		'description' => $request->get('description'),
   		'position' => $position,
-      'url' => $filename,
+      'url' => '',
   		'post_id' => $post->id,
       'user_id' => auth()->id()
   	]);
@@ -81,33 +57,11 @@ class AudiosController extends Controller
   public function update(Audio $audio, Request $request)
   {
     //$this->authorize('update',$post);
-
-    //Validación del audio
-    /*
-    $this->validate($request, [
-      'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
-    ]);
-    */
-
-    if ($request->filled('url'))
-      $filename = $request->get('url');
-    else 
-      $filename = "";
-
-    if($request->hasFile('audio')){
-      $file = $request->file('audio');
-      $filename = $file->getClientOriginalName();
-      //$path = $file->storeAs('public/posts/', $filename);
-      //$size = $request->file('audio')->getSize();
-      //$extension = $faudio->getClientOriginalExtension();
-      //$filename = $faudio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
-    }
-
+    
     if ($request->filled('description'))
       $audio->description = $request->get('description');
     if ($request->filled('position'))
       $audio->position = $request->get('position');
-    $audio->url = $filename;
     $audio->save();
 
     echo json_encode(array('success'=>true));
@@ -115,6 +69,25 @@ class AudiosController extends Controller
 
   public function upload(Request $request)
   {
+    /*
+    $this->validate($request, [
+      'audio' =>'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg'
+    ]);
+    */
+
+    $audio = Audio::find($request->get('audio_id'));
+
+    if($request->hasFile('audio')){
+      $file = $request->file('audio');
+      $filename = $file->getClientOriginalName();
+      $path = $file->storeAs('public/posts/', $filename);
+      $audio->url = $filename;
+      //$size = $request->file('audio')->getSize();
+      //$extension = $faudio->getClientOriginalExtension();
+      //$filename = $faudio->post_id.'_'.Carbon::now()->format('Ymd').'_'.$rand().'.'.$extension;
+    }
+
+    echo json_encode(array('success'=>true));
   }
 
   public function destroy(Audio $audio)

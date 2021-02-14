@@ -147,9 +147,10 @@ function deleteRegister(){
 function uploadFile(){
 	var row = $('#dg').datagrid('getSelected');
 	if (row){
-		$('#dlg_upload').dialog('open').dialog('setTitle','Upload');
-		console.log(row);
-		//$('#audio_url').val();
+		$('#dlg_upload').dialog('open').dialog('setTitle','Upload File');
+		//console.log(row);
+		$("#description").html(row.description);
+		$('#audio_id').val(row.id);
 	}
 }
 

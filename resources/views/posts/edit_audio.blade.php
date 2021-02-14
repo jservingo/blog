@@ -40,12 +40,10 @@
 
 	<div id="dlg_upload" class="easyui-dialog" style="width:94%;height:150px;padding:10px 20px"
 			closed="true" buttons="">
-		<div class="ftitle">Audios</div>
 		<form id="faudio" method="post" action="/audio/upload" enctype="multipart/form-data">
-			<input id="audio_id" name="audio_id" type="hidden">
-			<input id="audio_url" name="audio_id" type="hidden">
-			<input id="post_id" name="audio_id" type="hidden">			
+			<input id="audio_id" name="audio_id" type="hidden">			
 			<label>Upload audio:</label>
+			<p><span id="description"></span></p>
 			<input id="audio" name="audio" type="file">
 			<button>Upload</button>
 			{{ csrf_field() }}
