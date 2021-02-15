@@ -34,7 +34,7 @@
 		</form>	
 	</div>
 
-	<div id="dlg_upload" class="easyui-dialog" style="width:94%;height:150px;padding:10px 20px"
+	<div id="dlg_upload" class="easyui-dialog" style="width:94%;height:200px;padding:10px 20px"
 			closed="true" buttons="#dlg-upload-buttons">
 		<form id="faudio" method="post" action="{{ route('audio.upload') }}" enctype="multipart/form-data">
 			{{ csrf_field() }}
