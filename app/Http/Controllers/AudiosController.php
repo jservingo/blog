@@ -80,7 +80,7 @@ class AudiosController extends Controller
       $name = $file->getClientOriginalName();      
       $size = $file->getSize();
       $extension = $file->getClientOriginalExtension();
-      $filename = $audio->post_id.'_'.$audio->id.'_'.$name.$extension;
+      $filename = "posts/".$audio->post_id.'_'.$audio->id.'_'.$name;
       $path = $file->storeAs('public/posts/', $filename);
       $audio->url = $filename;
       $audio->save();     
