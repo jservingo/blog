@@ -78,13 +78,12 @@ class AudiosController extends Controller
     if($request->hasFile('audio')){
       $file = $request->file('audio');
       $name = $file->getClientOriginalName();      
-      $size = $file('audio')->getSize();
+      $size = $file->getSize();
       $extension = $file->getClientOriginalExtension();
       $filename = $audio->post->id.'_'.$audio->id.'_'.$name.$extension;
       $path = $file->storeAs('public/posts/', $filename);
       $audio->url = $filename;
-      $audio->save();
-      
+      $audio->save();     
     }
 
     return back()->with('flash','Uploaded audio');
