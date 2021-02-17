@@ -20,20 +20,12 @@ function updateRegister(){
 function saveRegister(post_id){	
 	if (audio_url=='create')
 	{		
-		var audio = $('#audio')[0].files[0];
 		var position = $('#position').val();		
 		var description = $('#description').val();
-		var url = $('#url').val();
-		var data = new FormData();
-		data.append('audio', audio);
-		data.append('position', position);
-		data.append('description', description);
-		data.append('url', url);
+		var data = {position: position, description: description};
 		console.log(post_id);
-		console.log(audio);
 		console.log(position);
 		console.log(description);
-		console.log(url);
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -42,10 +34,8 @@ function saveRegister(post_id){
     $.ajax({
     	url: '/audio/'+post_id,
     	type: 'POST',
-    	contentType: false,
       data: data,
-      processData: false,
-			cache: false,       
+      dataType: 'json',       
       success: function(data) {
         if (data.success){
           $('#dlg').dialog('close');		// close the dialog
@@ -66,21 +56,13 @@ function saveRegister(post_id){
 	}
 	else if (audio_url=='update')
 	{
-		var audio = $('#audio')[0].files[0];
 		var position = $('#position').val();		
 		var description = $('#description').val();
-		var url = $('#url').val();
-		var data = new FormData();
-		data.append('audio', audio);
-		data.append('position', position);
-		data.append('description', description);
-		data.append('url', url);	
+		var data = {position: position, description: description};	
 		console.log(post_id);
 		console.log(audio_id);
-		console.log(audio);
 		console.log(position);
 		console.log(description);
-		console.log(url);
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -88,11 +70,9 @@ function saveRegister(post_id){
     });
     $.ajax({
 	    type: 'put',
-	    url: '/audio/'+audio_id,
-	    contentType: false,
+	    url: '/audio/'+audio_id,	    
       data: data,
-      processData: false,
-			cache: false, 
+      dataType: 'json', 
 	    success: function(data) {
 	      if (data.success){
 	        $('#dlg').dialog('close');		// close the dialog
