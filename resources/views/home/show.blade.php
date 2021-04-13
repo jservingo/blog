@@ -15,10 +15,10 @@
 
         @include('home.post_user_stats')
 
-        @php
-          $route='home.show_recommendations';
-          $title=__('messages.recommendations');
-          $type='recommendations'; 
+        @php 
+          $route='home.show_offers';
+          $title=__('messages.offers');
+          $type='offers'; 
         @endphp
         @include('home.post')
 
@@ -27,10 +27,10 @@
 
         {{-- 'Row 2' --}}
 
-        @php 
-          $route='home.show_offers';
-          $title=__('messages.offers');
-          $type='offers'; 
+        @php
+          $route='home.show_recommendations';
+          $title=__('messages.recommendations');
+          $type='recommendations'; 
         @endphp
         @include('home.post')
 
