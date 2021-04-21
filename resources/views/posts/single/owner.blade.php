@@ -19,7 +19,11 @@
 	<div class="image-w-text">
   	<span class="cite-2">{{ __('messages.updated-date') }}:</span> {{ $post->updated_at->format('d/m/y') }}
 	</div> 
-@endif     
+@endif    
+
+<div class="image-w-text">
+  <span class="cite-2">{{ __('messages.views') }}:</span>{{ $post->views }}
+</div>  
 
 @if ($post->kpost && ($post->sender->id <> $post->user_id))
   <div class="image-w-text">
