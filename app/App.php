@@ -7,6 +7,8 @@ use App\Post;
 
 class App extends Model
 {
+  protected $fillable = ['name','mode','user_id','parent_id']; 
+
   public function pages()
   {
     return $this->hasMany(Page::class);
