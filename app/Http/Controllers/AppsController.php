@@ -439,7 +439,7 @@ class AppsController extends Controller
 
     $app = App::create([
       'name' => $request->get('title'),
-      'user_id' => auth()->id()
+      'user_id' => auth()->id(),
       'parent_id' => $request->get('parent_id'),
       'mode' => 1
     ]);
