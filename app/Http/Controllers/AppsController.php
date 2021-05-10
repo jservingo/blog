@@ -160,7 +160,7 @@ class AppsController extends Controller
       ::where("parent_id","=",$app->id)
       ->get();
 
-    if(count($apps) > 0)
+    if(count($apps) > 0) // Mostrar app subs
     {
       $posts_saved = Post 
         ::join('kposts', 'posts.id', '=', 'kposts.post_id')
@@ -197,7 +197,7 @@ class AppsController extends Controller
         'posts','title','root','buttons','subtitle','app'));
     }
 
-    if($app->mode==1)
+    if($app->mode==1) // Mostrar pages
     {
       $posts_saved = Post
         ::join('kposts', 'posts.id', '=', 'kposts.post_id')  
@@ -237,7 +237,7 @@ class AppsController extends Controller
         'posts','title','root','buttons','subtitle','app'));
     }     
 
-    if($app->mode==2)
+    if($app->mode==2) // Mostrar api full
     {
       $title = $app->name;
       $buttons = ""; 
@@ -247,7 +247,7 @@ class AppsController extends Controller
         'app','title','root','buttons','subtitle'));
     }
 
-    if($app->mode==3)
+    if($app->mode==3) // Mostrar api list
     {
       $title = $app->name;
       $buttons = ""; 
@@ -257,7 +257,7 @@ class AppsController extends Controller
         'app','title','root','buttons','subtitle'));
     }
 
-    if($app->mode==4)
+    if($app->mode==4) // Mostrar api card
     {
       $title = $app->name;
       $buttons = ""; 
@@ -423,3 +423,105 @@ class AppsController extends Controller
   }
 
 }
+
+public function store(Request $request)
+{
+  //$this->authorize('create', new Post);
+
+  if (auth()->id() != 11)
+  {
+    echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
+    return;
+  } 
+
+  $this->validate($request, [
+    'title' => 'required',
+    'published_at' => Carbon::now()
+  ]);
+
+  $app = App::create([
+    'name' => $request->get('title'),
+    'user_id' => auth()->id()
+    'parent_id' => $request->get('parent_id'),
+    'mode' => 1
+  ]);
+  
+  $post = Post::create([
+    'title' => $request->get('title'),
+    'type_id' => 23,
+    'ref_id' => $app->id,
+    'user_id' => auth()->id(),
+    'published_at' => Carbon::now()
+  ]);
+
+  $kpost = Kpost::create([
+    'post_id' => $post->id,
+    'user_id' => auth()->id(),
+    'sent_by' => auth()->id(),
+    'sent_at' => Carbon::now() 
+  ]);
+
+  echo json_encode(array('success'=>true,'post_id'=>$post->id));
+}
+
+  public function edit($app_id)
+  {
+    $post = Post
+      ::where("type_id","=",23)
+      ->where("ref_id","=",$app_id)
+      ->first();
+
+    return view('posts.edit_post',[
+      'post' => $post,
+      'tags' => Tag::all(),
+      'types' => Type::all()
+    ]);
+  }
+
+  public function destroy(Post $post)
+  {
+    $app = App
+      ::where("id","=",$post->ref_id)
+      ->first();
+
+    if ($app && $app->user_id != auth()->id())
+    {
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
+      return;
+    } 
+
+    // OJO: Solo se puede eliminar una página si no ha sigo 
+    // guardada por ningún otro usuario  
+
+    //Eliminar todos los tags
+    if ($post->tags)
+      $post->tags()->detach();
+      
+    //Eliminar todas las fotos
+    foreach ($post->photos as $photo)
+    {
+      $photo->delete();
+      Storage::disk('public')->delete($photo->url);
+    }
+
+    //Eliminar kpost de la pagina
+    /*
+    $kpost = Kpost
+      ::where("post_id","=",$post->id)
+      ->where("user_id","=",auth()->id())
+      ->first(); 
+
+    if ($kpost)
+      $kpost->delete();  
+    */
+    
+    $post->delete();
+
+    if ($app)
+      $app->delete();
+
+    echo json_encode(array('success'=>true));
+  } 
+}
+
+

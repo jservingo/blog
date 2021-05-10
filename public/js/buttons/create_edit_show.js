@@ -10,7 +10,13 @@ $('.btn_create_catalog').bind('click', function(e){
 }); 
 
 $('.btn_create_app').bind('click', function(e){
-  $.growl.warning({ message: not_implemented });
+  //$.growl.warning({ message: not_implemented });
+  btn_create_app(null);
+}); 
+
+$('.btn_create_app_subs').bind('click', function(e){
+  var parent_id = $(this).data("id");
+  btn_create_app(parent_id);
 }); 
 
 $('.btn_create_page').bind('click', function(e){
@@ -138,6 +144,56 @@ function btn_create_catalog()
       $.ajax({
         type: 'post',
         url: '/catalog',
+        data: data,
+        dataType: 'json',
+        success: function(data) {
+          if (data.success){
+            url = "/post/"+data.post_id;
+            btn_edit ("post", data.post_id);
+          }
+          else if(data.msg)
+          {
+            $.growl.warning({ message:data.msg });
+          }
+          else {
+            alert('error');
+          }
+        },
+        error: function (data) {
+          console.log('Error:', data);
+        }
+      }); 
+    }
+  });
+  $.showDialog();  
+}
+
+function btn_create_app(parent_id)
+{
+  //Crear ventana modal
+  var html = "<div id='edit'>";
+  html = html + "<h3>"+create_app+"</h3>";
+  html = html + "<p>"+title+"</p>";
+  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+enter_page+"' required>";
+  html = html + "</div>";
+  $.createDialog({
+    attachAfter: '#main_panel',
+    title: html,
+    accept: create,
+    refuse: cancel,
+    acceptStyle: 'blue',
+    refuseStyle: 'red',
+    acceptAction: function(){
+      title = $('#title').val();
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      var data = {title:title, parent_id:parent_id};
+      $.ajax({
+        type: 'post',
+        url: '/app',
         data: data,
         dataType: 'json',
         success: function(data) {

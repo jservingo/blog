@@ -1,6 +1,13 @@
 {{-- buttons.app_subscriptions (OK) --}}
 
 <div style="width:200px">
+	<div class="btn tip" data-tip="{{ __('messages.tip-add') }}">
+	<a class="btn_create_app_subs"
+			data-id="{{ $app->id }}">
+		<img src="/img/add.png" width="28" />
+	</a>
+	</div>
+
 	<div class="btn tip" data-tip="{{ __('messages.tip-sort') }}">
 	<a class="btn_sort_app_subs">
 		<img src="/img/order.png" width="28" />

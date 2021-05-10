@@ -147,6 +147,8 @@
 		'type-user' => 'Usuario',
 		'create-catalog' => 'Crear catálogo',
 		'enter-catalog' => 'Ingresar el título del catálogo',
+		'create-app' => 'Crear app',
+		'enter-app' => 'Ingresar el título de la app',
 		'create-page' => 'Crear página',
 		'enter-page' => 'Ingesar el título de la página',
 		'create-post' => 'Crear post',

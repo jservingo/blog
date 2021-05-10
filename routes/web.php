@@ -74,6 +74,8 @@ Route::get('app/subscribers/{app}/{url?}','AppsController@show_subscribers')->na
 Route::get('app/get/posts/{app}','AppsController@get_posts');
 Route::post('app/get/post','AppsController@get_post');
 Route::post('apps/post','AppsController@save_app_post');
+Route::post('app','AppsController@store')->name('app.create');
+Route::delete('apps/{post}','AppsController@destroy');
 
 //App Last.fm
 Route::get('artists/generate','ArtistsController@generate_artists')->name('artists.generate');

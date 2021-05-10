@@ -29,6 +29,8 @@
   var type_frame = "<?=__('messages.type-frame');?>";
   var create_catalog = "<?=__('messages.create-catalog');?>";
   var enter_catalog = "<?=__('messages.enter-catalog');?>";
+  var create_app = "<?=__('messages.create-app');?>";
+  var enter_app = "<?=__('messages.enter-app');?>";
   var create_page = "<?=__('messages.create-page');?>";
   var enter_page = "<?=__('messages.enter-page');?>";
   var create_post = "<?=__('messages.create-post');?>";
