@@ -422,47 +422,45 @@ class AppsController extends Controller
     echo json_encode(array('success'=>true,'post_id'=>$post->id));
   }
 
-}
-
-public function store(Request $request)
-{
-  //$this->authorize('create', new Post);
-
-  if (auth()->id() != 11)
+  public function store(Request $request)
   {
-    echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
-    return;
-  } 
+    //$this->authorize('create', new Post);
 
-  $this->validate($request, [
-    'title' => 'required',
-    'published_at' => Carbon::now()
-  ]);
+    if (auth()->id() != 11)
+    {
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
+      return;
+    } 
 
-  $app = App::create([
-    'name' => $request->get('title'),
-    'user_id' => auth()->id()
-    'parent_id' => $request->get('parent_id'),
-    'mode' => 1
-  ]);
-  
-  $post = Post::create([
-    'title' => $request->get('title'),
-    'type_id' => 23,
-    'ref_id' => $app->id,
-    'user_id' => auth()->id(),
-    'published_at' => Carbon::now()
-  ]);
+    $this->validate($request, [
+      'title' => 'required',
+      'published_at' => Carbon::now()
+    ]);
 
-  $kpost = Kpost::create([
-    'post_id' => $post->id,
-    'user_id' => auth()->id(),
-    'sent_by' => auth()->id(),
-    'sent_at' => Carbon::now() 
-  ]);
+    $app = App::create([
+      'name' => $request->get('title'),
+      'user_id' => auth()->id()
+      'parent_id' => $request->get('parent_id'),
+      'mode' => 1
+    ]);
+    
+    $post = Post::create([
+      'title' => $request->get('title'),
+      'type_id' => 23,
+      'ref_id' => $app->id,
+      'user_id' => auth()->id(),
+      'published_at' => Carbon::now()
+    ]);
 
-  echo json_encode(array('success'=>true,'post_id'=>$post->id));
-}
+    $kpost = Kpost::create([
+      'post_id' => $post->id,
+      'user_id' => auth()->id(),
+      'sent_by' => auth()->id(),
+      'sent_at' => Carbon::now() 
+    ]);
+
+    echo json_encode(array('success'=>true,'post_id'=>$post->id));
+  }
 
   public function edit($app_id)
   {
