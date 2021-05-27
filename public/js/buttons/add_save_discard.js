@@ -23,7 +23,7 @@ $('.btn_add_subscription').bind('click', function(e){
 
 $('.btn_allocate_app').bind('click', function(e){
   var post_id = $(this).data("id");
-  var app_id = $(this).data("app_id");
+  var app_id = $(this).data("app");
   btn_allocate_app(post_id,app_id);
 });
 

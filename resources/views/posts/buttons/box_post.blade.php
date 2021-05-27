@@ -340,7 +340,7 @@
 @elseif ($root=="discover_pages")
     <a class="btn_allocate_app"
 			data-id="{{ $post->id }}"
-			app_id="{{ $post->app_id }}">
+			data-app="{{ $post->app_id }}">
 		<img src="/img/allocate.png" width="24" />
 	</a>
 	<a class="btn_copy_post"
