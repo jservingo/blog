@@ -17,6 +17,11 @@ $('.btn_delete_post_from_catalog').bind('click', function(e){
   btn_delete_post_from_catalog(post_id, catalog_id);
 });
 
+$('.btn_delete_app_subs').bind('click', function(e){
+  var post_id = $(this).data("id");
+  btn_delete_app_subs(post_id);
+});
+
 $('.btn_delete_post_from_created_posts').bind('click', function(e){
   var post_id = $(this).data("id");
   btn_delete_post_from_created_posts(post_id);
@@ -89,6 +94,22 @@ function btn_delete_post_from_catalog(post_id, catalog_id)
     refuseStyle: 'gray',
     acceptAction: function(){
       delete_post_from_catalog(post_id,catalog_id);
+    }
+  });
+  $.showDialog();  
+}
+
+function btn_delete_app_subs(post_id)
+{
+  $.createDialog({
+    attachAfter: '#main_panel',
+    title: want_to_delete_this_app,
+    accept: yes,
+    refuse: no,
+    acceptStyle: 'red',
+    refuseStyle: 'gray',
+    acceptAction: function(){
+      delete_app_subs(post_id);
     }
   });
   $.showDialog();  
@@ -290,6 +311,37 @@ function delete_post_from_created_posts(post_id)
       }
       else {
         set_message("error",the_post_was_not_deleted);
+        location.reload();
+      }
+    },
+    error: function (data) {
+      console.log('Error:', data);
+    }
+  }); 
+}
+
+function delete_app_subs(post_id)
+{
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    type: 'delete',
+    url: '/apps/'+post_id,
+    dataType: 'json',
+    success: function(data) {
+      if (data.success){
+        set_message("notice",the_app_was_deleted);
+        location.reload();
+      }
+      else if(data.msg)
+      {
+        $.growl.warning({ message:data.msg });
+      }
+      else {
+        set_message("error",the_app_was_not_deleted);
         location.reload();
       }
     },

@@ -1,7 +1,7 @@
 {{-- buttons.app_subscriptions (OK) --}}
 
 <div style="width:200px">
-	<div class="btn tip" data-tip="{{ __('messages.tip-add') }}">
+	<div class="btn tip" data-tip="{{ __('messages.tip-create-app') }}">
 	<a class="btn_create_app_subs"
 			data-id="{{ $app->id }}">
 		<img src="/img/add.png" width="28" />

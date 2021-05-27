@@ -426,7 +426,19 @@ class AppsController extends Controller
   {
     //$this->authorize('create', new Post);
 
+    //Solamente el usuario kopedia puede crear apps
     if (auth()->id() != 11)
+    {
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
+      return;
+    } 
+
+    $pages = Post
+      ::where("type_id","=",22)
+      ->where("app_id","=",$request->get('parent_id'))
+      ->get();
+
+    if(count($pages) > 0) 
     {
       echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
@@ -488,7 +500,28 @@ class AppsController extends Controller
       return;
     } 
 
-    // OJO: Solo se puede eliminar una página si no ha sigo 
+    $apps = App
+      ::where("parent_id","=",$app->id)
+      ->get();
+
+    if (count($apps) > 0)
+    {
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
+      return;
+    }
+
+    $pages = Post
+      ::where("type_id","=",22)
+      ->where("app_id","=",$app->id)
+      ->get();
+
+    if (count($pages) > 0)
+    {
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
+      return;
+    }
+
+    // OJO: Solo se puede eliminar una app si no ha sigo 
     // guardada por ningún otro usuario  
 
     //Eliminar todos los tags

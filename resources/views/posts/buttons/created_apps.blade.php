@@ -1,7 +1,7 @@
 {{-- buttons.created_apps --}}
 
 <div style="width:200px">
-	<div class="btn tip" data-tip="{{ __('messages.tip-add') }}">
+	<div class="btn tip" data-tip="{{ __('messages.tip-create-app') }}">
 	<a class="btn_create_app">
 		<img src="/img/add.png" width="28" />
 	</a>

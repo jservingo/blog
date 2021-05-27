@@ -160,7 +160,11 @@
 	<a class="btn_edit_post"
 			data-id="{{ $post->id }}">
 		<img src="/img/edit.png" width="24" />
-	</a>				
+	</a>	
+	<a class="btn_delete_app_subs"
+			data-id="{{ $post->id }}">
+		<img src="/img/delete.png" width="24" />
+	</a>			
 	<a class="btn_copy_post"
 			data-id="{{ $post->id }}">
 		<img src="/img/copy.png" width="24" />
@@ -201,6 +205,10 @@
 	</a>
 	@endif	
 @elseif ($root=="contacts")
+    <a class="btn_edit_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/edit.png" width="24" />
+	</a>
 	<a class="btn_delete_post_from_contacts" 
 			data-id="{{ $post->id }}"> 
 		<img src="/img/delete.png" width="24" />
@@ -213,6 +221,10 @@
 	<a class="btn_send_message" 
 			data-id="{{ $post->user_id }}"> 
 		<img src="/img/mail.png" width="24" />
+	</a>
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/send.png" width="24" />
 	</a>
 	@else
 	<a class="btn_save_post" 
@@ -326,6 +338,10 @@
 	</a>
 	@endif	
 @elseif ($root=="discover_pages")
+    <a class="btn_allocate"
+			data-id="{{ $post->id }}">
+		<img src="/img/allocate.png" width="24" />
+	</a>
 	<a class="btn_copy_post"
 			data-id="{{ $post->id }}">
 		<img src="/img/copy.png" width="24" />

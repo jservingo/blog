@@ -46,6 +46,7 @@
   var want_to_delete_this_catalog = "<?=__('messages.want-to-delete-this-catalog');?>";
   var want_to_delete_this_post_from_the_catalog = "<?=__('messages.want-to-delete-this-post-from-the-catalog');?>";
   var want_to_delete_this_post = "<?=__('messages.want-to-delete-this-post');?>";
+  var want_to_delete_this_app = "<?=__('messages.want-to-delete-this-app');?>";
   var want_to_delete_this_page = "<?=__('messages.want-to-delete-this-page');?>";
   var want_to_unsubscribe = "<?=__('messages.want-to-unsubscribe');?>";
   var want_delete_this_contact = "<?=__('messages.want-delete-this-contact');?>";
@@ -53,6 +54,8 @@
   var the_catalog_was_not_deleted = "<?=__('messages.the-catalog-was-not-deleted');?>";
   var the_post_was_deleted = "<?=__('messages.the-post-was-deleted');?>";
   var the_post_was_not_deleted = "<?=__('messages.the-post-was-not-deleted');?>";
+  var the_app_was_deleted = "<?=__('messages.the-app-was-deleted');?>";
+  var the_app_was_not_deleted = "<?=__('messages.the-app-was-not-deleted');?>";
   var the_page_was_deleted = "<?=__('messages.the-page-was-deleted');?>";
   var the_page_was_not_deleted = "<?=__('messages.the-page-was-not-deleted');?>";
   var the_subscription_was_deleted = "<?=__('messages.the-subscription-was-deleted');?>";
