@@ -348,6 +348,12 @@ class PagesController extends Controller
 
   public function allocate(Request $request)
   {
+    if (auth()->id() <> 11) //Kopedia
+    {
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
+      return;
+    }
+
     $post_id = $request->get('post_id');
     $app_id = $request->get('app_id');    
 
