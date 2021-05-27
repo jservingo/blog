@@ -99,6 +99,7 @@ Route::get('page/{page}','PagesController@edit')->name('page.edit');
 Route::get('page/change_user/{page}/{user_id}','PagesController@change_user')->name('page.change_user');
 Route::get('page/isOwner/{page}','PagesController@isOwner')->name('page.isOwner');
 Route::get('page/stats/{post}','PagesController@get_stats')->name('page.get_stats');
+Route::post('page/allocate','PagesController@allocate')->name('page.allocate');
 Route::post('page','PagesController@store')->name('page.create');
 Route::delete('pages/{post}','PagesController@destroy');
 

@@ -21,6 +21,12 @@ $('.btn_add_subscription').bind('click', function(e){
   btn_add_subscription(post_id);
 });
 
+$('.btn_allocate_app').bind('click', function(e){
+  var post_id = $(this).data("id");
+  var app_id = $(this).data("app_id");
+  btn_allocate_app(post_id,app_id);
+});
+
 $('.btn_add_user_to_contacts').bind('click', function(e){
   var user_id = $(this).data("id");
   btn_add_user_to_contacts(user_id);
@@ -68,6 +74,15 @@ function btn_add_subscription(post_id)
     }
   });
   $.showDialog();  
+}
+
+function btn_allocate_app(post_id,app_id)
+{
+  var app = prompt("Enter app id",app_id.toString());
+  if (app != null) {
+    var app_id = parseInt(app);
+    allocate_app(post_id, app_id)
+  }
 }
 
 function btn_add_user_to_contacts(user_id)
@@ -178,6 +193,39 @@ function add_subscription(post_id)
   $.ajax({
     type: 'post',
     url: '/subscriptions/add',
+    data: data,
+    dataType: 'json',
+    success: function(data) {
+      if (data.success){
+        set_message("notice",the_subscription_was_successful);
+        location.reload();
+      }
+      else if(data.msg)
+      {
+        $.growl.warning({ message:data.msg });
+      }
+      else {
+        set_message("error",the_subscription_has_failed);
+        location.reload();
+      }
+    },
+    error: function (data) {
+      console.log('Error:', data);
+    }
+  }); 
+}
+
+function allocate_app(post_id, app_id)
+{
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  var data = {post_id: post_id, app_id: app_id};
+  $.ajax({
+    type: 'post',
+    url: '/page/allocate',
     data: data,
     dataType: 'json',
     success: function(data) {

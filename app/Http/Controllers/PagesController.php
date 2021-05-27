@@ -346,6 +346,25 @@ class PagesController extends Controller
     }
   }
 
+  public function allocate(Request $request)
+  {
+    $post_id = $request->get('post_id');
+    $app_id = $request->get('app_id');    
+
+    $post = Post::find($post_id);    
+    $post->app_id = $app_id;
+    $post->save();  
+
+    $page = Page
+      ::where("id","=",$post->ref_id)
+      ->first();
+    $page->app_id = $app_id;
+    $page->save();
+
+    echo json_encode(array('success'=>true));
+  }
+
+
   public function isOwner(Page $page)
   {
     if ($page->user_id == auth()->id())
