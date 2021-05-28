@@ -8,6 +8,7 @@ use App as Kapp;
 use App\Catalog;
 use App\Page;
 use App\User;
+use App\App;
 
 class Post extends Model
 {
@@ -154,6 +155,14 @@ class Post extends Model
             ::where('id','=',$this->ref_id)
             ->first();
         return $page;
+    }
+
+    public function getAppAttribute()
+    {
+        $app = App
+            ::where('id','=',$this->ref_id)
+            ->first();
+        return $app;
     }
 
     public function getUserAttribute()

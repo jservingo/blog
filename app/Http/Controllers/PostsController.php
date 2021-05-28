@@ -468,6 +468,16 @@ class PostsController extends Controller
       }
     }
 
+    if ($post->isApp())
+    {
+      $app = $post->app;
+      if ($app)
+      { 
+        $app->name = $post->title; 
+        $page->save();
+      }
+    }
+
     if ($post->isUser())
     {
       $user = $post->user;
