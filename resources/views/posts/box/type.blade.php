@@ -76,7 +76,7 @@
 @if ($post->isApp())
   <div class="post-category">
    <span class="category dark-wine text-capitalize">
-      <a href="{{ route('app.show_app',[$post->ref_id,0,$url]) }}">
+      <a href="{{ route('app.show_app',[$post->ref_id,$url]) }}">
         {{ __('messages.type-app') }}
       </a>
     </span>
