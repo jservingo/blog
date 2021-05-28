@@ -109,8 +109,8 @@ class PostsController extends Controller
     $posts_saved = Post
       ::join('kposts', 'posts.id', '=', 'kposts.post_id')
       ->where(function ($query) use ($request) {
-          $query->where("type_id","<=",20);
-          $query->orWhere("type_id","=",24)
+          $query->where("type_id","<=",20)
+                ->orWhere("type_id","=",24);
         })
       ->where("status_id","=",2)
       ->where("kposts.sent_by","=",auth()->id())
@@ -165,8 +165,8 @@ class PostsController extends Controller
       ->where("posts.user_id","=",$user->id)
       ->where("kposts.user_id","=",auth()->id())
       ->where(function ($query) use ($request) {
-          $query->where("type_id","<=",20);
-          $query->orWhere("type_id","=",24)
+          $query->where("type_id","<=",20)
+                ->orWhere("type_id","=",24);
         })
       ->published()
       ->hide()
