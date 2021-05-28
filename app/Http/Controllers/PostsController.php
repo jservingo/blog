@@ -474,7 +474,7 @@ class PostsController extends Controller
       if ($app)
       { 
         $app->name = $post->title; 
-        $page->save();
+        $app->save();
       }
     }
 
