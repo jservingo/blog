@@ -234,12 +234,14 @@
       </div>
     @endif
 
-    <div class="half-container" id="">
-      <div class="form-control">
-        <label><span>{{ __('messages.upload-audios') }}</span></label>
-        @include('posts.edit_audio')
-      </div>
-    </div>    
+    @if($post->isPhotoGallery() || $post->isFrame() || $post->isText() || $post->isNotification() || $post->isWebPage() || $post->isAlert()|| $post->isOffer() || $post->isCustom() || $post->isMessage())
+      <div class="half-container" id="">
+        <div class="form-control">
+          <label><span>{{ __('messages.upload-audios') }}</span></label>
+          @include('posts.edit_audio')
+        </div>
+      </div>    
+    @endif
 
     @if($post->isPhotoGallery() || $post->isOffer())
       <div class="wide-container">        
