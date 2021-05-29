@@ -23,7 +23,7 @@
 
 @if ($post->kpost && ($post->kpost->send_by <> $post->kpost->user_id))
   <div class="image-w-text">
-    <span class="cite-2">{{ __('messages.sent-by') }}:</span> {{ $post->sender->name }}
+    <span class="cite-2">{{ __('messages.sent-by') }}:</span> {{ $post->sender->name }} {{ $post->kpost->created_at->format('d/m/y') }}
   </div>
 @endif   
 
