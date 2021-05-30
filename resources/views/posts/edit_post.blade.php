@@ -20,7 +20,7 @@
 			  <input id="title" type="text"  
 				  value="{{ old('title',$post->title) }}"
 				  placeholder="{{ __('messages.enter-title') }}">
-			  {!! $errors->first('title','<span class="help-block">:message</span>') !!}				
+			  {!! $errors->first('title','<span class="help-block">:message</span>') !!}
       </div>
 
       <div class="form-control">
@@ -283,22 +283,22 @@
   } 
   .wide-container {
     float:left;
-    padding: 1.2em;
+    padding: 0px 1.2em;
     width:100%;
   } 
   .half-container {
     float:left;
-    padding: 1.2em;
+    padding: 0px 1.2em;
     width:50%;
   }
   .left-container {
     float:left;
-    padding: 1.2em;
+    padding: 0px 1.2em;
     width:64%;
   }
   .right-container {
     float:left;
-    padding: 1.2em;
+    padding: 0px 1.2em;
     width:36%;
   }
   @media all and (max-width: 768px) {

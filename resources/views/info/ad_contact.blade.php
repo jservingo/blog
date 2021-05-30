@@ -11,7 +11,7 @@
           <img src="/img/kodelia_slogan.png" style="height:90px;" alt="kodelia_slogan">
         </figure>
       </div>
-      <p>Please contact sales for more info</p>
+      <p>{{ __('messages.please-contact-sales') }}</p>
       <h3>{{ __('messages.send-message') }} {{ __('messages.sales') }}
 				<a class="btn_send_message" data-id="16"> 
 					<img src="/img/send_message.png" width="24" style="margin-top:-5px;">
