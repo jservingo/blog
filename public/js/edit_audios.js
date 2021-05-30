@@ -161,4 +161,8 @@ $(function(){
         	updateRegister();
     	}  
 	});
+
+  $('.btn_upload_audio').bind('click', function(e){
+    $("#loading_audio").show();
+  });
 });
