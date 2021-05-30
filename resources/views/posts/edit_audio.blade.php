@@ -44,8 +44,8 @@
 			<input id="audio" name="audio" type="file">
 			<input type='submit' name='submit' value='Upload'>
 		</form>
-
-		<div id="loading_audio">Pleae wait - loading ...</div>
+		<br>
+		<div id="loading_audio" style="margin:0 auto;">Pleae wait - loading ...</div>
 	</div>
 
 	<div id="dlg-buttons">
