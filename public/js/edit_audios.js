@@ -162,7 +162,7 @@ $(function(){
     	}  
 	});
 
-  $('.btn_upload_audio').bind('click', function(e){
+  $('#btn_upload_audio').bind('click', function(e){
     $("#loading_audio").show();
   });
 });
