@@ -45,7 +45,7 @@
 			<input type='submit' name='submit' id="btn_upload_audio" value='Upload'>
 		</form>
 		<br>
-		<div id="loading_audio" style="margin:0 auto; display:none;">
+		<div id="loading_audio" class="blink_text" style="margin:0 auto; display:none;">
 			Please wait - loading ...
 		</div>
 	</div>

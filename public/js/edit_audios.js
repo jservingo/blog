@@ -155,6 +155,11 @@ function doSearch(){
     });  
 }
 
+function blink_text() {
+    $('.blink').fadeOut(500);
+    $('.blink').fadeIn(500);
+}
+
 $(function(){
 	$('#dg').datagrid({  
     	onDblClickRow:function(){  
@@ -164,5 +169,6 @@ $(function(){
 
   $('#btn_upload_audio').bind('click', function(e){
     $("#loading_audio").show();
+    setInterval(blink_text, 1000);
   });
 });
