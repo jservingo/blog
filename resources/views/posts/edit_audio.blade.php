@@ -46,7 +46,7 @@
 		</form>
 		<br>
 		<div id="loading_audio" class="blink" style="margin:0 auto; display:none;">
-			Please wait - loading ...
+			<span style="font-weight:800;">Please wait - loading ...</span>
 		</div>
 	</div>
 

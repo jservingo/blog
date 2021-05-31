@@ -156,8 +156,8 @@ function doSearch(){
 }
 
 function blink_text() {
-    $('.blink').fadeOut(500);
-    $('.blink').fadeIn(500);
+    $('.blink').fadeOut(1000);
+    $('.blink').fadeIn(1000);
 }
 
 $(function(){
@@ -169,6 +169,6 @@ $(function(){
 
   $('#btn_upload_audio').bind('click', function(e){
     $("#loading_audio").show();
-    setInterval(blink_text, 1000);
+    setInterval(blink_text, 2000);
   });
 });
