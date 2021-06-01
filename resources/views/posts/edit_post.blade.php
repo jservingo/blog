@@ -266,7 +266,10 @@
           </div> 
   		  @endif      
 	   </div>
-     @endif
+    @endif
+    <div class="wide-container">
+      <br>
+    </div>
   </div>	
    	
 @endsection
