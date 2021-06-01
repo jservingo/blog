@@ -341,6 +341,18 @@
  		'creation-date' => 'Fecha de creación',
  		'views' => 'Vistas',
  		'audios' => 'Audios',
+ 		'audio' => 'Audio',
+ 		'please-contact-sales' => 'Por favor contacte a ventas para mayor información.',
+ 		'please-wait-loading' => 'Por favor espere - cargando ...',
+ 		'want-to-delete-this-audio' => '¿Está seguro que desea eliminar este audio?',
  		'upload-audios' => 'Subir audios',
+ 		'upload-audio' => 'Subir audio',
+ 		'upload' => 'Subir',
+ 		'add' => 'Agregar',
+ 		'delete' => 'Eliminar',
+ 		'save' => 'Guardar',
+ 		'position' => 'Posición',
+ 		'description' => 'Descripción',
+ 		'url' => 'URL',
  		
 	];

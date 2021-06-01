@@ -5,30 +5,30 @@
 			pageSize="10" method="get">
 		<thead>
 			<tr>
-				<th field="position" width="8" sortable="true">Position</th>
-				<th field="description" width="46" sortable="true">Description</th>
-				<th field="url" width="46" sortable="true">URL</th>				
+				<th field="position" width="8" sortable="true">{{ __('messages.position') }}</th>
+				<th field="description" width="46" sortable="true">{{ __('messages.description') }}</th>
+				<th field="url" width="46" sortable="true">{{ __('messages.url') }}</th>				
 			</tr>
 		</thead>
 	</table>
 
 	<div id="toolbar">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="createRegister()">Add</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateRegister()">Edit</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteRegister()">Delete</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-upload" plain="true" onclick="uploadFile()">Upload</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="createRegister()">{{ __('messages.add') }}</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateRegister()">{{ __('messages.edit') }}</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteRegister()">{{ __('messages.delete') }}</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-upload" plain="true" onclick="uploadFile()">{{ __('messages.upload') }}</a>
 	</div>
 	
 	<div id="dlg" class="easyui-dialog" style="width:94%;height:200px;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
-		<div class="ftitle">Audios</div>
+		<div class="ftitle">{{ __('messages.audios') }}</div>
 		<form id="fm" method="post">
 			<div class="fitem">
-				<label>Position</label>
+				<label>{{ __('messages.position') }}:</label>
 				<input type="number" id="position" name="position" style="width:60px">
 			</div>
 			<div class="fitem">
-				<label>Description:</label>
+				<label>{{ __('messages.upload-description') }}:</label>
 				<input id="description" name="description" class="easyui-validatebox" required="true" style="width:320px">
 			</div>	
 		</form>	
@@ -39,22 +39,22 @@
 		<form id="faudio" method="post" action="{{ route('audio.upload') }}" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			<input id="audio_id" name="audio_id" type="hidden">			
-			<label>Upload audio: <span id="description_upload">Description</span></label>
+			<label>{{ __('messages.audio') }}: <span id="description_upload">Description</span></label>
 			<br><br>
 			<input id="audio" name="audio" type="file">
-			<input type='submit' name='submit' id="btn_upload_audio" value='Upload'>
+			<input type='submit' name='submit' id="btn_upload_audio" value="{{ __('messages.upload') }}">
 		</form>
 		<br>
 		<div id="loading_audio" class="blink" style="margin:0 auto; display:none;">
-			<span style="font-weight:800;">Please wait - loading ...</span>
+			<span style="font-weight:800;">{{ __('messages.please-wait-loading') }}.</span>
 		</div>
 	</div>
 
 	<div id="dlg-buttons">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveRegister({{ $post->id }})">Save</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">Cancel</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveRegister({{ $post->id }})">{{ __('messages.save') }}</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">{{ __('messages.cancel') }}</a>
 	</div>
 
 	<div id="dlg-upload-buttons">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg_upload').dialog('close')">Cancel</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg_upload').dialog('close')">{{ __('messages.cancel') }}</a>
 	</div>

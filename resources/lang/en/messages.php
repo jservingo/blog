@@ -341,7 +341,20 @@
  		'creation-date' => 'Creation Date',
  		'views' => 'Views',
  		'audios' => 'Audios',
+ 		'audio' => 'Audio',
+ 		'please-contact-sales' => 'Please contact sales for more info.',
+ 		'please-wait-loading' => 'Please wait - loading ...',
+ 		'want-to-delete-this-audio' => 'Are you sure you want to delete this audio?',
  		'upload-audios' => 'Upload audios',
+ 		'upload-audio' => 'Upload audio',
+ 		'upload' => 'Upload',
+ 		'add' => 'Add',
+ 		'delete' => 'Delete',
+ 		'save' => 'Save',
+ 		'position' => 'Position',
+ 		'description' => 'Description',
+ 		'url' => 'URL',
+
 
 	];
 

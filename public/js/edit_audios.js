@@ -142,7 +142,7 @@ function deleteAudio(audio_id){
 function uploadFile(){
 	var row = $('#dg').datagrid('getSelected');
 	if (row){
-		$('#dlg_upload').dialog('open').dialog('setTitle','Upload File');
+		$('#dlg_upload').dialog('open').dialog('setTitle','Upload Audio');
 		//console.log(row);
 		$("#description_upload").html(row.description);
 		$('#audio_id').val(row.id);
