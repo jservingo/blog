@@ -301,6 +301,9 @@
     padding: 0px 1.2em;
     width:36%;
   }
+  .fitem {
+    padding: 10px 0px;
+  }
   @media all and (max-width: 768px) {
     .left-container { 
       width:100%;
