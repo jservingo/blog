@@ -21,14 +21,13 @@
 	
 	<div id="dlg" class="easyui-dialog" style="width:94%;height:200px;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
-		<div class="ftitle">{{ __('messages.audios') }}</div>
 		<form id="fm" method="post">
 			<div class="fitem">
 				<label>{{ __('messages.position') }}:</label>
 				<input type="number" id="position" name="position" style="width:60px">
 			</div>
 			<div class="fitem">
-				<label>{{ __('messages.upload-description') }}:</label>
+				<label>{{ __('messages.description') }}:</label>
 				<input id="description" name="description" class="easyui-validatebox" required="true" style="width:320px">
 			</div>	
 		</form>	
