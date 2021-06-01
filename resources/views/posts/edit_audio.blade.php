@@ -38,8 +38,7 @@
 		<form id="faudio" method="post" action="{{ route('audio.upload') }}" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			<input id="audio_id" name="audio_id" type="hidden">			
-			<label>{{ __('messages.audio') }}: <span id="description_upload">Description</span></label>
-			<br><br>
+			<h2>{{ __('messages.audio') }}: <span id="description_upload">Description</span></h2>
 			<input id="audio" name="audio" type="file">
 			<input type='submit' name='submit' id="btn_upload_audio" value="{{ __('messages.upload') }}">
 		</form>
