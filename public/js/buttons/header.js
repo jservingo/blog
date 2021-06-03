@@ -188,7 +188,7 @@ $('.btn_show_alerts').bind('click', function(e){
 });
 
 $('.btn_options').bind('click', function(e){
-  $.growl.warning({ message: not_implemented });
+  $.growl.warning({ message: msg_not_implemented });
 });
 
 $('.btn_update_likes').bind('click', function(e){
@@ -331,7 +331,7 @@ function btn_show_alerts()
       }
       else
       {
-        $.growl.warning({ message: "No tiene notificaciones!" });  
+        $.growl.warning({ message: msg_notifications_empty });  
       }
     },
     error: function (data) {

@@ -10,7 +10,7 @@ $('.btn_create_catalog').bind('click', function(e){
 }); 
 
 $('.btn_create_app').bind('click', function(e){
-  //$.growl.warning({ message: not_implemented });
+  //$.growl.warning({ message: msg_not_implemented });
   btn_create_app(null);
 }); 
 
@@ -72,9 +72,9 @@ function btn_create_catalog_from_category(category_id)
 {
   //Crear ventana modal
   var html = "<div id='edit'>";
-  html = html + "<h3>"+create_catalog+"</h3>";
-  html = html + "<p>"+title+"</p>";
-  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+enter_catalog+"' required>";
+  html = html + "<h3>"+msg_create_catalog+"</h3>";
+  html = html + "<p>"+msg_title+"</p>";
+  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+msg_enter_catalog+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -122,9 +122,9 @@ function btn_create_catalog()
 {
   //Crear ventana modal
   var html = "<div id='edit'>";
-  html = html + "<h3>"+create_catalog+"</h3>";
-  html = html + "<p>"+title+"</p>";
-  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+enter_catalog+"' required>";
+  html = html + "<h3>"+msg_create_catalog+"</h3>";
+  html = html + "<p>"+msg_title+"</p>";
+  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+msg_enter_catalog+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -172,9 +172,9 @@ function btn_create_app(parent_id)
 {
   //Crear ventana modal
   var html = "<div id='edit'>";
-  html = html + "<h3>"+create_app+"</h3>";
-  html = html + "<p>"+title+"</p>";
-  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+enter_page+"' required>";
+  html = html + "<h3>"+msg_create_app+"</h3>";
+  html = html + "<p>"+msg_title+"</p>";
+  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+enter_app+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -222,9 +222,9 @@ function btn_create_page()
 {
   //Crear ventana modal
   var html = "<div id='edit'>";
-  html = html + "<h3>"+create_page+"</h3>";
-  html = html + "<p>"+title+"</p>";
-  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+enter_page+"' required>";
+  html = html + "<h3>"+msg_create_page+"</h3>";
+  html = html + "<p>"+msg_title+"</p>";
+  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+msg_enter_page+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -272,19 +272,19 @@ function btn_create_post(catalog_id)
 {
   //Crear ventana modal
   var html = "<div id='edit'>";
-  html = html + "<h3>"+create_post+"</h3>";
+  html = html + "<h3>"+msg_create_post+"</h3>";
   html = html + "<p>"+type+"</p>";
   html = html + "<select id='type'>";
-  html = html + "<option value='3'>"+type_text+"</option>";
-  html = html + "<option value='1'>"+type_photo_gallery+"</option>";
-  html = html + "<option value='5'>"+type_web_page+"</option>";  
-  html = html + "<option value='2'>"+type_frame+"</option>";
-  html = html + "<option value='4'>"+type_notification+"</option>";
-  html = html + "<option value='6'>"+type_alert+"</option>";
-  html = html + "<option value='7'>"+type_offer+"</option>";      
+  html = html + "<option value='3'>"+msg_type_text+"</option>";
+  html = html + "<option value='1'>"+msg_type_photo_gallery+"</option>";
+  html = html + "<option value='5'>"+msg_type_web_page+"</option>";  
+  html = html + "<option value='2'>"+msg_type_frame+"</option>";
+  html = html + "<option value='4'>"+msg_type_notification+"</option>";
+  html = html + "<option value='6'>"+msg_type_alert+"</option>";
+  html = html + "<option value='7'>"+msg_type_offer+"</option>";      
   html = html + "</select>";
-  html = html + "<p>"+title+"</p>";
-  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+enter_post+"' required>";
+  html = html + "<p>"+msg_title+"</p>";
+  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+msg_enter_post+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
@@ -350,7 +350,7 @@ function btn_edit(el, id)
             edit_footer(el, id);
           }  
           else
-            $.growl.warning({ message: you_are_not_authorized_to_edit_the_post });
+            $.growl.warning({ message: msg_you_are_not_authorized_to_edit_the_post });
         }  
       },
       error: function (data) {
@@ -373,7 +373,7 @@ function edit_footer(el, id)
         }
         else
         {
-          $.growl.warning({ message: you_are_not_authorized_to_edit_the_post });
+          $.growl.warning({ message: msg_you_are_not_authorized_to_edit_the_post });
         }  
       },
       error: function (data) {

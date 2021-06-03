@@ -33,12 +33,12 @@ $('.btn_update_post').bind('click', function(e){
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice",the_changes_were_saved);
+        set_message("notice",msg_the_changes_were_saved);
         window.opener.location.reload();
         window.close();
       }
       else {
-        set_message("error", the_post_was_not_updated);
+        set_message("error", msg_the_post_was_not_updated);
         window.opener.location.reload();
         window.close();
       }

@@ -67,7 +67,7 @@ function btn_copy_app_post(app_id,title,source)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        $.growl.notice({ message: the_post_was_added_to_the_clipboard });
+        $.growl.notice({ message: msg_the_post_was_added_to_the_clipboard });
       }
       else if(data.msg)
       {
@@ -98,7 +98,7 @@ function btn_copy_catalog(ref_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        $.growl.notice({ message: the_catalog_was_added_to_the_clipboard });
+        $.growl.notice({ message: msg_the_catalog_was_added_to_the_clipboard });
       }
       else if(data.msg)
       {
@@ -129,7 +129,7 @@ function btn_copy_post(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        $.growl.notice({ message: the_post_was_added_to_the_clipboard });
+        $.growl.notice({ message: msg_the_post_was_added_to_the_clipboard });
       }
       else if(data.msg)
       {
@@ -317,7 +317,7 @@ function paste_post_to_catalog(selected, catalog_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice", the_catalog_was_updated);
+        set_message("notice", msg_the_catalog_was_updated);
         location.reload();
       }
       else if(data.msg)
@@ -349,7 +349,7 @@ function paste_catalog_to_category(selected, category_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice", the_page_was_updated);
+        set_message("notice", msg_the_page_was_updated);
         location.reload();
       }
       else if(data.msg)
@@ -381,7 +381,7 @@ function paste_post_to_contacts(selected, group_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice", your_contacts_were_updated);
+        set_message("notice", msg_your_contacts_were_updated);
         location.reload();
       }
       else if(data.msg)
@@ -465,7 +465,7 @@ function send_post_to_contacts(selected, post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        $.growl.notice({ message: the_post_was_sent});
+        $.growl.notice({ message: msg_the_post_was_sent});
       }
       else if(data.msg)
       {
@@ -485,9 +485,9 @@ function btn_send_message(user_id)
 {
   //Crear ventana modal
   var html = "<div id='edit'>";
-  html = html + "<h3>"+send_message+"</h3>";
-  html = html + "<p>"+title+"</p>";
-  html = html + "<input id='title' type='text' style='width:500px;' class='form-control' placeholder='"+enter_post+"' required>";
+  html = html + "<h3>"+msg_send_message+"</h3>";
+  html = html + "<p>"+msg_title+"</p>";
+  html = html + "<input id='title' type='text' style='width:500px;' class='form-control' placeholder='"+msg_enter_message+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',

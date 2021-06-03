@@ -179,7 +179,7 @@ $(function() {
     q = $('.searchTerm').val().trim();
     if(!q.length)
     {
-      $.growl.warning({ message: search_empty });
+      $.growl.warning({ message: msg_search_empty });
     }
     else
     {

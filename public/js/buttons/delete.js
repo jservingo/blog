@@ -55,7 +55,7 @@ function btn_delete_catalog_from_category(catalog_id, category_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: want_to_delete_this_catalog,
+    title: msg_want_to_delete_this_catalog,
     accept: yes,
     refuse: no,
     acceptStyle: 'red',
@@ -71,7 +71,7 @@ function btn_delete_catalog_from_created_catalogs(catalog_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: want_to_delete_this_catalog,
+    title: msg_want_to_delete_this_catalog,
     accept: yes,
     refuse: no,
     acceptStyle: 'red',
@@ -87,7 +87,7 @@ function btn_delete_post_from_catalog(post_id, catalog_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: want_to_delete_this_post_from_the_catalog,
+    title: msg_want_to_delete_this_post_from_the_catalog,
     accept: yes,
     refuse: no,
     acceptStyle: 'red',
@@ -103,7 +103,7 @@ function btn_delete_app_subs(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: want_to_delete_this_app,
+    title: msg_want_to_delete_this_app,
     accept: yes,
     refuse: no,
     acceptStyle: 'red',
@@ -119,7 +119,7 @@ function btn_delete_post_from_created_posts(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: want_to_delete_this_post,
+    title: msg_want_to_delete_this_post,
     accept: yes,
     refuse: no,
     acceptStyle: 'red',
@@ -135,7 +135,7 @@ function btn_delete_post_from_created_pages(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: want_to_delete_this_page,
+    title: msg_want_to_delete_this_page,
     accept: yes,
     refuse: no,
     acceptStyle: 'red',
@@ -151,7 +151,7 @@ function btn_delete_post_from_subscription(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: want_to_unsubscribe,
+    title: msg_want_to_unsubscribe,
     accept: yes,
     refuse: no,
     acceptStyle: 'red',
@@ -208,7 +208,7 @@ function delete_catalog_from_category(catalog_id,category_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice",the_catalog_was_deleted);
+        set_message("notice",msg_the_catalog_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -216,7 +216,7 @@ function delete_catalog_from_category(catalog_id,category_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error",the_catalog_was_not_deleted);
+        set_message("error",msg_the_catalog_was_not_deleted);
         location.reload();
       }
     },
@@ -239,7 +239,7 @@ function delete_catalog_from_created_catalogs(catalog_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice",the_catalog_was_deleted);
+        set_message("notice",msg_the_catalog_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -248,7 +248,7 @@ function delete_catalog_from_created_catalogs(catalog_id)
       }
       else
       {
-        set_message("error",the_catalog_was_not_deleted);
+        set_message("error",msg_the_catalog_was_not_deleted);
         location.reload();
       }
     },
@@ -271,7 +271,7 @@ function delete_post_from_catalog(post_id,catalog_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice",the_post_was_deleted);
+        set_message("notice",msg_the_post_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -279,7 +279,7 @@ function delete_post_from_catalog(post_id,catalog_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error",the_post_was_not_deleted);
+        set_message("error",msg_the_post_was_not_deleted);
         location.reload();
       }
     },
@@ -302,7 +302,7 @@ function delete_post_from_created_posts(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice",the_post_was_deleted);
+        set_message("notice",msg_the_post_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -310,7 +310,7 @@ function delete_post_from_created_posts(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error",the_post_was_not_deleted);
+        set_message("error",msg_the_post_was_not_deleted);
         location.reload();
       }
     },
@@ -333,7 +333,7 @@ function delete_app_subs(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice",the_app_was_deleted);
+        set_message("notice",msg_the_app_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -341,7 +341,7 @@ function delete_app_subs(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error",the_app_was_not_deleted);
+        set_message("error",msg_the_app_was_not_deleted);
         location.reload();
       }
     },
@@ -364,7 +364,7 @@ function delete_post_from_created_pages(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice",the_page_was_deleted);
+        set_message("notice",msg_the_page_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -372,7 +372,7 @@ function delete_post_from_created_pages(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error",the_page_was_not_deleted);
+        set_message("error",msg_the_page_was_not_deleted);
         location.reload();
       }
     },
@@ -395,7 +395,7 @@ function delete_post_from_subscription(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice",the_subscription_was_deleted);
+        set_message("notice",msg_the_subscription_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -403,7 +403,7 @@ function delete_post_from_subscription(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error",the_subscription_was_not_deleted);
+        set_message("error",msg_the_subscription_was_not_deleted);
         location.reload();
       }
     },
@@ -426,7 +426,7 @@ function delete_post_from_contacts(post_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice",the_contact_was_deleted);
+        set_message("notice",msg_the_contact_was_deleted);
         location.reload();
       }
       else if(data.msg)
@@ -434,7 +434,7 @@ function delete_post_from_contacts(post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error",the_contact_was_not_deleted);
+        set_message("error",msg_the_contact_was_not_deleted);
         location.reload();
       }
     },
@@ -457,7 +457,7 @@ function delete_post_from_contacts_group(post_id,group_id)
     dataType: 'json',
     success: function(data) {
       if (data.success){
-        set_message("notice",the_contact_was_deleted_from_the_list);
+        set_message("notice",msg_the_contact_was_deleted_from_the_list);
         location.reload();
       }
       else if(data.msg)
@@ -465,7 +465,7 @@ function delete_post_from_contacts_group(post_id,group_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        set_message("error",the_contact_was_not_deleted_from_the_list);
+        set_message("error",msg_the_contact_was_not_deleted_from_the_list);
         location.reload();
       }
     },

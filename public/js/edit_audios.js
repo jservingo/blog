@@ -2,7 +2,7 @@ var audio_url;
 var audio_id;
 
 function createRegister(){
-	$('#dlg').dialog('open').dialog('setTitle','Agregar');
+	$('#dlg').dialog('open').dialog('setTitle',msg_add);
 	$('#fm').form('clear');
 	audio_url = 'create';
 }
@@ -10,7 +10,7 @@ function createRegister(){
 function updateRegister(){
 	var row = $('#dg').datagrid('getSelected');
 	if (row){
-		$('#dlg').dialog('open').dialog('setTitle','Editar');
+		$('#dlg').dialog('open').dialog('setTitle',msg_edit);
 		$('#fm').form('load',row);
 		audio_url = 'update';
 		audio_id = row.id;
@@ -98,7 +98,7 @@ function deleteRegister(){
 	if (row){
 	  $.createDialog({
 	    attachAfter: '#main-container',
-	    title: '¿Está seguro que desea eliminar este audio?',
+	    title: msg_want_to_delete_this_audio,
 	    accept: yes,
 	    refuse: no,
 	    acceptStyle: 'red',
@@ -142,7 +142,7 @@ function deleteAudio(audio_id){
 function uploadFile(){
 	var row = $('#dg').datagrid('getSelected');
 	if (row){
-		$('#dlg_upload').dialog('open').dialog('setTitle','Upload Audio');
+		$('#dlg_upload').dialog('open').dialog('setTitle',msg_upload_audio);
 		//console.log(row);
 		$("#description_upload").html(row.description);
 		$('#audio_id').val(row.id);

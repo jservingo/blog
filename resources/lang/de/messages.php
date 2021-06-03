@@ -165,7 +165,7 @@
 		'want-to-delete-this-post' => 'Are you sure you want to delete this post?',
 		'want-to-delete-this-page' => 'Are you sure you want to delete this page?',
 		'want-to-unsubscribe' => 'Are you sure you want to unsubscribe?',
-		'want-delete-this-contact' => 'Are you sure you want delete this contact?',
+		'want-to-delete-this-contact' => 'Are you sure you want delete this contact?',
 		'the-catalog-was-deleted' => 'The catalog was deleted.',
 		'the-catalog-was-not-deleted' => 'Sorry but the catalog was not deleted. Try again, please.',
 		'the-post-was-deleted' => 'The post was deleted.',
