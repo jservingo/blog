@@ -44,13 +44,14 @@
   var msg_send = "<?=__('messages.send');?>";
   var msg_create = "<?=__('messages.create');?>";
   var msg_add = "<?=__('messages.add');?>";
-  var msg_delete = "<?=__('messages.delete');?>";
+  var msg_edit = "<?=__('messages.edit');?>";
   var msg_want_to_delete_this_catalog = "<?=__('messages.want-to-delete-this-catalog');?>";
   var msg_want_to_delete_this_post_from_the_catalog = "<?=__('messages.want-to-delete-this-post-from-the-catalog');?>";
   var msg_want_to_delete_this_post = "<?=__('messages.want-to-delete-this-post');?>";
   var msg_want_to_delete_this_app = "<?=__('messages.want-to-delete-this-app');?>";
   var msg_want_to_delete_this_page = "<?=__('messages.want-to-delete-this-page');?>";
   var msg_want_to_delete_this_contact = "<?=__('messages.want-to-delete-this-contact');?>";
+  var msg_want_to_delete_this_audio = "<?=__('messages.want-to-delete-this-audio');?>";
   var msg_want_to_unsubscribe = "<?=__('messages.want-to-unsubscribe');?>";
   var msg_the_catalog_was_deleted = "<?=__('messages.the-catalog-was-deleted');?>";
   var msg_the_catalog_was_not_deleted = "<?=__('messages.the-catalog-was-not-deleted');?>";
@@ -68,6 +69,7 @@
   var msg_the_contact_was_not_deleted_from_the_list = "<?=__('messages.the-contact-was-not-deleted-from-the-list');?>";
   var msg_the_changes_were_saved = "<?=__('messages.the-changes-were-saved');?>";
   var msg_the_post_was_not_updated = "<?=__('messages.the-post-was-not-updated');?>";
+  var msg_notifications_empty = "<?=__('messages.notifications-empty');?>";
   var msg_search_empty = "<?=__('messages.search-empty');?>";
   var msg_not_implemented = "<?=__('messages.not-implemented');?>"; 
   var msg_show_all = "<?=__('messages.show-all');?>";
@@ -75,8 +77,8 @@
   var msg_please_contact_sales = "<?=__('messages.please-contact-sales');?>"; 
   var msg_please_wait_loading = "<?=__('messages.please-wait-loading');?>";
   var msg_upload_audio = "<?=__('messages.upload-audio');?>";
-  var msg_want_to_delete_this_audio = "<?=__('messages.want-to-delete-this-audio');?>";
-  var msg_notifications_empty = "<?=__('messages.notifications-empty');?>";
+  
+  
 </script>
 
 
