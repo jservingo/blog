@@ -361,8 +361,9 @@
         $('.dz-error-message:last > span').text(msg);
       });
 
-      $(window).on('resize', function(){
+      $(window).resize(function () {
         var w = $(window).width() / 2 - 100;
+        alert(w);
         $('#dg').datagrid('resize',{
             width: w 
         });  
