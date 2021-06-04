@@ -362,10 +362,12 @@
       });
 
       $(window).on('resize', function(){
-        $('#dg').datagrid('resize');
-        $('#toolbar').panel('resize');
+        var w = $(window).width() / 2 - 100;
+        $('#dg').datagrid('resize',{
+            width: w 
+        });  
       });
-      
+
     }
   </script>
 
