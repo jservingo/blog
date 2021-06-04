@@ -360,6 +360,11 @@
         var msg = res.errors.photo[0];
         $('.dz-error-message:last > span').text(msg);
       });
+
+      $(window).on('resize', function(){
+        $('#dg').datagrid('resize');
+        $('#toolbar').panel('resize');
+      });
     }
   </script>
 
