@@ -359,17 +359,26 @@
         var msg = res.errors.photo[0];
         $('.dz-error-message:last > span').text(msg);
       });
-    }
 
-    $(window).resize(function () {
-      if (w = $(window).width() < 752)
-        var w = $(window).width() - 40;
-      else
-        var w = $(window).width() / 2 - 40;
-      $('#dg').datagrid('resize',{
-          width: w 
-      });  
-    });
+      $(window).resize(function () {
+        if (w = $(window).width() < 752)
+          var w = $(window).width() - 40;
+        else
+          var w = $(window).width() / 2 - 40;
+        $('#dg').datagrid('resize',{
+            width: w 
+        });      
+      });
+    }
+    else
+    {
+      $(window).resize(function () {
+          var w = $(window).width() - 40;
+        $('#dg').datagrid('resize',{
+            width: w 
+        });      
+      });
+    }
   </script>
 
   <!-- <script src="/adminlte/plugins/select2/select2.full.min.js"></script> -->
