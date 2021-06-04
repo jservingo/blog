@@ -365,6 +365,7 @@
         $('#dg').datagrid('resize');
         $('#toolbar').panel('resize');
       });
+      
     }
   </script>
 
