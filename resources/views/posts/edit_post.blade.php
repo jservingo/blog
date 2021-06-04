@@ -362,7 +362,7 @@
     }
 
     $(window).resize(function () {
-      if (w = $(window).width() < 768)
+      if (w = $(window).width() < 760)
         var w = $(window).width();
       else
         var w = $(window).width() / 2 - 50;
