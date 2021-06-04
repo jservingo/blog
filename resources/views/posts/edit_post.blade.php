@@ -275,7 +275,6 @@
 @endsection
 
 @push('styles')
-  <link rel="stylesheet" href="/css/framework_post_box.css?ver=1.11">
   <link rel="stylesheet" href="/css/form_control.css">
   <link rel="stylesheet" href="/css/easyui.css">
   <link rel="stylesheet" href="/css/icon.css">
@@ -360,16 +359,14 @@
         var msg = res.errors.photo[0];
         $('.dz-error-message:last > span').text(msg);
       });
-
-      $(window).resize(function () {
-        var w = $(window).width() / 2 - 100;
-        alert(w);
-        $('#dg').datagrid('resize',{
-            width: w 
-        });  
-      });
-
     }
+
+    $(window).resize(function () {
+      var w = $(window).width() / 2 - 100;
+      $('#dg').datagrid('resize',{
+          width: w 
+      });  
+    });
   </script>
 
   <!-- <script src="/adminlte/plugins/select2/select2.full.min.js"></script> -->
