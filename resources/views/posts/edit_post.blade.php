@@ -362,10 +362,10 @@
     }
 
     $(window).resize(function () {
-      if (w = $(window).width() < 760)
-        var w = $(window).width() - 50;
+      if (w = $(window).width() < 750)
+        var w = $(window).width() - 40;
       else
-        var w = $(window).width() / 2 - 50;
+        var w = $(window).width() / 2 - 40;
       $('#dg').datagrid('resize',{
           width: w 
       });  
