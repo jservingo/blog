@@ -235,7 +235,7 @@
     @endif
 
     @if($post->isPhotoGallery() || $post->isFrame() || $post->isText() || $post->isNotification() || $post->isWebPage() || $post->isAlert()|| $post->isOffer() || $post->isCustom() || $post->isMessage())
-      <div class="half-container" id="">
+      <div class="left-container" id="">
         <div class="form-control">
           <label><span>{{ __('messages.upload-audios') }}</span></label>
           @include('posts.edit_audio')
@@ -373,7 +373,7 @@
     else
     {
       $(window).resize(function () {
-          var w = $(window).width() * 0.64 - 40;
+        var w = $(window).width() * 0.64 - 40;
         $('#dg').datagrid('resize',{
             width: w 
         });      
