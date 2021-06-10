@@ -99,8 +99,8 @@ function deleteRegister(){
 	  $.createDialog({
 	    attachAfter: '#main-container',
 	    title: msg_want_to_delete_this_audio,
-	    accept: yes,
-	    refuse: no,
+	    accept: msg_yes,
+	    refuse: msg_no,
 	    acceptStyle: 'red',
 	    refuseStyle: 'gray',
 	    acceptAction: function(){
