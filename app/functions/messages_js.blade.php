@@ -34,7 +34,7 @@
   var msg_create_page = "<?=__('messages.create-page');?>";
   var msg_enter_page = "<?=__('messages.enter-page');?>";
   var msg_create_post = "<?=__('messages.create-post');?>";
-  var msg_enter_posts = "<?=__('messages.enter-post');?>";
+  var msg_enter_post = "<?=__('messages.enter-post');?>";
   var msg_enter_message = "<?=__('messages.enter-message');?>";
   var msg_title = "<?=__('messages.title');?>";
   var msg_type = "<?=__('messages.type');?>";
