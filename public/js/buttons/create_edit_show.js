@@ -273,7 +273,7 @@ function btn_create_post(catalog_id)
   //Crear ventana modal
   var html = "<div id='edit'>";
   html = html + "<h3>"+msg_create_post+"</h3>";
-  html = html + "<p>"+type+"</p>";
+  html = html + "<p>"+msg_type+"</p>";
   html = html + "<select id='type'>";
   html = html + "<option value='3'>"+msg_type_text+"</option>";
   html = html + "<option value='1'>"+msg_type_photo_gallery+"</option>";

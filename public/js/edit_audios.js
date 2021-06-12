@@ -101,8 +101,8 @@ function deleteRegister(){
 	    title: msg_want_to_delete_this_audio,
 	    accept: msg_yes,
 	    refuse: msg_no,
-	    acceptStyle: 'blue',
-	    refuseStyle: 'red',
+	    acceptStyle: 'red',
+	    refuseStyle: 'gray',
 	    acceptAction: function(){
 	      deleteAudio(row.id);
 	    }

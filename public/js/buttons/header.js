@@ -321,7 +321,7 @@ function btn_show_alerts()
           title: html,
           accept: show_all,
           refuse: msg_cancel,
-          acceptStyle: 'green',
+          acceptStyle: 'red',
           refuseStyle: 'gray',
           acceptAction: function(){
             location = "/posts/alerts/notifications";

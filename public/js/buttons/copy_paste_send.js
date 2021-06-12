@@ -494,8 +494,8 @@ function btn_send_message(user_id)
     title: html,
     accept: msg_create,
     refuse: msg_cancel,
-    acceptStyle: 'blue',
-    refuseStyle: 'red',
+    acceptStyle: 'red',
+    refuseStyle: 'gray',
     acceptAction: function(){
       title = $('#title').val();
       type_id = 3;
