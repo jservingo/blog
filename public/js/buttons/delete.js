@@ -56,7 +56,7 @@ function btn_delete_catalog_from_category(catalog_id, category_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_catalog,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -72,7 +72,7 @@ function btn_delete_catalog_from_created_catalogs(catalog_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_catalog,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -88,7 +88,7 @@ function btn_delete_post_from_catalog(post_id, catalog_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_post_from_the_catalog,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -104,7 +104,7 @@ function btn_delete_app_subs(post_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_app,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -120,7 +120,7 @@ function btn_delete_post_from_created_posts(post_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_post,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -136,7 +136,7 @@ function btn_delete_post_from_created_pages(post_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_page,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -152,7 +152,7 @@ function btn_delete_post_from_subscription(post_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_unsubscribe,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -168,7 +168,7 @@ function btn_delete_post_from_contacts(post_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: want_delete_this_contact,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -184,7 +184,7 @@ function btn_delete_post_from_contacts_group(post_id, group_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: want_delete_this_contact,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',

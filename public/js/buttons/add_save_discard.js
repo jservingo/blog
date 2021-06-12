@@ -49,7 +49,7 @@ function btn_save_app_post(app_id, title, excerpt, img, tags, links, footnote, d
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_save_this_post,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -65,7 +65,7 @@ function btn_add_subscription(post_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_subscribe,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -90,7 +90,7 @@ function btn_add_user_to_contacts(user_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_add_this_user_to_your_contacts,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -106,7 +106,7 @@ function btn_save_post(post_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_save_this_post,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
@@ -122,7 +122,7 @@ function btn_discard_post(post_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_to_discard_this_post,
-    accept: yes,
+    accept: msg_yes,
     refuse: no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
