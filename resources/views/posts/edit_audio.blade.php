@@ -1,4 +1,4 @@
- <table id="dg" title="Audios" class="easyui-datagrid" 
+	<table id="dg" title="Audios" class="easyui-datagrid" 
 			url="/audios/get/{{ $post->id }}"     
 			toolbar="#toolbar" pagination="true" nowrap="false"
 			rownumbers="true" fitColumns="true" singleSelect="true"

@@ -96,12 +96,11 @@ function saveRegister(post_id){
 function deleteRegister(){
 	var row = $('#dg').datagrid('getSelected');
 	if (row){
-		alert(msg_yes);
 	  $.createDialog({
-	    attachAfter: '.main-container',
+	    attachAfter: '#audio-container',
 	    title: msg_want_to_delete_this_audio,
-	    accept: 'Si',
-	    refuse: 'No',
+	    accept: msg_yes,
+	    refuse: msg_no,
 	    acceptStyle: 'blue',
 	    refuseStyle: 'red',
 	    acceptAction: function(){

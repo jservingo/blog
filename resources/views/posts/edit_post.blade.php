@@ -235,7 +235,7 @@
     @endif
 
     @if($post->isPhotoGallery() || $post->isFrame() || $post->isText() || $post->isNotification() || $post->isWebPage() || $post->isAlert()|| $post->isOffer() || $post->isCustom() || $post->isMessage())
-      <div class="left-container" id="">
+      <div class="left-container" id="audio-container">
         <div class="form-control">
           <label><span>{{ __('messages.upload-audios') }}</span></label>
           @include('posts.edit_audio')
@@ -331,7 +331,7 @@
   <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
   <script type="text/javascript" src="/js/easyui.min.js"></script>
   <script type="text/javascript" src="/js/edit_post.js"></script>
-  <script type="text/javascript" src="/js/edit_audios.js?ver=1.37"></script>
+  <script type="text/javascript" src="/js/edit_audios.js?ver=1.38"></script>
   <script type="text/javascript" src="/js/functions.js"></script>
   <script>
     if($('.dropzone').length)
