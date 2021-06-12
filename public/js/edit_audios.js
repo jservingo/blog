@@ -97,7 +97,7 @@ function deleteRegister(){
 	var row = $('#dg').datagrid('getSelected');
 	if (row){
 	  $.createDialog({
-	    attachAfter: '#main-container',
+	    attachAfter: '.main-container',
 	    title: msg_want_to_delete_this_audio,
 	    accept: msg_yes,
 	    refuse: msg_no,
