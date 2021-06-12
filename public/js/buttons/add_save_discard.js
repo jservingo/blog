@@ -50,7 +50,7 @@ function btn_save_app_post(app_id, title, excerpt, img, tags, links, footnote, d
     attachAfter: '#main_panel',
     title: msg_want_to_save_this_post,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -66,7 +66,7 @@ function btn_add_subscription(post_id)
     attachAfter: '#main_panel',
     title: msg_want_to_subscribe,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -91,7 +91,7 @@ function btn_add_user_to_contacts(user_id)
     attachAfter: '#main_panel',
     title: msg_want_to_add_this_user_to_your_contacts,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -107,7 +107,7 @@ function btn_save_post(post_id)
     attachAfter: '#main_panel',
     title: msg_want_to_save_this_post,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -123,7 +123,7 @@ function btn_discard_post(post_id)
     attachAfter: '#main_panel',
     title: msg_want_to_discard_this_post,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){

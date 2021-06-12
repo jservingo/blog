@@ -79,8 +79,8 @@ function btn_create_catalog_from_category(category_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: html,
-    accept: create,
-    refuse: cancel,
+    accept: msg_create,
+    refuse: msg_cancel,
     acceptStyle: 'blue',
     refuseStyle: 'red',
     acceptAction: function(){
@@ -129,8 +129,8 @@ function btn_create_catalog()
   $.createDialog({
     attachAfter: '#main_panel',
     title: html,
-    accept: create,
-    refuse: cancel,
+    accept: msg_create,
+    refuse: msg_cancel,
     acceptStyle: 'blue',
     refuseStyle: 'red',
     acceptAction: function(){
@@ -179,8 +179,8 @@ function btn_create_app(parent_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: html,
-    accept: create,
-    refuse: cancel,
+    accept: msg_create,
+    refuse: msg_cancel,
     acceptStyle: 'blue',
     refuseStyle: 'red',
     acceptAction: function(){
@@ -229,8 +229,8 @@ function btn_create_page()
   $.createDialog({
     attachAfter: '#main_panel',
     title: html,
-    accept: create,
-    refuse: cancel,
+    accept: msg_create,
+    refuse: msg_cancel,
     acceptStyle: 'blue',
     refuseStyle: 'red',
     acceptAction: function(){
@@ -289,8 +289,8 @@ function btn_create_post(catalog_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: html,
-    accept: create,
-    refuse: cancel,
+    accept: msg_create,
+    refuse: msg_cancel,
     acceptStyle: 'blue',
     refuseStyle: 'red',
     acceptAction: function(){

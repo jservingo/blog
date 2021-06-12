@@ -57,7 +57,7 @@ function btn_delete_catalog_from_category(catalog_id, category_id)
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_catalog,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -73,7 +73,7 @@ function btn_delete_catalog_from_created_catalogs(catalog_id)
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_catalog,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -89,7 +89,7 @@ function btn_delete_post_from_catalog(post_id, catalog_id)
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_post_from_the_catalog,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -105,7 +105,7 @@ function btn_delete_app_subs(post_id)
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_app,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -121,7 +121,7 @@ function btn_delete_post_from_created_posts(post_id)
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_post,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -137,7 +137,7 @@ function btn_delete_post_from_created_pages(post_id)
     attachAfter: '#main_panel',
     title: msg_want_to_delete_this_page,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -153,7 +153,7 @@ function btn_delete_post_from_subscription(post_id)
     attachAfter: '#main_panel',
     title: msg_want_to_unsubscribe,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -169,7 +169,7 @@ function btn_delete_post_from_contacts(post_id)
     attachAfter: '#main_panel',
     title: want_delete_this_contact,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){
@@ -185,7 +185,7 @@ function btn_delete_post_from_contacts_group(post_id, group_id)
     attachAfter: '#main_panel',
     title: want_delete_this_contact,
     accept: msg_yes,
-    refuse: no,
+    refuse: msg_no,
     acceptStyle: 'red',
     refuseStyle: 'gray',
     acceptAction: function(){

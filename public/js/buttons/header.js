@@ -320,7 +320,7 @@ function btn_show_alerts()
           attachAfter: '#main_panel',
           title: html,
           accept: show_all,
-          refuse: cancel,
+          refuse: msg_cancel,
           acceptStyle: 'green',
           refuseStyle: 'gray',
           acceptAction: function(){

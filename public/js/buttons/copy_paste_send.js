@@ -174,8 +174,8 @@ function btn_paste_post_to_catalog(catalog_id)
       $.createDialog({
         attachAfter: '#main_panel',
         title: html,
-        accept: paste,
-        refuse: cancel,
+        accept: msg_paste,
+        refuse: msg_cancel,
         acceptStyle: 'red',
         refuseStyle: 'gray',
         acceptAction: function(){
@@ -226,8 +226,8 @@ function btn_paste_post_to_contacts(group_id)
       $.createDialog({
         attachAfter: '#main_panel',
         title: html,
-        accept: paste,
-        refuse: cancel,
+        accept: msg_paste,
+        refuse: msg_cancel,
         acceptStyle: 'red',
         refuseStyle: 'gray',
         acceptAction: function(){
@@ -278,8 +278,8 @@ function btn_paste_catalog_to_category(category_id)
       $.createDialog({
         attachAfter: '#main_panel',
         title: html,
-        accept: paste,
-        refuse: cancel,
+        accept: msg_paste,
+        refuse: msg_cancel,
         acceptStyle: 'red',
         refuseStyle: 'gray',
         acceptAction: function(){
@@ -427,7 +427,7 @@ function btn_send_post(post_id)
         attachAfter: '#main_panel',
         title: html,
         accept: send,
-        refuse: cancel,
+        refuse: msg_cancel,
         acceptStyle: 'red',
         refuseStyle: 'gray',
         acceptAction: function(){
@@ -492,8 +492,8 @@ function btn_send_message(user_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: html,
-    accept: create,
-    refuse: cancel,
+    accept: msg_create,
+    refuse: msg_cancel,
     acceptStyle: 'blue',
     refuseStyle: 'red',
     acceptAction: function(){
