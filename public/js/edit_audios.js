@@ -169,6 +169,6 @@ $(function(){
 
   $('#btn_upload_audio').bind('click', function(e){
     $("#loading_audio").show();
-    setInterval(blink_text, 2000);
+    //setInterval(blink_text, 2000);
   });
 });
