@@ -487,7 +487,7 @@ function btn_send_message(user_id)
   var html = "<div id='edit'>";
   html = html + "<h3>"+msg_send_message+"</h3>";
   html = html + "<p>"+msg_title+"</p>";
-  html = html + "<input id='title' type='text' style='width:80%;' class='form-control' placeholder='"+msg_enter_message+"' required>";
+  html = html + "<input id='title' type='text' style='width:96%;' class='form-control' placeholder='"+msg_enter_message+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
