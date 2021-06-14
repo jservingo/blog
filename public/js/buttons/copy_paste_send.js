@@ -426,7 +426,7 @@ function btn_send_post(post_id)
       $.createDialog({
         attachAfter: '#main_panel',
         title: html,
-        accept: send,
+        accept: msg_send,
         refuse: msg_cancel,
         acceptStyle: 'red',
         refuseStyle: 'gray',
@@ -492,7 +492,7 @@ function btn_send_message(user_id)
   $.createDialog({
     attachAfter: '#main_panel',
     title: html,
-    accept: msg_create,
+    accept: msg_send,
     refuse: msg_cancel,
     acceptStyle: 'red',
     refuseStyle: 'gray',

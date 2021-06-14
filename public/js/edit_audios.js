@@ -96,6 +96,11 @@ function saveRegister(post_id){
 function deleteRegister(){
 	var row = $('#dg').datagrid('getSelected');
 	if (row){
+	  var resp = confirm(msg_want_to_delete_this_audio);
+    if( resp == true ) {
+    	deleteAudio(row.id);
+    }
+	  /*
 	  $.createDialog({
 	    attachAfter: '#audio-container',
 	    title: msg_want_to_delete_this_audio,
@@ -107,7 +112,8 @@ function deleteRegister(){
 	      deleteAudio(row.id);
 	    }
 	  });
-	  $.showDialog();  
+	  $.showDialog();
+	  */  
 	} 
 }
 
@@ -169,6 +175,6 @@ $(function(){
 
   $('#btn_upload_audio').bind('click', function(e){
     $("#loading_audio").show();
-    //setInterval(blink_text, 2000);
+    setInterval(blink_text, 2000);
   });
 });
