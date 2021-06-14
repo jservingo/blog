@@ -35,6 +35,7 @@
   <script type="text/javascript" src="/js/functions.js"></script>
   <script type="text/javascript" src="/js/buttons/header.js"></script>
   <script type="text/javascript" src="/js/buttons/create_edit_show.js"></script>
+  <script type="text/javascript" src="/js/buttons/copy_paste_send.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script>

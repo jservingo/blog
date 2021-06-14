@@ -22,7 +22,7 @@
 					<img src="/img/send_message.png" width="24" style="margin-top:-5px;">
 				</a>
 			</h3>	
-			<h3>WhatsApp +58(424)2618854</h3>
+			<h3>Twitter: @kodelianet</h3>
 		</div>
 	</section>
 @endsection
