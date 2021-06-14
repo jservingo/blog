@@ -22,7 +22,7 @@
 					<img src="/img/send_message.png" width="24" style="margin-top:-5px;">
 				</a>
 			</h3>	
-			<h3>Twitter: @kodelianet</h3>
+			<h3>Twitter: <a href="https://twitter.com/kodelianet" target="_blank">@kodelianet</a></h3>
 		</div>
 	</section>
 @endsection
