@@ -38,5 +38,5 @@
 @endif   
 
 <div class="image-w-text">
-  <span class="cite-2">{{ __('messages.views') }}:</span>{{ $post->views }}
+  <span class="cite-2">{{ __('messages.views') }}:</span> {{ $post->views }}
 </div>  
