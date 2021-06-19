@@ -13,7 +13,7 @@
   </span>
   @if ($post->isUser())
     @if ($post->isContact())
-      <span style="color:green">(contacto)</span>span>
+      <span style="color:green">(contacto)</span>
     @endif 
   @endif
 </div>
