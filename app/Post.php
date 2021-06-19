@@ -65,9 +65,9 @@ class Post extends Model
         return null; 
     }
 
-    public function isContact($post)
+    public function isContact()
     {
-        $user_ref = $post->owner->user_id;
+        $user_ref = $this->owner->user_id;
         $contact = Contact
             ::where('user_id','=',$auth()->id())
             ->where('user_ref','=',$user_ref)
