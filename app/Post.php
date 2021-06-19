@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App as Kapp;
 use App\Catalog;
+use App\Contact;
 use App\Page;
 use App\User;
 use App\App;
@@ -62,6 +63,18 @@ class Post extends Model
         if ($kpost)
             return $kpost->sent_by;
         return null; 
+    }
+
+    public function isContact($post)
+    {
+        $user_ref = $post->owner->user_id;
+        $contact = Contact
+            ::where('user_id','=',$auth()->id())
+            ->where('user_ref','=',$user_ref)
+            ->first();
+        if ($contact)
+            return true;
+        return false;
     }
 
     public function strTags()

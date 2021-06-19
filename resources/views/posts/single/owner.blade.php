@@ -1,6 +1,6 @@
 @if ($post->type_id >= 21)
 	<div class="image-w-text">
-	  <span class="cite-2">{{ $post->get_type() }}</span>
+	  <span class="cite-2">{{ $post->get_type() }}</span>       
 	</div>
 @endif
 
@@ -11,6 +11,11 @@
       {{ $post->owner->name }}
     </a>
   </span>
+  @if ($post->isUser())
+    @if ($post->isContact())
+      <span style="color:green">(contacto)</span>span>
+    @endif 
+  @endif
 </div>
 
 <div class="image-w-text">
