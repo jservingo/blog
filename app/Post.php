@@ -57,7 +57,7 @@ class Post extends Model
         // NO SE UTILIZA. $post->sent_by()
         // UTILIZAR $post->kpost->sent_by
         $kpost = Kpost
-            ::where('user_id','=',1)  //$auth()->id()
+            ::where('user_id','=',auth()->id())  
             ->where('post_id','=',$this->id)
             ->first();
         if ($kpost)
@@ -67,9 +67,9 @@ class Post extends Model
 
     public function isContact()
     {
-        $user_ref = $this->owner->user_id;
+        $user_ref = $this->user_id;
         $contact = Contact
-            ::where('user_id','=',$auth()->id())
+            ::where('user_id','=',auth()->id())
             ->where('user_ref','=',$user_ref)
             ->first();
         if ($contact)
