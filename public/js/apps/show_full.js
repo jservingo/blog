@@ -55,8 +55,8 @@ $(function() {
           '</div>'+
         '</div>'+
       '</div>'+
-      '<div class="media" style="float:left;">'+
-        '<div style="width:345px; height:auto; overflow:auto; background-color:#d7e9f3">'+
+      '<div class="media" style="float:left;">'+  
+        '<div style="overflow:auto; background-color:#d7e9f3">'+ //width:345px; height:auto;
         '<img src=":img:" alt=":img alt:" id="t-img" class="img-responsive ifull">'+
         '</div>'+
       '</div>'+
