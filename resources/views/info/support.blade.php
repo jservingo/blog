@@ -31,6 +31,11 @@
 					  <h3>Pipol Pay - Facebank</h3>
 						<img src="/img/pipolpay.png" height="180">
 						<p>Email: jservingo@gmail.com</p>
+					</div>					
+					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
+					  <h3>Trust Wallet - Bitcoin</h3>
+						<img src="/img/bc1qgt7qvptt9l8k3xntcgwxq8qka787ty8yx8sasw.png" width="200">
+						<p>bc1qgt7qvptt9l8k3xntcgwxq8qka787ty8yx8sasw</p>
 					</div>
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 					  <h3>Trust Wallet - Dash</h3>
@@ -47,6 +52,7 @@
 						<br>Jorge Servin
 					</div>
 					-->
+					<!--
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 						<h3>Citibank-USA (USD)</h3>
 						<p>Name: Jorge E. Servin.</p>
@@ -57,13 +63,8 @@
 						<br>NEW YORK, NY 10043
 						<br>USA</p>
 					</div>
-					<!--
-					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
-					  <h3>Trust Wallet - Bitcoin</h3>
-						<img src="/img/bc1qgt7qvptt9l8k3xntcgwxq8qka787ty8yx8sasw.png" width="200">
-						<p>bc1qgt7qvptt9l8k3xntcgwxq8qka787ty8yx8sasw</p>
-					</div>
 					-->
+					<!--					
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 						<h3>Banco Provincial (Bs)</h3>
 						<p>Nombre: Jorge Servin</p>
@@ -71,6 +72,8 @@
 						<p>CI: 5966618</p>
 						<p>Email: jservingo@gmail.com</p>
 					</div>
+				  -->
+					<!--
 					<div style="float:left;width:350px;height:330px;background-color:#e2e2e2;margin-right:10px;margin-bottom:20px;">
 						<h3>Banesco (Bs)</h3>	
 						<p>Nombre: Jorge Servin</p>
@@ -78,6 +81,7 @@
 						<p>CI: 5966618</p>
 						<p>Email: jservingo@gmail.com</p>
 					</div>
+					-->
 					<div style="clear:both;"></div>
 				</div>
 				{{--
