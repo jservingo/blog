@@ -41,24 +41,26 @@
         <div style="clear:both;"></div>
       </div>
       @else
-      <div>  
-        <div style="float:right;">
-          <div class="header" style="float:right;">
-            @include('posts.full.header')
-          </div>
-          <div class="media" style="float:left;">
-            @include('posts.full.title')  
-          </div>
-          <div style="clear:both;"></div>
-          <div>
-            @include('posts.full.scontent')
-          </div>
+      <div style="float:right;">
+        <div class="header" style="float:right;">
+          @include('posts.full.header')
         </div>
-        <div class="media" style="float:left;">
-          @include('posts.full.photo')
+        <div style="float:left;">
+          @include('posts.full.title')            
         </div>
-        <div style="clear:both;"></div>   
+        <div style="clear:both;"></div>
+        <div>
+          @include('posts.full.scontent')
+        </div>
       </div>
+      <div class="media" style="float:left;">
+        @if ($post->isFrame())
+          @include('posts.full.iframe')
+        @else
+          @include('posts.full.photo')
+        @endif
+      </div>
+      <div style="clear:both;"></div>  
       @endif
     @else
     <div>
