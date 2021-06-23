@@ -103,8 +103,8 @@ class Post extends Model
 
     public function scopePublished($query)
     {
-        //$now = getUTCDate();
-        $now = date("Y-m-d");
+        //$now = date("Y-m-d");
+        $now = getUTCDate();
         $query->where(function ($query) {
             $query->where('posts.user_id','=',auth()->id());
         })->orWhere(function ($query) use ($now) {
