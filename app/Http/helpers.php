@@ -15,11 +15,13 @@ function format_num($n) {
   return round($n, max(0, 3 - strlen((int)$n))) ." $out";
 }
 
+/*
 function getUTCDate()
 {
   date_default_timezone_set('UTC');
   return ('Y-m-d H:i:s', time());
 }
+*/
 
 function create_session()
 {
