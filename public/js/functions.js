@@ -55,7 +55,7 @@ function replaceAll(str,x,y)
 //Convertir fecha y hora UTC en local
 function fdateLocal(d)
 {
-  d = d - d.getTimezoneOffset() * 60000;
+  d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
   if (lang=='en')
   {
     return d.toLocaleString('en-US',
@@ -73,7 +73,7 @@ function fdateLocal(d)
 function fdateUTC(d)
 {
   date = new Date(d);
-  d = d + d.getTimezoneOffset() * 60000;
+  d = new Date(d.getTime() + d.getTimezoneOffset() * 60000);
   return d.toString(); 
 }
 
