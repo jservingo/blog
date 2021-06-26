@@ -26,6 +26,6 @@
       &nbsp;
     </span>
     <span class="c-gray-1 fdate" style="font-size:14px">
-      {{ $post->published_date }}
+      {{ $post->published_at }}
     </span>
 </div>
