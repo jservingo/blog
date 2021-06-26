@@ -11,7 +11,7 @@ $(function() {
           '</span>'+
         '</div>'+
         '<div class="truncate" data-height="12" style="width: 100px; padding: 4px 10px; text-align: right; height: 18px;">'+         
-          '<span id="t-date" class="c-gray-1" style="font-size:12px;">'+
+          '<span id="t-date" class="c-gray-1" style="font-size:14px;">'+
             ':date:'+
           '</span>'+
         '</div>'+ 
