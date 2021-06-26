@@ -10,7 +10,7 @@ $(function() {
             '</a>'+
           '</span>'+
         '</div>'+
-        '<div class="truncate" data-height="12" style="width: 100px; padding: 4px 10px; text-align: right; height: 18px;">'+         
+        '<div class="truncate" data-height="12" style="width: 100px; padding: 2px 10px; text-align: right; height: 18px;">'+         
           '<span id="t-date" class="c-gray-1" style="font-size:14px;">'+
             ':date:'+
           '</span>'+
