@@ -52,8 +52,10 @@ function replaceAll(str,x,y)
   return(str.replace(regex, y)); 
 }
 
-function fdate(d)
+//Convertir fecha y hora UTC en local
+function fdateLocal(d)
 {
+  d = d - d.getTimezoneOffset() * 60000;
   if (lang=='en')
   {
     return d.toLocaleString('en-US',
@@ -65,6 +67,14 @@ function fdate(d)
     return d.toLocaleString('es-ES',
       {"year":"2-digit","month":"numeric","day":"numeric"});
   }
+}
+
+//Convertir fecha y hora local un UTC
+function fdateUTC(d)
+{
+  date = new Date(d);
+  d = d + d.getTimezoneOffset() * 60000;
+  return d.toString(); 
 }
 
 function get_month(f)

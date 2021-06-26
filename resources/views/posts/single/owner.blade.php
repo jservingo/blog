@@ -20,13 +20,13 @@
 
 <div class="image-w-text">
   <span class="cite-2">{{ __('messages.publication-date') }}:</span> 
-  {{ $post->published_at->format('d/m/y') }}
+  <span class="fdate">{{ $post->published_at }}</span>
 </div> 
 
 @if ($post->published_at <> $post->updated_at)
 	<div class="image-w-text">
   	<span class="cite-2">{{ __('messages.updated-date') }}:</span>
-    {{ $post->updated_at->format('d/m/y') }}
+    <span class="fdate">{{ $post->updated_at }}</span>
 	</div> 
 @endif   
 
@@ -38,7 +38,7 @@
         {{ $post->sender->name }}
       </a>
     </span>
-    {{ $post->kpost->created_at->format('d/m/y') }}
+    <span class="fdate">{{ $post->kpost->created_at }}</span>
   </div>
 @endif   
 

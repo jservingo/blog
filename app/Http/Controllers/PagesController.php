@@ -387,7 +387,7 @@ class PagesController extends Controller
 
     $this->validate($request, [
       'title' => 'required',
-      'published_at' => Carbon::now()
+      'published_at' => Carbon::now('UTC')
     ]);
 
     $page = Page::create([
@@ -405,14 +405,14 @@ class PagesController extends Controller
       'type_id' => 22,
       'ref_id' => $page->id,
       'user_id' => auth()->id(),
-      'published_at' => Carbon::now()
+      'published_at' => Carbon::now('UTC')
     ]);
 
     $kpost = Kpost::create([
       'post_id' => $post->id,
       'user_id' => auth()->id(),
       'sent_by' => auth()->id(),
-      'sent_at' => Carbon::now() 
+      'sent_at' => Carbon::now('UTC') 
     ]);
 
     echo json_encode(array('success'=>true,'post_id'=>$post->id));

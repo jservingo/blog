@@ -35,7 +35,7 @@ class Catalog extends Model
 
   public function scopePublished($query)
     {
-        $current = Carbon::now();
+        $current = Carbon::now('UTC');
         $query->where(function ($query) {
             $query->where('posts.user_id','=',auth()->id());
         })->orWhere(function ($query) use ($current) {

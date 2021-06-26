@@ -168,7 +168,7 @@ class SubscriptionsController extends Controller
       'post_id' => $post->id,
       'user_id' => auth()->id(),
       'sent_by' => auth()->id(),
-      'sent_at' => Carbon::now() 
+      'sent_at' => Carbon::now('UTC') 
     ]);
 
     echo json_encode(array('success'=>true));

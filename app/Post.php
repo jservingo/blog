@@ -92,7 +92,7 @@ class Post extends Model
 
     public function scopePublishedOffer($query)
     {
-        $current = Carbon::now();
+        $current = Carbon::now('UTC');
         $fromDate = $current->toDateTimeString();
         $toDate = $current->addDays(7)->toDateTimeString();
 

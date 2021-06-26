@@ -282,7 +282,7 @@ function btn_show_alerts()
           else 
             var img = '<img src="/img/featured_alert.png" width="16">';
           var date = new Date(post.published_at);
-          date = fdate(date);
+          date = fdateLocal(date);
           html = html + "<div style='padding:8px; background-color:"+zcolor+";'>";
           html = html + "<div>" + img + '  ';  
           html = html + '<a href="http://127.0.0.1:8000/posts/'+post.id+'" class="text-uppercase c-blue" data-id="'+post.id+'">';      

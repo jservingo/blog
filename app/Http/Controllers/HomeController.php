@@ -485,7 +485,7 @@ class HomeController extends Controller
 
   public function get_ad($position1, $position2)
   {
-    $now = date('Y-m-d');
+    $now = getUTCDate();
     
     $ad = Ad
       ::where('valid_from', '<=', $now)

@@ -208,7 +208,7 @@ class ContactsController extends Controller
       'post_id' => $post->id,
       'user_id' => auth()->id(),
       'sent_by' => auth()->id(),
-      'sent_at' => Carbon::now() 
+      'sent_at' => Carbon::now('UTC') 
     ]);
 
     echo json_encode(array('success'=>true));
@@ -260,7 +260,7 @@ class ContactsController extends Controller
           'post_id' => $post->id,
           'user_id' => $user_id,
           'sent_by' => auth()->id(),
-          'sent_at' => Carbon::now() 
+          'sent_at' => Carbon::now('UTC') 
         ]);
       }
     }
@@ -278,21 +278,21 @@ class ContactsController extends Controller
       'title' => $request->get('title'),
       'type_id' => $request->get('type_id'),
       'user_id' => auth()->id(),
-      'published_at' => Carbon::now()
+      'published_at' => Carbon::now('UTC')
     ]);
 
     $kpost = Kpost::create([
       'post_id' => $post->id,
       'user_id' => auth()->id(),
       'sent_by' => auth()->id(),
-      'sent_at' => Carbon::now() 
+      'sent_at' => Carbon::now('UTC') 
     ]);
 
     $kpost = Kpost::create([
       'post_id' => $post->id,
       'user_id' => $user_id,
       'sent_by' => auth()->id(),
-      'sent_at' => Carbon::now() 
+      'sent_at' => Carbon::now('UTC') 
     ]);
 
     echo json_encode(array('success'=>true,'post_id'=>$post->id));

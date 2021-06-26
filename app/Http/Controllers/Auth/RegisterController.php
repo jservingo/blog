@@ -83,14 +83,14 @@ class RegisterController extends Controller
           'type_id' => 24,
           'ref_id' => $user->id,
           'user_id' => $user->id,
-          'published_at' => Carbon::now()
+          'published_at' => Carbon::now('UTC')
         ]);
 
         $kpost = Kpost::create([
           'post_id' => $post->id,
           'user_id' => $user->id,
           'sent_by' => $user->id,
-          'sent_at' => Carbon::now() 
+          'sent_at' => Carbon::now('UTC') 
         ]);
 
         $verifyUser = VerifyUser::create([

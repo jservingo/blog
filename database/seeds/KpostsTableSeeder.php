@@ -19,14 +19,14 @@ class KpostsTableSeeder extends Seeder
         $kpost->post_id = 1;
         $kpost->user_id = 2;
         $kpost->sent_by = 1;
-        $kpost->sent_at = Carbon::now();
+        $kpost->sent_at = Carbon::now('UTC');
         $kpost->save();
 
         $kpost = new Kpost;
         $kpost->post_id = 2;
         $kpost->user_id = 2;
         $kpost->sent_by = 1;
-        $kpost->sent_at = Carbon::now();
+        $kpost->sent_at = Carbon::now('UTC');
         $kpost->save();
 
         // Posts enviados a Jorge
@@ -35,14 +35,14 @@ class KpostsTableSeeder extends Seeder
         $kpost->post_id = 9;
         $kpost->user_id = 1;
         $kpost->sent_by = 2;
-        $kpost->sent_at = Carbon::now();
+        $kpost->sent_at = Carbon::now('UTC');
         $kpost->save();
 
         $kpost = new Kpost;
         $kpost->post_id = 10;
         $kpost->user_id = 1;
         $kpost->sent_by = 2;
-        $kpost->sent_at = Carbon::now();
+        $kpost->sent_at = Carbon::now('UTC');
         $kpost->save();
 
         //Posts de usuarios enviados a Jorge
@@ -51,28 +51,28 @@ class KpostsTableSeeder extends Seeder
         $kpost->post_id = 13;
         $kpost->user_id = 1;
         $kpost->sent_by = 2;
-        $kpost->sent_at = Carbon::now();
+        $kpost->sent_at = Carbon::now('UTC');
         $kpost->save();
 
         $kpost = new Kpost;
         $kpost->post_id = 14;
         $kpost->user_id = 1;
         $kpost->sent_by = 2;
-        $kpost->sent_at = Carbon::now();
+        $kpost->sent_at = Carbon::now('UTC');
         $kpost->save();
 
         $kpost = new Kpost;
         $kpost->post_id = 15;
         $kpost->user_id = 1;
         $kpost->sent_by = 2;
-        $kpost->sent_at = Carbon::now();
+        $kpost->sent_at = Carbon::now('UTC');
         $kpost->save();
 
         $kpost = new Kpost;
         $kpost->post_id = 16;
         $kpost->user_id = 1;
         $kpost->sent_by = 2;
-        $kpost->sent_at = Carbon::now();
+        $kpost->sent_at = Carbon::now('UTC');
         $kpost->save();
         */
     }

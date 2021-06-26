@@ -24,7 +24,7 @@
       @endif
       --}}
     </span>
-    <span class="c-gray-1" style="font-size:14px">
+    <span class="c-gray-1 fdate" style="font-size:14px">
       {{ $post->published_date }}
     </span>
 </div>
