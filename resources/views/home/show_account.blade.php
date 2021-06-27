@@ -9,7 +9,9 @@
 			<p>{{ __('messages.username') }}: {{ $user->name }}</p>
 			<p>{{ __('messages.email') }}: {{ $user->email }}</p>
 			<p>{{ __('messages.language') }}: {{ $user->language }}</p>
-			<p>{{ __('messages.creation-date') }}: {{ $user->post->created_date }}</p>
+			<p>{{ __('messages.creation-date') }}: 
+        <span class="fdate">{{ $user->post->created_at }}</span>
+      </p>
       <p>{{ __('messages.views') }}: {{ $user->post->views }}</p>
 			<p>{{ __('messages.likes') }}: {{ $user->post->likes }}</p>
 		</div>
@@ -31,6 +33,7 @@
   <script type="text/javascript" src="/js/buttons/header.js"></script>
   <script type="text/javascript" src="/js/buttons/create_edit_show.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
+  <script type="text/javascript" src="/js/fdate.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script>
     $(document).ready(function() {

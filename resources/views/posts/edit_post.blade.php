@@ -81,7 +81,7 @@
         <label><span>{{ __('messages.publication-date') }}:</span></label>
         <input type="text" id="published_at" 
           class="pull-right" 
-          value="{{ old('published_at',$post->published_at ? $post->published_at->format('m/d/Y H:i:s') : null) }}"
+          value="{{ $post->published_at }}"
           id="datepicker">
       </div>
       
@@ -379,6 +379,13 @@
         });      
       });
     }
+
+    $(function() {
+      var d = document.getElementById("published_at").value;
+      var date = new Date(d);
+      var fdate = fdateLocal(date);
+      document.getElementById("published_at").value = fdate;
+    });
   </script>
 
   <!-- <script src="/adminlte/plugins/select2/select2.full.min.js"></script> -->
