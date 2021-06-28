@@ -69,6 +69,22 @@ function fdateLocal(d)
   }
 }
 
+function fdateTimeLocal(d)
+{
+  d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+  if (lang=='en')
+  {
+    return d.toLocaleString('en-US', 
+      {'year':'numeric', 'month':'numeric', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit', 'second':'2-digit' });
+
+  }
+  else if (lang=='es')
+  {
+    return d.toLocaleString('es-ES', 
+      {'year':'numeric', 'month':'numeric', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit', 'second':'2-digit' });
+  }   
+}
+
 //Convertir fecha y hora local un UTC
 function fdateUTC(d)
 {

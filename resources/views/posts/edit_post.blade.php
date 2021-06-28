@@ -383,8 +383,8 @@
     $(function() {
       var d = document.getElementById("published_at").value;
       var date = new Date(d);
-      var fdate = fdateLocal(date);
-      document.getElementById("published_at").value = fdate;
+      var fdate = fdateTimeLocal(date);
+      document.getElementById("published_at").fdate;
     });
   </script>
 
