@@ -75,13 +75,13 @@ function fdateTimeLocal(d)
   if (lang=='en')
   {
     return d.toLocaleString('en-US', 
-      {'year':'numeric', 'month':'numeric', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit', 'second':'2-digit' });
+      {'year':'numeric', 'month':'2-digit', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit', 'second':'2-digit' });
 
   }
   else if (lang=='es')
   {
     return d.toLocaleString('es-ES', 
-      {'year':'numeric', 'month':'numeric', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit', 'second':'2-digit' });
+      {'year':'numeric', 'month':'2-digit', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit', 'second':'2-digit' });
   }   
 }
 
