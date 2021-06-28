@@ -382,8 +382,11 @@
 
     $(function() {
       var d = document.getElementById("published_at").value;
+      console.log(d);
       var date = new Date(d);
+      console.log(date);
       var fdate = fdateTimeLocal(date);
+      console.log(fdate);
       document.getElementById("published_at").value = fdate;
     });
   </script>

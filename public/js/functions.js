@@ -55,32 +55,32 @@ function replaceAll(str,x,y)
 //Convertir fecha y hora UTC en local
 function fdateLocal(d)
 {
-  d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+  date = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
   if (lang=='en')
   {
-    return d.toLocaleString('en-US',
+    return date.toLocaleString('en-US',
       {"year":"2-digit","month":"numeric","day":"numeric"});
 
   }
   else if (lang=='es')
   {
-    return d.toLocaleString('es-ES',
+    return date.toLocaleString('es-ES',
       {"year":"2-digit","month":"numeric","day":"numeric"});
   }
 }
 
 function fdateTimeLocal(d)
 {
-  d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+  date = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
   if (lang=='en')
   {
-    return d.toLocaleString('en-US', 
+    return date.toLocaleString('en-US', 
       {'year':'numeric', 'month':'2-digit', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit', 'second':'2-digit' });
 
   }
   else if (lang=='es')
   {
-    return d.toLocaleString('es-ES', 
+    return date.toLocaleString('es-ES', 
       {'year':'numeric', 'month':'2-digit', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit', 'second':'2-digit' });
   }   
 }
