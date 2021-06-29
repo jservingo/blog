@@ -4,7 +4,7 @@ function fdate()
 	for (var i = 0; i < elements.length; i++) {
 		var element = elements[i]; 
 		var d = element.textContent;
-		var date = new Date(d+" UTC");
+		var date = new Date(d+"Z");
 		var fdate = fdateLocal(date);
 		element.textContent = fdate;
 	}

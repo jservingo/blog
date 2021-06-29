@@ -29,7 +29,7 @@ $(function() {
   function renderPosts(posts, el) {
   	var zcolor="#fefdfd";
 		posts.rows.forEach(function (post) {
-			var date = new Date(post.created_at+" UTC");
+			var date = new Date(post.created_at+"Z");
 			date = fdateLocal(date);
 			var url_post = 'posts/'+post.id;
 			switch(post.type_id)
