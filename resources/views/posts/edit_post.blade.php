@@ -383,7 +383,7 @@
     $(function() {
       var d = document.getElementById("published_at").value;
       console.log(d);
-      var date = new Date(d);
+      var date = new Date(d+" UTC");
       console.log(date);
       var fdate = fdateTimeLocal(date);
       console.log(fdate);
