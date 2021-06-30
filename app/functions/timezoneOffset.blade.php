@@ -9,7 +9,7 @@
 	console.log(timezoneOffset);
 
 	var d = new Date("2021-06-30 16:17:30 UTC");
-    var date = new Date(d.getTime() + timezoneOffset);
+    var date = new Date(d.getTime() + timezoneOffset * 60000);
     var fdate = date.toLocaleString('es-ES',{"year":"2-digit","month":"numeric","day":"numeric"});
     console.log(fdate); 
 </script>
