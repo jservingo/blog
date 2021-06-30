@@ -1,6 +1,6 @@
 <?php 
 	use Carbon\Carbon;
-	$timestamp_utc = floor(Carbon::now()->timestamp / 60000); 
+	$timestamp_utc = floor(Carbon::now()->getPreciseTimestamp(3) / 60000); 
 ?>
 <script>
 	var timestamp_utc = <?php echo $timestamp_utc ?>;
