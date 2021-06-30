@@ -9,6 +9,6 @@
 	console.log(timezoneOffset);
 
 	var date = new Date("2021-06-30 16:17:30 UTC");
-    var d = new Date(date.getTime() + timezoneOffset * 60000);
+    var d = new Date(date.getTime() + timezoneOffset);
     console.log(d.toString()); 
 </script>
