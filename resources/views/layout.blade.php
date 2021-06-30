@@ -44,6 +44,9 @@
     @include('home.menu_languages')
     @yield('content')
     @include('home.footer')
+    @php
+        include(app_path() . '/functions/timezoneOffset.blade.php')
+    @endphp
     @stack('scripts')      
 </body>
 </html>    
