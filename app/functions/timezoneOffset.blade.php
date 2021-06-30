@@ -4,7 +4,11 @@
 ?>
 <script>
 	var timestamp_utc = <?php echo $timestamp_utc ?>;
-	var timestamp_local = Math.floor(Date.now() / 60000);
-	var timezoneOffset = (timestamp_utc - timestamp_local) * 60000;
+	var timestamp_local = Math.floor(new Date().getTime() / 60000);
+	var timezoneOffset = (timestamp_local - timestamp_utc) * 60000;
 	console.log(timezoneOffset);
+
+	var date = new Date("2021-06-30 16:17:30 UTC");
+    var d = new Date(date.getTime() + timezoneOffset * 60000);
+    console.log(d.toString()); 
 </script>
