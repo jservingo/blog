@@ -11,7 +11,7 @@
 	console.log(timezoneOffset);
 
 	var d = new Date("2021-06-30 16:17:30 UTC");
-    var date = new Date(d.getTime() + timezoneOffset * 60000);
-    var fdate = date.toLocaleString('es-ES',{"year":"2-digit","month":"numeric","day":"numeric"});
+    var date = new Date(d.getTime() + timezoneOffset);
+    var fdate = date.toLocaleString('es-ES', {'year':'numeric', 'month':'2-digit', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit', 'second':'2-digit' });
     console.log(fdate); 
 </script>
