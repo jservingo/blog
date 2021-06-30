@@ -8,7 +8,8 @@
 	var timezoneOffset = (timestamp_local - timestamp_utc) * 60000;
 	console.log(timezoneOffset);
 
-	var date = new Date("2021-06-30 16:17:30 UTC");
-    var d = new Date(date.getTime() + timezoneOffset);
-    console.log(d.toString()); 
+	var d = new Date("2021-06-30 16:17:30 UTC");
+    var date = new Date(d.getTime() + timezoneOffset);
+    var fdate = date.toLocaleString('es-ES',{"year":"2-digit","month":"numeric","day":"numeric"});
+    console.log(fdate); 
 </script>
