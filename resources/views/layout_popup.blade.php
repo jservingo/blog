@@ -24,7 +24,9 @@
 <body>
     <!--<div class="preload"></div>-->
     @yield('content')
-
+    @php
+        include(app_path() . '/functions/timezoneOffset.blade.php')
+    @endphp
     @stack('scripts')     
 </body>
 </html>    
