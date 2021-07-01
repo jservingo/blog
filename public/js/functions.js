@@ -55,7 +55,7 @@ function replaceAll(str,x,y)
 //Convertir fecha UTC en local
 function fdateLocal(d)
 {
-  date = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+  date = new Date(d.getTime() + timezoneOffset * 1000);
   if (lang=='en')
   {
     return date.toLocaleString('en-US',
@@ -72,17 +72,17 @@ function fdateLocal(d)
 //Convertir fecha y hora UTC en local
 function fdateTimeLocal(d)
 {
-  date = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+  date = new Date(d.getTime() + timezoneOffset * 1000);
   if (lang=='en')
   {
     return date.toLocaleString('en-US', 
-      {'year':'numeric', 'month':'2-digit', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit', 'second':'2-digit' });
+      {'year':'numeric', 'month':'2-digit', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit' });
 
   }
   else if (lang=='es')
   {
     return date.toLocaleString('es-ES', 
-      {'year':'numeric', 'month':'2-digit', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit', 'second':'2-digit' });
+      {'year':'numeric', 'month':'2-digit', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit' });
   }   
 }
 
@@ -90,7 +90,7 @@ function fdateTimeLocal(d)
 function fdateUTC(d)
 {
   date = new Date(d);
-  d = new Date(d.getTime() + d.getTimezoneOffset() * 60000);
+  d = new Date(d.getTime() + timezoneOffset * 1000);
   return d.toString(); 
 }
 

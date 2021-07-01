@@ -281,7 +281,7 @@ function btn_show_alerts()
             var img = '<img src="/img/featured_notification.png" width="16">';
           else 
             var img = '<img src="/img/featured_alert.png" width="16">';
-          var date = new Date(post.published_at+"Z");
+          var date = new Date(post.published_at+" UTC");
           date = fdateLocal(date);
           html = html + "<div style='padding:8px; background-color:"+zcolor+";'>";
           html = html + "<div>" + img + '  ';  
