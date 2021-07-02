@@ -55,7 +55,7 @@ function replaceAll(str,x,y)
 //Convertir fecha UTC en local
 function fdateLocal(d)
 {
-  date = new Date(d.getTime() + timezoneOffset * 1000);
+  var date = new Date(d.getTime() + timezoneOffset * 1000);
   if (lang=='en')
   {
     return date.toLocaleString('en-US',
@@ -72,7 +72,7 @@ function fdateLocal(d)
 //Convertir fecha y hora UTC en local
 function fdateTimeLocal(d)
 {
-  date = new Date(d.getTime() + timezoneOffset * 1000);
+  var date = new Date(d.getTime() + timezoneOffset * 1000);
   if (lang=='en')
   {
     return date.toLocaleString('en-US', 
@@ -84,6 +84,19 @@ function fdateTimeLocal(d)
     return date.toLocaleString('es-ES', 
       {'year':'numeric', 'month':'2-digit', 'day':'2-digit', 'hour':'2-digit', 'minute':'2-digit' });
   }   
+}
+
+//Convertir fecha y hora UTC en local para poder editar
+function fdateTimeEdit(d)
+{
+  var date = new Date(d.getTime() + timezoneOffset * 1000);
+  var yyyy = date.getFullYear().toString();                                    
+  var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based         
+  var dd  = date.getDate().toString();  
+  var hh = date.getHours().toString();
+  var ii = date.getMinutes().toString();
+  var ss = date.getSeconds().toString(); 
+  return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0] + ' ' + (hh[1]?h:"0"+h[0]) + ':' + (ii[1]?ii:"0"+ii[0]) + ':' + (ss[1]?ss:"0"+ss[0]));
 }
 
 //Convertir fecha y hora local un UTC

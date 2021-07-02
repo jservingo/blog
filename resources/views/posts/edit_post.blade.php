@@ -383,11 +383,12 @@
     $(function() {
       var d = document.getElementById("published_at").value;
       var date = new Date(d+" UTC");
-      date = new Date(date.getTime() + timezoneOffset * 1000);
+      //date = new Date(date.getTime() + timezoneOffset * 1000);
       //console.log(date);
-      fdate = date.toString();
+      //fdate = date.toString();
       //var fdate = fdateTimeLocal(date);
       //console.log(fdate);
+      var fdate = fdateTimeEdit(date);
       document.getElementById("published_at").value = fdate;
     });
   </script>
