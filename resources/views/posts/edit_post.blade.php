@@ -382,11 +382,12 @@
 
     $(function() {
       var d = document.getElementById("published_at").value;
-      console.log(d);
       var date = new Date(d+" UTC");
-      console.log(date);
-      var fdate = fdateTimeLocal(date);
-      console.log(fdate);
+      date = new Date(date.getTime() + timezoneOffset * 1000);
+      //console.log(date);
+      fdate = date.toString();
+      //var fdate = fdateTimeLocal(date);
+      //console.log(fdate);
       document.getElementById("published_at").value = fdate;
     });
   </script>
