@@ -96,15 +96,22 @@ function fdateTimeEdit(d)
   var hh = date.getHours().toString();
   var ii = date.getMinutes().toString();
   var ss = date.getSeconds().toString(); 
-  return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]) + ' ' + (hh[1]?hh:"0"+hh[0]) + ':' + (ii[1]?ii:"0"+ii[0]) + ':' + (ss[1]?ss:"0"+ss[0]);
+  var fdate = yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]) + ' ' + (hh[1]?hh:"0"+hh[0]) + ':' + (ii[1]?ii:"0"+ii[0]) + ':' + (ss[1]?ss:"0"+ss[0]);
+  return fdate;
 }
 
 //Convertir fecha y hora local un UTC
-function fdateUTC(d)
+function fdateTimeUTC(d)
 {
-  date = new Date(d);
-  d = new Date(d.getTime() + timezoneOffset * 1000);
-  return d.toString(); 
+  d = new Date(d.getTime() - timezoneOffset * 1000);
+  var yyyy = date.getFullYear().toString();                                    
+  var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based         
+  var dd  = date.getDate().toString();  
+  var hh = date.getHours().toString();
+  var ii = date.getMinutes().toString();
+  var ss = date.getSeconds().toString(); 
+  var fdate = yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]) + ' ' + (hh[1]?hh:"0"+hh[0]) + ':' + (ii[1]?ii:"0"+ii[0]) + ':' + (ss[1]?ss:"0"+ss[0]);
+  return fdate;
 }
 
 function get_month(f)
