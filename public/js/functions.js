@@ -103,7 +103,7 @@ function fdateTimeEdit(d)
 //Convertir fecha y hora local un UTC
 function fdateTimeUTC(d)
 {
-  d = new Date(d.getTime() - timezoneOffset * 1000);
+  date = new Date(d.getTime() - timezoneOffset * 1000);
   var yyyy = date.getFullYear().toString();                                    
   var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based         
   var dd  = date.getDate().toString();  
