@@ -39,8 +39,8 @@ $('.btn_update_post').bind('click', function(e){
   var featured = get_value('#featured');
   var hide = get_value('#hide');
   var order_num = $('#order_num').val();
-  var published_at = $('#published_at').val();
-  var date = new Date(published_at);
+  var d = $('#published_at').val();
+  var date = new Date(d+" UTC");
   published_at = fdateTimeUTC(date);
   var tags = $('#tags').val();
   var rating_mode = $('#rating_mode').val();
