@@ -101,9 +101,9 @@ function fdateTimeEdit(d)
 }
 
 //Convertir fecha y hora UTC en string
-function fdateTimeUTC(d)
+function fdateTimeUTC(date)
 {
-  date = new Date(d.getTime());
+  //date = new Date(d.getTime());
   var yyyy = date.getFullYear().toString();                                    
   var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based         
   var dd  = date.getDate().toString();  
