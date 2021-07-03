@@ -52,7 +52,7 @@ function replaceAll(str,x,y)
   return(str.replace(regex, y)); 
 }
 
-//Convertir fecha UTC en local
+//Convertir fecha UTC en string local
 function fdateLocal(d)
 {
   var date = new Date(d.getTime() + timezoneOffset * 1000);
@@ -69,7 +69,7 @@ function fdateLocal(d)
   }
 }
 
-//Convertir fecha y hora UTC en local
+//Convertir fecha y hora UTC en string local
 function fdateTimeLocal(d)
 {
   var date = new Date(d.getTime() + timezoneOffset * 1000);
@@ -86,7 +86,7 @@ function fdateTimeLocal(d)
   }   
 }
 
-//Convertir fecha y hora UTC en local para poder editar
+//Convertir fecha y hora UTC en string local para poder editar
 function fdateTimeEdit(d)
 {
   var date = new Date(d.getTime() + timezoneOffset * 1000);
@@ -100,10 +100,10 @@ function fdateTimeEdit(d)
   return fdate;
 }
 
-//Convertir fecha y hora local un UTC
+//Convertir fecha y hora UTC en string
 function fdateTimeUTC(d)
 {
-  date = new Date(d.getTime() - timezoneOffset * 1000);
+  date = new Date(d.getTime());
   var yyyy = date.getFullYear().toString();                                    
   var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based         
   var dd  = date.getDate().toString();  
