@@ -382,7 +382,7 @@
 
     $(function() {
       var d = document.getElementById("published_at").value;
-      var date = new Date(d+" UTC");
+      var date = new Date(d);
       //date = new Date(date.getTime() + timezoneOffset * 1000);
       //console.log(date);
       //fdate = date.toString();
