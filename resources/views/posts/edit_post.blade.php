@@ -382,14 +382,7 @@
 
     $(function() {
       var d = document.getElementById("published_at").value;
-      console.log(d);
       var date = new Date(d+" UTC");
-      console.log(date);
-      //date = new Date(date.getTime() + timezoneOffset * 1000);
-      //console.log(date);
-      //fdate = date.toString();
-      //var fdate = fdateTimeLocal(date);
-      //console.log(fdate);
       var fdate = fdateTimeEdit(date);
       document.getElementById("published_at").value = fdate;
     });
