@@ -85,6 +85,7 @@ $('.btn_update_post').bind('click', function(e){
     cstr_show_subscribers: cstr_show_subscribers,
     cstr_main_page: cstr_main_page
   };
+  /*
   $.ajax({
     type: 'put',
     url: '/post/'+post_id,
@@ -105,7 +106,8 @@ $('.btn_update_post').bind('click', function(e){
     error: function (data) {
       console.log('Error:', data);
     }
-  }); 
+  });
+  */ 
 });
 
 CKEDITOR.replace('body');
