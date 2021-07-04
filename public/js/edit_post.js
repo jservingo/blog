@@ -40,9 +40,10 @@ $('.btn_update_post').bind('click', function(e){
   var hide = get_value('#hide');
   var order_num = $('#order_num').val();
   var d = $('#published_at').val();
+  console.log(d);
   var date = new Date(Date(d));
+  console.log(date);
   published_at = fdateTimeUTC(date);
-  alert(published_at);
   var tags = $('#tags').val();
   var rating_mode = $('#rating_mode').val();
   var cstr_privacy = get_value('#cstr_privacy');
