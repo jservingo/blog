@@ -40,7 +40,7 @@ $('.btn_update_post').bind('click', function(e){
   var hide = get_value('#hide');
   var order_num = $('#order_num').val();
   var d = $('#published_at').val();
-  var date = new Date(d);
+  var date = new Date(Date(d));
   published_at = fdateTimeUTC(date);
   alert(published_at);
   var tags = $('#tags').val();
