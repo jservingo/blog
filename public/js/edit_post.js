@@ -41,7 +41,7 @@ $('.btn_update_post').bind('click', function(e){
   var order_num = $('#order_num').val();
   var d = $('#published_at').val();
   console.log(d);
-  var date = new Date(Date(d));
+  var date = new Date(d);
   console.log(date);
   published_at = fdateTimeUTC(date);
   var tags = $('#tags').val();
