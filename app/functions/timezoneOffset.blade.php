@@ -8,7 +8,7 @@
 	var timestamp_local = Math.floor(new Date().getTime()/1000);
 	//console.log(timestamp_local);
 	var timezoneOffset = timestamp_local - timestamp_utc;
-	//console.log(timezoneOffset);
+	console.log(timezoneOffset);
 
 	/*
 	var d = new Date("2021-06-30 16:17:30 UTC");
