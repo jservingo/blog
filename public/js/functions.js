@@ -104,6 +104,9 @@ function fdateTimeEdit(d)
 function fdateTimeUTC(d)
 {
   var date = new Date(d.getTime() - timezoneOffset * 1000);
+  console.log(d.getTime());
+  console.log(timezoneOffset);
+  console.log(date);
   date =  new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds()));
   console.log(date);
   var yyyy = date.getFullYear().toString();                                    
