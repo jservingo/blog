@@ -5,7 +5,7 @@
 <script>
 	var timestamp_utc = <?php echo $timestamp_utc ?>;
 	console.log(timestamp_utc);
-	var timestamp_local = Math.floor(new Date().getTime()/1000);
+	var timestamp_local = Math.floor(new Date(Date.now()).getTime());
 	console.log(timestamp_local);
 	var timezoneOffset = timestamp_local - timestamp_utc;
 	console.log(timezoneOffset);
