@@ -1,7 +1,7 @@
 <?php 
 	use Carbon\Carbon;
 	date_default_timezone_set("UTC");
-	$timestamp_utc = Carbon::now()->timestamp; 
+	$timestamp_utc = time(); 
 ?>
 <script>
 	var timestamp_utc = <?= $timestamp_utc ?>;
