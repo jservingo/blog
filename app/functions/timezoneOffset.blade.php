@@ -1,11 +1,11 @@
 <?php 
 	use Carbon\Carbon;
-	$timestamp_utc = floor(Carbon::now()->timestamp); 
+	$timestamp_utc = floor(Carbon::now('UTC')->timestamp); 
 ?>
 <script>
 	var timestamp_utc = <?php echo $timestamp_utc ?>;
 	console.log(timestamp_utc);
-	var timestamp_local = Math.floor(new Date(Date.now()).getTime());
+	var timestamp_local = Math.floor(new Date(Date.now()).getTime()/1000);
 	console.log(timestamp_local);
 	var timezoneOffset = timestamp_local - timestamp_utc;
 	console.log(timezoneOffset);
