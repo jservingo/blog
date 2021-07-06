@@ -3,7 +3,7 @@
 	$timestamp_utc = Carbon::now('UTC')->timestamp; 
 ?>
 <script>
-	var timestamp_utc = <?=$timestamp_utc; ?>;
+	var timestamp_utc = <?= $timestamp_utc ?>;
 	console.log(timestamp_utc);
 	var timestamp_local = Math.floor(new Date(Date.now()).getTime()/1000);
 	console.log(timestamp_local);
