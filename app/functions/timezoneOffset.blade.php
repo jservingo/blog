@@ -3,7 +3,7 @@
 	use Carbon\Carbon;
 
 	$result = DB::select( 'select NOW() as the_time' );
-    $date->$result[0]->the_time; 
+    $date = $result[0]->the_time; 
     $timestamp_utc = Carbon::parse($date)->timestamp;
 ?>
 <script>
