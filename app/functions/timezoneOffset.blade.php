@@ -7,6 +7,8 @@
     $timestamp_utc = Carbon::parse($date)->timezone('UTC')->timestamp;
 ?>
 <script>
+	var date = <?= $date ?>;
+	console.log(date);
 	var timestamp_utc = <?= $timestamp_utc ?>;
 	console.log(timestamp_utc);
 	var timestamp_local = Math.floor(new Date(Date.now()).getTime()/1000);
