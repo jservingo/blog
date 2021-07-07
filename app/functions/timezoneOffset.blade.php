@@ -3,12 +3,11 @@
 	use Carbon\Carbon;
 
 	$result = DB::select( 'select NOW() as the_time' );
-    $date = $result[0]->the_time; 
-    $timestamp_utc = Carbon::parse($date)->timezone('UTC')->timestamp;
+    $date = $result[0]->the_time;
+    $dateTime = new DateTime($date, new DateTimeZone('UTC'));  
+    $timestamp_utc = $dateTime->timestamp;
 ?>
 <script>
-	var date = <?= $date ?>;
-	console.log(date);
 	var timestamp_utc = <?= $timestamp_utc ?>;
 	console.log(timestamp_utc);
 	var timestamp_local = Math.floor(new Date(Date.now()).getTime()/1000);
