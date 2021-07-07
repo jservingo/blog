@@ -1,7 +1,10 @@
 <?php 
+	use Illuminate\Support\Facades\DB;
 	use Carbon\Carbon;
-	date_default_timezone_set("UTC");
-	$timestamp_utc = time(); 
+
+	$result = DB::select( 'select NOW() as the_time' );
+    $date->$result[0]->the_time; 
+    $timestamp_utc = Carbon::parse($date)->timestamp;
 ?>
 <script>
 	var timestamp_utc = <?= $timestamp_utc ?>;
