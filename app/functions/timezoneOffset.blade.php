@@ -5,7 +5,7 @@
 	$result = DB::select( 'select NOW() as the_time' );
     $date = $result[0]->the_time;
     $dateTime = new DateTime($date, new DateTimeZone('UTC'));  
-    $timestamp_utc = $dateTime->timestamp;
+    $timestamp_utc = $dateTime->getTimestamp();
 ?>
 <script>
 	var timestamp_utc = <?= $timestamp_utc ?>;
