@@ -1,10 +1,10 @@
 <?php 
-	use Illuminate\Support\Facades\DB;
-	use Carbon\Carbon;
-
-	$result = DB::select( 'select NOW() as the_time' );
-    $date = $result[0]->the_time;
-    $dateTime = new DateTime($date, new DateTimeZone('UTC'));  
+	//use Illuminate\Support\Facades\DB;
+	//use Carbon\Carbon;
+	//$result = DB::select( 'select NOW() as the_time' );
+    //$date = $result[0]->the_time;
+    //$date, new DateTimeZone('UTC')
+    $dateTime = new DateTime();  
     $timestamp_utc = $dateTime->getTimestamp();
 ?>
 <script>
