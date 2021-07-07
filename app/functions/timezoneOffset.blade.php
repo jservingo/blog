@@ -4,7 +4,7 @@
 
 	$result = DB::select( 'select NOW() as the_time' );
     $date = $result[0]->the_time; 
-    $timestamp_utc = Carbon::parse($date)->timestamp;
+    $timestamp_utc = Carbon::parse($date)->timezone('UTC')->timestamp;
 ?>
 <script>
 	var timestamp_utc = <?= $timestamp_utc ?>;
