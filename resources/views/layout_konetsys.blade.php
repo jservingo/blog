@@ -44,6 +44,7 @@
     @include('konetsys.menu_languages')
     @yield('content')
     @include('konetsys.footer')
+    
     @stack('scripts')      
 </body>
 </html>    

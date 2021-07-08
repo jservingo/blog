@@ -40,9 +40,7 @@ $('.btn_update_post').bind('click', function(e){
   var hide = get_value('#hide');
   var order_num = $('#order_num').val();
   var d = $('#published_at').val();
-  console.log(d);
   var date = new Date(d);
-  console.log(date);
   published_at = fdateTimeUTC(date);
   var tags = $('#tags').val();
   var rating_mode = $('#rating_mode').val();
@@ -86,7 +84,6 @@ $('.btn_update_post').bind('click', function(e){
     cstr_show_subscribers: cstr_show_subscribers,
     cstr_main_page: cstr_main_page
   };
-  /*
   $.ajax({
     type: 'put',
     url: '/post/'+post_id,
@@ -108,7 +105,6 @@ $('.btn_update_post').bind('click', function(e){
       console.log('Error:', data);
     }
   });
-  */ 
 });
 
 CKEDITOR.replace('body');

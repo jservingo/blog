@@ -101,6 +101,8 @@
   <script type="text/javascript" src="/js/functions.js"></script>
   <!--<script type="text/javascript" src="/js/jquery.multiselect.js"></script>-->
   <script type="text/javascript" src="/js/popr.js"></script>
+  <script type="text/javascript" src="/js/timezoneOffset.js"></script>
+  <script type="text/javascript" src="/js/fdate.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript" src="/js/show_ads.js"></script> 
   <script type="text/javascript" src="/js/show_home.js"></script>  
