@@ -18,15 +18,14 @@
     <link rel="stylesheet" href="/css/popr.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/themes/default/style.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> 
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="/js/timezoneOffset.js"></script> 
     @stack('styles')
 </head>
 <body>
     <!--<div class="preload"></div>-->
     @yield('content')
-    @php
-        include(app_path() . '/functions/timezoneOffset.blade.php')
-    @endphp
+
     @stack('scripts')     
 </body>
 </html>    
