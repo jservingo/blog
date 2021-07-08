@@ -9,6 +9,4 @@ function get_timezoneOffset()
 	return (timestamp_local - timestamp_utc);
 }
 
-$(function() {
-	var timezoneOffset = get_timezoneOffset();
-});
+var timezoneOffset = get_timezoneOffset();
