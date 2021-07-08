@@ -44,7 +44,8 @@
   @php
     include(app_path() . '/functions/messages_js.blade.php')
   @endphp
-	<script type="text/javascript" src="/js/diyslider.min.js"></script>
+	<script type="text/javascript" src="/js/timezoneOffset.js"></script>
+  <script type="text/javascript" src="/js/diyslider.min.js"></script>
 	<script type="text/javascript" src="/js/confirmDialog.min.js"></script>
 	<script type="text/javascript" src="/js/growl.js"></script>
   <script type="text/javascript" src="/js/buttons/add_save_discard.js"></script>
@@ -57,8 +58,7 @@
   <script type="text/javascript" src="/js/multiselect.js"></script>
   <script type="text/javascript" src="/js/popr.js"></script>
   <script type="text/javascript" src="/js/tipr.js"></script>
-  <script type="text/javascript" src="/js/truncate.js"></script>
-  <script type="text/javascript" src="/js/timezoneOffset.js"></script>
+  <script type="text/javascript" src="/js/truncate.js"></script>  
   <script type="text/javascript" src="/js/fdate.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript">

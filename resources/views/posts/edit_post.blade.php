@@ -325,6 +325,7 @@
   @php
     include(app_path() . '/functions/messages_js.blade.php')
   @endphp
+  <script type="text/javascript" src="/js/timezoneOffset.js"></script>
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>  
   <script type="text/javascript" src="/js/growl.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
@@ -333,7 +334,6 @@
   <script type="text/javascript" src="/js/edit_post.js"></script>
   <script type="text/javascript" src="/js/edit_audios.js?ver=1.4"></script>
   <script type="text/javascript" src="/js/functions.js"></script>
-  <script type="text/javascript" src="/js/timezoneOffset.js"></script>
   <script>
     if($('.dropzone').length)
     {     
