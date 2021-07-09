@@ -137,7 +137,11 @@
 .pbox
 {
   padding: 13px 8px 13px 12px !important;
-  background-color: #74ABC9 !important;
+  background-color: #aac4d2 !important;
+}
+
+.header {
+  background-color: #aac4d2 !important;
 }
 
 a.vlink:link {text-decoration:none}
