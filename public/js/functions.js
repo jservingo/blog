@@ -87,7 +87,7 @@ function fdateTimeLocal(d)
 }
 
 //Convertir fecha y hora UTC en string local para poder editar
-function fdateTimeEdit(d)
+function fdateTimeEditLocal(d)
 {
   var date = new Date(d.getTime() + timezoneOffset * 1000);
   var yyyy = date.getFullYear().toString();                                    
@@ -100,15 +100,15 @@ function fdateTimeEdit(d)
   return fdate;
 }
 
-//Convertir fecha y hora UTC en string
-function fdateTimeUTC(d)
+//Convertir fecha y hora local en UTC en string para guardar en BD
+function fdateTimeSaveUTC(d)
 {
   var date = new Date(d.getTime() - timezoneOffset * 1000);
-  console.log(d.getTime());
-  console.log(timezoneOffset);
-  console.log(date);
+  //console.log(d.getTime());
+  //console.log(timezoneOffset);
+  //console.log(date);
   date =  new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds()));
-  console.log(date);
+  //console.log(date);
   var yyyy = date.getFullYear().toString();                                    
   var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based         
   var dd  = date.getDate().toString();  
@@ -116,7 +116,7 @@ function fdateTimeUTC(d)
   var ii = date.getMinutes().toString();
   var ss = date.getSeconds().toString(); 
   var fdate = yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]) + ' ' + (hh[1]?hh:"0"+hh[0]) + ':' + (ii[1]?ii:"0"+ii[0]) + ':' + (ss[1]?ss:"0"+ss[0]);
-  console.log(fdate);
+  alert(fdate);
   return fdate;
 }
 

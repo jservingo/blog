@@ -382,9 +382,13 @@
     }
 
     $(function() {
+      console.log("published_at");
       var d = document.getElementById("published_at").value;
+      console.log(d);
       var date = new Date(d+" UTC");
-      var fdate = fdateTimeEdit(date);
+      console.log(date);
+      var fdate = fdateTimeEditLocal(date);
+      console.log(fdate);
       document.getElementById("published_at").value = fdate;
     });
   </script>
