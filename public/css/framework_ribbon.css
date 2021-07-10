@@ -127,7 +127,7 @@
   /* background-color: pink; */ 
 }
 .catalog-title{
-  float: left;
+  width: 100%;
 }
 .catalog-buttons{
   float: right;
