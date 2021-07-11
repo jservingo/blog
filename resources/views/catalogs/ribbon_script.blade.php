@@ -32,14 +32,16 @@
 				$("#slider{{ $i }}").diyslider("updateOptions", {
 	    		width: "300px",
 	    		display: 1
-				});			
+				});
+				$(".container").width(300);			
 			}
 			if ($(window).width()>=768 && $(window).width()<992)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
 	    		width: "540px",
 	    		display: 2
-				});			
+				});
+				$(".container").width(540);			
 			}
 			if ($(window).width()>=992 && $(window).width()<1200)
 			{
@@ -47,6 +49,7 @@
 	    		width: "800px",
 	    		display: 3
 				});			
+				$(".container").width(800);
 			}
 			if ($(window).width()>=1200)
 			{
@@ -54,6 +57,7 @@
 	    		width: "1040px",
 	    		display: 4
 				});			
+				$(".container").width(1040);
 			}
 	    //$("#jqxgrid").jqxGrid({ height: $(window).height() - 60 });
 	    //$(".slider").diyslider("resize", "400px", "200px");
