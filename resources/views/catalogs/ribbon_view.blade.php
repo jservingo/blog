@@ -16,23 +16,23 @@
 			@include('catalogs.buttons_ribbon')
 
 			<div class="posts container">
-				<div id="slider{{ $i }}" class="slider">
-					<div>
-						@if(!$posts->isEmpty())
+				@if(!$posts->isEmpty())
+					<div id="slider{{ $i }}" class="slider">
+						<div>					
 							@foreach($posts as $post)
 						  	<div>
 						  		@include('posts.box.view')
 						  	</div>
 							@endforeach
-						@else
-						  @php
-						  	$msg_title = __('messages.category-empty');
-						  	$msg_subtitle = __('messages.category-advice');
-						  @endphp	
-							@include('catalogs.show_message')
-						@endif			
-					</div>
-				</div>
+						</div>
+					</div>	
+				@else
+					@php
+					  	$msg_title = __('messages.category-empty');
+					  	$msg_subtitle = __('messages.category-advice');
+					@endphp	
+					@include('catalogs.show_message')
+				@endif								
 			</div>
 
 		</div>
