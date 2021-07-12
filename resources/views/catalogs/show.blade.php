@@ -82,6 +82,7 @@
     $(function() {
       $(".loader").fadeOut("slow");
       $('#main_panel').css("visibility","visible");
+      $(window).trigger('resize');
     });
   </script>
 @endpush
