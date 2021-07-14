@@ -41,7 +41,7 @@
 			if ($(window).width()>=768 && $(window).width()<992)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "540px",
+	    		width: "460px",
 	    		display: 2
 				});
 
@@ -50,7 +50,7 @@
 			if ($(window).width()>=992 && $(window).width()<1200)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "800px",
+	    		width: "690px",
 	    		display: 3
 				});		
 
@@ -59,10 +59,10 @@
 			if ($(window).width()>=1200)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "1040px",
+	    		width: "920px",
 	    		display: 4
 				});	
-						
+
 				$(".container").width(1040);
 			}
 	    //$("#jqxgrid").jqxGrid({ height: $(window).height() - 60 });
