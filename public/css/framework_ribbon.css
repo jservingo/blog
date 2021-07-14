@@ -137,6 +137,7 @@
 .post {
     width: 230px;
     display: flex;
+    margin-right: 30px;
 }
 
 .pbox
