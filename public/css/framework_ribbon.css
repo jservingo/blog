@@ -268,7 +268,7 @@ a.vlink{
 	padding: 20px 0;
 }
 .active{
-	color: #bdbdbd;
+  background-color: #aac4d2 !important;
 	border-bottom: 0 !important;
 }
 .pagination-active{

@@ -32,7 +32,7 @@
 			if ($(window).width()<768)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "270px",
+	    		width: "256px",
 	    		display: 1
 				});
 
