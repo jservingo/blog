@@ -138,6 +138,8 @@
     width: 230px;
     display: flex;
     margin-right: 30px;
+    border-bottom: 0 !important;
+    background-color: #aac4d2 !important;
 }
 
 .pbox
