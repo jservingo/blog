@@ -134,6 +134,12 @@
   padding-right: 40px;
 }
 
+.post {
+    width: 230px;
+    display: flex;
+    margin-right: 30px;
+}
+
 .pbox
 {
   padding: 13px 8px 13px 12px !important;
