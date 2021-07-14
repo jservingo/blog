@@ -12,7 +12,7 @@
 		
 		$("#slider{{ $i }}").diyslider({
 	  	  width: "1024px", // width of the slider
-	  	  height: "290px", // height of the slider
+	  	  height: "296px", // height of the slider
 	  	  display: 4, // number of slides you want it to display at once
 	  	  loop: false // disable looping on slides
 		}); // this is all you need!
