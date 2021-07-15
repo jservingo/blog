@@ -32,74 +32,74 @@
 			if ($(window).width()<720)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "257px",
+	    		width: "256px",
 	    		display: 1
 				});
 
-				$(".posts.container").width(257);			
+				$(".container").width(256);			
 			}
 			if ($(window).width()>=720 && $(window).width()<960)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "514px",
+	    		width: "512px",
 	    		display: 2
 				});
 
-				$(".posts.container").width(514);			
+				$(".container").width(512);			
 			}
 			if ($(window).width()>=960 && $(window).width()<1200)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "771px",
+	    		width: "768px",
 	    		display: 3
 				});		
 
-				$(".posts.container").width(771);
+				$(".container").width(768);
 			}
 			if ($(window).width()>=1200 && $(window).width()<1500)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "1028px",
+	    		width: "1024px",
 	    		display: 4
 				});	
 
-				$(".posts.container").width(1028);
+				$(".container").width(1024);
 			}
 			if ($(window).width()>=1500 && $(window).width()<1800)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "1285px",
+	    		width: "1280px",
 	    		display: 5
 				});	
 
-				$(".posts.container").width(1285);
+				$(".container").width(1280);
 			}
 			if ($(window).width()>=1800 && $(window).width()<2100)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "1542px",
+	    		width: "1536px",
 	    		display: 6
 				});	
 
-				$(".posts.container").width(1542);
+				$(".container").width(1536);
 			}
 			if ($(window).width()>=2100 && $(window).width()<2300)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "1799px",
+	    		width: "1792px",
 	    		display: 7
 				});	
 
-				$(".posts.container").width(1799);
+				$(".container").width(1792);
 			}
 			if ($(window).width()>=2300)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "2056px",
+	    		width: "2048px",
 	    		display: 8
 				});	
 
-				$(".posts.container").width(2056);
+				$(".container").width(2048);
 			}
 	    //$("
 	    //$("#jqxgrid").jqxGrid({ height: $(window).height() - 60 });
