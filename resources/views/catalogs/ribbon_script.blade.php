@@ -41,29 +41,29 @@
 			if ($(window).width()>=768 && $(window).width()<960)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "540px",
+	    		width: "514px",
 	    		display: 2
 				});
 
-				$(".container").width(540);			
+				$(".container").width(514);			
 			}
 			if ($(window).width()>=960 && $(window).width()<1200)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "810px",
+	    		width: "771px",
 	    		display: 3
 				});		
 
-				$(".container").width(810);
+				$(".container").width(771);
 			}
 			if ($(window).width()>=1200 && $(window).width()<1600)
 			{
 				$("#slider{{ $i }}").diyslider("updateOptions", {
-	    		width: "1080px",
+	    		width: "1028px",
 	    		display: 4
 				});	
 
-				$(".container").width(1080);
+				$(".container").width(1028);
 			}
 			if ($(window).width()>=1600 && $(window).width()<1900)
 			{
