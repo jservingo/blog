@@ -134,18 +134,16 @@
   padding-right: 40px;
 }
 
+.posts {
+  background-color: #aac4d2 !important;  
+}
+
 .post {
     width: 230px;
     display: flex;
     margin-right: 30px;
     border-bottom: 0 !important;
-    background-color: #aac4d2 !important;
-}
-
-.pbox
-{
-  padding: 13px !important;
-  background-color: #aac4d2 !important;
+    padding: 13px !important;
 }
 
 header.xcontainer-flex {
