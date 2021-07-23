@@ -34,7 +34,6 @@
 					@include('catalogs.show_message')
 				@endif								
 			</div>
-
 		</div>
 	@endforeach
 @else
@@ -42,5 +41,7 @@
   		$msg_title = __('messages.category-empty');
   		$msg_subtitle = __('messages.category-advice');
   	@endphp	
-	@include('catalogs.show_message')
+    <div class="posts container">
+		@include('catalogs.show_message')
+	</div>
 @endif
