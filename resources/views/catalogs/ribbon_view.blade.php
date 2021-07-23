@@ -38,13 +38,9 @@
 		</div>
 	@endforeach
 @else
-	<div class="category container catcont">
-		<div class="posts container">
-			@php
-		  		$msg_title = __('messages.category-empty');
-		  		$msg_subtitle = __('messages.category-advice');
-		  	@endphp	
-			@include('catalogs.show_message')
-		</div>
-	</div>
+	@php
+  		$msg_title = __('messages.category-empty');
+  		$msg_subtitle = __('messages.category-advice');
+  	@endphp	
+	@include('catalogs.show_message')
 @endif
