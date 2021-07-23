@@ -28,8 +28,8 @@
 					</div>	
 				@else
 					@php
-					  	$msg_title = __('messages.category-empty');
-					  	$msg_subtitle = __('messages.category-advice');
+					  	$msg_title = __('messages.catalog-empty');
+					  	$msg_subtitle = __('messages.catalog-advice');
 					@endphp	
 					@include('catalogs.show_message')
 				@endif								
