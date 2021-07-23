@@ -1,6 +1,8 @@
 {{-- catalogs.ribbon_script --}}
 
 <script type="text/javascript">		
+	$(".container").width(1040);
+
 	@php
 		$i = 0;
 	@endphp
@@ -15,19 +17,34 @@
 	  	  height: "296px", // height of the slider
 	  	  display: 4, // number of slides you want it to display at once
 	  	  loop: false // disable looping on slides
-		}); // this is all you need!
-
-		$(".container").width(1040);
+		}); // this is all you need!		
 	@endforeach
 
-	@php
-		$i = 0;
-	@endphp
-
 	$(window).resize(function () {
+		if ($(window).width()<720)
+			$(".container").width(256);			
+		if ($(window).width()>=720 && $(window).width()<960)
+			$(".container").width(512);			
+		if ($(window).width()>=960 && $(window).width()<1200)
+			$(".container").width(768);
+		if ($(window).width()>=1200 && $(window).width()<1500)
+			$(".container").width(1024);
+		if ($(window).width()>=1500 && $(window).width()<1800)
+			$(".container").width(1280);
+		if ($(window).width()>=1800 && $(window).width()<2100)
+			$(".container").width(1536);
+		if ($(window).width()>=2100 && $(window).width()<2300)
+			$(".container").width(1792);
+		if ($(window).width()>=2300)
+			$(".container").width(2048);
+
+		@php
+			$i = 0;
+		@endphp
+
 		@foreach($catalogs as $catalog)
 			@php
-	    	$i = $i+1;
+	    		$i = $i+1;
 			@endphp
 			if ($(window).width()<720)
 			{
@@ -35,8 +52,6 @@
 	    		width: "256px",
 	    		display: 1
 				});
-
-				$(".container").width(256);			
 			}
 			if ($(window).width()>=720 && $(window).width()<960)
 			{
@@ -44,8 +59,6 @@
 	    		width: "512px",
 	    		display: 2
 				});
-
-				$(".container").width(512);			
 			}
 			if ($(window).width()>=960 && $(window).width()<1200)
 			{
@@ -53,8 +66,6 @@
 	    		width: "768px",
 	    		display: 3
 				});		
-
-				$(".container").width(768);
 			}
 			if ($(window).width()>=1200 && $(window).width()<1500)
 			{
@@ -62,8 +73,6 @@
 	    		width: "1024px",
 	    		display: 4
 				});	
-
-				$(".container").width(1024);
 			}
 			if ($(window).width()>=1500 && $(window).width()<1800)
 			{
@@ -71,8 +80,6 @@
 	    		width: "1280px",
 	    		display: 5
 				});	
-
-				$(".container").width(1280);
 			}
 			if ($(window).width()>=1800 && $(window).width()<2100)
 			{
@@ -80,8 +87,6 @@
 	    		width: "1536px",
 	    		display: 6
 				});	
-
-				$(".container").width(1536);
 			}
 			if ($(window).width()>=2100 && $(window).width()<2300)
 			{
@@ -89,8 +94,6 @@
 	    		width: "1792px",
 	    		display: 7
 				});	
-
-				$(".container").width(1792);
 			}
 			if ($(window).width()>=2300)
 			{
@@ -98,12 +101,7 @@
 	    		width: "2048px",
 	    		display: 8
 				});	
-
-				$(".container").width(2048);
 			}
-	    //$("
-	    //$("#jqxgrid").jqxGrid({ height: $(window).height() - 60 });
-	    //$(".slider").diyslider("resize", "400px", "200px");
-	  @endforeach
+	  	@endforeach
 	});
 </script>
