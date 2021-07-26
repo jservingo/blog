@@ -21,6 +21,30 @@ use App\Tag;
 
 class PostsController extends Controller
 {
+  public function discover(Request $request)
+  {
+    $posts = Post        
+      ::where("posts.user_id","<>",auth()->id())
+      ->where("type_id","<=",20)      
+      ->whereNotIn('id', function($query)
+        {
+          $query->select('post_id')
+                ->from('kposts')
+                ->where('user_id','=',auth()->id());
+        })
+      ->title($request->get('title'))
+      ->published()
+      ->latest('posts.published_at')
+      ->paginate(12);
+
+    $title = __('messages.discover-posts');   
+    $root = "created_posts";
+    $buttons = "posts.buttons.created_posts"; 
+    $subtitle = "";
+
+    return view(get_view(),compact('posts','title','root','buttons','subtitle'));
+  }
+
   public function show(Post $post)
   {
     //ELIMINAR ESTA FUNCION PORQUE YA NO SE USA (OJO)

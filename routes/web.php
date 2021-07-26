@@ -147,6 +147,7 @@ Route::delete('catalogs/{category}/{post}','CatalogsController@delete_catalog_fr
 Route::delete('catalogs/{post}','CatalogsController@destroy');
 
 //Posts
+Route::get('posts/discover','PostsController@discover')->name('posts.discover');
 Route::get('posts/received/{status?}/{type?}','PostsController@show_received')->name('posts.show_received');
 Route::get('posts/notifications','PostsController@show_notifications')->name('posts.show_notifications');
 Route::get('posts/alerts','PostsController@show_alerts')->name('posts.show_alerts');

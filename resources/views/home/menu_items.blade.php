@@ -95,6 +95,12 @@
     </a>
   </li> 
   <li>
+    <a class="vlink" href="{{ route('posts.discover') }}" 
+      class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
+        {{ __('messages.posts') }}
+    </a>
+  </li> 
+  <li>
     <a class="vlink" href="{{ route('contacts.discover') }}" 
       class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('pages.contact') }}">
         {{ __('messages.users') }}

@@ -96,6 +96,7 @@
 		'discover-apps' => 'Discover apps',
 		'discover-pages' => 'Discover pages',
 		'discover-catalogs' => 'Discover catalogs',
+		'discover-posts' => 'Discover posts',
 		'discover-users' => 'Discover users',
 		'created-apps' => 'Created apps',
 		'created-pages' => 'Created pages',
