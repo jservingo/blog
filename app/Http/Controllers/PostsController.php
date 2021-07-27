@@ -25,7 +25,8 @@ class PostsController extends Controller
   {
     $posts = Post        
       ::where("posts.user_id","<>",auth()->id())
-      ->where("type_id","<=",20)      
+      ->where("type_id","<=",20)
+      ->where("app_id","=",0)      
       ->whereNotIn('id', function($query)
         {
           $query->select('post_id')
