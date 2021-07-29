@@ -292,6 +292,20 @@ class AppsController extends Controller
     return view(get_view(),compact('posts','title','root','buttons','subtitle'));
   }
 
+  public function get_stats(Post $post)
+  { 
+    $app = App
+      ::where("id","=",$post->ref_id)
+      ->first(); 
+
+    $subscriptions = App
+      ::join('app_user', 'app.id', '=', 'app_user.app_id')
+      ->where("app_user.app_id","=",$app->id)
+      ->count();
+      
+    echo json_encode($subscriptions); 
+  }
+
   public function get_post(Request $request)
   {
     //YA NO SE USA (ELIMINAR)

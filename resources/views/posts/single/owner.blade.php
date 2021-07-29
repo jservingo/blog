@@ -40,7 +40,21 @@
     </span>
     <span class="fdateTime">{{ $post->kpost->created_at }}</span>
   </div>
-@endif   
+@endif 
+
+@if ($post->isApp())
+  <div class="image-w-text">
+    <span class="cite-2">{{ __('messages.subscriptions') }}:</span>
+    <span id="a_subscriptions"></span>
+  </div> 
+@endif 
+
+@if ($post->isPage())
+  <div class="image-w-text">
+    <span class="cite-2">{{ __('messages.subscriptions') }}:</span>
+    <span id="p_subscriptions"></span>
+  </div> 
+@endif  
 
 <div class="image-w-text">
   <span class="cite-2">{{ __('messages.views') }}:</span> {{ $post->views }}

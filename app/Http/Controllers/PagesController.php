@@ -287,7 +287,15 @@ class PagesController extends Controller
       ->where("categories.page_id","=",$page->id)
       ->count(); 
 
-    echo json_encode($catalogs);
+    $subscriptions = Page
+      ::join('page_user', 'pages.id', '=', 'page_user.page_id')
+      ->where("page_user.page_id","=",$page->id)
+      ->count();
+
+    $result = array("catalogs"=>$catalogs,
+                    "subscriptions"=>$subscriptions); 
+      
+    echo json_encode($result); 
   }
 
   public function change_user(Page $page, $user_id)

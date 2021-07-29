@@ -104,6 +104,22 @@
     var post_id = {{ $post->id }}; 
     var type_id = {{ $post->type_id }};
     var type = get_type(type_id);
+
+    if (type=="App")
+    {
+      $.ajax({
+        url: '/app/stats/'+post_id,
+        dataType: 'json',
+        success: function(data) {
+          console.log(data);
+          $('#a_subscriptions').text('('+data+')');
+        },
+        error: function (data) {
+          console.log('Error:', data);
+        }
+      }); 
+    }
+
     if (type=="Page")
     {
       $.ajax({
@@ -111,7 +127,8 @@
         dataType: 'json',
         success: function(data) {
           console.log(data);
-          $('#p_catalogs').text('('+data+')');
+          $('#p_catalogs').text('('+data.catalogs+')');
+          $('#p_subscriptions').text('('+data.subscriptions+')');
         },
         error: function (data) {
           console.log('Error:', data);

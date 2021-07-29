@@ -72,6 +72,7 @@ Route::get('apps/created-by/{user}/{url?}','AppsController@show_created_by_user'
 Route::get('apps/{app}/{url?}','AppsController@show_app')->name('app.show_app');
 Route::get('app/subscribers/{app}/{url?}','AppsController@show_subscribers')->name('apps.show_subscribers');
 Route::get('app/get/posts/{app}','AppsController@get_posts');
+Route::get('app/stats/{post}','AppsController@get_stats')->name('app.get_stats');
 Route::post('app/get/post','AppsController@get_post');
 Route::post('apps/post','AppsController@save_app_post');
 Route::post('app','AppsController@store')->name('app.create');
