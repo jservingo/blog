@@ -112,7 +112,7 @@
         dataType: 'json',
         success: function(data) {
           console.log(data);
-          $('#a_subscriptions').text('('+data+')');
+          $('#a_subscriptions').text(data);
         },
         error: function (data) {
           console.log('Error:', data);
@@ -128,7 +128,7 @@
         success: function(data) {
           console.log(data);
           $('#p_catalogs').text('('+data.catalogs+')');
-          $('#p_subscriptions').text('('+data.subscriptions+')');
+          $('#p_subscriptions').text(data.subscriptions);
         },
         error: function (data) {
           console.log('Error:', data);

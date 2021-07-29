@@ -299,7 +299,7 @@ class AppsController extends Controller
       ->first(); 
 
     $subscriptions = App
-      ::join('app_user', 'app.id', '=', 'app_user.app_id')
+      ::join('app_user', 'apps.id', '=', 'app_user.app_id')
       ->where("app_user.app_id","=",$app->id)
       ->count();
       
