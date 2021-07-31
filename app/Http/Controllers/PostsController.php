@@ -644,9 +644,15 @@ class PostsController extends Controller
   {
     //$this->authorize('delete',$post);
 
+    //Eliminar kpost si el post no le pertenece al usuario
+    //OJO: Advertir si el post fue agregado a un catálogo del usuario
     if ($post->user_id != auth()->id())
     {
-      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
+      //Obtener kpost asociado al post si fue guardado
+      $kpost = $post->kpost;
+      //Eliminar el kpost
+      if ($kpost)
+        $kpost->delete();
       return;
     }
 
