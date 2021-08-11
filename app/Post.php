@@ -324,7 +324,7 @@ class Post extends Model
           case 21:
             return __('messages.type-catalog');
           case 22:
-            return __('messages.type-text');
+            return __('messages.type-page');
           case 23:
             return __('messages.type-app');
           case 24:
