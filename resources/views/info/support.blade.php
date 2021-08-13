@@ -94,6 +94,7 @@
 				--}}
 			</div>
 			<div>
+				{{--
 				<h3 class="text-capitalize">{{ __('messages.donators') }}</h3>
 				<ul class="list-unstyled">
 					<li></li>
@@ -101,7 +102,6 @@
 					<li></li>
 					<li></li>
 				</ul>
-				{{--
 				<h3 class="text-capitalize">categories</h3>
 				<ul class="list-unstyled">
 					<li class="text-capitalize">i do travel</li>

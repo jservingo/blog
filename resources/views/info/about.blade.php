@@ -7,7 +7,7 @@
       <h1 class="text-capitalize">{{ __('messages.about') }}</h1>
 			<div>
         <figure class="xlogo" style="margin:0">
-          <img src="/img/kodelia_slogan.png" style="height:90px;" alt="kodelia_slogan">
+          <img src="/img/kodelia_slogan.png" style="height:168px;" alt="kodelia_slogan">
         </figure>
       </div>
 			<cite>{{ __('messages.solution') }}</cite>
