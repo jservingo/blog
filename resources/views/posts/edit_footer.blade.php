@@ -15,21 +15,21 @@
     <div id="mainArticle">
       <div class="form-control">
 			  <label><span>{{ __('messages.excerpt') }}:</span></label>
-			  <textarea id="excerpt" style="width:90%;"
+			  <textarea id="excerpt" style="width:96%;"
 				  placeholder="{{ __('messages.enter-excerpt') }}">{{ old('excerpt',$post->kpost->excerpt) }}</textarea>
 			    {!! $errors->first('excerpt','<span class="help-block">:message</span>') !!}
 			</div>
 
 			<div class="form-control">
         <label><span>{{ __('messages.observation') }}:</span></label>
-        <textarea id="observation" style="width:90%;"
+        <textarea id="observation" style="width:96%;"
           placeholder="{{ __('messages.enter-observation') }}">{{ old('observation',$post->kpost->observation) }}</textarea>
         {!! $errors->first('observation','<span class="help-block">:message</span>') !!}
       </div>
 
       <div class="form-control">
         <label><span>{{ __('messages.footnote') }}:</span></label>
-        <input id="footnote" type="text" style="width:90%;"
+        <input id="footnote" type="text" style="width:96%;"
           value="{{ old('footnote',$post->kpost->footnote) }}"
           placeholder="{{ __('messages.enter-footnote') }}">
         {!! $errors->first('footnote','<span class="help-block">:message</span>') !!}
