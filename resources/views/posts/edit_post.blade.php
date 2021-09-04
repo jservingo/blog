@@ -243,7 +243,7 @@
       </div>    
     @endif
 
-    @if($post->isPhotoGallery() || $post->isOffer())
+    @if($post->isPhotoGallery() || $post->isOffer() || $post->isUser())
       <div class="wide-container">        
     	  <p>{{ __('messages.saved-images') }}</p>
     	  <br>
