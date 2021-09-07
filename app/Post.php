@@ -98,7 +98,7 @@ class Post extends Model
 
         $query->where('cstr_privacy','=',1)
             ->whereNotNull('posts.published_at')
-            ->where('posts.published_at','<=',$currentDate);
+            ->where('posts.published_at','<=',$currentDate)
             ->where('posts.published_at','<=',$toDate);
             //->whereBetween('posts.published_at', array($fromDate, $toDate));
     }
