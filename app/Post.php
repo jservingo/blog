@@ -94,12 +94,11 @@ class Post extends Model
     {
         $current = new Carbon();
         $currentDate = $current->format('Y-m-d H:i:s');
-        $toDate = $current->addDays(30)->format('Y-m-d H:i:s');
 
         $query->where('cstr_privacy','=',1)
             ->whereNotNull('posts.published_at')
             ->where('posts.published_at','<=',$currentDate)
-            ->where('posts.published_at','<=',$toDate);
+            ->whereRaw(DATE_ADD('posts.published_at',INTERVAL +30 DAY) '>=' $currentDate);
             //->whereBetween('posts.published_at', array($fromDate, $toDate));
     }
 
