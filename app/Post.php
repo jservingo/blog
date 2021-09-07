@@ -92,9 +92,9 @@ class Post extends Model
 
     public function scopePublishedOffer($query)
     {
-        $current = Carbon::now('UTC');
-        $fromDate = $current->toDateTimeString();
-        $toDate = $current->addDays(30)->toDateTimeString();
+        $current = getUTCDate();
+        $fromDate = $current;
+        $toDate = $current->addDays(30);
 
         $query->where('cstr_privacy','=',1)
             ->whereNotNull('posts.published_at')
