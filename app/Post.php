@@ -97,8 +97,8 @@ class Post extends Model
         $toDate = $current->addDays(30)->format('Y-m-d H:i:s');
 
         $query->where('cstr_privacy','=',1)
-            ->whereNotNull('posts.published_at')
-            ->whereBetween('posts.published_at', array($fromDate, $toDate));
+            ->whereNotNull('posts.published_at');
+            //->whereBetween('posts.published_at', array($fromDate, $toDate));
     }
 
     public function scopePublished($query)
