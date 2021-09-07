@@ -94,7 +94,7 @@ class Post extends Model
     {
         $current = Carbon::now('UTC');
         $fromDate = $current->toDateTimeString();
-        $toDate = $current->addDays(7)->toDateTimeString();
+        $toDate = $current->addDays(30)->toDateTimeString();
 
         $query->where('cstr_privacy','=',1)
             ->whereNotNull('posts.published_at')
