@@ -59,6 +59,7 @@
 @push('styles')
   <!--<link rel="stylesheet" href="/css/twitter-bootstrap.css">-->
   <link rel="stylesheet" href="/css/framework_single.css?ver=1.13">
+  <link rel="stylesheet" href="/mathML/mathml-formula/fmathFormula.css">
 @endpush
 
 @push('scripts')
@@ -81,7 +82,12 @@
   <script type="text/javascript" src="/js/fdate.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript" src="/js/audio.min.js"></script>
-  <script type="text/javascript">
+  <script type="text/javascript" src="/mathML/mathml-formula/fonts/fmathFormulaFonts.js"></script>
+  <script type="text/javascript" src="/mathML/mathml-formula/fonts/fmathFormulaFonts.js"></script>
+  <script type="text/javascript" src="/mathML/mathml-formula/fonts/fmathFormulaFonts.js"></script>
+  <script type="text/javascript" src="/mathML/mathml-formula/menu/basicContext.min.js"></script>
+  <script type="text/javascript" src="/mathML/mathml-formula/fmathFormulaC.js"></script>
+  <script src="/mathML/crossBrowserSolution.js"></script>  <script type="text/javascript">
     $(document).ready(function () {
       $('.menu').jqsimplemenu();
     });

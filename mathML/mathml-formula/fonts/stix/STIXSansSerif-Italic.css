@@ -1,0 +1,11 @@
+/* Webfont: STIXSansSerif-Italic */@font-face {
+    font-family: 'STIXSansSerifItalic';
+    src: url('STIXSansSerif-Italic.eot'); /* IE9 Compat Modes */
+    src: url('STIXSansSerif-Italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('STIXSansSerif-Italic.woff') format('woff'), /* Modern Browsers */
+         url('STIXSansSerif-Italic.ttf') format('truetype'); /* Safari, Android, iOS */
+             font-style: italic;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+

@@ -1,0 +1,11 @@
+/* Webfont: STIXDoubleStruck-Bold */@font-face {
+    font-family: 'STIXDoubleStruckBold';
+    src: url('STIXDoubleStruck-Bold.eot'); /* IE9 Compat Modes */
+    src: url('STIXDoubleStruck-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('STIXDoubleStruck-Bold.woff') format('woff'), /* Modern Browsers */
+         url('STIXDoubleStruck-Bold.ttf') format('truetype'); /* Safari, Android, iOS */
+             font-style: normal;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+
