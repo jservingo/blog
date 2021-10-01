@@ -1,4 +1,5 @@
 var fMathSolutionProcess = function () {
+	alert('fMathSolutionProcess');
 	
 	FMATH.ApplicationConfiguration.setFolderUrlForFonts('mathml-formula/fonts');
 	FMATH.ApplicationConfiguration.setFolderUrlForGlyphs('mathml-formula/glyphs');
@@ -9,6 +10,8 @@ var fMathSolutionProcess = function () {
 	var fMathModal = document.createElement('div');
 	fMathModal.classList.add("FMathModal");
 	document.body.appendChild(fMathModal);
+
+	alert('createElement');
 	
 	var fMathModalDiv = document.createElement('div');
 	fMathModalDiv.classList.add("FMathModal-content");
@@ -22,6 +25,7 @@ var fMathSolutionProcess = function () {
 	while( fMathModalClose.firstChild ) {
 		fMathModalClose.removeChild( fMathModalClose.firstChild );
 	}
+
 	fMathModalClose.appendChild( document.createTextNode("X") );
 	fMathModalClose.classList.add("FMathModalclose-btn");
 	fMathModalDiv.appendChild(fMathModalClose);
@@ -29,7 +33,6 @@ var fMathSolutionProcess = function () {
 	var fMathModalContent = document.createElement('textarea');
 	fMathModalContent.style.cssText = "width:100%;height:400px;resize:none;";
 	fMathModalDiv.appendChild(fMathModalContent);
-
 
 	fMathModalClose.onclick = function(){
 	  fMathModal.style.display = "none"
@@ -42,6 +45,8 @@ var fMathSolutionProcess = function () {
 
 	var allMathMLLive = document.getElementsByTagName("math");
 	var allMathML = Array.prototype.slice.call(allMathMLLive);
+
+	alert('getElementsByTagName');
 
 	var mathmlList = new Array(allMathML.length);
 	var canvasList = new Array(allMathML.length);
@@ -102,7 +107,6 @@ var fMathSolutionProcess = function () {
 			canvasScaleList[index] = 1;
 			formulasList[index].scaleFormula(canvasScaleList[index]);
 		}
-
 
 		var items = [
 			{ title: 'Get MathML', icon: 'ion-compose', fn: getMathML },
@@ -237,6 +241,7 @@ var fMathSolutionProcess = function () {
 		var index = getIndexForElementId(elementId);
 		formulasList[index].onMouseDown(evt);
 	}
+
 	function onMouseUp(evt){
 		var elementId = evt.target.getAttribute("id");
 		var index = getIndexForElementId(elementId);
@@ -265,6 +270,7 @@ var fMathSolutionProcess = function () {
 			divTooltipList[index].style.display = "none";
 		}
 	}
+
 	function onMouseOutFormula(e){
 
 		var elementId = e.target.getAttribute("id");
@@ -280,6 +286,7 @@ var fMathSolutionProcess = function () {
 		}
 		return val.substring(0, val.length-2);
 	}
+	
 	function rgb2hex(rgb_color) {
 		if (rgb_color.substr(0, 1) === '#') {
 			return rgb_color;
