@@ -83,11 +83,10 @@
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript" src="/js/audio.min.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/fonts/fmathFormulaFonts.js"></script>
-  <script type="text/javascript" src="/mathML/mathml-formula/fonts/fmathFormulaFonts.js"></script>
-  <script type="text/javascript" src="/mathML/mathml-formula/fonts/fmathFormulaFonts.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/menu/basicContext.min.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/fmathFormulaC.js"></script>
-  <script src="/mathML/crossBrowserSolution.js"></script>  <script type="text/javascript">
+  <script src="/mathML/crossBrowserSolution.js"></script>
+  <script type="text/javascript">
     $(document).ready(function () {
       $('.menu').jqsimplemenu();
     });
@@ -175,6 +174,11 @@
       });
     }
   </script>
+  <script>
+    $(function() {
+      fMathSolutionProcess();
+    });
+  </script>  
   <script>
     $(function() {
       $(".loader").fadeOut("slow");
