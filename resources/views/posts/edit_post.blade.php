@@ -32,10 +32,11 @@
 
 			<div class="form-control">        
         @php
-          if(substr($post->body,0,13) == "<p>@fmath</p>")
+          if(substr($post->body,0,13) == "<p>@fmath</p>") {
             $body = htmlentities($post->body);
-          else
+          } else {
             $body = $post->body;
+          }
         @endphp
         <label><span>{{ __('messages.content') }}: (*) {{ __('messages.required-field') }}</span></label>
 			  <textarea id="body" style="width:90%"
