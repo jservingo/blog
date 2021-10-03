@@ -416,7 +416,7 @@ class PostsController extends Controller
     $body = $request->get('body');
     if (substr($body,0,13) == "<p>@fmath</p>")
     {
-      $body = substr($body,13);
+      //$body = substr($body,13);
       $body = html_entity_decode($body);
       $body = str_replace("<br />","",$body);
     }

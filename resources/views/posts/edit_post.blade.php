@@ -30,11 +30,14 @@
 			    {!! $errors->first('excerpt','<span class="help-block">:message</span>') !!}
 			</div>
 
-			<div class="form-control">
+			<div class="form-control">        
+        @if(substr(post->$body,0,13) == "<p>@fmath</p>")
+          $body = htmlentities($post->body);
+        @endif
         <label><span>{{ __('messages.content') }}: (*) {{ __('messages.required-field') }}</span></label>
 			  <textarea id="body" style="width:90%"
 				  placeholder="{{ __('messages.enter-content') }}" rows="12"
-			  >{{ old('body',$post->body)}}</textarea>
+			  >{{ old('body',$body)}}</textarea>
 			  {!! $errors->first('body','<span class="help-block">:message</span>') !!}
       </div>
 
