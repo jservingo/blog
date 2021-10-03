@@ -31,7 +31,7 @@
 			</div>
 
 			<div class="form-control">        
-        @if(substr(post->$body,0,13) == "<p>@fmath</p>")
+        @if(substr($post->body,0,13) == "<p>@fmath</p>")
           $body = htmlentities($post->body);
         @endif
         <label><span>{{ __('messages.content') }}: (*) {{ __('messages.required-field') }}</span></label>
