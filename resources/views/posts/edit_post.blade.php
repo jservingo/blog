@@ -33,6 +33,8 @@
 			<div class="form-control">        
         @if(substr($post->body,0,13) == "<p>@fmath</p>")
           $body = htmlentities($post->body);
+        @else
+          $body = $post->body;
         @endif
         <label><span>{{ __('messages.content') }}: (*) {{ __('messages.required-field') }}</span></label>
 			  <textarea id="body" style="width:90%"
