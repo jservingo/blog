@@ -413,7 +413,13 @@ class PostsController extends Controller
 
     $post->title = $request->get('title');
     $post->excerpt = $request->get('excerpt');
-    $post->body = $request->get('body');
+    $body = $request->get('body');
+    if (substr($body,0,6) == "@fmath")
+    {
+      $body = substr($body,6);
+      $body = html_entity_decode($body);
+    }
+    $post->body = $body;
     $post->url = $request->get('url');
     $post->iframe = $request->get('iframe'); 
     if ($post->user_id == auth()->id())
