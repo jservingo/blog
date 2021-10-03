@@ -414,9 +414,9 @@ class PostsController extends Controller
     $post->title = $request->get('title');
     $post->excerpt = $request->get('excerpt');
     $body = $request->get('body');
-    if (substr($body,0,6) == "@fmath")
+    if (substr($body,0,13) == "<p>@fmath</p>")
     {
-      $body = substr($body,6);
+      $body = substr($body,13);
       $body = html_entity_decode($body);
     }
     $post->body = $body;
