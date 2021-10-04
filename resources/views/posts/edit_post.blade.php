@@ -33,9 +33,7 @@
 			<div class="form-control">        
         @php
           $body = $post->body;
-          $body = trim($body);
-          if(substr($body,0,6) == "@fmath") {
-            //$body = str_replace("<p>@fmath</p>","@fmath",$body);
+          if($post->source == "@fmath") {
             $body = htmlentities($body);
           } 
         @endphp

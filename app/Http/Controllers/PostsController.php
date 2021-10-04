@@ -414,13 +414,12 @@ class PostsController extends Controller
     $post->title = $request->get('title');
     $post->excerpt = $request->get('excerpt');
     $body = $request->get('body');
-    if (substr($body,0,13) == "<p>@fmath</p>")
+    if ($post->source == "@fmath")
     {
-      //$body = substr($body,13);
       $body = html_entity_decode($body);
       $body = str_replace("<br />","",$body);
       $body = str_replace("<p>","",$body);
-      $body = str_replace("<p//>","",$body);
+      $body = str_replace("</p>","",$body);
     }
     $post->body = $body;
     $post->url = $request->get('url');
