@@ -32,11 +32,12 @@
 
 			<div class="form-control">        
         @php
-          if(substr($post->body,0,13) == "<p>@fmath</p>") {
-            $body = htmlentities($post->body);
-          } else {
-            $body = $post->body;
-          }
+          $body = $post->body;
+          $body = trim($body);
+          if(substr($body,0,13) == "<p>@fmath</p>") {
+            $body = str_replace("<p>@fmath</p>","@fmath",$body);
+            $body = htmlentities($body);
+          } 
         @endphp
         <label><span>{{ __('messages.content') }}: (*) {{ __('messages.required-field') }}</span></label>
 			  <textarea id="body" style="width:90%"
