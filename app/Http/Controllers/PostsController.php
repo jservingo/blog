@@ -419,6 +419,8 @@ class PostsController extends Controller
       //$body = substr($body,13);
       $body = html_entity_decode($body);
       $body = str_replace("<br />","",$body);
+      $body = str_replace("<p>","",$body);
+      $body = str_replace("<p/>","",$body);
     }
     $post->body = $body;
     $post->url = $request->get('url');

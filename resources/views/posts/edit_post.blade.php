@@ -34,8 +34,8 @@
         @php
           $body = $post->body;
           $body = trim($body);
-          if(substr($body,0,13) == "<p>@fmath</p>") {
-            $body = str_replace("<p>@fmath</p>","@fmath",$body);
+          if(substr($body,0,6) == "@fmath") {
+            //$body = str_replace("<p>@fmath</p>","@fmath",$body);
             $body = htmlentities($body);
           } 
         @endphp
