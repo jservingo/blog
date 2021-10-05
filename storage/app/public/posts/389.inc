@@ -1,0 +1,30 @@
+<math>
+    <mrow>
+        <msub>
+            <mi>x</mi>
+            <mtext>12</mtext>
+        </msub>
+        <mo>=</mo>
+        <mfrac>
+            <mrow>
+                <mo>&minus;</mo>
+                <mi>b</mi>
+                <mo>&plusmn;</mo>
+                <msqrt>
+                    <msup>
+                        <mi>b</mi>
+                        <mn>2</mn>
+                    </msup>
+                    <mo>&minus;</mo>
+                    <mn>4</mn>
+                    <mi>a</mi>
+                    <mi>c</mi>
+                </msqrt>
+            </mrow>
+            <mrow>
+                <mn>2</mn>
+                <mi>a</mi>
+            </mrow>
+        </mfrac>
+    </mrow>
+</math>
