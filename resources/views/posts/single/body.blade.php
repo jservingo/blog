@@ -9,7 +9,33 @@
 
 <div class="image-w-text">
   <h3>{{ __('messages.content') }}:</h3>
-  {!! $post->body !!}
+  @php
+    if($post->source == "@fmath") {
+      $body = $post->body;
+      //$body = htmlentities($body);
+      {!! $body !!}
+    } 
+    elseif ($post->source == "@inc")
+    {
+      @include(Storage::url("posts/".$post->id.".inc"));
+    }
+    elseif ($post->source == "@json")
+    {
+      
+    }
+    elseif ($post->source == "@xml")
+    {
+      
+    }
+    elseif ($post->source == "@url")
+    {
+      
+    }
+    else
+    {
+      {!! $post->body !!}  
+    }
+  @endphp
 </div>
 
 <div>
