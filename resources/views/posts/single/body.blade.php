@@ -17,8 +17,9 @@
     } 
     elseif ($post->source == "@inc")
     {
-      $body = Storage::get("posts/".$post->id.".inc");
-      echo $body;
+      //$body = Storage::get("posts/".$post->id.".inc");
+      //echo $body;
+      echo asset("storage/posts/".$post->id.".inc");      
     }
     elseif ($post->source == "@json")
     {
