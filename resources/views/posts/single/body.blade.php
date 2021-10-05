@@ -13,7 +13,7 @@
     if($post->source == "@fmath") {
       $body = $post->body;
       //$body = htmlentities($body);
-      {!! $body !!}
+      echo $body;
     } 
     elseif ($post->source == "@inc")
     {
@@ -33,7 +33,7 @@
     }
     else
     {
-      {!! $post->body !!}  
+      echo $post->body;  
     }
   @endphp
 </div>
