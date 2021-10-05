@@ -17,7 +17,7 @@
     } 
     elseif ($post->source == "@inc")
     {
-      @include(Storage::url("posts/".$post->id.".inc"));
+      @include(Storage::get("posts/".$post->id.".inc"));
     }
     elseif ($post->source == "@json")
     {
