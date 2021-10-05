@@ -17,7 +17,8 @@
     } 
     elseif ($post->source == "@inc")
     {
-      @include(Storage::get("posts/".$post->id.".inc"));
+      $body = Storage::get("posts/".$post->id.".inc");
+      echo $body;
     }
     elseif ($post->source == "@json")
     {
