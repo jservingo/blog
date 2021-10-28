@@ -68,6 +68,9 @@ class ArtistsController extends Controller
 
     foreach($items as $artist)
     {
+      if(isset($artist->mbid) === true && $artist->mbid === '') {
+        fwrite($fp, "not found".",".$artist->name."\n");
+      }
       if ($artist->mbid)      
         fwrite($fp, $artist->mbid.",".$artist->name."\n");
     }
