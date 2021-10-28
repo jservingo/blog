@@ -81,6 +81,8 @@ Route::delete('apps/{post}','AppsController@destroy');
 //App Last.fm
 Route::get('artists/generate','ArtistsController@generate_artists')->name('artists.generate');
 Route::get('artists/create/{i}','ArtistsController@create_artists')->name('artists.create');
+Route::get('artists/generate/topArtists/{i}','ArtistsController@generate_top_artists')->name('artists.generate_top_artists');
+Route::get('artists/validate/topArtists/{i}','ArtistsController@validate_top_artists')->name('artists.validate_top_artists');
 Route::get('artists/get/all','ArtistsController@get_all')->name('artists.get_all');
 Route::get('artists/show/{mbid}','ArtistsController@show_post')->name('artists.show_post');
 Route::get('artists/search/{q}','ArtistsController@search')->name('artists.search');

@@ -59,6 +59,27 @@ class ArtistsController extends Controller
     }
   }
 
+  public function generate_top_artists($page)
+  {
+    $fp = fopen("topArtists/topArtists_".$page.".txt", 'w');
+
+    $xml = simplexml_load_file("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&page=".$page."&.api_key=803afb32787f065f4facd38eebe3af52&limit=100");
+    $items = $xml->{'artists'}->{'artist'};
+
+    foreach($items as $artist)
+    {
+      if ($artist->mbid)      
+        fwrite($fp, $artist->mbid.",".$artist->name."\n");
+    }
+
+    fclose($fp);
+  }
+
+  public function validate_top_artists($page)
+  {
+
+  }
+
   function get_all()
   {
     // ESTO YA NO SE USA (ELIMINAR)
