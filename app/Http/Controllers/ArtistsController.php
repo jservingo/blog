@@ -76,6 +76,8 @@ class ArtistsController extends Controller
     }
 
     fclose($fp);
+
+    return("Done");
   }
 
   public function validate_top_artists($page)
