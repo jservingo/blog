@@ -87,9 +87,8 @@ class ArtistsController extends Controller
 
   public function view_top_artists($page)
   {
-    $content = file("topArtists/topArtists_".$page.".txt");
-    $data = implode("<br>",$content);
-    return($data);
+    $file "topArtists/topArtists_".$page.".txt";
+    return response()->download($file);
   }
 
   function get_all()
