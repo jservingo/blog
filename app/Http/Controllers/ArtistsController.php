@@ -85,6 +85,11 @@ class ArtistsController extends Controller
 
   }
 
+  public function view_top_artists($page)
+  {
+    return("<a download href="http://www.kodelia.com/topArtists/topArtists_".$page.".txt"> Download the file ".$page."</a>");
+  }
+
   function get_all()
   {
     // ESTO YA NO SE USA (ELIMINAR)
