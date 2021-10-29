@@ -77,7 +77,7 @@ class ArtistsController extends Controller
 
     fclose($fp);
 
-    return("Done");
+    return("Done ".$page);
   }
 
   public function validate_top_artists($page)
