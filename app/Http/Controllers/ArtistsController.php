@@ -87,8 +87,9 @@ class ArtistsController extends Controller
 
   public function view_top_artists($page)
   {
-    $link = "http://www.kodelia.com/topArtists/topArtists_".$page.".txt";
-    return("<a download href='$link'>Download the file $page </a>");
+    $content = file("topArtists/topArtists_".$page.".txt");
+    $data = implode("<br>",$content);
+    return($data);
   }
 
   function get_all()
