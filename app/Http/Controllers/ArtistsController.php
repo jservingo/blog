@@ -98,7 +98,7 @@ class ArtistsController extends Controller
       else
       {
         //Buscar mbid en BD de artists
-        $artists = Artist
+        $artist = Artist
           ::where('mbid', '=', $mbid) 
           ->get();  
         if ($artist)
