@@ -63,7 +63,7 @@ class ArtistsController extends Controller
   {
     $fp = fopen("topArtists/topArtists_".$page.".txt", 'w');
 
-    $xml = simplexml_load_file("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&page=".$page."&api_key=803afb32787f065f4facd38eebe3af52&limit=500");
+    $xml = simplexml_load_file("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&page=".$page."&api_key=803afb32787f065f4facd38eebe3af52&limit=200");
     $items = $xml->{'artists'}->{'artist'};
 
     foreach($items as $artist)
