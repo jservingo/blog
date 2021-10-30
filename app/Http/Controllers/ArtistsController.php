@@ -107,7 +107,7 @@ class ArtistsController extends Controller
           {  
             $artist->mbid = $mbid;
             $artist->status_id = 1;
-            $post->save();
+            $artist->save();
             $validated = $validated + 1;
           }
           else
