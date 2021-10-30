@@ -73,8 +73,9 @@ class ArtistsController extends Controller
       if($isEmpty) {
         fwrite($fp, "not found".",".$artist->name."\n");
       }
-      if ($artist->mbid)      
+      else {      
         fwrite($fp, $artist->mbid.",".$artist->name."\n");
+      }
     }
 
     fclose($fp);
