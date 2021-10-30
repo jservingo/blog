@@ -68,7 +68,9 @@ class ArtistsController extends Controller
 
     foreach($items as $artist)
     {
-      if(isset($artist->mbid) === true && $artist->mbid === '') {
+      $element = $artist->mbid;
+      $isEmpty = !count($element->xpath('(.)[./node()|./@*]'));
+      if($isEmpty) {
         fwrite($fp, "not found".",".$artist->name."\n");
       }
       if ($artist->mbid)      
