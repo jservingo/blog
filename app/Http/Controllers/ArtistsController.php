@@ -63,7 +63,7 @@ class ArtistsController extends Controller
   {
     $fp = fopen("topArtists/topArtists_".$page.".txt", 'w');
 
-    $xml = simplexml_load_file("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&page=".$page."&api_key=803afb32787f065f4facd38eebe3af52&limit=100");
+    $xml = simplexml_load_file("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&page=".$page."&api_key=803afb32787f065f4facd38eebe3af52&limit=500");
     $items = $xml->{'artists'}->{'artist'};
 
     foreach($items as $artist)
@@ -90,6 +90,8 @@ class ArtistsController extends Controller
 
   public function view_top_artists($page)
   {
+    // NO SE USA
+    // FALTA guardar la salida y generar el archivo de salida
     $file = "topArtists/topArtists_".$page.".txt";
     
     $fp = fopen($file,'r');
