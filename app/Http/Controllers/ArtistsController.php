@@ -92,6 +92,10 @@ class ArtistsController extends Controller
       $artist = explode(',', $line);
       $mbid = $artist[0];
       $name = $artist[1];
+      $not_found = 0;
+      $validated = 0;
+      $revalidated = 0;
+      $created = 0;
       if ($mbid == "not found") {
         $not_found = $not_found + 1;
       }
