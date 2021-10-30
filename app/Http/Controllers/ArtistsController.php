@@ -80,12 +80,56 @@ class ArtistsController extends Controller
 
     fclose($fp);
 
-    return("Done ".$page);
+    return("Done generate page ".$page);
   }
 
   public function validate_top_artists($page)
   {
+    $file = "topArtists/topArtists_".$page.".txt";
+    
+    $fp = fopen($file,'r');
+    while ($line = fgets($fp)) {
+      $artist = explode(',', $line);
+      $mbid = $artist[0];
+      $name = $artist[1];
+      if ($artist->name == "not found") {
+        $not_found = $not_found + 1;
+      }
+      else
+      {
+        //Buscar mbid en BD de artists
+        $artists = Artist
+          ::where('mbid', '=', $mbid) 
+          ->get();  
+        if ($artist)
+        {
+          if (artist->status_id == 0)
+          {  
+            $artist->mbid = $mbid;
+            $artist->status_id = 1;
+            $post->save();
+            $validated = $validated + 1;
+          }
+          else
+          {
+            $revalidated = $revalidated + 1;
+          }
+        }
+        else 
+        {
+          $artist = Artist::firstOrCreate([
+            'mbid' => $mbid,
+            'name' => $name,
+            'status_id' => 1
+          ]);
+          $created = $created + 1;
+        }
+      }     
+    }
 
+    fclose($fp);
+
+    return("Done validate page".$page." not_found:".$not_found." validated:".$validated." revalidated:".$revalidated." created:".$created); 
   }
 
   public function view_top_artists($page)
@@ -98,6 +142,7 @@ class ArtistsController extends Controller
     while ($line = fgets($fp)) {
        echo($line."<BR>");
     }
+
     fclose($fp);
 
     $content = \View::make('txt.index')->with('order', $order);
