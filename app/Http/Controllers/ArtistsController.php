@@ -90,7 +90,17 @@ class ArtistsController extends Controller
   public function view_top_artists($page)
   {
     $file = "topArtists/topArtists_".$page.".txt";
-    return response()->download($file);
+    
+    $fp = fopen($file,'r');
+    while ($line = fgets($fp)) {
+       echo($line."<BR>");
+    }
+    fclose($fp);
+
+    $content = \View::make('txt.index')->with('order', $order);
+    return \Response::make($content, '200')->header('Content-Type', 'plain/txt');
+
+    return;
   }
 
   function get_all()
