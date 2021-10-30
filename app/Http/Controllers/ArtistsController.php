@@ -92,7 +92,7 @@ class ArtistsController extends Controller
       $artist = explode(',', $line);
       $mbid = $artist[0];
       $name = $artist[1];
-      if ($artist->name == "not found") {
+      if ($mbid == "not found") {
         $not_found = $not_found + 1;
       }
       else
