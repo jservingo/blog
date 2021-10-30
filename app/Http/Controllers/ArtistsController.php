@@ -103,7 +103,7 @@ class ArtistsController extends Controller
           ->get();  
         if ($artist)
         {
-          if (artist->status_id == 0)
+          if ($artist->status_id == 0)
           {  
             $artist->mbid = $mbid;
             $artist->status_id = 1;
