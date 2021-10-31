@@ -86,9 +86,9 @@ class ArtistsController extends Controller
   public function validate_top_artists($page)
   {
     $file = "topArtists/topArtists_".$page.".txt";
-    
     $fp = fopen($file,'r');
-    while ($line = fgets($fp)) {
+    
+    while (($line = fgets($fp)) !== false) {
       $artist = explode(',', $line);
       $mbid = $artist[0];
       $name = $artist[1];
@@ -141,8 +141,8 @@ class ArtistsController extends Controller
     // NO SE USA
     // FALTA guardar la salida y generar el archivo de salida
     $file = "topArtists/topArtists_".$page.".txt";
-    
     $fp = fopen($file,'r');
+    
     while ($line = fgets($fp)) {
        echo($line."<BR>");
     }
