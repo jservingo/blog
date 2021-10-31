@@ -71,10 +71,10 @@ class ArtistsController extends Controller
       $element = $artist->mbid;
       $isEmpty = !count($element->xpath('(.)[./node()|./@*]'));
       if($isEmpty) {
-        fwrite($fp, "not found".",".$artist->name."\n");
+        fwrite($fp, "not found".",".$artist->name."\r\n");
       }
       else {      
-        fwrite($fp, $artist->mbid.",".$artist->name."\n");
+        fwrite($fp, $artist->mbid.",".$artist->name."\r\n");
       }
     }
 
