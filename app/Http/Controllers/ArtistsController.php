@@ -89,9 +89,9 @@ class ArtistsController extends Controller
     $fp = fopen($file,'r');
     
     while ($line = fgets($fp)) {
-      $artist = explode(',', $line);
-      $mbid = $artist[0];
-      $name = $artist[1];
+      $item = explode(',', $line);
+      $mbid = $item[0];
+      $name = $item[1];
       $not_found = 0;
       $validated = 0;
       $revalidated = 0;
@@ -109,7 +109,6 @@ class ArtistsController extends Controller
         {
           if ($artist->status_id == 0)
           {  
-            $artist->mbid = $mbid;
             $artist->status_id = 1;
             $artist->save();
             $validated = $validated + 1;
