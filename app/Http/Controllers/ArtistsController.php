@@ -88,7 +88,7 @@ class ArtistsController extends Controller
     $file = "topArtists/topArtists_".$page.".txt";
     $fp = fopen($file,'r');
     
-    while (($line = fgets($fp)) !== false) {
+    while ($line = fgets($fp)) {
       $artist = explode(',', $line);
       $mbid = $artist[0];
       $name = $artist[1];
@@ -145,13 +145,18 @@ class ArtistsController extends Controller
     
     $resp = "";
     while ($line = fgets($fp)) {
-       $resp = $resp.$line."<BR>";
+       $artist = explode(',', $line);
+       $mbid = $artist[0];
+       $name = $artist[1];
+       $resp = $resp."mbid:".$mbid. " name:".$name."<BR>";
     }
 
     fclose($fp);
 
-    $content = \View::make('resp')->with('resp', $resp);
-    return \Response::make($content, '200')->header('Content-Type', 'plain/txt');
+    //$content = \View::make('resp')->with('resp', $resp);
+    //return \Response::make($content, '200')->header('Content-Type', 'plain/txt');
+
+    return view('resp',compact('page','resp'));
   }
 
   function get_all()
