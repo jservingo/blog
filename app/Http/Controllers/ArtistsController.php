@@ -88,14 +88,15 @@ class ArtistsController extends Controller
     $file = "topArtists/topArtists_".$page.".txt";
     $fp = fopen($file,'r');
     
+    $not_found = 0;
+    $validated = 0;
+    $revalidated = 0;
+    $created = 0;
+    
     while ($line = fgets($fp)) {
       $item = explode(',', $line);
       $mbid = $item[0];
       $name = $item[1];
-      $not_found = 0;
-      $validated = 0;
-      $revalidated = 0;
-      $created = 0;
       if ($mbid == "not found") {
         $not_found = $not_found + 1;
       }
