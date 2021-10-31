@@ -143,16 +143,15 @@ class ArtistsController extends Controller
     $file = "topArtists/topArtists_".$page.".txt";
     $fp = fopen($file,'r');
     
+    $resp = "";
     while ($line = fgets($fp)) {
-       echo($line."<BR>");
+       $resp = $resp.$line."<BR>";
     }
 
     fclose($fp);
 
-    $content = \View::make('txt.index')->with('order', $order);
+    $content = \View::make('txt')->with('resp', $resp);
     return \Response::make($content, '200')->header('Content-Type', 'plain/txt');
-
-    return;
   }
 
   function get_all()
