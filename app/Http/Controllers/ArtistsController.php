@@ -71,10 +71,10 @@ class ArtistsController extends Controller
       $element = $artist->mbid;
       $isEmpty = !count($element->xpath('(.)[./node()|./@*]'));
       if($isEmpty) {
-        fwrite($fp, "not found".",".$artist->name."\r\n");
+        fwrite($fp, "not found".",".$artist->name."\n");
       }
       else {      
-        fwrite($fp, $artist->mbid.",".$artist->name."\r\n");
+        fwrite($fp, $artist->mbid.",".$artist->name."\n");
       }
     }
 
@@ -133,7 +133,7 @@ class ArtistsController extends Controller
 
     fclose($fp);
 
-    return("Done validate page".$page." not_found:".$not_found." validated:".$validated." revalidated:".$revalidated." created:".$created); 
+    return("Done validate page ".$page." not_found:".$not_found." validated:".$validated." revalidated:".$revalidated." created:".$created); 
   }
 
   public function view_top_artists($page)
