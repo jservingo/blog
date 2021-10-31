@@ -1,5 +1,6 @@
 <html>
     <body>
-        <h1>Hello, <?php echo $resp; ?></h1>
+        <h1>Page <?php echo $page; ?></h1>
+        <?php echo $resp; ?>
     </body>
 </html>

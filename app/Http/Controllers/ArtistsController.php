@@ -150,7 +150,7 @@ class ArtistsController extends Controller
 
     fclose($fp);
 
-    $content = \View::make('resp')->with('resp', $resp);
+    $content = \View::make('resp.txt')->with('resp', [$page, $resp]);
     return \Response::make($content, '200')->header('Content-Type', 'plain/txt');
   }
 
