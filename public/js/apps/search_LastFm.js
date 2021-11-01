@@ -17,16 +17,19 @@ function search_posts(q, callback)
       console.log(row);
       source = row.source ? row.source : "javascript:show_post('"+row.mbid+"')";
       switch (row.status_id) {
-        case 0: 
+        case 0:
+        case 1: 
           excerpt = 'This post has not been saved.';
           source_post = "javascript:show_post('"+row.mbid+"')";
           source_app = "javascript:show_post('"+row.mbid+"')";
           break;
+        /*  
         case 1:
           excerpt = 'This post has been deleted.';
           source_post = "javascript:show_post('"+row.mbid+"')";
           source_app = "javascript:show_post('"+row.mbid+"')";
           break;
+        */
         case 2: 
           excerpt = row.excerpt ? row.excerpt : 'This post has been saved.';
           source_post = '/posts/'+row.post_id;
