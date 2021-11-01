@@ -210,7 +210,7 @@ class ArtistsController extends Controller
       ::leftjoin('posts', 'artists.post_id', '=', 'posts.id')
       ->leftjoin('photos', 'artists.post_id', '=', 'photos.post_id')
       ->where('name', 'like', $q.'%')  //like $q.'%'
-      ->where('status_id', '<>', '1')
+      ->where('status_id', '<>', '0')
       ->orderBy('artists.name')
       ->get();
 
