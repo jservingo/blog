@@ -19,6 +19,7 @@ function search_posts(q, callback)
       switch (row.status_id) {
         case 0:
         case 1: 
+        case 3:
           excerpt = 'This post has not been saved.';
           source_post = "javascript:show_post('"+row.mbid+"')";
           source_app = "javascript:show_post('"+row.mbid+"')";
