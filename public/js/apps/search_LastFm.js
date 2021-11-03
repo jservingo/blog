@@ -25,7 +25,6 @@ function search_posts(q, callback)
         excerpt = 'This post has not been saved.';
         source_post = "javascript:show_post('"+row.mbid+"')";
         source_app = "javascript:show_post('"+row.mbid+"')";
-        break;
       }
       /*  
         case 1:
