@@ -99,7 +99,7 @@ class ArtistsController extends Controller
       foreach($links_artist->children() as $link) {
         $links = $links."<a href='".$link->attributes()->{'type'}."' target='_blank'>".$link->target."</a> ";
         if ($link->attributes()->{'type'} == "image")
-          $url_image = $link->{'target'} 
+          $url_image = $link->{'target'}; 
       }
       if ($url_image != "")
         $img = getImage($url_image);
