@@ -77,8 +77,8 @@ class ArtistsController extends Controller
      {  
       $mbid = $artist->mbid;
       $title = $artist->name;
-      $img = "/img/music.png";
       $source = $artist->url;
+      $img = "/img/music.png";
       $url_image = "";
       $links = "";
       $tags = "Music";
@@ -86,9 +86,7 @@ class ArtistsController extends Controller
       $url_artist = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='+mbid+'&api_key='+api_key;
       $xml = simplexml_load_file($url_artist);
       $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
-      $url = $xml->{'artist'}->{'bio'};
-      $body = $xml->{'artist'}->{'content'};
-      $url = $xml->{'artist'}->{'bio'};
+      $body = $xml->{'artist'}->{'bio'}->{'content'};
       $tags_artist = $xml->{'artist'}->{'tags'};
       foreach($tags_artist->children() as $tag) {
         $tags = $tags.",".$tag->name;
@@ -175,19 +173,10 @@ class ArtistsController extends Controller
 
         $num = $num + 1;
       }
-      
-      if (!$post->kpost)
-      {
-        $kpost = Kpost::create([
-          'post_id' => $post->id,
-          'status_id' => 2,
-          'user_id' => auth()->id(),
-          'sent_by' => auth()->id(),
-          'sent_at' => Carbon::now('UTC') 
-        ]);
-      }
      }      
     }
+
+    return("Done create posts");
   }      
   
   public function generate_top_artists($page)
