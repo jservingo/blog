@@ -59,6 +59,137 @@ class ArtistsController extends Controller
     }
   }
 
+  //******************************************************************
+
+  function create_posts()
+  {
+    $artists = Artist
+      ::where('artists.status_id', '=', '1')
+      ->get();
+
+    $api_key = "8fcc4758809b19662cdb6fab49ff689b";
+    $custom_type = "Artist";
+    $app_id = 4;
+    $num = 0;
+
+    foreach($artists as $artist) {    
+     if ($num <= 10)
+     {  
+      $mbid = $artist->mbid;
+      $title = $artist->name;
+      $img = "/img/music.png";
+      $source = $artist->url;
+      $url_image = "";
+      $links = "";
+      $tags = "Music";
+      $footnote = "";
+      $url_artist = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='+mbid+'&api_key='+api_key;
+      $xml = simplexml_load_file($url_artist);
+      $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
+      $url = $xml->{'artist'}->{'bio'};
+      $body = $xml->{'artist'}->{'content'};
+      $url = $xml->{'artist'}->{'bio'};
+      $tags_artist = $xml->{'artist'}->{'tags'};
+      foreach($tags_artist->children() as $tag) {
+        $tags = $tags.",".$tag->name;
+      } 
+      $url_artist = "http://musicbrainz.org/ws/2/artist/".$mbid."?inc=url-rels";
+      $xml = simplexml_load_file($url_artist);
+      $links_artist = $xml->{'artist'}->{'relation-list'};
+      foreach($links_artist->children() as $link) {
+        $links = $links."<a href='".$link->attributes()->{'type'}."' target='_blank'>".$link->target."</a> ";
+        if ($link->attributes()->{'type'} == "image")
+          $url_image = $link->{'target'} 
+      }
+      if ($url_image != "")
+        $img = getImage($url_image);
+
+      //Buscar post de la app
+      $post = Post
+        ::where("app_id","=",$app_id)
+        ->where("source","=",$source)
+        ->first();
+
+      //Buscar el owner de la app
+      $app = App::find($app_id);
+
+      //Si el post no existe hay que crearlo
+      //OJO El usuario debería ser el administrador de la App
+      if (! $post)
+      { 
+        $post = Post::create([
+          'title' => $title,
+          'excerpt' => $excerpt,
+          'body' => '<a href="'.$source.'" target=_blank">'.$body.'<br><br>'.$links.'</a>',        
+          'footnote' => $footnote,
+          'links' => $links,
+          'type_id' => 8,
+          'user_id' => $app->user_id,
+          'custom_type' => $custom_type,
+          'app_id' => $app_id,
+          'source' => $source,
+          'published_at' => Carbon::now('UTC')
+        ]);
+
+        Photo::create([
+          'url' => $img,
+          'post_id' => $post->id,
+          'user_id' => $app->user_id
+        ]);
+
+        //Eliminar tags del post
+        $post->tags()
+          ->wherePivot('post_id', '=', $post->id)
+          ->wherePivot('user_id', '=', $app->user_id)
+          ->detach();
+        
+        //Agregar tags al post
+        $tags = explode(',',$tags);
+        if(!empty($tags))
+        {
+          foreach ($tags as $tag_str)
+          {
+            if (strlen($tag_str) >= 3)
+            {
+              $tag_str = trim(preg_replace('/\s+/', '', $tag_str));
+              $tag = Tag::where('name', $tag_str)->first();
+              if($tag)
+                $post->tags()->attach($tag->id, array('user_id' => $app->user_id));
+              else
+              {
+                $tag = Tag::create([
+                  'name' => $tag_str
+                ]);
+                $post->tags()->attach($tag->id, array('user_id' => $app->user_id));
+              }
+            }
+          }
+        }
+
+        $kpost = Kpost::create([
+          'post_id' => $post->id,
+          'user_id' => $app->user_id,
+          'sent_by' => $app->user_id,
+          'sent_at' => Carbon::now('UTC') 
+        ]);
+
+        $num = $num + 1;
+      }
+      
+      if (!$post->kpost)
+      {
+        $kpost = Kpost::create([
+          'post_id' => $post->id,
+          'status_id' => 2,
+          'user_id' => auth()->id(),
+          'sent_by' => auth()->id(),
+          'sent_at' => Carbon::now('UTC') 
+        ]);
+      }
+     }      
+    }
+  }      
+  
   public function generate_top_artists($page)
   {
     $fp = fopen("topArtists/topArtists_".$page.".txt", 'w');
@@ -159,6 +290,8 @@ class ArtistsController extends Controller
     return view('resp',compact('page','resp'));
   }
 
+  //******************************************************************
+
   function get_all()
   {
     // ESTO YA NO SE USA (ELIMINAR)
@@ -194,6 +327,29 @@ class ArtistsController extends Controller
       }
     }
     echo json_encode($src);
+  }
+
+  function getImage(Request $request)
+  {
+    $url_image = $request->get('url_image');
+    $src = "/img/music.png";    
+    $doc = new \DOMDocument();
+    @$doc->loadHTMLFile($url_image);
+    if ($doc)
+    {  
+      $xpath = new \DOMXpath($doc);
+      if ($xpath)
+      {
+        $imgs = $xpath->query("//img");
+        if ($imgs)
+        {
+          $img = $imgs->item(0);
+          if ($img)
+            $src = $img->getAttribute("src");        
+        }
+      }
+    }
+    return($src);
   }
 
   public function show_post($mbid)
