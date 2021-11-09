@@ -72,6 +72,8 @@ class ArtistsController extends Controller
     $app_id = 4;
     $num = 0;
 
+    return "ok";
+
     foreach($artists as $artist) {    
      if ($num <= 10)
      {  
