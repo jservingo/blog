@@ -63,7 +63,7 @@ class ArtistsController extends Controller
 
   function create_posts()
   {
-    return "create posts";
+    return("create posts");
 
     $artists = Artist
       ::where('artists.status_id', '=', '1')
@@ -74,7 +74,7 @@ class ArtistsController extends Controller
     $app_id = 4;
     $num = 0;
 
-    return "ok";
+    return("ok");
 
     foreach($artists as $artist) {    
      if ($num <= 10)
@@ -87,7 +87,7 @@ class ArtistsController extends Controller
       $links = "";
       $tags = "Music";
       $footnote = "";
-      return $title;
+      return($title);
       $url_artist = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='+mbid+'&api_key='+api_key;
       $xml = simplexml_load_file($url_artist);
       $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
