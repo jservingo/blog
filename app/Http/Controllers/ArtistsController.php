@@ -72,10 +72,10 @@ class ArtistsController extends Controller
     $app_id = 4;
     $num = 0;
 
-    foreach($artists as $artist) {    
-     if ($num <= 10)
-     {  
-      $mbid = $artist->mbid;
+    foreach($artists as $artist) {      
+     $mbid = $artist->mbid;
+     if (($num<=10) && ($mbid!="not found"))
+     { 
       $title = $artist->name;
       $source = $artist->url;
       $img = "/img/music.png";
