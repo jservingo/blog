@@ -84,7 +84,7 @@ Route::get('artists/create/{i}','ArtistsController@create_artists')->name('artis
 Route::get('artists/generate/topArtists/{i}','ArtistsController@generate_top_artists')->name('artists.generate_top_artists');
 Route::get('artists/validate/topArtists/{i}','ArtistsController@validate_top_artists')->name('artists.validate_top_artists');
 Route::get('artists/view/topArtists/{i}','ArtistsController@view_top_artists')->name('artists.view_top_artists');
-Route::get('artists/create/posts/{i}','ArtistsController@create_posts')->name('artists.create_posts');
+Route::get('artists/create/posts','ArtistsController@create_posts')->name('artists.create_posts');
 Route::get('artists/get/all','ArtistsController@get_all')->name('artists.get_all');
 Route::get('artists/show/{mbid}','ArtistsController@show_post')->name('artists.show_post');
 Route::get('artists/search/{q}','ArtistsController@search')->name('artists.search');
