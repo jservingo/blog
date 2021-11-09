@@ -83,6 +83,7 @@ class ArtistsController extends Controller
       $links = "";
       $tags = "Music";
       $footnote = "";
+      return $title;
       $url_artist = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='+mbid+'&api_key='+api_key;
       $xml = simplexml_load_file($url_artist);
       $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
