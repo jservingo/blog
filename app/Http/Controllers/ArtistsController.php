@@ -63,6 +63,8 @@ class ArtistsController extends Controller
 
   function create_posts()
   {
+    return "create posts";
+
     $artists = Artist
       ::where('artists.status_id', '=', '1')
       ->get();
