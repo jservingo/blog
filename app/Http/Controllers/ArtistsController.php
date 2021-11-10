@@ -93,11 +93,15 @@ class ArtistsController extends Controller
       } 
       $url_artist = "http://musicbrainz.org/ws/2/artist/".$mbid."?inc=url-rels";
       //$xml = simplexml_load_file($url_artist);
-      $curl = curl_init($url_artist);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-      $result = curl_exec($curl);
+      $curl = curl_init();
+      curl_setopt_array($curl, Array(
+        CURLOPT_URL            => $url_artist,
+        CURLOPT_RETURNTRANSFER => TRUE,
+        CURLOPT_ENCODING       => 'UTF-8'
+      ));
+      $data = curl_exec($curl);
       curl_close($curl);
-      $xml = simplexml_load_string($result); 
+      $xml = simplexml_load_string($data);
       $links_artist = $xml->{'artist'}->{'relation-list'};
       foreach($links_artist->children() as $link) {
         $links = $links."<a href='".$link->attributes()->{'type'}."' target='_blank'>".$link->target."</a> ";
