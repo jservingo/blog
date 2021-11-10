@@ -96,15 +96,16 @@ class ArtistsController extends Controller
       $curl = curl_init();
       curl_setopt_array($curl, Array(
         CURLOPT_URL            => $url_artist,
+        CURLOPT_USERAGENT      => "Kodelia/1.0 (jservingo@gmail.com)",
         CURLOPT_RETURNTRANSFER => TRUE,
         CURLOPT_ENCODING       => 'UTF-8'
       ));      
       $data = curl_exec($curl);
       curl_close($curl);
-      
+
       return($data);
 
-      $data  = utf8_decode(trim($data)); 
+      //$data  = utf8_decode(trim($data)); 
       $xml = simplexml_load_string($data);
       
       $links_artist = $xml->{'artist'}->{'relation-list'};
