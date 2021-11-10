@@ -98,9 +98,10 @@ class ArtistsController extends Controller
         CURLOPT_URL            => $url_artist,
         CURLOPT_RETURNTRANSFER => TRUE,
         CURLOPT_ENCODING       => 'UTF-8'
-      ));
+      ));      
       $data = curl_exec($curl);
       curl_close($curl);
+      $data  = utf8_decode(trim($data)); 
       $xml = simplexml_load_string($data);
       $links_artist = $xml->{'artist'}->{'relation-list'};
       foreach($links_artist->children() as $link) {
