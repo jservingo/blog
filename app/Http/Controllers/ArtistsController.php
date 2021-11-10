@@ -93,10 +93,6 @@ class ArtistsController extends Controller
       } 
       $url_artist = "http://musicbrainz.org/ws/2/artist/".$mbid."?inc=url-rels";
       
-      $string= file_get_contents($url_artist);
-      //$xml = simplexml_load_file($string);
-      return($string);  
-      
       $curl = curl_init();
       curl_setopt_array($curl, Array(
         CURLOPT_URL            => $url_artist,
@@ -105,6 +101,9 @@ class ArtistsController extends Controller
       ));      
       $data = curl_exec($curl);
       curl_close($curl);
+      
+      return($data);
+
       $data  = utf8_decode(trim($data)); 
       $xml = simplexml_load_string($data);
       
