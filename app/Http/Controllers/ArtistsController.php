@@ -92,7 +92,11 @@ class ArtistsController extends Controller
         $tags = $tags.",".$tag->name;
       } 
       $url_artist = "http://musicbrainz.org/ws/2/artist/".$mbid."?inc=url-rels";
-      //$xml = simplexml_load_file($url_artist);
+      
+      $string= file_get_contents($url_artist);
+      //$xml = simplexml_load_file($string);
+      return($string);  
+      
       $curl = curl_init();
       curl_setopt_array($curl, Array(
         CURLOPT_URL            => $url_artist,
@@ -103,6 +107,7 @@ class ArtistsController extends Controller
       curl_close($curl);
       $data  = utf8_decode(trim($data)); 
       $xml = simplexml_load_string($data);
+      
       $links_artist = $xml->{'artist'}->{'relation-list'};
       foreach($links_artist->children() as $link) {
         $links = $links."<a href='".$link->attributes()->{'type'}."' target='_blank'>".$link->target."</a> ";
