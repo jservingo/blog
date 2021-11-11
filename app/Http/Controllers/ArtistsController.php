@@ -61,7 +61,7 @@ class ArtistsController extends Controller
 
   //******************************************************************
 
-  function getImage($url_image)
+  function get_post_image($url_image)
   {
     $src = "/img/music.png";    
     $doc = new \DOMDocument();
@@ -137,7 +137,7 @@ class ArtistsController extends Controller
       }
 
       if ($url_image != "")
-        $img = getImage($url_image);
+        $img = get_post_image($url_image);
 
       //Buscar post de la app
       $post = Post
