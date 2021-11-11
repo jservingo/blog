@@ -136,7 +136,7 @@ class ArtistsController extends Controller
           $url_image = $link->{'target'}; 
       }
 
-      return($url_image)
+      return($url_image);
 
       if ($url_image != "")
         $img = get_post_image($url_image);
