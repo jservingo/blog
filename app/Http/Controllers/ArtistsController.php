@@ -61,6 +61,28 @@ class ArtistsController extends Controller
 
   //******************************************************************
 
+  function getImage($url_image)
+  {
+    $src = "/img/music.png";    
+    $doc = new \DOMDocument();
+    @$doc->loadHTMLFile($url_image);
+    if ($doc)
+    {  
+      $xpath = new \DOMXpath($doc);
+      if ($xpath)
+      {
+        $imgs = $xpath->query("//img");
+        if ($imgs)
+        {
+          $img = $imgs->item(0);
+          if ($img)
+            $src = $img->getAttribute("src");        
+        }
+      }
+    }
+    return($src);
+  }
+
   function create_posts()
   {
     $artists = Artist
@@ -331,28 +353,6 @@ class ArtistsController extends Controller
       }
     }
     echo json_encode($src);
-  }
-
-  function getImage($url_image)
-  {
-    $src = "/img/music.png";    
-    $doc = new \DOMDocument();
-    @$doc->loadHTMLFile($url_image);
-    if ($doc)
-    {  
-      $xpath = new \DOMXpath($doc);
-      if ($xpath)
-      {
-        $imgs = $xpath->query("//img");
-        if ($imgs)
-        {
-          $img = $imgs->item(0);
-          if ($img)
-            $src = $img->getAttribute("src");        
-        }
-      }
-    }
-    return($src);
   }
 
   public function show_post($mbid)
