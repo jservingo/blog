@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Artist;
 use App\Post;
+use App\App;
 
 class ArtistsController extends Controller
 {
