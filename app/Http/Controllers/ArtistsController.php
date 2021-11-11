@@ -74,7 +74,7 @@ class ArtistsController extends Controller
 
     foreach($artists as $artist) {      
      $mbid = $artist->mbid;
-     if (($num<=10) && ($mbid!="not found"))
+     if (($num<=50) && ($mbid!="not found"))
      { 
       $title = $artist->name;
       $source = $artist->url;
@@ -113,7 +113,7 @@ class ArtistsController extends Controller
         if ($link->attributes()->{'type'} == "image")
           $url_image = $link->{'target'}; 
       }
-      
+
       if ($url_image != "")
         $img = getImage($url_image);
 
@@ -333,9 +333,8 @@ class ArtistsController extends Controller
     echo json_encode($src);
   }
 
-  function getImage(Request $request)
+  function getImage($url_image)
   {
-    $url_image = $request->get('url_image');
     $src = "/img/music.png";    
     $doc = new \DOMDocument();
     @$doc->loadHTMLFile($url_image);
