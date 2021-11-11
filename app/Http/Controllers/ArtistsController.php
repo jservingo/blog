@@ -83,6 +83,7 @@ class ArtistsController extends Controller
       $links = "";
       $tags = "Music";
       $footnote = "";
+
       $url_artist = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='.$mbid.'&api_key='.$api_key;
       $xml = simplexml_load_file($url_artist);
       $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
@@ -91,6 +92,7 @@ class ArtistsController extends Controller
       foreach($tags_artist->children() as $tag) {
         $tags = $tags.",".$tag->name;
       } 
+
       $url_artist = "http://musicbrainz.org/ws/2/artist/".$mbid."?inc=url-rels";
       
       $curl = curl_init();
@@ -103,9 +105,6 @@ class ArtistsController extends Controller
       $data = curl_exec($curl);
       curl_close($curl);
 
-      return($data);
-
-      //$data  = utf8_decode(trim($data)); 
       $xml = simplexml_load_string($data);
       
       $links_artist = $xml->{'artist'}->{'relation-list'};
@@ -114,6 +113,7 @@ class ArtistsController extends Controller
         if ($link->attributes()->{'type'} == "image")
           $url_image = $link->{'target'}; 
       }
+      
       if ($url_image != "")
         $img = getImage($url_image);
 
