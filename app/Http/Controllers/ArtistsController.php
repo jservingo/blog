@@ -132,19 +132,21 @@ class ArtistsController extends Controller
       $data = curl_exec($curl);
       curl_close($curl);
 
-      $xml = simplexml_load_string($data);
-      
-      $links_artist = $xml->{'artist'}->{'relation-list'};
-      foreach($links_artist->children() as $link) {
-        $links = $links."<a href='".$link->target."' target='_blank'>".$link->attributes()->{'type'}."</a> ";
-        if ($link->attributes()->{'type'} == "image")
-          $url_image = $link->{'target'}; 
-      }
+      if ($data[0] == "<" && $data[1] == "/") {
+        $xml = simplexml_load_string($data);
+        
+        $links_artist = $xml->{'artist'}->{'relation-list'};
+        foreach($links_artist->children() as $link) {
+          $links = $links."<a href='".$link->target."' target='_blank'>".$link->attributes()->{'type'}."</a> ";
+          if ($link->attributes()->{'type'} == "image")
+            $url_image = $link->{'target'}; 
+        }
 
-      /*
-      if ($url_image != "")
-        $img = get_post_image($url_image);
-      */
+        /*
+        if ($url_image != "")
+          $img = get_post_image($url_image);
+        */
+      }
 
       //Buscar post de la app
       $post = Post
