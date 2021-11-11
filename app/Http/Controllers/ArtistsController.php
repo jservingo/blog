@@ -8,6 +8,7 @@ use App\Artist;
 use App\Kpost;
 use App\Photo;
 use App\Post;
+use App\Tag;
 use App\App;
 
 class ArtistsController extends Controller
