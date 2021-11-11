@@ -131,15 +131,15 @@ class ArtistsController extends Controller
       
       $links_artist = $xml->{'artist'}->{'relation-list'};
       foreach($links_artist->children() as $link) {
-        $links = $links."<a href='".$link->attributes()->{'type'}."' target='_blank'>".$link->target."</a> ";
+        $links = $links."<a href='".$link->target."' target='_blank'>".$link->attributes()->{'type'}."</a> ";
         if ($link->attributes()->{'type'} == "image")
           $url_image = $link->{'target'}; 
       }
 
-      return($url_image);
-
+      /*
       if ($url_image != "")
         $img = get_post_image($url_image);
+      */
 
       //Buscar post de la app
       $post = Post
@@ -147,7 +147,7 @@ class ArtistsController extends Controller
         ->where("source","=",$source)
         ->first();
 
-      //Buscar el owner de la app
+      //Buscar el objeto app
       $app = App::find($app_id);
 
       //Si el post no existe hay que crearlo
