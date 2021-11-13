@@ -99,6 +99,8 @@ class ArtistsController extends Controller
     $app_id = 4;
     $num = 0;
 
+    $fp = fopen("create_posts.txt", 'w');
+
     foreach($artists as $artist) 
     {      
      $mbid = $artist->mbid;
@@ -112,6 +114,8 @@ class ArtistsController extends Controller
         $tags = "Music";
         $footnote = "";
 
+        fwrite($fp, $title." ".$mbid."\n");
+
         $url_artist = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='.$mbid.'&api_key='.$api_key;
         $curl = curl_init();
         curl_setopt_array($curl, Array(
@@ -123,8 +127,12 @@ class ArtistsController extends Controller
         $data = curl_exec($curl);
         curl_close($curl);
 
+        fwrite($fp, $data."\n");
+
         if ($data[0] == "<" && $data[1] == "/") 
         {
+          fwrite($fp, "simplexml_load_string\n");
+
           $xml = simplexml_load_string($data);
           $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
           $body = $xml->{'artist'}->{'bio'}->{'content'};
@@ -146,6 +154,7 @@ class ArtistsController extends Controller
           //OJO El usuario debería ser el administrador de la App
           if (! $post)
           { 
+            fwrite($fp, "Post create\n");
             $post = Post::create([
               'title' => $title,
               'excerpt' => $excerpt,
@@ -159,6 +168,8 @@ class ArtistsController extends Controller
               'source' => $source,
               'published_at' => Carbon::now('UTC')
             ]);
+
+            fwrite($fp, "Post createad\n");
 
             Photo::create([
               'url' => $img,
@@ -195,19 +206,24 @@ class ArtistsController extends Controller
               }
             }
 
+            fwrite($fp, "Tags added\n");
+
             $kpost = Kpost::create([
               'post_id' => $post->id,
               'user_id' => $app->user_id,
               'sent_by' => $app->user_id,
               'sent_at' => Carbon::now('UTC') 
             ]);
+
+            fwrite($fp, "Done post create\n\n");
           }
         }
-        
+
         $num = $num + 1;
       }      
     }
 
+    fclose($fp);
     return("Done create posts");
   }      
   
