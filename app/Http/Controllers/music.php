@@ -10,7 +10,7 @@
       $data = curl_exec($curl);
       curl_close($curl);
 
-      if ($data[0] == "<" && $data[1] == "/") {
+      if ($data[0] == "<") {
         $xml = simplexml_load_string($data);
         
         $links_artist = $xml->{'artist'}->{'relation-list'};

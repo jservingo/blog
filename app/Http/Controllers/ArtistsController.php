@@ -127,9 +127,9 @@ class ArtistsController extends Controller
         $data = curl_exec($curl);
         curl_close($curl);
 
-        fwrite($fp, $data."\n");
+        //fwrite($fp, $data."\n");
 
-        if ($data[0] == "<" && $data[1] == "/") 
+        if ($data[0] == "<") 
         {
           fwrite($fp, "simplexml_load_string\n");
 
