@@ -99,99 +99,113 @@ class ArtistsController extends Controller
     $app_id = 4;
     $num = 0;
 
-    foreach($artists as $artist) {      
+    foreach($artists as $artist) 
+    {      
      $mbid = $artist->mbid;
      if (($num<=50) && ($mbid!="not found"))
      { 
-      $title = $artist->name;
-      $source = $artist->url;
-      $img = "/img/music.png";
-      $url_image = "";
-      $links = "";
-      $tags = "Music";
-      $footnote = "";
+        $title = $artist->name;
+        $source = $artist->url;
+        $img = "/img/music.png";
+        $url_image = "";
+        $links = "";
+        $tags = "Music";
+        $footnote = "";
 
-      $url_artist = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='.$mbid.'&api_key='.$api_key;
-      $xml = simplexml_load_file($url_artist);
-      $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
-      $body = $xml->{'artist'}->{'bio'}->{'content'};
-      $tags_artist = $xml->{'artist'}->{'tags'};
-      foreach($tags_artist->children() as $tag) {
-        $tags = $tags.",".$tag->name;
-      } 
-      
-      //Buscar post de la app
-      $post = Post
-        ::where("app_id","=",$app_id)
-        ->where("source","=",$source)
-        ->first();
+        $url_artist = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='.$mbid.'&api_key='.$api_key;
+        $curl = curl_init();
+        curl_setopt_array($curl, Array(
+          CURLOPT_URL            => $url_artist,
+          CURLOPT_USERAGENT      => "Kodelia/1.0 (jservingo@gmail.com)",
+          CURLOPT_RETURNTRANSFER => TRUE,
+          CURLOPT_ENCODING       => 'UTF-8'
+        ));      
+        $data = curl_exec($curl);
+        curl_close($curl);
 
-      //Buscar el objeto app
-      $app = App::find($app_id);
-
-      //Si el post no existe hay que crearlo
-      //OJO El usuario debería ser el administrador de la App
-      if (! $post)
-      { 
-        $post = Post::create([
-          'title' => $title,
-          'excerpt' => $excerpt,
-          'body' => '<a href="'.$source.'" target=_blank">'.$body.'<br><br>'.$links.'</a>',        
-          'footnote' => $footnote,
-          'links' => $links,
-          'type_id' => 8,
-          'user_id' => $app->user_id,
-          'custom_type' => $custom_type,
-          'app_id' => $app_id,
-          'source' => $source,
-          'published_at' => Carbon::now('UTC')
-        ]);
-
-        Photo::create([
-          'url' => $img,
-          'post_id' => $post->id,
-          'user_id' => $app->user_id
-        ]);
-
-        //Eliminar tags del post
-        $post->tags()
-          ->wherePivot('post_id', '=', $post->id)
-          ->wherePivot('user_id', '=', $app->user_id)
-          ->detach();
-        
-        //Agregar tags al post
-        $tags = explode(',',$tags);
-        if(!empty($tags))
+        if ($data[0] == "<" && $data[1] == "/") 
         {
-          foreach ($tags as $tag_str)
-          {
-            if (strlen($tag_str) >= 3)
+          $xml = simplexml_load_string($data);
+          $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
+          $body = $xml->{'artist'}->{'bio'}->{'content'};
+          $tags_artist = $xml->{'artist'}->{'tags'};
+          foreach($tags_artist->children() as $tag) {
+            $tags = $tags.",".$tag->name;
+          } 
+
+          //Buscar post de la app
+          $post = Post
+            ::where("app_id","=",$app_id)
+            ->where("source","=",$source)
+            ->first();
+
+          //Buscar el objeto app
+          $app = App::find($app_id);
+
+          //Si el post no existe hay que crearlo
+          //OJO El usuario debería ser el administrador de la App
+          if (! $post)
+          { 
+            $post = Post::create([
+              'title' => $title,
+              'excerpt' => $excerpt,
+              'body' => '<a href="'.$source.'" target=_blank">'.$body.'<br><br>'.$links.'</a>',        
+              'footnote' => $footnote,
+              'links' => $links,
+              'type_id' => 8,
+              'user_id' => $app->user_id,
+              'custom_type' => $custom_type,
+              'app_id' => $app_id,
+              'source' => $source,
+              'published_at' => Carbon::now('UTC')
+            ]);
+
+            Photo::create([
+              'url' => $img,
+              'post_id' => $post->id,
+              'user_id' => $app->user_id
+            ]);
+
+            //Eliminar tags del post
+            $post->tags()
+              ->wherePivot('post_id', '=', $post->id)
+              ->wherePivot('user_id', '=', $app->user_id)
+              ->detach();
+            
+            //Agregar tags al post
+            $tags = explode(',',$tags);
+            if(!empty($tags))
             {
-              $tag_str = trim(preg_replace('/\s+/', '', $tag_str));
-              $tag = Tag::where('name', $tag_str)->first();
-              if($tag)
-                $post->tags()->attach($tag->id, array('user_id' => $app->user_id));
-              else
+              foreach ($tags as $tag_str)
               {
-                $tag = Tag::create([
-                  'name' => $tag_str
-                ]);
-                $post->tags()->attach($tag->id, array('user_id' => $app->user_id));
+                if (strlen($tag_str) >= 3)
+                {
+                  $tag_str = trim(preg_replace('/\s+/', '', $tag_str));
+                  $tag = Tag::where('name', $tag_str)->first();
+                  if($tag)
+                    $post->tags()->attach($tag->id, array('user_id' => $app->user_id));
+                  else
+                  {
+                    $tag = Tag::create([
+                      'name' => $tag_str
+                    ]);
+                    $post->tags()->attach($tag->id, array('user_id' => $app->user_id));
+                  }
+                }
               }
             }
+
+            $kpost = Kpost::create([
+              'post_id' => $post->id,
+              'user_id' => $app->user_id,
+              'sent_by' => $app->user_id,
+              'sent_at' => Carbon::now('UTC') 
+            ]);
           }
         }
-
-        $kpost = Kpost::create([
-          'post_id' => $post->id,
-          'user_id' => $app->user_id,
-          'sent_by' => $app->user_id,
-          'sent_at' => Carbon::now('UTC') 
-        ]);
-
+        
         $num = $num + 1;
-      }
-     }      
+      }      
     }
 
     return("Done create posts");
