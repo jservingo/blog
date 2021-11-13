@@ -127,19 +127,24 @@ class ArtistsController extends Controller
         $data = curl_exec($curl);
         curl_close($curl);
 
-        //fwrite($fp, $data."\n");
+        fwrite ($fp, $data."\n");
+        fwrite ($fp, $url_artist."\n");
 
         if ($data[0] == "<") 
         {
           fwrite($fp, "simplexml_load_string\n");
-
           $xml = simplexml_load_string($data);
+          fwrite($fp, "simplexml loaded\n");
+
           $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
           $body = $xml->{'artist'}->{'bio'}->{'content'};
-          $tags_artist = $xml->{'artist'}->{'tags'};
+          $tags_artist = $xml->{'artist'}->{'tags'};          
+
+          fwrite($fp, "tags load\n");
           foreach($tags_artist->children() as $tag) {
             $tags = $tags.",".$tag->name;
           } 
+          fwrite($fp, "tags added\n");
 
           //Buscar post de la app
           $post = Post
@@ -170,7 +175,6 @@ class ArtistsController extends Controller
             ]);
 
             fwrite($fp, "Post createad\n");
-
             Photo::create([
               'url' => $img,
               'post_id' => $post->id,
