@@ -99,7 +99,7 @@ class ArtistsController extends Controller
     $app_id = 4;
     $num = 0;
 
-    $fp = fopen("create_posts.txt", 'w');
+    $fp = fopen("mbid/create_posts.txt", 'w');
 
     foreach($artists as $artist) 
     {      
