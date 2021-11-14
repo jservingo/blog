@@ -137,8 +137,10 @@ class ArtistsController extends Controller
 
           $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
           $body = $xml->{'artist'}->{'bio'}->{'content'};
-          $source = $xml->{'xml'};
-          $tags_artist = $xml->{'artist'}->{'tags'};          
+          $source = $xml->{'url'};
+          $tags_artist = $xml->{'artist'}->{'tags'};  
+
+          fwrite($fp, $source."\n");        
 
           foreach($tags_artist->children() as $tag) {
             $tags = $tags.",".$tag->name;
