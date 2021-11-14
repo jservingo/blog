@@ -150,7 +150,7 @@ class ArtistsController extends Controller
           $post = Post
             ::where("app_id","=",$app_id)
             ->where("source","=",$source)
-            ->get();
+            ->first();
 
           //Buscar el objeto app
           $app = App::find($app_id);
