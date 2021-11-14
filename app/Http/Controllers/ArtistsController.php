@@ -107,14 +107,13 @@ class ArtistsController extends Controller
      if (($num<=50) && ($mbid!="not found"))
      { 
         $title = $artist->name;
-        $source = $artist->url;
         $img = "/img/music.png";
         $url_image = "";
         $links = "";
         $tags = "Music";
         $footnote = "";
 
-        fwrite($fp, $title." Source:".$source." ".$mbid."\n");
+        fwrite($fp, $title." ".$mbid."\n");
 
         $url_artist = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='.$mbid.'&api_key='.$api_key;
         $curl = curl_init();
@@ -138,6 +137,7 @@ class ArtistsController extends Controller
 
           $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
           $body = $xml->{'artist'}->{'bio'}->{'content'};
+          $source = $xml->{'xml'};
           $tags_artist = $xml->{'artist'}->{'tags'};          
 
           foreach($tags_artist->children() as $tag) {
