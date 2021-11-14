@@ -127,7 +127,7 @@ class ArtistsController extends Controller
         $data = curl_exec($curl);
         curl_close($curl);
 
-        fwrite ($fp, $data."\n");
+        //fwrite ($fp, $data."\n");
         fwrite ($fp, $url_artist."\n");
 
         if ($data[0] == "<") 
@@ -140,20 +140,20 @@ class ArtistsController extends Controller
           $body = $xml->{'artist'}->{'bio'}->{'content'};
           $tags_artist = $xml->{'artist'}->{'tags'};          
 
-          fwrite($fp, "tags load\n");
           foreach($tags_artist->children() as $tag) {
             $tags = $tags.",".$tag->name;
           } 
-          fwrite($fp, "tags added\n");
 
           //Buscar post de la app
           $post = Post
             ::where("app_id","=",$app_id)
             ->where("source","=",$source)
-            ->first();
+            ->get();
 
           //Buscar el objeto app
           $app = App::find($app_id);
+
+          fwrite($fp, "simplexml loaded OK\n");
 
           //Si el post no existe hay que crearlo
           //OJO El usuario debería ser el administrador de la App
@@ -188,6 +188,7 @@ class ArtistsController extends Controller
               ->detach();
             
             //Agregar tags al post
+            fwrite($fp, "tags load\n");
             $tags = explode(',',$tags);
             if(!empty($tags))
             {
@@ -209,7 +210,6 @@ class ArtistsController extends Controller
                 }
               }
             }
-
             fwrite($fp, "Tags added\n");
 
             $kpost = Kpost::create([
