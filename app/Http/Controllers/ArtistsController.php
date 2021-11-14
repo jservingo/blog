@@ -114,7 +114,7 @@ class ArtistsController extends Controller
         $tags = "Music";
         $footnote = "";
 
-        fwrite($fp, $title." ".$source." ".$mbid."\n");
+        fwrite($fp, $title." Source:".$source." ".$mbid."\n");
 
         $url_artist = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='.$mbid.'&api_key='.$api_key;
         $curl = curl_init();
