@@ -23,7 +23,11 @@ $(function() {
               '</div>'+ 
             '</div>'+ 
             '</div>'+
-            '<!-- Nothing -->'+
+            '<div class="post-category">'+
+              '<span class="category green text-capitalize">'+
+                '<a href=":source:">:custom_type:</a>'+
+              '</span>'+
+            '</div>'+
           '</header>'+
         '</div>'+
         '<div style="float:left;">'+
