@@ -2,13 +2,13 @@
   $url = \Illuminate\Support\Str::slug($post->title);
 @endphp
 @if ($post->isPhotoGallery())
-  <!-- Nothing -->
+  <!-- Nothing Pg -->
 @endif
 @if ($post->isFrame())
-  <!-- Nothing -->
+  <!-- Nothing Fr-->
 @endif
 @if ($post->isText())
-  <!-- Nothing -->
+  <!-- Nothing Tx-->
 @endif
 @if ($post->isNotification())
   <div class="post-category">
@@ -49,7 +49,6 @@
 @if ($post->isCustom())
   <div class="post-category">
    <span class="category dark-wine text-capitalize">
-      {{-- route('app.show_app',[$post->ref_id,0,$url]) --}}
       <a href="{{ $post->source }}" target="_blank">
         {{ $post->custom_type }}
       </a>
