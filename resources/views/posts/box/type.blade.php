@@ -19,24 +19,6 @@
    </span>
   </div>
 @endif
-@if ($post->isMessage())
-  <div class="post-category">
-   <span class="category ocre text-capitalize">
-      <a href="{{ route('post.show',[$post,$url]) }}">
-        {{ __('messages.type-message') }}
-      </a>
-    </span>
-  </div>
-@endif 
-@if ($post->isAlert())
-  <div class="post-category">
-   <span class="category red text-capitalize">
-      <a href="{{ route('post.show',[$post,$url]) }}">
-        {{ __('messages.type-alert') }}
-      </a>
-    </span>
-  </div>
-@endif 
 @if ($post->isWebPage())
   <div class="post-category">     
    <span class="category lime text-capitalize">
@@ -46,6 +28,15 @@
     </span>
   </div>
 @endif
+@if ($post->isAlert())
+  <div class="post-category">
+   <span class="category red text-capitalize">
+      <a href="{{ route('post.show',[$post,$url]) }}">
+        {{ __('messages.type-alert') }}
+      </a>
+    </span>
+  </div>
+@endif 
 @if ($post->isOffer())
   <div class="post-category">
    <span class="category light-green text-capitalize">
@@ -54,7 +45,26 @@
       </a>
     </span>
   </div>
+@endif
+@if ($post->isCustom())
+  <div class="post-category">
+   <span class="category dark-wine text-capitalize">
+      {{-- route('app.show_app',[$post->ref_id,0,$url]) --}}
+      <a href="{{ $post->source }}" target="_blank">
+        {{ $post->custom_type }}
+      </a>
+    </span>
+  </div>
 @endif  
+@if ($post->isMessage())
+  <div class="post-category">
+   <span class="category ocre text-capitalize">
+      <a href="{{ route('post.show',[$post,$url]) }}">
+        {{ __('messages.type-message') }}
+      </a>
+    </span>
+  </div>
+@endif 
 @if ($post->isCatalog())
   <div class="post-category">     
    <span class="category sepia text-capitalize">
@@ -87,16 +97,6 @@
    <span class="category azure text-capitalize">
       <a href="{{ route('post.show',[$post,$url]) }}">
          {{ __('messages.type-user') }}
-      </a>
-    </span>
-  </div>
-@endif
-@if ($post->custom_type)
-  <div class="post-category">
-   <span class="category dark-wine text-capitalize">
-      {{-- route('app.show_app',[$post->ref_id,0,$url]) --}}
-      <a href="{{ $post->source }}" target="_blank">
-        {{ $post->custom_type }}
       </a>
     </span>
   </div>
