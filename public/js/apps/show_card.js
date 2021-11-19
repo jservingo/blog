@@ -27,17 +27,17 @@ $(function() {
 
   var template_post = '<div class="post pcard">'+
    '<div class="content-post">'+
-  	'<div style="float:right;">'+
-  		'<header class="xcontainer-flex xspace-between">'+
-	      '<div class="date truncate" data-height="51" style="width: 226px; padding: 10px 5px 5px 10px; background-color: rgb(215, 233, 243);">'+
-		      '<a href=":source_post:" class="text-uppercase c-blue" data-id="1">'+
-	  	      '<h1 class="t-title" style="margin-top:0;margin-bottom:0px;margin-right:22px;">:title:</h1>'+  
-		      '</a>'+		
-	        '<div>'+ 
-	         '<div class="popr box_popup" style="position:absolute; top:10px; right:5px;" data-id=":post_id:">'+
-	           '<img src="/img/options.png" width="20">'+
-	         '</div>'+ 
-	        '</div>'+ 
+    '<div style="float:right;">'+
+      '<header class="xcontainer-flex xspace-between">'+
+        '<div class="date truncate" data-height="51" style="width: 226px; padding: 10px 5px 5px 10px; background-color: rgb(215, 233, 243);">'+
+          '<a href=":source_post:" class="text-uppercase c-blue" data-id="1">'+
+            '<h1 class="t-title" style="margin-top:0;margin-bottom:0px;margin-right:22px;">:title:</h1>'+  
+          '</a>'+   
+          '<div>'+ 
+           '<div class="popr box_popup" style="position:absolute; top:10px; right:5px;" data-id=":post_id:">'+
+             '<img src="/img/options.png" width="20">'+
+           '</div>'+ 
+          '</div>'+ 
         '</div>'+ 
         '<div class="post-category">'+
           '<span class="category dark-wine text-capitalize">'+
@@ -48,19 +48,19 @@ $(function() {
         '</div>'+ 
       '</header>'+
     '</div>'+
-  	'<div style="float:left;">'+
+    '<div style="float:left;">'+
       '<div style="height:66px; background-color:#d7e9f3">'+
-	     '<img src=":img:" alt=":img alt:" class="img-responsive icard" width="66">'+
+       '<img src=":img:" alt=":img alt:" class="img-responsive icard" width="66">'+
       '</div>'+
     '</div>'+ 
     '<div style="clear:both;"></div>'+        
     '<div>'+
-    	'<div class="truncate" data-height="128" style="width: 287px; background-color: rgb(254, 253, 253); padding: 10px 10px 4px; text-align: justify;">'+
+      '<div class="truncate" data-height="128" style="width: 287px; background-color: rgb(254, 253, 253); padding: 10px 10px 4px; text-align: justify;">'+
         '<a href=":source_post:" class="t-excerpt c-negro" data-id="1">'+
           ':excerpt:'+
         '</a>'+        
       '</div>'+
-    '</div>'+	
+    '</div>'+ 
     '<div>'+
       '<div class="truncate" data-height="18" style="width: 287px; background-color: rgb(254, 253, 253); padding: 4px 10px; text-align: right; height: 18px;">'+
         '<span class="user c-blue">'+
@@ -94,7 +94,7 @@ $(function() {
                   'data-custom_type=":custom_type:">'+
               '<img src="/img/save.png" width="24">'+
             '</a>'+
- 	    '</footer>'+
+      '</footer>'+
     '</div>'+  
   '</div>'+
   '</div>'; 
@@ -232,24 +232,10 @@ $(function() {
     .catch((error) => console.log(error))  
   } 
 
-  if (!localStorage.app_posts || localStorage.app_url != url_api)
-  {
-    get_posts(function(posts) {
-      //console.log(posts);
-      localStorage.app_posts = JSON.stringify(posts);
-      localStorage.app_url = url_api;
-      var num = posts.length;
-      var visible_posts = slicePosts(posts,num,1);
-      //$appPostsContainer.find('.app-loader').remove();
-      renderPosts(visible_posts);
-      renderPagination(num);
-      $(window).trigger('resize');
-      truncate();
-    });
-  }
-  else
-  {
-    posts = JSON.parse(localStorage.app_posts);
+  get_posts(function(posts) {
+    //console.log(posts);
+    localStorage.app_posts = JSON.stringify(posts);
+    localStorage.app_url = url_api;
     var num = posts.length;
     var visible_posts = slicePosts(posts,num,1);
     //$appPostsContainer.find('.app-loader').remove();
@@ -257,5 +243,5 @@ $(function() {
     renderPagination(num);
     $(window).trigger('resize');
     truncate();
-  }
+  });
 })

@@ -267,28 +267,15 @@ $(function() {
     .catch((error) => console.log(error))  
   } 
 
-  if (!localStorage.app_posts || localStorage.app_url != url_api)
-  {
-    get_posts(function(posts) {
-      //console.log(posts);
-      localStorage.app_posts = JSON.stringify(posts);
-      localStorage.app_url = url_api;
-      var num = posts.length;
-      var visible_posts = slicePosts(posts,num,1);
-      $appPostsContainer.find('.app-loader').remove();
-      renderPosts(visible_posts);
-      renderPagination(num);
-      $(window).trigger('resize');
-    });
-  }
-  else
-  {
-    posts = JSON.parse(localStorage.app_posts);
+  get_posts(function(posts) {
+    //console.log(posts);
+    localStorage.app_posts = JSON.stringify(posts);
+    localStorage.app_url = url_api;
     var num = posts.length;
     var visible_posts = slicePosts(posts,num,1);
     $appPostsContainer.find('.app-loader').remove();
     renderPosts(visible_posts);
     renderPagination(num);
     $(window).trigger('resize');
-  }
+  });
 })
