@@ -357,7 +357,8 @@ class AppsController extends Controller
         "custom_type" => $post->custom_type,
         "footnote" => $post->footnote,
         "tags" => array('tags'=>$str_tags)
-      };
+      );
+
       array_push($artists, array('artist'=>$post)); 
     } 
 
