@@ -330,7 +330,7 @@ class AppsController extends Controller
       ->where("title",'like',$q.'%')
       ->get();
 
-    var artists =  array();
+    $artists = array();
 
     foreach($posts as $post)
     {
@@ -344,7 +344,7 @@ class AppsController extends Controller
           $str_tags = $str_tags.",".$tag;
       }
 
-      if (post->photos)
+      if ($post->photos)
         $img = $post->photos->first()->url;
       else
         $img = "";
