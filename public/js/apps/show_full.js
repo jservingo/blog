@@ -267,7 +267,6 @@ $(function() {
   }   
 
   get_posts(function(posts) {
-    alert("get posts");
     localStorage.app_posts = JSON.stringify(posts);
     localStorage.app_url = url_api;
     var num = posts.length;

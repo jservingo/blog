@@ -323,6 +323,50 @@ class AppsController extends Controller
       echo json_encode(array('success'=>false));
   }  
 
+  public function search_posts($app_id, $q)
+  {
+    $posts = Post
+      ::where("app_id","=",$app_id)
+      ->where("title",'like',$q.'%')
+      ->get();
+
+    var artists = new Array();
+
+    foreach($posts as $post)
+    {
+      $str_tags = "";
+      $tags = $post->tags;
+      foreach($tags as $tag)
+      {
+        if ($str_tags="")
+          $str_tags = $str_tags.$tag;
+        else
+          $str_tags = $str_tags.",".$tag;
+      }
+
+      if (post->photos)
+        $img = $post->photos->first()->url;
+      else
+        $img = "";
+
+      $post = array(
+        "title" => $post->title, 
+        "excerpt" => $post->excerpt, 
+        "img" => $post->img,
+        "source" => $post->source,
+        "custom_type" => $post->custom_type,
+        "footnote" => $post->footnote,
+        "tags" => array('tags'=>$str_tags)
+      };
+      array_push($artists, array('artist'=>$post)); 
+    } 
+
+    if ($artits)
+      echo json_encode(array('success'=>true,'artists'=>$artists));
+    else
+      echo json_encode(array('success'=>false));
+  } 
+
   function get_posts(App $app)
   {
     $posts = Post

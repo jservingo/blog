@@ -1,7 +1,7 @@
-// show_app_TVmaze.js
+// search_app_TVmaze.js
 
-var url_api = "tvmaze";
-var url_search = "http://api.tvmaze.com/search/shows?q=";
+//var url_api = "tvmaze";
+//var url_search = "http://api.tvmaze.com/search/shows?q=";
 var custom_type = "TV Show";
 
 function search_posts(q, callback)
