@@ -330,7 +330,7 @@ class AppsController extends Controller
       ->where("title",'like',$q.'%')
       ->get();
 
-    var artists = new Array();
+    var artists =  array();
 
     foreach($posts as $post)
     {
