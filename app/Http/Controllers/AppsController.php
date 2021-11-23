@@ -362,10 +362,7 @@ class AppsController extends Controller
       array_push($artists, array('artist'=>$post)); 
     } 
 
-    if ($artits)
-      echo json_encode(array('success'=>true,'artists'=>$artists));
-    else
-      echo json_encode(array('success'=>false));
+    echo json_encode(array('success'=>true,'artists'=>$artists));
   } 
 
   function get_posts(App $app)
