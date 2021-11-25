@@ -325,6 +325,7 @@ class AppsController extends Controller
 
   public function search_posts($app_id, $q)
   {
+    //Buscar artistas en todos los posts guardados
     $posts = Post
       ::where("app_id","=",$app_id)
       ->where("title",'like',$q.'%')
@@ -334,28 +335,31 @@ class AppsController extends Controller
 
     foreach($posts as $post)
     {
+      //Obtener tags
       $str_tags = "";
       $tags = $post->tags;
       foreach($tags as $tag)
       {
         if ($str_tags="")
-          $str_tags = $str_tags.$tag;
+          $str_tags = $str_tags.$tag->name;
         else
-          $str_tags = $str_tags.",".$tag;
+          $str_tags = $str_tags.",".$tag->name;
       }
 
-      if ($post->photos)
-        $img = $post->photos->first()->url;
-      else
-        $img = "";
+      //Obtener imagen previamente guardada
+      $img = $post->photos->first()->url;
 
+      //Crear post temporal para mostrar
       $post = array(
         "title" => $post->title, 
-        "excerpt" => $post->excerpt, 
+        "excerpt" => $post->excerpt,
+        "body" => $post->body,
+        "footnote" => $post->footnote, 
+        "links" => $post->links,
         "img" => $post->img,
         "source" => $post->source,
         "custom_type" => $post->custom_type,
-        "footnote" => $post->footnote,
+        "published_at" => $post->published_at,
         "tags" => array('tags'=>$str_tags)
       );
 

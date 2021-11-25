@@ -13,6 +13,7 @@ use App\App;
 
 class ArtistsController extends Controller
 {
+  //Ya se generaron todos los archivos de artistas
   function generate_artists()
   {
     return;
@@ -46,6 +47,7 @@ class ArtistsController extends Controller
     fclose($fo);
   }
 
+  //Ya fueron creados todos los artistas
   function create_artists($i)
   {
     return;
@@ -66,28 +68,7 @@ class ArtistsController extends Controller
 
   //******************************************************************
 
-  function get_post_image($url_image)
-  {
-    $src = "/img/music.png";    
-    $doc = new \DOMDocument();
-    @$doc->loadHTMLFile($url_image);
-    if ($doc)
-    {  
-      $xpath = new \DOMXpath($doc);
-      if ($xpath)
-      {
-        $imgs = $xpath->query("//img");
-        if ($imgs)
-        {
-          $img = $imgs->item(0);
-          if ($img)
-            $src = $img->getAttribute("src");        
-        }
-      }
-    }
-    return($src);
-  }
-
+  //Crear posts a partir de artistas que esten validados
   function create_posts()
   {
     $artists = Artist
@@ -136,6 +117,9 @@ class ArtistsController extends Controller
           fwrite($fp, "simplexml loaded\n");
 
           $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
+          $excerpt = str_replace("\\n", "", $excerpt);  
+          $excerpt = str_replace("<\/a>", "", $excerpt);
+          $excerpt = str_replace("Read more on Last.fm", "", $excerpt);            
           $body = $xml->{'artist'}->{'bio'}->{'content'};
           $source = $xml->{'artist'}->{'url'};
           $tags_artist = $xml->{'artist'}->{'tags'};  
@@ -144,6 +128,34 @@ class ArtistsController extends Controller
 
           foreach($tags_artist->children() as $tag) {
             $tags = $tags.",".$tag->name;
+          }
+
+          //Obtener links e imagen de musicbrainz 
+          $url_artist = "http://musicbrainz.org/ws/2/artist/".$mbid."?inc=url-rels";
+      
+          $curl = curl_init();
+          curl_setopt_array($curl, Array(
+            CURLOPT_URL            => $url_artist,
+            CURLOPT_USERAGENT      => "Kodelia/1.0 (jservingo@gmail.com)",
+            CURLOPT_RETURNTRANSFER => TRUE,
+            CURLOPT_ENCODING       => 'UTF-8'
+          ));      
+          $data = curl_exec($curl);
+          curl_close($curl);
+
+          if ($data[0] == "<") {
+            $xml = simplexml_load_string($data);
+            
+            $links_artist = $xml->{'artist'}->{'relation-list'};
+            foreach($links_artist->children() as $link) {
+              $links = $links."<a href='".$link->target."' target='_blank'>".$link->attributes()->{'type'}."</a> ";
+              if ($link->attributes()->{'type'} == "image")
+                $url_image = $link->{'target'}; 
+            }
+
+            //Obtener imagen del artista 
+            if ($url_image != "")
+              $img = get_post_image($url_image);            
           } 
 
           //Buscar post de la app
@@ -165,7 +177,7 @@ class ArtistsController extends Controller
             $post = Post::create([
               'title' => $title,
               'excerpt' => $excerpt,
-              'body' => '<a href="'.$source.'" target=_blank">'.$body.'<br><br>'.$links.'</a>',        
+              'body' => '<a href="'.$source.'" target=_blank">'.$body.'</a>',        
               'footnote' => $footnote,
               'links' => $links,
               'type_id' => 8,
@@ -231,7 +243,9 @@ class ArtistsController extends Controller
 
     fclose($fp);
     return("Done create posts");
-  }      
+  }  
+
+  //******************************************************************    
   
   public function generate_top_artists($page)
   {
@@ -312,8 +326,6 @@ class ArtistsController extends Controller
 
   public function view_top_artists($page)
   {
-    // NO SE USA
-    // FALTA guardar la salida y generar el archivo de salida
     $file = "topArtists/topArtists_".$page.".txt";
     $fp = fopen($file,'r');
     
@@ -349,6 +361,28 @@ class ArtistsController extends Controller
     echo json_encode($artists);
   }
 
+  function get_post_image($url_image)
+  {
+    $src = "/img/music.png";    
+    $doc = new \DOMDocument();
+    @$doc->loadHTMLFile($url_image);
+    if ($doc)
+    {  
+      $xpath = new \DOMXpath($doc);
+      if ($xpath)
+      {
+        $imgs = $xpath->query("//img");
+        if ($imgs)
+        {
+          $img = $imgs->item(0);
+          if ($img)
+            $src = $img->getAttribute("src");        
+        }
+      }
+    }
+    return($src);
+  }
+
   function get_image(Request $request)
   {
     $url_image = $request->get('url_image');
@@ -371,6 +405,8 @@ class ArtistsController extends Controller
     }
     echo json_encode($src);
   }
+
+  //******************************************************************
 
   public function show_post($mbid)
   {

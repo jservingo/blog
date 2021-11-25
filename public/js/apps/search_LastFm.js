@@ -1,7 +1,5 @@
 // search_LastFm.js
 
-var custom_type = "Artist";
-
 function search_posts(q, callback)
 {
   var posts = new Array();
@@ -22,11 +20,11 @@ function search_posts(q, callback)
   		post = {
   			title: row.name, 
   			excerpt: row.summary, 
-  			img: row.image ? row.image.medium : '',
+  			img: row.img,
   			source: row.url,
-  			custom_type: custom_type,
-        footnote: footnote,
-        tags: tags
+  			custom_type: row.custom_type,
+        footnote: row.footnote,
+        tags: row.tags
   		};
   		posts.push(post);
   	});
