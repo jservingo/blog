@@ -1,5 +1,8 @@
 // search_LastFm.js
 
+var url_api = "LastFm";
+var custom_type = "Artist";
+
 function search_posts(q, callback)
 {
   var posts = new Array();
