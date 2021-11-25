@@ -154,8 +154,11 @@ class ArtistsController extends Controller
             }
 
             //Obtener imagen del artista 
+            /*
             if ($url_image != "")
-              $img = get_post_image($url_image);            
+              $img = get_post_image($url_image);
+            */
+            $img = $url_image;            
           } 
 
           //Buscar post de la app
