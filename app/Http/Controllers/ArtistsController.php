@@ -69,7 +69,7 @@ class ArtistsController extends Controller
   //******************************************************************
 
   //Crear posts a partir de artistas que esten validados
-  function create_posts()
+  public function create_posts()
   {
     $artists = Artist
       ::where('artists.status_id', '=', '1')
@@ -353,7 +353,7 @@ class ArtistsController extends Controller
 
   //******************************************************************
 
-  function get_all()
+  public function get_all()
   {
     // ESTO YA NO SE USA (ELIMINAR)
   	$artists = Post
@@ -367,7 +367,7 @@ class ArtistsController extends Controller
     echo json_encode($artists);
   }
 
-  function get_file_image($url_image)
+  public function get_file_image($url_image)
   {
     $src = "/img/music.png";    
     $doc = new \DOMDocument();
@@ -389,7 +389,7 @@ class ArtistsController extends Controller
     return($src);
   }
 
-  function get_image(Request $request)
+  public function get_image(Request $request)
   {
     $url_image = $request->get('url_image');
     $src = "/img/music.png";    
@@ -422,7 +422,7 @@ class ArtistsController extends Controller
     ]);
   }
 
-  function search($q)
+  public function search($q)
   {
     $artists = Artist
       ::leftjoin('posts', 'artists.post_id', '=', 'posts.id')
