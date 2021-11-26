@@ -158,10 +158,29 @@ class ArtistsController extends Controller
  
             //Obtener imagen del artista 
             if ($url_image != "") 
+            {
               if (str_contains($url_image, "wikimedia.org/wiki/File:"))
-                $img = get_file_image($url_image);
+              {
+                $doc = new \DOMDocument();
+                @$doc->loadHTMLFile($url_image);
+                if ($doc)
+                {  
+                  $xpath = new \DOMXpath($doc);
+                  if ($xpath)
+                  {
+                    $images = $xpath->query("//img");
+                    if ($images)
+                    {
+                      $image = $images->item(0);
+                      if ($image)
+                        $img = $image->getAttribute("src");        
+                    }
+                  }
+                }
+              }
               else
-                $img = $url_image;            
+                $img = $url_image;
+            }            
           } 
 
           //Buscar post de la app
@@ -369,7 +388,6 @@ class ArtistsController extends Controller
 
   public function get_file_image($url_image)
   {
-    $src = "/img/music.png";    
     $doc = new \DOMDocument();
     @$doc->loadHTMLFile($url_image);
     if ($doc)
@@ -380,13 +398,13 @@ class ArtistsController extends Controller
         $imgs = $xpath->query("//img");
         if ($imgs)
         {
-          $img = $imgs->item(0);
-          if ($img)
-            $src = $img->getAttribute("src");        
+          $image = $imgs->item(0);
+          if ($image)
+            $img = $image->getAttribute("src");        
         }
       }
     }
-    return($src);
+    return($img);
   }
 
   public function get_image(Request $request)
