@@ -1,5 +1,4 @@
 var fMathSolutionProcess = function () {
-	alert('fMathSolutionProcess');
 	
 	FMATH.ApplicationConfiguration.setFolderUrlForFonts('mathml-formula/fonts');
 	FMATH.ApplicationConfiguration.setFolderUrlForGlyphs('mathml-formula/glyphs');
@@ -11,8 +10,6 @@ var fMathSolutionProcess = function () {
 	fMathModal.classList.add("FMathModal");
 	document.body.appendChild(fMathModal);
 
-	alert('createElement');
-	
 	var fMathModalDiv = document.createElement('div');
 	fMathModalDiv.classList.add("FMathModal-content");
 	fMathModal.appendChild(fMathModalDiv);
@@ -45,8 +42,6 @@ var fMathSolutionProcess = function () {
 
 	var allMathMLLive = document.getElementsByTagName("math");
 	var allMathML = Array.prototype.slice.call(allMathMLLive);
-
-	alert('getElementsByTagName');
 
 	var mathmlList = new Array(allMathML.length);
 	var canvasList = new Array(allMathML.length);

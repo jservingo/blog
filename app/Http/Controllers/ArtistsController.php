@@ -201,8 +201,8 @@ class ArtistsController extends Controller
             fwrite($fp, "Post create\n");
             $post = Post::create([
               'title' => $title,
-              'excerpt' => $excerpt,
-              'body' => '<a href="'.$source.'" target=_blank">'.$body.'</a>',        
+              'excerpt' => strip_tags_content($excerpt),
+              'body' => $body,        
               'footnote' => $footnote,
               'links' => $links,
               'type_id' => 8,
