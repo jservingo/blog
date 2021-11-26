@@ -117,7 +117,7 @@ class ArtistsController extends Controller
           fwrite($fp, "simplexml loaded\n");
 
           $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
-          $excerpt = strip_tags_content($excerpt);
+          $excerpt = strip_tags($excerpt);
           $excerpt = str_replace("\\n", "", $excerpt);  
           $excerpt = str_replace("<\/a>", "", $excerpt);
           $excerpt = str_replace("Read more on Last.fm", "", $excerpt);            
