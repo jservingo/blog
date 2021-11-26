@@ -1,13 +1,14 @@
 // search_LastFm.js
 
 var url_api = "LastFm";
+var app_id = 4;
 var custom_type = "Artist";
 
 function search_posts(q, callback)
 {
   var posts = new Array();
 
-  url_search = "app/search/posts/"+$app_id+"/"+q;
+  url_search = "app/search/posts/"+app_id+"/"+q;
   fetch(url_search)
   //.then((res) => res.json())
   .then(function(res) {

@@ -147,18 +147,21 @@ class ArtistsController extends Controller
             $xml = simplexml_load_string($data);
             
             $links_artist = $xml->{'artist'}->{'relation-list'};
-            foreach($links_artist->children() as $link) {
-              $links = $links."<a href='".$link->target."' target='_blank'>".$link->attributes()->{'type'}."</a> ";
-              if ($link->attributes()->{'type'} == "image")
-                $url_image = $link->{'target'}; 
+            if (@count($links_artist->children()))
+            {
+              foreach($links_artist->children() as $link) {
+                $links = $links."<a href='".$link->target."' target='_blank'>".$link->attributes()->{'type'}."</a> ";
+                if ($link->attributes()->{'type'} == "image")
+                  $url_image = $link->{'target'}; 
+              }
             }
-
+ 
             //Obtener imagen del artista 
-            /*
-            if ($url_image != "")
-              $img = get_post_image($url_image);
-            */
-            $img = $url_image;            
+            if ($url_image != "") 
+              if (str_contains($url_image, "wikimedia.org/wiki/File:")
+                $img = get_file_image($url_image);
+              else
+                $img = $url_image;            
           } 
 
           //Buscar post de la app
@@ -364,7 +367,7 @@ class ArtistsController extends Controller
     echo json_encode($artists);
   }
 
-  function get_post_image($url_image)
+  function get_file_image($url_image)
   {
     $src = "/img/music.png";    
     $doc = new \DOMDocument();
