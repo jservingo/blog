@@ -158,7 +158,7 @@ class ArtistsController extends Controller
  
             //Obtener imagen del artista 
             if ($url_image != "") 
-              if (str_contains($url_image, "wikimedia.org/wiki/File:")
+              if (str_contains($url_image, "wikimedia.org/wiki/File:"))
                 $img = get_file_image($url_image);
               else
                 $img = $url_image;            
