@@ -117,6 +117,7 @@ class ArtistsController extends Controller
           fwrite($fp, "simplexml loaded\n");
 
           $excerpt = $xml->{'artist'}->{'bio'}->{'summary'};
+          $excerpt = strip_tags_content($excerpt);
           $excerpt = str_replace("\\n", "", $excerpt);  
           $excerpt = str_replace("<\/a>", "", $excerpt);
           $excerpt = str_replace("Read more on Last.fm", "", $excerpt);            
@@ -201,7 +202,7 @@ class ArtistsController extends Controller
             fwrite($fp, "Post create\n");
             $post = Post::create([
               'title' => $title,
-              'excerpt' => strip_tags_content($excerpt),
+              'excerpt' => $excerpt,
               'body' => $body,        
               'footnote' => $footnote,
               'links' => $links,
