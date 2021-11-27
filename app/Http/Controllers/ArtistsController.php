@@ -13,7 +13,7 @@ use App\App;
 
 class ArtistsController extends Controller
 {
-  //Ya se generaron todos los archivos de artistas
+  //No ejecutar porque ya se generaron todos los archivos de artistas
   function generate_artists()
   {
     return;
@@ -47,7 +47,7 @@ class ArtistsController extends Controller
     fclose($fo);
   }
 
-  //Ya fueron creados todos los artistas
+  //No ejecutar porque ya fueron creados todos los artistas
   function create_artists($i)
   {
     return;
@@ -85,7 +85,7 @@ class ArtistsController extends Controller
     foreach($artists as $artist) 
     {      
      $mbid = $artist->mbid;
-     if (($num<=50) && ($mbid!="not found"))
+     if ($mbid!="not found")
      { 
         $title = $artist->name;
         $img = "/img/music.png";
@@ -259,6 +259,10 @@ class ArtistsController extends Controller
               'sent_at' => Carbon::now('UTC') 
             ]);
 
+            //Cambiar status del artista
+            $artist->status_id = 2;
+            $artist->save();
+
             fwrite($fp, "Done post create\n\n");
           }
         }
@@ -268,7 +272,7 @@ class ArtistsController extends Controller
     }
 
     fclose($fp);
-    return("Done create posts");
+    return("Done create posts $num");
   }  
 
   //******************************************************************    
