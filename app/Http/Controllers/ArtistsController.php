@@ -146,14 +146,17 @@ class ArtistsController extends Controller
 
           if ($data[0] == "<") {
             $xml = simplexml_load_string($data);
-            
-            $links_artist = $xml->{'artist'}->{'relation-list'};
-            if (@count($links_artist->children()))
+             
+            $links_artist = $xml->{'artist'}->{'relation-list'};            
+            if ($links_artist)
             {
-              foreach($links_artist->children() as $link) {
-                $links = $links."<a href='".$link->target."' target='_blank'>".$link->attributes()->{'type'}."</a> ";
-                if ($link->attributes()->{'type'} == "image")
+              if (@count($links_artist->children()))
+              {
+                foreach($links_artist->children() as $link) {
+                  $links = $links."<a href='".$link->target."' target='_blank'>".$link->attributes()->{'type'}."</a> ";
+                  if ($link->attributes()->{'type'} == "image")
                   $url_image = $link->{'target'}; 
+                }
               }
             }
  
