@@ -397,10 +397,13 @@ class CatalogsController extends Controller
 
     if ($request->has('category_id')) {
       $category = Category::find($request->get('category_id')); 
-      $category->catalogs()->attach(
-        $catalog->id, 
-        array('user_id' => auth()->id())
-      );
+      if (! $category->catalogs->contains($catalog->id))
+      {
+        $category->catalogs()->attach(
+          $catalog->id, 
+          array('user_id' => auth()->id())
+        );
+      }
     } 
     
     $post = Post::create([

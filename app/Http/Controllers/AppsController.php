@@ -448,7 +448,10 @@ class AppsController extends Controller
             $tag_str = trim(preg_replace('/\s+/', '', $tag_str));
             $tag = Tag::where('name', $tag_str)->first();
             if($tag)
-              $post->tags()->attach($tag->id, array('user_id' => $app->user_id));
+            {
+              if (! $post->tags->contains($tag->id))
+                $post->tags()->attach($tag->id, array('user_id' => $app->user_id));
+            }            
             else
             {
               $tag = Tag::create([
