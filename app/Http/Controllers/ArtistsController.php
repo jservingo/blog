@@ -240,7 +240,7 @@ class ArtistsController extends Controller
                   $tag = Tag::where('name', $tag_str)->first();
                   if($tag)
                   {  
-                    if (! $post->tags->contains($tag->id))
+                    if (! $post->tags()->where('tag_id',$tag->id)->exists())
                       $post->tags()->attach($tag->id, array('user_id' => $app->user_id));
                   }
                   else
