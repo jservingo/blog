@@ -85,7 +85,7 @@ class ArtistsController extends Controller
     foreach($artists as $artist) 
     {      
      $mbid = $artist->mbid;
-     if (($num<200 && $mbid!="not found")
+     if ($num<200 && $mbid!="not found")
      { 
         $title = $artist->name;
         $img = "/img/music.png";
