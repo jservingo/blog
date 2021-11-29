@@ -376,8 +376,8 @@ class AppsController extends Controller
       ->with('tags')
       ->where("type_id","=",8)
       ->where("app_id","=",$app->id)
-      ->where("user_id","=",$app->user_id)     
-      ->orderBy('updated_at', 'DESC')
+      ->where("user_id","=",$app->user_id)
+      ->orderBy('title')     
       ->limit(100)
       ->get();
 
