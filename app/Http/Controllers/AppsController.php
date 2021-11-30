@@ -366,7 +366,7 @@ class AppsController extends Controller
       array_push($artists, array('artist'=>$post)); 
     } 
 
-    echo json_encode(array('success'=>true,'artists'=>$artists));
+    return($artists);
   } 
 
   function get_posts(App $app)
@@ -378,7 +378,7 @@ class AppsController extends Controller
       ->where("app_id","=",$app->id)
       ->where("user_id","=",$app->user_id)
       ->orderBy('title')     
-      ->limit(100)
+      ->limit(240)
       ->get();
 
     echo json_encode($posts);
