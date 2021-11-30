@@ -367,7 +367,7 @@ class AppsController extends Controller
       array_push($artists, array('artist'=>$post)); 
     } 
 
-    echo json_encode($artists);
+    return($artists);
   } 
 
   function get_posts(App $app)
