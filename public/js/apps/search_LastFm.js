@@ -10,7 +10,7 @@ function search_posts(q, callback)
 
   url_search = "/app/search/posts/"+app_id+"/"+q;
   fetch(url_search)
-  //.then((res) => res.json())
+  .then((res) => res.json())
   .then(function(res) {
     var rows = res.map(function (el) {
       return el.artists;
