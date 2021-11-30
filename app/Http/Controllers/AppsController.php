@@ -347,7 +347,8 @@ class AppsController extends Controller
       }
 
       //Obtener imagen previamente guardada
-      $img = $post->photos->first()->url;
+      if ($post->photos->first())
+        $img = $post->photos->first()->url;
 
       //Crear post temporal para mostrar
       $post = array(
