@@ -15,7 +15,10 @@ function search_posts(q, callback)
     var rows = res.map(function (el) {
       return el.artists;
     });
+    console.log(rows);
+    console.log("ROW: ");
     rows.forEach(function (row) {
+      console.log(row);
       rtags = row.tags;
       tags = "";
       for (i=0; i < rtags.length; i++) {

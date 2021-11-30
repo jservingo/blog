@@ -361,7 +361,7 @@ class AppsController extends Controller
         "source" => $post->source,
         "custom_type" => $post->custom_type,
         "published_at" => $post->published_at,
-        "tags" => array('tags'=>$str_tags)
+        "tags" => $str_tags
       );
 
       array_push($artists, array('artist'=>$post)); 
