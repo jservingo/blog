@@ -380,7 +380,7 @@ class AppsController extends Controller
       ->where("app_id","=",$app->id)
       ->where("user_id","=",$app->user_id)
       ->orderBy('title')     
-      ->limit(240)
+      ->limit(120)
       ->get();
 
     echo json_encode($posts);
