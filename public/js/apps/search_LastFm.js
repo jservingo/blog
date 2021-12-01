@@ -34,7 +34,7 @@ function search_posts(q, callback)
           custom_type: row.custom_type,
           app_id: row.app_id,
           source: row.source,
-          published_at: published_at        
+          published_at: row.published_at        
         };
         posts.push(post);        
       }); 
