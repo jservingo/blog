@@ -12,8 +12,8 @@ function search_posts(q, callback)
   $.ajax({
     url: url_search,
     dataType: 'json',
-    success: function(rows) {
-      rows.forEach(function (row) {
+    success: function(data) {
+      data.rows.forEach(function (row) {
         rtags = row.tags;
         tags = "";
         for (i=0; i < rtags.length; i++) {
