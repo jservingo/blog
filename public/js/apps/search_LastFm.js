@@ -14,7 +14,7 @@ function search_posts(q, callback)
     dataType: 'json',
     success: function(data) {
       data.rows.forEach(function (row) {
-        rtags = row.tags;
+        rtags = row.tags.split(",");
         tags = "";
         for (i=0; i < rtags.length; i++) {
           if (tags=="")
