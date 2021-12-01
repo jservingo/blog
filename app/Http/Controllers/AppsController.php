@@ -357,7 +357,7 @@ class AppsController extends Controller
         "body" => $post->body,
         "footnote" => $post->footnote, 
         "links" => $post->links,
-        "img" => $post->img,
+        "img" => $img,
         "source" => $post->source,
         "custom_type" => $post->custom_type,
         "published_at" => $post->published_at,
