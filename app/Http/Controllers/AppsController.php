@@ -364,7 +364,7 @@ class AppsController extends Controller
         "tags" => $str_tags
       );
 
-      array_push($rposts, array('posts'=>$post)); 
+      array_push($rposts, $post); 
     } 
 
     $result['rows'] = $rposts;
