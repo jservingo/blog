@@ -325,13 +325,13 @@ class AppsController extends Controller
 
   public function search_posts($app_id, $q)
   {
-    //Buscar artistas en todos los posts guardados
+    //Buscar en todos los posts guardados
     $posts = Post
       ::where("app_id","=",$app_id)
       ->where("title",'like',$q.'%')
       ->get();
 
-    $artists = array();
+    $rposts = array();
 
     foreach($posts as $post)
     {
@@ -340,7 +340,7 @@ class AppsController extends Controller
       $tags = $post->tags;
       foreach($tags as $tag)
       {
-        if ($str_tags="")
+        if ($str_tags=="")
           $str_tags = $str_tags.$tag->name;
         else
           $str_tags = $str_tags.",".$tag->name;
@@ -364,10 +364,11 @@ class AppsController extends Controller
         "tags" => $str_tags
       );
 
-      array_push($artists, array('artist'=>$post)); 
+      array_push($rposts, array('posts'=>$post)); 
     } 
 
-    echo json_encode($artists);
+    $result['rows'] = $rposts;
+    echo json_encode($result);
   } 
 
   function get_posts(App $app)

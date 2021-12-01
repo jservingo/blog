@@ -2,39 +2,46 @@
 
 var url_api = "LastFm";
 var app_id = 4;
-var custom_type = "Artist";
 
 function search_posts(q, callback)
 {
   var posts = new Array();
 
   url_search = "/app/search/posts/"+app_id+"/"+q;
-  fetch(url_search)
-  .then((res) => res.json())
-  .then(function(res) {
-    var rows = res.map(function (el) {
-      return el.artists;
-    });
-    console.log(rows);
-    console.log("ROW: ");
-    rows.forEach(function (row) {
-      console.log(row);
-      rtags = row.tags;
-      tags = "";
-      for (i=0; i < rtags.length; i++) {
-        tags += "," + rtags[i];
-      }
-  		post = {
-  			title: row.name, 
-  			excerpt: row.summary, 
-  			img: row.img,
-  			source: row.url,
-  			custom_type: row.custom_type,
-        footnote: row.footnote,
-        tags: row.tags
-  		};
-  		posts.push(post);
-  	});
-    callback(posts);
-	}) 
+
+  $.ajax({
+    url: url_search,
+    dataType: 'json',
+    success: function(rows) {
+      rows.forEach(function (row) {
+        rtags = row.tags;
+        tags = "";
+        for (i=0; i < rtags.length; i++) {
+          if (tags=="")
+            tags += rtags[i];
+          else
+            tags += "," + rtags[i];
+        }
+        post = {
+          title: row.title, 
+          excerpt: row.excerpt, 
+          body: row.body,
+          footnote: row.footnote,
+          links: row.links,
+          type_id: 8,
+          img: row.img,
+          tags: row.tags,
+          custom_type: row.custom_type,
+          app_id: row.app_id,
+          source: row.source,
+          published_at: published_at        
+        };
+        posts.push(post);        
+      }); 
+      callback(posts);   
+    },
+    error: function (data) {
+      console.log('Error:', data);
+    }
+  });
 }
