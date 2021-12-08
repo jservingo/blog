@@ -165,7 +165,9 @@ $(function() {
           var posts = JSON.parse(localStorage.app_posts);
           var num = posts.length;
           var visible_posts = slicePosts(posts,num,page);
-          renderPosts(visible_posts);      
+          renderPosts(visible_posts); 
+          $(window).trigger('resize');
+          truncate();     
         }
       });
     }

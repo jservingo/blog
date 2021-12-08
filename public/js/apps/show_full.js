@@ -248,7 +248,7 @@ $(function() {
           tags = row.tags;
           for (i=0; i < tags.length; i++) {
             tags_str += "," + tags[i].name;
-          }        
+          }       
           post = {
             title: row.title, 
             excerpt: row.excerpt, 
