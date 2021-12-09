@@ -4,6 +4,10 @@
 * URL: https://github.com/flaviusmatis/simplePagination.js
 */
 
+.pagination-holder {
+	width: 100%;
+}
+
 ul.simple-pagination {
 	list-style: none;
 }
