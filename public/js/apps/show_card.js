@@ -167,7 +167,10 @@ $(function() {
           var visible_posts = slicePosts(posts,num,page);
           renderPosts(visible_posts); 
           $(window).trigger('resize');
-          truncate();     
+          truncate();
+          $("#light-pagination").removeClass();
+          $("#light-pagination").addClass('pagination');
+          $(".pagination ul").addClass('list-unstyled container-flex space-center');
         }
       });
     }
@@ -196,6 +199,9 @@ $(function() {
         renderPagination(num); 
         $(window).trigger('resize');
         truncate();
+        $("#light-pagination").removeClass();
+        $("#light-pagination").addClass('pagination');
+        $(".pagination ul").addClass('list-unstyled container-flex space-center');
       });       
     }
   });
@@ -245,5 +251,8 @@ $(function() {
     renderPagination(num);
     $(window).trigger('resize');
     truncate();
+    $("#light-pagination").removeClass();
+    $("#light-pagination").addClass('pagination');
+    $(".pagination ul").addClass('list-unstyled container-flex space-center');
   });
 })
