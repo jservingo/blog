@@ -153,14 +153,14 @@ $(function() {
   {
     if (num > per_page)
     {
-      //var totalPages = Math.ceil(num / per_page);
-      $('#main_panel').css("visibility","hidden");
-      $(".loader").fadeIn();
+      //var totalPages = Math.ceil(num / per_page);      
       $('#light-pagination').pagination({
         items: num,
         itemsOnPage: per_page,        
         cssStyle: 'light-theme',
         onPageClick(page, event){
+          $('#main_panel').css("visibility","hidden");
+          $(".loader").fadeIn();
           var posts = JSON.parse(localStorage.app_posts);
           var num = posts.length;
           var visible_posts = slicePosts(posts,num,page);
