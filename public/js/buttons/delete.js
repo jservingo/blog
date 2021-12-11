@@ -171,7 +171,7 @@ function btn_delete_post_from_contacts(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: want_delete_this_contact,
+    title: msg_want_delete_this_contact,
     accept: msg_yes,
     refuse: msg_no,
     acceptStyle: 'red',
@@ -187,7 +187,7 @@ function btn_delete_post_from_contacts_group(post_id, group_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: want_delete_this_contact,
+    title: msg_want_delete_this_contact,
     accept: msg_yes,
     refuse: msg_no,
     acceptStyle: 'red',
@@ -203,7 +203,7 @@ function btn_delete_post_artist(post_id)
 {
   $.createDialog({
     attachAfter: '#main_panel',
-    title: want_delete_this_post,
+    title: msg_want_delete_this_post,
     accept: msg_yes,
     refuse: msg_no,
     acceptStyle: 'red',
