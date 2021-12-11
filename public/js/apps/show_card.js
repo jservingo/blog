@@ -94,7 +94,7 @@ $(function() {
               '<img src="/img/save.png" width="24">'+
             '</a>'+
             '<a class="btn_delete_post_artist" '+ 
-                'data-id=":post_id:" '+
+                'data-id=":post_id:">'+
               '<img src="/img/delete.png" width="24">'+
             '</a>'+
       '</footer>'+
