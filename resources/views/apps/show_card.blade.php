@@ -5,15 +5,13 @@
 @section('content')
   <div style="overflow: hidden;">
 
-    <!--<div class="loader"></div>-->
+    <div class="loader"></div>
 
     <div id="main_panel" style="visibility:hidden;">
       @include('apps.title')
       {{-- @include('apps.show_app_rows') --}}
       <div id="posts_container" class="posts container">
-        <div class="app-posts" style="display:flex; flex-wrap:wrap">
-          <div class="loader"></div>
-        </div>
+        <div class="app-posts" style="display:flex; flex-wrap:wrap"></div>
         <div class="pagination-holder clearfix">
           <div id="light-pagination"></div>
         </div>
