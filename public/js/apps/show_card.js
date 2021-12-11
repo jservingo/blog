@@ -3,7 +3,6 @@ $(function() {
   var $appPostsContainer = $('#posts_container').find('.app-posts');
   var $appPostsMenu = $('#app_posts_menu');
   var $pagination = $('#pagination');
-  var $loader = "<div class='loader'></div>";
   var per_page= 12;
 
   /*
@@ -11,7 +10,6 @@ $(function() {
     itemsOnPage: 10,
     cssStyle: 'light-theme',
     onPageClick(pageNumber, event){
-      //$appPostsContainer.find('.app-loader').remove();
       var posts = JSON.parse(localStorage.app_posts);
       var num = posts.length;
       var visible_posts = slicePosts(posts,num,page);
@@ -156,18 +154,21 @@ $(function() {
     if (num > per_page)
     {
       //var totalPages = Math.ceil(num / per_page);
+      $('#main_panel').css("visibility","hidden");
+      $(".loader").fadeIn();
       $('#light-pagination').pagination({
         items: num,
         itemsOnPage: per_page,        
         cssStyle: 'light-theme',
         onPageClick(page, event){
-          //$appPostsContainer.find('.app-loader').remove();
           var posts = JSON.parse(localStorage.app_posts);
           var num = posts.length;
           var visible_posts = slicePosts(posts,num,page);
           renderPosts(visible_posts); 
           $(window).trigger('resize');
           truncate();
+          $('#main_panel').css("visibility","visible");
+          $(".loader").fadeOut("slow");
         }
       });
     }
@@ -185,17 +186,19 @@ $(function() {
     }
     else
     {
-      $appPostsContainer.append($loader);
+      $('#main_panel').css("visibility","hidden");
+      $(".loader").fadeIn();
       search_posts(q, function(posts) {
         localStorage.app_posts = JSON.stringify(posts);
         localStorage.app_url = url_search;
         var num = posts.length;
         var visible_posts = slicePosts(posts,num,1);
-        $appPostsContainer.find('.loader').remove();
         renderPosts(visible_posts);
         renderPagination(num); 
         $(window).trigger('resize');
         truncate();
+        $('#main_panel').css("visibility","visible");
+        $(".loader").fadeOut("slow");
       });       
     }
   });
@@ -240,7 +243,6 @@ $(function() {
     localStorage.app_url = url_api;
     var num = posts.length;
     var visible_posts = slicePosts(posts,num,1);
-    //$appPostsContainer.find('.app-loader').remove();
     renderPosts(visible_posts);
     renderPagination(num);
     $(window).trigger('resize');
