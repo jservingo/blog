@@ -92,7 +92,7 @@ Route::get('artists/show/{mbid}','ArtistsController@show_post')->name('artists.s
 Route::get('artists/search/{q}','ArtistsController@search')->name('artists.search');
 Route::post('artists/save','ArtistsController@save_post')->name('artists.save_post');
 Route::post('artists/get/image','ArtistsController@get_image')->name('artists.get_image');
-Route::delete('artists/{mbid}','ArtistsController@destroy');
+Route::delete('artists/{post}','ArtistsController@destroy');
 
 //Pages
 Route::get('pages/discover','PagesController@discover')->name('pages.discover');

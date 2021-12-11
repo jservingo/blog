@@ -21,6 +21,7 @@ $(function() {
   var template_menu = '<div class="popr-box" data-box-id=":post_id:">'+
     '<div class="popr-item" data-btn="btn_copy_post" data-id=":post_id:">Copy</div>'+
     '<div class="popr-item" data-btn="btn_save_app_post" data-id=":app_id:">Save</div>'+
+    '<div class="popr-item" data-btn="btn_delete_post_artist" data-id=":post_id:">Delete</div>'+
     '</div>';
 
   var template_post = '<div class="post pcard">'+
@@ -91,6 +92,10 @@ $(function() {
                   'data-source=":source_app:" '+
                   'data-custom_type=":custom_type:">'+
               '<img src="/img/save.png" width="24">'+
+            '</a>'+
+            '<a class="btn_delete_post_artist" '+ 
+                'data-id=":post_id:" '+
+              '<img src="/img/delete.png" width="24">'+
             '</a>'+
       '</footer>'+
     '</div>'+  

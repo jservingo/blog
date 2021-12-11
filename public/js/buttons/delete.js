@@ -48,6 +48,10 @@ $('.btn_delete_post_from_contacts_group').bind('click', function(e){
   btn_delete_post_from_contacts_group(post_id, group_id);
 });
 
+$('.btn_delete_post_artist').bind('click', function(e){
+  var post_id = $(this).data("id");
+  btn_delete_post_artist(post_id);
+});
 
 // FUNCTIONS
 
@@ -190,6 +194,22 @@ function btn_delete_post_from_contacts_group(post_id, group_id)
     refuseStyle: 'gray',
     acceptAction: function(){
       delete_post_from_contacts_group(post_id,group_id);
+    }
+  });
+  $.showDialog();
+}
+
+function btn_delete_post_artist(post_id)
+{
+  $.createDialog({
+    attachAfter: '#main_panel',
+    title: want_delete_this_post,
+    accept: msg_yes,
+    refuse: msg_no,
+    acceptStyle: 'red',
+    refuseStyle: 'gray',
+    acceptAction: function(){
+      delete_post_artist(post_id);
     }
   });
   $.showDialog();
@@ -466,6 +486,37 @@ function delete_post_from_contacts_group(post_id,group_id)
       }
       else {
         set_message("error",msg_the_contact_was_not_deleted_from_the_list);
+        location.reload();
+      }
+    },
+    error: function (data) {
+      console.log('Error:', data);
+    }
+  }); 
+}
+
+function delete_post_artist(post_id)
+{
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    type: 'delete',
+    url: '/artists/'+post_id,
+    dataType: 'json',
+    success: function(data) {
+      if (data.success){
+        set_message("notice",msg_the_post_was_deleted);
+        location.reload();
+      }
+      else if(data.msg)
+      {
+        $.growl.warning({ message:data.msg });
+      }
+      else {
+        set_message("error",msg_the_post_was_not_deleted);
         location.reload();
       }
     },

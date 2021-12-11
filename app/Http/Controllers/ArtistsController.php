@@ -502,24 +502,22 @@ class ArtistsController extends Controller
     echo json_encode(array('success'=>true));
   }
 
-  public function destroy($mbid)
+  public function destroy(Post $post)
   {
     //$this->authorize('delete',$post);
 
+    /*
     if (auth()->id() != 10)
     {
       echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
     }
+    */
 
-    $artist = Artist
-      ::where("mbid","=",$mbid)
-      ->first();
-
-    $artist->status_id = 1;
-    $artist->save();
-
-    //$artist->delete();
+    //No se elimina el artista
+    //Unicamente se marca el post del artista como eliminado (soft delete)
+    $post->status_id = 3;
+    $post->save();
 
     echo json_encode(array('success'=>true));  
   }  
