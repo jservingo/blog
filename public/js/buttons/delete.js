@@ -49,7 +49,9 @@ $('.btn_delete_post_from_contacts_group').bind('click', function(e){
 });
 
 $('.btn_delete_post_artist').bind('click', function(e){
+  alert('click btn_delete_post_artist');
   var post_id = $(this).data("id");
+  alert(post_id);
   btn_delete_post_artist(post_id);
 });
 
@@ -201,6 +203,7 @@ function btn_delete_post_from_contacts_group(post_id, group_id)
 
 function btn_delete_post_artist(post_id)
 {
+  alert('btn_delete_post_artist');
   $.createDialog({
     attachAfter: '#main_panel',
     title: msg_want_delete_this_post,
