@@ -205,7 +205,7 @@ function btn_delete_post_artist(post_id)
   alert('btn_delete_post_artist');
   $.createDialog({
     attachAfter: '#main_panel',
-    title: msg_want_delete_this_post,
+    title: msg_want_to_delete_this_post,
     accept: msg_yes,
     refuse: msg_no,
     acceptStyle: 'red',

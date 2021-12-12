@@ -319,7 +319,7 @@ function btn_show_alerts()
         $.createDialog({
           attachAfter: '#main_panel',
           title: html,
-          accept: show_all,
+          accept: msg_show_all,
           refuse: msg_cancel,
           acceptStyle: 'red',
           refuseStyle: 'gray',
