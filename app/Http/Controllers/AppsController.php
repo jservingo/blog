@@ -400,6 +400,13 @@ class AppsController extends Controller
     $source = $request->get('source');
     $custom_type = $request->get('custom_type');
 
+    if ($app_id == 4)
+    {
+      //Todos los posts de la aplicación LastFm ya fueron guardados
+      echo json_encode(array('success'=>true));
+      return;
+    }
+
     //Buscar post de la app
     $post = Post
       ::where("app_id","=",$app_id)
