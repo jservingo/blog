@@ -117,13 +117,13 @@ $(function() {
     $appPostsMenu.empty();
 
     visible_posts.forEach(function (post) {
-      renderPost(post,0);
+      renderPost(post);
     });
 
     $('.popr').popr();
   }
 
-  function renderPost(post, post_id)
+  function renderPost(post)
   {
     var f = new Date();
     var date = f.getDate() + ' ' + get_month(f) + ' ' + f.getFullYear();
@@ -137,14 +137,14 @@ $(function() {
       .replace(/:source_post:/g, post.source_post)
       .replace(/:img alt:/g, post.title + " Logo")
       .replace(/:app_id:/g, app_id)
-      .replace(/:post_id:/g, post_id)
+      .replace(/:post_id:/g, post.id)
       .replace(/:owner_name:/g, owner_name)
       .replace(/:owner_post:/g, owner_post)
       .replace(/:date:/g, date)
       .replace(/:custom_type:/g, post.custom_type)
 
     var post_menu = template_menu
-      .replace(/:post_id:/g, post_id)
+      .replace(/:post_id:/g, post.id)
       .replace(/:custom_type:/g, post.custom_type)
 
     var $post_new = $(post_new);
@@ -224,7 +224,7 @@ $(function() {
             tags_str += "," + tags[i].name;
           }        
           post = {
-            status_id: row.status_id,
+            id: row.id,
             title: row.title, 
             excerpt: row.excerpt, 
             img: row.photos.length > 0 ? row.photos[0].url : '',

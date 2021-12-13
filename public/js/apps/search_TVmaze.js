@@ -24,15 +24,16 @@ function search_posts(q, callback)
       if (row.network)
         footnote = row.network.name + " ";
       if (row.status)
-        footnote += row.status;
+        footnote = row.status;
   		post = {
-  			title: row.name, 
+  			id: 0,
+        title: row.name, 
   			excerpt: row.summary, 
-  			img: row.image ? row.image.medium : '',
-  			source: row.url,
-  			custom_type: custom_type,
-        footnote: footnote,
-        tags: tags
+  			footnote: footnote,
+        img: row.image ? row.image.medium : '',
+  			tags: tags,
+        custom_type: custom_type,
+        source: row.url        
   		};
   		posts.push(post);
   	});

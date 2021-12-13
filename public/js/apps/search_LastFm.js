@@ -23,18 +23,14 @@ function search_posts(q, callback)
             tags += "," + rtags[i];
         }
         post = {
+          id: 0,
           title: row.title, 
           excerpt: row.excerpt, 
-          body: row.body,
           footnote: row.footnote,
-          links: row.links,
-          type_id: 8,
           img: row.img,
           tags: row.tags,
           custom_type: row.custom_type,
-          app_id: row.app_id,
-          source: row.source,
-          published_at: row.published_at        
+          source: row.source
         };
         posts.push(post);        
       }); 
