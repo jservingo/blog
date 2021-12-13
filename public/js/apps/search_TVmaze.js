@@ -31,9 +31,10 @@ function search_posts(q, callback)
   			excerpt: row.summary, 
   			footnote: footnote,
         img: row.image ? row.image.medium : '',
-  			tags: tags,
-        custom_type: custom_type,
-        source: row.url        
+        source_app: row.source,
+        source_post: '/posts/'+row.id,
+  			custom_type: custom_type,
+        tags: tags
   		};
   		posts.push(post);
   	});

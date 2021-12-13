@@ -28,9 +28,10 @@ function search_posts(q, callback)
           excerpt: row.excerpt, 
           footnote: row.footnote,
           img: row.img,
-          tags: row.tags,
+          source_app: row.source,
+          source_post: '/posts/'+row.id,
           custom_type: row.custom_type,
-          source: row.source
+          tags: row.tags          
         };
         posts.push(post);        
       }); 
