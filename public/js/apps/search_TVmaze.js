@@ -1,6 +1,7 @@
 // search_app_TVmaze.js
 
-var url_api = "tvmaze";
+var app_id = 4;
+var url_api = "TVmaze";
 var custom_type = "TV Show";
 
 function search_posts(q, callback)
@@ -31,8 +32,7 @@ function search_posts(q, callback)
   			excerpt: row.summary, 
   			footnote: footnote,
         img: row.image ? row.image.medium : '',
-        source_app: row.source,
-        source_post: '/posts/'+row.id,
+        source: row.source,
   			custom_type: custom_type,
         tags: tags
   		};

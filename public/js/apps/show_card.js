@@ -127,14 +127,18 @@ $(function() {
   {
     var f = new Date();
     var date = f.getDate() + ' ' + get_month(f) + ' ' + f.getFullYear();
+    if (post.id==0)
+      source_post =  "#";
+    else
+      source_post = "/posts/"+post.id;
     var post_new = template_post
       .replace(/:title:/g, post.title)
       .replace(/:img:/g, post.img)
       .replace(/:excerpt:/g, post.excerpt.replace(/['"]+/g, '').replace(/<[^>]+>/g, ''))
       .replace(/:tags:/g, post.tags)
       .replace(/:footnote:/g, post.footnote)
-      .replace(/:source_app:/g, post.source_app)
-      .replace(/:source_post:/g, post.source_post)
+      .replace(/:source_app:/g, post.source)
+      .replace(/:source_post:/g, source_post)
       .replace(/:img alt:/g, post.title + " Logo")
       .replace(/:app_id:/g, app_id)
       .replace(/:post_id:/g, post.id)
@@ -227,11 +231,10 @@ $(function() {
             id: row.id,
             title: row.title, 
             excerpt: row.excerpt, 
-            img: row.photos.length > 0 ? row.photos[0].url : '',
-            source_app: row.source,
-            source_post: '/posts/'+row.id,
-            custom_type: row.custom_type,
             footnote: row.footnote,
+            img: row.photos.length > 0 ? row.photos[0].url : '',
+            source: row.source,
+            custom_type: row.custom_type,            
             tags: tags_str
           };
           posts.push(post);

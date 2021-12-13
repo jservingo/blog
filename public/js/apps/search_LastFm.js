@@ -1,7 +1,7 @@
 // search_LastFm.js
 
-var url_api = "LastFm";
 var app_id = 4;
+var url_api = "LastFm";
 
 function search_posts(q, callback)
 {
@@ -28,8 +28,7 @@ function search_posts(q, callback)
           excerpt: row.excerpt, 
           footnote: row.footnote,
           img: row.img,
-          source_app: row.source,
-          source_post: '/posts/'+row.id,
+          source: row.source,
           custom_type: row.custom_type,
           tags: row.tags          
         };
