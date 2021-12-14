@@ -377,6 +377,7 @@ class AppsController extends Controller
       ->where("type_id","=",8)
       ->where("app_id","=",$app->id)
       ->where("user_id","=",$app->user_id)
+      ->where("views",">",3)
       ->orderBy('title')     
       ->limit(120)
       ->get();
