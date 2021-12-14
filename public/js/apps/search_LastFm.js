@@ -23,7 +23,7 @@ function search_posts(q, callback)
             tags += "," + rtags[i];
         }
         post = {
-          id: 0,
+          id: row.id,
           title: row.title, 
           excerpt: row.excerpt, 
           footnote: row.footnote,

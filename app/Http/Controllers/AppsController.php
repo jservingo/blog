@@ -352,15 +352,13 @@ class AppsController extends Controller
 
       //Crear post temporal para mostrar
       $post = array(
+        "id" => $post->id,
         "title" => $post->title, 
         "excerpt" => $post->excerpt,
-        "body" => $post->body,
         "footnote" => $post->footnote, 
-        "links" => $post->links,
         "img" => $img,
         "source" => $post->source,
         "custom_type" => $post->custom_type,
-        "published_at" => $post->published_at,
         "tags" => $str_tags
       );
 
