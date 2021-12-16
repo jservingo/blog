@@ -25,14 +25,14 @@ function search_posts(q, callback)
       if (row.network)
         footnote = row.network.name + " ";
       if (row.status)
-        footnote = row.status;
+        footnote = "Status: " + row.status;
   		post = {
   			id: 0,
         title: row.name, 
   			excerpt: row.summary, 
   			footnote: footnote,
         img: row.image ? row.image.medium : '',
-        source: row.source,
+        source: row.url,
   			custom_type: custom_type,
         tags: tags
   		};
