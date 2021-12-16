@@ -1,6 +1,6 @@
 // search_app_TVmaze.js
 
-var app_id = 4;
+var app_id = 3;
 var url_api = "TVmaze";
 var custom_type = "TV Show";
 

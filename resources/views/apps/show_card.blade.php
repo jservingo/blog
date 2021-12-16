@@ -88,12 +88,4 @@
     var rv_ref_id = app_id;
   </script> 
   <script type="text/javascript" src="/js/save_recent_views.js"></script>
-  <script>
-    /*
-    $(function() {
-      $(".loader").fadeOut("slow");
-      $('#main_panel').css("visibility","visible");
-    });
-    */
-  </script>
 @endpush
