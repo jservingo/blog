@@ -430,6 +430,7 @@ class AppsController extends Controller
         'custom_type' => $custom_type,
         'app_id' => $app_id,
         'source' => $source,
+        'views' => 4,
         'published_at' => Carbon::now('UTC')
       ]);
 
