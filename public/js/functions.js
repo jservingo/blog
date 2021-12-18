@@ -160,15 +160,10 @@ function get_type(type)
   }
 }
 
-function convertToSlug(Text) {
-  return Text.toLowerCase()
-             .replace(/ /g, '-')
-             .replace(/[^\w-]+/g, '');
-}
-
-function removeTags(str) {
-  str = str.replace(/['"]+/g, '')
-           .replace(/<[^>]+>/g, '');
+function convertToSlug(str) {
+  str = str.toLowerCase()
+           .replace(/ /g, '-')
+           .replace(/[^\w-]+/g, '');
 
   // Remove accents, swap ñ for n, etc
   var from = "ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽáäâàãåčçćďéěëèêẽĕȇíìîïňñóöòôõøðřŕšťúůüùûýÿžþÞĐđßÆa·/_,:;";
@@ -182,7 +177,14 @@ function removeTags(str) {
   // Collapse whitespace and replace by -
   .replace(/\s+/g, '-') 
   // Collapse dashes
-  .replace(/-+/g, '-'); 
+  .replace(/-+/g, '-');
+
+  return str;
+}
+
+function removeTags(str) {
+  str = str.replace(/['"]+/g, '')
+           .replace(/<[^>]+>/g, ''); 
 
   return str;
 }
