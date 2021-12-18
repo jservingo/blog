@@ -72,32 +72,41 @@ $(function() {
           '19 Jan 2019'+
         '</span>'+
       '</div>'+
-      '<footer class="xcontainer-flex xspace-between" style="width:287px; height:24px; background-color:#d7e9f3; padding: 6px 10px; text-align:right;">'+
-            '<a class="btn_copy_app_post" '+ 
-                'data-id=":app_id:" '+
-                'data-title=":title:" '+
-                'data-source=":source_app:">'+
-              '<img src="/img/copy.png" width="24">'+
-            '</a>'+
-            '<a class="btn_save_app_post" '+ 
+      '<div style="float:right">'+
+        '<footer class="xcontainer-flex xspace-between" style="width:210px; height:24px; background-color:#d7e9f3; padding: 6px 10px; text-align:right;">'+
+              '<a class="btn_copy_app_post" '+ 
                   'data-id=":app_id:" '+
                   'data-title=":title:" '+
-                  'data-excerpt=":excerpt:" '+
-                  'data-img=":img:" '+
-                  'data-tags=":tags:" '+
-                  'data-links="" '+
-                  'data-footnote=":footnote:" '+
-                  'data-date=":date:" '+
-                  'data-user=":owner_name:" '+
-                  'data-source=":source_app:" '+
-                  'data-custom_type=":custom_type:">'+
-              '<img src="/img/save.png" width="24">'+
-            '</a>'+
-            '<a class="btn_delete_post_artist" '+ 
-                'data-id=":post_id:">'+
-              '<img src="/img/delete.png" width="24">'+
-            '</a>'+
-      '</footer>'+
+                  'data-source=":source_app:">'+
+                '<img src="/img/copy.png" width="24">'+
+              '</a>'+
+              '<a class="btn_save_app_post" '+ 
+                    'data-id=":app_id:" '+
+                    'data-title=":title:" '+
+                    'data-excerpt=":excerpt:" '+
+                    'data-img=":img:" '+
+                    'data-tags=":tags:" '+
+                    'data-links="" '+
+                    'data-footnote=":footnote:" '+
+                    'data-date=":date:" '+
+                    'data-user=":owner_name:" '+
+                    'data-source=":source_app:" '+
+                    'data-custom_type=":custom_type:">'+
+                '<img src="/img/save.png" width="24">'+
+              '</a>'+
+              '<a class="btn_delete_post_artist" '+ 
+                  'data-id=":post_id:">'+
+                '<img src="/img/delete.png" width="24">'+
+              '</a>'+
+        '</footer>'
+      '</div>'+
+      '<div style="float:left;">'+
+        '<div class="truncate" data-height="24" style="width: 210px; background-color: rgb(215, 233, 243); padding: 6px 10px; height: 24px;">'+
+            '<div class="t-footnote" style="color:#0a1fa7;font-weight:800;">'+
+              ':footnote:'+
+            '</div>'+
+        '</div>'+
+      '</div>'+
     '</div>'+  
   '</div>'+
   '</div>'; 
@@ -130,11 +139,11 @@ $(function() {
     if (post.id==0)
       source_post =  "#";
     else
-      source_post = "/posts/"+post.id;
+      source_post = "/posts/"+post.id+"/"+convertToSlug(post.title);
     var post_new = template_post
       .replace(/:title:/g, post.title)
       .replace(/:img:/g, post.img)
-      .replace(/:excerpt:/g, post.excerpt.replace(/['"]+/g, '').replace(/<[^>]+>/g, ''))
+      .replace(/:excerpt:/g, removeTags(post.excerpt))
       .replace(/:tags:/g, post.tags)
       .replace(/:footnote:/g, post.footnote)
       .replace(/:source_app:/g, post.source)
