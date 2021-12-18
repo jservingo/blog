@@ -73,7 +73,7 @@ $(function() {
         '</span>'+
       '</div>'+
       '<div style="float:right">'+
-        '<footer class="xcontainer-flex xspace-between" style="width:210px; height:24px; background-color:#d7e9f3; padding: 6px 10px; text-align:right;">'+
+        '<footer class="xcontainer-flex xspace-between" style="width:287px; height:24px; background-color:#d7e9f3; padding: 6px 10px; text-align:right;">'+
               '<a class="btn_copy_app_post" '+ 
                   'data-id=":app_id:" '+
                   'data-title=":title:" '+
@@ -99,13 +99,6 @@ $(function() {
                 '<img src="/img/delete.png" width="24">'+
               '</a>'+
         '</footer>'
-      '</div>'+
-      '<div style="float:left;">'+
-        '<div class="truncate" data-height="24" style="width: 210px; background-color: rgb(215, 233, 243); padding: 6px 10px; height: 24px;">'+
-            '<div class="t-footnote" style="color:#0a1fa7;font-weight:800;">'+
-              ':footnote:'+
-            '</div>'+
-        '</div>'+
       '</div>'+
     '</div>'+  
   '</div>'+
