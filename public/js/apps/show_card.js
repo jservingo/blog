@@ -24,21 +24,21 @@ $(function() {
         'data-post=":post_id:" '+
         'data-title=":title:" '+
         'data-source=":source_app:">'+
-          Edit
+          'Edit'+
     '</div>'+
     '<div class="popr-item" data-btn="btn_delete_app_post" '+ 
         'data-id=":app_id:" '+  
         'data-post=":post_id:" '+
         'data-title=":title:" '+
         'data-source=":source_app:">'+
-          Delete
+          'Delete'+
     '</div>'+
     '<div class="popr-item" data-btn="btn_copy_app_post" '+ 
         'data-id=":app_id:" '+  
         'data-post=":post_id:" '+
         'data-title=":title:" '+
         'data-source=":source_app:">'+
-          Copy
+          'Copy'+
     '</div>'+
     '<div class="popr-item" data-btn="btn_save_app_post" '+ 
         'data-id=":app_id:" '+  
@@ -53,7 +53,7 @@ $(function() {
         'data-user=":owner_name:" '+
         'data-source=":source_app:" '+
         'data-custom_type=":custom_type:">'+
-          Save
+          'Save'+
     '</div>'+
   '</div>';
 
