@@ -1,5 +1,21 @@
 // DELETE OPERATIONS
 
+$('#posts_container').on('click', '.btn_delete_app_post', function() {
+  var post_id = $(this).data("post");
+  var app_id = $(this).data("id");
+  var title = $(this).data("title");
+  var source = $(this).data("source");
+  if (post_id <> 0)
+  {
+    if (app_id == 3)
+      btn_delete_post_artist(post_id);
+    else
+      btn_delete_post_from_created_posts(post_id);
+  }
+  else
+    btn_delete_app_post(app_id,title,source);
+});
+
 $('.btn_delete_catalog_from_category').bind('click', function(e){
   var catalog_id = $(this).data("id");
   var category_id = $(this).data("category");
@@ -46,11 +62,6 @@ $('.btn_delete_post_from_contacts_group').bind('click', function(e){
   var post_id = $(this).data("id");
   var group_id = $(this).data("group");
   btn_delete_post_from_contacts_group(post_id, group_id);
-});
-
-$('#posts_container').on('click', '.btn_delete_post_artist', function() {
-  var post_id = $(this).data("id");
-  btn_delete_post_artist(post_id);
 });
 
 // FUNCTIONS
@@ -117,6 +128,11 @@ function btn_delete_app_subs(post_id)
     }
   });
   $.showDialog();  
+}
+
+function btn_delete_app_post(app_id,title,source)
+{
+  alert("btn_delete_app_post");
 }
 
 function btn_delete_post_from_created_posts(post_id)

@@ -1,5 +1,17 @@
 // CREATE, EDIT & SHOW
 
+$('#posts_container').on("click",".btn_edit_app_post", function(e){
+  e.preventDefault();
+  var post_id = $(this).data("post");
+  var app_id = $(this).data("id");
+  var title = $(this).data("title");
+  var source = $(this).data("source");
+  if (post_id <> 0)
+    btn_edit ("post", post_id);
+  else
+    btn_edit_app_post(app_id,title,source);
+})
+
 $('.btn_create_catalog_from_category').bind('click', function(e){
   var category_id = $(this).data("id");
   btn_create_catalog_from_category(category_id);
@@ -328,6 +340,11 @@ function btn_create_post(catalog_id)
     }
   });
   $.showDialog();
+}
+
+function btn_edit_app_post(app_id,title,source)
+{
+  alert("btn_edit_app_post");
 }
 
 function btn_edit(el, id)

@@ -1,5 +1,17 @@
 // COPY & PASTE
 
+$('#posts_container').on("click",".btn_copy_app_post", function(e){
+  e.preventDefault();
+  var post_id = $(this).data("post");
+  var app_id = $(this).data("id");
+  var title = $(this).data("title");
+  var source = $(this).data("source");
+  if (post_id <> 0)
+    btn_copy_post(post_id);
+  else
+    btn_copy_app_post(app_id,title,source);
+}); 
+
 $('.btn_copy_catalog').bind('click', function(e){
 	e.preventDefault();
   var ref_id = $(this).data("id");
@@ -11,14 +23,6 @@ $('.btn_copy_post').bind('click', function(e){
   var post_id = $(this).data("id");
   btn_copy_post(post_id);
 });
-
-$('.app-posts').on("click",".btn_copy_app_post", function(e){
-  e.preventDefault();
-  var app_id = $(this).data("id");
-  var title = $(this).data("title");
-  var source = $(this).data("source");
-  btn_copy_app_post(app_id,title,source);
-}); 
 
 $('.btn_paste_post_to_catalog').bind('click', function(e){
 	e.preventDefault();
@@ -112,6 +116,11 @@ function btn_copy_catalog(ref_id)
       console.log('Error:', data);
     }
   }); 
+}
+
+function btn_copy_app_post(app_id,title,source)
+{
+  alert("btn_copy_app_post");
 }
 
 function btn_copy_post(post_id)

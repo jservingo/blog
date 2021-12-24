@@ -191,13 +191,28 @@ $('.btn_options').bind('click', function(e){
   $.growl.warning({ message: msg_not_implemented });
 });
 
+/* Terminar (OJO)
+$('#posts_container').on("click",".btn_update_likes_app_post", function(e){
+  var post_id = $(this).data("post");
+  var app_id = $(this).data("id");
+  var title = $(this).data("title");
+  var source = $(this).data("source");
+  //Hay que determinar el mode (OJO)
+  var mode = $(this).data("mode");
+  //console.log($(this));
+  if (post_id <> 0)
+    btn_update_likes (post_id, mode, $(this));
+  else
+    btn_update_likes_app_post (app_id, title, source, $(this));   
+});
+*/
+
 $('.btn_update_likes').bind('click', function(e){
   var post_id = $(this).data("id");
   var mode = $(this).data("mode");
   //console.log($(this));
   btn_update_likes (post_id, mode, $(this));
 });
-
 
 // FUNCTIONS
 

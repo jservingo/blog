@@ -406,17 +406,16 @@ class AppsController extends Controller
       return;
     }
 
+    //Buscar el owner de la app
+    $app = App::find($app_id);
+
     //Buscar post de la app
     $post = Post
       ::where("app_id","=",$app_id)
       ->where("source","=",$source)
       ->first();
 
-    //Buscar el owner de la app
-    $app = App::find($app_id);
-
     //Si el post no existe hay que crearlo
-    //OJO El usuario debería ser el administrador de la App
     if (! $post)
     { 
       $post = Post::create([

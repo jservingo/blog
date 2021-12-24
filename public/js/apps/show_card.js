@@ -19,10 +19,43 @@ $(function() {
   */
 
   var template_menu = '<div class="popr-box" data-box-id=":post_id:">'+
-    '<div class="popr-item" data-btn="btn_copy_post" data-id=":post_id:">Copy</div>'+
-    '<div class="popr-item" data-btn="btn_save_app_post" data-id=":app_id:">Save</div>'+
-    '<div class="popr-item" data-btn="btn_delete_post_artist" data-id=":post_id:">Delete</div>'+
-    '</div>';
+    '<div class="popr-item" data-btn="btn_edit_app_post" '+ 
+        'data-id=":app_id:" '+  
+        'data-post=":post_id:" '+
+        'data-title=":title:" '+
+        'data-source=":source_app:">'+
+          Edit
+    '</div>'+
+    '<div class="popr-item" data-btn="btn_delete_app_post" '+ 
+        'data-id=":app_id:" '+  
+        'data-post=":post_id:" '+
+        'data-title=":title:" '+
+        'data-source=":source_app:">'+
+          Delete
+    '</div>'+
+    '<div class="popr-item" data-btn="btn_copy_app_post" '+ 
+        'data-id=":app_id:" '+  
+        'data-post=":post_id:" '+
+        'data-title=":title:" '+
+        'data-source=":source_app:">'+
+          Copy
+    '</div>'+
+    '<div class="popr-item" data-btn="btn_save_app_post" '+ 
+        'data-id=":app_id:" '+  
+        'data-post=":post_id:" '+
+        'data-title=":title:" '+
+        'data-excerpt=":excerpt:" '+
+        'data-img=":img:" '+
+        'data-tags=":tags:" '+
+        'data-links="" '+
+        'data-footnote=":footnote:" '+
+        'data-date=":date:" '+
+        'data-user=":owner_name:" '+
+        'data-source=":source_app:" '+
+        'data-custom_type=":custom_type:">'+
+          Save
+    '</div>'+
+  '</div>';
 
   var template_post = '<div class="post pcard">'+
    '<div class="content-post">'+
@@ -74,14 +107,30 @@ $(function() {
       '</div>'+
       '<div style="float:right">'+
         '<footer class="xcontainer-flex xspace-between" style="width:287px; height:24px; background-color:#d7e9f3; padding: 6px 10px; text-align:right;">'+
+              '<a class="btn_edit_app_post" '+ 
+                  'data-id=":app_id:" '+  
+                  'data-post=":post_id:" '+
+                  'data-title=":title:" '+
+                  'data-source=":source_app:">'+
+                '<img src="/img/edit.png" width="24">'+
+              '</a>'+
+              '<a class="btn_delete_app_post" '+ 
+                  'data-id=":app_id:" '+  
+                  'data-post=":post_id:" '+
+                  'data-title=":title:" '+
+                  'data-source=":source_app:">'+
+                '<img src="/img/delete.png" width="24">'+
+              '</a>'+
               '<a class="btn_copy_app_post" '+ 
-                  'data-id=":app_id:" '+
+                  'data-id=":app_id:" '+  
+                  'data-post=":post_id:" '+
                   'data-title=":title:" '+
                   'data-source=":source_app:">'+
                 '<img src="/img/copy.png" width="24">'+
               '</a>'+
               '<a class="btn_save_app_post" '+ 
                     'data-id=":app_id:" '+
+                    'data-post=":post_id:" '+
                     'data-title=":title:" '+
                     'data-excerpt=":excerpt:" '+
                     'data-img=":img:" '+
@@ -94,11 +143,18 @@ $(function() {
                     'data-custom_type=":custom_type:">'+
                 '<img src="/img/save.png" width="24">'+
               '</a>'+
-              '<a class="btn_delete_post_artist" '+ 
-                  'data-id=":post_id:">'+
-                '<img src="/img/delete.png" width="24">'+
+              /*
+              '<a class="btn_update_likes_app_post" '+
+                  'data-id=":app_id:" '+  
+                  'data-post=":post_id:" '+
+                  'data-title=":title:" '+
+                  'data-source=":source_app:" '+
+                  'data-mode="up">' 
+                '<img src="/img/likes_white.png" width="24">'+
               '</a>'+
-        '</footer>'
+              '<span id="likes">0</span>'+
+              */
+        '</footer>'+
       '</div>'+
     '</div>'+  
   '</div>'+
@@ -134,6 +190,8 @@ $(function() {
     else
       source_post = "/posts/"+post.id+"/"+convertToSlug(post.title);
     var post_new = template_post
+      .replace(/:app_id:/g, app_id)
+      .replace(/:post_id:/g, post.id)      
       .replace(/:title:/g, post.title)
       .replace(/:img:/g, post.img)
       .replace(/:excerpt:/g, removeTags(post.excerpt))
@@ -141,17 +199,27 @@ $(function() {
       .replace(/:footnote:/g, post.footnote)
       .replace(/:source_app:/g, post.source)
       .replace(/:source_post:/g, source_post)
-      .replace(/:img alt:/g, post.title + " Logo")
-      .replace(/:app_id:/g, app_id)
-      .replace(/:post_id:/g, post.id)
+      .replace(/:img alt:/g, post.title + " Logo")      
       .replace(/:owner_name:/g, owner_name)
       .replace(/:owner_post:/g, owner_post)
       .replace(/:date:/g, date)
-      .replace(/:custom_type:/g, post.custom_type)
+      .replace(/:custom_type:/g, post.custom_type);
 
     var post_menu = template_menu
-      .replace(/:post_id:/g, post.id)
-      .replace(/:custom_type:/g, post.custom_type)
+      .replace(/:app_id:/g, app_id)
+      .replace(/:post_id:/g, post.id)      
+      .replace(/:title:/g, post.title)
+      .replace(/:img:/g, post.img)
+      .replace(/:excerpt:/g, removeTags(post.excerpt))
+      .replace(/:tags:/g, post.tags)
+      .replace(/:footnote:/g, post.footnote)
+      .replace(/:source_app:/g, post.source)
+      .replace(/:source_post:/g, source_post)
+      .replace(/:img alt:/g, post.title + " Logo")      
+      .replace(/:owner_name:/g, owner_name)
+      .replace(/:owner_post:/g, owner_post)
+      .replace(/:date:/g, date)
+      .replace(/:custom_type:/g, post.custom_type);
 
     var $post_new = $(post_new);
     var $post_menu = $(post_menu);

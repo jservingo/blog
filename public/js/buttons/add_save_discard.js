@@ -1,8 +1,9 @@
 // ADD USER, ADD SUBSCRIPTION SAVE & DISCARD POST
 
 //Event Delegation
-$('.app-posts').on("click",".btn_save_app_post", function(e){
+$('#posts_container').on("click",".btn_save_app_post", function(e){
   var app_id = $(this).data("id");
+  var post_id = $(this).data("post");
   var title = $(this).data("title");
   var excerpt = $(this).data("excerpt");
   var img = $(this).data("img");
