@@ -142,8 +142,9 @@ function btn_delete_app_post(app_id,title,source)
       else
         $.growl.warning({ message: msg_you_are_not_authorized_to_delete_the_post });
     },
-    error: function (data) 
+    error: function (data) {
       console.log('Error:', data);
+    }
   });
 }
 
