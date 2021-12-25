@@ -135,6 +135,8 @@
 		'the-post-was-not-updated' => 'Sorry but the post was not updated. Try again, please.',
 		'your-contacts-were-updated' => 'Your contacts were updated.',
 		'you-are-not-authorized-to-edit-the-post' => 'Sorry but you are not authorized to edit the post, unless you save it first.',
+		'you-are-not-authorized-to-copy-the-post' => 'Sorry but you are not authorized to copy the post, unless you save it first.',
+		'you-are-not-authorized-to-delete-the-post' => 'Sorry but you are not authorized to delete the post, unless you save it first.',
 		'you-are-not-authorized' => 'Sorry but you are not authorized to perform this operation.',
 		'the-post-was-sent' => 'The post was sent.',
 		'type-photo-gallery' => 'Photo gallery',

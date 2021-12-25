@@ -18,6 +18,8 @@
   var msg_the_page_was_updated = "<?=__('messages.the-page-was-updated');?>";
   var msg_your_contacts_were_updated = "<?=__('messages.your-contacts-were-updated');?>";
   var msg_you_are_not_authorized_to_edit_the_post = "<?=__('messages.you-are-not-authorized-to-edit-the-post');?>";
+  var msg_you_are_not_authorized_to_copy_the_post = "<?=__('messages.you-are-not-authorized-to-copy-the-post');?>";
+  var msg_you_are_not_authorized_to_delete_the_post = "<?=__('messages.you-are-not-authorized-to-delete-the-post');?>";
   var msg_the_post_was_sent = "<?=__('messages.the-post-was-sent');?>";
   var msg_type_text = "<?=__('messages.type-text');?>";
   var msg_type_notification = "<?=__('messages.type-notification');?>";

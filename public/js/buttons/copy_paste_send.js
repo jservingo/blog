@@ -120,7 +120,19 @@ function btn_copy_catalog(ref_id)
 
 function btn_copy_app_post(app_id,title,source)
 {
-  alert("btn_copy_app_post");
+  $.ajax({
+    url: '/app/get/post',
+    data: {app_id:app_id, title:title, source:source},
+    dataType: 'json',
+    success: function(data) {
+      if (data.success)
+        btn_copy_post(data.post_id);
+      else
+        $.growl.warning({ message: msg_you_are_not_authorized_to_copy_the_post });
+    },
+    error: function (data) 
+      console.log('Error:', data);
+  });
 }
 
 function btn_copy_post(post_id)

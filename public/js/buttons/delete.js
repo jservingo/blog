@@ -132,7 +132,19 @@ function btn_delete_app_subs(post_id)
 
 function btn_delete_app_post(app_id,title,source)
 {
-  alert("btn_delete_app_post");
+  $.ajax({
+    url: '/app/get/post',
+    data: {app_id:app_id, title:title, source:source},
+    dataType: 'json',
+    success: function(data) {
+      if (data.success)
+        btn_delete_post_from_created_posts(data.post_id);
+      else
+        $.growl.warning({ message: msg_you_are_not_authorized_to_delete_the_post });
+    },
+    error: function (data) 
+      console.log('Error:', data);
+  });
 }
 
 function btn_delete_post_from_created_posts(post_id)

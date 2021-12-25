@@ -134,6 +134,8 @@
 		'the-post-was-not-updated' => 'Lo lamentamos pero el post no fue actualizado. Inténtelo de nuevo, por favor.',
 		'your-contacts-were-updated' => 'Tus contactos fueron actualizados.',
 		'you-are-not-authorized-to-edit-the-post' => 'Lo lamentamos pero Ud. no está autorizado a editar el post, a menos que lo guarde primero.',
+		'you-are-not-authorized-to-copy-the-post' => 'Lo lamentamos pero Ud. no está autorizado a copiar el post, a menos que lo guarde primero.',
+		'you-are-not-authorized-to-delete-the-post' => 'Lo lamentamos pero Ud. no está autorizado a eliminar el post, a menos que lo guarde primero.',
 		'you-are-not-authorized' => 'Lo lamentamos pero Ud. no esta autorizado para realizar esta operación.',
 		'the-post-was-sent' => 'El post fue enviado.',
 		'type-photo-gallery' => 'Galería de fotos',

@@ -344,36 +344,46 @@ function btn_create_post(catalog_id)
 
 function btn_edit_app_post(app_id,title,source)
 {
-  alert("btn_edit_app_post");
+  $.ajax({
+    url: '/app/get/post',
+    data: {app_id:app_id, title:title, source:source},
+    dataType: 'json',
+    success: function(data) {
+      if (data.success)
+        btn_edit("post", data.post_id);
+      else
+        $.growl.warning({ message: msg_you_are_not_authorized_to_edit_the_post });
+    },
+    error: function (data) 
+      console.log('Error:', data);
+  }); 
 }
 
 function btn_edit(el, id)
 {
   url = '/'+el+'/isOwner/'+id;
   $.ajax({
-      url: url,
-      dataType: 'json',
-      success: function(data) {
-        if (data.response=="Y")
-        {
-          url = '/'+el+'/'+id;
-          edit_post(url);
-        }
-        else
-        {
-          if (el=="post")
-          {
-            //url = '/'+el+'/footer/'+id;
-            edit_footer(el, id);
-          }  
-          else
-            $.growl.warning({ message: msg_you_are_not_authorized_to_edit_the_post });
-        }  
-      },
-      error: function (data) {
-        console.log('Error:', data);
+    url: url,
+    dataType: 'json',
+    success: function(data) {
+      if (data.response=="Y")
+      {
+        url = '/'+el+'/'+id;
+        edit_post(url);
       }
-    }); 
+      else
+      {
+        if (el=="post")
+        {
+          //url = '/'+el+'/footer/'+id;
+          edit_footer(el, id);
+        }  
+      }  
+    },
+    error: function (data) {
+      console.log('Error:', data);
+    }
+  }); 
 }
 
 function edit_footer(el, id)
@@ -396,7 +406,7 @@ function edit_footer(el, id)
       error: function (data) {
         console.log('Error:', data);
       }
-    }); 
+  }); 
 }
 
 function edit_post(url)

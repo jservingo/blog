@@ -35,6 +35,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/themes/default/style.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> 
+    <script>
+        var user_logged_in = {{ auth()->check() ? 'true' : 'false' }};
+    </script>
     @stack('styles')
 </head>
 <body>
