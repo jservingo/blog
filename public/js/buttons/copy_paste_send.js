@@ -6,7 +6,7 @@ $('#posts_container').on("click",".btn_copy_app_post", function(e){
   var app_id = $(this).data("id");
   var title = $(this).data("title");
   var source = $(this).data("source");
-  if (post_id <> 0)
+  if (post_id != 0)
     btn_copy_post(post_id);
   else
     btn_copy_app_post(app_id,title,source);

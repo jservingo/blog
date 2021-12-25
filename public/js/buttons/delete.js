@@ -5,7 +5,7 @@ $('#posts_container').on('click', '.btn_delete_app_post', function() {
   var app_id = $(this).data("id");
   var title = $(this).data("title");
   var source = $(this).data("source");
-  if (post_id <> 0)
+  if (post_id != 0)
   {
     if (app_id == 3)
       btn_delete_post_artist(post_id);
