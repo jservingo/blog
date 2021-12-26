@@ -312,12 +312,14 @@ class AppsController extends Controller
     $title = $request->get('title');
     $source = $request->get('source');
 
+    // Se busca el post
     $post = Post
       ::where("app_id","=",$app_id)
       ->where("title","=",$title)
       ->first();
 
-    if ($post)
+    // Se valida que el usuario haya guardado el post
+    if ($post && $post->kpost)
       echo json_encode(array('success'=>true,'post_id'=>$post->id));
     else
       echo json_encode(array('success'=>false));

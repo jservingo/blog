@@ -516,8 +516,7 @@ class ArtistsController extends Controller
       return;
     }
 
-    //No se elimina el artista
-    //Unicamente se marca el post del artista como eliminado (soft delete)
+    //Se marca el post del artista como eliminado (soft delete)
     $post->status_id = 3;
     $post->save();
 
