@@ -2,6 +2,7 @@
 
 $('#posts_container').on("click",".btn_edit_app_post", function(e){
   e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("post");
   var app_id = $(this).data("id");
   var title = $(this).data("title");
@@ -13,67 +14,90 @@ $('#posts_container').on("click",".btn_edit_app_post", function(e){
 })
 
 $('.btn_create_catalog_from_category').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var category_id = $(this).data("id");
   btn_create_catalog_from_category(category_id);
 }); 
 
 $('.btn_create_catalog').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   btn_create_catalog();
 }); 
 
 $('.btn_create_app').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   //$.growl.warning({ message: msg_not_implemented });
   btn_create_app(null);
 }); 
 
 $('.btn_create_app_subs').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var parent_id = $(this).data("id");
   btn_create_app(parent_id);
 }); 
 
 $('.btn_create_page').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   btn_create_page();
 }); 
 
 $('.btn_create_post').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   btn_create_post(0);
 });	
 
 $('.btn_create_post_from_catalog').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var catalog_id = $(this).data("id");
   btn_create_post(catalog_id);
 }); 
 
 $('.btn_edit_post').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   //url = "/post/"+post_id;
   btn_edit ("post", post_id);
 });
 
 $('.btn_edit_catalog').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var catalog_id = $(this).data("id");
   //var url = "/catalog/"+catalog_id;
   btn_edit ("catalog", catalog_id);
 });
 
 $('.btn_edit_page').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var page_id = $(this).data("id");
   //var url = "/page/"+page_id;
   btn_edit ("page", page_id);
 });
 
 $('.btn_show_post').bind('click', function(e){
+  e.preventDefault();
   var post_id = $(this).data("id");
   //url = "/posts/"+post_id;
   btn_show (url);
 });
 
 $('.btn_show_page_subscribers').bind('click', function(e){
+  e.preventDefault();
   var page_id = $(this).data("id");
   location = "/page/subscribers/"+page_id;
 });
 
 $('.btn_show_app_subscribers').bind('click', function(e){
+  e.preventDefault();
   var app_id = $(this).data("id");
   location = "/app/subscribers/"+app_id;
 });

@@ -2,6 +2,7 @@
 
 $('#posts_container').on("click",".btn_copy_app_post", function(e){
   e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("post");
   var app_id = $(this).data("id");
   var title = $(this).data("title");
@@ -14,42 +15,49 @@ $('#posts_container').on("click",".btn_copy_app_post", function(e){
 
 $('.btn_copy_catalog').bind('click', function(e){
 	e.preventDefault();
+  if (!assert("user logged in")) return;
   var ref_id = $(this).data("id");
   btn_copy_catalog(ref_id);
 });
 
 $('.btn_copy_post').bind('click', function(e){
 	e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   btn_copy_post(post_id);
 });
 
 $('.btn_paste_post_to_catalog').bind('click', function(e){
 	e.preventDefault();
+  if (!assert("user logged in")) return;
 	var catalog_id = $(this).data("id");
   btn_paste_post_to_catalog(catalog_id);
 });
 
 $('.btn_paste_catalog_to_category').bind('click', function(e){
 	e.preventDefault();
+  if (!assert("user logged in")) return;
 	var category_id = $(this).data("id");
   btn_paste_catalog_to_category(category_id);
 });
 
 $('.btn_paste_post_to_contacts').bind('click', function(e){
   e.preventDefault();
+  if (!assert("user logged in")) return;
   var group_id = $(this).data("id");
   btn_paste_post_to_contacts(group_id);
 });
 
 $('.btn_send_post').bind('click', function(e){
   e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   btn_send_post(post_id);
 });
 
 $('.btn_send_message').bind('click', function(e){
   e.preventDefault();
+  if (!assert("user logged in")) return;
   var user_id = $(this).data("id");
   btn_send_message(user_id);
 });

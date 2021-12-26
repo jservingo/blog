@@ -1,64 +1,87 @@
 // DELETE OPERATIONS
 
-$('#posts_container').on('click', '.btn_delete_app_post', function() {
+$('#posts_container').on('click', '.btn_delete_app_post', function(e) {
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("post");
   var app_id = $(this).data("id");
   var title = $(this).data("title");
   var source = $(this).data("source");
-  if (post_id != 0)
+  if (app_id == 3)
   {
-    if (app_id == 3)
-      btn_delete_post_artist(post_id);
-    else
-      btn_delete_post_from_created_posts(post_id);
+    //Todos los posts de LastFm estan creados
+    btn_delete_post_artist(post_id);
   }
   else
-    btn_delete_app_post(app_id,title,source);
+  {
+    if (post_id != 0) 
+      btn_delete_post_from_created_posts(post_id);
+    else
+      btn_delete_app_post(app_id,title,source);
+  }
 });
 
 $('.btn_delete_catalog_from_category').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var catalog_id = $(this).data("id");
   var category_id = $(this).data("category");
   btn_delete_catalog_from_category(catalog_id, category_id);
 });
 
 $('.btn_delete_catalog_from_created_catalogs').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var catalog_id = $(this).data("id");
   btn_delete_catalog_from_created_catalogs(catalog_id);
 });
 
 $('.btn_delete_post_from_catalog').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   var catalog_id = $(this).data("catalog");
   btn_delete_post_from_catalog(post_id, catalog_id);
 });
 
 $('.btn_delete_app_subs').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   btn_delete_app_subs(post_id);
 });
 
 $('.btn_delete_post_from_created_posts').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   btn_delete_post_from_created_posts(post_id);
 });
 
 $('.btn_delete_post_from_created_pages').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   btn_delete_post_from_created_pages(post_id);
 });
 
 $('.btn_delete_post_from_subscription').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   btn_delete_post_from_subscription(post_id);
 });
 
 $('.btn_delete_post_from_contacts').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   btn_delete_post_from_contacts(post_id);
 });
 
 $('.btn_delete_post_from_contacts_group').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   var group_id = $(this).data("group");
   btn_delete_post_from_contacts_group(post_id, group_id);

@@ -506,13 +506,15 @@ class ArtistsController extends Controller
   {
     //$this->authorize('delete',$post);
 
-    /*
-    if (auth()->id() != 10)
+    $app = App
+      ::where("id","=",$post->app_id)
+      ->first();
+
+    if ($app && $app->user_id != auth()->id())
     {
       echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
     }
-    */
 
     //No se elimina el artista
     //Unicamente se marca el post del artista como eliminado (soft delete)

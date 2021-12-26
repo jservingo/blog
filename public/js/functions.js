@@ -188,3 +188,20 @@ function removeTags(str) {
 
   return str;
 }
+
+function assert(str)
+{
+  switch (str)
+  {
+    case "user logged in":
+      if (!user_logged_in)
+      {
+        $.growl.warning({ message: "Not logged in. Please login to perform this opetation" });
+        return false;
+      }
+      else
+        return true;
+      break;
+  }
+  return false;
+}

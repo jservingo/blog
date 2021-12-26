@@ -2,6 +2,8 @@
 
 //Event Delegation
 $('#posts_container').on("click",".btn_save_app_post", function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var app_id = $(this).data("id");
   var post_id = $(this).data("post");
   var title = $(this).data("title");
@@ -18,27 +20,37 @@ $('#posts_container').on("click",".btn_save_app_post", function(e){
 }); 
 
 $('.btn_add_subscription').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   btn_add_subscription(post_id);
 });
 
 $('.btn_allocate_app').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   var app_id = $(this).data("app");
   btn_allocate_app(post_id,app_id);
 });
 
 $('.btn_add_user_to_contacts').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var user_id = $(this).data("id");
   btn_add_user_to_contacts(user_id);
 });
 
 $('.btn_save_post').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   btn_save_post(post_id);
 });
 
 $('.btn_discard_post').bind('click', function(e){
+  e.preventDefault();
+  if (!assert("user logged in")) return;
   var post_id = $(this).data("id");
   btn_discard_post(post_id);
 });
