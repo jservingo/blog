@@ -7,7 +7,7 @@ $('#posts_container').on('click', '.btn_delete_app_post', function(e) {
   var app_id = $(this).data("id");
   var title = $(this).data("title");
   var source = $(this).data("source");
-  if (app_id == 3)
+  if (app_id == 4)
   {
     //Todos los posts de LastFm estan creados
     btn_delete_post_artist(post_id);

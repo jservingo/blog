@@ -659,10 +659,15 @@ class PostsController extends Controller
     if ($post->user_id != auth()->id())
     {
       //Obtener kpost asociado al post si fue guardado
+      /*
       $kpost = $post->kpost;
       //Eliminar el kpost
       if ($kpost)
         $kpost->delete();
+      echo json_encode(array('success'=>true));
+      return;
+      */
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
     }
 
