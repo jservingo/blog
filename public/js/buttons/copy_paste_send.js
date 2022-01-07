@@ -64,37 +64,6 @@ $('.btn_send_message').bind('click', function(e){
 
 // FUNCTIONS
 
-function btn_copy_app_post(app_id,title,source)
-{
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
-  var data = {app_id:app_id, title:title, source:source};
-  $.ajax({
-    type: 'post',
-    url: '/clipboards/copy/app/post',
-    data: data,
-    dataType: 'json',
-    success: function(data) {
-      if (data.success){
-        $.growl.notice({ message: msg_the_post_was_added_to_the_clipboard });
-      }
-      else if(data.msg)
-      {
-        $.growl.warning({ message:data.msg });
-      }
-      else {
-        alert('error');
-      }
-    },
-    error: function (data) {
-      console.log('Error:', data);
-    }
-  });   
-}
-
 function btn_copy_catalog(ref_id)
 {
   $.ajaxSetup({
@@ -163,10 +132,7 @@ function btn_copy_post(post_id)
       }
       else if(data.msg)
       {
-        $.growl.warning({ message:data.msg });
-      }
-      else {
-        alert('error');
+        $.growl.warning({ message: msg_you_are_not_authorized_to_copy_the_post });
       }
     },
     error: function (data) {

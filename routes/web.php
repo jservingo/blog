@@ -1,6 +1,39 @@
 <?php
 
-//Web Routes (cambiado)
+//Web Routes
+
+//Home & User 
+Route::get('/','HomeController@index')->name('home');
+Route::get('user/login','HomeController@login')->name('login');
+Route::get('user/register','HomeController@register')->name('register');
+Route::get('user/language','HomeController@change_language')->name('language');
+Route::get('user/configuration','HomeController@configuration')->name('configuration');
+Route::get('user/verify/{token}', 'Auth\RegisterController@verifyUser');
+Route::get('user/account','HomeController@show_account')->name('account');
+Route::get('user/{user}/{url?}','PostsController@show_user')->name('post.show_user');
+Route::get('ad/{position1}/{position2}','HomeController@get_ad');
+Route::get('curso2', function () {
+    return view('home.curso2');
+});
+Route::get('colorpicker', function () {
+    return view('home.color_picker');
+});
+
+//User stats, recommendations, recent views, favorites, most_viewed
+Route::get('recommendations','HomeController@show_recommendations')->name('home.show_recommendations');
+Route::get('offers','HomeController@show_offers')->name('home.show_offers');
+Route::get('favorites','HomeController@show_favorites')->name('home.show_favorites');
+Route::get('most/viewed','HomeController@show_most_viewed')->name('home.show_most_viewed');
+Route::get('recent/views','HomeController@show_recent_views')->name('home.show_recent_views');
+Route::get('user_stats/get','HomeController@get_user_stats');
+Route::get('alerts/get','HomeController@get_alerts');
+Route::get('recommendations/get','HomeController@get_recommendations');
+Route::get('offers/get','HomeController@get_offers');
+Route::get('offers/random/get/{num}','HomeController@get_random_offers');
+Route::get('favorites/get','HomeController@get_favorites');
+Route::get('most_viewed/get','HomeController@get_most_viewed');
+Route::get('recent_views/get','HomeController@get_recent_views');
+Route::post('recent_views','HomeController@store_recent_views');
 
 //Info
 Route::get('about','InfoController@about')->name('info.about');
@@ -28,36 +61,6 @@ Route::get('password/reset', function () {
     return view('auth.passwords.reset');
 });
 
-//Home & User 
-Route::get('/','HomeController@index')->name('home');
-Route::get('user/login','HomeController@login')->name('login');
-Route::get('user/register','HomeController@register')->name('register');
-Route::get('user/language','HomeController@change_language')->name('language');
-Route::get('user/configuration','HomeController@configuration')->name('configuration');
-Route::get('user/verify/{token}', 'Auth\RegisterController@verifyUser');
-Route::get('user/account','HomeController@show_account')->name('account');
-Route::get('user/{user}/{url?}','PostsController@show_user')->name('post.show_user');
-Route::get('ad/{position1}/{position2}','HomeController@get_ad');
-Route::get('colorpicker', function () {
-    return view('home.color_picker');
-});
-
-//User stats, recommendations, recent views, favorites, most_viewed
-Route::get('recommendations','HomeController@show_recommendations')->name('home.show_recommendations');
-Route::get('offers','HomeController@show_offers')->name('home.show_offers');
-Route::get('favorites','HomeController@show_favorites')->name('home.show_favorites');
-Route::get('most/viewed','HomeController@show_most_viewed')->name('home.show_most_viewed');
-Route::get('recent/views','HomeController@show_recent_views')->name('home.show_recent_views');
-Route::get('user_stats/get','HomeController@get_user_stats');
-Route::get('alerts/get','HomeController@get_alerts');
-Route::get('recommendations/get','HomeController@get_recommendations');
-Route::get('offers/get','HomeController@get_offers');
-Route::get('offers/random/get/{num}','HomeController@get_random_offers');
-Route::get('favorites/get','HomeController@get_favorites');
-Route::get('most_viewed/get','HomeController@get_most_viewed');
-Route::get('recent_views/get','HomeController@get_recent_views');
-Route::post('recent_views','HomeController@store_recent_views');
-
 //Set session message
 Route::post('message','HomeController@set_message');
 
@@ -74,7 +77,7 @@ Route::get('app/subscribers/{app}/{url?}','AppsController@show_subscribers')->na
 Route::get('app/get/posts/{app}','AppsController@get_posts');
 Route::get('app/search/posts/{app}/{q}','AppsController@search_posts');
 Route::get('app/stats/{post}','AppsController@get_stats')->name('app.get_stats');
-Route::post('app/get/post','AppsController@get_post');
+Route::get('app/get/post','AppsController@get_post');
 Route::post('apps/post','AppsController@save_app_post');
 Route::post('app','AppsController@store')->name('app.create');
 Route::delete('apps/{post}','AppsController@destroy');
@@ -154,6 +157,7 @@ Route::delete('catalogs/{category}/{post}','CatalogsController@delete_catalog_fr
 Route::delete('catalogs/{post}','CatalogsController@destroy');
 
 //Posts
+Route::get('posts/export','PostsController@export')->name('posts.export');
 Route::get('posts/discover','PostsController@discover')->name('posts.discover');
 Route::get('posts/received/{status?}/{type?}','PostsController@show_received')->name('posts.show_received');
 Route::get('posts/notifications','PostsController@show_notifications')->name('posts.show_notifications');

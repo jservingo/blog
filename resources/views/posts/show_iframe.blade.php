@@ -38,9 +38,8 @@
 @endpush
 
 @push('scripts')
-  <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script>
-  var iframe_width = 500;
+  <script>
+    var iframe_width = 500;
   </script>
   <script type="text/javascript" src="/js/resize_iframe.js"></script>
 @endpush

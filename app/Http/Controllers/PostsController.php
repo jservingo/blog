@@ -21,6 +21,66 @@ use App\Tag;
 
 class PostsController extends Controller
 {
+
+  public function export()
+  {
+    //Se excluyen todos los post de tipo Custom
+    $posts = Post        
+      ::where("type_id","<>",8)
+      ->get();
+
+    $fp = fopen("export/posts.csv", 'w');
+
+    foreach($posts as $post)
+    {
+      $row = array( $post->id,
+                    $post->title,
+                    $post->excerpt,
+                    $post->body,
+                    $post->iframe,
+                    $post->links,
+                    $post->footnote,
+                    $post->publish_at,
+                    $post->user_id,
+                    $post->type_id,
+                    $post->ref_id,
+                    $post->source,
+                    $post->app_id,
+                    $post->custom_type,
+                    $post->url,
+                    $post->likes,
+                    $post->views,
+                    $post->order_num,
+                    $post->action_button_type,
+                    $post->action_buttom_color,
+                    $post->action_buttom_text,
+                    $post->action_buttom_link,
+                    $post->valid_from,
+                    $post->valid_until,
+                    $post->rating_mode,
+                    $post->rating_points,
+                    $post->rating_num,
+                    $post->rating,
+                    $post->sent_num,
+                    $post->saved_num,
+                    $post->cstr_privacy,
+                    $post->cstr_restricted,
+                    $post->cstr_colaborative,
+                    $post->cstr_send_massive,
+                    $post->cstr_allow_comments,
+                    $post->created_at,
+                    $post->updated_at
+                  );
+      fputcsv($fp, $row, ",");
+    } 
+
+    //move back to beginning of file
+    fseek($fp, 0);
+        
+    //output all remaining data on a file pointer
+    fpassthru($fp);
+  }   
+
   public function discover(Request $request)
   {
     $posts = Post        
@@ -655,19 +715,16 @@ class PostsController extends Controller
     //$this->authorize('delete',$post);
 
     //Eliminar kpost si el post no le pertenece al usuario
-    //OJO: Advertir si el post fue agregado a un catálogo del usuario
+    //Advertir si el post fue agregado a un catálogo del usuario (OJO)
     if ($post->user_id != auth()->id())
     {
       //Obtener kpost asociado al post si fue guardado
-      /*
       $kpost = $post->kpost;
       //Eliminar el kpost
       if ($kpost)
         $kpost->delete();
+
       echo json_encode(array('success'=>true));
-      return;
-      */
-      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
     }
 

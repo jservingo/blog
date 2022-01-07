@@ -64,11 +64,6 @@
 
 @push('scripts')
 	<script id="dsq-count-scr" src="//zendero.disqus.com/count.js" async></script>
-  <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous">
-  </script>  
   @php
     include(app_path() . '/functions/messages_js.blade.php')
   @endphp

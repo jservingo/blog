@@ -31,10 +31,11 @@
     <link rel="stylesheet" href="/css/popr.css?ver=1.1">
     <link rel="stylesheet" href="/css/tipr.css?ver=1.1">
     <link rel="stylesheet" href="/css/jqsimplemenu.css?ver=1.1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/themes/default/style.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> 
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/jstree-style.min.css" />
+    <link rel="stylesheet" href="/css/font-lato.css">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/grid-layout.min.js"></script> 
     <script>
         var user_logged_in = {{ auth()->check() ? 'true' : 'false' }};
     </script>

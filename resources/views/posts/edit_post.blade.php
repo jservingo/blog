@@ -327,7 +327,6 @@
 @endpush
 
 @push('scripts')
-  <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
   @php
     include(app_path() . '/functions/messages_js.blade.php')
   @endphp
