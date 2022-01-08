@@ -67,7 +67,7 @@ class ClipboardsController extends Controller
         $post_id = $request->get('post_id');
         $post = Post::find($post_id);
         $kpost = $post->kpost;
-        if (!kpost)
+        if (!$kpost)
         {
             echo json_encode(array('success'=>false));
             return;

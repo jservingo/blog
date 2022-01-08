@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="/css/popr.css?ver=1.1">
     <link rel="stylesheet" href="/css/tipr.css?ver=1.1">
     <link rel="stylesheet" href="/css/jqsimplemenu.css?ver=1.1">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/jstree-style.min.css" />
     <link rel="stylesheet" href="/css/font-lato.css">
     <script src="/js/jquery-3.3.1.min.js"></script>
