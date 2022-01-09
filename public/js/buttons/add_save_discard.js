@@ -146,6 +146,8 @@ function btn_discard_post(post_id)
   $.showDialog();  
 }
 
+//*************************************************************************
+
 function save_app_post(app_id, title, excerpt, img, tags, links, footnote, date, user, source, custom_type, callback="")
 {
   $.ajaxSetup({

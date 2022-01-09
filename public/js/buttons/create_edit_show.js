@@ -142,7 +142,8 @@ function btn_create_catalog_from_category(category_id)
             $.growl.warning({ message:data.msg });
           }
           else {
-            alert('error');
+            set_message("error", "Error");
+            location.reload();
           }
         },
         error: function (data) {
@@ -192,7 +193,8 @@ function btn_create_catalog()
             $.growl.warning({ message:data.msg });
           }
           else {
-            alert('error');
+            set_message("error", "Error");
+            location.reload();
           }
         },
         error: function (data) {
@@ -242,7 +244,8 @@ function btn_create_app(parent_id)
             $.growl.warning({ message:data.msg });
           }
           else {
-            alert('error');
+            set_message("error", "Error");
+            location.reload();
           }
         },
         error: function (data) {
@@ -292,7 +295,8 @@ function btn_create_page()
             $.growl.warning({ message:data.msg });
           }
           else {
-            alert('error');
+            set_message("error", "Error");
+            location.reload();
           }
         },
         error: function (data) {
@@ -354,7 +358,8 @@ function btn_create_post(catalog_id)
             $.growl.warning({ message:data.msg });
           }
           else {
-            alert('error');
+            set_message("error", "Error");
+            location.reload();
           }
         },
         error: function (data) {
@@ -375,8 +380,12 @@ function btn_edit_app_post(app_id,title,source)
     success: function(data) {
       if (data.success)
         btn_edit("post", data.post_id);
-      else
+      else if(data.msg)
         $.growl.warning({ message: msg_you_are_not_authorized_to_edit_the_post });
+      else {
+        set_message("error", "Error");
+        location.reload();
+      }
     },
     error: function (data) {
       console.log('Error:', data);

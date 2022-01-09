@@ -7,7 +7,7 @@
 @section('content')
 	@php
     $title = $page->name; 
-    $root = "page_category";
+    $root = "catalogs_ribbon";
     $subtitle = $category->name;
   @endphp 
 

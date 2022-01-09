@@ -49,6 +49,30 @@
 		<img src="/img/save.png" width="24" />
 	</a>
 	@endif
+@elseif ($root=="catalogs_ribbon")
+	<a class="btn_edit_post"
+			data-id="{{ $post->id }}">
+		<img src="/img/edit.png" width="24" />
+	</a>				
+	<a class="btn_delete_post_from_catalog" 
+			data-id="{{ $post->id }}">
+		<img src="/img/delete.png" width="24" />
+	</a>
+	<a class="btn_copy_post"
+	    data-id="{{ $post->id }}">
+		<img src="/img/copy.png" width="24" />
+	</a>
+	@if ($post->kpost)
+	<a class="btn_send_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/send.png" width="24" />
+	</a>
+	@else
+	<a class="btn_save_post" 
+			data-id="{{ $post->id }}"> 
+		<img src="/img/save.png" width="24" />
+	</a>
+	@endif
 @elseif ($root=="page_category")
 	<a class="btn_edit_post"
 			data-id="{{ $post->id }}">

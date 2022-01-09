@@ -86,7 +86,8 @@ function btn_copy_catalog(ref_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        alert('error');
+        set_message("error", "Error");
+        location.reload();
       }
     },
     error: function (data) {
@@ -104,8 +105,12 @@ function btn_copy_app_post(app_id,title,source)
     success: function(data) {
       if (data.success)
         btn_copy_post(data.post_id);
-      else
+      else if(data.msg)
         $.growl.warning({ message: msg_you_are_not_authorized_to_copy_the_post });
+      else {
+        set_message("error", "Error");
+        location.reload();
+      }
     },
     error: function (data) { 
       console.log('Error:', data);
@@ -133,6 +138,10 @@ function btn_copy_post(post_id)
       else if(data.msg)
       {
         $.growl.warning({ message: msg_you_are_not_authorized_to_copy_the_post });
+      }
+      else {
+        set_message("error", "Error");
+        location.reload();
       }
     },
     error: function (data) {
@@ -298,6 +307,8 @@ function btn_paste_catalog_to_category(category_id)
   });   
 }
 
+//*************************************************************************
+
 function paste_post_to_catalog(selected, catalog_id)
 {
   $.ajaxSetup({
@@ -321,7 +332,8 @@ function paste_post_to_catalog(selected, catalog_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        alert('error');
+        set_message("error", "Error");
+        location.reload();
       }
     },
     error: function (data) {
@@ -353,7 +365,8 @@ function paste_catalog_to_category(selected, category_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        alert('error');
+        set_message("error", "Error");
+        location.reload();
       }
     },
     error: function (data) {
@@ -385,7 +398,8 @@ function paste_post_to_contacts(selected, group_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        alert('error');
+        set_message("error", "Error");
+        location.reload();
       }
     },
     error: function (data) {
@@ -468,7 +482,8 @@ function send_post_to_contacts(selected, post_id)
         $.growl.warning({ message:data.msg });
       }
       else {
-        alert('error');
+        set_message("error", "Error");
+        location.reload();
       }
     },
     error: function (data) {
@@ -517,7 +532,8 @@ function btn_send_message(user_id)
             $.growl.warning({ message:data.msg });
           }
           else {
-            alert('error');
+            set_message("error", "Error");
+            location.reload();
           }
         },
         error: function (data) {

@@ -5,7 +5,7 @@
 @section('content')
 	@php
     $title = __('messages.created-catalogs');
-    $root = "created_catalogs";
+    $root = "catalogs_ribbon";
     $category = null;
   @endphp
 

@@ -598,7 +598,7 @@ class PostsController extends Controller
     $kpost = $post->kpost;
     if (! $kpost)
     {
-      echo json_encode(array('success'=>false,'msg'=>'Ud. debe guardar el post antes de realizar esta operación.'));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
       return;
     }
 

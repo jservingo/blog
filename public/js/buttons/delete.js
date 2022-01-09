@@ -267,6 +267,8 @@ function btn_delete_post_artist(post_id)
   $.showDialog();
 }
 
+//************************************************************************
+
 function delete_catalog_from_category(catalog_id,category_id)
 {
   $.ajaxSetup({

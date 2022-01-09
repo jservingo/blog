@@ -322,7 +322,7 @@ class AppsController extends Controller
     if ($post && $post->kpost)
       echo json_encode(array('success'=>true,'post_id'=>$post->id));
     else
-      echo json_encode(array('success'=>false));
+      echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
   }  
 
   public function search_posts($app_id, $q)

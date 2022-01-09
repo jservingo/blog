@@ -69,7 +69,7 @@ class ClipboardsController extends Controller
         $kpost = $post->kpost;
         if (!$kpost)
         {
-            echo json_encode(array('success'=>false));
+            echo json_encode(array('success'=>false,'msg'=>__('messages.you-are-not-authorized')));
             return;
         }    
 
