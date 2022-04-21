@@ -1,5 +1,4 @@
-<div class="image-w-text">
-  <h3>{{ __('messages.excerpt') }}:</h3>
+<div class="image-w-text" style="background-color:#7FB3D5; color:white; font-family:cursive; font-size:18px;">
   @if ($post->kpost && $post->kpost->excerpt)
     {{ $post->kpost->excerpt }}
   @else
@@ -8,7 +7,6 @@
 </div>
 
 <div class="image-w-text">
-  <h3>{{ __('messages.content') }}:</h3>
   @php
     if($post->source == "@fmath") {
       $body = $post->body;
