@@ -46,6 +46,16 @@ body{
 	background-image: -ms-linear-gradient(top,rgba(242, 255, 253, 1),rgba(186, 243, 232, 1) 800px);
 	background-image: -o-linear-gradient(top,rgba(242, 255, 253, 1),rgba(186, 243, 232, 1) 800px);
 }
+.alert {
+	background-color:#566573; 
+	color:white; 
+	padding:20px; 
+	margin-top:10px; 
+	border:10px solid #7FB3D5;
+	font-family:cursive; 
+	font-size:24px;
+	text-align: center;
+}
 header {
 	width:100%;
 	background-color: #74ABC9;
