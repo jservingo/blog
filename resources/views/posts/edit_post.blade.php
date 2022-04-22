@@ -362,6 +362,7 @@
       });
 
       myDropzone.on('error', function(file, res) {
+        console.log(res.errors);
         var msg = res.errors.photo[0];
         $('.dz-error-message:last > span').text(msg);
       });
