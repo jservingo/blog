@@ -6,7 +6,7 @@
   @endif
 </div>
 
-<div class="image-w-text" style="width: 100%;background-color:#7FB3D5; color:white; font-size:18px;">
+<div class="image-w-text" style="background-color:#7FB3D5; color:white; padding:10px; font-size:18px;">
   @php
     if($post->source == "@fmath") {
       $body = $post->body;
