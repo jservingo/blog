@@ -358,13 +358,13 @@
 
       myDropzone.on("addedfile", function(file) {
         console.log(file);
-        //alert("Ver consola");
+        alert("addedfile");
       });
 
       myDropzone.on('error', function(file, res) {
         console.log(res);
-        var msg = res.errors.photo[0];
-        $('.dz-error-message:last > span').text(msg);
+        //var msg = res.errors.photo[0];
+        //$('.dz-error-message:last > span').text(msg);
       });
 
       $(window).resize(function () {
