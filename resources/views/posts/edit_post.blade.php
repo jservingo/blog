@@ -341,7 +341,8 @@
   <script type="text/javascript" src="/js/functions.js"></script>
   <script>
     if($('.dropzone').length)
-    {     
+    { 
+      console.log("create Dropzone");    
       var myDropzone = new Dropzone('.dropzone',{
         url: '/admin/posts/{{ $post->id }}/photos',
         headers: {
@@ -357,8 +358,8 @@
       Dropzone.autoDiscover = false;
 
       myDropzone.on("addedfile", function(file) {
+        console.log("addedfile");
         console.log(file);
-        alert("addedfile");
       });
 
       myDropzone.on('error', function(file, res) {
