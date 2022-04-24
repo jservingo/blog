@@ -11,6 +11,7 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42525026-2"></script>
+    <meta name="google-site-verification" content="ChnH9B-j1eYiI0XwyON37KJboMQ_7VW1Ux2-9MneZXk" />
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
