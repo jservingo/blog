@@ -1,7 +1,8 @@
 {{-- posts.edit_post --}} 
 
 @php
- include(app_path() . '/functions/box_options.php')
+ include(app_path() . '/functions/box_options.php');
+ include(app_path() . '/functions/htmlEntitiesWithinPres.php');
 @endphp
 
 @extends('layout_popup')
@@ -35,7 +36,10 @@
           $body = $post->body;
           if($post->source == "@fmath") {
             $body = htmlentities($body);
-          } 
+          }
+          else {
+            $body = htmlEntitiesWithinPres($body); 
+          }
         @endphp
         <label><span>{{ __('messages.content') }}: (*) {{ __('messages.required-field') }}</span></label>
 			  <textarea id="body" style="width:90%"
