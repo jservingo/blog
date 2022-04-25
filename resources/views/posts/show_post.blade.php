@@ -60,6 +60,7 @@
   <!--<link rel="stylesheet" href="/css/twitter-bootstrap.css">-->
   <link rel="stylesheet" href="/css/framework_single.css?ver=1.13">
   <link rel="stylesheet" href="/mathML/mathml-formula/fmathFormula.css">
+  <link type="text/css" rel="stylesheet" href="../styles/shCoreDefault.css"/>
 @endpush
 
 @push('scripts')
@@ -81,6 +82,11 @@
   <script type="text/javascript" src="/mathML/mathml-formula/menu/basicContext.min.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/fmathFormulaC.js"></script>
   <script type="text/javascript" src="/mathML/crossBrowserSolution.js"></script>
+  <script type="text/javascript" src="../scripts/shCore.js"></script>
+  <script type="text/javascript" src="../scripts/shBrushPHP.js"></script>
+  <script type="text/javascript">
+    SyntaxHighlighter.all();
+  </script>  
   <script type="text/javascript">
     $(document).ready(function () {
       $('.menu').jqsimplemenu();
