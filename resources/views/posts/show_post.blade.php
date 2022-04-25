@@ -86,6 +86,7 @@
   <script type="text/javascript" src="../scripts/shBrushPHP.js"></script>
   <script type="text/javascript">
     SyntaxHighlighter.all();
+    console.log('SyntaxHighlighter');
   </script>  
   <script type="text/javascript">
     $(document).ready(function () {
