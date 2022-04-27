@@ -112,7 +112,6 @@ $(function() {
   var instance = CKEDITOR.instances[editorID];
   if (instance) { CKEDITOR.remove(instance); }
   CKEDITOR.replace(editorID);
-  CKEDITOR.config.height = 220;
 });
 
 /*
