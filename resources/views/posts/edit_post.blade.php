@@ -338,7 +338,7 @@
   <script type="text/javascript" src="/js/confirmDialog.min.js"></script>  
   <script type="text/javascript" src="/js/growl.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
-  <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+  <script type="text/javascript" src="/js/ckeditor.js"></script>
   <script type="text/javascript" src="/js/easyui.min.js"></script>
   <script type="text/javascript" src="/js/edit_post.js"></script>
   <script type="text/javascript" src="/js/edit_audios.js?ver=1.4"></script>
