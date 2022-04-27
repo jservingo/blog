@@ -107,9 +107,10 @@ $('.btn_update_post').bind('click', function(e){
   });
 });
 
-CKEDITOR.replace('body');
-
-CKEDITOR.config.height = 220;
+$(function() {
+  CKEDITOR.replace('body');
+  CKEDITOR.config.height = 220;
+});
 
 $('.btn_cancel_edit').bind('click', function(e){
   window.close();
