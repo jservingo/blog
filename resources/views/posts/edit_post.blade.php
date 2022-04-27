@@ -400,7 +400,7 @@
 
       CKEDITOR.replace('body');
       CKEDITOR.config.height = 220;
-      $('#main_container').css("visibility","visible");
+      $('.main_container').css("visibility","visible");
     });
   </script>
 
