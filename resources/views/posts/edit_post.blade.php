@@ -8,7 +8,7 @@
 @extends('layout_popup')
 
 @section('content')
-  <div class="main-container">
+  <div class="main-container" style="visibility:hidden;">
     <div class="wide-container">
       <div class="pageHeader">
         <h2>{{ __('messages.edit') }} {{ $post->get_type() }}</h2>
@@ -397,6 +397,10 @@
       var date = new Date(d+" UTC");
       var fdate = fdateTimeEditLocal(date);
       document.getElementById("published_at").value = fdate;
+
+      CKEDITOR.replace('body');
+      CKEDITOR.config.height = 220;
+      $('#main_container').css("visibility","visible");
     });
   </script>
 
