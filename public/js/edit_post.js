@@ -108,9 +108,17 @@ $('.btn_update_post').bind('click', function(e){
 });
 
 $(function() {
-  CKEDITOR.replace('body');
+  var editorID = $("#body");
+  var instance = CKEDITOR.instances[editorID];
+  if (instance) { CKEDITOR.remove(instance); }
+  CKEDITOR.replace(editorID);
   CKEDITOR.config.height = 220;
 });
+
+/*
+  CKEDITOR.replace('body');
+  CKEDITOR.config.height = 220;
+*/
 
 $('.btn_cancel_edit').bind('click', function(e){
   window.close();
