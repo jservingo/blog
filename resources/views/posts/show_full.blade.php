@@ -50,6 +50,7 @@
   <link rel="stylesheet" href="/css/framework_full.css?ver=1.11">
   <link rel="stylesheet" href="/mathML/mathml-formula/fmathFormula.css">
   <link rel="stylesheet" href="/css/multiselect.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
 @endpush
 
 @push('scripts')
@@ -77,6 +78,10 @@
   <script type="text/javascript" src="/mathML/mathml-formula/menu/basicContext.min.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/fmathFormulaC.js"></script>
   <script type="text/javascript" src="/mathML/crossBrowserSolution.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+  <script type="text/javascript">
+    hljs.highlightAll();
+  </script> 
   <script type="text/javascript">
     $(document).ready(function () {
       $('.menu').jqsimplemenu();

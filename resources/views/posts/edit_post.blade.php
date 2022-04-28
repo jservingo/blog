@@ -285,6 +285,7 @@
   <link rel="stylesheet" href="/css/easyui.css">
   <link rel="stylesheet" href="/css/icon.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
   <style>
   .main-container { 
     height: auto;
