@@ -2,7 +2,6 @@
 
 @php
  include(app_path() . '/functions/box_options.php');
- include(app_path() . '/functions/htmlEntitiesWithinPres.php');
 @endphp
 
 @extends('layout_popup')
