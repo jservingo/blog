@@ -37,9 +37,6 @@
           if($post->source == "@fmath") {
             $body = htmlentities($body);
           }
-          else {
-            $body = htmlEntitiesWithinPres($body); 
-          }
         @endphp
         <label><span>{{ __('messages.content') }}: (*) {{ __('messages.required-field') }}</span></label>
 			  <textarea id="body" style="width:90%"
