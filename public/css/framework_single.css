@@ -253,36 +253,35 @@
 }
 
 table {
-  background-color: #2980B9;
-  border-width: 4px;
+  border-collapse: collapse;
   font-family: Arial;
   font-size: 12pt;
   font-color: #000;
 }
 
 tr {
-  color: #FFFFFF;
+  color: #000;
   border: none;
 }
 
 tr:nth-child(odd) {background-color: #D9E1F2;}
-tr:nth-child(even) {background-color: #2980B9;}
+tr:nth-child(even) {background-color: #AAF0DA;}
 
 th {
   text-align: center;
   padding: 7px;
   font-weight: bold;
-  color: #FFFFFF;
-  background-color: #4472C4;
-  border-right: solid 1px #000; 
-  border-left: solid 1px #000;
+  color: #fff;
+  background-color: #2980B9;
+  border-right: solid 1px #fff; 
+  border-left: solid 1px #fff;
 }
 
 td {
   text-align: left;
   padding: 7px;
-  border-right: solid 1px #000; 
-  border-left: solid 1px #000;
+  border-right: solid 1px #fff; 
+  border-left: solid 1px #fff;
 }
 
 a.vlink:link {text-decoration:none}
