@@ -252,6 +252,12 @@
   }
 }
 
+h2 {
+  background-color: #3c3ce5;
+  color: white;
+  padding: 10px;
+}
+
 table {
   border: none;
   border-collapse: collapse;
