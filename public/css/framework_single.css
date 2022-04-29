@@ -267,7 +267,7 @@ tr {
 }
 
 tr:nth-child(odd) {background-color: #BEE9F9;}
-tr:nth-child(even) {background-color: #AAF0DA;}
+tr:nth-child(even) {background-color: #9DE5CE;}
 
 th {
   text-align: center;
