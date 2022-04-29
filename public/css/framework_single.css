@@ -253,7 +253,9 @@
 }
 
 table {
+  border: none;
   border-collapse: collapse;
+  border
   font-family: Arial;
   font-size: 12pt;
   font-color: #000;
@@ -264,7 +266,7 @@ tr {
   border: none;
 }
 
-tr:nth-child(odd) {background-color: #D9E1F2;}
+tr:nth-child(odd) {background-color: ##9EE4FF;}
 tr:nth-child(even) {background-color: #AAF0DA;}
 
 th {
