@@ -266,7 +266,7 @@ tr {
   border: none;
 }
 
-tr:nth-child(odd) {background-color: ##9EE4FF;}
+tr:nth-child(odd) {background-color: ##BEE9F9;}
 tr:nth-child(even) {background-color: #AAF0DA;}
 
 th {
