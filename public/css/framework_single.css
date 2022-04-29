@@ -254,6 +254,35 @@
 
 table {
   background-color: #2980B9;
+  border-width: 4px;
+  font-family: Arial;
+  font-size: 12pt;
+  font-color: #000;
+}
+
+tr {
+  color: #FFFFFF;
+  border: none;
+}
+
+tr:nth-child(odd) {background-color: #D9E1F2;}
+tr:nth-child(even) {background-color: #2980B9;}
+
+th {
+  text-align: center;
+  padding: 7px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background-color: #4472C4;
+  border-right: solid 1px #000; 
+  border-left: solid 1px #000;
+}
+
+td {
+  text-align: left;
+  padding: 7px;
+  border-right: solid 1px #000; 
+  border-left: solid 1px #000;
 }
 
 a.vlink:link {text-decoration:none}
