@@ -146,7 +146,7 @@ h3 {
   font-family: Arial;
   font-size: 12pt;
   font-color: #000;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 table {
@@ -186,6 +186,9 @@ a.vlink{
 
 .post h1{
 	font-size: 18px !important;
+}
+.post a {
+  font-size: 16px !important; 
 }
 .post{
   margin-bottom: 20px;
