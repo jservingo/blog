@@ -135,45 +135,6 @@
   }
 }
 
-h2 {
-  font-family: Arial;
-  font-size: 14pt;
-  font-color: #4974a5;
-  padding: 10px;
-}
-
-h3 {
-  font-family: Arial;
-  font-size: 12pt;
-  font-color: #000;
-  font-weight: 600;
-}
-
-table {
-  border-width:4px;
-  font-family: Arial;
-  font-size: 11pt;
-  font-color: #000;
-}
-
-tr {
-  color: #000;
-}
-
-
-th {
-  text-align: center;
-  padding: 4px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #2980B9;
-}
-
-td {
-  text-align: left;
-  padding: 4px;
-}
-
 a.vlink:link {text-decoration:none}
 a.vlink:visited {text-decoration:none}
 a.vlink:hover{text-decoration:none}
@@ -186,6 +147,38 @@ a.vlink{
 
 .post h1{
 	font-size: 18px !important;
+}
+.post h2 {
+  font-family: Arial;
+  font-size: 14pt;
+  font-color: #4974a5;
+  padding: 10px;
+}
+.post h3 {
+  font-family: Arial;
+  font-size: 12pt;
+  font-color: #000;
+  font-weight: 600;
+}
+.post table {
+  border-width:4px;
+  font-family: Arial;
+  font-size: 11pt;
+  font-color: #000;
+}
+.post tr {
+  color: #000;
+}
+.post th {
+  text-align: center;
+  padding: 4px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #2980B9;
+}
+.post td {
+  text-align: left;
+  padding: 4px;
 }
 .post a {
   font-size: 16px !important; 
