@@ -11,7 +11,7 @@
     if ($post->source == "@kpub")
     {
       echo "<div><div style='float:right;'><button onclick='btn_kpub_prev()'>\<\<</button></div><div style='float:right;'><button onclick='btn_kpub_next()'>\>\></button></div></div>";
-      $file = asset("prog.txt"); 
+      $file = asset("storage/posts/prog.txt"); 
       echo file_get_contents($file);     
     }
     elseif($post->source == "@fmath") {
