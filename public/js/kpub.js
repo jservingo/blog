@@ -19,7 +19,7 @@ function btn_kpub_prev() {
 }
 
 
-function btn_kpu_next() {
+function btn_kpup_next() {
 	show_kpub(kpub_page+1);
 }
 
