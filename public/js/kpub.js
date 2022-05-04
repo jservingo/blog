@@ -5,7 +5,7 @@ function show_kpub(page)
 	element = $(".kpub[page="+page+"]");
 	if (element && (kpub_page != page))
 	{
-		var old_element = $(".kpub[page="+kpup_page+"]");
+		var old_element = $(".kpub[page="+kpub_page+"]");
 		if (old_element)
 			old_element.hide();
 		element.show();
@@ -19,7 +19,7 @@ function btn_kpub_prev() {
 }
 
 
-function btn_kpup_next() {
+function btn_kpub_next() {
 	show_kpub(kpub_page+1);
 }
 
