@@ -8,7 +8,13 @@
 
 <div class="image-w-text" style="background-color:#7FB3D5; color:white; padding:10px; margin-top:10px; font-size:18px;">
   @php
-    if($post->source == "@fmath") {
+    if ($post->source == "@kpub")
+    {
+      echo "<div><div style='float:right;'><button onclick='btn_kpub_prev()'>\<\<</button></div><div style='float:right;'><button onclick='btn_kpub_next()'>\>\></button></div></div>";
+      $file = "/prog.txt"; 
+      echo file_get_contents($file);     
+    }
+    elseif($post->source == "@fmath") {
       $body = $post->body;
       //$body = htmlentities($body);
       echo $body;
