@@ -4,7 +4,7 @@ function show_kpub(page)
 {
 	console.log("show page "+page);
 	element = $(".kpub[data-page='"+page+"']");
-	if (element && (kpub_page != page))
+	if (element.length==1 && (kpub_page != page))
 	{
 		if (kpub_page>=1)
 		{
