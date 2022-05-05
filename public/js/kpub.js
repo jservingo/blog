@@ -3,12 +3,12 @@ var kpub_page = 0;
 function show_kpub(page)
 {
 	console.log("show page "+page);
-	element = $(".kpub[page="+page+"]");
+	element = $(".kpub[data-page='"+page+"']");
 	if (element && (kpub_page != page))
 	{
 		if (kpub_page>=1)
 		{
-			var old_element = $(".kpub[page="+kpub_page+"]");
+			var old_element = $(".kpub[data-page='"+kpub_page+"']");
 			old_element.hide();
 		}
 		element.show();
@@ -21,7 +21,6 @@ function btn_kpub_prev() {
 	if (kpub_page > 1)
 		show_kpub(kpub_page-1);
 }
-
 
 function btn_kpub_next() {
 	console.log("next");
