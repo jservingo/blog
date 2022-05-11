@@ -11,7 +11,8 @@ $allVideos.each(function() {
 
 // When the window is resized
 $(window).resize(function() {
-  var newWidth = 600;
+  var container_width = $("#container-post").width-40;
+  var newWidth = Math.min(600,container_width);
 
   // Resize all videos according to their own aspect ratio
   $allVideos.each(function() {
