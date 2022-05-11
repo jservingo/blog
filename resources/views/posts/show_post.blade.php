@@ -99,7 +99,7 @@
      $('.tip').tipr();
     });
   </script> 
-  <script type="text/javascript" src="/js/resize_iframe_full.js"></script>
+  <script type="text/javascript" src="/js/resize_iframe_single.js"></script>
   <script> 
     var rv_type_id = {{ $post->type_id }}; 
     var rv_post_id = {{ $post->id }};
