@@ -121,11 +121,11 @@
     width: 180px;
   }
   #header_panel {
-    padding-left: 25px;
+    padding-left: 15px;
     width: 100%;
   }
   #details_panel {
-    padding-left: 25px;
+    padding-left: 15px;
     width: 100%;
   }
   #owner_panel {
@@ -140,7 +140,7 @@
   #main_panel {
     float:left;
     margin-bottom: 15px;
-    padding-left: 25px;
+    padding-left: 15px;
     width: calc(100% - 50px);
   }
   #ads_panel {

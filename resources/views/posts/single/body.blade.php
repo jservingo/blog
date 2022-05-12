@@ -9,7 +9,7 @@
 
 @if ($post->source == "@kpub")
   <div style="background-color:#7FB3D5; color:white; padding:10px; margin-top:10px; font-size:18px;">
-    <div style='height:30px;'>
+    <div style='height:33px;'>
       <div style='float:right;'>
         <button onclick='btn_kpub_next()'>></button>
       </div>
