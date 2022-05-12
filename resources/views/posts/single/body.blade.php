@@ -1,11 +1,11 @@
-/* Source
-    @-fmath
-    @-inc
-    @-kpub
-    @-xml
-    @-json
-    @-url @-api
-*/
+{{-- Source
+  @-fmath
+  @-inc
+  @-kpub
+  @-xml
+  @-json
+  @-url @-api
+--}} 
 
 @if ($post->source == "@kpub")
   <div style="background-color:#7FB3D5; color:white; padding:10px; margin-top:10px; font-size:18px;">
