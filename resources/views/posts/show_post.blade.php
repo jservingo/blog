@@ -14,12 +14,6 @@
   <div style="overflow:hidden; width:100%;">
     <div class="loader"></div>
 
-    <div id="header_panel" style="visibility:hidden;">  
-      <div class="container" style="margin:0;">  
-         @include('posts.single.header') 
-      </div>
-    </div>
-
     <div id="details_panel" style="visibility:hidden;">
       <div id="owner_panel">  
         <div class="container" style="margin:0;">
@@ -52,6 +46,12 @@
       </div>
 
       <div style="clear: both;"></div>
+    </div>
+
+    <div id="header_panel" style="visibility:hidden;">  
+      <div class="container" style="margin:0;">  
+         @include('posts.single.header') 
+      </div>
     </div>
   </div> 
 @endsection
