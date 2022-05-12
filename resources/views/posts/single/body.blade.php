@@ -56,7 +56,6 @@
 
 <div class="image-w-text">
   @if ($post->tags->count() >= 1)
-    <h3>{{ __('messages.tags') }}:</h3>
     @include('posts.box.tags')
   @endif
 </div>
