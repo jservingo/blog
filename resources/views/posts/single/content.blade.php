@@ -1,4 +1,4 @@
-<div id="content-post" style="width:100%; background-color:#7FB3D5;  padding:10px; margin-top:10px;"> 
+<div id="content-post" style="background-color:#7FB3D5; padding:10px; margin-top:10px;"> 
   @if ($post->iframe)
     @include('posts.single.iframe')
   @elseif ($post->photos->count() === 1)
