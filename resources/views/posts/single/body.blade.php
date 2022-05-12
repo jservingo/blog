@@ -1,10 +1,10 @@
 /* Source
-    @fmath
-    @inc
-    @kpub
-    @xml
-    @json
-    @url @api
+    @-fmath
+    @-inc
+    @-kpub
+    @-xml
+    @-json
+    @-url @-api
 */
 
 @if ($post->source == "@kpub")
