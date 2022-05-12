@@ -9,11 +9,20 @@
 
 @if ($post->source == "@kpub")
   <div style="background-color:#7FB3D5; color:white; padding:10px; margin-top:10px; font-size:18px;">
-  echo "<div style='height:28px;'><div style='float:right;'><button onclick='btn_kpub_next()'>".chr(62)."</button></div><div style='float:right;'><button onclick='btn_kpub_prev()'>".chr(60)."&nbsp;&nbsp;&nbsp;&nbsp;</button></div></div>";
-  @php
-    $file = asset("storage/posts/".$post->id.".inc");
-    echo file_get_contents($file); 
-  @endphp
+    <div style='height:30px;'>
+      <div style='float:right;'>
+        <button onclick='btn_kpub_next()'>></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+      <div style='float:right;'>
+        <button onclick='btn_kpub_prev()'><</button>
+      </div>
+    </div>
+    @php
+      $file = asset("storage/posts/".$post->id.".inc");
+      echo file_get_contents($file); 
+    @endphp
+  </div>
 @else
   <div style="background-color:#2662DF; color:white; padding:10px; margin-top:10px; border:10px solid #7FB3D5;font-family:cursive; font-size:20px;">
     @if ($post->kpost && $post->kpost->excerpt)
