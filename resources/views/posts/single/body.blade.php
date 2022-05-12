@@ -12,6 +12,8 @@
     <div style='height:30px;'>
       <div style='float:right;'>
         <button onclick='btn_kpub_next()'>></button>
+      </div>
+      <div style='float:right;'>
         &nbsp;&nbsp;&nbsp;&nbsp;
       </div>
       <div style='float:right;'>
