@@ -2,7 +2,9 @@
   @if ($post->iframe)
     @include('posts.single.iframe')
   @elseif ($post->photos->count() === 1)
-    @include('posts.single.photo')
+    @if ($post->source != "@kpub")
+      @include('posts.single.photo')
+    @endif
   @elseif ($post->photos->count() > 1)
     @include('posts.box.carousel')       
   @endif   
