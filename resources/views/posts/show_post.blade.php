@@ -39,6 +39,7 @@
     <div style="width:100%;">
       <div id="main_panel" style="visibility:hidden;">  
         <div class="container" style="margin:0;">                 
+          @include('posts.single.excerpt')
           @include('posts.single.content')
           @include('posts.single.body')
           @include('posts.single.options')      
