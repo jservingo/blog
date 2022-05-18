@@ -18,17 +18,40 @@ function show_kpub(page)
 }
 
 function btn_kpub_prev() {
-	if (kpub_page > 1)
-		show_kpub(kpub_page-1);
+	if (kpub_page > 1) {
+		if (user_logged_in)
+			show_kpub(kpub_page-1);
+		else 
+			show_warning();
+	}	
 }
 
 function btn_kpub_next() {
-	console.log("next");
-	show_kpub(kpub_page+1);
+	if (user_logged_in)
+		show_kpub(kpub_page+1);
+	else
+		show_warning();
+}
+
+function show_warning() {
+	$.createDialog({
+    	attachAfter: '#main_panel',
+    	title: 'Please login or register to continue',
+    	accept: 'Login',
+    	refuse: 'Register',
+    	acceptStyle: 'red',
+    	refuseStyle: 'gray',
+    	acceptAction: function(){
+      		alert('Login');
+    	},
+    	refuseActtion: function(){
+      		alert('Register');
+    	}
+  	});
+  	$.showDialog(); 
 }
 
 $(function() {
-	console.log("page=1");
 	show_kpub(1);
 });
 
