@@ -38,7 +38,7 @@ function show_warning() {
     	attachAfter: '#main_panel',
     	title: 'Please login or register to continue',
     	accept: 'Login',
-    	refuse: '',
+    	refuse: 'Close',
     	acceptStyle: 'red',
     	refuseStyle: 'gray',
     	acceptAction: function(){
