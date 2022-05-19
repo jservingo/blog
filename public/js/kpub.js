@@ -38,14 +38,11 @@ function show_warning() {
     	attachAfter: '#main_panel',
     	title: 'Please login or register to continue',
     	accept: 'Login',
-    	refuse: 'Register',
+    	refuse: '',
     	acceptStyle: 'red',
     	refuseStyle: 'gray',
     	acceptAction: function(){
-      		alert('Login');
-    	},
-    	refuseActtion: function(){
-      		alert('Register');
+      		location = "/user/login";
     	}
   	});
   	$.showDialog(); 
