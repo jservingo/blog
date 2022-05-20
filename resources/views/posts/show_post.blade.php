@@ -37,7 +37,7 @@
     </div>
 
     <div style="width:100%;">
-      <div id="main_panel" style="visibility:hidden;">  
+      <div id="main_panel" style="visibility:hidden; margin-top:5px;">  
         <div class="container" style="margin:0;">                 
           @include('posts.single.excerpt')
           @include('posts.single.content')

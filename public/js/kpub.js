@@ -36,9 +36,9 @@ function btn_kpub_next() {
 function show_warning() {
 	$.createDialog({
     	attachAfter: '#main_panel',
-    	title: 'Please login or register to continue',
-    	accept: 'Login',
-    	refuse: 'Close',
+    	title: msg_login_to_continue,
+    	accept: msg_log_in,
+    	refuse: msg_close,
     	acceptStyle: 'red',
     	refuseStyle: 'gray',
     	acceptAction: function(){

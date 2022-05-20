@@ -38,6 +38,8 @@
   var msg_create_post = "<?=__('messages.create-post');?>";
   var msg_enter_post = "<?=__('messages.enter-post');?>";
   var msg_enter_message = "<?=__('messages.enter-message');?>";
+  var msg_log_in = "<?=__('messages.log-in');?>";
+  var msg_close = "<?=__('messages.close');?>";
   var msg_title = "<?=__('messages.title');?>";
   var msg_type = "<?=__('messages.type');?>";
   var msg_yes = "<?=__('messages.yes');?>";
@@ -80,7 +82,8 @@
   var msg_please_contact_sales = "<?=__('messages.please-contact-sales');?>"; 
   var msg_please_wait_loading = "<?=__('messages.please-wait-loading');?>";
   var msg_upload_audio = "<?=__('messages.upload-audio');?>";
-  
+  var msg_not_logged_in = "<?=__('messages.not-logged-in');?>";
+  var msg_login_to_continue = "<?=__('messages.login-to-continue');?>";
   
 </script>
 

@@ -196,7 +196,7 @@ function assert(str)
     case "user logged in":
       if (!user_logged_in)
       {
-        $.growl.warning({ message: "Not logged in. Please login to perform this opetation" });
+        $.growl.warning({ message: msg_not_logged_in });
         return false;
       }
       else
