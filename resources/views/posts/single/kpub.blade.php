@@ -1,13 +1,13 @@
 <div style="background-color:#7FB3D5; color:white; font-size:18px;">
-  <div style='height:33px;'>
+  <div style='height:43px;'>
     <div style='float:right;'>
-      <button onclick='btn_kpub_next()'>></button>
+      <button class='button-arrows' onclick='btn_kpub_next()'>></button>
     </div>
     <div style='float:right;'>
-      &nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div style='float:right;'>
-      <button onclick='btn_kpub_prev()'><</button>
+      <button class='button-arrows' onclick='btn_kpub_prev()'><</button>
     </div>
   </div>
   @php

@@ -310,6 +310,18 @@ a.vlink{
   font-size: 18px;
 }
 
+.button-arrows {
+  background-color: #ECFEFD; 
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+}
 .container-fluid{
   padding-right: 15px;
     padding-left: 15px;
