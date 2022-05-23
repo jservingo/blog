@@ -12,6 +12,7 @@ function show_kpub(page)
 			old_element.hide();
 		}
 		$("#kpub_page").text(page);
+		$("#last_page").text(get_last_page());
 		element.show();
 		//console.log(element);
 		kpub_page = page;		
@@ -47,6 +48,11 @@ function show_warning() {
     	}
   	});
   	$.showDialog(); 
+}
+
+function get_last_page() {
+	v = document.getElementsByClassName("kpub");
+	return v.length	
 }
 
 $(function() {

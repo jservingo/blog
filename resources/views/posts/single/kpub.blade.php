@@ -1,7 +1,7 @@
 <div style="background-color:#7FB3D5; color:white; font-size:18px;">
   <div style='height:50px;'>
-    <div style='float:left;'>
-      <span id="kpub_page"></span>
+    <div style='float:left;font-size:20px;'>
+      Page <span id="kpub_page"></span> / <span id="last_page"></span>
     </div>
     <div style='float:right;'>
       <button class='button-arrows' onclick='btn_kpub_next()'>
