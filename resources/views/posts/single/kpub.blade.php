@@ -1,6 +1,6 @@
 <div style="background-color:#7FB3D5; color:white; font-size:18px;">
   <div style='height:50px;'>
-    <div style='float:left;font-size:20px;'>
+    <div style='float:left;font-size:20px;color:black;padding-top:6px;'>
       Page <span id="kpub_page"></span> / <span id="last_page"></span>
     </div>
     <div style='float:right;'>
