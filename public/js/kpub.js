@@ -2,7 +2,7 @@ var kpub_page = 0;
 
 function show_kpub(page)
 {
-	console.log("show page "+page);
+	//console.log("show page "+page);
 	element = $(".kpub[data-page='"+page+"']");
 	if (element.length==1 && (kpub_page != page))
 	{
@@ -11,8 +11,9 @@ function show_kpub(page)
 			var old_element = $(".kpub[data-page='"+kpub_page+"']");
 			old_element.hide();
 		}
+		$("#kpub_page").text(page);
 		element.show();
-		console.log(element);
+		//console.log(element);
 		kpub_page = page;		
 	}
 }
