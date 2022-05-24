@@ -60,7 +60,7 @@ $(function() {
 });
 
 document.addEventListener("DOMContentLoaded",
- 	function() {
+    function() {
 		var div, n,
 		v = document.getElementsByClassName("youtube-player");
 		for (n = 0; n < v.length; n++) {
@@ -70,8 +70,8 @@ document.addEventListener("DOMContentLoaded",
 			div.onclick = labnolIframe;
 			v[n].appendChild(div);
 		}
- 	});
- 
+	});
+
 function labnolThumb(id) {
 	var thumb = '<img src="https://i.ytimg.com/vi/ID/hqdefault.jpg">',
 	play = '<div class="play"></div>';
