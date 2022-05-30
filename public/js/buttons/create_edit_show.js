@@ -212,7 +212,7 @@ function btn_create_app(parent_id)
   var html = "<div id='edit'>";
   html = html + "<h3>"+msg_create_app+"</h3>";
   html = html + "<p>"+msg_title+"</p>";
-  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+enter_app+"' required>";
+  html = html + "<input id='title' type='text' style='width:95%;' class='form-control' placeholder='"+"Ingrese el nombre de la app"+"' required>";
   html = html + "</div>";
   $.createDialog({
     attachAfter: '#main_panel',
