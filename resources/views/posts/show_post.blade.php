@@ -81,6 +81,7 @@
   <script type="text/javascript" src="/js/kpub.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript" src="/js/audio.min.js"></script>
+  <script type="text/javascript" src="/epub/epub.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/fonts/fmathFormulaFonts.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/menu/basicContext.min.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/fmathFormulaC.js"></script>
@@ -175,6 +176,15 @@
           console.log('Error:', data);
         }
       });
+    }
+  </script>
+  <script>
+    if (type=="EPUB")
+    {
+      var source = $("#epub").data("source"); 
+      var book = ePub(source);
+      var rendition = book.renderTo("epub", {method:"continuous", flow:"scrolled", width:600, height:400});
+      rendition.display();
     }
   </script>
   <script>

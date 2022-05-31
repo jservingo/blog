@@ -8,7 +8,9 @@
 --}} 
 
 <div style="background-color:#7FB3D5; color:white; padding:10px; margin-top:10px; font-size:18px;">
-  @if ($post->source == "@kpub")
+  @if ($post->isEpub())
+    <div id="epub" data-id="{{ $post->id }}" data-source="{{ url('storage/posts/'.$post->id.'.epub') }}"></div>
+  @elseif ($post->source == "@kpub")
     @include('posts.single.kpub')
   @elseif ($post->source == "@inc")
     @php 
