@@ -183,6 +183,7 @@
     $(function() {
       if ($("#epub").length)
       {
+        console.log("epub");
         var source = $("#epub").data("source"); 
         console.log(source);
         var book = ePub(source);
