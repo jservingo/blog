@@ -81,7 +81,7 @@
   <script type="text/javascript" src="/js/kpub.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript" src="/js/audio.min.js"></script>
-  <script type="text/javascript" src="/epub/epub.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/fonts/fmathFormulaFonts.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/menu/basicContext.min.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/fmathFormulaC.js"></script>
