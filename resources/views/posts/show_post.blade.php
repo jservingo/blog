@@ -181,12 +181,9 @@
 
   <script>
     $(function() {
-      console.log("epub ?");
-      if ($("#epub").lenght)
+      if ($("#epub").length)
       {
-        consolo.log("epub")
         var source = $("#epub").data("source"); 
-        console.log(source);
         var book = ePub(source);
         var rendition = book.renderTo("epub");
         //var rendition = book.renderTo("epub", {method:"continuous", flow:"scrolled", width:600, height:400});
