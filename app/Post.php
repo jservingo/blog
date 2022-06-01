@@ -384,11 +384,6 @@ class Post extends Model
         return $this->type_id===9 ? true : false;
     }
 
-    public function isEpub()
-    {
-        return $this->type_id===10 ? true : false;
-    }
-
     public function isCatalog()
     {
         return $this->type_id===21 ? true : false;

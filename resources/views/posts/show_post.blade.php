@@ -112,6 +112,7 @@
   <script type="text/javascript" src="/js/show_ads.js"></script> 
   <script>
     var post_id = {{ $post->id }}; 
+    var source = {{ $post->source }};
     var type_id = {{ $post->type_id }};
     var type = get_type(type_id);
 
@@ -177,9 +178,8 @@
         }
       });
     }
-  </script>
-  <script>
-    if (type=="EPUB")
+
+    if (source=="@epub")
     {
       var source = $("#epub").data("source"); 
       var book = ePub(source);
@@ -187,11 +187,19 @@
       rendition.display();
     }
   </script>
+  
   <script>
     $(function() {
       fMathSolutionProcess();
     });
   </script>  
+  
+  <script>
+    $(function() {
+      $('audio').initAudioPlayer();
+    });
+  </script>
+
   <script>
     $(function() {
       $(".loader").fadeOut("slow");
@@ -201,9 +209,4 @@
       $('#ads_panel').css("visibility","visible");
     });
   </script> 
-  <script>
-    $(function() {
-      $('audio').initAudioPlayer();
-    });
-  </script>    
 @endpush

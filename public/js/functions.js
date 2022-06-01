@@ -147,8 +147,6 @@ function get_type(type)
       return "App post";
     case 9:
       return "Message";
-    case 10:
-      return "EPUB";
     case 21:
       return "Catalog";
     case 22:
