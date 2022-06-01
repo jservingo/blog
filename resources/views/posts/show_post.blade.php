@@ -112,7 +112,7 @@
   <script type="text/javascript" src="/js/show_ads.js"></script> 
   <script>
     var post_id = {{ $post->id }}; 
-    var source = {{ $post->source }};
+    var source = {{ $post->source }} ? {{ $post->source }} : "@"; 
     var type_id = {{ $post->type_id }};
     var type = get_type(type_id);
 
