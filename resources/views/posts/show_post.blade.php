@@ -184,8 +184,8 @@
       if ($("#epub").length)
       {
         var source = $("#epub").data("source"); 
-        var book = ePub(source);
-        var rendition = book.renderTo("epub");
+        var book = ePub(source, { openAs: "epub" });
+        var rendition = book.renderTo("epub", {width: 600, height: 400});
         rendition.display();
         console.log(source);
         //var rendition = book.renderTo("epub", {method:"continuous", flow:"scrolled", width:600, height:400});
