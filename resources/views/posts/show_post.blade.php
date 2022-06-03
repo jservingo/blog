@@ -81,8 +81,7 @@
   <script type="text/javascript" src="/js/kpub.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript" src="/js/audio.min.js"></script>
-  <script type="text/javascript" src="/epub/epub.js"></script>
-  <!--<script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/fonts/fmathFormulaFonts.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/menu/basicContext.min.js"></script>
@@ -183,13 +182,15 @@
 
   <script>
     $(function() {
-      if ($("#epub").length)
+      if ($("#area").length)
       {
+        console.log("get source");
         var source = $("#area").data("source"); 
+        console.log(source);
         var book = ePub(source, { openAs: "epub" });
         var rendition = book.renderTo("area", {width:600, height:400});
         rendition.display();
-        console.log(source);
+        console.log("End epub");
         //var rendition = book.renderTo("epub", {method:"continuous", flow:"scrolled", width:600, height:400});
       } 
     });   
