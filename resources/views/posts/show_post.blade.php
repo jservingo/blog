@@ -187,7 +187,7 @@
         console.log("get source");
         var source = $("#area").data("source"); 
         console.log(source);
-        var book = ePub(source, { openAs: "epub" });
+        var book = ePub("https://s3.amazonaws.com/moby-dick/moby-dick.epub", { openAs: "epub" });
         var rendition = book.renderTo("area", {width:600, height:400});
         rendition.display();
         console.log("End epub");
