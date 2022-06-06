@@ -198,8 +198,9 @@
         var $prev = document.getElementById("prev");
         var currentSection;
         var currentSectionIndex = 6;
+        var source = $("#viewer").data("source");
 
-        var book = ePub("https://s3.amazonaws.com/epubjs/books/moby-dick/OPS/package.opf");
+        var book = ePub(source);
         book.loaded.navigation.then(function(toc){
           var $select = document.getElementById("toc"),
               docfrag = document.createDocumentFragment();
