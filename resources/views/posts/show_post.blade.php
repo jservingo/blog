@@ -197,7 +197,7 @@
         var $next = document.getElementById("next");
         var $prev = document.getElementById("prev");
         var currentSection;
-        var currentSectionIndex = 6;
+        var currentSectionIndex = 1;
         var source = $("#viewer").data("source");
         console.log(source);
 
@@ -219,6 +219,7 @@
           $select.onchange = function(){
               var index = $select.selectedIndex,
                   url = $select.options[index].ref;
+              console.log("display: "+url);
               display(url);
               return false;
           };
