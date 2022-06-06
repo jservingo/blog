@@ -182,7 +182,7 @@
 
   <script>
     $(function() {
-      if ($("#area").length)
+      if ($("#viewer").length)
       {
         /*
         console.log("get source");
