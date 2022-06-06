@@ -193,7 +193,7 @@
         rendition.display();
         console.log("End epub");
         */
-        var $viewer = document.getElementById("area");
+        var $viewer = document.getElementById("viewer");
         var $next = document.getElementById("next");
         var $prev = document.getElementById("prev");
         var currentSection;

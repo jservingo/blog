@@ -9,7 +9,11 @@
 
 <div style="background-color:#7FB3D5; color:white; padding:10px; margin-top:10px; font-size:18px;">
   @if ($post->source == "@epub")
-    <div id="area" data-id="{{ $post->id }}" data-source="{{ url('storage/posts/'.$post->id.'.epub') }}"></div>
+    <select id="toc"></select>
+    <div id="viewer" class="scrolled"></div>
+    <div id="prev" class="arrow">‹</div>
+    <div id="next" class="arrow">›</div>
+    <!--<div id="area" data-id="{{ $post->id }}" data-source="{{ url('storage/posts/'.$post->id.'.epub') }}"></div>-->
   @elseif ($post->source == "@kpub")
     @include('posts.single.kpub')
   @elseif ($post->source == "@inc")
