@@ -201,7 +201,7 @@
         var source = $("#viewer").data("source");
         console.log(source);
 
-        var book = ePub(source);
+        var book = ePub(source, { openAs:"epub" });
         book.loaded.navigation.then(function(toc){
           var $select = document.getElementById("toc"),
               docfrag = document.createDocumentFragment();
