@@ -199,6 +199,7 @@
         var currentSection;
         var currentSectionIndex = 6;
         var source = $("#viewer").data("source");
+        console.log(source);
 
         var book = ePub(source);
         book.loaded.navigation.then(function(toc){
