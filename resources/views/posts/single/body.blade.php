@@ -9,7 +9,6 @@
 
 <div style="background-color:#7FB3D5; color:white; padding:10px; margin-top:10px; font-size:18px;">
   @if ($post->source == "@epub")
-    <select id="toc"></select>
     <a id="prev" href="#prev" class="navlink">... Prev</a>
     <a id="next" href="#next" class="navlink">Next ...</a>
     <div id="viewer" class="scrolled" 
