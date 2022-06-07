@@ -81,12 +81,15 @@
   <script type="text/javascript" src="/js/kpub.js"></script>
   <script type="text/javascript" src="/js/jqsimplemenu.js"></script>
   <script type="text/javascript" src="/js/audio.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
+  
   <script type="text/javascript" src="/mathML/mathml-formula/fonts/fmathFormulaFonts.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/menu/basicContext.min.js"></script>
   <script type="text/javascript" src="/mathML/mathml-formula/fmathFormulaC.js"></script>
   <script type="text/javascript" src="/mathML/crossBrowserSolution.js"></script>
+
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
   <script type="text/javascript">
     hljs.highlightAll();
@@ -193,63 +196,71 @@
         rendition.display();
         console.log("End epub");
         */
-        var $viewer = document.getElementById("viewer");
-        var $next = document.getElementById("next");
-        var $prev = document.getElementById("prev");
-        var currentSection;
-        var currentSectionIndex = 1;
+
+        var params = URLSearchParams && new URLSearchParams(document.location.search.substring(1));
+        var url = params && params.get("url") && decodeURIComponent(params.get("url"));
+        var currentSectionIndex = (params && params.get("loc")) ? params.get("loc") : undefined;
+
         var source = $("#viewer").data("source");
         console.log(source);
+        var book = ePub(source, { openAs: "epub" });
+        var rendition = book.renderTo("viewer", {
+          flow: "scrolled-doc",
+          width: "100%",
+          fullsize: true
+        });
 
-        var book = ePub("https://s3.amazonaws.com/moby-dick/moby-dick.epub", { openAs: "epub" });
-        book.loaded.navigation.then(function(toc){
-          var $select = document.getElementById("toc"),
-              docfrag = document.createDocumentFragment();
+        rendition.display(currentSectionIndex);
 
-          toc.forEach(function(chapter) {
-            var option = document.createElement("option");
-            option.textContent = chapter.label;
-            option.ref = chapter.href;
+        var next = document.getElementById("next");
+        next.addEventListener("click", function(e){
+          rendition.next();
+          e.preventDefault();
+        }, false);
 
-            docfrag.appendChild(option);
-          });
+        var prev = document.getElementById("prev");
+        prev.addEventListener("click", function(e){
+          rendition.prev();
+          e.preventDefault();
+        }, false);
 
-          $select.appendChild(docfrag);
+        rendition.on("relocated", function(location){
+          console.log(location);
+        });
 
-          $select.onchange = function(){
-              var index = $select.selectedIndex,
-                  url = $select.options[index].ref;
-              console.log("display: "+url);
-              display(url);
-              return false;
-          };
+        rendition.on("rendered", function(section){
+          var nextSection = section.next();
+          var prevSection = section.prev();
 
-          book.opened.then(function(){
-            display(currentSectionIndex);
-          });
+          if(nextSection) {
+            nextNav = book.navigation.get(nextSection.href);
 
-          $next.addEventListener("click", function(){
-            var displayed = display(currentSectionIndex+1);
-            if(displayed) currentSectionIndex++;
-          }, false);
-
-          $prev.addEventListener("click", function(){
-            var displayed = display(currentSectionIndex-1);
-            if(displayed) currentSectionIndex--;
-          }, false);
-
-          function display(item){
-            var section = book.spine.get(item);
-            if(section) {
-              currentSection = section;
-              section.render().then(function(html){
-                // $viewer.srcdoc = html;
-                $viewer.innerHTML = html;
-              });
+            if(nextNav) {
+              nextLabel = nextNav.label;
+            } else {
+              nextLabel = "next";
             }
-            return section;
+
+            next.textContent = nextLabel + " »";
+          } else {
+            next.textContent = "";
+          }
+
+          if(prevSection) {
+            prevNav = book.navigation.get(prevSection.href);
+
+            if(prevNav) {
+              prevLabel = prevNav.label;
+            } else {
+              prevLabel = "previous";
+            }
+
+            prev.textContent = "« " + prevLabel;
+          } else {
+            prev.textContent = "";
           }
         });
+
       } 
     });   
   </script>
